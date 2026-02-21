@@ -185,11 +185,11 @@ SITE.images = {
   HERO: {
     carousel: [
       {
-        src: 'https://ik.imagekit.io/r2zdlyze2o/GS%20Website/Home%20Page/3.png?tr=w-600,h-380,q-100',
+        src: 'https://ik.imagekit.io/r2zdlyze2o/GS%20Website/Home%20Page/3.png?tr=w-520,h-330,q-80,f-auto',
         alt: 'Make Platinum Partner Award'
       },
       {
-        src: 'https://ik.imagekit.io/r2zdlyze2o/GS%20Website/Home%20Page/4.png?tr=w-600,h-380,q-100',
+        src: 'https://ik.imagekit.io/r2zdlyze2o/GS%20Website/Home%20Page/4.png?tr=w-520,h-330,q-80,f-auto',
         alt: 'GrowwStacks Team Celebration'
       }
     ]
