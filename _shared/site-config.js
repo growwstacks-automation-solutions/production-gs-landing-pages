@@ -278,7 +278,7 @@ SITE.caseStudies = {
     screenshot3: 'https://ik.imagekit.io/r2zdlyze2o/Ai%20Store%20Screenshots/Ai%20store%20Screenshots/2.%20Smart%20Lead%20Qualification%20System%20(AI)/ManyChat%20conversation%20flow.png?updatedAt=1771396727138&tr=w-800,q-80',
     screenshot4: 'https://ik.imagekit.io/r2zdlyze2o/Ai%20Store%20Screenshots/Ai%20store%20Screenshots/2.%20Smart%20Lead%20Qualification%20System%20(AI)/Untitled%20design%20(41).png?updatedAt=1771396728168&tr=w-800,q-80',
     toolIcons: {
-      manychat: 'https://www.google.com/s2/favicons?domain=manychat.com&sz=32',
+      manychat: 'https://www.google.com/s2/favicons?domain=manychat.com&sz=128',
       gmail: 'https://www.google.com/s2/favicons?domain=gmail.com&sz=32',
       instagram: 'https://www.google.com/s2/favicons?domain=instagram.com&sz=32',
       messenger: 'https://www.google.com/s2/favicons?domain=messenger.com&sz=32',
