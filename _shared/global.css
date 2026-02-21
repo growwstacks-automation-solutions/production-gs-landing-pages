@@ -59,6 +59,41 @@ body {
 }
 /* Home page — hero handles its own offset */
 body:has(.hero), body:has(.cs-hero), body.cs-page { padding-top:0; }
+
+/* ── CLS PREVENTION ─────────────────────────── 
+   Reserve space for JS-injected components 
+   so the page doesn't jump as content loads.
+   These apply ONLY when divs are still empty.
+   Once page-builder.js fills them, actual 
+   content height takes over naturally.
+   ──────────────────────────────────────────── */
+#gs-hero:empty            { min-height: 85vh; }
+#gs-partners:empty        { min-height: 180px; }
+#gs-ticker:empty          { min-height: 100px; }
+#gs-wwd:empty             { min-height: 600px; }
+#gs-mid-cta:empty         { min-height: 100px; }
+#gs-process:empty         { min-height: 650px; }
+#gs-stats:empty           { min-height: 140px; }
+#gs-cases:empty           { min-height: 550px; }
+#gs-industries:empty      { min-height: 500px; }
+#gs-testimonials:empty    { min-height: 700px; }
+#gs-consult-section:empty { min-height: 650px; }
+#gs-faq:empty             { min-height: 500px; }
+
+/* Mobile — sections are taller on small screens */
+@media (max-width: 768px) {
+  #gs-hero:empty            { min-height: 70vh; }
+  #gs-partners:empty        { min-height: 220px; }
+  #gs-wwd:empty             { min-height: 800px; }
+  #gs-process:empty         { min-height: 900px; }
+  #gs-stats:empty           { min-height: 180px; }
+  #gs-cases:empty           { min-height: 400px; }
+  #gs-industries:empty      { min-height: 600px; }
+  #gs-testimonials:empty    { min-height: 900px; }
+  #gs-consult-section:empty { min-height: 800px; }
+  #gs-faq:empty             { min-height: 600px; }
+}
+
 h1,h2,h3,h4,h5,h6 {
   font-family:var(--font-display); line-height:1.15; letter-spacing:-.02em;
 }
