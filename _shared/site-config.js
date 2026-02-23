@@ -76,6 +76,7 @@ logos: {
   openai:      favicon('openai.com'),
   vapi:        favicon('vapi.ai'),
   retell:      favicon('retellai.com'),
+  perplexity
 
   // ── Communication ──
   slack:       favicon('slack.com'),
