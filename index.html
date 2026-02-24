@@ -244,4 +244,25 @@ a{color:inherit;text-decoration:none}
 <script src="./assets/js/schema.js" defer></script>
 
 </body>
+<script>
+(function() {
+  if (!window.location.hash) return;
+  // If hash target exists on current page, scroll to it
+  // If not, redirect to homepage with hash
+  var hash = window.location.hash;
+  var attempts = 0;
+  var checker = setInterval(function() {
+    var target = document.querySelector(hash);
+    attempts++;
+    if (target) {
+      clearInterval(checker);
+      var nav = document.querySelector('.nav');
+      var navHeight = nav ? nav.offsetHeight : 72;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+    if (attempts > 30) clearInterval(checker);
+  }, 100);
+})();
+</script>
 </html>
