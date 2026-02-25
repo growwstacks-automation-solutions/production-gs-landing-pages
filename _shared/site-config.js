@@ -547,31 +547,3 @@ window.addEventListener('load', function () {
 // ============================================
 window.IMAGES = SITE.images;
 const IMAGES  = SITE.images;
-
-// ============================================
-// Deferred Microsoft Clarity loader
-// PERF FIX: Loads 4 seconds AFTER window.load
-// Why setTimeout(4000)?
-//   - window.load alone is not enough on slow mobile —
-//     Clarity's script still competes with LCP rendering
-//   - PageSpeed's mobile measurement completes within ~3s
-//     of load event, so 4s delay puts Clarity completely
-//     outside the scoring window
-//   - Real users: 4s delay has zero practical impact on
-//     session recording — Clarity buffers all events and
-//     sends them in bulk anyway
-// To update the Clarity ID: change clarityId below.
-// ============================================
-window.addEventListener('load', function () {
-  setTimeout(function () {
-    var clarityId = 'vk6xy7fz99'; // ← your Clarity project ID
-    (function(c, l, a, r, i, t, y) {
-      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
-      t = l.createElement(r);
-      t.async = 1;
-      t.src = 'https://www.clarity.ms/tag/' + i;
-      y = l.getElementsByTagName(r)[0];
-      y.parentNode.insertBefore(t, y);
-    })(window, document, 'clarity', 'script', clarityId);
-  }, 4000); // 4 second delay — invisible to PageSpeed, invisible to users
-});
