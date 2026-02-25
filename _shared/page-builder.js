@@ -5,8 +5,8 @@
 //  2. Below-fold components load via IntersectionObserver (lazy)
 //  3. YouTube uses youtube-nocookie.com (no ad tracker)
 //  4. data-image-key resolved at inject time (no blank src)
-//  5. Removed double-pass setTimeout — replaced with MutationObserver
-//  6. Logo <img> tags get loading="lazy" automatically
+//  5. Logo <img> tags use lazyLogo() — no forced reflow, no gstatic on load
+//  6. Favicon src set via data-lazy-src + IntersectionObserver (fixes cache warning)
 // ============================================
 
 (function () {
@@ -18,8 +18,6 @@
   const prefix = depth === 0 ? './_shared/' : '../'.repeat(depth) + '_shared/';
 
   // ─── Component list ───────────────────────────────────────────────────────
-  // priority: true  → fetch immediately (above the fold)
-  // priority: false → fetch only when element enters viewport (lazy)
   const COMPONENTS = [
     { id: 'gs-navbar',          file: 'components/navbar.html',          priority: true  },
     { id: 'gs-hero',            file: 'components/hero.html',            priority: true  },
@@ -133,15 +131,85 @@
     return html;
   }
 
+  // ─── PERF FIX 1: Convert favicon/logo img[src] → data-lazy-src ───────────
+  // After token replacement, any <img> whose src points to our favicon-proxy
+  // or gstatic.com gets converted so it ONLY fires when scrolled into view.
+  // This eliminates the "10+ gstatic requests on load" PageSpeed warning.
+  function convertLogosToLazy(container) {
+    container.querySelectorAll('img').forEach(function(img) {
+      const src = img.getAttribute('src') || '';
+
+      const isFavicon = src.includes('/favicon-proxy') ||
+                        src.includes('gstatic.com')    ||
+                        src.includes('google.com/s2/favicons');
+
+      if (!isFavicon) return;
+      if (img.dataset.lazySrc) return; // already converted
+
+      // Move src → data-lazy-src so browser won't fetch it yet
+      img.dataset.lazySrc = src;
+      img.removeAttribute('src');
+
+      // Prevent CLS: reserve space while image is not yet loaded
+      if (!img.hasAttribute('width'))  img.setAttribute('width',  '32');
+      if (!img.hasAttribute('height')) img.setAttribute('height', '32');
+      if (!img.hasAttribute('alt'))    img.setAttribute('alt', '');
+    });
+  }
+
+  // ─── PERF FIX 2: Lazy-load logos via IntersectionObserver + rAF ──────────
+  // requestAnimationFrame batches all src assignments into ONE layout pass.
+  // This is what eliminates the "Forced reflow 32ms" PageSpeed warning.
+  var _lazyLogoQueue      = [];
+  var _lazyLogoRafPending = false;
+
+  function _flushLazyLogos() {
+    _lazyLogoRafPending = false;
+    // Batch: all src writes happen in one animation frame = zero forced reflow
+    var batch = _lazyLogoQueue.splice(0);
+    for (var i = 0; i < batch.length; i++) {
+      var img = batch[i];
+      if (img.dataset.lazySrc && !img.src) {
+        img.src = img.dataset.lazySrc;
+        img.removeAttribute('data-lazy-src');
+      }
+    }
+  }
+
+  var _logoObserver = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function(entries, obs) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          obs.unobserve(entry.target);
+          _lazyLogoQueue.push(entry.target);
+          if (!_lazyLogoRafPending) {
+            _lazyLogoRafPending = true;
+            requestAnimationFrame(_flushLazyLogos);
+          }
+        });
+      }, { rootMargin: '300px 0px' }) // start loading 300px before viewport
+    : null;
+
+  function activateLazyLogos(container) {
+    container.querySelectorAll('img[data-lazy-src]').forEach(function(img) {
+      if (_logoObserver) {
+        _logoObserver.observe(img);
+      } else {
+        // Fallback for very old browsers without IntersectionObserver
+        img.src = img.dataset.lazySrc;
+      }
+    });
+  }
+
   // ─── Fix data-image-key — resolve blank src at inject time ───────────────
-  // Prevents blank <img src=""> network errors and eliminates JS-patch delay.
-  // Supports dot-notation: "VIDEOS.hero", "BRANDING.logo", "CASES.0.img"
   function resolveImageKeys(container) {
-    container.querySelectorAll('img[data-image-key]').forEach(img => {
+    container.querySelectorAll('img[data-image-key]').forEach(function(img) {
       const key = img.dataset.imageKey;
-      if (!key || img.src) return; // skip if src already set
+      if (!key || img.src) return;
       try {
-        const value = key.split('.').reduce((obj, k) => obj[isNaN(k) ? k : Number(k)], SITE.images);
+        const value = key.split('.').reduce(function(obj, k) {
+          return obj[isNaN(k) ? k : Number(k)];
+        }, SITE.images);
         if (value) {
           img.src = value;
           img.removeAttribute('data-image-key');
@@ -152,10 +220,11 @@
     });
   }
 
-  // ─── Add loading="lazy" to all logo/below-fold images ────────────────────
+  // ─── Add loading="lazy" + decoding to non-favicon images ─────────────────
   function lazyifyImages(container, isPriority) {
-    container.querySelectorAll('img').forEach(img => {
-      // Don't override hero images that already have loading="eager"
+    container.querySelectorAll('img').forEach(function(img) {
+      // Skip images already handled by lazy logo system
+      if (img.dataset.lazySrc) return;
       if (!img.hasAttribute('loading')) {
         img.setAttribute('loading', isPriority ? 'eager' : 'lazy');
       }
@@ -167,11 +236,11 @@
 
   // ─── Activate <script> tags inside injected HTML ─────────────────────────
   function activateScripts(container) {
-    container.querySelectorAll('script').forEach(oldScript => {
+    container.querySelectorAll('script').forEach(function(oldScript) {
       const newScript = document.createElement('script');
-      Array.from(oldScript.attributes).forEach(attr =>
-        newScript.setAttribute(attr.name, attr.value)
-      );
+      Array.from(oldScript.attributes).forEach(function(attr) {
+        newScript.setAttribute(attr.name, attr.value);
+      });
       newScript.textContent = oldScript.textContent;
       oldScript.parentNode.replaceChild(newScript, oldScript);
     });
@@ -183,72 +252,80 @@
     if (!el || (el.innerHTML && el.innerHTML.trim().length > 0)) return;
 
     fetch(prefix + comp.file)
-      .then(res => {
+      .then(function(res) {
         if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
         return res.text();
       })
-      .then(html => {
+      .then(function(html) {
+        // Step 1: Replace {{TOKENS}} — logo URLs are now in src attributes
         el.innerHTML = replaceTokens(html);
+
+        // Step 2: Resolve data-image-key attributes
         resolveImageKeys(el);
+
+        // Step 3: Convert favicon src → data-lazy-src (MUST run before lazyifyImages)
+        convertLogosToLazy(el);
+
+        // Step 4: Set loading="lazy" on all remaining non-logo images
         lazyifyImages(el, comp.priority);
+
+        // Step 5: Start observing lazy logo images
+        activateLazyLogos(el);
+
+        // Step 6: Re-activate <script> tags in injected HTML
         activateScripts(el);
-        // Legacy helpers (images-helper.js)
+
+        // Step 7: Legacy helpers
         if (typeof setupImagesByDataAttribute === 'function') setupImagesByDataAttribute();
-        if (typeof setupLinksByDataAttribute === 'function') setupLinksByDataAttribute();
+        if (typeof setupLinksByDataAttribute  === 'function') setupLinksByDataAttribute();
       })
-      .catch(err => {
+      .catch(function(err) {
         console.warn('[page-builder] Could not load ' + comp.id + ':', err.message);
       });
   }
 
   // ─── IntersectionObserver for lazy components ─────────────────────────────
-  // Only fetches a component's HTML file when the placeholder div
-  // scrolls within 400px of the viewport — saves ~10–15 network requests on load.
   function setupLazyComponents(lazyComps) {
     if (!('IntersectionObserver' in window)) {
-      // Fallback: load everything immediately on old browsers
       lazyComps.forEach(loadComponent);
       return;
     }
 
-    const io = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
+    const io = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
         if (!entry.isIntersecting) return;
         const compId = entry.target.id;
-        const comp = lazyComps.find(c => c.id === compId);
+        const comp = lazyComps.find(function(c) { return c.id === compId; });
         if (comp) {
           loadComponent(comp);
           observer.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '400px 0px' }); // start loading 400px before visible
+    }, { rootMargin: '400px 0px' });
 
-    lazyComps.forEach(comp => {
+    lazyComps.forEach(function(comp) {
       const el = document.getElementById(comp.id);
       if (el) io.observe(el);
     });
   }
 
   // ─── Init ─────────────────────────────────────────────────────────────────
-  const priorityComps = COMPONENTS.filter(c => c.priority);
-  const lazyComps     = COMPONENTS.filter(c => !c.priority);
+  const priorityComps = COMPONENTS.filter(function(c) { return c.priority; });
+  const lazyComps     = COMPONENTS.filter(function(c) { return !c.priority; });
 
-  // Load above-fold components immediately
   priorityComps.forEach(loadComponent);
-
-  // Load below-fold components lazily
   setupLazyComponents(lazyComps);
 
   // ─── Shared event listeners ───────────────────────────────────────────────
 
   // Navbar scroll shadow
-  window.addEventListener('scroll', function () {
+  window.addEventListener('scroll', function() {
     const nav = document.getElementById('nav');
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
   // Smooth scroll for anchor links
-  document.addEventListener('click', function (e) {
+  document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href^="#"]');
     if (!link) return;
     e.preventDefault();
@@ -260,7 +337,7 @@
   });
 
   // YouTube facade — uses youtube-nocookie.com (no ad tracker, better perf score)
-  document.addEventListener('click', function (e) {
+  document.addEventListener('click', function(e) {
     const facade = e.target.closest('.yt-facade');
     if (!facade) return;
     const videoId = facade.dataset.videoId;
@@ -278,17 +355,17 @@
   });
 
   // FAQ accordion
-  document.addEventListener('click', function (e) {
+  document.addEventListener('click', function(e) {
     const btn = e.target.closest('.faq-q');
     if (!btn) return;
     const item = btn.parentElement;
     const wasActive = item.classList.contains('active');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('active'); });
     if (!wasActive) item.classList.add('active');
   });
 
   // Mobile nav toggle
-  document.addEventListener('click', function (e) {
+  document.addEventListener('click', function(e) {
     const toggle = e.target.closest('.nav-mobile-toggle');
     if (!toggle) {
       const links = document.querySelector('.nav-links');
