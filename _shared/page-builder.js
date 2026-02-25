@@ -16,20 +16,7 @@
   const COMPONENTS = [
     { id: 'gs-navbar',          file: 'components/navbar.html' },
     { id: 'gs-footer',          file: 'components/footer.html' },
-    { id: 'gs-ticker',          file: 'components/ticker.html' },
-    { id: 'gs-partners',        file: 'components/partners.html' },
-    { id: 'gs-stats',           file: 'components/stats-bar.html' },
-    { id: 'gs-mid-cta',         file: 'components/mid-cta.html' },
-    { id: 'gs-hero',            file: 'components/hero.html' },
-    { id: 'gs-wwd',             file: 'components/what-we-do.html' },
-    { id: 'gs-process',         file: 'components/process.html' },
-    { id: 'gs-cases',           file: 'components/cases.html' },
-    { id: 'gs-industries',      file: 'components/industries.html' },
-    { id: 'gs-testimonials',    file: 'components/testimonials.html' },
-    { id: 'gs-consult-section', file: 'components/consult-section.html' },
-    { id: 'gs-consult-form',    file: 'components/consult-form.html' },
-    { id: 'gs-faq',             file: 'components/faq.html' },
-    { id: 'gs-schema',          file: 'components/schema-org.html' },
+   
   ];
 
   // --- Token map: {{TOKEN}} → value ---
