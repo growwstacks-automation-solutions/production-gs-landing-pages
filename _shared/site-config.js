@@ -7,7 +7,7 @@
 // ─── Favicon helper ───────────────────────
 // Use sz=64 for all logos — scale down via CSS as needed
 const favicon = (domain, sz = 64) =>
-  `https://ik.imagekit.io/r2zdlyze2o/GS%20Website/make-color.png?updatedAt=1771322847653`;
+  `https://www.google.com/s2/favicons?domain=${domain}&sz=${sz}`;
 
 // ============================================
 // SITE — Core config
