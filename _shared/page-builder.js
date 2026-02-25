@@ -3,14 +3,6 @@
 // Loads shared components + injects config values
 // Include AFTER site-config.js on every page
 // ============================================
-// PERF FIXES APPLIED:
-// 1. Lazy load all non-hero images (loading=lazy + decoding=async)
-// 2. Hero images forced eager + fetchPriority=high (LCP fix)
-// 3. Critical components load immediately; others deferred to after load
-// 4. Removed wasteful double-load setTimeout
-// 5. Passive scroll listener (fixes mobile jank)
-// 6. Ticker images get fetchpriority=low explicitly
-// ============================================
 
 (function () {
   'use strict';
@@ -39,10 +31,6 @@
     { id: 'gs-faq',             file: 'components/faq.html' },
     { id: 'gs-schema',          file: 'components/schema-org.html' },
   ];
-
-  // --- Critical components: load immediately on DOMContentLoaded ---
-  // Everything else defers until after window 'load' event
-  const CRITICAL_IDS = ['gs-navbar', 'gs-hero', 'gs-ticker'];
 
   // --- Token map: {{TOKEN}} → value ---
   function buildTokenMap() {
@@ -185,38 +173,6 @@
     });
   }
 
-  // --- PERF: Apply image loading attributes after component injects ---
-  function optimizeImages(el, compId) {
-    const isHero = compId === 'gs-hero';
-    const isTicker = compId === 'gs-ticker';
-
-    el.querySelectorAll('img').forEach(img => {
-      if (isHero) {
-        // Hero images = LCP candidate: load eagerly at highest priority
-        img.loading = 'eager';
-        img.decoding = 'sync';
-        img.fetchPriority = 'high';
-      } else if (isTicker) {
-        // Ticker logos: visible but low priority (decorative)
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.fetchPriority = 'low';
-        // Also wire up lazyLogo if data-src is set
-        if (img.dataset.src && typeof window.lazyLogo === 'function') {
-          window.lazyLogo(img, img.dataset.src);
-        }
-      } else {
-        // All other components: lazy load (below the fold)
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        // Wire up lazyLogo if data-src is set
-        if (img.dataset.src && typeof window.lazyLogo === 'function') {
-          window.lazyLogo(img, img.dataset.src);
-        }
-      }
-    });
-  }
-
   // --- Load a single component ---
   function loadComponent(comp) {
     const el = document.getElementById(comp.id);
@@ -231,10 +187,6 @@
       .then(html => {
         el.innerHTML = replaceTokens(html);
         activateScripts(el);
-
-        // PERF FIX: Apply image optimizations per component type
-        optimizeImages(el, comp.id);
-
         if (typeof setupImagesByDataAttribute === 'function') setupImagesByDataAttribute();
         if (typeof setupLinksByDataAttribute === 'function') setupLinksByDataAttribute();
       })
@@ -244,36 +196,19 @@
   }
 
   // --- Init ---
-  // PERF FIX: Critical components load immediately.
-  // Non-critical components defer until after window load event
-  // so they don't compete with LCP / FCP resources.
-  COMPONENTS.forEach(comp => {
-    if (CRITICAL_IDS.includes(comp.id)) {
-      // Load immediately (navbar, hero, ticker)
-      loadComponent(comp);
-    } else {
-      // Defer everything else until after page load
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          loadComponent(comp);
-        }, 100);
-      });
-    }
-  });
+  COMPONENTS.forEach(loadComponent);
 
-  // NOTE: Removed wasteful double-load setTimeout that was firing
-  // all components again 300ms after init — this caused duplicate
-  // fetch requests and unnecessary re-renders.
+  // Second pass for nested components
+  setTimeout(function () {
+    COMPONENTS.forEach(loadComponent);
+  }, 300);
 
   // --- Shared Scripts ---
-
-  // PERF FIX: passive:true prevents scroll from blocking paint on mobile
   window.addEventListener('scroll', function () {
     const nav = document.getElementById('nav');
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 20);
-  }, { passive: true });
+  });
 
-  // Smooth scroll for anchor links
   document.addEventListener('click', function (e) {
     const link = e.target.closest('a[href^="#"]');
     if (!link) return;
@@ -285,7 +220,6 @@
     }
   });
 
-  // YouTube facade click → embed iframe
   document.addEventListener('click', function (e) {
     const facade = e.target.closest('.yt-facade');
     if (!facade) return;
@@ -303,7 +237,6 @@
     facade.appendChild(iframe);
   });
 
-  // FAQ accordion
   document.addEventListener('click', function (e) {
     const btn = e.target.closest('.faq-q');
     if (!btn) return;
@@ -312,6 +245,7 @@
     document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('active'); });
     if (!wasActive) item.classList.add('active');
   });
+
 
   // Mobile nav toggle
   document.addEventListener('click', function (e) {
