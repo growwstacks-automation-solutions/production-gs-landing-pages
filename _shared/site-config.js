@@ -1,43 +1,13 @@
 // ============================================
 // GROWWSTACKS SITE CONFIGURATION
 // Single source of truth for all pages
-// Last updated: 2026-02-25
-// PERFORMANCE: Favicons are lazy-resolved on demand
+// Last updated: 2026-02-21
 // ============================================
 
 // ─── Favicon helper ───────────────────────
-// PERF FIX: Returns a plain URL string — no network call at definition time.
-// Actual <img> tags should use loading="lazy" to avoid firing 100+ requests on load.
+// Use sz=64 for all logos — scale down via CSS as needed
 const favicon = (domain, sz = 64) =>
   `https://www.google.com/s2/favicons?domain=${domain}&sz=${sz}`;
-
-// ─── Lazy Logo Helper ─────────────────────
-// Use this in page-builder.js instead of directly setting src.
-// Wraps IntersectionObserver so favicons only load when scrolled into view.
-// Usage: lazyLogo(imgElement, SITE.logos.make)
-window.lazyLogo = (function () {
-  const io = ('IntersectionObserver' in window)
-    ? new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            const img = e.target;
-            if (img.dataset.src) img.src = img.dataset.src;
-            obs.unobserve(img);
-          }
-        });
-      }, { rootMargin: '200px' })
-    : null;
-
-  return function (imgEl, src) {
-    if (!imgEl) return;
-    if (io) {
-      imgEl.dataset.src = src;
-      io.observe(imgEl);
-    } else {
-      imgEl.src = src; // fallback for old browsers
-    }
-  };
-})();
 
 // ============================================
 // SITE — Core config
@@ -75,294 +45,291 @@ const SITE = {
 
   // ─── Social & Profiles ────────────────────
   social: {
-    linkedin:      'https://www.linkedin.com/company/growwstacks/',
-    upwork:        'https://www.upwork.com/agencies/1631885072275017728',
-    googleReviews: 'https://share.google/e7U12GrP3UxuzJEGr',
+    linkedin:     'https://www.linkedin.com/company/growwstacks/',
+    upwork:       'https://www.upwork.com/agencies/1631885072275017728',
+    googleReviews:'https://share.google/e7U12GrP3UxuzJEGr',
   },
 
   // ─── Tracking ─────────────────────────────
-  // PERF FIX: googleAdsId is read by the deferred GTM loader snippet.
-  // GTM script is NO LONGER in <head> — it fires after 'load' event.
   googleAdsId: 'AW-17936939840',
+  // googleAnalyticsId: 'G-XXXXXXXXXX', // uncomment when ready
 
   // ─── Form / Webhook ───────────────────────
   formWebhookUrl: 'https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om',
   thankYouPage:   '/thank-you/',
 
-  // ─── Assets (ImageKit base) ───────────────
+  // ─── Assets (ImageKit base — for page-specific images only) ───
   imagekit: {
     favicon: 'https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png'
   },
 
-  // ─── Partner / Tool Logos ─────────────────
-  // PERF NOTE: These are URL strings only — NO network requests are made
-  // until an <img> tag actually uses the URL. Always render logo <img> tags
-  // with loading="lazy" OR use the lazyLogo() helper above.
-  logos: {
-    // ── Automation Platforms ──
-    make:            favicon('make.com'),
-    zapier:          favicon('zapier.com'),
-    n8n:             favicon('n8n.io'),
-    monday:          favicon('monday.com'),
-    airtable:        favicon('airtable.com'),
+  // ─── Partner / Tool Logos (favicon helper — consistent sz=64) ─
+logos: {
+  // ── Automation Platforms ──
+  make:            favicon('make.com'),
+  zapier:          favicon('zapier.com'),
+  n8n:             favicon('n8n.io'),
+  monday:          favicon('monday.com'),
+  airtable:        favicon('airtable.com'),
 
-    // ── AI & Voice ──
-    openai:          favicon('openai.com'),
-    vapi:            favicon('vapi.ai'),
-    retell:          favicon('retellai.com'),
-    perplexity:      favicon('perplexity.ai'),
-    chatgpt:         favicon('chat.openai.com'),
-    heyalice:        favicon('heyalice.app'),
-    nlpearl:         favicon('nlpearl.ai'),
-    fathom:          favicon('fathom.ai'),
-    ideogram:        favicon('ideogram.ai'),
-    flux:            favicon('flux.ai'),
-    immersity:       favicon('immersity.ai'),
-    smartlead:       favicon('smartlead.ai'),
-    instantly:       favicon('instantly.ai'),
-    fireflies:       favicon('fireflies.ai'),
-    leonardo:        favicon('leonardo.com'),
-    llama:           favicon('llama.meta.com'),
+  // ── AI & Voice ──
+  openai:          favicon('openai.com'),
+  vapi:            favicon('vapi.ai'),
+  retell:          favicon('retellai.com'),
+  perplexity:      favicon('perplexity.ai'),
+  chatgpt:         favicon('chat.openai.com'),
+  heyalice:        favicon('heyalice.app'),
+  nlpearl:         favicon('nlpearl.ai'),
+  fathom:          favicon('fathom.ai'),
+  ideogram:        favicon('ideogram.ai'),
+  flux:            favicon('flux.ai'),
+  immersity:       favicon('immersity.ai'),
+  smartlead:       favicon('smartlead.ai'),
+  instantly:       favicon('instantly.ai'),
+  fireflies:       favicon('fireflies.ai'),
+  leonardo:        favicon('leonardo.com'),
+  llama:           favicon('llama.meta.com'),
 
-    // ── Communication ──
-    slack:           favicon('slack.com'),
-    whatsapp:        favicon('whatsapp.com'),
-    telegram:        favicon('telegram.org'),
-    discord:         favicon('discord.com'),
-    messenger:       favicon('messenger.com'),
-    aircall:         favicon('aircall.io'),
-    dialpad:         favicon('dialpad.com'),
-    signalwire:      favicon('signalwire.com'),
-    sakari:          favicon('sakari.io'),
-    twilio:          favicon('twilio.com'),
+  // ── Communication ──
+  slack:           favicon('slack.com'),
+  whatsapp:        favicon('whatsapp.com'),
+  telegram:        favicon('telegram.org'),
+  discord:         favicon('discord.com'),
+  messenger:       favicon('messenger.com'),
+  aircall:         favicon('aircall.io'),
+  dialpad:         favicon('dialpad.com'),
+  signalwire:      favicon('signalwire.com'),
+  sakari:          favicon('sakari.io'),
+  twilio:          favicon('twilio.com'),
 
-    // ── CRM & Sales ──
-    hubspot:         favicon('hubspot.com'),
-    salesforce:      favicon('salesforce.com'),
-    pipedrive:       favicon('pipedrive.com'),
-    close:           favicon('close.com'),
-    attio:           favicon('attio.com'),
-    copper:          favicon('copper.com'),
-    insightly:       favicon('insightly.com'),
-    streak:          favicon('streak.com'),
-    bigin:           favicon('bigin.com'),
-    keap:            favicon('keap.com'),
-    clientjoy:       favicon('clientjoy.io'),
-    apollo:          favicon('apollo.io'),
-    salesmate:       favicon('salesmate.io'),
-    salestracker:    favicon('salestracker.com'),
-    zoho:            favicon('zoho.com/crm'),
-    espocrm:         favicon('espocrm.com'),
-    clio:            favicon('clio.com'),
-    '17hats':        favicon('17hats.com'),
+  // ── CRM & Sales ──
+  hubspot:         favicon('hubspot.com'),
+  salesforce:      favicon('salesforce.com'),
+  pipedrive:       favicon('pipedrive.com'),
+  close:           favicon('close.com'),
+  attio:           favicon('attio.com'),
+  copper:          favicon('copper.com'),
+  insightly:       favicon('insightly.com'),
+  streak:          favicon('streak.com'),
+  bigin:           favicon('bigin.com'),
+  keap:            favicon('keap.com'),
+  clientjoy:       favicon('clientjoy.io'),
+  apollo:          favicon('apollo.io'),
+  salesmate:       favicon('salesmate.io'),
+  salestracker:    favicon('salestracker.com'),
+  zoho:            favicon('zoho.com/crm'),
+  espocrm:         favicon('espocrm.com'),
+  clio:            favicon('clio.com'),
+  '17hats':        favicon('17hats.com'),
 
-    // ── Microsoft ──
-    microsoft:       favicon('microsoft.com'),
-    teams:           favicon('teams.microsoft.com'),
-    outlook:         favicon('outlook.live.com'),
-    onedrive:        'https://ik.imagekit.io/r2zdlyze2o/Logo/Onedrive.png',
-    excel:           'https://ik.imagekit.io/r2zdlyze2o/Logo/Microsoft_Office_Excel_Logo_512px.png',
-    word:            'https://ik.imagekit.io/r2zdlyze2o/Logo/Microsoft_Office_Word_Logo_512px.png',
+  // ── Microsoft ──
+  microsoft:       favicon('microsoft.com'),
+  teams:           favicon('teams.microsoft.com'),
+  outlook:         favicon('outlook.live.com'),
+  onedrive:        'https://ik.imagekit.io/r2zdlyze2o/Logo/Onedrive.png',
+  excel:           'https://ik.imagekit.io/r2zdlyze2o/Logo/Microsoft_Office_Excel_Logo_512px.png',
+  word:            'https://ik.imagekit.io/r2zdlyze2o/Logo/Microsoft_Office_Word_Logo_512px.png',
 
-    // ── Google ──
-    google:          favicon('google.com'),
-    gmail:           'https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico',
-    googleCalendar:  'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png',
-    googleDocs:      'https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico',
-    googleSlide:     'https://ssl.gstatic.com/docs/presentations/images/favicon5.ico',
-    googleForm:      'https://ssl.gstatic.com/docs/spreadsheets/forms/favicon_qp2.png',
-    googleDrive:     'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png',
-    googleMeet:      favicon('meet.google.com'),
-    googleMap:       favicon('maps.google.com'),
-    googleAds:       'https://ik.imagekit.io/r2zdlyze2o/Logo/google_ads?updatedAt=1771486358949',
-    googleAppScript: 'https://ik.imagekit.io/r2zdlyze2o/Logo/google-apps-script?updatedAt=1771486359129',
-    googleColab:     'https://colab.research.google.com/img/colab_favicon_256px.png',
-    googleMyBusiness:'https://img.utdstc.com/icon/73e/c02/73ec026992430326513a9b8bf092f6199b0174d230158bc8553da7ea8d830d9d:200',
-    googleLooker:    'https://play-lh.googleusercontent.com/7m6tWuvazdJQBoMtz4-UuHvl46APqRczwLQ0-Bq7QULjSGcgnljFpCswdvZkc4VTpw=w240-h480-rw',
-    googleDataStudio:'https://w7.pngwing.com/pngs/212/149/png-transparent-google-data-studio-hd-logo-thumbnail.png',
-    googleVideoIntel:favicon('cloud.google.com'),
-    bigquery:        favicon('cloud.google.com/bigquery'),
+  // ── Google ──
+  google:          favicon('google.com'),
+  gmail:           'https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico',
+  googleCalendar:  'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png',
+  googleDocs:      'https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico',
+  googleSlide:     'https://ssl.gstatic.com/docs/presentations/images/favicon5.ico',
+  googleForm:      'https://ssl.gstatic.com/docs/spreadsheets/forms/favicon_qp2.png',
+  googleDrive:     'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png',
+  googleMeet:      favicon('meet.google.com'),
+  googleMap:       favicon('maps.google.com'),
+  googleAds:       'https://ik.imagekit.io/r2zdlyze2o/Logo/google_ads?updatedAt=1771486358949',
+  googleAppScript: 'https://ik.imagekit.io/r2zdlyze2o/Logo/google-apps-script?updatedAt=1771486359129',
+  googleColab:     'https://colab.research.google.com/img/colab_favicon_256px.png',
+  googleMyBusiness:'https://img.utdstc.com/icon/73e/c02/73ec026992430326513a9b8bf092f6199b0174d230158bc8553da7ea8d830d9d:200',
+  googleLooker:    'https://play-lh.googleusercontent.com/7m6tWuvazdJQBoMtz4-UuHvl46APqRczwLQ0-Bq7QULjSGcgnljFpCswdvZkc4VTpw=w240-h480-rw',
+  googleDataStudio:'https://w7.pngwing.com/pngs/212/149/png-transparent-google-data-studio-hd-logo-thumbnail.png',
+  googleVideoIntel:favicon('cloud.google.com'),
+  bigquery:        favicon('cloud.google.com/bigquery'),
 
-    // ── Social ──
-    linkedin:        favicon('linkedin.com'),
-    manychat:        favicon('manychat.com'),
-    instagram:       favicon('instagram.com'),
-    facebook:        favicon('facebook.com'),
-    facebookAds:     favicon('facebook.com/ads'),
-    twitter:         favicon('twitter.com'),
-    tiktok:          favicon('tiktok.com'),
-    pinterest:       favicon('pinterest.com'),
-    youtube:         favicon('youtube.com'),
-    hootsuite:       favicon('hootsuite.com'),
+  // ── Social ──
+  linkedin:        favicon('linkedin.com'),
+  manychat:        favicon('manychat.com'),
+  instagram:       favicon('instagram.com'),
+  facebook:        favicon('facebook.com'),
+  facebookAds:     favicon('facebook.com/ads'),
+  twitter:         favicon('twitter.com'),
+  tiktok:          favicon('tiktok.com'),
+  pinterest:       favicon('pinterest.com'),
+  youtube:         favicon('youtube.com'),
+  hootsuite:       favicon('hootsuite.com'),
 
-    // ── Commerce & Payments ──
-    shopify:         favicon('shopify.com'),
-    stripe:          favicon('stripe.com'),
-    woocommerce:     favicon('woocommerce.com'),
-    gumroad:         favicon('gumroad.com'),
-    fastspring:      favicon('fastspring.com'),
-    sendowl:         favicon('sendowl.com'),
-    chargebee:       favicon('chargebee.com'),
-    paypro:          favicon('paypro.com'),
-    clickfunnels:    favicon('clickfunnels.com'),
-    kartra:          favicon('kartra.com'),
-    kajabi:          favicon('kajabi.com'),
-    xero:            favicon('xero.com'),
-    bill:            favicon('bill.com'),
-    cin7:            favicon('cin7.com'),
-    whop:            favicon('whop.com'),
-    sandcloud:       favicon('sandcloud.com'),
-    bigcommerce:     favicon('bigcommerce.com'),
+  // ── Commerce & Payments ──
+  shopify:         favicon('shopify.com'),
+  stripe:          favicon('stripe.com'),
+  woocommerce:     favicon('woocommerce.com'),
+  gumroad:         favicon('gumroad.com'),
+  fastspring:      favicon('fastspring.com'),
+  sendowl:         favicon('sendowl.com'),
+  chargebee:       favicon('chargebee.com'),
+  paypro:          favicon('paypro.com'),
+  clickfunnels:    favicon('clickfunnels.com'),
+  kartra:          favicon('kartra.com'),
+  kajabi:          favicon('kajabi.com'),
+  xero:            favicon('xero.com'),
+  bill:            favicon('bill.com'),
+  cin7:            favicon('cin7.com'),
+  whop:            favicon('whop.com'),
+  sandcloud:       favicon('sandcloud.com'),
+  bigcommerce:       favicon('bigcommerce.com'),
 
-    // ── Productivity ──
-    notion:          favicon('notion.so'),
-    zoom:            favicon('zoom.us'),
-    calendly:        favicon('calendly.com'),
-    jira:            favicon('atlassian.com'),
-    mailchimp:       favicon('mailchimp.com'),
-    asana:           favicon('asana.com'),
-    clickup:         favicon('clickup.com'),
-    trello:          favicon('trello.com'),
-    todoist:         favicon('todoist.com'),
-    loom:            favicon('loom.com'),
-    docusign:        favicon('docusign.com'),
-    pandadoc:        favicon('pandadoc.com'),
-    typeform:        favicon('typeform.com'),
-    jotform:         favicon('jotform.com'),
-    gravityforms:    favicon('gravityforms.com'),
-    cal:             favicon('cal.com'),
-    acuity:          favicon('acuityscheduling.com'),
-    toggl:           favicon('toggl.com'),
-    harvest:         favicon('harvestapp.com'),
-    podio:           favicon('podio.com'),
-    unito:           favicon('unito.io'),
-    dubsado:         favicon('dubsado.com'),
-    tave:            favicon('tave.com'),
-    eventbrite:      favicon('eventbrite.com'),
-    questionscout:   favicon('questionscout.com'),
 
-    // ── Email Marketing ──
-    mailerlite:      favicon('mailerlite.com'),
-    brevo:           favicon('brevo.com'),
-    constantcontact: favicon('constantcontact.com'),
-    convertkit:      favicon('convertkit.com'),
-    activecampaign:  favicon('activecampaign.com'),
-    klaviyo:         favicon('klaviyo.com'),
-    mailwizz:        favicon('mailwizz.com'),
-    reply:           favicon('reply.io'),
-    dripify:         favicon('dripify.com'),
-    unipile:         favicon('unipile.com'),
+  // ── Productivity ──
+  notion:          favicon('notion.so'),
+  zoom:            favicon('zoom.us'),
+  calendly:        favicon('calendly.com'),
+  jira:            favicon('atlassian.com'),
+  mailchimp:       favicon('mailchimp.com'),
+  asana:           favicon('asana.com'),
+  clickup:         favicon('clickup.com'),
+  trello:          favicon('trello.com'),
+  todoist:         favicon('todoist.com'),
+  loom:            favicon('loom.com'),
+  docusign:        favicon('docusign.com'),
+  pandadoc:        favicon('pandadoc.com'),
+  typeform:        favicon('typeform.com'),
+  jotform:         favicon('jotform.com'),
+  gravityforms:    favicon('gravityforms.com'),
+  cal:             favicon('cal.com'),
+  acuity:          favicon('acuityscheduling.com'),
+  toggl:           favicon('toggl.com'),
+  harvest:         favicon('harvestapp.com'),
+  podio:           favicon('podio.com'),
+  unito:           favicon('unito.io'),
+  dubsado:         favicon('dubsado.com'),
+  tave:            favicon('tave.com'),
+  eventbrite:      favicon('eventbrite.com'),
+  questionscout:   favicon('questionscout.com'),
 
-    // ── Cloud & Dev ──
-    aws:             favicon('aws.amazon.com'),
-    amazon:          favicon('amazon.com'),
-    meta:            favicon('meta.com'),
-    cloudflare:      favicon('cloudflare.com'),
-    nodejs:          favicon('nodejs.org'),
-    expressjs:       favicon('expressjs.com'),
-    python:          favicon('python.org'),
-    pytorch:         favicon('pytorch.org'),
-    flask:           favicon('flask.palletsprojects.com'),
-    javascript:      favicon('javascript.com'),
-    htmx:            favicon('htmx.org'),
-    bootstrap:       favicon('getbootstrap.com'),
-    htmlcss:         favicon('w3schools.com'),
-    rapidapi:        favicon('rapidapi.com'),
-    apify:           favicon('apify.com'),
-    bubble:          favicon('bubble.io'),
-    webflow:         favicon('webflow.com'),
-    softr:           favicon('softr.io'),
-    wordpress:       favicon('wordpress.com'),
-    squarespace:     favicon('squarespace.com'),
-    frame:           favicon('frame.io'),
-    framework:       favicon('frame.work'),
-    dropbox:         favicon('dropbox.com'),
-    fivetran:        favicon('fivetran.com'),
-    imagekit:        favicon('imagekit.io'),
+  // ── Email Marketing ──
+  mailerlite:      favicon('mailerlite.com'),
+  brevo:           favicon('brevo.com'),
+  constantcontact: favicon('constantcontact.com'),
+  convertkit:      favicon('convertkit.com'),
+  activecampaign:  favicon('activecampaign.com'),
+  klaviyo:         favicon('klaviyo.com'),
+  mailwizz:        favicon('mailwizz.com'),
+  reply:           favicon('reply.io'),
+  dripify:         favicon('dripify.com'),
+  unipile:         favicon('unipile.com'),
 
-    // ── AI / ML / Data ──
-    langchain:       favicon('langchain.com'),
-    pinecone:        favicon('pinecone.io'),
-    chromadb:        favicon('trychroma.com'),
-    faiss:           favicon('facebook.com/ads'),
-    pandas:          favicon('pandas.pydata.org'),
-    transformers:    favicon('transformers.com'),
-    ocr:             favicon('ocr.space'),
+  // ── Cloud & Dev ──
+  aws:             favicon('aws.amazon.com'),
+  amazon:          favicon('amazon.com'),
+  meta:            favicon('meta.com'),
+  cloudflare:      favicon('cloudflare.com'),
+  nodejs:          favicon('nodejs.org'),
+  expressjs:       favicon('expressjs.com'),
+  python:          favicon('python.org'),
+  pytorch:         favicon('pytorch.org'),
+  flask:           favicon('flask.palletsprojects.com'),
+  javascript:      favicon('javascript.com'),
+  htmx:            favicon('htmx.org'),
+  bootstrap:       favicon('getbootstrap.com'),
+  htmlcss:         favicon('w3schools.com'),
+  rapidapi:        favicon('rapidapi.com'),
+  apify:           favicon('apify.com'),
+  bubble:          favicon('bubble.io'),
+  webflow:         favicon('webflow.com'),
+  softr:           favicon('softr.io'),
+  wordpress:       favicon('wordpress.com'),
+  squarespace:     favicon('squarespace.com'),
+  frame:           favicon('frame.io'),
+  framework:       favicon('frame.work'),
+  dropbox:         favicon('dropbox.com'),
+  fivetran:        favicon('fivetran.com'),
+  imagekit:        favicon('imagekit.io'),
 
-    // ── Industry / Niche ──
-    ghl:             favicon('gohighlevel.com'),
-    brokerengine:    favicon('brokerengine.com'),
-    bitrix24:        favicon('bitrix24.com'),
-    holded:          favicon('holded.com'),
-    booqable:        favicon('booqable.com'),
-    inksoft:         favicon('inksoft.com'),
-    machship:        favicon('machship.com'),
-    officernd:       favicon('officernd.com'),
-    optimaroute:     favicon('optimoroute.com'),
-    launch27:        favicon('launch27.com'),
-    unleashed:       favicon('unleashedsoftware.com'),
-    wheelbasepro:    favicon('wheelbasepro.com'),
-    kisi:            favicon('getkisi.com'),
-    xplor:           favicon('xplor.com'),
-    hubflo:          favicon('hubflo.com'),
-    circle:          favicon('circle.so'),
-    cscart:          favicon('cs-cart.com'),
-    rfmcube:         favicon('rfmcube.com'),
-    batchdata:       favicon('batchdata.com'),
-    bouncer:         favicon('usebouncer.com'),
-    phantombuster:   favicon('phantombuster.com'),
-    originality:     favicon('originality.com'),
-    ouraring:        favicon('ouraring.com'),
-    passkit:         favicon('passkit.com'),
-    savemyexams:     favicon('savemyexams.com'),
-    grain:           favicon('grain.co'),
-    feefo:           favicon('feefo.com'),
-    fatture:         favicon('fattureincloud.it'),
-    abaninja:        favicon('abaninja.com'),
-    col:             favicon('col.com'),
-    maps:            favicon('maps.com'),
-    mxroute:         favicon('mxroute.com'),
-    timeline:        favicon('timelines.ai'),
-    partial:         favicon('partial.ly'),
-    systeme:         favicon('systeme.io'),
+  // ── AI / ML / Data ──
+  langchain:       favicon('langchain.com'),
+  pinecone:        favicon('pinecone.io'),
+  chromadb:        favicon('trychroma.com'),
+  faiss:           favicon('facebook.com/ads'),
+  pandas:          favicon('pandas.pydata.org'),
+  transformers:    favicon('transformers.com'),
+  ocr:             favicon('ocr.space'),
 
-    // ── Education / LMS ──
-    teachable:       favicon('teachable.com'),
-    learndash:       favicon('learndash.com'),
-    learnworlds:     favicon('learnworlds.com'),
+  // ── Industry / Niche ──
+  ghl:             favicon('gohighlevel.com'),
+  brokerengine:    favicon('brokerengine.com'),
+  bitrix24:        favicon('bitrix24.com'),
+  holded:          favicon('holded.com'),
+  booqable:        favicon('booqable.com'),
+  inksoft:         favicon('inksoft.com'),
+  machship:        favicon('machship.com'),
+  officernd:       favicon('officernd.com'),
+  optimaroute:     favicon('optimoroute.com'),
+  launch27:        favicon('launch27.com'),
+  unleashed:       favicon('unleashedsoftware.com'),
+  wheelbasepro:    favicon('wheelbasepro.com'),
+  kisi:            favicon('getkisi.com'),
+  xplor:           favicon('xplor.com'),
+  hubflo:          favicon('hubflo.com'),
+  circle:          favicon('circle.so'),
+  cscart:          favicon('cs-cart.com'),
+  rfmcube:         favicon('rfmcube.com'),
+  batchdata:       favicon('batchdata.com'),
+  bouncer:         favicon('usebouncer.com'),
+  phantombuster:   favicon('phantombuster.com'),
+  originality:     favicon('originality.com'),
+  ouraring:        favicon('ouraring.com'),
+  passkit:         favicon('passkit.com'),
+  savemyexams:     favicon('savemyexams.com'),
+  grain:           favicon('grain.co'),
+  feefo:           favicon('feefo.com'),
+  fatture:         favicon('fattureincloud.it'),
+  abaninja:        favicon('abaninja.com'),
+  col:             favicon('col.com'),
+  maps:            favicon('maps.com'),
+  mxroute:         favicon('mxroute.com'),
+  timeline:        favicon('timelines.ai'),
+  partial:         favicon('partial.ly'),
+  systeme:         favicon('systeme.io'),
 
-    // ── PDF Tools ──
-    pdfco:           favicon('pdf.co'),
-    pdfminer:        favicon('pdfminersix.readthedocs.io'),
-    pdffiller:       favicon('pdffiller.com'),
-    pdfplumber:      favicon('pdfplumber.com'),
+  // ── Education / LMS ──
+  teachable:       favicon('teachable.com'),
+  learndash:       favicon('learndash.com'),
+  learnworlds:     favicon('learnworlds.com'),
 
-    // ── Misc / CMS ──
-    rss:             favicon('rss.com'),
-    sms:             favicon('sms.com'),
-    cf7:             favicon('contactform7.com'),
-    smartsuite:      favicon('smartsuite.com'),
-    database:        favicon('mysql.com'),
-    vector:          favicon('vector.com'),
+  // ── PDF Tools ──
+  pdfco:           favicon('pdf.co'),
+  pdfminer:        favicon('pdfminersix.readthedocs.io'),
+  pdffiller:       favicon('pdffiller.com'),
+  pdfplumber:      favicon('pdfplumber.com'),
 
-    // ── Special cases (direct icon URLs) ──
-    sheets:          'https://ssl.gstatic.com/docs/spreadsheets/favicon3.ico',
-    powerbi:         'https://powerbi.microsoft.com/favicon.ico',
-    azure:           'https://portal.azure.com/favicon.ico',
-    quickbooks:      'https://quickbooks.intuit.com/favicon.ico',
-    azureSql:        'https://symbols.getvecta.com/stencil_28/61_sql-database-generic.90b41636a8.jpg',
-    azureDocIntel:   favicon('azure.microsoft.com'),
-    xml:             'https://cdn-icons-png.flaticon.com/512/136/136526.png',
-    email:           'https://illustoon.com/photo/2751.png',
-    webhook:         'https://ik.imagekit.io/r2zdlyze2o/Logo/Webhook?updatedAt=1771505144146',
-    beehive:         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3G9QVYGjQHpoNE67mT5rLhBsP9ZpYqntt7A&s',
-    bs4:             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLqIYT6nKpypujxEF0-fUtT2saVWkCij1vvw&s',
-    beehiiv:         favicon('beehiiv.com'),
-    broadly:         'https://play-lh.googleusercontent.com/7gyykx7j4VYzEmNz2yZwhMg27n8XCPvmFs4Hdi2ERpKGjaLejftuullEGBflaYQ1mHk',
-    json:            favicon('json.org'),
-  },
+  // ── Misc / CMS ──
+  rss:             favicon('rss.com'),
+  sms:             favicon('sms.com'),
+  cf7:             favicon('contactform7.com'),
+  smartsuite:      favicon('smartsuite.com'),
+  database:        favicon('mysql.com'),
+  vector:          favicon('vector.com'),
 
-  // ─── Stats ────────────────────────────────
+  // ── Special cases (direct icon URLs) ──
+  sheets:          'https://ssl.gstatic.com/docs/spreadsheets/favicon3.ico',
+  powerbi:         'https://powerbi.microsoft.com/favicon.ico',
+  azure:           'https://portal.azure.com/favicon.ico',
+  quickbooks:      'https://quickbooks.intuit.com/favicon.ico',
+  azureSql:        'https://symbols.getvecta.com/stencil_28/61_sql-database-generic.90b41636a8.jpg',
+  azureDocIntel:   favicon('azure.microsoft.com'),
+  xml:             'https://cdn-icons-png.flaticon.com/512/136/136526.png',
+  email:           'https://illustoon.com/photo/2751.png',
+  webhook:         'https://ik.imagekit.io/r2zdlyze2o/Logo/Webhook?updatedAt=1771505144146',
+  beehive:         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3G9QVYGjQHpoNE67mT5rLhBsP9ZpYqntt7A&s',
+  bs4:             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLqIYT6nKpypujxEF0-fUtT2saVWkCij1vvw&s',
+  beehiiv:         favicon('beehiiv.com'),
+  broadly:         'https://play-lh.googleusercontent.com/7gyykx7j4VYzEmNz2yZwhMg27n8XCPvmFs4Hdi2ERpKGjaLejftuullEGBflaYQ1mHk',
+  json:            favicon('json.org'),
+},
+
+  // ─── Stats (update here → updates everywhere) ─
   stats: {
     projects:      '2000+',
     clients:       '500+',
@@ -379,7 +346,6 @@ const SITE = {
   },
 
   // ─── Ticker Row 1 (Left → Right) ──────────
-  // PERF NOTE: Ticker logos are rendered with loading="lazy" in page-builder.js
   tickerRow1: [
     { name: 'Make.com',       domain: 'make.com' },
     { name: 'Zapier',         domain: 'zapier.com' },
@@ -418,6 +384,7 @@ const SITE = {
 
 // ============================================
 // SITE.images — Page-specific image URLs
+// (logos now live in SITE.logos above)
 // ============================================
 SITE.images = {
 
@@ -434,6 +401,8 @@ SITE.images = {
     ]
   },
 
+  // ─── Homepage Case Study Cards ─────────────
+  // href = destination case study page
   CASES: [
     {
       title:    'AI Lead Qualification Agent for SaaS Platform',
@@ -491,28 +460,6 @@ SITE.images = {
   }
 
 };
-
-// ============================================
-// Deferred Google Ads / GTM loader
-// PERF FIX: Fires AFTER window load — does NOT
-// block FCP or LCP. Conversion tracking still works.
-// Remove the GTM <script> tags from index.html <head>
-// and let this handle it instead.
-// ============================================
-window.addEventListener('load', function () {
-  if (!SITE.googleAdsId) return;
-  var s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + SITE.googleAdsId;
-  document.head.appendChild(s);
-  s.onload = function () {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', SITE.googleAdsId);
-  };
-});
 
 // ============================================
 // Backward compatibility aliases
