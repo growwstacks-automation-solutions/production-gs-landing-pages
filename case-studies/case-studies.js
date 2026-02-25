@@ -8,6 +8,19 @@
 (function () {
   if (typeof SITE === 'undefined') return;
 
+  /* Google Ads — inject script tag + init tracking */
+  if (SITE.googleAdsId) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', SITE.googleAdsId);
+
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.src = 'https://www.googletagmanager.com/gtag/js?id=' + SITE.googleAdsId;
+    document.head.appendChild(gads);
+  }
+
   /* Favicon */
   if (SITE.imagekit && SITE.imagekit.favicon) {
     var link = document.querySelector('link[rel="icon"]')
