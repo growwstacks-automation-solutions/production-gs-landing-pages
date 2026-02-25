@@ -9,34 +9,6 @@
 const favicon = (domain, sz = 64) =>
   `https://www.google.com/s2/favicons?domain=${domain}&sz=${sz}`;
 
-// ─── Lazy Logo Helper ─────────────────────
-// Use this in page-builder.js instead of directly setting src.
-// Wraps IntersectionObserver so favicons only load when scrolled into view.
-// Usage: lazyLogo(imgElement, SITE.logos.make)
-window.lazyLogo = (function () {
-  const io = ('IntersectionObserver' in window)
-    ? new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            const img = e.target;
-            if (img.dataset.src) img.src = img.dataset.src;
-            obs.unobserve(img);
-          }
-        });
-      }, { rootMargin: '200px' })
-    : null;
-
-  return function (imgEl, src) {
-    if (!imgEl) return;
-    if (io) {
-      imgEl.dataset.src = src;
-      io.observe(imgEl);
-    } else {
-      imgEl.src = src; // fallback for old browsers
-    }
-  };
-})();
-
 // ============================================
 // SITE — Core config
 // ============================================
