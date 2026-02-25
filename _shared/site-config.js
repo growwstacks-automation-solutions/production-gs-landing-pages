@@ -443,10 +443,10 @@ SITE.images = {
   },
 
   VIDEOS: {
-    hero:   'https://i.ytimg.com/vi/x3RdjxHS2pI/hqdefault.jpg',
-    andrey: 'https://i.ytimg.com/vi/VxRCbwp8HEY/hqdefault.jpg',
-    noor:   'https://i.ytimg.com/vi/OkRWr5TL-QY/hqdefault.jpg',
-    ankit:  'https://i.ytimg.com/vi/-GhflHmCmFM/hqdefault.jpg'
+    hero:   'https://i.ytimg.com/vi/x3RdjxHS2pI/mqdefault.jpg',
+    andrey: 'https://i.ytimg.com/vi/VxRCbwp8HEY/mqdefault.jpg',
+    noor:   'https://i.ytimg.com/vi/OkRWr5TL-QY/mqdefault.jpg',
+    ankit:  'https://i.ytimg.com/vi/-GhflHmCmFM/mqdefault.jpg'
   },
 
   REVIEW_BADGES: {
