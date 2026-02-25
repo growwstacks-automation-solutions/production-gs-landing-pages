@@ -547,3 +547,22 @@ window.addEventListener('load', function () {
 // ============================================
 window.IMAGES = SITE.images;
 const IMAGES  = SITE.images;
+
+// ============================================
+// Deferred Microsoft Clarity loader
+// PERF FIX: Fires AFTER window load — zero impact
+// on FCP, LCP, or TTI. Session recording + heatmaps
+// only start once the page is fully loaded.
+// To update the Clarity ID: change clarityId below.
+// ============================================
+window.addEventListener('load', function () {
+  var clarityId = 'vk6xy7fz99'; // ← your Clarity project ID
+  (function(c, l, a, r, i, t, y) {
+    c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments); };
+    t = l.createElement(r);
+    t.async = 1;
+    t.src = 'https://www.clarity.ms/tag/' + i;
+    y = l.getElementsByTagName(r)[0];
+    y.parentNode.insertBefore(t, y);
+  })(window, document, 'clarity', 'script', clarityId);
+});
