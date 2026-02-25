@@ -4,7 +4,39 @@
            FAQ accordion (all pages), Tool logos injection
 ═══════════════════════════════════════════════════════════ */
 
+/* ─── Site Assets Init (reads from site-config.js SITE object) ─── */
+(function () {
+  if (typeof SITE === 'undefined') return;
 
+  /* Google Ads — inject script tag + init tracking */
+  if (SITE.googleAdsId) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', SITE.googleAdsId);
+
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.src = 'https://www.googletagmanager.com/gtag/js?id=' + SITE.googleAdsId;
+    document.head.appendChild(gads);
+  }
+
+  /* Favicon */
+  if (SITE.imagekit && SITE.imagekit.favicon) {
+    var link = document.querySelector('link[rel="icon"]')
+             || document.createElement('link');
+    link.rel  = 'icon';
+    link.type = 'image/png';
+    link.href = SITE.imagekit.favicon;
+    if (!link.parentNode) document.head.appendChild(link);
+  }
+
+  /* OG image — hub page marks this meta with data-site-favicon */
+  if (SITE.imagekit && SITE.imagekit.favicon) {
+    var ogImg = document.querySelector('meta[property="og:image"][data-site-favicon]');
+    if (ogImg) ogImg.setAttribute('content', SITE.imagekit.favicon);
+  }
+})();
 
 document.addEventListener('DOMContentLoaded', function () {
 
