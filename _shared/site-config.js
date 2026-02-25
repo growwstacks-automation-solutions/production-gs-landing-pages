@@ -178,6 +178,8 @@ logos: {
   cin7:            favicon('cin7.com'),
   whop:            favicon('whop.com'),
   sandcloud:       favicon('sandcloud.com'),
+  bigcommerce:       favicon('bigcommerce.com'),
+
 
   // ── Productivity ──
   notion:          favicon('notion.so'),
