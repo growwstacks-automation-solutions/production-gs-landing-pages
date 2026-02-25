@@ -5,22 +5,52 @@
     <p class="section-desc" style="max-width:840px;">A proven process refined over 2000+ projects. No surprises, no scope creep, no excuses.</p>
 
     <div class="process-content">
-      <!-- Video embed (YouTube facade handled by page-builder) -->
+
+      <!-- ═══ VIDEO — Optimized YouTube Facade ═══ -->
+      <!-- No YouTube JS/cookies loaded until user clicks. Thumbnail is a direct src (no JS dependency). -->
       <div class="process-video">
-        <div class="yt-facade" data-video-id="x3RdjxHS2pI" role="button" tabindex="0" aria-label="Play video: How GrowwStacks Delivers Excellence" style="border-radius: var(--radius-lg); aspect-ratio: 16/9; width: 100%;">
+        <div
+          class="yt-facade"
+          data-video-id="x3RdjxHS2pI"
+          role="button"
+          tabindex="0"
+          aria-label="Play video: How GrowwStacks Delivers Excellence"
+          style="position:relative;border-radius:var(--radius-lg);aspect-ratio:16/9;width:100%;overflow:hidden;cursor:pointer;background:#0f1117;">
+
           <picture>
-            <source type="image/webp" srcset="https://i.ytimg.com/vi_webp/x3RdjxHS2pI/hqdefault.webp">
-            <img  data-image-key="VIDEOS.hero" alt="How GrowwStacks Delivers Excellence" loading="lazy" width="480" height="360" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+            <source
+              type="image/webp"
+              srcset="https://i.ytimg.com/vi_webp/x3RdjxHS2pI/sddefault.webp 640w,
+                      https://i.ytimg.com/vi_webp/x3RdjxHS2pI/hqdefault.webp 480w"
+              sizes="(max-width:768px) 100vw, 50vw">
+            <source
+              type="image/jpeg"
+              srcset="https://i.ytimg.com/vi/x3RdjxHS2pI/sddefault.jpg 640w,
+                      https://i.ytimg.com/vi/x3RdjxHS2pI/hqdefault.jpg 480w"
+              sizes="(max-width:768px) 100vw, 50vw">
+            <!-- FIX: Direct src — no blank img, no JS needed to show thumbnail -->
+            <img
+              src="https://i.ytimg.com/vi/x3RdjxHS2pI/hqdefault.jpg"
+              alt="How GrowwStacks Delivers Excellence"
+              loading="lazy"
+              decoding="async"
+              width="480"
+              height="360"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius-lg);">
           </picture>
-          <div class="yt-facade-play" aria-hidden="true"> <!-- play icon injected in original -->
-            <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2.1 57.5-2.2 56-2.4 46.6-3 34-3 34-3h0S21.4-3 12-2.4C10.4-2.2 7.3-2.1 4.3 1S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-0.6c1.6-0.2 4.7-0.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/><path d="M27 33V14l18 9.5z" fill="#FFF"/></svg>
+
+          <!-- YouTube-style play button -->
+          <div class="yt-facade-play" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));transition:transform .2s ease;">
+            <svg width="68" height="48" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+              <path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7.9 57.5.8 56 .6 46.6 0 34 0 34 0h0S21.4 0 12 .6C10.4.8 7.3.9 4.3 3.9S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-.6c1.6-.2 4.7-.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/>
+              <path d="M27 33V14l18 9.5z" fill="#FFF"/>
+            </svg>
           </div>
+
         </div>
       </div>
 
-      
-
-      <!-- Process steps -->
+      <!-- ═══ PROCESS STEPS ═══ -->
       <div class="process-steps">
         <div class="process-step">
           <div class="step-num">01</div>
@@ -41,6 +71,52 @@
           <span class="step-time">1-2 weeks</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  var facade = document.querySelector('#process .yt-facade');
+  if (!facade) return;
+
+  // Hover: warm YouTube connection before user clicks (~200ms faster iframe load)
+  facade.addEventListener('mouseenter', function warmYT() {
+    ['https://www.youtube-nocookie.com', 'https://www.google.com', 'https://static.doubleclick.net'].forEach(function (origin) {
+      var l = document.createElement('link');
+      l.rel = 'preconnect';
+      l.href = origin;
+      document.head.appendChild(l);
+    });
+  }, { once: true });
+
+  // Play button hover effect
+  var playBtn = facade.querySelector('.yt-facade-play');
+  facade.addEventListener('mouseenter', function () {
+    if (playBtn) playBtn.style.transform = 'translate(-50%,-50%) scale(1.1)';
+  });
+  facade.addEventListener('mouseleave', function () {
+    if (playBtn) playBtn.style.transform = 'translate(-50%,-50%) scale(1)';
+  });
+
+  // Click or Enter/Space: swap facade for real iframe
+  function loadVideo() {
+    var videoId = facade.dataset.videoId;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.title = 'How GrowwStacks Delivers Excellence';
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:var(--radius-lg)';
+    facade.innerHTML = '';
+    facade.appendChild(iframe);
+    facade.style.cursor = 'default';
+  }
+
+  facade.addEventListener('click', loadVideo);
+  facade.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(); }
+  });
+})();
+</script>
