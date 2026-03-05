@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/analytics-loader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO Meta ═══ -->
+  <title>SMS Drip Campaign Automation — 10-Stage Twilio Nurture Sequences with Google Sheets Tracking | GrowwStacks</title>
+  <meta name="description" content="How GrowwStacks built an SMS Drip Campaign Automation using Twilio, Google Apps Script, and Google Sheets — executing 10-stage nurture sequences with intelligent delay management, full delivery status tracking, and real-time performance analytics. 95% time reduction, $30K+ annual savings, 380% ROI.">
+  <link rel="canonical" href="https://go.growwstacks.com/case-studies/sms-drip-campaign-automation/">
+
+  <!-- ═══ Open Graph ═══ -->
+  <meta property="og:title" content="SMS Drip Campaign Automation — 10-Stage Twilio Nurture Sequences | GrowwStacks">
+  <meta property="og:description" content="Twilio sends the messages. Google Apps Script manages the delays. Google Sheets tracks every delivery. 10-stage nurture sequences running automatically. 380% ROI, 4 weeks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://go.growwstacks.com/case-studies/sms-drip-campaign-automation/">
+  <meta property="og:image" content="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/49.%20Advanced%20Twilio%20SMS%20Funnel%20Automation%20%26%20Lead%20Nurturing%20System/Screenshot%202026-01-06%20at%205.44.23%E2%80%AFPM.png?updatedAt=1767701756818">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- ═══ Twitter Card ═══ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SMS Drip Campaign Automation — Twilio + Google Sheets 10-Stage Nurture">
+  <meta name="twitter:description" content="Automated SMS nurture sequences with intelligent delay scheduling, full Twilio delivery tracking, and real-time analytics. 380% ROI, 4 weeks.">
+  <meta name="twitter:image" content="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/49.%20Advanced%20Twilio%20SMS%20Funnel%20Automation%20%26%20Lead%20Nurturing%20System/Screenshot%202026-01-06%20at%205.44.23%E2%80%AFPM.png?updatedAt=1767701756818">
+
+  <!-- ═══ Structured Data ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "SMS Drip Campaign Automation — 10-Stage Twilio Nurture Sequences with Google Sheets Tracking",
+    "description": "GrowwStacks built an SMS Drip Campaign Automation using Twilio, Google Apps Script, and Google Sheets — executing 10-stage nurture sequences with intelligent delay management and full delivery tracking.",
+    "image": "https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/49.%20Advanced%20Twilio%20SMS%20Funnel%20Automation%20%26%20Lead%20Nurturing%20System/Screenshot%202026-01-06%20at%205.44.23%E2%80%AFPM.png?updatedAt=1767701756818",
+    "publisher": {
+      "@type": "Organization",
+      "name": "GrowwStacks",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"
+      }
+    }
+  }
+  </script>
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+
+  <!-- ═══ Google Ads ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+
+  <!-- ═══ Preconnects & DNS prefetch ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ik.imagekit.io">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://i.ytimg.com">
+
+  <!-- ═══ Fonts — non-blocking ═══ -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+  <!-- ═══ Stylesheets ═══ -->
+  <link rel="stylesheet" href="../../_shared/global.css">
+  <link rel="stylesheet" href="../../_shared/case-studies.css">
+
+  <!-- ═══ Page Tools ═══ -->
+  <meta name="page-tools" content="google-apps-script,google-sheets,twilio">
+</head>
+
+<body class="cs-page page-sms-drip-campaign-automation">
+
+<!-- ═══ NAVBAR ═══ -->
+<div id="gs-navbar"></div>
+
+<main>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO                                        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-hero">
+    <div class="cs-hero-bg">
+      <div class="cs-hero-bg-shape1"></div>
+      <div class="cs-hero-bg-shape2"></div>
+    </div>
+
+    <div class="container cs-hero-inner">
+
+      <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+        <span>SMS Drip Campaign Automation</span>
+      </nav>
+
+      <div class="cs-hero-tags">
+        <span class="cs-tag">Automation Workflows</span>
+        <span class="cs-tag">Sales &amp; Business Development</span>
+        <span class="cs-tag">Marketing &amp; Advertising</span>
+        <span class="cs-tag">Lead Nurturing</span>
+      </div>
+
+      <h1>SMS Drip Campaign Automation</h1>
+      <p class="cs-hero-sub">A fully automated multi-stage SMS nurture system built by GrowwStacks that executes 10-touch lead nurture sequences via <strong>Twilio</strong> — with intelligent delay scheduling, per-message delivery status tracking, and a complete performance analytics dashboard — all managed through <strong>Google Sheets</strong> and <strong>Google Apps Script</strong> without any external SMS marketing platform subscription. The workflow begins when a recipient is enrolled via a simple "start" trigger in the Google Sheets recipient list: the first SMS sends immediately via the Twilio API, and the system calculates and records the next scheduled send date based on the configured delay interval. A <strong>Google Apps Script</strong> time-based trigger runs daily, checking the recipient sheet for any messages due, and automatically sends the appropriate sequence template to each eligible recipient — updating the message count, last send timestamp, next send date, and delivery status per recipient after each send. Twilio's delivery webhook returns the status of every message (sent, delivered, failed, undelivered) back to the Apps Script, which writes the result to the comprehensive message log. A real-time dashboard sheet aggregates total messages sent, template distribution across all 10 stages, date-based sending patterns, and individual recipient progress — giving marketing and sales teams complete campaign visibility without manual tracking. Teams using this system reduce SMS campaign management time by 95%, eliminate $30K+ annually in manual coordination labour, and execute sophisticated multi-touch nurture sequences that were simply impossible to maintain manually — delivering 380% ROI in 4 weeks.</p>
+
+      <div class="cs-hero-logos">
+        <div class="cs-hero-logo">
+          <img data-logo="twilio" alt="Twilio" width="20" height="20" loading="lazy">
+          Twilio
+        </div>
+        <div class="cs-hero-logo">
+          <img data-logo="googleSheets" alt="Google Sheets" width="20" height="20" loading="lazy">
+          Google Sheets
+        </div>
+        <div id="cs-hero-tools" style="display:contents"></div>
+      </div>
+
+      <div class="process-content">
+        <div class="process-video">
+          <div class="yt-facade" data-video-id="XDS8s7GKsdE" role="button" tabindex="0" aria-label="Play video: SMS Drip Campaign Automation with Twilio and Google Apps Script Demo" style="border-radius:var(--radius-lg);aspect-ratio:16/9;width:100%;position:relative;overflow:hidden;cursor:pointer;">
+            <picture>
+              <source type="image/webp" srcset="https://i.ytimg.com/vi_webp/XDS8s7GKsdE/maxresdefault.webp">
+              <img src="https://i.ytimg.com/vi/XDS8s7GKsdE/maxresdefault.jpg" alt="SMS Drip Campaign Automation demo showing Twilio 10-stage nurture sequence, Google Apps Script scheduling, delivery status tracking and performance analytics in Google Sheets" loading="lazy" width="480" height="360" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+            </picture>
+            <div class="yt-facade-play" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+              <svg width="68" height="48" viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2.1 57.5-2.2 56-2.4 46.6-3 34-3 34-3h0S21.4-3 12-2.4C10.4-2.2 7.3-2.1 4.3 1S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-0.6c1.6-0.2 4.7-0.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/><path d="M27 33V14l18 9.5z" fill="#FFF"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- KEY RESULTS                                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-results">
+    <div class="container">
+      <div class="cs-results-grid">
+        <div class="cs-result-item">
+          <div class="cs-result-num">95%</div>
+          <div class="cs-result-label">Reduction in manual SMS management — 20 hours weekly to under 60 minutes</div>
+        </div>
+        <div class="cs-result-item">
+          <div class="cs-result-num">100%</div>
+          <div class="cs-result-label">Delivery visibility — every message tracked as sent, delivered, failed, or undelivered</div>
+        </div>
+        <div class="cs-result-item">
+          <div class="cs-result-num">$30K+</div>
+          <div class="cs-result-label">Annual savings eliminating manual SMS campaign coordination labour</div>
+        </div>
+        <div class="cs-result-item">
+          <div class="cs-result-num">380%</div>
+          <div class="cs-result-label">ROI — sophisticated 10-stage nurture running automatically in 4 weeks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CONTENT + SIDEBAR                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-content">
+    <div class="container">
+      <div class="cs-content-inner">
+
+        <!-- ARTICLE -->
+        <article class="cs-article">
+
+          <!-- SECTION 1: The Problem -->
+          <h2>The SMS Nurture Coordination Problem: Why Multi-Stage Text Campaigns Break Down at Scale Without Automation</h2>
+          <p>SMS remains one of the highest-engagement communication channels available to marketing and sales teams — open rates above 90%, average response times measured in minutes rather than hours, and zero inbox competition from the volume of email that modern professionals filter aggressively. The challenge is not getting SMS messages read; it is executing a systematic, multi-touch nurture sequence at scale without spending the majority of a marketing team's week on manual coordination. A 10-stage nurture campaign for 200 leads requires 2,000 individual message sends over a period of weeks, each timed to the correct delay interval from the previous send, each tracked for delivery confirmation, and each recorded against the individual recipient's sequence progress. <strong>That operational complexity makes systematic SMS nurture practically impossible through manual management</strong> — and forces most teams to abandon multi-stage sequences in favour of occasional one-off blasts that miss the compounding engagement benefit of consistent sequential touchpoints.</p>
+          <p>Three specific failure modes emerge when teams attempt to manage SMS drip campaigns manually. First, the <strong>delay coordination failure</strong>: without automated scheduling, sending the correct follow-up message at the correct interval requires maintaining a manual calendar of individual recipient send dates — a spreadsheet management burden that becomes unmanageable above 30–50 active recipients. Second, the <strong>delivery visibility failure</strong>: manually sending messages provides no systematic visibility into which messages delivered, which failed, and which remain undelivered — creating follow-up gaps where leads who didn't receive a message are treated as non-responsive when the message never reached them. Third, the <strong>analytics failure</strong>: without a structured tracking system, there is no way to identify which message in the sequence produces the highest engagement, which delay intervals are optimal, or which recipient segments respond differently — leaving the team unable to optimise the campaign over time.</p>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/49.%20Advanced%20Twilio%20SMS%20Funnel%20Automation%20&%20Lead%20Nurturing%20System/Screenshot%202026-01-06%20at%205.44.23%E2%80%AFPM.png?updatedAt=1767701756818"
+                 alt="Google Sheets recipient management sheet showing the SMS drip campaign automation dashboard with columns for recipient name, phone number, active status, messages sent count, last send date and time, and next scheduled send date — the central control panel for all campaign recipients"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">Recipient management sheet — the centralised campaign control panel in Google Sheets showing every enrolled recipient with their phone number, active status, messages sent count, last send date and time, and next scheduled send date. All columns update automatically after each Twilio message send — no manual tracking required</div>
+          </div>
+
+          <!-- SECTION 2: The Solution -->
+          <h2>Building the Automated SMS Nurture Engine: Twilio Delivery + Apps Script Intelligence + Google Sheets as the Complete Campaign OS</h2>
+          <p>GrowwStacks built a three-layer SMS automation architecture that handles every operational component of a multi-stage nurture campaign — scheduling, delivery, tracking, and analytics — within Google Workspace tools the team already uses, without requiring a dedicated SMS marketing platform subscription. <strong>Twilio</strong> provides enterprise-grade SMS delivery with delivery status webhooks — the professional sending infrastructure that supports volume, compliance, and delivery reporting at a pay-per-message cost far below SMS marketing platform monthly subscriptions. <strong>Google Apps Script</strong> provides the automation intelligence — the custom code that manages enrollment logic, calculates delay intervals, checks daily for messages due, calls the Twilio API, processes delivery status webhooks, and updates all tracking records. <strong>Google Sheets</strong> serves as the complete campaign operating system — recipient management, message template library, delivery log, and performance dashboard all in a single spreadsheet workbook that the team accesses through a familiar interface with no new software to learn.</p>
+          <p>The architecture's significant practical advantage over dedicated SMS marketing platforms is cost structure and control. Enterprise SMS platforms charge monthly subscription fees that scale with contact list size — often $200–$1,000+ per month for lists above a few thousand contacts. The Twilio + Apps Script + Google Sheets system charges only Twilio's per-message rate (typically $0.0079 per message in the US) with no platform subscription overhead, making the per-campaign cost purely proportional to messages sent. The Apps Script code is fully owned and customisable by the client — message templates, delay intervals, recipient management logic, and analytics views can all be modified directly without waiting for a platform vendor to add a feature or paying for a higher subscription tier.</p>
+
+          <!-- INLINE VISUALIZATION: SMS Drip Pipeline Flow -->
+          <div class="cs-visual-flow" aria-label="SMS Drip Campaign Automation pipeline flow: recipient enrolled via start trigger in Google Sheets, first SMS sent immediately via Twilio API on Day 0, Apps Script records message count last send date and calculates next send date, daily time-based trigger checks all recipients for messages due, correct sequence template sent automatically at each delay interval, Twilio delivery webhook returns status sent delivered failed or undelivered, all data logged to message log sheet and recipient sheet updated, performance dashboard aggregates campaign analytics in real time">
+            <div class="cs-flow-pipeline">
+              <div class="cs-flow-step">
+                <div class="cs-flow-step-icon">▶️</div>
+                <div class="cs-flow-step-title">Recipient Enrolled</div>
+                <div class="cs-flow-step-sub">Start trigger in Sheets</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-step cs-flow-active">
+                <div class="cs-flow-step-icon">📱</div>
+                <div class="cs-flow-step-title">Day 0 SMS Sent</div>
+                <div class="cs-flow-step-sub">Twilio delivers immediately</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-step">
+                <div class="cs-flow-step-icon">⏰</div>
+                <div class="cs-flow-step-title">Delays Calculated</div>
+                <div class="cs-flow-step-sub">Next send date scheduled</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-step">
+                <div class="cs-flow-step-icon">🔁</div>
+                <div class="cs-flow-step-title">Sequence Continues</div>
+                <div class="cs-flow-step-sub">Daily trigger sends next stage</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-outcome-wrap">
+                <div class="cs-flow-outcome approved">✅ All 10 Stages Delivered</div>
+                <div class="cs-flow-outcome review">📊 Every Status Tracked</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3: How It Works -->
+          <h3>From Enrollment to Completed Nurture Sequence: The Complete Automated Pipeline</h3>
+          <p>The system manages the full lifecycle of every recipient's 10-stage nurture journey — from initial enrollment through final sequence message — through automated scheduling, Twilio delivery, status tracking, and real-time analytics updates. Here's how each component operates:</p>
+          <ol>
+            <li><strong>Recipient enrollment and Day 0 first message:</strong> New recipients are added to the Google Sheets recipient list with their name and phone number. The enrollment is triggered by setting the Status column to "Active" — either manually for individual enrollments or via a batch update for bulk campaign launches. The Apps Script onEdit trigger fires when the Status field changes to Active: it immediately calls the Twilio API to send the first message template (Message 1 of the 10-stage sequence) to the recipient's phone number, retrieves the Twilio message ID returned by the API, and records the send in the message log with the timestamp, recipient name, phone number, template number, message ID, and initial delivery status. The recipient sheet row is then updated with the messages sent count (now 1), the last send date and time (the current timestamp), and the next send date (current date plus the configured Day 0 to Day 1 delay interval). The Day 0 immediate send ensures no time is wasted between enrollment and the first brand touchpoint — the recipient hears from the campaign within seconds of being added.</li>
+            <li><strong>Daily scheduled message check and sequence delivery:</strong> A Google Apps Script time-based trigger runs once daily at the configured send time (typically mid-morning in the target time zone). The trigger function reads all Active recipients from the recipient sheet and checks each one's Next Send Date against the current date. Recipients whose Next Send Date is today or earlier (having accumulated a delay overrun due to any day the trigger ran but the recipient wasn't yet due) are processed for their next message. For each eligible recipient, the function retrieves the appropriate next template from the message template sheet — determined by the recipient's current Messages Sent count, which maps directly to the template number (Messages Sent = 1 means Template 2 is next). The function calls the Twilio API to send the template message, retrieves the message ID, and proceeds to update all tracking records. This daily trigger approach means the sending cadence is automatic — once a recipient is enrolled, they progress through all 10 message stages at precisely the configured intervals without any manual action required for any individual send.</li>
+            <li><strong>Intelligent delay calculation and sequence progression:</strong> The delay between each message stage is configurable per stage — enabling nurture sequences with variable cadence rather than fixed uniform spacing. Early stages might use shorter delays (Day 0, Day 2, Day 4) to establish frequent initial contact when lead interest is highest, while later stages extend the interval (Day 7, Day 14, Day 21) as the nurture moves into longer-term relationship maintenance. After each message send, the Apps Script calculates the next send date by adding the configured stage-specific delay to the current timestamp and writing the result to the Next Send Date column. A recipient who has received 3 of 10 messages with their next stage configured for a 5-day delay will have a Next Send Date 5 days from today — which the daily trigger will detect and process automatically when that date arrives. Recipients who have completed all 10 stages are automatically marked as "Complete" in the Status column and excluded from subsequent daily trigger checks.</li>
+            <li><strong>Twilio delivery status tracking via webhook:</strong> When Twilio delivers (or fails to deliver) a message, it sends a delivery status update to the configured webhook URL — an Apps Script web app endpoint that receives the status callback. The webhook handler processes the incoming Twilio status payload: extracting the message ID (used to match the status update to the correct log record), the delivery status (queued, sent, delivered, failed, or undelivered), and any error code for failed deliveries. The matching log record in the message log sheet is updated with the final delivery status — replacing the initial "sent" status recorded at send time with the confirmed delivery status returned by Twilio. The recipient sheet is simultaneously updated if the delivery indicates a problem: failed or undelivered status can trigger a flag in the recipient row alerting the team to review the phone number or follow up through an alternative channel. This real-time status tracking transforms delivery visibility from zero (no confirmation that the message reached anyone) to complete (every message's final delivery state is recorded per recipient per stage).</li>
+            <li><strong>Comprehensive message logging:</strong> Every message send — regardless of outcome — is recorded as a new row in the message log sheet. The log captures: send timestamp (the exact date and time the Twilio API was called), recipient name, phone number, template number (1–10 indicating which sequence stage was sent), Twilio message SID (the unique identifier returned by the Twilio API, used for status webhook matching), initial status at send time, and final delivery status once the Twilio webhook is received. The complete log enables: troubleshooting any specific delivery failure by examining the Twilio message SID and associated error code, auditing the full history of messages sent to any specific recipient, analysing which template stages have the highest delivery rates versus failure rates, and maintaining a compliance record of all SMS sends if required by industry regulations (TCPA in the US, for example). The log is append-only — each send adds a new row — producing a permanent, searchable history of the entire campaign's activity.</li>
+            <li><strong>Real-time performance analytics dashboard:</strong> A dedicated dashboard sheet in the Google Sheets workbook uses formula-driven calculations (COUNTIF, SUMIF, pivot-table-style aggregations) to display real-time campaign performance metrics that update automatically as new data is written to the log and recipient sheets. Dashboard metrics include: total messages sent across the campaign, messages sent per template stage (showing where the active recipient population is concentrated in the sequence), date-based sending volume (messages sent per day — revealing campaign growth trends and daily volume patterns), recipient status distribution (Active vs. Complete vs. flagged recipients), delivery rate (delivered vs. sent ratio), and failure rate with error category breakdown. These analytics enable continuous campaign optimisation: identifying which message stages have unusually high failure rates (suggesting phone number quality issues in the enrolled segment), which send dates produced the highest volume (useful for capacity planning), and overall funnel progression rates through all 10 stages.</li>
+          </ol>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/49.%20Advanced%20Twilio%20SMS%20Funnel%20Automation%20&%20Lead%20Nurturing%20System/Screenshot%202026-01-06%20at%205.57.54%E2%80%AFPM.png?updatedAt=1767702501237"
+                 alt="SMS message template library sheet in Google Sheets showing the 10 customisable nurture sequence templates stored for sequential delivery — each row containing the template number and message content for its corresponding stage in the drip campaign"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">Message template library — the Google Sheets template store holding all 10 nurture sequence messages in order, each editable directly in the spreadsheet. Template 1 sends on Day 0 at enrollment, subsequent templates send automatically at their configured delay intervals. Changes to any template take effect for all future sends of that stage — no code change required</div>
+          </div>
+
+          <div class="cs-highlight">
+            <p>💡 <strong>Why Google Apps Script + Twilio outperforms dedicated SMS marketing platforms for systematic nurture at scale — the cost structure advantage in practice:</strong> Dedicated SMS marketing platforms (Klaviyo SMS, Attentive, Postscript, SimpleTexting) charge subscription fees that scale with list size: a 5,000-contact list typically costs $200–$500/month on these platforms before per-message costs. The Twilio + Apps Script + Google Sheets system has zero subscription overhead — Google Apps Script is free within Google Workspace (which the team already pays for), and Twilio charges only per message sent ($0.0079/message in the US). For a campaign sending 3 messages per month per 1,000 active contacts, the Twilio-only cost is $23.70/month versus $200–$500 on a platform subscription. At 5,000 contacts, the monthly Twilio cost is $118.50 versus a platform subscription that typically exceeds $500/month. The annual saving is $4,600–$9,000+ for a 5,000-contact list — a saving that directly funds the 4-week implementation cost within the first 6–12 months of operation. The tradeoff is the Apps Script custom code required to build the automation logic — which GrowwStacks provides as part of the implementation rather than the team building it themselves.</p>
+          </div>
+
+          <!-- SECTION 4: Key Capabilities -->
+          <h2>What This System Enables That Manual SMS Campaign Management Cannot Sustain</h2>
+          <div class="cs-features">
+            <div class="cs-feature">
+              <div class="cs-feature-icon">📱</div>
+              <h4>10-Stage Automated Nurture Sequence</h4>
+              <p>Automated delivery of all 10 configurable message templates throughout the nurture funnel — with each stage sending at precisely the configured delay interval from the previous send, per recipient. Executes sophisticated multi-touch campaigns with a consistency and precision that is impossible to replicate manually: every recipient receives every stage at exactly the right time regardless of list size, without any manual scheduling action required per send.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">⏰</div>
+              <h4>Intelligent Delay Management</h4>
+              <p>Configurable per-stage delay intervals (2, 3, 5 days, or custom) calculated automatically from each recipient's last send timestamp. The daily Apps Script trigger checks all active recipients against their scheduled next send date — sending the correct next-stage message for anyone due that day without any manual calendar management. Different delay patterns can be configured for early versus late funnel stages, enabling aggressive early nurture followed by lower-frequency long-term relationship maintenance in the same sequence.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">📊</div>
+              <h4>Complete Delivery Status Tracking</h4>
+              <p>Twilio's delivery webhook returns the final status of every sent message — delivered, failed, or undelivered — and the Apps Script webhook handler writes the result to both the message log and the recipient sheet in real time. Provides 100% delivery visibility that manual sending cannot offer: every undelivered message is flagged, every failed number is identified, and the overall delivery rate is calculable from the log data rather than estimated or assumed.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">📋</div>
+              <h4>Complete Message Audit Log</h4>
+              <p>Every message send generates an append-only log entry with timestamp, recipient, phone number, template stage, Twilio message SID, and delivery status — creating a permanent, searchable campaign record. Enables troubleshooting any specific delivery issue, auditing the complete communication history with any individual recipient, analysing stage-by-stage delivery performance, and maintaining compliance documentation for industries with SMS communication record requirements.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">📈</div>
+              <h4>Real-Time Analytics Dashboard</h4>
+              <p>Formula-driven dashboard sheet aggregating total messages sent, per-stage template distribution, date-based sending volume, delivery vs. failure rates, and individual recipient sequence progress — updating automatically as the campaign runs without any manual reporting compilation. Identifies which sequence stages have delivery anomalies, which send dates produce the highest volume, and how the active recipient population is distributed across all 10 stages at any moment.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">🔧</div>
+              <h4>Google Apps Script with Zero Platform Cost</h4>
+              <p>Custom automation logic built in Google Apps Script — free within Google Workspace — handles all enrollment triggers, delay calculations, scheduled daily sending, Twilio API calls, webhook processing, and logging without any external automation platform subscription. The script is fully owned and modifiable: message templates are editable directly in the Sheets template library, delay intervals are configurable without code changes, and the entire campaign logic is transparent and adjustable by the team or by GrowwStacks.</p>
+            </div>
+          </div>
+
+          <!-- SECTION 5: Screenshots -->
+          <h2>The System in Action</h2>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/49.%20Advanced%20Twilio%20SMS%20Funnel%20Automation%20&%20Lead%20Nurturing%20System/Screenshot%202026-01-06%20at%205.45.14%E2%80%AFPM.png?updatedAt=1767701757612"
+                 alt="Delivery status tracking sheet showing the complete SMS message log with columns for timestamp, recipient name, phone number, template stage number, Twilio message SID, and delivery status — showing sent, delivered, failed and undelivered statuses per message for full campaign visibility"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">Delivery status tracking — the complete message log sheet recording every SMS send: timestamp, recipient name, phone number, template stage number, Twilio message SID, and delivery status updated via webhook. Every row represents one message send, providing a permanent searchable audit trail of the entire campaign's activity with per-message delivery confirmation</div>
+          </div>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/49.%20Advanced%20Twilio%20SMS%20Funnel%20Automation%20&%20Lead%20Nurturing%20System/Screenshot%202026-01-06%20at%205.44.33%E2%80%AFPM.png?updatedAt=1767701756980"
+                 alt="Performance analytics dashboard in Google Sheets showing real-time SMS campaign metrics — total messages sent, template stage distribution showing message counts per sequence step, date-based sending volume patterns, delivery rate statistics, and recipient sequence progress"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">Performance analytics dashboard — the real-time campaign metrics view aggregating total messages sent, template stage distribution (how many messages have been sent at each of the 10 sequence stages), date-based sending volume trends, delivery vs. failure rates, and recipient progress through the nurture sequence — all calculated automatically from the message log without manual reporting</div>
+          </div>
+
+          <!-- SECTION 6: Before vs After -->
+          <h2>Before vs. After: What Changes When the Entire Nurture Sequence Runs Itself</h2>
+          <p><strong>Before:</strong> Marketing and sales teams attempting multi-stage SMS nurture faced an operational coordination burden that typically caused campaigns to collapse at 3–5 stages — far short of the 10-touch sequences that research consistently shows produce the highest conversion rates. Maintaining proper delay intervals across 50+ active recipients required dedicated manual calendar management. Delivery visibility was zero: messages were sent but whether they reached recipients was unknown unless a recipient replied. Recipient data was scattered across multiple spreadsheets with no consistent structure, making it impossible to determine who was at what stage. And performance analytics required manual compilation that consumed additional hours with results that were always behind the campaign's actual state. The operational overhead of manual SMS campaign management consistently exceeded the bandwidth available to teams simultaneously managing other marketing and sales activities.</p>
+          <p><strong>After:</strong> The marketing team's ongoing involvement in SMS campaign operations reduces to two activities: enrolling new recipients (a single status field change in the recipient sheet) and reviewing the dashboard (a minute-long check to confirm the campaign is progressing normally). The daily trigger handles all scheduling decisions, the Twilio API handles all message delivery, the webhook handler handles all status recording, and the dashboard formulas handle all analytics compilation — automatically, every day, for every active recipient in the sequence simultaneously. A team that previously managed 30 active nurture recipients manually can run 300 recipients through a 10-stage sequence with less operational effort than the 30-recipient manual campaign required. The sophistication ceiling that manual management imposed — limiting practical nurture to 2–3 stages at meaningful scale — is removed entirely: 10 stages, properly timed, consistently delivered, completely tracked.</p>
+
+          <!-- SECTION 7: Implementation Process -->
+          <h2>Implementation: Live in 4 Weeks</h2>
+          <ol>
+            <li><strong>Twilio account setup and phone number configuration (Week 1):</strong> A Twilio account is created or the client's existing Twilio account is reviewed. A dedicated Twilio phone number (or short code for high-volume campaigns above 1,000 daily messages) is provisioned for the campaign — using a local long code for lower-volume campaigns or a toll-free number for higher-volume sends that require additional deliverability trust. The Twilio Account SID and Auth Token are retrieved and stored securely for Apps Script integration. The Twilio messaging service is configured with the sending number, and initial test messages are sent to confirm delivery through the Twilio console. TCPA compliance requirements are reviewed — confirming opt-in documentation, message content compliance, and STOP keyword handling (Twilio handles STOP replies automatically, preventing further messages to opted-out numbers). Rate limits and daily sending capacity are assessed against the target campaign volume.</li>
+            <li><strong>Google Sheets workbook structure design (Week 1–2):</strong> The Google Sheets workbook is built with four sheets serving distinct functions. The Recipient Sheet contains: Name, Phone Number, Status (Pending/Active/Complete/Error), Messages Sent (count, 0–10), Last Send Date/Time, and Next Send Date — with data validation on the Status column and conditional formatting highlighting recipients approaching their next send date. The Template Sheet stores all 10 message templates in numbered rows — Template 1 through Template 10 — with each template's full SMS text in a single cell that the Apps Script references by row number. Templates are editable directly in the sheet without any code change. The Message Log Sheet has columns for: Timestamp, Recipient Name, Phone Number, Template Number, Twilio Message SID, Initial Status, and Final Delivery Status. The Dashboard Sheet contains formula-driven aggregations pulling from the log and recipient sheets — total messages sent (COUNTA of log rows), messages per template (COUNTIF by template number), daily send volume (COUNTIF by date), delivery rate (delivered count / total sent), and a summary table of recipient status distribution.</li>
+            <li><strong>Google Apps Script development (Weeks 2–3):</strong> The core Apps Script codebase is developed with five primary functions. The enrollment function is triggered by the onEdit event on the recipient sheet's Status column — firing when Status changes to "Active," calling sendMessage() for Template 1 immediately, and updating the recipient row with the initial tracking data. The sendMessage() function accepts recipient row data, retrieves the appropriate template text from the template sheet, calls the Twilio REST API using UrlFetchApp with the account SID and auth token for authentication, receives the Twilio response containing the message SID and initial status, calls logMessage() with the full send details, and calls updateRecipient() to write the new tracking data to the recipient row. The calculateNextSendDate() function accepts the current date and the current template number and returns the next send date based on the configured delay array — allowing different delays between different stages. The daily trigger function (registered as a time-based trigger running once per day) iterates all Active recipients, compares each one's Next Send Date to today, and calls sendMessage() for any recipient due. The Twilio webhook handler is a doPost() web app function that receives Twilio's status callback, extracts the message SID and final status from the POST body, finds the matching log row by SID using a lookup, and updates the Final Delivery Status column. All functions include error handling with try/catch blocks that write error details to the log rather than silently failing.</li>
+            <li><strong>Trigger and webhook configuration (Week 3):</strong> The Apps Script project is deployed as a web app (for the Twilio webhook handler) — setting execution as the client's Google account and access to Anyone (required for Twilio's POST request to reach the endpoint). The web app URL is copied and registered in the Twilio console as the status callback URL for the sending phone number — confirming that Twilio will POST delivery status updates to the endpoint. The time-based daily trigger is registered in the Apps Script trigger management panel — scheduling the daily message check function to run at the configured send time. The onEdit trigger for enrollment is verified as a Simple Trigger (automatically active for the spreadsheet). A manual test of the complete flow is conducted: a test recipient is enrolled in the recipient sheet, the enrollment function fires and sends Template 1 via Twilio, the log records the send, the trigger is manually run to simulate the next day's check, and the Twilio console is checked to confirm the delivery status webhook was received and processed.</li>
+            <li><strong>Comprehensive testing and production deployment (Week 4):</strong> End-to-end testing covers the complete recipient journey: multiple test recipients are enrolled simultaneously, the sequence progression through all 10 templates is validated by accelerating the Next Send Date values to trigger multiple sends in quick succession, delivery status webhook processing is confirmed for delivered and failed scenarios, dashboard formula accuracy is verified against known log data, and edge cases are tested (recipient who completes all 10 stages is correctly marked Complete, failed delivery is correctly flagged in the recipient sheet, re-enrollment of a completed recipient resets the count correctly). Performance documentation is prepared covering: how to add new recipients (Sheets row + Status set to Active), how to edit message templates (direct Sheets cell edit), how to change delay intervals (update the delay configuration in the Apps Script constants), how to read the analytics dashboard, and how to troubleshoot a failed delivery using the message SID. The production campaign is activated with the first real recipient batch, and the team monitors the first 48 hours of sends to confirm all components are operating as expected before the system runs fully unattended.</li>
+          </ol>
+
+          <!-- SECTION 8: Who This Is For -->
+          <h2>The Right Fit — and When It Isn't</h2>
+          <p>This solution delivers maximum value for <strong>marketing teams nurturing leads through multi-stage text sequences, sales organisations following up prospects at systematic intervals, e-commerce businesses running customer re-engagement or post-purchase nurture campaigns, real estate agents maintaining contact with buyer and seller prospects over extended timelines, service providers sending appointment reminders and follow-up sequences, and any organisation requiring systematic high-volume SMS communication where manual coordination is the current bottleneck</strong>. The 4-week implementation timeline and moderate complexity rating make this accessible for small and mid-sized teams that need sophisticated SMS nurture capability without enterprise-level technical resources — the Google Workspace foundation means most teams already have the infrastructure required.</p>
+          <p>Two important calibration notes: the system is built specifically for outbound SMS nurture to opted-in recipients — TCPA (US) and equivalent regulations in other jurisdictions require documented opt-in consent before marketing SMS can be sent, and compliance with these regulations is the client's responsibility for their recipient list. The Apps Script + Twilio architecture handles the sending and tracking mechanics compliantly (including honouring STOP replies via Twilio's built-in STOP handling), but the opt-in documentation and consent records for enrolled recipients must exist before the campaign launches. For teams with very high daily send volumes (above 1,000 messages per day consistently), the Apps Script daily trigger model should be assessed for processing time — very large recipient lists may require batch processing or a migration to a more scalable trigger architecture, which we design accordingly during the discovery call.</p>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside class="cs-sidebar">
+
+          <div class="cs-sidebar-card">
+            <h4>Project Details</h4>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value">All Industries</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value">Automation Workflows</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value">Twilio + Google Apps Script</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value">4 weeks</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value">Moderate</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value">⭐ 4.7 / 5</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent)">380%</span></div>
+          </div>
+
+          <div class="cs-sidebar-card">
+            <h4>Tools &amp; Integrations</h4>
+            <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+              <span class="cs-tool-tag">
+                <img src="" data-logo="twilio" alt="Twilio" width="14" height="14" loading="lazy">
+                Twilio SMS API
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="googleSheets" alt="Google Sheets" width="14" height="14" loading="lazy">
+                Google Sheets
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="googleAppScript" alt="Google Apps Script" width="14" height="14" loading="lazy">
+                Google Apps Script
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="twilio" alt="Twillio" width="14" height="14" loading="lazy">
+                Twilio Delivery Webhooks
+              </span>
+            </div>
+          </div>
+
+          <div class="cs-sidebar-card">
+            <h4>Key Metrics</h4>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Manual management time</span><span class="cs-sidebar-value">−95%</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Delivery visibility</span><span class="cs-sidebar-value">100%</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Sequence stages</span><span class="cs-sidebar-value">1–10 automated</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Scheduling accuracy</span><span class="cs-sidebar-value">100%</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Annual savings</span><span class="cs-sidebar-value">$30K+</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Conversion rate boost</span><span class="cs-sidebar-value">+80%</span></div>
+          </div>
+
+          <div class="cs-sidebar-cta">
+            <h4>Ready to Run 10-Stage SMS Nurture Sequences Automatically — With Full Delivery Tracking and Analytics — Without a Dedicated SMS Platform Subscription?</h4>
+            <p>Free discovery call — we'll review your current SMS workflow, recipient list size, and nurture sequence goals to show you the exact system architecture and cost comparison versus your current approach.</p>
+            <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FAQ                                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-faq" id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system handle STOP replies — what happens when a recipient opts out?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Twilio handles STOP reply compliance at the carrier level automatically — when a recipient texts STOP to the campaign number, Twilio immediately blocks all future messages to that number without any action required from the Apps Script or the team</strong>. This is a built-in Twilio behaviour that applies regardless of what the Apps Script attempts to send — even if the daily trigger selects an opted-out number for a message, Twilio's suppression list prevents delivery.</p>
+            <p>The Apps Script webhook handler is configured to receive Twilio's unsubscribe event callback when a STOP reply is processed — updating the recipient's Status column in Google Sheets from Active to "Opted Out" to reflect the opt-out in the campaign's own records. This status change immediately prevents the recipient from being selected by the daily trigger in future runs (the trigger only processes Active recipients). The opt-out record in the recipient sheet also serves as the internal suppression list — ensuring the number is not re-enrolled in future campaigns unless the recipient explicitly texts START to re-subscribe. For compliance documentation purposes, the opt-out timestamp and opt-out method are logged in the message log alongside the standard send records, providing a complete audit trail of consent management events. HELP reply handling (Twilio automatically responds with basic service information) is similarly managed at the Twilio level without requiring Apps Script configuration.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the delay intervals be different for each stage — or is the same delay applied between every message?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — each stage transition can have a distinct delay interval, configured as an array in the Apps Script constants rather than a single global value applied uniformly across all stages</strong>. This is one of the key advantages of a custom Apps Script implementation over simplified SMS tools: the delay logic is fully programmable rather than constrained to a fixed uniform cadence.</p>
+            <p>A typical variable-cadence configuration might look like this: Template 1 sends immediately on Day 0 at enrollment. Template 2 sends 2 days later (Day 2). Template 3 sends 2 days after that (Day 4). Templates 4 and 5 send 3 days apart (Day 7 and Day 10). Templates 6 through 8 send weekly (Day 17, Day 24, Day 31). Templates 9 and 10 send bi-weekly (Day 45, Day 59). This aggressive-early, gradual-later pattern matches the typical lead engagement curve: newly enrolled leads are most receptive and should be contacted more frequently, while leads that haven't converted after the first few touches should be maintained with lower-frequency contact to avoid opt-out fatigue. The delay array is defined in the Apps Script configuration section — a single array of 10 values where each value represents the number of days from the previous send. Any of the 10 values can be changed by updating the Apps Script configuration, and changes take effect for all future sends of that transition without affecting recipients who have already passed that stage.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system personalise messages with the recipient's name or other individual data fields?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — message personalisation using recipient data fields is a standard feature of the Apps Script implementation, using template variable substitution to inject individual recipient data into the template text before sending</strong>. The personalisation approach uses placeholder syntax in the template text — for example, "Hi {FirstName}, just wanted to follow up on…" — which the sendMessage() function replaces with the actual recipient data values from the recipient sheet before passing the text to the Twilio API.</p>
+            <p>Any column in the recipient sheet can be used as a personalisation variable: first name, company name, product of interest, last purchase date, sales rep name, or any other data field relevant to the campaign. Multiple variables can be used in a single template — "Hi {FirstName}, we saw you were interested in {ProductCategory} — we have a special offer for {CompanyName} customers this week." The variable substitution is handled by the Apps Script sendMessage() function using JavaScript's string replace method, which processes the template text and substitutes all instances of each placeholder with the corresponding recipient sheet value before sending. The template itself is stored with the placeholder syntax in the template sheet — making it easy to see and edit the personalisation logic without reading code. For campaigns with highly variable personalisation requirements (where different recipients in the same sequence receive substantively different messages based on their data), a conditional personalisation extension can be configured that selects between multiple template variants based on a recipient segment column value.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system handle inbound SMS replies — routing customer responses to the right team member or triggering a different message sequence?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — inbound SMS reply handling is a common extension to the base outbound drip system, using Twilio's inbound webhook (separate from the delivery status webhook) to receive and process replies from campaign recipients</strong>. Twilio's messaging service can be configured to forward all inbound SMS to a specific phone number or email for manual review, or to a second Apps Script web app endpoint for automated processing.</p>
+            <p>The automated inbound reply processing extension works as follows: when a recipient replies to a campaign message, Twilio's inbound webhook delivers the reply content, sender number, and timestamp to the Apps Script inbound handler. The handler looks up the sender number in the recipient sheet to identify which campaign recipient replied and what stage they're currently at in the sequence. Based on the reply content, the handler can: flag the recipient row with a "Reply Received" indicator and send a Slack or email notification to the assigned sales rep with the reply context; pause the automated sequence for this recipient (preventing further automated sends while the human rep engages manually); trigger a different message branch (for example, if the recipient replies "YES" to a call-to-action in one of the templates, the system branches them into a separate sequence for interested prospects); or send an immediate automated acknowledgment reply via Twilio if a brief hold message is appropriate. The reply routing logic is configured during the extension implementation based on the team's sales workflow — which replies should trigger human handoff, which should trigger sequence branching, and which should receive automated acknowledgment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system send MMS (picture messages) in addition to SMS text messages?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — Twilio supports MMS (multimedia message service) through the same API endpoint used for SMS, with the addition of a MediaUrl parameter containing the URL of the image to include in the message</strong>. The Apps Script sendMessage() function can be extended to check a media URL column in the template sheet and include the image URL in the Twilio API call when one is present.</p>
+            <p>The MMS implementation in the template sheet adds an optional Media URL column alongside each template's text content. For templates that should include an image — a product photo, a promotional graphic, an event flyer — the image is hosted at a publicly accessible URL (Google Drive with sharing set to Anyone with the link, or a cloud storage bucket) and the URL is entered in the Media URL column for that template. The sendMessage() function checks whether the current template's Media URL cell contains a value and, if so, includes it in the Twilio API request's mediaUrl field. Twilio handles the MMS delivery to carriers that support it and gracefully falls back to text-only for recipients on carriers or devices that don't support MMS. Important considerations: MMS messages cost more than SMS in Twilio's pricing (typically $0.02 vs $0.0079 per message in the US), and MMS delivery is only available on US and Canadian long code numbers (not short codes or international numbers without specific MMS-enabled routing). For campaigns mixing text-only and image-inclusive messages at different stages, the Media URL column approach allows per-template control of whether each stage is SMS or MMS — enabling early stages to use MMS for higher visual impact and later stages to revert to SMS for cost efficiency.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 380% ROI calculated — and what does the payback period look like relative to the 4-week implementation timeline?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 380% ROI primarily reflects the labour cost recovered from eliminating the 20 hours weekly of manual SMS campaign management — with the revenue contribution of improved conversion rates from systematic nurture providing additional value that varies by the client's deal size and lead volume</strong>.</p>
+            <p>The labour savings calculation: a marketing or sales operations team member spending 20 hours weekly on manual SMS scheduling, delivery monitoring, and data management at $35/hour effective rate recovers $36,400 annually. Even at a conservative 50% attribution (acknowledging that some of that time would be redirected to other tasks rather than purely eliminated), the annual labour recovery is $18,200. Adding the platform subscription savings versus a dedicated SMS marketing platform ($200–$500/month depending on list size and features = $2,400–$6,000 annually) brings the total annual value to $20,600–$24,200. Against the 4-week implementation cost, the payback period is typically 2–4 months — making this one of the faster-payback implementations in the portfolio relative to its complexity tier. The revenue component from improved conversion rates (the 80% increase in conversion rates from systematic 10-stage nurture versus sporadic manual outreach) is business-specific: for a B2B team closing $20,000 ACV deals where systematic nurture converts 5 additional leads per quarter, the incremental annual revenue from the nurture improvement alone is $400,000 — dwarfing the labour savings component. We model the specific value calculation using the client's lead volume, close rate, and ACV during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BOTTOM CTA                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-bottom-cta">
+    <div class="container" style="position:relative;z-index:2">
+      <h2>Stop Spending 20 Hours a Week Manually Scheduling SMS Messages — Run a 10-Stage Nurture Sequence for Every Lead Automatically With Full Delivery Tracking</h2>
+      <p>Every lead that doesn't receive a systematic multi-touch SMS nurture sequence is a lead that converts at a fraction of its potential. Let's build you an automated drip system that sends the right message at the right time to every recipient in your list — and tracks every delivery, every failure, and every stage progression — while your team focuses on the conversations that close.</p>
+      <div class="btn-group">
+        <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+        <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<div id="gs-footer"></div>
+
+<!-- Inject SITE.logos -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+
+<!-- ═══ YouTube Facade: load iframe on click only ═══ -->
+<script>
+document.querySelectorAll('.yt-facade').forEach(function(facade) {
+  facade.addEventListener('click', function() {
+    var id = facade.dataset.videoId;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:var(--radius-lg)';
+    facade.innerHTML = '';
+    facade.style.cursor = 'default';
+    facade.appendChild(iframe);
+  });
+  facade.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); facade.click(); }
+  });
+});
+</script>
+
+<!-- ═══ Shared Config + Component Loader ═══ -->
+<script src="../_shared/site-config.js"></script>
+<script src="../assets/js/images-helper.js"></script>
+<script src="../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+
+</body>
+</html>

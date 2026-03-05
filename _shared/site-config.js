@@ -89,6 +89,8 @@ logos: {
   fireflies:       favicon('fireflies.ai'),
   leonardo:        favicon('leonardo.com'),
   llama:           favicon('llama.meta.com'),
+  elevenlabs:      'https://ik.imagekit.io/r2zdlyze2o/Logo/Elevenlabs.jpg',
+  gemini:          'https://ik.imagekit.io/r2zdlyze2o/Logo/gemini.png',
 
   // ── Communication ──
   slack:           favicon('slack.com'),
@@ -129,6 +131,9 @@ logos: {
   onedrive:        'https://ik.imagekit.io/r2zdlyze2o/Logo/Onedrive.png',
   excel:           'https://ik.imagekit.io/r2zdlyze2o/Logo/Microsoft_Office_Excel_Logo_512px.png',
   word:            'https://ik.imagekit.io/r2zdlyze2o/Logo/Microsoft_Office_Word_Logo_512px.png',
+  powerApps:       'https://ik.imagekit.io/r2zdlyze2o/Logo/microsoft-power-apps.png',
+  powerAutomate:   'https://ik.imagekit.io/r2zdlyze2o/Logo/microsoft-power-automate.png',
+  sharepoint:      'https://ik.imagekit.io/r2zdlyze2o/Logo/sharepoint.png',
 
   // ── Google ──
   google:          favicon('google.com'),
@@ -136,18 +141,20 @@ logos: {
   googleCalendar:  'https://calendar.google.com/googlecalendar/images/favicon_v2018_256.png',
   googleDocs:      'https://ssl.gstatic.com/docs/documents/images/kix-favicon7.ico',
   googleSlide:     'https://ssl.gstatic.com/docs/presentations/images/favicon5.ico',
-  googleForm:      'https://ssl.gstatic.com/docs/spreadsheets/forms/favicon_qp2.png',
+  googleForms:      'https://ssl.gstatic.com/docs/spreadsheets/forms/favicon_qp2.png',
   googleDrive:     'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png',
   googleMeet:      favicon('meet.google.com'),
   googleMap:       favicon('maps.google.com'),
-  googleAds:       'https://ik.imagekit.io/r2zdlyze2o/Logo/google_ads?updatedAt=1771486358949',
-  googleAppScript: 'https://ik.imagekit.io/r2zdlyze2o/Logo/google-apps-script?updatedAt=1771486359129',
+  googleAds:       'https://ik.imagekit.io/r2zdlyze2o/Logo/google_ads',
+  googleAppScript: 'https://ik.imagekit.io/r2zdlyze2o/Logo/google-apps-script.png',
   googleColab:     'https://colab.research.google.com/img/colab_favicon_256px.png',
   googleMyBusiness:'https://img.utdstc.com/icon/73e/c02/73ec026992430326513a9b8bf092f6199b0174d230158bc8553da7ea8d830d9d:200',
   googleLooker:    'https://play-lh.googleusercontent.com/7m6tWuvazdJQBoMtz4-UuHvl46APqRczwLQ0-Bq7QULjSGcgnljFpCswdvZkc4VTpw=w240-h480-rw',
   googleDataStudio:'https://w7.pngwing.com/pngs/212/149/png-transparent-google-data-studio-hd-logo-thumbnail.png',
   googleVideoIntel:favicon('cloud.google.com'),
   bigquery:        favicon('cloud.google.com/bigquery'),
+  googleSheets:    'https://ssl.gstatic.com/docs/spreadsheets/favicon3.ico',
+  
 
   // ── Social ──
   linkedin:        favicon('linkedin.com'),
@@ -207,6 +214,8 @@ logos: {
   tave:            favicon('tave.com'),
   eventbrite:      favicon('eventbrite.com'),
   questionscout:   favicon('questionscout.com'),
+  screenshotone:   favicon('screenshotone.com'),
+  canva:           favicon('canva.com'),
 
   // ── Email Marketing ──
   mailerlite:      favicon('mailerlite.com'),
@@ -292,6 +301,7 @@ logos: {
   timeline:        favicon('timelines.ai'),
   partial:         favicon('partial.ly'),
   systeme:         favicon('systeme.io'),
+  paypal:         favicon('paypal.com'),
 
   // ── Education / LMS ──
   teachable:       favicon('teachable.com'),
@@ -313,12 +323,12 @@ logos: {
   vector:          favicon('vector.com'),
 
   // ── Special cases (direct icon URLs) ──
-  sheets:          'https://ssl.gstatic.com/docs/spreadsheets/favicon3.ico',
   powerbi:         'https://powerbi.microsoft.com/favicon.ico',
   azure:           'https://portal.azure.com/favicon.ico',
-  quickbooks:      'https://quickbooks.intuit.com/favicon.ico',
+  quickbooks:      'https://ik.imagekit.io/r2zdlyze2o/Logo/quickbooks.png',
   azureSql:        'https://symbols.getvecta.com/stencil_28/61_sql-database-generic.90b41636a8.jpg',
   azureDocIntel:   favicon('azure.microsoft.com'),
+  '360dialog':     favicon('360dialog.com'),
   xml:             'https://cdn-icons-png.flaticon.com/512/136/136526.png',
   email:           'https://illustoon.com/photo/2751.png',
   webhook:         'https://ik.imagekit.io/r2zdlyze2o/Logo/Webhook?updatedAt=1771505144146',
@@ -327,6 +337,8 @@ logos: {
   beehiiv:         favicon('beehiiv.com'),
   broadly:         'https://play-lh.googleusercontent.com/7gyykx7j4VYzEmNz2yZwhMg27n8XCPvmFs4Hdi2ERpKGjaLejftuullEGBflaYQ1mHk',
   json:            favicon('json.org'),
+  dialogue365:     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3G9QVYGjQHpoNE67mT5rLhBsP9ZpYqntt7A&s',
+  zohoBooks:       'https://ik.imagekit.io/r2zdlyze2o/Logo/zoho%20Books.png',
 },
 
   // ─── Stats (update here → updates everywhere) ─

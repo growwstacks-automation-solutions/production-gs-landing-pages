@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/analytics-loader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO Meta ═══ -->
+  <title>YouTube Video Summarizer with Audio — Case Study | GrowwStacks</title>
+  <meta name="description" content="How GrowwStacks built a YouTube Video Summarizer that transcribes videos with OpenAI Whisper, generates concise summaries with ChatGPT, creates audio versions with ElevenLabs, stores in Google Drive, and delivers to Slack — eliminating 95% of video consumption time and delivering 600% ROI.">
+  <link rel="canonical" href="https://go.growwstacks.com/case-studies/youtube-video-summarizer-with-audio/">
+
+  <!-- ═══ Open Graph ═══ -->
+  <meta property="og:title" content="YouTube Video Summarizer with Audio — GrowwStacks Case Study">
+  <meta property="og:description" content="Submit a YouTube URL. Whisper transcribes it, ChatGPT summarises it, ElevenLabs voices it, Slack delivers it. Turn hours of video watching into 5-minute summaries. 600% ROI.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://go.growwstacks.com/case-studies/youtube-video-summarizer-with-audio/">
+  <meta property="og:image" content="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/52.%20AI-Powered%20YouTube%20Video%20Analysis%20&%20Summary%20Automation/Slack%20Team%20Collaboration%20Dashboard.png?updatedAt=1767704094352">
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+
+  <!-- ═══ Google Ads ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+
+  <!-- ═══ Preconnects ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ik.imagekit.io">
+
+  <!-- ═══ Fonts ═══ -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+  <!-- ═══ Stylesheets ═══ -->
+  <link rel="stylesheet" href="../../_shared/global.css">
+  <link rel="stylesheet" href="../../_shared/case-studies.css">
+
+  <!-- ═══ Page Tools ═══ -->
+  <meta name="page-tools" content="elevenlabs,chatgpt,google-drive,make,slack,youtube">
+</head>
+
+<body class="cs-page page-youtube-video-summarizer">
+
+<!-- ═══ NAVBAR ═══ -->
+<div id="gs-navbar"></div>
+
+<main>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO                                        -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-hero">
+    <div class="cs-hero-bg">
+      <div class="cs-hero-bg-shape1"></div>
+      <div class="cs-hero-bg-shape2"></div>
+    </div>
+
+    <div class="container cs-hero-inner">
+
+      <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span aria-hidden="true">/</span>
+        <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+        <span>YouTube Video Summarizer with Audio</span>
+      </nav>
+
+      <div class="cs-hero-tags">
+        <span class="cs-tag">AI Agents</span>
+        <span class="cs-tag">Content &amp; Media</span>
+        <span class="cs-tag">Market Intelligence</span>
+        <span class="cs-tag">Workflow Automation</span>
+      </div>
+
+      <h1>YouTube Video Summarizer with Audio</h1>
+      <p class="cs-hero-sub">A complete video intelligence pipeline built by GrowwStacks that turns any YouTube URL into a team-ready summary in minutes — without anyone watching the video. Submit a URL and <strong>Make.com</strong> downloads the video and extracts the audio, uploading it to Google Drive. <strong>OpenAI Whisper</strong> transcribes the full audio to text with high accuracy across multiple speakers and audio qualities. <strong>ChatGPT</strong> analyses the complete transcript and generates a structured 300–500 word summary extracting key insights, main topics, and actionable takeaways. <strong>ElevenLabs</strong> synthesises a natural-voice audio version of the summary — a 2–5 minute listen — for hands-free consumption during commutes or multitasking. All files are stored in Google Drive and a <strong>Slack</strong> notification is sent to the designated team channel with the text summary and links to the audio file. Teams using this system reduce video consumption time by 95%, eliminate manual transcription entirely, and process 10× more content — delivering 600% ROI.</p>
+
+      <div class="cs-hero-logos">
+        <div class="cs-hero-logo">
+          <img data-logo="chatgpt" alt="ChatGPT" width="20" height="20" loading="lazy">
+          ChatGPT
+        </div>
+        <div class="cs-hero-logo">
+          <img data-logo="elevenlabs" alt="ElevenLabs" width="20" height="20" loading="lazy">
+          ElevenLabs
+        </div>
+        <div id="cs-hero-tools" style="display:contents"></div>
+        <div class="cs-hero-logo">
+          <img data-logo="make" alt="ElevenLabs" width="20" height="20" loading="lazy">
+          ElevenLabs
+        </div>
+        <div id="cs-hero-tools" style="display:contents"></div>
+      </div>
+
+      <div class="process-content">
+        <div class="process-video">
+          <div class="yt-facade" data-video-id="1jVbskWEB9Q" role="button" tabindex="0" aria-label="Play video: YouTube Video Summarizer with Audio Demo" style="border-radius: var(--radius-lg); aspect-ratio: 16/9; width: 100%; position:relative; overflow:hidden; cursor:pointer;">
+            <picture>
+              <source type="image/webp" srcset="https://i.ytimg.com/vi_webp/1jVbskWEB9Q/maxresdefault.webp">
+              <img alt="YouTube Video Summarizer with Audio Demo" loading="lazy" width="480" height="360" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+            </picture>
+            <div class="yt-facade-play" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+              <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2.1 57.5-2.2 56-2.4 46.6-3 34-3 34-3h0S21.4-3 12-2.4C10.4-2.2 7.3-2.1 4.3 1S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-0.6c1.6-0.2 4.7-0.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/><path d="M27 33V14l18 9.5z" fill="#FFF"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- KEY RESULTS                                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-results">
+    <div class="container">
+      <div class="cs-results-grid">
+        <div class="cs-result-item">
+          <div class="cs-result-num">95%</div>
+          <div class="cs-result-label">Reduction in video consumption time — hours of watching to 5-minute summaries</div>
+        </div>
+        <div class="cs-result-item">
+          <div class="cs-result-num">10×</div>
+          <div class="cs-result-label">Increase in video content processing capacity per professional weekly</div>
+        </div>
+        <div class="cs-result-item">
+          <div class="cs-result-num">$35K+</div>
+          <div class="cs-result-label">Annual value from eliminated video watching and transcription time</div>
+        </div>
+        <div class="cs-result-item">
+          <div class="cs-result-num">600%</div>
+          <div class="cs-result-label">ROI — knowledge compounds with every video processed into the team library</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CONTENT + SIDEBAR                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-content">
+    <div class="container">
+      <div class="cs-content-inner">
+
+        <!-- ARTICLE -->
+        <article class="cs-article">
+
+          <!-- SECTION 1: The Problem -->
+          <h2>The Video Content Bottleneck: Why Professionals Watching 20 Hours of YouTube Weekly Are Making a Poor ROI Decision</h2>
+          <p>Video has become a primary medium for industry knowledge — conferences, expert interviews, product deep-dives, competitor analyses, training content, and thought leadership all live predominantly on YouTube. The problem is the consumption model: video is the least time-efficient information format available. Reading a transcript of a one-hour video takes 10–15 minutes. Listening to an audio summary takes 5. Watching the original video takes 60 minutes — and the information yield per minute of attention is significantly lower than a well-structured summary, because video content is padded with introductions, tangents, repetition, and filler that a summary removes.</p>
+          <p><strong>Professionals who are staying current with industry video content are spending 15–20 hours weekly on an activity where 80–90% of the time could be eliminated without meaningful information loss</strong>. The manual transcription alternative compounds the problem rather than solving it — transcribing a one-hour video manually takes 3–4 hours, and the resulting raw transcript still requires manual analysis to extract the key insights. For teams where multiple members need the same video's insights, the duplication multiplier makes the collective time cost even more significant. And the consumption format constraint — video requires a screen, focus, and a quiet environment — means video content can't be consumed productively during the commute, gym session, or ambient work periods that audio naturally fills.</p>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/52.%20AI-Powered%20YouTube%20Video%20Analysis%20&%20Summary%20Automation/Make.com%20Automation%20Workflow%20Builder.png?updatedAt=1767704094189"
+                 alt="Make.com automation workflow showing YouTube URL trigger, video download and audio extraction module, Google Drive upload, OpenAI Whisper transcription, ChatGPT summarisation, ElevenLabs audio synthesis, Google Drive file storage, and Slack notification delivery in sequence"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">Make.com automation workflow — YouTube URL triggers video download, Whisper transcribes the audio, ChatGPT generates the structured summary, ElevenLabs synthesises the audio version, all files are stored in Google Drive, and Slack delivers the summary and file links to the team channel automatically</div>
+          </div>
+
+          <!-- SECTION 2: The Solution -->
+          <h2>Building the Video Intelligence Pipeline: Six AI and Automation Components Working in Sequence</h2>
+          <p>GrowwStacks built a video summarisation system that chains six specialised AI and automation tools into a single Make.com orchestrated pipeline — each handling one step of the conversion from raw YouTube video to team-ready insight package. The architecture is designed to eliminate every manual step while maximising output quality at each stage.</p>
+          <p><strong>OpenAI Whisper</strong> handles transcription with accuracy that manual transcription services struggle to match — handling multiple speakers, varying accents, technical vocabulary, and imperfect audio quality at a fraction of the cost and a tiny fraction of the time. <strong>ChatGPT</strong> receives the complete transcript (not a truncated version) and applies an engineered summarisation prompt to produce a structured summary that identifies the video's main themes, extracts the key insights and actionable takeaways, and organises them for both reading clarity and audio narration. <strong>ElevenLabs</strong> converts the text summary to natural-sounding audio — typically a 2–5 minute listen that can be consumed hands-free. <strong>Google Drive</strong> stores all assets (transcript, text summary, audio file) in an organised structure for future reference and search. <strong>Slack</strong> delivers the complete package to the designated team channel, ensuring everyone with a relevant need accesses the insights without watching the video themselves.</p>
+
+          <!-- INLINE VISUALIZATION: Video Summariser Pipeline -->
+          <div class="cs-visual-flow" aria-label="YouTube Video Summariser pipeline: team submits YouTube URL, Make.com downloads video and extracts audio file uploaded to Google Drive, OpenAI Whisper transcribes audio to accurate full text, ChatGPT analyses complete transcript and generates structured 300-500 word summary with key insights and takeaways, ElevenLabs synthesises natural audio narration of summary, text summary and audio file uploaded to Google Drive, Slack notification sent to team channel with summary preview and file links">
+            <div class="cs-flow-pipeline">
+              <div class="cs-flow-step">
+                <div class="cs-flow-step-icon">🔗</div>
+                <div class="cs-flow-step-title">URL Submitted</div>
+                <div class="cs-flow-step-sub">YouTube video triggers pipeline</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-step cs-flow-active">
+                <div class="cs-flow-step-icon">🎙️</div>
+                <div class="cs-flow-step-title">Whisper Transcribes</div>
+                <div class="cs-flow-step-sub">Full audio-to-text conversion</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-step">
+                <div class="cs-flow-step-icon">📝</div>
+                <div class="cs-flow-step-title">ChatGPT Summarises</div>
+                <div class="cs-flow-step-sub">Key insights extracted</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-step">
+                <div class="cs-flow-step-icon">🔊</div>
+                <div class="cs-flow-step-title">ElevenLabs Voices</div>
+                <div class="cs-flow-step-sub">Audio summary created</div>
+              </div>
+              <div class="cs-flow-connector">→</div>
+              <div class="cs-flow-outcome-wrap">
+                <div class="cs-flow-outcome approved">💬 Slack Notifies Team</div>
+                <div class="cs-flow-outcome review">📁 Drive Stores All Files</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3: How It Works -->
+          <h3>From YouTube URL to Team-Delivered Summary: The Complete Seven-Step Automated Pipeline</h3>
+          <p>The system processes every submitted YouTube URL through seven automated steps — producing a complete intelligence package including transcript, text summary, and audio file, all delivered to the team via Slack before anyone has watched a minute of the original video. Here's the complete flow:</p>
+          <ol>
+            <li><strong>YouTube URL submission and video acquisition:</strong> Team members submit YouTube video URLs through a designated interface — typically a dedicated Slack command, a Google Form, or a simple web form connected to the Make.com webhook. The Make.com scenario receives the URL, calls a YouTube video download module to retrieve the video file, and extracts the audio track from the video container. The audio file is immediately uploaded to a designated Google Drive folder — organised by date and video title — creating the first asset in the knowledge repository. The video download step is configured to handle various YouTube video formats and qualities, selecting the audio-optimal extraction for Whisper transcription accuracy.</li>
+            <li><strong>OpenAI Whisper transcription:</strong> The Google Drive audio file is passed to the OpenAI Whisper API — OpenAI's dedicated speech-to-text model optimised for high accuracy across a wide range of audio conditions. Whisper processes the audio and returns a complete text transcript including punctuation, paragraph breaks, and speaker differentiation where detectable. The transcription handles multiple accents, technical vocabulary, varying speaking speeds, and audio quality levels that would cause less sophisticated transcription services to produce inaccurate output. The full transcript — which may be several thousand words for a lengthy video — is stored in Google Drive as a text file and passed to the summarisation step.</li>
+            <li><strong>ChatGPT intelligent summarisation:</strong> The complete Whisper transcript is passed to ChatGPT with a carefully engineered summarisation prompt. The prompt instructs ChatGPT to analyse the full transcript and produce a structured summary that: identifies and names the video's main topics and themes, extracts the most significant insights and key points, distils actionable takeaways or recommendations made in the video, notes any specific data points, statistics, or named sources referenced, and organises all of this into a structured format with a brief introduction, main-point sections, and a concise conclusion. The target length — 300–500 words — is calibrated to contain enough detail for informed decisions without requiring the same time investment as reading a full transcript or watching the video.</li>
+            <li><strong>Summary optimisation for audio narration:</strong> The ChatGPT summary output is reviewed by the workflow for audio-readiness — ensuring the text flows naturally when read aloud, without markdown formatting characters, excessive punctuation, or structure that renders poorly as audio. If the summary includes bullet lists or headers that would sound odd in a spoken narration, a reformatting step converts them to flowing prose appropriate for ElevenLabs synthesis. This produces a summary that reads well both as text on screen and as a spoken audio file — serving both consumption formats without requiring two separate generation steps.</li>
+            <li><strong>ElevenLabs audio summary synthesis:</strong> The audio-optimised summary text is sent to the ElevenLabs text-to-speech API, which synthesises a natural-sounding voice narration of the summary. The voice is configured during implementation — selecting from ElevenLabs' library of voices to match the team's preference for tone, gender, and accent, or cloning a specific voice if brand consistency is a priority. ElevenLabs produces an audio file (MP3 format) that is typically 2–5 minutes long for a 300–500 word summary — a listen that fits comfortably during a commute segment, a coffee break, or as background during focused work. The audio file quality is consistently natural, at a level that passes easily for a professionally recorded podcast summary.</li>
+            <li><strong>Google Drive organised storage:</strong> The text summary and audio file join the original transcript in the Google Drive folder structure — all three files organised under a folder named by video title and processing date. This creates a searchable, permanent knowledge repository: the original transcript for anyone who wants the full detail, the text summary for quick reference, and the audio file for on-demand listening. As videos accumulate, the Drive library becomes a searchable institutional knowledge base — enabling team members to search for past video summaries by topic rather than re-processing videos that have already been analysed.</li>
+            <li><strong>Slack team notification and delivery:</strong> Make.com sends a Slack message to the designated team channel — formatted with the video title, a preview of the text summary (first 150–200 words), and direct links to the full text summary in Google Drive and the audio file download. Team members can read the summary preview directly in Slack, click through to the full text for more detail, or download the audio for hands-free listening. The Slack notification ensures immediate team awareness — no one needs to check a separate tool or be manually notified that a new summary is available. For teams with high video processing volumes, the Slack notifications can be routed to topic-specific channels (e.g., #competitor-intelligence, #industry-research, #training-content) based on the URL's category tag at submission.</li>
+          </ol>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/52.%20AI-Powered%20YouTube%20Video%20Analysis%20&%20Summary%20Automation/Untitled%20design%20(31).png?updatedAt=1768982746881"
+                 alt="OpenAI Whisper transcription output showing accurate full-text conversion of YouTube video audio including multiple speaker differentiation, technical vocabulary, and complete content capture from a lengthy video"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">OpenAI Whisper transcription — the complete, accurate full-text conversion of the YouTube video audio, handling multiple speakers, technical vocabulary, and varied audio quality, providing the comprehensive transcript foundation that makes ChatGPT summarisation genuinely informative rather than superficial</div>
+          </div>
+
+          <div class="cs-highlight">
+            <p>💡 <strong>Why full-transcript summarisation produces significantly better output than YouTube's built-in captions:</strong> Many summarisation tools attempt to use YouTube's auto-generated captions as the transcript source. YouTube captions are optimised for real-time display — they're often incomplete, miss technical terms, lack punctuation, and are occasionally inaccurate in ways that corrupt the meaning of key statements. Whisper processes the actual audio file with a dedicated speech-to-text model, producing a complete, punctuated, accurate transcript that captures everything said — including off-the-cuff insights, Q&A exchanges, and technical specifics that YouTube's caption system misses. When ChatGPT summarises from a Whisper transcript versus a YouTube caption, the quality difference is immediately apparent: the Whisper-based summary captures nuance, specific data points, and accurate terminology that caption-based summaries lose. This is the technical reason the system uses Whisper rather than the simpler caption extraction approach.</p>
+          </div>
+
+          <!-- SECTION 4: Key Capabilities -->
+          <h2>What This System Does That Manual Video Review Processes Can't</h2>
+          <div class="cs-features">
+            <div class="cs-feature">
+              <div class="cs-feature-icon">🎙️</div>
+              <h4>Whisper Transcription Accuracy</h4>
+              <p>OpenAI Whisper converts video audio to accurate, complete text — handling multiple speakers, varying accents, technical vocabulary, and audio quality levels that challenge simpler transcription services. Eliminates 100% of manual transcription effort and provides the high-quality text foundation that makes ChatGPT summarisation genuinely informative, capturing everything said including Q&A exchanges and technical specifics.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">📝</div>
+              <h4>ChatGPT Intelligent Summarisation</h4>
+              <p>Analyses the complete transcript — not a truncated version — extracting key insights, main topics, and actionable takeaways into a structured 300–500 word summary. Condenses hour-long videos into a focused 5-minute read that contains the content's most valuable information, enabling informed decisions without passive watching and reducing consumption time by 95% without meaningful information loss.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">🔊</div>
+              <h4>ElevenLabs Audio Creation</h4>
+              <p>Synthesises natural-voice audio narration of the text summary — producing a 2–5 minute professional-quality listen for hands-free consumption during commutes, exercise, or ambient work. Provides 100% consumption format flexibility versus text-only summaries that require screen-and-focus time, enabling video insights to be absorbed during the time periods that reading cannot reach.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">💬</div>
+              <h4>Slack Team Distribution</h4>
+              <p>Automatically delivers summaries and audio file links to designated Slack channels — ensuring immediate team awareness without members needing to check a separate system or be manually notified. Eliminates the duplication of multiple team members watching the same video independently, centralising insights once for organisation-wide benefit and preventing the collective time waste of parallel video consumption.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">📊</div>
+              <h4>Google Drive Knowledge Repository</h4>
+              <p>Maintains a structured, searchable library of transcripts, text summaries, and audio files — building an organisational knowledge base from video content that grows with every processed URL. Preserves insights permanently even when original videos are deleted or made private, and enables team members to search past video intelligence by topic rather than re-processing already-analysed content.</p>
+            </div>
+            <div class="cs-feature">
+              <div class="cs-feature-icon">⚡</div>
+              <h4>Complete Automation Pipeline</h4>
+              <p>From YouTube URL submission to Slack delivery executes without any manual transcription, note-taking, analysis, or file management work. Transforms video consumption from hours of passive watching to minutes of focused insight review — enabling professionals to process 10× more content in the same time and converting the video format's primary weakness (time inefficiency) into a manageable information source.</p>
+            </div>
+          </div>
+
+          <!-- SECTION 5: Screenshots -->
+          <h2>The System in Action</h2>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/52.%20AI-Powered%20YouTube%20Video%20Analysis%20&%20Summary%20Automation/ChatGPT%20summarization.png?updatedAt=1767704093642"
+                 alt="ChatGPT summarisation output showing structured video summary with introduction, key topics identified, main insights extracted, actionable takeaways, and specific data points from the transcript — condensed from a full-length video into a focused 400-word summary"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">ChatGPT summarisation — the structured output from the complete Whisper transcript: main topics identified, key insights extracted, actionable takeaways distilled, and specific data points captured — a focused 300–500 word summary that contains the video's most valuable information without requiring anyone to watch</div>
+          </div>
+
+          <div class="cs-img-block">
+            <img src="https://ik.imagekit.io/ui4mpbzoy/Ai%20store%20Screenshots/52.%20AI-Powered%20YouTube%20Video%20Analysis%20&%20Summary%20Automation/Slack%20Team%20Collaboration%20Dashboard.png?updatedAt=1767704094352"
+                 alt="Slack team notification showing video summary delivery with video title, text summary preview, and links to full text summary in Google Drive and ElevenLabs audio file download — immediately accessible to all team members in the designated channel"
+                 loading="lazy" width="800" height="450">
+            <div class="cs-img-caption">Slack team notification — the automated delivery to the designated channel with video title, summary preview, and direct links to the full text summary and audio file in Google Drive, making the complete insight package immediately accessible to every team member without them watching the video</div>
+          </div>
+
+          <!-- SECTION 6: Before vs After -->
+          <h2>Before vs. After: What Changes When Video Content Processes Itself</h2>
+          <p><strong>Before:</strong> Professionals and content teams spent 15–20 hours weekly watching YouTube videos to stay current with industry knowledge, competitor developments, training content, and research — with manual note-taking consuming additional attention and preventing full comprehension. Multiple team members watched the same videos independently, multiplying the collective time cost. Video content was desktop-constrained, inaccessible during commutes or mobile-only periods. Extracting insights for team sharing required additional manual effort to write up notes. And videos that were watched once rarely had their insights preserved in any searchable form — the information was consumed and largely lost without a systematic capture process.</p>
+          <p><strong>After:</strong> A team member submits a YouTube URL to the Slack command and receives a complete intelligence package — Whisper transcript, ChatGPT text summary, and ElevenLabs audio file — delivered back to the Slack channel before anyone has opened the video. The one person who submitted the URL captures the insights for the entire team. The audio summary plays during the morning commute. The text summary is referenced in the team meeting. The transcript is stored in Google Drive for anyone who wants the full detail. The organisation accumulates a searchable video intelligence library that grows with every submitted URL. And the 15–20 weekly hours previously spent watching videos are redirected to strategic work — with better, more comprehensive knowledge coverage than passive watching produced.</p>
+
+          <!-- SECTION 7: Implementation Process -->
+          <h2>Implementation: Live in 8 Weeks</h2>
+          <ol>
+            <li><strong>Platform integrations and Google Drive setup:</strong> All six service accounts are connected to Make.com: YouTube download capability via the appropriate module or API, Google Drive with the organised folder structure for video assets, OpenAI API for Whisper transcription and ChatGPT summarisation, ElevenLabs for text-to-speech synthesis, and Slack workspace with channel posting permissions. Google Drive folders are structured with a logical naming convention — by date, video title, or category tag depending on the team's organisation preference. All API credentials are tested with sample requests before the full workflow is assembled.</li>
+            <li><strong>Transcription configuration and quality testing:</strong> Whisper transcription settings are configured for optimal accuracy on the video types the team most commonly processes — conference talks (single speaker, professional audio), interviews (multiple speakers, varying quality), and online tutorials (technical vocabulary). Transcription quality is tested across a representative sample of 10–15 videos from the team's target content categories, with accuracy assessed against manually spot-checked sections. Error handling is implemented for audio quality edge cases — very low quality audio, heavy background noise, or non-English content — with appropriate fallback behaviour.</li>
+            <li><strong>ChatGPT summarisation prompt engineering:</strong> The summarisation prompt is the highest-quality-impact configuration in the implementation. The prompt is engineered to produce the specific summary structure the team finds most valuable — which varies by use case. Research teams typically want main claims, supporting evidence, and methodological notes. Marketing teams want competitive intelligence highlights and market trend observations. Executive briefing prompts emphasise strategic implications and decision-relevant insights. The prompt is tested across the full range of video categories the team processes and refined until the summary quality consistently meets the team's standard for informing decisions without requiring additional research.</li>
+            <li><strong>ElevenLabs voice configuration:</strong> The ElevenLabs voice is selected from the available voice library based on team preference — typically a clear, professional, conversational voice appropriate for informational content. Voice settings (stability, clarity, style) are adjusted for optimal naturalness with the summary text style. Audio file format and quality settings are configured, and the complete audio output is tested across the summarisation prompt's output range for consistent, natural-sounding delivery. Audio file accessibility in Google Drive is confirmed for both desktop and mobile download.</li>
+            <li><strong>Complete workflow assembly, testing, and deployment:</strong> The full Make.com scenario is assembled connecting all components in the correct sequence with appropriate data passing between each step. The URL submission interface — Slack command, Google Form, or webhook — is configured and tested. End-to-end testing is run with 10–15 real YouTube videos spanning the team's content categories, validating transcript accuracy, summary quality, audio naturalness, Google Drive organisation, and Slack notification formatting. The production scenario is deployed with monitoring for processing success rates and error alerts. The team is briefed on the URL submission process, how to access summaries, and how to use the Google Drive knowledge repository for historical searches.</li>
+          </ol>
+
+          <!-- SECTION 8: Who This Is For -->
+          <h2>The Right Fit — and When It Isn't</h2>
+          <p>This solution delivers maximum value for <strong>executives reviewing industry content, content teams researching topics, marketing professionals analysing competitor videos, researchers studying subject matter, sales teams learning from training content, and any professional or team that regularly needs insights from YouTube videos but cannot justify the time investment of full-length viewing</strong>. The system is particularly powerful for teams where multiple members need the same information — processing a video once for the entire team rather than having each person watch independently delivers the time savings as a multiplied benefit.</p>
+          <p>Two important calibration notes: the quality of the ChatGPT summary is directly proportional to the quality of the Whisper transcript, which is proportional to the audio quality of the source video. Professionally recorded conference talks, interviews, and educational content produce excellent transcription and summary quality. Videos with heavy background music, very poor audio quality, or primarily visual content (screen recordings without narration, animation with text overlays) produce lower transcript accuracy and consequently less comprehensive summaries — this is assessed during the testing phase with the team's actual content categories. Additionally, the system is designed for <strong>publicly accessible YouTube videos</strong>; private videos, age-restricted content, and videos with geographic access restrictions may not be downloadable depending on the access rights of the configured YouTube account and the video's access settings.</p>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside class="cs-sidebar">
+
+          <div class="cs-sidebar-card">
+            <h4>Project Details</h4>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value">All Industries</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value">AI Agents</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value">Make.com + OpenAI + ElevenLabs</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value">8 weeks</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value">Moderate</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value">⭐ 4.8 / 5</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent)">600%</span></div>
+          </div>
+
+          <div class="cs-sidebar-card">
+            <h4>Tools &amp; Integrations</h4>
+            <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+              <span class="cs-tool-tag">
+                <img src="" data-logo="chatgpt" alt="" width="14" height="14" loading="lazy">
+                OpenAI Whisper
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="chatgpt" alt="" width="14" height="14" loading="lazy">
+                ChatGPT
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="elevenlabs" alt="" width="14" height="14" loading="lazy">
+                ElevenLabs
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="googleDrive" alt="" width="14" height="14" loading="lazy">
+                Google Drive
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="slack" alt="" width="14" height="14" loading="lazy">
+                Slack
+              </span>
+              <span class="cs-tool-tag">
+                <img src="" data-logo="make" alt="" width="14" height="14" loading="lazy">
+                Make.com
+              </span>
+            </div>
+          </div>
+
+          <div class="cs-sidebar-card">
+            <h4>Key Metrics</h4>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Time saved</span><span class="cs-sidebar-value">−95%</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Content capacity</span><span class="cs-sidebar-value">10×</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Transcription effort</span><span class="cs-sidebar-value">−100%</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Team duplication</span><span class="cs-sidebar-value">−85%</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Annual value</span><span class="cs-sidebar-value">$35K+</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Decision speed</span><span class="cs-sidebar-value">+75%</span></div>
+          </div>
+
+          <div class="cs-sidebar-cta">
+            <h4>Ready to Turn Hours of YouTube Watching Into 5-Minute Summaries Your Whole Team Can Read or Listen To?</h4>
+            <p>Free discovery call — we'll review your team's video consumption patterns, content categories, and Slack setup to show you exactly what the pipeline delivers for your specific use case.</p>
+            <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FAQ                                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-faq" id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system process non-YouTube video sources — Loom recordings, Vimeo, or internal meeting recordings?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — while the system is designed and marketed around YouTube as the primary use case, the Whisper transcription and downstream summarisation steps work with any audio or video file, and the input layer can be adapted to accept URLs or file uploads from other sources</strong>. The YouTube download step is the most platform-specific component; replacing it with a different source changes the input mechanism but leaves all downstream processing identical.</p>
+            <p>Common non-YouTube extensions include: Loom recordings (via Loom's share URL or webhook), Zoom and Google Meet recordings (from Google Drive or storage links), Vimeo videos (where access permissions allow download), podcast audio files (MP3 direct URL or RSS feed), and internal video files uploaded directly to Google Drive. For teams whose primary use case is internal meeting recordings rather than YouTube content, the system is configured with a Google Drive folder watch trigger — any new video file added to a designated "Meetings to Summarise" folder automatically triggers the full transcription and summarisation pipeline. We confirm the input sources during the discovery call and configure the appropriate trigger for the team's primary video format.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How long does the full pipeline take to process a one-hour video?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>A one-hour YouTube video typically processes end-to-end in 8–15 minutes from URL submission to Slack notification — the exact time depends on video file size, server load, and the length of the Whisper transcription queue</strong>. The breakdown is approximately: video download and audio extraction (2–4 minutes depending on video quality and length), Whisper transcription (3–6 minutes for a one-hour audio file), ChatGPT summarisation (30–90 seconds), ElevenLabs audio synthesis (30–60 seconds for a 300–500 word summary), and Google Drive upload plus Slack notification (under 30 seconds).</p>
+            <p>For shorter videos — 15–30 minutes, which is a common conference talk or tutorial length — the total processing time is typically 4–8 minutes. For very long videos (2–3 hours), the Whisper transcription step may take 10–15 minutes, putting total processing at 15–25 minutes. In all cases, the team has the complete summary delivered to Slack within a small fraction of the original video's running time — and the processing happens in the background without requiring anyone to wait or monitor progress. For teams that submit multiple videos simultaneously, Make.com runs the pipeline for each URL concurrently up to the configured execution limit, with processing starting immediately for each submission.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can team members search the historical video summary library — and how is it organised in Google Drive?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the Google Drive library is organised for both browsing and full-text search, and the text summary files are indexed by Google Drive's search function enabling keyword search across all past summaries</strong>. The folder structure is configured during implementation based on the team's organisation preference — the most common approaches are chronological organisation (folders by month/year), topic-based organisation (separate folders per content category submitted at URL entry), or source-based organisation (YouTube, Loom, Meetings, etc.).</p>
+            <p>The most powerful search capability comes from Google Drive's full-text search — which indexes the content of Google Docs and text files, meaning a team member searching for "LTV reduction" or "GDPR compliance" in Google Drive will surface all past summaries where those terms appeared in the summarised content, even if they can't remember which video discussed it. For teams that want a more structured knowledge base interface, the text summaries can alternatively be stored in Notion, Confluence, or a similar team knowledge platform — with Make.com writing the summary text directly to a new Notion page or Confluence article via API, creating a searchable wiki of video intelligence rather than a file folder structure. We scope the knowledge base destination based on the team's existing toolstack during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the ElevenLabs audio summary use our own branded voice rather than a generic one?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — ElevenLabs offers voice cloning capability that enables the audio summaries to be synthesised in a specific person's voice, including an executive's voice for internal briefings or a brand's established voice talent for externally distributed content</strong>. ElevenLabs' voice cloning requires a short audio sample of the target voice (typically 1–3 minutes of clean audio), which it uses to create a cloned voice model that can be used for the text-to-speech synthesis.</p>
+            <p>Voice cloning is most commonly used in two deployment contexts: internal executive briefings, where the CEO or department head's voice being used for the summaries creates a more engaging listening experience for the team; and externally distributed content, where a brand has established voice talent for podcasts or video content and wants audio summaries to maintain that consistent voice. For teams without specific voice requirements, ElevenLabs' standard voice library includes a wide range of natural-sounding professional voices suitable for informational content. Voice selection is finalised during the implementation phase by having the team listen to candidate voices from the library with a sample summary text and confirming their preference before the workflow is deployed to production.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system also generate a timestamped outline of the video in addition to the summary?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — a timestamped outline is a valuable extension that many research and content teams request, and it can be generated as an additional ChatGPT output step within the same pipeline</strong>. The timestamped outline uses the Whisper transcription output (which includes word-level or segment-level timestamps depending on the Whisper configuration) to identify when major topic shifts occur in the video, and generates a structured outline showing each major topic with its approximate start timestamp.</p>
+            <p>The practical value of the timestamped outline is different from the summary: the summary provides a distilled understanding of the video's full content, while the outline provides a navigation tool for anyone who wants to watch specific sections of the original video. A typical outline for a one-hour video might identify 6–10 major topics or sections, each with a timestamp that links directly to that point in the YouTube video URL (YouTube supports deep-linking to specific timestamps via the &t= parameter). The outline is included in the Slack notification alongside the summary, giving team members the option to read the full summary or jump directly to a specific section of the original video if they want the unedited detail on one particular topic. This extension adds minimal processing time (one additional ChatGPT API call) and is included in the standard implementation for clients who request it.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 600% ROI calculated — and what does the value model look like for different team sizes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 600% ROI reflects the value of professional time reclaimed from passive video watching — calculated at the effective hourly rate of the team members whose time is replaced by automated processing — validated across multiple knowledge-worker team deployments</strong>.</p>
+            <p>The individual value model: a professional spending 15 hours weekly watching industry videos at $50/hour effective rate (typical for a mid-level marketing or content professional) recovers $39,000 annually in productive capacity by processing the same content via the summarisation pipeline in under 5 hours weekly. For a senior professional at $80/hour, the annual recovery exceeds $62,000. The team multiplier is the system's most significant value driver: for a 5-person team where 3 members are currently watching some of the same videos independently, the deduplication benefit alone (processing each video once rather than 3× independently) produces a further 2–3× multiplier on the individual savings. For content teams processing 20+ videos weekly — common in marketing, research, and competitive intelligence functions — the aggregate value well exceeds the $35K annual figure cited for individual professionals. The implementation cost recovers within 4–6 weeks for most team configurations. We model the specific ROI using the team's actual video consumption hours, team size, and effective hourly rates during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BOTTOM CTA                                  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="cs-bottom-cta">
+    <div class="container" style="position:relative;z-index:2">
+      <h2>Stop Spending 20 Hours a Week Watching Videos When 5 Minutes of AI Summaries Delivers the Same Intelligence</h2>
+      <p>Every hour your team spends passively watching YouTube is an hour of strategic work not done. Let's build a pipeline that transcribes every video, extracts every key insight, voices it for your commute, and delivers it to your Slack — so your team stays at the cutting edge of their field without sacrificing the time that actually moves the business forward.</p>
+      <div class="btn-group">
+        <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+        <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<div id="gs-footer"></div>
+
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+
+<!-- ═══ Shared Config + Component Loader ═══ -->
+<script src="../_shared/site-config.js"></script>
+<script src="../assets/js/images-helper.js"></script>
+<script src="../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+
+</body>
+</html>
