@@ -20,7 +20,7 @@ const SITE = {
   legalName:  'M TEC Software & Business Automation Pvt. Ltd.',
 
   // ─── URLs ─────────────────────────────────
-  domain: 'https://go.growwstacks.com',
+  domain: 'https://growwstacks.com',
 
   // ─── Contact ──────────────────────────────
   phone:    '+91-920-115-2256',

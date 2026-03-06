@@ -268,7 +268,7 @@ var pageSchemas = {
       'dateModified': '2026-02-19',
       'mainEntityOfPage': {
         '@type': 'WebPage',
-        '@id': 'https://go.growwstacks.com/case-studies/ai-finance-loan-automation/'
+        '@id': 'https://growwstacks.com/case-studies/ai-finance-loan-automation/'
       }
     },
     breadcrumb: {
@@ -279,13 +279,13 @@ var pageSchemas = {
           '@type': 'ListItem',
           'position': 1,
           'name': 'Home',
-          'item': 'https://go.growwstacks.com/'
+          'item': 'https://growwstacks.com/'
         },
         {
           '@type': 'ListItem',
           'position': 2,
           'name': 'Case Studies',
-          'item': 'https://go.growwstacks.com/case-studies/'
+          'item': 'https://growwstacks.com/case-studies/'
         },
         {
           '@type': 'ListItem',
@@ -373,7 +373,7 @@ pageSchemas['smart-lead-qualification-ai'] = {
     'dateModified': '2026-02-19',
     'mainEntityOfPage': {
       '@type': 'WebPage',
-      '@id': 'https://go.growwstacks.com/case-studies/smart-lead-qualification-ai/'
+      '@id': 'https://growwstacks.com/case-studies/smart-lead-qualification-ai/'
     }
   },
   breadcrumb: {
@@ -384,13 +384,13 @@ pageSchemas['smart-lead-qualification-ai'] = {
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://go.growwstacks.com/'
+        'item': 'https://growwstacks.com/'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Case Studies',
-        'item': 'https://go.growwstacks.com/case-studies/'
+        'item': 'https://growwstacks.com/case-studies/'
       },
       {
         '@type': 'ListItem',
@@ -462,7 +462,7 @@ pageSchemas['case-studies-hub'] = {
     '@type': 'CollectionPage',
     'name': 'Case Studies — AI & Automation Success Stories',
     'description': 'Browse 50+ real automation case studies from GrowwStacks. See how businesses saved $50K–$400K+ annually with Make.com, AI agents, voice AI, and workflow automation.',
-    'url': 'https://go.growwstacks.com/case-studies/',
+    'url': 'https://growwstacks.com/case-studies/',
     'publisher': {
       '@type': 'Organization',
       'name': 'GrowwStacks',
@@ -478,7 +478,7 @@ pageSchemas['case-studies-hub'] = {
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://go.growwstacks.com/'
+        'item': 'https://growwstacks.com/'
       },
       {
         '@type': 'ListItem',
