@@ -199,7 +199,7 @@ logos: {
   trello:          favicon('trello.com'),
   todoist:         favicon('todoist.com'),
   loom:            favicon('loom.com'),
-  docusign:        favicon('docusign.com'),
+  docusign:        "https://ik.imagekit.io/r2zdlyze2o/Logo/docusign.webp",
   pandadoc:        favicon('pandadoc.com'),
   typeform:        favicon('typeform.com'),
   jotform:         favicon('jotform.com'),
