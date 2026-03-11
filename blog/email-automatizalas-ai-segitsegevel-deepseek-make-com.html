@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <title>
+      How to Connect Gmail with Make.com & Automate Email Campaigns in 6 Minutes
+      | GrowwStacks Blog
+    </title>
+    <meta
+      name="description"
+      content="Learn how to connect your free Gmail account to Make.com without Gmail Workspace. Automate email campaigns in minutes with this step-by-step guide."
+    />
+    <link
+      rel="canonical"
+      href="https://growwstacks.com/blog/how-to-connect-gmail-with-make-com-automate-email-campaigns/"
+    />
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="How to Connect Gmail with Make.com & Automate Email Campaigns in 6 Minutes"
+    />
+    <meta
+      property="og:description"
+      content="Step-by-step guide to connect free Gmail accounts with Make.com for email automation without Gmail Workspace requirements."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://growwstacks.com/blog/how-to-connect-gmail-with-make-com-automate-email-campaigns/"
+    />
+    <meta
+      property="og:image"
+      content="https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg"
+    />
+    <meta property="og:site_name" content="GrowwStacks" />
+    <meta property="article:published_time" content="2024-03-15" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Connect Gmail to Make.com in 6 Minutes (No Workspace Needed)"
+    />
+    <meta
+      name="twitter:description"
+      content="Automate email campaigns with your free Gmail account using this Make.com integration guide."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"
+    />
+    <!-- PRECONNECT: EXACTLY 3 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <!-- Non-render-blocking fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <!-- Year injection script -->
+    <script>
+      (function () {
+        var cy = new Date().getFullYear(),
+          ny = cy + 1;
+        function sy() {
+          document
+            .querySelectorAll('[data-year="current"]')
+            .forEach(function (e) {
+              e.textContent = cy;
+            });
+          document.querySelectorAll('[data-year="next"]').forEach(function (e) {
+            e.textContent = ny;
+          });
+          document
+            .querySelectorAll('[data-year="current-next"]')
+            .forEach(function (e) {
+              e.textContent = cy + "–" + ny;
+            });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", sy);
+        } else {
+          sy();
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="../../_shared/global.css" />
+    <style>
+      :root {
+        --cs-accent: #0369a1;
+        --cs-accent-light: #0ea5e9;
+        --cs-accent-pale: #f0f9ff;
+        --cs-gradient: linear-gradient(
+          135deg,
+          #f0f9ff 0%,
+          #e0f2fe 40%,
+          #bae6fd 100%
+        );
+      }
+      .blog-hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .blog-hero-img {
+        border-radius: 16px;
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+        border: 1px solid #e2e8f0;
+        overflow: hidden;
+        position: relative;
+        min-height: 326px;
+      }
+      .blog-hero-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .blog-hero-video-btn {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.35);
+        cursor: pointer;
+        transition: background 0.2s;
+        text-decoration: none;
+      }
+      .blog-hero-video-btn:hover {
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .blog-hero-video-btn svg {
+        width: 64px;
+        height: 64px;
+        fill: #fff;
+        opacity: 0.92;
+      }
+      .blog-meta-bar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #475569;
+      }
+      .blog-meta-bar time {
+        font-weight: 600;
+        color: #334155;
+      }
+      .blog-reading-time {
+        background: var(--cs-accent);
+        color: #fff;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 12px;
+      }
+      .blog-category-tag {
+        background: #e2e8f0;
+        color: #1e293b;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .cs-tag {
+        background: var(--cs-accent);
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        display: inline-block;
+      }
+      .blog-toc-wrapper {
+        background: #fff;
+        padding: 32px 0 0;
+      }
+      .blog-toc-inner {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .blog-toc {
+        background: var(--cs-accent-pale);
+        border-left: 4px solid var(--cs-accent);
+        border-radius: 0 12px 12px 0;
+        padding: 20px 24px;
+      }
+      .blog-toc-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--cs-accent);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin: 0 0 12px;
+      }
+      .blog-toc ol {
+        margin: 0;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        list-style: decimal;
+      }
+      .blog-toc ol li a {
+        color: #1e293b;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+      }
+      .blog-toc ol li a:hover {
+        color: var(--cs-accent);
+        text-decoration: underline;
+      }
+      .blog-section {
+        padding: 52px 0;
+      }
+      .blog-section--white {
+        background: #fff;
+      }
+      .blog-section--tinted {
+        background: var(--cs-accent-pale);
+      }
+      .blog-section-inner {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .blog-section h2 {
+        font-family: "Bricolage Grotesque", sans-serif;
+        font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.07);
+      }
+      .blog-section h3 {
+        font-size: clamp(1.05rem, 2vw, 1.2rem);
+        font-weight: 700;
+        color: #1e293b;
+        margin: 28px 0 12px;
+      }
+      .blog-section p {
+        font-size: 16px;
+        line-height: 1.82;
+        color: #334155;
+        margin-bottom: 16px;
+      }
+      .blog-section ul,
+      .blog-section ol {
+        padding-left: 24px;
+        color: #334155;
+        font-size: 16px;
+        line-height: 1.82;
+        margin-bottom: 16px;
+      }
+      .blog-section li {
+        margin-bottom: 6px;
+      }
+      .cs-highlight {
+        background: var(--cs-accent-pale);
+        border-left: 4px solid var(--cs-accent);
+        border-radius: 0 8px 8px 0;
+        padding: 16px 20px;
+        margin: 24px 0;
+      }
+      .blog-section--tinted .cs-highlight {
+        background: #fff;
+      }
+      .cs-highlight p {
+        margin: 0;
+        color: #1e293b;
+        font-size: 15px;
+        line-height: 1.75;
+      }
+      .cs-img-block {
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 24px 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e2e8f0;
+      }
+      .cs-img-block img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .cs-img-caption {
+        font-size: 13px;
+        color: #475569;
+        padding: 10px 16px;
+        background: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        text-align: center;
+      }
+      .blog-yt-embed {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        margin: 32px 0;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+      .blog-yt-facade {
+        position: absolute;
+        inset: 0;
+        cursor: pointer;
+        background: #000;
+      }
+      .blog-yt-facade img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.85;
+        display: block;
+      }
+      .blog-yt-facade-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 72px;
+        height: 72px;
+        background: rgba(220, 38, 38, 0.92);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+      .blog-yt-facade-btn:hover {
+        background: #dc2626;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      .blog-yt-facade-btn svg {
+        width: 32px;
+        height: 32px;
+        fill: #fff;
+        margin-left: 4px;
+      }
+      @media (max-width: 768px) {
+        .blog-hero-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .blog-hero-img {
+          min-height: 200px;
+        }
+        .blog-section {
+          padding: 32px 0;
+        }
+      }
+    </style>
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Connect Gmail with Make.com & Automate Email Campaigns in 6 Minutes",
+        "description": "Learn how to connect your free Gmail account to Make.com without Gmail Workspace. Automate email campaigns in minutes with this step-by-step guide.",
+        "image": "https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg",
+        "datePublished": "2024-03-15",
+        "dateModified": "2024-03-15",
+        "author": {
+          "@type": "Organization",
+          "name": "GrowwStacks",
+          "url": "https://growwstacks.com"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "GrowwStacks",
+          "url": "https://growwstacks.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://growwstacks.com/blog/how-to-connect-gmail-with-make-com-automate-email-campaigns/"
+        }
+      }
+    </script>
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Can I connect my free Gmail account to Make.com?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you can connect a standard free Gmail account (@gmail.com) to Make.com without needing a paid Gmail Workspace subscription. The process requires setting up a Google Cloud project and enabling the Gmail API, which we cover step-by-step in this guide."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the key steps to connect Gmail with Make.com?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The key steps are: 1) Create a new project in Google Cloud Console, 2) Enable the Gmail API, 3) Configure the OAuth consent screen with your email address, 4) Create OAuth client credentials, and 5) Add the credentials to Make.com. Each step takes about 1-2 minutes to complete."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do I need to add my email to the OAuth consent screen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Adding your email to the OAuth consent screen is crucial because this is a restricted project. Google requires you to explicitly authorize which email accounts can access the API through your project. Without this step, the connection will fail when Make.com tries to authenticate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What URLs need to be added in the OAuth client setup?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You need to add two specific URLs in the Authorized Redirect URIs field when creating OAuth credentials: https://integromat.com and https://make.com. These URLs allow Make.com to properly authenticate with your Gmail account through the Google OAuth flow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use this connection for more than just sending emails?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Once connected, you can use all Gmail modules in Make.com including reading emails, searching your inbox, managing labels, and more. This opens up automation possibilities like auto-responding to customer inquiries or organizing incoming messages."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this connection method secure for my Gmail account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, this method uses Google's standard OAuth 2.0 authentication, which is secure. Make.com only gets access to the specific permissions you approve during setup. You can revoke access at any time through your Google account security settings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if I get stuck during the setup process?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Common issues include missing the OAuth consent screen configuration or incorrect redirect URLs. Double-check these steps first. The video tutorial at 3:45 shows exactly where these settings need to be configured in the Google Cloud Console."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can GrowwStacks set this up for my business?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our automation experts at GrowwStacks can connect your Gmail to Make.com and build complete email automation workflows tailored to your business needs. We handle the technical setup so you can focus on your campaigns. Book a free consultation to discuss your specific requirements."
+            }
+          }
+        ]
+      }
+    </script>
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://growwstacks.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://growwstacks.com/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Gmail to Make.com Connection"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="cs-page page-blog-post">
+    <div id="gs-navbar"></div>
+    <main>
+      <!-- ══════════ HERO ══════════ -->
+      <section class="cs-hero">
+        <div class="cs-hero-bg">
+          <div class="cs-hero-bg-shape1"></div>
+          <div class="cs-hero-bg-shape2"></div>
+        </div>
+        <div class="container cs-hero-inner">
+          <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> <span aria-hidden="true">/</span>
+            <a href="/blog/">Blog</a> <span aria-hidden="true">/</span>
+            <span>Gmail to Make.com Connection</span>
+          </nav>
+          <div class="blog-hero-grid">
+            <div class="blog-hero-content">
+              <div class="cs-hero-tags">
+                <span class="cs-tag">Make.com</span>
+                <span class="cs-tag">Email Automation</span>
+                <span class="cs-tag">Gmail</span>
+              </div>
+              <div class="blog-meta-bar">
+                <time datetime="2024-03-15">March 15, 2024</time>
+                <span class="blog-reading-time">6 min read</span>
+                <span class="blog-category-tag">Email Automation</span>
+              </div>
+              <h1>
+                How to Connect Gmail with Make.com & Automate Email Campaigns in
+                6 Minutes
+              </h1>
+              <p class="cs-hero-sub">
+                Most businesses struggle with email automation because they
+                think they need expensive Gmail Workspace accounts. The truth?
+                You can connect your free @gmail.com account to Make.com in
+                minutes. This guide shows you exactly how to bypass the
+                Workspace requirement and start automating emails today.
+              </p>
+            </div>
+            <div class="blog-hero-img">
+              <img
+                src="https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg"
+                alt="How to connect Gmail with Make.com tutorial thumbnail"
+                width="580"
+                height="326"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+              <a
+                href="#watch-video"
+                class="blog-hero-video-btn"
+                aria-label="Watch the full video tutorial"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ══════════ TABLE OF CONTENTS ══════════ -->
+      <div class="blog-toc-wrapper">
+        <div class="blog-toc-inner">
+          <nav
+            class="blog-toc"
+            role="navigation"
+            aria-label="Table of contents"
+          >
+            <p class="blog-toc-title">In This Article</p>
+            <ol>
+              <li>
+                <a href="#why-this-matters"
+                  >Why This Gmail Connection Matters</a
+                >
+              </li>
+              <li>
+                <a href="#step-1-create-project"
+                  >Step 1: Create a Google Cloud Project</a
+                >
+              </li>
+              <li>
+                <a href="#step-2-enable-api">Step 2: Enable the Gmail API</a>
+              </li>
+              <li>
+                <a href="#step-3-configure-oauth"
+                  >Step 3: Configure OAuth Consent Screen</a
+                >
+              </li>
+              <li>
+                <a href="#step-4-create-credentials"
+                  >Step 4: Create OAuth Credentials</a
+                >
+              </li>
+              <li>
+                <a href="#step-5-connect-make">Step 5: Connect to Make.com</a>
+              </li>
+              <li><a href="#watch-video">Watch the Full Tutorial</a></li>
+              <li><a href="#faq">Frequently Asked Questions</a></li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <!-- ══════════ ARTICLE BODY ══════════ -->
+      <!-- SECTION 1 — WHITE -->
+      <div class="blog-section blog-section--white">
+        <div class="blog-section-inner">
+          <h2 id="why-this-matters">Why This Gmail Connection Matters</h2>
+          <p>
+            Email automation can transform your business operations, but many
+            small businesses hit a roadblock when they discover Make.com's Gmail
+            integration seems to require a paid Workspace account. This creates
+            an unnecessary barrier - especially when you're just starting with
+            automation.
+          </p>
+          <p>
+            The solution lies in Google's developer tools. By creating a simple
+            project in Google Cloud Console, you can enable API access for your
+            free Gmail account. This approach works because:
+          </p>
+          <div class="cs-highlight">
+            <p>
+              <strong>Key insight:</strong> Google's API access isn't restricted
+              to Workspace accounts - it's available to all Gmail users through
+              the developer console. The 6-minute setup process unlocks the same
+              powerful automation capabilities.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- SECTION 2 — TINTED -->
+      <div class="blog-section blog-section--tinted">
+        <div class="blog-section-inner">
+          <h2 id="step-1-create-project">
+            Step 1: Create a Google Cloud Project
+          </h2>
+          <p>
+            Begin by visiting
+            <a href="https://console.cloud.google.com/" target="_blank"
+              >console.cloud.google.com</a
+            >. If this is your first time using Google Cloud Console, you'll
+            need to accept the terms of service.
+          </p>
+          <ol>
+            <li>Click on the project dropdown near the top of the page</li>
+            <li>Select "New Project"</li>
+            <li>Name your project (e.g., "Make.com Gmail Connection")</li>
+            <li>Click "Create"</li>
+          </ol>
+          <p>
+            This project will serve as the container for your Gmail API
+            settings. Don't worry about billing - we're using services that fall
+            under Google's free tier.
+          </p>
+        </div>
+      </div>
+      <!-- SECTION 3 — WHITE -->
+      <div class="blog-section blog-section--white">
+        <div class="blog-section-inner">
+          <h2 id="step-2-enable-api">Step 2: Enable the Gmail API</h2>
+          <p>
+            With your project created, you'll need to enable the specific API
+            that allows Make.com to communicate with Gmail:
+          </p>
+          <ol>
+            <li>Navigate to "APIs & Services" > "Library"</li>
+            <li>Search for "Gmail API"</li>
+            <li>Click on the Gmail API result</li>
+            <li>Click "Enable"</li>
+          </ol>
+          <div class="cs-highlight">
+            <p>
+              <strong>Note:</strong> Enabling the API doesn't immediately grant
+              access to your email. You'll still need to complete the OAuth
+              setup process to establish a secure connection.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- SECTION 4 — TINTED -->
+      <div class="blog-section blog-section--tinted">
+        <div class="blog-section-inner">
+          <h2 id="step-3-configure-oauth">
+            Step 3: Configure OAuth Consent Screen
+          </h2>
+          <p>
+            The OAuth consent screen is where you authorize which email accounts
+            can access this connection. This is a crucial security step:
+          </p>
+          <ol>
+            <li>Go to "APIs & Services" > "OAuth consent screen"</li>
+            <li>
+              Select "External" user type (for personal/non-Workspace accounts)
+            </li>
+            <li>Add your email address under "Test users"</li>
+            <li>When prompted for scopes, select all available Gmail scopes</li>
+            <li>
+              Complete the basic app information (you can use "Make.com
+              Integration" as the app name)
+            </li>
+          </ol>
+          <p>
+            This step ensures that only your specified email account(s) can use
+            this API connection, maintaining security while enabling automation.
+          </p>
+        </div>
+      </div>
+      <!-- SECTION 5 — WHITE -->
+      <div class="blog-section blog-section--white">
+        <div class="blog-section-inner">
+          <h2 id="step-4-create-credentials">
+            Step 4: Create OAuth Credentials
+          </h2>
+          <p>
+            Now you'll generate the credentials that Make.com will use to
+            authenticate with your Gmail account:
+          </p>
+          <ol>
+            <li>Navigate to "APIs & Services" > "Credentials"</li>
+            <li>Click "Create Credentials" > "OAuth client ID"</li>
+            <li>Select "Web application" as the application type</li>
+            <li>
+              Add these exact Authorized Redirect URIs:
+              <ul>
+                <li>https://integromat.com</li>
+                <li>https://make.com</li>
+              </ul>
+            </li>
+            <li>Click "Create"</li>
+          </ol>
+          <p>
+            After creation, you'll see your Client ID and Client Secret. Copy
+            both - you'll need them in the next step when connecting to
+            Make.com.
+          </p>
+        </div>
+      </div>
+      <!-- SECTION 6 — TINTED -->
+      <div class="blog-section blog-section--tinted">
+        <div class="blog-section-inner">
+          <h2 id="step-5-connect-make">Step 5: Connect to Make.com</h2>
+          <p>The final step is to add your credentials to Make.com:</p>
+          <ol>
+            <li>In Make.com, go to "Connections" > "Add new connection"</li>
+            <li>Search for and select "Gmail"</li>
+            <li>Choose "Custom OAuth" as the connection method</li>
+            <li>Paste your Client ID and Client Secret</li>
+            <li>Click "Save"</li>
+          </ol>
+          <p>
+            Make.com will redirect you to Google's OAuth screen where you'll
+            authorize the connection. Once completed, you can use this
+            connection in any Make.com scenario to automate email sending, inbox
+            monitoring, and more.
+          </p>
+          <div class="cs-highlight">
+            <p>
+              <strong>Pro tip:</strong> At 4:20 in the video tutorial, you'll
+              see exactly where to paste these credentials in Make.com's
+              interface for a seamless connection.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- WATCH VIDEO SECTION — WHITE -->
+      <div class="blog-section blog-section--white">
+        <div class="blog-section-inner">
+          <h2 id="watch-video">Watch the Full Tutorial</h2>
+          <p>
+            For visual learners, the video tutorial walks through each step in
+            real-time, including the exact screens you'll see in Google Cloud
+            Console. Pay special attention at 2:15 where we configure the OAuth
+            consent screen - this is where most people make mistakes.
+          </p>
+          <div class="blog-yt-embed" id="yt-VIDEO_ID">
+            <div
+              class="blog-yt-facade"
+              onclick="
+                this.parentNode.innerHTML =
+                  '<iframe width=\'100%\' height=\'100%\' style=\'position:absolute;top:0;left:0;border=0\' src=\'https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0\' frameborder=\'0\' allow=\'accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture\' allowfullscreen></iframe>'
+              "
+            >
+              <img
+                src="https://i.ytimg.com/vi/VIDEO_ID/maxresdefault.jpg"
+                alt="Step-by-step video tutorial for connecting Gmail to Make.com"
+                width="760"
+                height="428"
+                loading="lazy"
+                decoding="async"
+              />
+              <button
+                class="blog-yt-facade-btn"
+                aria-label="Play video"
+                type="button"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- KEY TAKEAWAYS — TINTED -->
+      <div class="blog-section blog-section--tinted">
+        <div class="blog-section-inner">
+          <h2 id="key-takeaways">Key Takeaways</h2>
+          <p>
+            Connecting your free Gmail account to Make.com unlocks powerful
+            email automation without the need for a Workspace subscription. The
+            entire process takes about 6 minutes once you know the steps:
+          </p>
+          <div class="cs-highlight">
+            <p>
+              <strong>In summary:</strong> Create a Google Cloud project >
+              Enable Gmail API > Configure OAuth consent > Create credentials >
+              Connect to Make.com. This workflow gives you enterprise-grade
+              email automation with your existing free account.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- ══════════ FAQ SECTION ══════════ -->
+      <section class="cs-faq" id="faq"><div id="gs-faq"></div></section>
+      <!-- ══════════ BOTTOM CTA — THE OFFER ══════════ -->
+      <section class="cs-bottom-cta">
+        <div class="container" style="position: relative; z-index: 2">
+          <h2>Ready to Automate Your Email Workflows?</h2>
+          <p>
+            Manually connecting accounts and building automations can eat up
+            valuable time. Let our Make.com experts handle the technical setup
+            while you focus on growing your business.
+          </p>
+          <div class="btn-group">
+            <a href="/#consultation" class="btn btn-accent"
+              >Book Free Consultation <span class="btn-arrow">→</span></a
+            >
+            <a href="/blog/" class="btn btn-outline">Read More Articles</a>
+          </div>
+        </div>
+      </section>
+      <div id="gs-consult-section"></div>
+      <div id="gs-testimonials"></div>
+    </main>
+    <div id="gs-footer"></div>
+    <!-- ALL SCRIPTS AT BOTTOM — DEFERRED -->
+    <script src="/analytics-loader.js" defer></script>
+    <script src="../../_shared/site-config.js" defer></script>
+    <script src="../../assets/js/images-helper.js" defer></script>
+    <script src="../../_shared/page-builder.js" defer></script>
+  </body>
+</html>
+```
