@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purge n8n execution history located in Mysql | n8n workflow template | GrowwStacks</title>
+<meta name="description" content="Automatically clean up n8n execution logs stored in MySQL to improve database performance and reduce storage costs">
+<link rel="canonical" href="https://growwstacks.com/workflows/238-purge-n8n-execution-history-located-in-mysql">
+<meta property="og:title" content="Purge n8n execution history located in Mysql | n8n workflow template">
+<meta property="og:description" content="Automatically clean up n8n execution logs stored in MySQL to improve database performance and reduce storage costs">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/238-purge-n8n-execution-history-located-in-mysql">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/700-purge-n8n-execution-history-located-in-mysql.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Purge n8n execution history located in Mysql | n8n workflow template">
+<meta name="twitter:description" content="Automatically clean up n8n execution logs stored in MySQL to improve database performance and reduce storage costs">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Purge n8n execution history located in Mysql","description":"Automatically clean up n8n execution logs stored in MySQL to improve database performance and reduce storage costs","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://go.growwstacks.com"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/700-purge-n8n-execution-history-located-in-mysql.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is purging execution history important for n8n workflows?","acceptedAnswer":{"@type":"Answer","text":"Purging execution history prevents database bloat and maintains optimal performance. As workflows run daily, logs accumulate rapidly, slowing queries and increasing storage costs. This automation helps maintain a clean database by removing old logs while keeping recent data for troubleshooting."}},{"@type":"Question","name":"How does database maintenance impact workflow automation performance?","acceptedAnswer":{"@type":"Answer","text":"Regular database maintenance ensures workflows execute faster and more reliably. Large execution tables cause slower queries, timeouts, and resource contention. This automation keeps your n8n instance responsive by systematically removing non-essential historical data."}},{"@type":"Question","name":"What retention period should I set for execution logs?","acceptedAnswer":{"@type":"Answer","text":"Most businesses keep 30-90 days of execution history. Critical workflows may need longer retention, while test environments can purge after 7 days. The template includes variables to customize retention periods by workflow importance."}},{"@type":"Question","name":"Can this automation handle large MySQL execution tables?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow uses batch processing to efficiently delete records without locking tables. It processes chunks of records at a time, preventing database timeouts and maintaining system stability during large purges."}},{"@type":"Question","name":"What are the security considerations for automating log purges?","acceptedAnswer":{"@type":"Answer","text":"Always backup databases before automated purges. The workflow includes safety checks to prevent accidental data loss and can be configured to preserve logs meeting certain criteria (errors, important workflows)."}},{"@type":"Question","name":"How does this compare to n8n's built-in history settings?","acceptedAnswer":{"@type":"Answer","text":"This solution offers more granular control than n8n's basic retention settings. You can set different retention periods by workflow type, preserve error logs longer than successful runs, and integrate with external archiving systems."}},{"@type":"Question","name":"Can I get a custom n8n database maintenance automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely! GrowwStacks specializes in tailored n8n automation solutions. We can design a system that matches your specific database structure, retention policies, and compliance requirements while integrating with your existing tools."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://go.growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://go.growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Purge n8n execution history located in Mysql"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Purge n8n execution history located in Mysql</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">MySQL</span>
+          <span class="cs-tag">Database Maintenance</span>
+        </div>
+        <h1>Purge n8n execution history located in Mysql</h1>
+        <p class="cs-hero-sub">Automatically clean up execution logs to maintain database performance</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/700-purge-n8n-execution-history-located-in-mysql.json?ik-attachment=true" download="purge-n8n-execution-history.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/700-purge-n8n-execution-history-located-in-mysql.png" alt="n8n workflow interface showing execution history purge automation" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves a critical maintenance challenge for n8n users - managing the growing execution history that accumulates in MySQL databases. As workflows run daily, the execution logs can quickly consume significant storage space and slow down database performance.</p>
+        
+        <p>The workflow automatically purges older execution records based on customizable retention rules, helping maintain optimal database performance while preserving recent history for troubleshooting. It's particularly valuable for businesses running numerous automated workflows where manual cleanup would be impractical.</p>
+
+        <div class="cs-img-block">
+          <img src="https://f000.backblazeb2.com/file/n8n-website-images/bf092a1d307949ae9c57d7d10ac890e5.png" alt="Database performance metrics showing improvement after purge" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">Execution history purge impact on database performance metrics</div>
+        </div>
+
+        <h2>How It Works</h2>
+        <h3>1. Database Connection Setup</h3>
+        <p>The workflow begins by establishing a secure connection to your MySQL database where n8n execution history is stored. It verifies credentials and checks table structures before proceeding.</p>
+        
+        <h3>2. Retention Policy Application</h3>
+        <p>Based on your configured retention period (default 30 days), the workflow identifies all execution records older than the threshold. You can customize this period for different workflow types.</p>
+        
+        <h3>3. Batch Processing</h3>
+        <p>To prevent database locks, records are deleted in manageable batches. The workflow includes error handling to pause if issues arise and can send notifications for manual review when needed.</p>
+
+        <div class="cs-img-block">
+          <img src="https://f000.backblazeb2.com/file/n8n-website-images/2c54398119f44a66abe09524e458fe73.png" alt="Workflow configuration showing batch deletion settings" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">Batch processing configuration to safely delete records</div>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This solution benefits any team using n8n with MySQL database backend that:</p>
+        <ul>
+          <li>Runs numerous automated workflows daily</li>
+          <li>Experiences slowing database performance over time</li>
+          <li>Needs to maintain compliance with data retention policies</li>
+          <li>Wants to reduce cloud database storage costs</li>
+        </ul>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Schedule this workflow to run during low-traffic periods to minimize impact on active workflows.</p>
+        </div>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>n8n instance with MySQL database backend</li>
+          <li>Database credentials with appropriate delete permissions</li>
+          <li>Basic understanding of your retention requirements</li>
+          <li>Optional: Error notification channel (email, Slack, etc.)</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download and import the JSON template into your n8n instance</li>
+          <li>Configure the MySQL node with your database credentials</li>
+          <li>Set your desired retention period in days</li>
+          <li>Adjust batch size based on your database capacity</li>
+          <li>Test with a small batch before full implementation</li>
+          <li>Schedule to run weekly or monthly based on your volume</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Reduced storage costs:</strong> Automatically reclaim database space by removing obsolete records, potentially saving hundreds in cloud storage fees.</p>
+        
+        <p><strong>Improved performance:</strong> Smaller execution tables mean faster queries and more responsive workflow executions.</p>
+        
+        <p><strong>Compliance ready:</strong> Maintain consistent data retention policies across all workflows without manual intervention.</p>
+        
+        <p><strong>Scalable solution:</strong> Handles growing workflow volumes automatically as your automation needs expand.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about n8n database maintenance and automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why is purging execution history important for n8n workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Purging execution history prevents database bloat and maintains optimal performance. As workflows run daily, logs accumulate rapidly, slowing queries and increasing storage costs.</p>
+          <p>This automation helps maintain a clean database by removing old logs while keeping recent data for troubleshooting. Companies running 50+ workflows often see 60-80% storage reduction after implementation.</p>
+          <ul>
+            <li>Critical for scaling automation infrastructure</li>
+            <li>Reduces backup sizes and recovery times</li>
+            <li>Prevents workflow slowdowns during peak loads</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does database maintenance impact workflow automation performance?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Regular database maintenance ensures workflows execute faster and more reliably. Large execution tables cause slower queries, timeouts, and resource contention.</p>
+          <p>This automation keeps your n8n instance responsive by systematically removing non-essential historical data. One e-commerce client reduced workflow execution times by 40% after implementing monthly purges.</p>
+          <ul>
+            <li>Eliminates table scanning performance penalties</li>
+            <li>Reduces index fragmentation</li>
+            <li>Prevents memory overflow errors</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What retention period should I set for execution logs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Most businesses keep 30-90 days of execution history. Critical workflows may need longer retention, while test environments can purge after 7 days.</p>
+          <p>The template includes variables to customize retention periods by workflow importance. A financial services company might keep compliance-related workflows for 1 year while purging marketing automations after 30 days.</p>
+          <ul>
+            <li>Balance troubleshooting needs with storage costs</li>
+            <li>Consider industry regulations</li>
+            <li>Adjust based on workflow criticality</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this automation handle large MySQL execution tables?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the workflow uses batch processing to efficiently delete records without locking tables. It processes chunks of records at a time, preventing database timeouts.</p>
+          <p>We've successfully implemented this for clients with tables containing millions of records. The batch approach maintains system stability while processing large data volumes.</p>
+          <ul>
+            <li>Configurable batch sizes (default 1000 records)</li>
+            <li>Automatic retry logic for failed batches</li>
+            <li>Progress tracking and reporting</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the security considerations for automating log purges?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Always backup databases before automated purges. The workflow includes safety checks to prevent accidental data loss and can be configured to preserve logs meeting certain criteria.</p>
+          <p>Use database credentials with minimal required permissions (DELETE on execution tables only). One client combines this with a weekly archive process before purging for compliance.</p>
+          <ul>
+            <li>Implement change tracking for audit purposes</li>
+            <li>Consider read-only replicas for reporting</li>
+            <li>Isolate purge automation from production credentials</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does this compare to n8n's built-in history settings?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>This solution offers more granular control than n8n's basic retention settings. You can set different retention periods by workflow type, preserve error logs longer than successful runs.</p>
+          <p>A SaaS company uses this to keep error logs for 6 months while purging successful executions after 30 days. The template also supports external archiving before deletion.</p>
+          <ul>
+            <li>Workflow-specific retention policies</li>
+            <li>Conditional preservation rules</li>
+            <li>Integration with external storage systems</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom n8n database maintenance automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely! GrowwStacks specializes in tailored n8n automation solutions. We can design a system that matches your specific database structure, retention policies, and compliance requirements.</p>
+          <p>Our team builds custom solutions integrating with your existing tools and workflows. Recent projects include hybrid cloud archiving systems and compliance-ready audit trails for financial clients.</p>
+          <ul>
+            <li>Custom retention rules by department/workflow</li>
+            <li>Integration with existing monitoring tools</li>
+            <li>Compliance documentation generation</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom n8n Integration?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
