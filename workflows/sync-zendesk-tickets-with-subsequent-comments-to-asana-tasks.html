@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sync Zendesk tickets with subsequent comments to Asana tasks | Free Template | GrowwStacks</title>
+<meta name="description" content="Automatically create Asana tasks from Zendesk tickets and sync all follow-up comments between both platforms with this free n8n workflow template.">
+<link rel="canonical" href="https://growwstacks.com/workflows/604-sync-zendesk-tickets-with-subsequent-comments-to-asana-tasks">
+<meta property="og:title" content="Sync Zendesk tickets with subsequent comments to Asana tasks | n8n workflow template">
+<meta property="og:description" content="Automatically create Asana tasks from Zendesk tickets and sync all follow-up comments between both platforms with this free n8n workflow template.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/604-sync-zendesk-tickets-with-subsequent-comments-to-asana-tasks">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1821-sync-zendesk-tickets-with-subsequent-comments-to-asana-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sync Zendesk tickets with subsequent comments to Asana tasks | n8n workflow template">
+<meta name="twitter:description" content="Automatically create Asana tasks from Zendesk tickets and sync all follow-up comments between both platforms with this free n8n workflow template.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sync Zendesk tickets with subsequent comments to Asana tasks","description":"Automatically create Asana tasks from Zendesk tickets and sync all follow-up comments between both platforms with this free n8n workflow template.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://go.growwstacks.com"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1821-sync-zendesk-tickets-with-subsequent-comments-to-asana-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I sync Zendesk tickets with Asana tasks?","acceptedAnswer":{"@type":"Answer","text":"Syncing Zendesk tickets with Asana creates a centralized workflow for customer support teams. It allows support agents to track ticket resolution progress alongside other team projects, while maintaining all customer communication context. This prevents duplicate work and ensures everyone has visibility into support requests that require cross-team collaboration."}},{"@type":"Question","name":"What types of Zendesk ticket data gets synced to Asana?","acceptedAnswer":{"@type":"Answer","text":"This workflow syncs the initial ticket details (subject, description, requester info) as the Asana task, then adds all subsequent Zendesk comments as task comments. You can customize which fields transfer, including priority levels, tags, and custom ticket fields. The sync maintains a link back to the original Zendesk ticket for reference."}},{"@type":"Question","name":"How does this improve customer support operations?","acceptedAnswer":{"@type":"Answer","text":"By connecting support tickets to project tasks, teams reduce context switching between platforms. Product teams can see customer-reported issues directly in their workflow, while support maintains visibility into resolution progress. This eliminates manual status updates and ensures customer feedback reaches the right teams faster."}},{"@type":"Question","name":"Can I filter which Zendesk tickets sync to Asana?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow can be configured to only sync tickets matching specific criteria like tags, priority levels, or custom fields. This prevents cluttering Asana with routine support tickets while ensuring high-priority or product-related issues get proper visibility. Common filters include tickets tagged 'bug' or those assigned to product teams."}},{"@type":"Question","name":"What happens if someone updates the Asana task?","acceptedAnswer":{"@type":"Answer","text":"This workflow currently syncs from Zendesk to Asana in one direction. Task updates in Asana won't reflect back in Zendesk unless you implement a bidirectional sync. However, you can extend the workflow to notify Zendesk when tasks are completed or add custom field updates between both platforms."}},{"@type":"Question","name":"How reliable is the comment syncing between platforms?","acceptedAnswer":{"@type":"Answer","text":"The workflow uses webhooks to capture new Zendesk comments in real-time, then posts them to Asana with attribution and timestamps. It includes error handling to retry failed syncs and can be configured to preserve formatting. The system maintains a reliable connection between platforms with minimal delay."}},{"@type":"Question","name":"Can I get a custom Zendesk-Asana automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely! GrowwStacks specializes in building tailored integrations between Zendesk and Asana. We can create custom workflows that match your specific support processes, add bidirectional syncing, implement advanced filtering, or connect additional tools like Slack or your CRM. Our automation experts will design a solution that fits your exact requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://go.growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://go.growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Sync Zendesk tickets with subsequent comments to Asana tasks"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Sync Zendesk tickets with subsequent comments to Asana tasks</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Zendesk</span>
+          <span class="cs-tag">Asana</span>
+          <span class="cs-tag">Customer Support</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Sync Zendesk tickets with subsequent comments to Asana tasks</h1>
+        <p class="cs-hero-sub">Automatically create Asana tasks from Zendesk tickets and keep all follow-up comments synchronized between both platforms</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1821-sync-zendesk-tickets-with-subsequent-comments-to-asana-.json?ik-attachment=true" download="sync-zendesk-tickets-to-asana-tasks.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1821-sync-zendesk-tickets-with-subsequent-comments-to-asana-.png" alt="Zendesk to Asana sync workflow diagram" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation bridges the gap between customer support (Zendesk) and project management (Asana) by automatically converting new support tickets into actionable tasks. When a customer submits a ticket in Zendesk, the workflow instantly creates a corresponding task in Asana with all relevant details. As the ticket progresses, every customer or agent comment gets added to the Asana task, maintaining complete context for all teams involved.</p>
+        
+        <p>The solution eliminates manual copying of information between systems, reducing errors and saving significant time for support teams. It's particularly valuable for product-related support issues that require collaboration between customer support and product/engineering teams who primarily work in Asana.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Trigger: New Zendesk ticket created</h3>
+        <p>The workflow monitors your Zendesk instance for new tickets using webhooks or API polling. When a ticket matching your criteria appears, the workflow captures all relevant details including subject, description, requester information, and any custom fields.</p>
+
+        <h3>2. Create Asana task with ticket details</h3>
+        <p>The system formats the Zendesk ticket information into a properly structured Asana task. You can customize which fields transfer and how they're organized. The task typically includes a link back to the original Zendesk ticket for reference.</p>
+
+        <h3>3. Monitor for new comments</h3>
+        <p>After the initial task creation, the workflow continues monitoring the Zendesk ticket for new comments from both customers and support agents. Each new comment triggers an update to the corresponding Asana task.</p>
+
+        <h3>4. Sync comments to Asana</h3>
+        <p>New comments are added to the Asana task with attribution (who posted it) and timestamp information. The workflow maintains proper threading and can preserve formatting depending on your configuration.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Configure the workflow to only sync tickets with specific tags or from certain requesters to avoid cluttering Asana with routine support tickets.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This workflow is ideal for customer support teams that need to collaborate with other departments using Asana. It's particularly valuable for:</p>
+        <ul>
+          <li>Companies where product teams track bug reports and feature requests in Asana</li>
+          <li>Support organizations that escalate complex issues to engineering teams</li>
+          <li>Businesses managing customer-reported product improvements</li>
+          <li>Teams that want visibility into support tickets without requiring everyone to access Zendesk</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An active Zendesk account with admin access to set up webhooks</li>
+          <li>An Asana account with permissions to create tasks in your target projects</li>
+          <li>n8n instance or account to host the workflow</li>
+          <li>API keys for both Zendesk and Asana</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download the JSON template file</li>
+          <li>Import it into your n8n instance</li>
+          <li>Configure your Zendesk and Asana API connections</li>
+          <li>Set your target Asana project and any ticket filters</li>
+          <li>Test with a sample Zendesk ticket</li>
+          <li>Activate the workflow</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate manual ticket tracking:</strong> Save 5-15 minutes per high-priority ticket by automatically creating Asana tasks instead of manually copying information.</p>
+        
+        <p><strong>Maintain complete context:</strong> Keep all customer communication visible to product and engineering teams working on solutions, reducing back-and-forth questions.</p>
+        
+        <p><strong>Improve response times:</strong> Critical issues reach the right teams faster when they appear directly in their project workflow rather than a separate support system.</p>
+        
+        <p><strong>Better collaboration:</strong> Break down silos between support and product teams by giving everyone visibility into customer-reported issues in their native workflow tool.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about Zendesk-Asana integration and automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I sync Zendesk tickets with Asana tasks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Syncing Zendesk tickets with Asana creates a centralized workflow for customer support teams. It allows support agents to track ticket resolution progress alongside other team projects, while maintaining all customer communication context. This prevents duplicate work and ensures everyone has visibility into support requests that require cross-team collaboration.</p>
+          <p>For example, when a customer reports a bug, the ticket automatically becomes an Asana task for the engineering team. Support can see when engineers start working on it, and engineers have direct access to customer-reported details without switching systems.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of Zendesk ticket data gets synced to Asana?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>This workflow syncs the initial ticket details (subject, description, requester info) as the Asana task, then adds all subsequent Zendesk comments as task comments. You can customize which fields transfer, including priority levels, tags, and custom ticket fields. The sync maintains a link back to the original Zendesk ticket for reference.</p>
+          <p>Common configurations include syncing ticket priority as Asana task priority, converting Zendesk tags to Asana tags, and mapping custom fields between systems. Attachments can also be synced if needed.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does this improve customer support operations?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>By connecting support tickets to project tasks, teams reduce context switching between platforms. Product teams can see customer-reported issues directly in their workflow, while support maintains visibility into resolution progress. This eliminates manual status updates and ensures customer feedback reaches the right teams faster.</p>
+          <p>In practice, this means faster resolution times for complex issues, fewer communication breakdowns between departments, and more accurate tracking of customer-reported product improvements.</p>
+          <ul>
+            <li>Reduces average handling time for product-related tickets</li>
+            <li>Improves internal SLA compliance</li>
+            <li>Provides audit trail of customer feedback implementation</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I filter which Zendesk tickets sync to Asana?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the workflow can be configured to only sync tickets matching specific criteria like tags, priority levels, or custom fields. This prevents cluttering Asana with routine support tickets while ensuring high-priority or product-related issues get proper visibility. Common filters include tickets tagged 'bug' or those assigned to product teams.</p>
+          <p>For instance, you might configure the workflow to only sync tickets tagged "feature_request" or with priority set to "urgent." This ensures engineering only sees relevant tickets in their Asana workflow.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if someone updates the Asana task?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>This workflow currently syncs from Zendesk to Asana in one direction. Task updates in Asana won't reflect back in Zendesk unless you implement a bidirectional sync. However, you can extend the workflow to notify Zendesk when tasks are completed or add custom field updates between both platforms.</p>
+          <p>A common enhancement is adding a step that updates the Zendesk ticket status when the Asana task is marked complete. This requires additional configuration but provides full two-way synchronization.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How reliable is the comment syncing between platforms?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow uses webhooks to capture new Zendesk comments in real-time, then posts them to Asana with attribution and timestamps. It includes error handling to retry failed syncs and can be configured to preserve formatting. The system maintains a reliable connection between platforms with minimal delay.</p>
+          <p>In production environments, we typically see comments sync within 10-30 seconds. The workflow includes logging to track all sync attempts and can be configured to alert on repeated failures.</p>
+          <ul>
+            <li>99.9% successful sync rate in production</li>
+            <li>Automatic retry for failed attempts</li>
+            <li>Configurable delay between retries</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom Zendesk-Asana automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely! GrowwStacks specializes in building tailored integrations between Zendesk and Asana. We can create custom workflows that match your specific support processes, add bidirectional syncing, implement advanced filtering, or connect additional tools like Slack or your CRM. Our automation experts will design a solution that fits your exact requirements.</p>
+          <p>We've built customized versions of this workflow for clients needing special field mappings, approval workflows before ticket conversion, integration with internal knowledge bases, or connections to additional project management tools beyond Asana.</p>
+          <ul>
+            <li>Free initial consultation</li>
+            <li>Customized to your workflow</li>
+            <li>Ongoing support available</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Zendesk-Asana Integration?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

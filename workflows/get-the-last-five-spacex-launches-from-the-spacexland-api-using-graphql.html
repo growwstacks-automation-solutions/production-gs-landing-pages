@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get the last five SpaceX launches from the spacex.land API using GraphQL | Free Template | GrowwStacks</title>
+<meta name="description" content="Automate retrieval of SpaceX launch data via GraphQL API with this ready-to-use n8n workflow template">
+<meta property="og:title" content="Get the last five SpaceX launches from the spacex.land API using GraphQL | Free Template">
+<meta property="og:description" content="Automate retrieval of SpaceX launch data via GraphQL API with this ready-to-use n8n workflow template">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/149-get-the-last-five-spacex-launches-from-the-spacexland-api-using-graphql">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/558-get-the-last-five-spacex-launches-from-the-spacexland-ap.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Get the last five SpaceX launches from the spacex.land API using GraphQL | Free Template">
+<meta name="twitter:description" content="Automate retrieval of SpaceX launch data via GraphQL API with this ready-to-use n8n workflow template">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SpaceX Launches GraphQL Workflow","description":"Automate retrieval of SpaceX launch data via GraphQL API with this ready-to-use n8n workflow template","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://go.growwstacks.com"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/558-get-the-last-five-spacex-launches-from-the-spacexland-ap.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the benefits of using GraphQL for API integrations?","acceptedAnswer":{"@type":"Answer","text":"GraphQL provides precise data fetching, reducing network overhead by allowing clients to request exactly what they need. Unlike REST APIs, it enables querying multiple resources in a single request, making it ideal for applications like space launch tracking where you need specific data points without unnecessary payloads."}},{"@type":"Question","name":"How can businesses use SpaceX launch data?","acceptedAnswer":{"@type":"Answer","text":"Companies in aerospace, education, media, and data analytics can use SpaceX launch data for market research, content creation, educational resources, or competitive analysis. The data provides insights into launch frequency, payload details, and mission outcomes valuable for strategic planning."}},{"@type":"Question","name":"What makes the SpaceX API different from other space APIs?","acceptedAnswer":{"@type":"Answer","text":"The SpaceX API offers comprehensive, near-real-time data about launches, rockets, and missions with detailed technical specifications. Its GraphQL implementation provides flexible querying capabilities that are particularly useful for developers building custom space data applications."}},{"@type":"Question","name":"How often should I update my SpaceX launch data?","acceptedAnswer":{"@type":"Answer","text":"For most business applications, updating launch data weekly is sufficient. However, media companies or aerospace analysts might want real-time updates during active launch windows. This workflow can be scheduled accordingly in n8n based on your specific needs."}},{"@type":"Question","name":"What other space-related APIs can I integrate with?","acceptedAnswer":{"@type":"Answer","text":"Popular space APIs include NASA's API Portal, The Space Devs API, and Astronomy Picture of the Day API. These can be combined with SpaceX data to create comprehensive space tracking dashboards or educational resources."}},{"@type":"Question","name":"How secure is the SpaceX GraphQL API?","acceptedAnswer":{"@type":"Answer","text":"The SpaceX API is read-only and doesn't require authentication, making it safe for public use. However, proper rate limiting should be implemented in your automation to prevent excessive requests that might get your IP temporarily blocked."}},{"@type":"Question","name":"Can I get a custom space data automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes! GrowwStacks specializes in building custom space data automation solutions. Whether you need advanced analytics, real-time alerts, or integration with other business systems, our team can create a tailored solution for your specific requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://go.growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://go.growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"SpaceX Launches GraphQL Workflow","item":"https://growwstacks.com/workflows/149-get-the-last-five-spacex-launches-from-the-spacexland-api-using-graphql"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>SpaceX Launches GraphQL Workflow</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">GraphQL</span>
+          <span class="cs-tag">Space Data</span>
+          <span class="cs-tag">API Integration</span>
+        </div>
+        <h1>Get the last five SpaceX launches from the spacex.land API using GraphQL</h1>
+        <p class="cs-hero-sub">Automate retrieval of SpaceX launch data via GraphQL API with this ready-to-use n8n workflow template</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/558-get-the-last-five-spacex-launches-from-the-spacexland-ap.json?ik-attachment=true" download="spacex-launches-graphql-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/558-get-the-last-five-spacex-launches-from-the-spacexland-ap.png" alt="SpaceX launches GraphQL workflow screenshot" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solution connects to the SpaceX GraphQL API to retrieve the last five rocket launches, including mission details, payload information, and launch status. It solves the problem of manually checking multiple sources for space launch updates by providing a structured, automated way to access this data.</p>
+        
+        <p>The workflow demonstrates how to use n8n's GraphQL node to make efficient API queries, showing best practices for handling space data in business applications. It returns clean, formatted data ready for use in dashboards, reports, or other systems.</p>
+        
+        <h2>How It Works</h2>
+        <h3>1. GraphQL Query Setup</h3>
+        <p>The workflow starts by configuring the GraphQL node with the SpaceX API endpoint and crafting a precise query to request only the needed launch data fields.</p>
+        
+        <h3>2. Data Processing</h3>
+        <p>n8n processes the API response, extracting the last five launches and transforming the data into a more usable format for business applications.</p>
+        
+        <h3>3. Output Formatting</h3>
+        <p>The final step organizes the launch data with clear field names and consistent formatting, making it ready for integration with other systems or visualization tools.</p>
+        
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for aerospace companies, educational institutions, space enthusiasts, and data analysts who need regular updates on SpaceX activities. Media organizations can use it to automate content creation about space launches, while research teams can integrate it into their data collection pipelines.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Combine this with a scheduling node to automatically check for new launches at regular intervals, keeping your data always up-to-date.</p>
+        </div>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An n8n instance (cloud or self-hosted)</li>
+          <li>Basic understanding of GraphQL queries</li>
+          <li>Internet access to reach the SpaceX API</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download the JSON template file</li>
+          <li>Import it into your n8n instance</li>
+          <li>Run the workflow to test the connection</li>
+          <li>Modify the GraphQL query if you need different data fields</li>
+          <li>Connect the output to your preferred destination (database, email, etc.)</li>
+        </ol>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Time savings:</strong> Automates what would otherwise be manual data collection, saving hours per month.</p>
+        <p><strong>Data accuracy:</strong> Eliminates human error in recording launch details from multiple sources.</p>
+        <p><strong>Flexibility:</strong> Easily adaptable to request different data points as your needs change.</p>
+        <p><strong>Integration-ready:</strong> Output formatted for easy connection to other business systems.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about SpaceX API integration and automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of using GraphQL for API integrations?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>GraphQL provides precise data fetching, reducing network overhead by allowing clients to request exactly what they need. Unlike REST APIs, it enables querying multiple resources in a single request, making it ideal for applications like space launch tracking where you need specific data points without unnecessary payloads.</p>
+          
+          <p>For SpaceX data, this means you can get mission details, rocket specifications, and launch site information in one optimized query rather than making multiple API calls. This efficiency is particularly valuable for businesses automating regular data updates.</p>
+          
+          <ul>
+            <li>Reduces API call volume by up to 70% compared to REST</li>
+            <li>Easier to maintain as data requirements change</li>
+            <li>Better performance for mobile and low-bandwidth applications</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can businesses use SpaceX launch data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Companies in aerospace, education, media, and data analytics can use SpaceX launch data for market research, content creation, educational resources, or competitive analysis. The data provides insights into launch frequency, payload details, and mission outcomes valuable for strategic planning.</p>
+          
+          <p>For example, a satellite company might track launch cadence to plan their own deployments, while a news organization could automate alerts for upcoming launches to streamline their reporting process. Educational platforms can use the data to create interactive space exploration timelines.</p>
+          
+          <ul>
+            <li>Create automated content calendars for space news</li>
+            <li>Monitor competitor satellite deployments</li>
+            <li>Build educational dashboards about space exploration</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What makes the SpaceX API different from other space APIs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The SpaceX API offers comprehensive, near-real-time data about launches, rockets, and missions with detailed technical specifications. Its GraphQL implementation provides flexible querying capabilities that are particularly useful for developers building custom space data applications.</p>
+          
+          <p>Unlike NASA's API which focuses more on scientific data, the SpaceX API provides commercial spaceflight details including payload customers, launch costs, and rocket reuse statistics. This business-oriented data is invaluable for companies tracking the commercial space industry.</p>
+          
+          <ul>
+            <li>Includes commercial payload details not available elsewhere</li>
+            <li>Tracks rocket booster reuse statistics</li>
+            <li>Provides near-real-time launch status updates</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I update my SpaceX launch data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>For most business applications, updating launch data weekly is sufficient. However, media companies or aerospace analysts might want real-time updates during active launch windows. This workflow can be scheduled accordingly in n8n based on your specific needs.</p>
+          
+          <p>The SpaceX launch schedule typically has 1-2 launches per month, but this can vary. During busy periods with multiple launches close together, more frequent updates may be warranted to capture all mission details accurately.</p>
+          
+          <ul>
+            <li>Weekly updates ideal for most analytical purposes</li>
+            <li>Daily during active launch campaigns</li>
+            <li>Real-time monitoring possible for mission-critical applications</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What other space-related APIs can I integrate with?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Popular space APIs include NASA's API Portal, The Space Devs API, and Astronomy Picture of the Day API. These can be combined with SpaceX data to create comprehensive space tracking dashboards or educational resources.</p>
+          
+          <p>For businesses, combining multiple space data sources provides a more complete picture of industry activity. You could correlate SpaceX launches with satellite tracking data or space weather information to build sophisticated monitoring systems.</p>
+          
+          <ul>
+            <li>NASA API for scientific mission data</li>
+            <li>Satellite tracking APIs for orbital data</li>
+            <li>Space weather APIs for launch condition analysis</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is the SpaceX GraphQL API?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The SpaceX API is read-only and doesn't require authentication, making it safe for public use. However, proper rate limiting should be implemented in your automation to prevent excessive requests that might get your IP temporarily blocked.</p>
+          
+          <p>Since the API only provides public launch data, there are no sensitive data protection concerns. The main security consideration is ensuring your automation doesn't inadvertently launch denial-of-service attacks by making too many requests too quickly.</p>
+          
+          <ul>
+            <li>No authentication required for public data</li>
+            <li>Implement 1-2 second delays between requests</li>
+            <li>Cache responses to minimize API calls</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom space data automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes! GrowwStacks specializes in building custom space data automation solutions. Whether you need advanced analytics, real-time alerts, or integration with other business systems, our team can create a tailored solution for your specific requirements.</p>
+          
+          <p>We've helped aerospace companies automate launch monitoring, media organizations streamline space news reporting, and educational platforms create interactive learning tools. Our solutions go beyond basic API integration to deliver real business value from space data.</p>
+          
+          <ul>
+            <li>Custom dashboards combining multiple data sources</li>
+            <li>Automated alerts for specific launch events</li>
+            <li>Integration with your existing business systems</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Space Data Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
