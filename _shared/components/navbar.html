@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div class="nav-right">
-      <a href="/#consultation" class="btn btn-primary nav-cta">Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/#consultation" class="btn btn-primary nav-cta" id="navCta">Free Consultation <span class="btn-arrow">→</span></a>
     </div>
     <button class="nav-mobile-toggle" aria-label="Open navigation menu">
       <span></span><span></span><span></span>
@@ -65,5 +65,32 @@
       }
     });
   }
+})();
+</script>
+<script>
+(function () {
+
+  var cta = document.getElementById("navCta");
+  if (!cta) return;
+
+  var path = window.location.pathname;
+
+  // If user is on partners page
+  if (path.includes("/partners")) {
+
+    // Change text
+    cta.innerHTML = 'Register <span class="btn-arrow">→</span>';
+
+    // Scroll to partner form
+    cta.href = "#apply";
+
+  } else {
+
+    // Default homepage behavior
+    cta.innerHTML = 'Free Consultation <span class="btn-arrow">→</span>';
+    cta.href = "/#consultation";
+
+  }
+
 })();
 </script>
