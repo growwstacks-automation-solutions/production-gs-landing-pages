@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div class="nav-right">
-      <a href="/#consultation" class="btn btn-primary nav-cta" target="_blank" rel="noopener">Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/#consultation" class="btn btn-primary nav-cta">Free Consultation <span class="btn-arrow">→</span></a>
     </div>
     <button class="nav-mobile-toggle" aria-label="Open navigation menu">
       <span></span><span></span><span></span>
@@ -35,12 +35,17 @@
     'partners':     homePrefix + 'partners/',
   };
 
+  // These stay same-page (no target="_blank")
+  var samePageLinks = ['process'];
+
   document.querySelectorAll('a[data-nav-link]').forEach(function(link) {
     var key = link.getAttribute('data-nav-link');
     if (linkMap[key]) {
       link.href = linkMap[key];
-      link.target = '_blank';
-      link.rel = 'noopener';
+      if (samePageLinks.indexOf(key) === -1) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
     }
   });
 
