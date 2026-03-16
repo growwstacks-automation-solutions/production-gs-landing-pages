@@ -3,9 +3,7 @@
     <div class="consult-inner">
       <div class="consult-left">
         <h2>
-          Get Your Free<br /><span class="highlight-amber"
-            >Automation Audit</span
-          >
+          Get Your Free<br /><span class="highlight-amber">Automation Audit</span>
         </h2>
         <p>
           Tell us about your business and our experts will identify the top 3
@@ -13,26 +11,11 @@
           savings.
         </p>
         <ul class="consult-benefits">
-          <li>
-            <span class="consult-check">✓</span> Free 30-minute expert
-            consultation
-          </li>
-          <li>
-            <span class="consult-check">✓</span> Custom automation roadmap for
-            your business
-          </li>
-          <li>
-            <span class="consult-check">✓</span> ROI estimate before you invest
-            anything
-          </li>
-          <li>
-            <span class="consult-check">✓</span> No obligation — the audit is
-            yours to keep
-          </li>
-          <li>
-            <span class="consult-check">✓</span> Response within 2 hours on
-            business days
-          </li>
+          <li><span class="consult-check">✓</span> Free 30-minute expert consultation</li>
+          <li><span class="consult-check">✓</span> Custom automation roadmap for your business</li>
+          <li><span class="consult-check">✓</span> ROI estimate before you invest anything</li>
+          <li><span class="consult-check">✓</span> No obligation — the audit is yours to keep</li>
+          <li><span class="consult-check">✓</span> Response within 2 hours on business days</li>
         </ul>
         <div class="consult-urgency">
           🔥 We take on only 5 new projects per month — limited spots available
@@ -41,72 +24,49 @@
       <div class="form-card">
         <h3>Book Your Free Audit</h3>
         <p class="form-card-sub">Takes less than 60 seconds</p>
-        <!-- Inject consult form component here -->
 
-        <form id="consultForm">
-          <!-- Hidden fields for tracking -->
-          <input
-            type="hidden"
-            name="page_url"
-            id="pageUrl"
-            class="form-hidden"
-          />
-          <input
-            type="hidden"
-            name="page_title"
-            value="Homepage"
-            class="form-hidden"
-          />
-          <input
-            type="hidden"
-            name="submitted_at"
-            id="submittedAt"
-            class="form-hidden"
-          />
+        <form id="consultForm" novalidate>
+          <input type="hidden" name="page_url" id="pageUrl" class="form-hidden" />
+          <input type="hidden" name="page_title" value="Homepage" class="form-hidden" />
+          <input type="hidden" name="submitted_at" id="submittedAt" class="form-hidden" />
+          <input type="hidden" name="country_code" id="countryCodeHidden" value="+1" />
 
           <div class="form-row">
             <div class="form-group">
               <label for="nameInput">Full Name *</label>
-              <input
-                type="text"
-                name="name"
-                id="nameInput"
-                placeholder="Your name"
-                required
-              />
+              <input type="text" name="name" id="nameInput" placeholder="Your name" required />
+              <span class="form-error" id="nameError"></span>
             </div>
             <div class="form-group">
               <label for="companyInput">Company Name</label>
-              <input
-                type="text"
-                name="company"
-                id="companyInput"
-                placeholder="Your company"
-              />
+              <input type="text" name="company" id="companyInput" placeholder="Your company" />
             </div>
           </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="emailInput">Email *</label>
-              <input
-                type="email"
-                name="email"
-                id="emailInput"
-                placeholder="your@email.com"
-                required
-              />
+              <input type="email" name="email" id="emailInput" placeholder="your@email.com" required />
+              <span class="form-error" id="emailError"></span>
             </div>
             <div class="form-group">
               <label for="phoneInput">Phone *</label>
-              <input
-                type="tel"
-                name="phone"
-                id="phoneInput"
-                placeholder="+91 XXXXX XXXXX"
-                required
-              />
+              <div class="phone-input-wrap" id="phoneWrap">
+                <div class="country-select" id="countrySelect" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-label="Select country code">
+                  <span class="country-flag" id="selectedFlag">🇺🇸</span>
+                  <span class="country-code-display" id="selectedCode">+1</span>
+                  <svg class="country-arrow" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><polyline points="2 4 6 8 10 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                  <div class="country-dropdown" id="countryDropdown" role="listbox" aria-label="Country codes">
+                    <input type="text" class="country-search" id="countrySearch" placeholder="Search country…" autocomplete="off" />
+                    <div class="country-list" id="countryList"></div>
+                  </div>
+                </div>
+                <input type="tel" name="phone" id="phoneInput" placeholder="(555) 123-4567" required />
+              </div>
+              <span class="form-error" id="phoneError"></span>
             </div>
           </div>
+
           <div class="form-group">
             <label for="serviceInput">What are you looking for?</label>
             <select name="service" id="serviceInput" required>
@@ -121,74 +81,477 @@
               <option value="custom-integration">Custom API Integration</option>
               <option value="not-sure">Not Sure — Need Guidance</option>
             </select>
+            <span class="form-error" id="serviceError"></span>
           </div>
+
           <div class="form-group">
             <label for="messageInput">Tell us about your project</label>
-            <textarea
-              name="message"
-              id="messageInput"
-              placeholder="What processes do you want to automate? What's your biggest bottleneck?"
-            ></textarea>
+            <textarea name="message" id="messageInput" placeholder="What processes do you want to automate? What's your biggest bottleneck?"></textarea>
           </div>
+
           <button type="submit" class="form-submit" id="submitBtn">
             Get My Free Automation Audit →
           </button>
-          <p class="form-note">
-            🔒 Your information is secure. We never share your data.
-          </p>
+          <p class="form-note">🔒 Your information is secure. We never share your data.</p>
         </form>
-
-        <script>
-          // Attach submit handler after component is injected
-          (function () {
-            function attach() {
-              var form = document.getElementById("consultForm");
-              if (!form) return false;
-              if (form.__attached) return true;
-              form.__attached = true;
-
-              form.addEventListener("submit", async function (e) {
-                e.preventDefault();
-                var btn = document.getElementById("submitBtn");
-                if (btn) {
-                  btn.textContent = "Sending...";
-                  btn.disabled = true;
-                }
-
-                // Set hidden fields
-                var pageUrl = document.getElementById("pageUrl");
-                var submittedAt = document.getElementById("submittedAt");
-                if (pageUrl) pageUrl.value = window.location.href;
-                if (submittedAt) submittedAt.value = new Date().toISOString();
-
-                var formData = new FormData(form);
-                var data = {};
-                formData.forEach(function (value, key) {
-                  data[key] = value;
-                });
-
-                try {
-                  var webhookUrl = "https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om";
-                  await fetch(webhookUrl, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data),
-                  });
-                } catch (err) {
-                  console.log("Webhook error:", err);
-                }
-
-                window.location.href = "/thank-you-lead";
-              });
-
-              return true;
-            }
-
-            // Try immediately and again shortly after (components may be injected async)
-            if (!attach()) setTimeout(attach, 300);
-          })();
-        </script>
       </div>
     </div>
   </div>
+
+  <style>
+    .phone-input-wrap{display:flex;align-items:stretch;border:1px solid #d1d5db;border-radius:8px;overflow:visible;transition:border-color .15s,box-shadow .15s;position:relative;background:#fff}
+    .phone-input-wrap:focus-within{border-color:#22a447;box-shadow:0 0 0 3px rgba(34,164,71,.1)}
+    .phone-input-wrap.error{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.08)}
+    .phone-input-wrap input[type="tel"]{flex:1;border:none;padding:10px 12px;font-size:15px;font-family:inherit;color:#1e293b;background:transparent;outline:none;min-width:0}
+    .phone-input-wrap input[type="tel"]::placeholder{color:#94a3b8}
+    .country-select{display:flex;align-items:center;gap:4px;padding:0 8px 0 12px;cursor:pointer;border-right:1px solid #e2e8f0;background:#f9fafb;user-select:none;position:relative;min-width:95px;flex-shrink:0}
+    .country-select:hover{background:#f1f5f9}
+    .country-flag{font-size:18px;line-height:1}
+    .country-code-display{font-size:14px;font-weight:600;color:#334155;white-space:nowrap}
+    .country-arrow{color:#94a3b8;flex-shrink:0;transition:transform .15s}
+    .country-select[aria-expanded="true"] .country-arrow{transform:rotate(180deg)}
+    .country-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:-1px;width:300px;max-height:340px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.12);z-index:1000;flex-direction:column;overflow:hidden}
+    .country-select[aria-expanded="true"] .country-dropdown{display:flex}
+    .country-search{padding:10px 14px;border:none;border-bottom:1px solid #e2e8f0;font-size:14px;font-family:inherit;color:#1e293b;outline:none;background:#f9fafb}
+    .country-search::placeholder{color:#94a3b8}
+    .country-list{overflow-y:auto;flex:1;overscroll-behavior:contain}
+    .country-option{display:flex;align-items:center;gap:10px;padding:8px 14px;cursor:pointer;font-size:14px;color:#334155;transition:background .1s}
+    .country-option:hover{background:#f0f9ff}
+    .country-option.active{background:#eff6ff;font-weight:600}
+    .country-option-flag{font-size:18px;width:24px;text-align:center;flex-shrink:0}
+    .country-option-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .country-option-code{color:#64748b;font-size:13px;font-weight:600;flex-shrink:0}
+    .form-error{display:none;font-size:12px;color:#ef4444;margin-top:4px;font-weight:500}
+    .form-error.visible{display:block}
+    .form-group input.input-error,.form-group select.input-error{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.08)}
+  </style>
+
+  <script>
+  (function(){
+    'use strict';
+
+    /* ══════════════════════════════════════════════ */
+    /* ALL COUNTRIES — 240+ with flags & dial codes  */
+    /* ══════════════════════════════════════════════ */
+    var C=[
+      {n:'Afghanistan',c:'+93',f:'🇦🇫',i:'AF'},
+      {n:'Albania',c:'+355',f:'🇦🇱',i:'AL'},
+      {n:'Algeria',c:'+213',f:'🇩🇿',i:'DZ'},
+      {n:'American Samoa',c:'+1684',f:'🇦🇸',i:'AS'},
+      {n:'Andorra',c:'+376',f:'🇦🇩',i:'AD'},
+      {n:'Angola',c:'+244',f:'🇦🇴',i:'AO'},
+      {n:'Anguilla',c:'+1264',f:'🇦🇮',i:'AI'},
+      {n:'Antigua and Barbuda',c:'+1268',f:'🇦🇬',i:'AG'},
+      {n:'Argentina',c:'+54',f:'🇦🇷',i:'AR'},
+      {n:'Armenia',c:'+374',f:'🇦🇲',i:'AM'},
+      {n:'Aruba',c:'+297',f:'🇦🇼',i:'AW'},
+      {n:'Australia',c:'+61',f:'🇦🇺',i:'AU'},
+      {n:'Austria',c:'+43',f:'🇦🇹',i:'AT'},
+      {n:'Azerbaijan',c:'+994',f:'🇦🇿',i:'AZ'},
+      {n:'Bahamas',c:'+1242',f:'🇧🇸',i:'BS'},
+      {n:'Bahrain',c:'+973',f:'🇧🇭',i:'BH'},
+      {n:'Bangladesh',c:'+880',f:'🇧🇩',i:'BD'},
+      {n:'Barbados',c:'+1246',f:'🇧🇧',i:'BB'},
+      {n:'Belarus',c:'+375',f:'🇧🇾',i:'BY'},
+      {n:'Belgium',c:'+32',f:'🇧🇪',i:'BE'},
+      {n:'Belize',c:'+501',f:'🇧🇿',i:'BZ'},
+      {n:'Benin',c:'+229',f:'🇧🇯',i:'BJ'},
+      {n:'Bermuda',c:'+1441',f:'🇧🇲',i:'BM'},
+      {n:'Bhutan',c:'+975',f:'🇧🇹',i:'BT'},
+      {n:'Bolivia',c:'+591',f:'🇧🇴',i:'BO'},
+      {n:'Bosnia and Herzegovina',c:'+387',f:'🇧🇦',i:'BA'},
+      {n:'Botswana',c:'+267',f:'🇧🇼',i:'BW'},
+      {n:'Brazil',c:'+55',f:'🇧🇷',i:'BR'},
+      {n:'British Indian Ocean Territory',c:'+246',f:'🇮🇴',i:'IO'},
+      {n:'British Virgin Islands',c:'+1284',f:'🇻🇬',i:'VG'},
+      {n:'Brunei',c:'+673',f:'🇧🇳',i:'BN'},
+      {n:'Bulgaria',c:'+359',f:'🇧🇬',i:'BG'},
+      {n:'Burkina Faso',c:'+226',f:'🇧🇫',i:'BF'},
+      {n:'Burundi',c:'+257',f:'🇧🇮',i:'BI'},
+      {n:'Cambodia',c:'+855',f:'🇰🇭',i:'KH'},
+      {n:'Cameroon',c:'+237',f:'🇨🇲',i:'CM'},
+      {n:'Canada',c:'+1',f:'🇨🇦',i:'CA'},
+      {n:'Cape Verde',c:'+238',f:'🇨🇻',i:'CV'},
+      {n:'Cayman Islands',c:'+1345',f:'🇰🇾',i:'KY'},
+      {n:'Central African Republic',c:'+236',f:'🇨🇫',i:'CF'},
+      {n:'Chad',c:'+235',f:'🇹🇩',i:'TD'},
+      {n:'Chile',c:'+56',f:'🇨🇱',i:'CL'},
+      {n:'China',c:'+86',f:'🇨🇳',i:'CN'},
+      {n:'Colombia',c:'+57',f:'🇨🇴',i:'CO'},
+      {n:'Comoros',c:'+269',f:'🇰🇲',i:'KM'},
+      {n:'Congo (DRC)',c:'+243',f:'🇨🇩',i:'CD'},
+      {n:'Congo (Republic)',c:'+242',f:'🇨🇬',i:'CG'},
+      {n:'Cook Islands',c:'+682',f:'🇨🇰',i:'CK'},
+      {n:'Costa Rica',c:'+506',f:'🇨🇷',i:'CR'},
+      {n:'Croatia',c:'+385',f:'🇭🇷',i:'HR'},
+      {n:'Cuba',c:'+53',f:'🇨🇺',i:'CU'},
+      {n:'Curaçao',c:'+599',f:'🇨🇼',i:'CW'},
+      {n:'Cyprus',c:'+357',f:'🇨🇾',i:'CY'},
+      {n:'Czech Republic',c:'+420',f:'🇨🇿',i:'CZ'},
+      {n:'Denmark',c:'+45',f:'🇩🇰',i:'DK'},
+      {n:'Djibouti',c:'+253',f:'🇩🇯',i:'DJ'},
+      {n:'Dominica',c:'+1767',f:'🇩🇲',i:'DM'},
+      {n:'Dominican Republic',c:'+1809',f:'🇩🇴',i:'DO'},
+      {n:'East Timor',c:'+670',f:'🇹🇱',i:'TL'},
+      {n:'Ecuador',c:'+593',f:'🇪🇨',i:'EC'},
+      {n:'Egypt',c:'+20',f:'🇪🇬',i:'EG'},
+      {n:'El Salvador',c:'+503',f:'🇸🇻',i:'SV'},
+      {n:'Equatorial Guinea',c:'+240',f:'🇬🇶',i:'GQ'},
+      {n:'Eritrea',c:'+291',f:'🇪🇷',i:'ER'},
+      {n:'Estonia',c:'+372',f:'🇪🇪',i:'EE'},
+      {n:'Eswatini',c:'+268',f:'🇸🇿',i:'SZ'},
+      {n:'Ethiopia',c:'+251',f:'🇪🇹',i:'ET'},
+      {n:'Falkland Islands',c:'+500',f:'🇫🇰',i:'FK'},
+      {n:'Faroe Islands',c:'+298',f:'🇫🇴',i:'FO'},
+      {n:'Fiji',c:'+679',f:'🇫🇯',i:'FJ'},
+      {n:'Finland',c:'+358',f:'🇫🇮',i:'FI'},
+      {n:'France',c:'+33',f:'🇫🇷',i:'FR'},
+      {n:'French Guiana',c:'+594',f:'🇬🇫',i:'GF'},
+      {n:'French Polynesia',c:'+689',f:'🇵🇫',i:'PF'},
+      {n:'Gabon',c:'+241',f:'🇬🇦',i:'GA'},
+      {n:'Gambia',c:'+220',f:'🇬🇲',i:'GM'},
+      {n:'Georgia',c:'+995',f:'🇬🇪',i:'GE'},
+      {n:'Germany',c:'+49',f:'🇩🇪',i:'DE'},
+      {n:'Ghana',c:'+233',f:'🇬🇭',i:'GH'},
+      {n:'Gibraltar',c:'+350',f:'🇬🇮',i:'GI'},
+      {n:'Greece',c:'+30',f:'🇬🇷',i:'GR'},
+      {n:'Greenland',c:'+299',f:'🇬🇱',i:'GL'},
+      {n:'Grenada',c:'+1473',f:'🇬🇩',i:'GD'},
+      {n:'Guadeloupe',c:'+590',f:'🇬🇵',i:'GP'},
+      {n:'Guam',c:'+1671',f:'🇬🇺',i:'GU'},
+      {n:'Guatemala',c:'+502',f:'🇬🇹',i:'GT'},
+      {n:'Guernsey',c:'+44',f:'🇬🇬',i:'GG'},
+      {n:'Guinea',c:'+224',f:'🇬🇳',i:'GN'},
+      {n:'Guinea-Bissau',c:'+245',f:'🇬🇼',i:'GW'},
+      {n:'Guyana',c:'+592',f:'🇬🇾',i:'GY'},
+      {n:'Haiti',c:'+509',f:'🇭🇹',i:'HT'},
+      {n:'Honduras',c:'+504',f:'🇭🇳',i:'HN'},
+      {n:'Hong Kong',c:'+852',f:'🇭🇰',i:'HK'},
+      {n:'Hungary',c:'+36',f:'🇭🇺',i:'HU'},
+      {n:'Iceland',c:'+354',f:'🇮🇸',i:'IS'},
+      {n:'India',c:'+91',f:'🇮🇳',i:'IN'},
+      {n:'Indonesia',c:'+62',f:'🇮🇩',i:'ID'},
+      {n:'Iran',c:'+98',f:'🇮🇷',i:'IR'},
+      {n:'Iraq',c:'+964',f:'🇮🇶',i:'IQ'},
+      {n:'Ireland',c:'+353',f:'🇮🇪',i:'IE'},
+      {n:'Isle of Man',c:'+44',f:'🇮🇲',i:'IM'},
+      {n:'Israel',c:'+972',f:'🇮🇱',i:'IL'},
+      {n:'Italy',c:'+39',f:'🇮🇹',i:'IT'},
+      {n:'Ivory Coast',c:'+225',f:'🇨🇮',i:'CI'},
+      {n:'Jamaica',c:'+1876',f:'🇯🇲',i:'JM'},
+      {n:'Japan',c:'+81',f:'🇯🇵',i:'JP'},
+      {n:'Jersey',c:'+44',f:'🇯🇪',i:'JE'},
+      {n:'Jordan',c:'+962',f:'🇯🇴',i:'JO'},
+      {n:'Kazakhstan',c:'+7',f:'🇰🇿',i:'KZ'},
+      {n:'Kenya',c:'+254',f:'🇰🇪',i:'KE'},
+      {n:'Kiribati',c:'+686',f:'🇰🇮',i:'KI'},
+      {n:'Kosovo',c:'+383',f:'🇽🇰',i:'XK'},
+      {n:'Kuwait',c:'+965',f:'🇰🇼',i:'KW'},
+      {n:'Kyrgyzstan',c:'+996',f:'🇰🇬',i:'KG'},
+      {n:'Laos',c:'+856',f:'🇱🇦',i:'LA'},
+      {n:'Latvia',c:'+371',f:'🇱🇻',i:'LV'},
+      {n:'Lebanon',c:'+961',f:'🇱🇧',i:'LB'},
+      {n:'Lesotho',c:'+266',f:'🇱🇸',i:'LS'},
+      {n:'Liberia',c:'+231',f:'🇱🇷',i:'LR'},
+      {n:'Libya',c:'+218',f:'🇱🇾',i:'LY'},
+      {n:'Liechtenstein',c:'+423',f:'🇱🇮',i:'LI'},
+      {n:'Lithuania',c:'+370',f:'🇱🇹',i:'LT'},
+      {n:'Luxembourg',c:'+352',f:'🇱🇺',i:'LU'},
+      {n:'Macau',c:'+853',f:'🇲🇴',i:'MO'},
+      {n:'Madagascar',c:'+261',f:'🇲🇬',i:'MG'},
+      {n:'Malawi',c:'+265',f:'🇲🇼',i:'MW'},
+      {n:'Malaysia',c:'+60',f:'🇲🇾',i:'MY'},
+      {n:'Maldives',c:'+960',f:'🇲🇻',i:'MV'},
+      {n:'Mali',c:'+223',f:'🇲🇱',i:'ML'},
+      {n:'Malta',c:'+356',f:'🇲🇹',i:'MT'},
+      {n:'Marshall Islands',c:'+692',f:'🇲🇭',i:'MH'},
+      {n:'Martinique',c:'+596',f:'🇲🇶',i:'MQ'},
+      {n:'Mauritania',c:'+222',f:'🇲🇷',i:'MR'},
+      {n:'Mauritius',c:'+230',f:'🇲🇺',i:'MU'},
+      {n:'Mayotte',c:'+262',f:'🇾🇹',i:'YT'},
+      {n:'Mexico',c:'+52',f:'🇲🇽',i:'MX'},
+      {n:'Micronesia',c:'+691',f:'🇫🇲',i:'FM'},
+      {n:'Moldova',c:'+373',f:'🇲🇩',i:'MD'},
+      {n:'Monaco',c:'+377',f:'🇲🇨',i:'MC'},
+      {n:'Mongolia',c:'+976',f:'🇲🇳',i:'MN'},
+      {n:'Montenegro',c:'+382',f:'🇲🇪',i:'ME'},
+      {n:'Montserrat',c:'+1664',f:'🇲🇸',i:'MS'},
+      {n:'Morocco',c:'+212',f:'🇲🇦',i:'MA'},
+      {n:'Mozambique',c:'+258',f:'🇲🇿',i:'MZ'},
+      {n:'Myanmar',c:'+95',f:'🇲🇲',i:'MM'},
+      {n:'Namibia',c:'+264',f:'🇳🇦',i:'NA'},
+      {n:'Nauru',c:'+674',f:'🇳🇷',i:'NR'},
+      {n:'Nepal',c:'+977',f:'🇳🇵',i:'NP'},
+      {n:'Netherlands',c:'+31',f:'🇳🇱',i:'NL'},
+      {n:'New Caledonia',c:'+687',f:'🇳🇨',i:'NC'},
+      {n:'New Zealand',c:'+64',f:'🇳🇿',i:'NZ'},
+      {n:'Nicaragua',c:'+505',f:'🇳🇮',i:'NI'},
+      {n:'Niger',c:'+227',f:'🇳🇪',i:'NE'},
+      {n:'Nigeria',c:'+234',f:'🇳🇬',i:'NG'},
+      {n:'Niue',c:'+683',f:'🇳🇺',i:'NU'},
+      {n:'Norfolk Island',c:'+672',f:'🇳🇫',i:'NF'},
+      {n:'North Korea',c:'+850',f:'🇰🇵',i:'KP'},
+      {n:'North Macedonia',c:'+389',f:'🇲🇰',i:'MK'},
+      {n:'Northern Mariana Islands',c:'+1670',f:'🇲🇵',i:'MP'},
+      {n:'Norway',c:'+47',f:'🇳🇴',i:'NO'},
+      {n:'Oman',c:'+968',f:'🇴🇲',i:'OM'},
+      {n:'Pakistan',c:'+92',f:'🇵🇰',i:'PK'},
+      {n:'Palau',c:'+680',f:'🇵🇼',i:'PW'},
+      {n:'Palestine',c:'+970',f:'🇵🇸',i:'PS'},
+      {n:'Panama',c:'+507',f:'🇵🇦',i:'PA'},
+      {n:'Papua New Guinea',c:'+675',f:'🇵🇬',i:'PG'},
+      {n:'Paraguay',c:'+595',f:'🇵🇾',i:'PY'},
+      {n:'Peru',c:'+51',f:'🇵🇪',i:'PE'},
+      {n:'Philippines',c:'+63',f:'🇵🇭',i:'PH'},
+      {n:'Poland',c:'+48',f:'🇵🇱',i:'PL'},
+      {n:'Portugal',c:'+351',f:'🇵🇹',i:'PT'},
+      {n:'Puerto Rico',c:'+1787',f:'🇵🇷',i:'PR'},
+      {n:'Qatar',c:'+974',f:'🇶🇦',i:'QA'},
+      {n:'Réunion',c:'+262',f:'🇷🇪',i:'RE'},
+      {n:'Romania',c:'+40',f:'🇷🇴',i:'RO'},
+      {n:'Russia',c:'+7',f:'🇷🇺',i:'RU'},
+      {n:'Rwanda',c:'+250',f:'🇷🇼',i:'RW'},
+      {n:'Saint Barthélemy',c:'+590',f:'🇧🇱',i:'BL'},
+      {n:'Saint Helena',c:'+290',f:'🇸🇭',i:'SH'},
+      {n:'Saint Kitts and Nevis',c:'+1869',f:'🇰🇳',i:'KN'},
+      {n:'Saint Lucia',c:'+1758',f:'🇱🇨',i:'LC'},
+      {n:'Saint Martin',c:'+590',f:'🇲🇫',i:'MF'},
+      {n:'Saint Pierre and Miquelon',c:'+508',f:'🇵🇲',i:'PM'},
+      {n:'Saint Vincent and the Grenadines',c:'+1784',f:'🇻🇨',i:'VC'},
+      {n:'Samoa',c:'+685',f:'🇼🇸',i:'WS'},
+      {n:'San Marino',c:'+378',f:'🇸🇲',i:'SM'},
+      {n:'São Tomé and Príncipe',c:'+239',f:'🇸🇹',i:'ST'},
+      {n:'Saudi Arabia',c:'+966',f:'🇸🇦',i:'SA'},
+      {n:'Senegal',c:'+221',f:'🇸🇳',i:'SN'},
+      {n:'Serbia',c:'+381',f:'🇷🇸',i:'RS'},
+      {n:'Seychelles',c:'+248',f:'🇸🇨',i:'SC'},
+      {n:'Sierra Leone',c:'+232',f:'🇸🇱',i:'SL'},
+      {n:'Singapore',c:'+65',f:'🇸🇬',i:'SG'},
+      {n:'Sint Maarten',c:'+1721',f:'🇸🇽',i:'SX'},
+      {n:'Slovakia',c:'+421',f:'🇸🇰',i:'SK'},
+      {n:'Slovenia',c:'+386',f:'🇸🇮',i:'SI'},
+      {n:'Solomon Islands',c:'+677',f:'🇸🇧',i:'SB'},
+      {n:'Somalia',c:'+252',f:'🇸🇴',i:'SO'},
+      {n:'South Africa',c:'+27',f:'🇿🇦',i:'ZA'},
+      {n:'South Korea',c:'+82',f:'🇰🇷',i:'KR'},
+      {n:'South Sudan',c:'+211',f:'🇸🇸',i:'SS'},
+      {n:'Spain',c:'+34',f:'🇪🇸',i:'ES'},
+      {n:'Sri Lanka',c:'+94',f:'🇱🇰',i:'LK'},
+      {n:'Sudan',c:'+249',f:'🇸🇩',i:'SD'},
+      {n:'Suriname',c:'+597',f:'🇸🇷',i:'SR'},
+      {n:'Sweden',c:'+46',f:'🇸🇪',i:'SE'},
+      {n:'Switzerland',c:'+41',f:'🇨🇭',i:'CH'},
+      {n:'Syria',c:'+963',f:'🇸🇾',i:'SY'},
+      {n:'Taiwan',c:'+886',f:'🇹🇼',i:'TW'},
+      {n:'Tajikistan',c:'+992',f:'🇹🇯',i:'TJ'},
+      {n:'Tanzania',c:'+255',f:'🇹🇿',i:'TZ'},
+      {n:'Thailand',c:'+66',f:'🇹🇭',i:'TH'},
+      {n:'Togo',c:'+228',f:'🇹🇬',i:'TG'},
+      {n:'Tokelau',c:'+690',f:'🇹🇰',i:'TK'},
+      {n:'Tonga',c:'+676',f:'🇹🇴',i:'TO'},
+      {n:'Trinidad and Tobago',c:'+1868',f:'🇹🇹',i:'TT'},
+      {n:'Tunisia',c:'+216',f:'🇹🇳',i:'TN'},
+      {n:'Turkey',c:'+90',f:'🇹🇷',i:'TR'},
+      {n:'Turkmenistan',c:'+993',f:'🇹🇲',i:'TM'},
+      {n:'Turks and Caicos Islands',c:'+1649',f:'🇹🇨',i:'TC'},
+      {n:'Tuvalu',c:'+688',f:'🇹🇻',i:'TV'},
+      {n:'Uganda',c:'+256',f:'🇺🇬',i:'UG'},
+      {n:'Ukraine',c:'+380',f:'🇺🇦',i:'UA'},
+      {n:'United Arab Emirates',c:'+971',f:'🇦🇪',i:'AE'},
+      {n:'United Kingdom',c:'+44',f:'🇬🇧',i:'GB'},
+      {n:'United States',c:'+1',f:'🇺🇸',i:'US'},
+      {n:'Uruguay',c:'+598',f:'🇺🇾',i:'UY'},
+      {n:'US Virgin Islands',c:'+1340',f:'🇻🇮',i:'VI'},
+      {n:'Uzbekistan',c:'+998',f:'🇺🇿',i:'UZ'},
+      {n:'Vanuatu',c:'+678',f:'🇻🇺',i:'VU'},
+      {n:'Vatican City',c:'+379',f:'🇻🇦',i:'VA'},
+      {n:'Venezuela',c:'+58',f:'🇻🇪',i:'VE'},
+      {n:'Vietnam',c:'+84',f:'🇻🇳',i:'VN'},
+      {n:'Wallis and Futuna',c:'+681',f:'🇼🇫',i:'WF'},
+      {n:'Western Sahara',c:'+212',f:'🇪🇭',i:'EH'},
+      {n:'Yemen',c:'+967',f:'🇾🇪',i:'YE'},
+      {n:'Zambia',c:'+260',f:'🇿🇲',i:'ZM'},
+      {n:'Zimbabwe',c:'+263',f:'🇿🇼',i:'ZW'}
+    ];
+
+    /* Priority order: US, UK, IN, CA, AU first — then alphabetical */
+    var TOP=['US','GB','IN','CA','AU','DE','FR','BR','MX','JP','SG','AE','SA','IL','NL','SE','CH'];
+    var topSet=new Set(TOP);
+    var sorted=TOP.map(function(iso){return C.find(function(x){return x.i===iso})}).filter(Boolean)
+      .concat(C.filter(function(x){return !topSet.has(x.i)}).sort(function(a,b){return a.n.localeCompare(b.n)}));
+
+    var sel=sorted[0], isOpen=false;
+    var selectEl=document.getElementById('countrySelect');
+    var flagEl=document.getElementById('selectedFlag');
+    var codeEl=document.getElementById('selectedCode');
+    var listEl=document.getElementById('countryList');
+    var searchEl=document.getElementById('countrySearch');
+    var hiddenCode=document.getElementById('countryCodeHidden');
+    var phoneWrap=document.getElementById('phoneWrap');
+
+    /* ── Timezone auto-detect ── */
+    function detect(){
+      try{
+        var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+        var m={
+          'America/New_York':'US','America/Chicago':'US','America/Denver':'US','America/Los_Angeles':'US',
+          'America/Phoenix':'US','America/Anchorage':'US','Pacific/Honolulu':'US',
+          'America/Detroit':'US','America/Indiana/Indianapolis':'US','America/Boise':'US',
+          'Europe/London':'GB','Europe/Berlin':'DE','Europe/Paris':'FR','Europe/Rome':'IT',
+          'Europe/Madrid':'ES','Europe/Amsterdam':'NL','Europe/Stockholm':'SE','Europe/Zurich':'CH',
+          'Europe/Brussels':'BE','Europe/Vienna':'AT','Europe/Copenhagen':'DK','Europe/Oslo':'NO',
+          'Europe/Helsinki':'FI','Europe/Lisbon':'PT','Europe/Prague':'CZ','Europe/Bucharest':'RO',
+          'Europe/Athens':'GR','Europe/Warsaw':'PL','Europe/Dublin':'IE','Europe/Istanbul':'TR',
+          'Europe/Budapest':'HU','Europe/Belgrade':'RS','Europe/Zagreb':'HR','Europe/Sofia':'BG',
+          'Europe/Bratislava':'SK','Europe/Ljubljana':'SI','Europe/Tallinn':'EE','Europe/Riga':'LV',
+          'Europe/Vilnius':'LT','Europe/Kiev':'UA','Europe/Moscow':'RU','Europe/Minsk':'BY',
+          'Asia/Kolkata':'IN','Asia/Calcutta':'IN','Asia/Mumbai':'IN',
+          'Asia/Tokyo':'JP','Asia/Seoul':'KR','Asia/Shanghai':'CN','Asia/Hong_Kong':'HK',
+          'Asia/Singapore':'SG','Asia/Dubai':'AE','Asia/Riyadh':'SA','Asia/Jerusalem':'IL',
+          'Asia/Jakarta':'ID','Asia/Manila':'PH','Asia/Kuala_Lumpur':'MY','Asia/Bangkok':'TH',
+          'Asia/Ho_Chi_Minh':'VN','Asia/Karachi':'PK','Asia/Dhaka':'BD','Asia/Colombo':'LK',
+          'Asia/Kathmandu':'NP','Asia/Taipei':'TW','Asia/Almaty':'KZ','Asia/Tashkent':'UZ',
+          'Asia/Tbilisi':'GE','Asia/Yerevan':'AM','Asia/Baku':'AZ','Asia/Beirut':'LB',
+          'Asia/Baghdad':'IQ','Asia/Tehran':'IR','Asia/Muscat':'OM','Asia/Qatar':'QA',
+          'Asia/Kuwait':'KW','Asia/Bahrain':'BH',
+          'Australia/Sydney':'AU','Australia/Melbourne':'AU','Australia/Brisbane':'AU',
+          'Australia/Perth':'AU','Australia/Adelaide':'AU',
+          'Pacific/Auckland':'NZ','Pacific/Fiji':'FJ',
+          'America/Toronto':'CA','America/Vancouver':'CA','America/Edmonton':'CA',
+          'America/Winnipeg':'CA','America/Halifax':'CA',
+          'America/Sao_Paulo':'BR','America/Mexico_City':'MX','America/Buenos_Aires':'AR',
+          'America/Bogota':'CO','America/Santiago':'CL','America/Lima':'PE',
+          'America/Caracas':'VE','America/La_Paz':'BO','America/Asuncion':'PY',
+          'America/Montevideo':'UY','America/Guayaquil':'EC',
+          'America/Guatemala':'GT','America/Costa_Rica':'CR','America/Panama':'PA',
+          'America/Havana':'CU','America/Santo_Domingo':'DO','America/Jamaica':'JM',
+          'America/Port-au-Prince':'HT','America/Tegucigalpa':'HN','America/Managua':'NI',
+          'America/El_Salvador':'SV',
+          'Africa/Johannesburg':'ZA','Africa/Lagos':'NG','Africa/Nairobi':'KE',
+          'Africa/Cairo':'EG','Africa/Casablanca':'MA','Africa/Accra':'GH',
+          'Africa/Addis_Ababa':'ET','Africa/Dar_es_Salaam':'TZ','Africa/Kampala':'UG',
+          'Africa/Kigali':'RW','Africa/Algiers':'DZ','Africa/Tunis':'TN',
+          'Africa/Dakar':'SN','Africa/Abidjan':'CI','Africa/Maputo':'MZ',
+          'Africa/Lusaka':'ZM','Africa/Harare':'ZW','Africa/Windhoek':'NA',
+          'Africa/Gaborone':'BW','Africa/Tripoli':'LY','Africa/Khartoum':'SD'
+        };
+        var iso=m[tz];
+        if(iso){for(var j=0;j<sorted.length;j++){if(sorted[j].i===iso)return sorted[j];}}
+      }catch(e){}
+      return sorted[0];
+    }
+
+    function setCountry(country){
+      sel=country;
+      flagEl.textContent=country.f;
+      codeEl.textContent=country.c;
+      hiddenCode.value=country.c;
+      close();
+      listEl.querySelectorAll('.country-option').forEach(function(el){
+        el.classList.toggle('active',el.dataset.iso===country.i);
+      });
+    }
+
+    function render(filter){
+      var q=(filter||'').toLowerCase(),h='';
+      sorted.forEach(function(country){
+        if(q && country.n.toLowerCase().indexOf(q)===-1 && country.c.indexOf(q)===-1 && country.i.toLowerCase().indexOf(q)===-1) return;
+        h+='<div class="country-option'+(country.i===sel.i?' active':'')+'" data-iso="'+country.i+'" role="option">'
+          +'<span class="country-option-flag">'+country.f+'</span>'
+          +'<span class="country-option-name">'+country.n+'</span>'
+          +'<span class="country-option-code">'+country.c+'</span></div>';
+      });
+      listEl.innerHTML=h||'<div style="padding:12px 14px;color:#94a3b8;font-size:13px">No countries found</div>';
+      listEl.querySelectorAll('.country-option').forEach(function(el){
+        el.addEventListener('click',function(){
+          var iso=this.dataset.iso;
+          for(var j=0;j<sorted.length;j++){if(sorted[j].i===iso){setCountry(sorted[j]);break;}}
+        });
+      });
+    }
+
+    function open(){isOpen=true;selectEl.setAttribute('aria-expanded','true');searchEl.value='';render('');setTimeout(function(){searchEl.focus();},50);}
+    function close(){isOpen=false;selectEl.setAttribute('aria-expanded','false');}
+
+    selectEl.addEventListener('click',function(e){
+      if(e.target===searchEl||e.target.closest('.country-option'))return;
+      isOpen?close():open();
+    });
+    searchEl.addEventListener('input',function(){render(this.value);});
+    searchEl.addEventListener('click',function(e){e.stopPropagation();});
+    document.addEventListener('click',function(e){if(!selectEl.contains(e.target))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+    setCountry(detect());
+    render('');
+
+    /* ══════════════════════════ */
+    /* FORM VALIDATION           */
+    /* ══════════════════════════ */
+    var form=document.getElementById('consultForm');
+    var nameIn=document.getElementById('nameInput');
+    var emailIn=document.getElementById('emailInput');
+    var phoneIn=document.getElementById('phoneInput');
+    var serviceIn=document.getElementById('serviceInput');
+
+    function showErr(id,msg){var e=document.getElementById(id);if(e){e.textContent=msg;e.classList.add('visible');}}
+    function clearErr(id){var e=document.getElementById(id);if(e){e.textContent='';e.classList.remove('visible');}}
+    function setErr(el,v){v?el.classList.add('input-error'):el.classList.remove('input-error');}
+
+    function validEmail(v){return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/.test(v);}
+    function validPhone(v){var d=v.replace(/\D/g,'');return d.length>=7&&d.length<=15;}
+
+    emailIn.addEventListener('blur',function(){
+      var v=this.value.trim();
+      if(v&&!validEmail(v)){showErr('emailError','Please enter a valid email address');setErr(this,true);}
+      else{clearErr('emailError');setErr(this,false);}
+    });
+    phoneIn.addEventListener('blur',function(){
+      var v=this.value.trim();
+      if(v&&!validPhone(v)){showErr('phoneError','Please enter a valid phone number (7-15 digits)');phoneWrap.classList.add('error');}
+      else{clearErr('phoneError');phoneWrap.classList.remove('error');}
+    });
+    nameIn.addEventListener('blur',function(){
+      if(this.value.trim().length<2){showErr('nameError','Please enter your name');setErr(this,true);}
+      else{clearErr('nameError');setErr(this,false);}
+    });
+    emailIn.addEventListener('input',function(){clearErr('emailError');setErr(this,false);});
+    phoneIn.addEventListener('input',function(){clearErr('phoneError');phoneWrap.classList.remove('error');this.value=this.value.replace(/[^0-9\s\-().+]/g,'');});
+    nameIn.addEventListener('input',function(){clearErr('nameError');setErr(this,false);});
+    serviceIn.addEventListener('change',function(){clearErr('serviceError');setErr(this,false);});
+
+    /* ── Submit ── */
+    if(form&&!form.__attached){
+      form.__attached=true;
+      form.addEventListener('submit',async function(e){
+        e.preventDefault();
+        var ok=true;
+        if(nameIn.value.trim().length<2){showErr('nameError','Please enter your name');setErr(nameIn,true);ok=false;}
+        if(!validEmail(emailIn.value.trim())){showErr('emailError','Please enter a valid email address');setErr(emailIn,true);ok=false;}
+        if(!validPhone(phoneIn.value.trim())){showErr('phoneError','Please enter a valid phone number');phoneWrap.classList.add('error');ok=false;}
+        if(!serviceIn.value){showErr('serviceError','Please select a service');setErr(serviceIn,true);ok=false;}
+        if(!ok)return;
+
+        var btn=document.getElementById('submitBtn');
+        if(btn){btn.textContent='Sending...';btn.disabled=true;}
+
+        document.getElementById('pageUrl').value=window.location.href;
+        document.getElementById('submittedAt').value=new Date().toISOString();
+
+        var fd=new FormData(form),data={};
+        fd.forEach(function(v,k){data[k]=v;});
+        data.phone_full=sel.c+' '+phoneIn.value.trim();
+        data.country=sel.n;
+        data.country_iso=sel.i;
+
+        try{
+          await fetch('https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om',{
+            method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+          });
+        }catch(err){console.log('Webhook error:',err);}
+        window.location.href='/thank-you-lead';
+      });
+    }
+  })();
+  </script>
 </section>
