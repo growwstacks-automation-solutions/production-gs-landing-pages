@@ -239,7 +239,7 @@
 
 <!-- Hero -->
 <section class="wf-hero">
-  <span class="wf-count">1450+ Templates</span>
+  <span class="wf-count" id="wfCount"></span>
   <h1>n8n Workflow Templates</h1>
   <p>Browse our library of ready-to-use automation workflows. Click any template to view details and download.</p>
   <div class="wf-search-wrap">
@@ -368,6 +368,15 @@
   visibleCount = CARDS_PER_PAGE;
   render();
 })();
+// Set dynamic count (rounded down to nearest 50)
+var total = ALL_WORKFLOWS.length;
+var rounded = Math.floor(total / 50) * 50;
+document.getElementById('wfCount').textContent = rounded + '+ Templates';
+
+// Initial render
+visibleCount = CARDS_PER_PAGE;
+render();
+
 </script>
 
 </body>
