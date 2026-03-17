@@ -100,7 +100,7 @@ const BLOG_POSTS = [
 },
 {
   title: "How AI Agents Are Moving From Testing to Profit in 2026",
-  desc: "AI agents are no longer just experiments—they're driving real revenue. Discover the 3 key areas where businesses are deploying production-ready AI agents with measurable ROI in <span data-year="current"></span>.",
+  desc: "AI agents are no longer just experiments—they're driving real revenue. Discover the 3 key areas where businesses are deploying production-ready AI agents with measurable ROI in 2026></span>.",
   url: "/blog/ai-agents-shift-from-testing-to-money-making",
   tags: ["AI Agents","Business Automation","Trends"],
   date: "2026-02-20",
