@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete guide to setting up and generating TOTP codes in n8n 🔐 | n8n workflow template | GrowwStacks</title>
+<meta name="description" content="Automate TOTP code generation in n8n with this free workflow template. Securely manage two-factor authentication tokens without manual input.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1175-complete-guide-to-setting-up-and-generating-totp-codes-in-n8n">
+<meta property="og:title" content="Complete guide to setting up and generating TOTP codes in n8n 🔐 | n8n workflow template">
+<meta property="og:description" content="Automate TOTP code generation in n8n with this free workflow template. Securely manage two-factor authentication tokens without manual input.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1175-complete-guide-to-setting-up-and-generating-totp-codes-in-n8n">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2696-complete-guide-to-setting-up-and-generating-totp-codes-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Complete guide to setting up and generating TOTP codes in n8n 🔐 | n8n workflow template">
+<meta name="twitter:description" content="Automate TOTP code generation in n8n with this free workflow template. Securely manage two-factor authentication tokens without manual input.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Complete guide to setting up and generating TOTP codes in n8n","description":"Automate TOTP code generation in n8n with this free workflow template. Securely manage two-factor authentication tokens without manual input.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://go.growwstacks.com"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2696-complete-guide-to-setting-up-and-generating-totp-codes-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is TOTP and how does it work for authentication?","acceptedAnswer":{"@type":"Answer","text":"TOTP (Time-based One-Time Password) is a secure authentication method that generates temporary codes valid for 30-60 seconds. It works by combining a shared secret key with the current timestamp to create a unique code. Businesses use TOTP for secure logins without SMS vulnerabilities. The algorithm ensures codes expire quickly, preventing replay attacks while maintaining usability."}},{"@type":"Question","name":"Why automate TOTP code generation in n8n?","acceptedAnswer":{"@type":"Answer","text":"Automating TOTP codes in n8n eliminates manual code entry errors and saves significant time for teams managing multiple accounts. It enables secure automation workflows that require 2FA without human intervention. This is particularly valuable for IT teams managing system integrations where manual 2FA entry would create bottlenecks in automated processes."}},{"@type":"Question","name":"How secure is automated TOTP generation compared to manual entry?","acceptedAnswer":{"@type":"Answer","text":"Automated TOTP generation maintains security while improving efficiency. The secret keys remain encrypted in n8n's credential system, just as secure as manual authenticator apps. Automated workflows actually reduce phishing risks by eliminating human error in code entry. Proper implementation includes credential rotation and access controls to maintain security standards."}},{"@type":"Question","name":"What are common use cases for automated TOTP workflows?","acceptedAnswer":{"@type":"Answer","text":"Common use cases include automated system logins for scheduled reports, CI/CD pipeline authentication, automated backup systems requiring 2FA, and bulk account management. Marketing teams use it for social media platform automation, while IT teams automate infrastructure monitoring tools that require secure access. The workflow enables secure automation where manual 2FA would be impractical."}},{"@type":"Question","name":"Can I use this for multiple services with different TOTP secrets?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow can manage multiple TOTP secrets simultaneously. You can store credentials for different services in n8n's secure credential system and reference them as needed. The template includes logic to handle multiple authentication scenarios, making it scalable for organizations with diverse 2FA requirements across their tech stack."}},{"@type":"Question","name":"How often should I rotate TOTP secrets in automated systems?","acceptedAnswer":{"@type":"Answer","text":"Best practice recommends rotating TOTP secrets every 90 days for automated systems, similar to password rotation policies. More frequent rotations may be needed for high-security systems. The workflow includes error handling for expired codes, making rotation manageable. Implement credential rotation as part of your standard security maintenance schedule."}},{"@type":"Question","name":"Can I get a custom TOTP automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. GrowwStacks specializes in building custom authentication workflows tailored to your security requirements. Our team can design a solution that integrates TOTP generation with your existing systems while maintaining security best practices. We implement proper credential management, audit logging, and access controls for enterprise-grade automation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://go.growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://go.growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Complete guide to setting up and generating TOTP codes in n8n"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Complete guide to setting up and generating TOTP codes in n8n</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Security</span>
+          <span class="cs-tag">2FA</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Complete guide to setting up and generating TOTP codes in n8n 🔐</h1>
+        <p class="cs-hero-sub">Automate secure two-factor authentication code generation without manual input</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2696-complete-guide-to-setting-up-and-generating-totp-codes-.json?ik-attachment=true" download="n8n-totp-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2696-complete-guide-to-setting-up-and-generating-totp-codes-.png" alt="n8n TOTP workflow interface" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This n8n workflow automates the generation of Time-based One-Time Password (TOTP) codes used for two-factor authentication. It eliminates the need for manual code entry from authenticator apps, enabling secure automation of processes that require 2FA.</p>
+        <p>The template handles the entire TOTP lifecycle - from extracting secrets from QR codes to generating valid authentication codes on demand. It's particularly valuable for IT teams managing automated systems that require secure logins without human intervention.</p>
+
+        <div class="cs-img-block">
+          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/image_e1d834b17f.png" alt="TOTP workflow nodes in n8n" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">The workflow nodes showing TOTP code generation process</div>
+        </div>
+
+        <h2>How It Works</h2>
+        <h3>Step 1: QR Code Processing</h3>
+        <p>The workflow begins by processing the QR code received when enabling two-factor authentication. It extracts the secret key and account information embedded in the QR code URL.</p>
+
+        <h3>Step 2: Secret Key Storage</h3>
+        <p>The extracted TOTP secret is securely stored in n8n's credential system. This encrypted storage ensures the sensitive authentication material remains protected while being accessible to the workflow.</p>
+
+        <div class="cs-img-block">
+          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/image_1392b61b8b.png" alt="TOTP credential management in n8n" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">Secure credential management for TOTP secrets</div>
+        </div>
+
+        <h3>Step 3: Code Generation</h3>
+        <p>Using the stored secret and current timestamp, the workflow generates valid TOTP codes according to the RFC 6238 standard. These codes refresh automatically based on the time interval specified.</p>
+
+        <h3>Step 4: Code Utilization</h3>
+        <p>The generated codes can be used directly in subsequent workflow steps for authentication purposes, or output for use in other systems requiring two-factor verification.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Combine this with n8n's error handling nodes to automatically retry authentication if a code expires during processing.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This workflow is ideal for:</p>
+        <ul>
+          <li>IT teams managing automated system logins</li>
+          <li>DevOps engineers needing CI/CD pipeline authentication</li>
+          <li>Security teams implementing automated monitoring</li>
+          <li>Businesses with multiple accounts requiring scheduled 2FA</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An active n8n instance (cloud or self-hosted)</li>
+          <li>The QR code or secret key from your 2FA setup</li>
+          <li>Basic familiarity with n8n workflows</li>
+          <li>Permissions to create and store credentials in n8n</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download and import the JSON workflow file into your n8n instance</li>
+          <li>Configure the credential node with your TOTP secret</li>
+          <li>Test the workflow with a sample QR code or secret</li>
+          <li>Connect the output to your authentication process</li>
+          <li>Schedule or trigger the workflow as needed</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10+ hours monthly</strong> by eliminating manual TOTP code entry for automated processes. No more interrupting workflows to input 2FA codes.</p>
+        <p><strong>Reduce authentication errors</strong> with automated code generation that's always synchronized with the correct time window.</p>
+        <p><strong>Enable secure automation</strong> of processes that previously required human intervention due to 2FA requirements.</p>
+        <p><strong>Centralize TOTP management</strong> for multiple accounts and services in one secure location.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about TOTP integration and automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is TOTP and how does it work for authentication?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>TOTP (Time-based One-Time Password) is a secure authentication method that generates temporary codes valid for 30-60 seconds. It works by combining a shared secret key with the current timestamp to create a unique code. Businesses use TOTP for secure logins without SMS vulnerabilities.</p>
+          <p>The algorithm ensures codes expire quickly, preventing replay attacks while maintaining usability. For example, when logging into a cloud service, the TOTP code from your authenticator app changes every 30 seconds, making stolen codes useless after expiration.</p>
+          <ul>
+            <li>More secure than SMS-based 2FA</li>
+            <li>Works offline once initially configured</li>
+            <li>Standardized algorithm (RFC 6238)</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why automate TOTP code generation in n8n?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating TOTP codes in n8n eliminates manual code entry errors and saves significant time for teams managing multiple accounts. It enables secure automation workflows that require 2FA without human intervention.</p>
+          <p>This is particularly valuable for IT teams managing system integrations where manual 2FA entry would create bottlenecks in automated processes. For instance, automated backup systems can now run securely overnight without requiring staff to be available to input codes.</p>
+          <ul>
+            <li>Enables truly hands-off automation</li>
+            <li>Reduces operational delays</li>
+            <li>Scales to hundreds of accounts</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is automated TOTP generation compared to manual entry?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated TOTP generation maintains security while improving efficiency. The secret keys remain encrypted in n8n's credential system, just as secure as manual authenticator apps. Automated workflows actually reduce phishing risks by eliminating human error in code entry.</p>
+          <p>Proper implementation includes credential rotation and access controls to maintain security standards. For example, you can set up separate credentials for development and production environments with different access levels, something impossible with personal authenticator apps.</p>
+          <ul>
+            <li>Encrypted credential storage</li>
+            <li>No human error in code transmission</li>
+            <li>Granular access controls possible</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are common use cases for automated TOTP workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common use cases include automated system logins for scheduled reports, CI/CD pipeline authentication, automated backup systems requiring 2FA, and bulk account management. Marketing teams use it for social media platform automation, while IT teams automate infrastructure monitoring tools that require secure access.</p>
+          <p>The workflow enables secure automation where manual 2FA would be impractical. For example, a company running nightly database exports to cloud storage can now fully automate the process even with 2FA enabled on their cloud account.</p>
+          <ul>
+            <li>Scheduled system maintenance</li>
+            <li>Automated data pipelines</li>
+            <li>Multi-account management</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this for multiple services with different TOTP secrets?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the workflow can manage multiple TOTP secrets simultaneously. You can store credentials for different services in n8n's secure credential system and reference them as needed. The template includes logic to handle multiple authentication scenarios.</p>
+          <p>This makes it scalable for organizations with diverse 2FA requirements across their tech stack. A practical example would be managing TOTP codes for your CRM, marketing automation platform, and internal systems all through one centralized workflow.</p>
+          <ul>
+            <li>Manage unlimited services</li>
+            <li>Organize by department or function</li>
+            <li>Easy credential rotation</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I rotate TOTP secrets in automated systems?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Best practice recommends rotating TOTP secrets every 90 days for automated systems, similar to password rotation policies. More frequent rotations may be needed for high-security systems. The workflow includes error handling for expired codes, making rotation manageable.</p>
+          <p>Implement credential rotation as part of your standard security maintenance schedule. For instance, financial institutions might rotate secrets monthly, while other businesses may find quarterly rotation sufficient based on their risk assessment.</p>
+          <ul>
+            <li>Balance security and operational needs</li>
+            <li>Align with existing credential policies</li>
+            <li>Document rotation schedules</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom TOTP automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. GrowwStacks specializes in building custom authentication workflows tailored to your security requirements. Our team can design a solution that integrates TOTP generation with your existing systems while maintaining security best practices.</p>
+          <p>We implement proper credential management, audit logging, and access controls for enterprise-grade automation. Whether you need to automate logins for a specific SaaS platform or build a comprehensive authentication system, we can develop a solution that fits your technical environment and security policies.</p>
+          <ul>
+            <li>Enterprise-grade security design</li>
+            <li>Integration with existing systems</li>
+            <li>Ongoing support and maintenance</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom TOTP Integration?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate and send AI-powered sales quotes with Gmail, OpenAI and Supabase | n8n workflow template | GrowwStacks</title>
+<meta name="description" content="Automated quote generation system that monitors your inbox, classifies quote requests using AI, calculates intelligent pricing based on historical data">
+<link rel="canonical" href="https://growwstacks.com/workflows/8095-generate-and-send-ai-powered-sales-quotes-with-gmail-openai-and-supabase">
+<meta property="og:title" content="Generate and send AI-powered sales quotes with Gmail, OpenAI and Supabase | n8n workflow template">
+<meta property="og:description" content="Automated quote generation system that monitors your inbox, classifies quote requests using AI, calculates intelligent pricing based on historical data">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/8095-generate-and-send-ai-powered-sales-quotes-with-gmail-openai-and-supabase">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12994-generate-and-send-ai-powered-sales-quotes-with-gmail-o.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Generate and send AI-powered sales quotes with Gmail, OpenAI and Supabase | n8n workflow template">
+<meta name="twitter:description" content="Automated quote generation system that monitors your inbox, classifies quote requests using AI, calculates intelligent pricing based on historical data">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Generate and send AI-powered sales quotes with Gmail, OpenAI and Supabase","description":"Automated quote generation system that monitors your inbox, classifies quote requests using AI, calculates intelligent pricing based on historical data","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://go.growwstacks.com"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12994-generate-and-send-ai-powered-sales-quotes-with-gmail-o.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How can AI improve sales quote accuracy?","acceptedAnswer":{"@type":"Answer","text":"AI analyzes historical pricing data and customer interactions to suggest optimal pricing. It considers factors like purchase history, market conditions, and competitor pricing to generate quotes that maximize both conversion rates and profitability. This reduces human bias and ensures consistent pricing decisions across your sales team."}},{"@type":"Question","name":"What types of businesses benefit most from automated quote generation?","acceptedAnswer":{"@type":"Answer","text":"Service businesses with variable pricing (consulting, agencies, contractors) see the biggest benefits. Companies handling 10+ quotes weekly save significant time. The system excels when pricing depends on multiple factors (project scope, materials, labor) that AI can analyze faster than humans while maintaining accuracy."}},{"@type":"Question","name":"How does automated quoting impact customer experience?","acceptedAnswer":{"@type":"Answer","text":"Automated quoting reduces response times from hours/days to minutes. Customers receive professionally formatted quotes with clear breakdowns. AI can personalize messaging based on the request context, improving perceived value. Faster responses increase conversion rates by 20-40% for time-sensitive purchases according to industry studies."}},{"@type":"Question","name":"Can the system integrate with my existing CRM?","acceptedAnswer":{"@type":"Answer","text":"Yes, most modern CRMs (HubSpot, Salesforce, Pipedrive) can connect via API. The workflow stores all quote data in Supabase, which can sync with your CRM. This maintains a complete record of pricing decisions and customer interactions without manual data entry between systems."}},{"@type":"Question","name":"What safeguards prevent incorrect AI-generated quotes?","acceptedAnswer":{"@type":"Answer","text":"The system includes multiple validation layers: price range limits per product/service, human review thresholds for large quotes, and historical comparison alerts. You can configure approval workflows for quotes exceeding certain amounts. All AI decisions are logged with explanations for auditability."}},{"@type":"Question","name":"How does the system handle complex pricing scenarios?","acceptedAnswer":{"@type":"Answer","text":"For multi-component quotes, AI breaks down each element with individual pricing. It applies appropriate discounts/markups based on your rules. The system can calculate tiered pricing, volume discounts, and package deals while maintaining your profit margins. Complex quotes include visual breakdowns for customer clarity."}},{"@type":"Question","name":"Can I get a custom sales quote automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. GrowwStacks specializes in tailored quote automation systems. We'll analyze your sales process, integrate with your existing tools, and train AI models on your historical data. Custom solutions typically reduce quote processing time by 75% while improving win rates. Book a free consultation to discuss your requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://go.growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://go.growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Generate and send AI-powered sales quotes with Gmail, OpenAI and Supabase"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Generate and send AI-powered sales quotes with Gmail, OpenAI and Supabase</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Gmail</span>
+          <span class="cs-tag">OpenAI</span>
+          <span class="cs-tag">Supabase</span>
+          <span class="cs-tag">Sales Automation</span>
+        </div>
+        <h1>Generate and send AI-powered sales quotes with Gmail, OpenAI and Supabase</h1>
+        <p class="cs-hero-sub">Automated quote generation system that monitors your inbox, classifies quote requests using AI, calculates intelligent pricing based on historical data</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12994-generate-and-send-ai-powered-sales-quotes-with-gmail-o.json?ik-attachment=true" download="ai-powered-sales-quotes-n8n-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12994-generate-and-send-ai-powered-sales-quotes-with-gmail-o.png" alt="AI-powered sales quote automation workflow diagram" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation transforms your sales quoting process by combining AI intelligence with your existing email workflow. It automatically monitors your Gmail inbox for quote requests, analyzes the content using OpenAI's natural language processing, and generates professional, data-driven quotes in minutes rather than hours.</p>
+        <p>The system taps into your Supabase database of historical pricing data to ensure quotes are competitively priced while maintaining healthy margins. It handles the entire process from request detection to sending polished PDF quotes - all without manual intervention for standard requests.</p>
+        
+        <h2>How It Works</h2>
+        <h3>1. Email Monitoring and Classification</h3>
+        <p>The workflow continuously scans your designated Gmail folder or labels for incoming messages. Using AI classification, it identifies genuine quote requests versus general inquiries, filtering out spam and irrelevant messages.</p>
+        
+        <h3>2. Information Extraction</h3>
+        <p>OpenAI's NLP models extract key details from the email: requested products/services, quantities, deadlines, and any special requirements. This data gets structured for the quoting engine.</p>
+        
+        <h3>3. Intelligent Pricing Calculation</h3>
+        <p>The system queries your Supabase database for similar historical quotes, analyzing success rates and profitability. It applies your business rules (minimum margins, volume discounts) to calculate the optimal price.</p>
+        
+        <h3>4. Quote Generation and Delivery</h3>
+        <p>AI composes a professional response with pricing breakdowns, terms, and next steps. The quote gets formatted as a PDF attachment and sent through your Gmail account with tracking enabled.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Configure the system to flag quotes exceeding 15% of your average deal size for manual review, balancing automation with oversight for high-value opportunities.</p>
+        </div>
+        
+        <h2>Who This Is For</h2>
+        <p>This workflow benefits service businesses and consultancies that provide customized pricing. Ideal users include marketing agencies, IT consultants, contractors, and professional service firms that spend significant time crafting quotes. Companies handling 10+ quotes weekly will see the most dramatic time savings.</p>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An n8n instance (cloud or self-hosted)</li>
+          <li>Gmail account with API access enabled</li>
+          <li>OpenAI API key</li>
+          <li>Supabase database with historical pricing data</li>
+          <li>PDF generation service (like PDFMonkey or DocRaptor)</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download and import the JSON template into your n8n instance</li>
+          <li>Connect your Gmail account and configure the email filter criteria</li>
+          <li>Add your OpenAI API key and test the classification model</li>
+          <li>Connect to your Supabase database and map the relevant tables</li>
+          <li>Configure your pricing rules and approval thresholds</li>
+          <li>Test with sample emails before going live</li>
+        </ol>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Reduce quote turnaround from hours to minutes</strong> - What typically takes sales reps 30-60 minutes per quote now happens automatically in 2-3 minutes.</p>
+        
+        <p><strong>Improve pricing consistency</strong> - AI applies your business rules uniformly, eliminating human variability in discounting and calculations.</p>
+        
+        <p><strong>Enhance win rates with data-driven quotes</strong> - Historical success data informs pricing decisions, balancing competitiveness with profitability.</p>
+        
+        <p><strong>24/7 quoting availability</strong> - The system works outside business hours, capturing leads when your team isn't available.</p>
+        
+        <p><strong>Complete audit trail</strong> - Every quote includes the AI's reasoning and data sources for transparency and coaching.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI-powered sales quoting and automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can AI improve sales quote accuracy?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI analyzes historical pricing data and customer interactions to suggest optimal pricing. It considers factors like purchase history, market conditions, and competitor pricing to generate quotes that maximize both conversion rates and profitability.</p>
+          <p>This reduces human bias and ensures consistent pricing decisions across your sales team. For example, the system might notice that clients in the healthcare sector accept 8-12% higher pricing than education clients, adjusting quotes accordingly.</p>
+          <ul>
+            <li>Eliminates emotional discounting</li>
+            <li>Applies volume pricing automatically</li>
+            <li>Flags outlier requests needing review</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of businesses benefit most from automated quote generation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Service businesses with variable pricing (consulting, agencies, contractors) see the biggest benefits. Companies handling 10+ quotes weekly save significant time. The system excels when pricing depends on multiple factors (project scope, materials, labor) that AI can analyze faster than humans while maintaining accuracy.</p>
+          <p>A digital marketing agency might use it to quickly generate proposals combining services like SEO, PPC, and content creation at appropriate package pricing. The AI references what similar clients paid and what services they ultimately purchased.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automated quoting impact customer experience?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated quoting reduces response times from hours/days to minutes. Customers receive professionally formatted quotes with clear breakdowns. AI can personalize messaging based on the request context, improving perceived value.</p>
+          <p>Faster responses increase conversion rates by 20-40% for time-sensitive purchases according to industry studies. The system can also include FAQ sections addressing common concerns specific to each quote, reducing back-and-forth questions.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system integrate with my existing CRM?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, most modern CRMs (HubSpot, Salesforce, Pipedrive) can connect via API. The workflow stores all quote data in Supabase, which can sync with your CRM. This maintains a complete record of pricing decisions and customer interactions without manual data entry between systems.</p>
+          <p>When a quote converts to a sale, the system can automatically update deal stages and create invoices. This creates a seamless flow from initial inquiry through to project delivery without repetitive administrative work.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What safeguards prevent incorrect AI-generated quotes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The system includes multiple validation layers: price range limits per product/service, human review thresholds for large quotes, and historical comparison alerts. You can configure approval workflows for quotes exceeding certain amounts.</p>
+          <p>All AI decisions are logged with explanations for auditability. For example, if a quote falls outside the normal range for a service, the system will flag why (unusually large quantity, expedited timing) and require confirmation before sending.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system handle complex pricing scenarios?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>For multi-component quotes, AI breaks down each element with individual pricing. It applies appropriate discounts/markups based on your rules. The system can calculate tiered pricing, volume discounts, and package deals while maintaining your profit margins.</p>
+          <p>Complex quotes include visual breakdowns for customer clarity. A managed IT services quote might show separate line items for hardware, software licenses, implementation, and ongoing support - each priced according to your business rules and historical data.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom sales quote automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. GrowwStacks specializes in tailored quote automation systems. We'll analyze your sales process, integrate with your existing tools, and train AI models on your historical data.</p>
+          <p>Custom solutions typically reduce quote processing time by 75% while improving win rates. Book a free consultation to discuss your requirements.</p>
+          <ul>
+            <li>Industry-specific pricing models</li>
+            <li>Multi-approval workflows</li>
+            <li>Competitor price benchmarking</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Sales Quote Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

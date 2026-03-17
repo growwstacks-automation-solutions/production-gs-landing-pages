@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extract text from images with Telegram Bot & OCR Tesseractjs | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automatically extract text from images sent to your Telegram bot using OCR technology with this free n8n workflow template">
+<link rel="canonical" href="https://growwstacks.com/workflows/3058-extract-text-from-images-with-telegram-bot-and-ocr-tesseractjs">
+<meta property="og:title" content="Extract text from images with Telegram Bot & OCR Tesseractjs | n8n workflow template">
+<meta property="og:description" content="Automatically extract text from images sent to your Telegram bot using OCR technology with this free n8n workflow template">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/3058-extract-text-from-images-with-telegram-bot-and-ocr-tesseractjs">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5413-extract-text-from-images-with-telegram-bot-and-ocr-tess.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Extract text from images with Telegram Bot & OCR Tesseractjs | n8n workflow template">
+<meta name="twitter:description" content="Automatically extract text from images sent to your Telegram bot using OCR technology with this free n8n workflow template">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Extract text from images with Telegram Bot & OCR Tesseractjs","description":"Automatically extract text from images sent to your Telegram bot using OCR technology","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://go.growwstacks.com"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5413-extract-text-from-images-with-telegram-bot-and-ocr-tess.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is OCR technology and how does it work with Telegram bots?","acceptedAnswer":{"@type":"Answer","text":"OCR (Optical Character Recognition) technology converts images containing text into machine-readable text. When integrated with Telegram bots, users can simply send an image and receive the extracted text instantly. The bot processes the image through OCR algorithms that identify characters and convert them to editable text, eliminating manual transcription."}},{"@type":"Question","name":"What types of documents work best with this OCR Telegram bot?","acceptedAnswer":{"@type":"Answer","text":"This workflow works best with clear images of printed text like receipts, business cards, invoices, or documents. Handwritten text recognition varies by handwriting clarity. For best results, use well-lit images with high contrast between text and background, and avoid blurry or skewed images which reduce OCR accuracy."}},{"@type":"Question","name":"How accurate is Tesseract OCR for text extraction?","acceptedAnswer":{"@type":"Answer","text":"Tesseract OCR achieves 90-95% accuracy with clean, standard fonts under ideal conditions. Accuracy depends on image quality, font type, language, and text complexity. For business documents with standard fonts, it provides reliable results. Post-processing can correct common OCR errors like confusing similar characters (O vs 0)."}},{"@type":"Question","name":"What business processes can benefit from Telegram OCR automation?","acceptedAnswer":{"@type":"Answer","text":"Key business uses include expense reporting (receipt scanning), contact management (business card digitization), document archiving, multilingual translation prep, and data entry automation. Teams can instantly capture text from field photos without manual typing, saving hours per week on administrative tasks."}},{"@type":"Question","name":"Can this workflow handle multiple languages?","acceptedAnswer":{"@type":"Answer","text":"Yes, Tesseract supports over 100 languages with additional language packs. The workflow can be configured to detect language automatically or specify a language for improved accuracy. Multi-language support makes it valuable for global teams processing documents in different languages."}},{"@type":"Question","name":"How secure is text extraction via Telegram bots?","acceptedAnswer":{"@type":"Answer","text":"Telegram provides end-to-end encryption for bot communications. For sensitive documents, implement additional security measures like automatic deletion after processing, restricting bot access to authorized users only, and avoiding storage of extracted text unless necessary for your workflow."}},{"@type":"Question","name":"Can I get a custom OCR automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely! GrowwStacks specializes in tailored OCR automation solutions. We can build custom workflows integrating Telegram with your CRM, databases, or internal systems, add advanced features like form recognition, or create industry-specific solutions for healthcare, legal, or finance document processing."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://go.growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://go.growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Extract text from images with Telegram Bot & OCR Tesseractjs"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Extract text from images with Telegram Bot & OCR Tesseractjs</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Telegram</span>
+          <span class="cs-tag">OCR</span>
+          <span class="cs-tag">Text Extraction</span>
+        </div>
+        <h1>Extract text from images with Telegram Bot & OCR Tesseractjs</h1>
+        <p class="cs-hero-sub">Automatically convert images to text using Telegram and Tesseract OCR with this ready-to-use n8n workflow</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5413-extract-text-from-images-with-telegram-bot-and-ocr-tess.json?ik-attachment=true" download="extract-text-from-images-with-telegram-bot-and-ocr-tesseractjs.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5413-extract-text-from-images-with-telegram-bot-and-ocr-tess.png" alt="Telegram OCR workflow diagram showing image to text conversion" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This n8n workflow automates text extraction from images sent to a Telegram bot using Tesseract OCR technology. It solves the tedious manual process of transcribing text from photos, screenshots, or scanned documents by providing instant automated conversion.</p>
+        <p>Businesses and individuals can use this to quickly digitize receipts, business cards, invoices, or any printed text captured via mobile photos. The workflow handles the entire process - receiving the image via Telegram, processing it through OCR, and returning the extracted text to the user.</p>
+        
+        <h2>How It Works</h2>
+        <h3>1. Image Submission</h3>
+        <p>Users send an image containing text to your Telegram bot. The bot immediately recognizes the image attachment and triggers the workflow.</p>
+        
+        <h3>2. OCR Processing</h3>
+        <p>The workflow passes the image to Tesseract.js, an open-source OCR engine that analyzes the image, detects text regions, and converts them to machine-readable text.</p>
+        
+        <h3>3. Text Extraction</h3>
+        <p>Tesseract processes the image and returns the extracted text in clean, editable format. The workflow can optionally clean up the output by removing artifacts or formatting the text.</p>
+        
+        <h3>4. Response Delivery</h3>
+        <p>The workflow sends the extracted text back to the user via Telegram, completing the automated text extraction process in seconds.</p>
+        
+        <h2>Who This Is For</h2>
+        <p>This workflow is ideal for:</p>
+        <ul>
+          <li>Business owners processing receipts or invoices</li>
+          <li>Teams digitizing business cards or documents</li>
+          <li>Researchers extracting text from book pages or screenshots</li>
+          <li>Multilingual teams needing quick text translation</li>
+          <li>Anyone regularly working with printed text that needs digitizing</li>
+        </ul>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An n8n instance (cloud or self-hosted)</li>
+          <li>A Telegram bot token (create via @BotFather)</li>
+          <li>Tesseract.js installed in your n8n environment</li>
+          <li>Basic understanding of n8n workflows</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download the JSON template file</li>
+          <li>Import into your n8n instance</li>
+          <li>Configure your Telegram bot credentials</li>
+          <li>Test by sending an image to your bot</li>
+          <li>Deploy the workflow for ongoing use</li>
+        </ol>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> For best OCR results, ensure images are well-lit, in focus, and contain high-contrast text. Dark mode screenshots may require preprocessing for optimal recognition.</p>
+        </div>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Save hours on manual data entry</strong> by automatically extracting text from images with 90%+ accuracy for standard fonts.</p>
+        <p><strong>Mobile-friendly workflow</strong> lets users capture text anywhere by simply snapping a photo and sending to your Telegram bot.</p>
+        <p><strong>Scalable solution</strong> that can process hundreds of documents daily without additional staffing costs.</p>
+        <p><strong>Multilingual support</strong> through Tesseract's extensive language packs for global business applications.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about OCR technology and Telegram bot integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is OCR technology and how does it work with Telegram bots?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>OCR (Optical Character Recognition) technology converts images containing text into machine-readable text. When integrated with Telegram bots, users can simply send an image and receive the extracted text instantly. The bot processes the image through OCR algorithms that identify characters and convert them to editable text, eliminating manual transcription.</p>
+          <p>This combination creates a powerful mobile workflow where field teams can capture documents via phone camera and immediately get digitized text without specialized scanning equipment or desktop software.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of documents work best with this OCR Telegram bot?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>This workflow works best with clear images of printed text like receipts, business cards, invoices, or documents. Handwritten text recognition varies by handwriting clarity. For best results, use well-lit images with high contrast between text and background, and avoid blurry or skewed images which reduce OCR accuracy.</p>
+          <p>Standard documents with common fonts (Arial, Times New Roman) achieve highest accuracy. Complex layouts with multiple columns or unusual fonts may require additional processing steps for optimal results.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate is Tesseract OCR for text extraction?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Tesseract OCR achieves 90-95% accuracy with clean, standard fonts under ideal conditions. Accuracy depends on image quality, font type, language, and text complexity. For business documents with standard fonts, it provides reliable results. Post-processing can correct common OCR errors like confusing similar characters (O vs 0).</p>
+          <p>For critical applications, implement a verification step or combine with human review for final quality control. The accuracy improves significantly with proper image preprocessing like contrast adjustment and deskewing.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What business processes can benefit from Telegram OCR automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Key business uses include expense reporting (receipt scanning), contact management (business card digitization), document archiving, multilingual translation prep, and data entry automation. Teams can instantly capture text from field photos without manual typing, saving hours per week on administrative tasks.</p>
+          <p>Specific industry applications include medical records processing, legal document analysis, and retail inventory management where staff frequently encounters printed product information that needs digital capture.</p>
+          <ul>
+            <li>75% faster than manual data entry</li>
+            <li>Reduces transcription errors</li>
+            <li>Enables mobile workforce productivity</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow handle multiple languages?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, Tesseract supports over 100 languages with additional language packs. The workflow can be configured to detect language automatically or specify a language for improved accuracy. Multi-language support makes it valuable for global teams processing documents in different languages.</p>
+          <p>For multilingual documents, you can implement language detection or allow users to specify the language when submitting images. Some languages with complex characters (like Chinese or Arabic) may require specific training data for optimal results.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is text extraction via Telegram bots?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Telegram provides end-to-end encryption for bot communications. For sensitive documents, implement additional security measures like automatic deletion after processing, restricting bot access to authorized users only, and avoiding storage of extracted text unless necessary for your workflow.</p>
+          <p>Enterprise implementations can add security layers like document redaction before OCR processing, integration with secure storage systems, and audit logging of all text extraction activities for compliance purposes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom OCR automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely! GrowwStacks specializes in tailored OCR automation solutions. We can build custom workflows integrating Telegram with your CRM, databases, or internal systems, add advanced features like form recognition, or create industry-specific solutions for healthcare, legal, or finance document processing.</p>
+          <p>Our team develops complete automation systems that match your exact business requirements, including custom preprocessing for your document types, integration with existing software, and specialized training for domain-specific terminology recognition.</p>
+          <ul>
+            <li>Industry-specific OCR solutions</li>
+            <li>Custom document processing pipelines</li>
+            <li>Enterprise-grade security implementations</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom OCR Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
