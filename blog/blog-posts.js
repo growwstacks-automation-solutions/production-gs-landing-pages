@@ -1,5 +1,266 @@
 const BLOG_POSTS = [
 {
+  title: "How to Automatically Detect QuickBooks Uncategorized Transactions Using n8n",
+  desc: "Stop wasting hours manually reviewing QuickBooks transactions. This n8n workflow automatically detects uncategorized entries, generates reports, and emails them to you — saving accounting teams 15+ hours per month.",
+  url: "/blog/automate-quickbooks-uncategorized-transaction-detection-n8n",
+  tags: ["n8n","Finance","QuickBooks"],
+  date: "2023-11-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Automatically Track Completed Bookings from OnceHub to Any App Using Zapier",
+  desc: "Stop manually tracking meeting outcomes - this Zapier trigger automatically sends completed booking data to Google Sheets, CRMs, or any app in your workflow. Setup takes under 5 minutes.",
+  url: "/blog/how-to-setup-zapier-triggers-in-oncehub-booking-completed",
+  tags: ["Zapier","OnceHub","Automation"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Connect Any App to Zapier Using Webhooks (2026 Guide)",
+  desc: "Webhooks act as real-time bridges between apps that don't directly integrate. This 2026 guide shows you how to configure Zapier webhooks to receive data from any source application.",
+  url: "/blog/how-to-setup-zapier-webhooks",
+  tags: ["Zapier","Webhooks","Automation"],
+  date: "2026-03-10",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Automatically Push Attio Call Transcripts to Notion (Without Zapier Limits)",
+  desc: "Struggling with Zapier's 2,000-character limit for Attio call transcripts in Notion? This workflow bypasses restrictions while adding AI-powered meeting summaries — perfect for sales teams and client calls.",
+  url: "/blog/how-to-push-attio-call-recording-transcript-to-notion",
+  tags: ["Make.com","CRM","AI Agents"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How One Agency Replaced 70 Call Center Agents With AI (And How You Can Too)",
+  desc: "Discover how a 70-agent call center was replaced with AI voice technology that books appointments, reactivates old leads, and handles objections - all while sounding completely human.",
+  url: "/blog/replace-call-center-with-ai",
+  tags: ["Voice AI","Call Center","AI Agents"],
+  date: "2023-11-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Voice AI Agents: The Complete Guide to Implementation & ROI for Contact Centers",
+  desc: "Discover how voice AI agents can transform your contact center operations - from natural call handling to compliance monitoring and measurable ROI. Learn implementation strategies from Balto's experts.",
+  url: "/blog/voice-ai-agents-contact-center-implementation",
+  tags: ["Voice AI","Telephony","AI Agents"],
+  date: "2026-03-10",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "How to Run a FREE Autonomous AI Agent 24/7 Without Mac Mini or API Fees",
+  desc: "Stop paying $100/day for Cloudbot setups. This guide shows you how to deploy a fully-functional AI agent that runs locally on your existing computer using free LLMs - with one-step installation and zero ongoing costs.",
+  url: "/blog/free-autonomous-ai-agent-openclaw",
+  tags: ["AI Agents","Automation","Local LLM"],
+  date: "2024-03-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Deliver n8n Automations to Clients (My Exact Client Onboarding System)",
+  desc: "Discover the exact step-by-step system I use to onboard n8n automation clients - from discovery calls to proposals, development, and ongoing retainers. Learn how to structure your delivery process for maximum efficiency and client satisfaction.",
+  url: "/blog/how-to-deliver-n8n-automations-to-clients",
+  tags: ["n8n","Automation Agency","Client Onboarding"],
+  date: "2023-11-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Voice AI is Transforming Customer Engagement in",
+  desc: "Discover how voice AI agents are revolutionizing customer interactions - from 24/7 support to meeting booking - while maintaining the human touch. Learn where businesses see the biggest ROI from Scott Thomas, a 20-year martech veteran.",
+  url: "/blog/voice-ai-customer-engagement-future",
+  tags: ["Voice AI","Customer Support","AI Agents"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Website Chatbot with Denser in 10 Minutes (No Code)",
+  desc: "Add a fully-functional AI chatbot to any website in under 10 minutes - no coding required. Denser's retrieval-based system pulls answers directly from your site content and captures leads automatically.",
+  url: "/blog/how-to-build-website-chatbot-denser-no-code",
+  tags: ["AI Agents","Chatbots","No Code"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Install n8n with Docker & Build a Telegram AI Chatbot",
+  desc: "Step-by-step guide to self-hosting n8n using Docker, overcoming HTTPS issues for Telegram bots, and creating an AI-powered chatbot workflow with OpenAI integration.",
+  url: "/blog/n8n-installation-docker-telegram-openai-chatbot",
+  tags: ["n8n","Docker","AI Agents"],
+  date: "2023-11-15",
+  readTime: 10,
+  target: "_blank"
+},
+{
+  title: "What Is an AI Worker? (It’s Not Just a Chatbot)",
+  desc: "Most companies don't have an AI problem—they have a capacity problem. Learn how AI workers differ from chatbots and automation tools by functioning as digital teammates with defined roles, boundaries, and measurable outcomes.",
+  url: "/blog/what-is-an-ai-worker",
+  tags: ["AI Agents","Automation","Business Operations"],
+  date: "2026-03-10",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Build a Personal WhatsApp AI Agent with n8n (Official WhatsApp API)",
+  desc: "Transform your WhatsApp into a 24/7 AI assistant that handles messages, creates documents, books meetings, and generates images - all automatically with this n8n workflow.",
+  url: "/blog/build-whatsapp-ai-agent-n8n",
+  tags: ["n8n","WhatsApp","AI Agents"],
+  date: "2026-03-10",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Automate WhatsApp Messages from Google Drive Files (Zapier Beginner Tutorial)",
+  desc: "Learn how to automatically send WhatsApp notifications whenever new files are added to Google Drive - perfect for teams and small businesses.",
+  url: "/blog/zapier-tutorial-automate-whatsapp-messages-from-google-drive",
+  tags: ["Zapier","Automation","Google Drive"],
+  date: "2024-01-27",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "The 6 Essential Components That Make AI Agents Actually Work",
+  desc: "Discover the architectural blueprint behind powerful AI agents - the six non-negotiable components that transform simple chatbots into intelligent assistants capable of real-world action.",
+  url: "/blog/essential-components-ai-agents",
+  tags: ["AI Agents","LLM","Context Engineering"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Agent Memory Works: Solving the Context Limitation Problem in AI Coding Assistants",
+  desc: "Discover how the Git Context Controller framework enables AI coding assistants to maintain persistent memory across sessions, improving performance by 13-14% on complex tasks.",
+  url: "/blog/agent-memory-context-limitation-solution",
+  tags: ["AI Agents","Coding Assistants","Memory Management"],
+  date: "2023-11-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "AI Agents Disrupting IT? The Reality Behind the Headlines",
+  desc: "While headlines scream about AI agents replacing IT jobs, the truth is more nuanced. Learn which roles are truly at risk, which will thrive, and how to future-proof your career in the age of agentic automation.",
+  url: "/blog/ai-agents-disrupting-it-the-reality",
+  tags: ["AI Agents","IT Automation","Future of Work"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Chatbots Can Recover 50%+ of Lost Sales Without Paid Ads",
+  desc: "Discover how to automate remarketing campaigns using chatbots to recover abandoned carts, offer timely discounts, and personalize follow-ups — all without paying for additional ads.",
+  url: "/blog/remarketing-with-chatbots",
+  tags: ["AI Agents","CRM","Sales"],
+  date: "2026-03-10",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "From Chatbots to DOERS: How AI Agents Are Reshaping Your Job Today",
+  desc: "Discover how AI agents are evolving beyond chatbots to automate real business tasks - from file management to compliance - and what this means for your workforce in the coming year.",
+  url: "/blog/from-chatbots-to-doers-how-ai-agents-are-reshaping-your-job-today",
+  tags: ["AI Agents","Business Automation","Productivity"],
+  date: "2024-02-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "AI Voice Agent: Your Next Sales Closer? How Voice AI Transforms Lead Qualification",
+  desc: "Stop wasting sales reps' time on unqualified leads. This voice AI solution handles marketing-qualified leads, confirms interest, and seamlessly hands off to human reps — cutting lead response time from hours to seconds.",
+  url: "/blog/ai-voice-agent-sales-closer",
+  tags: ["Voice AI","Sales","CRM"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Automate DocuSign Envelopes Without API Access Using n8n",
+  desc: "Discover how to automate DocuSign document signing workflows even when your property management software blocks API access - using n8n's creative email-to-GSheets-to-DocuSign automation.",
+  url: "/blog/automate-docusign-envelopes-without-api-access-n8n",
+  tags: ["n8n","DocuSign","Automation"],
+  date: "2023-11-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "API Authorization Explained: How to Secure Your Automation Workflows",
+  desc: "Learn the critical difference between authentication and authorization in API workflows, how API keys function as digital credentials, and why proper authorization is non-negotiable for secure automation.",
+  url: "/blog/api-authorization-explained-secure-automation-workflows",
+  tags: ["APIs","Automation","Security"],
+  date: "2023-11-15",
+  readTime: 4,
+  target: "_blank"
+},
+{
+  title: "Bland vs Lindy AI: Head-to-Head Comparison on Latency, Voice Quality & Cost",
+  desc: "We tested Bland AI and Lindy AI across 7 critical factors including call latency, voice realism, pricing models, and hidden costs to determine which platform delivers better value for building voice AI agents.",
+  url: "/blog/bland-vs-lindy-ai-comparison",
+  tags: ["Voice AI","AI Agents","Telephony"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "AI Voice Agent Books HVAC Appointments Automatically 24/7",
+  desc: "Never miss another HVAC lead after hours. Our AI voice agent qualifies leads, books appointments, and sends confirmations automatically — proven to convert 24/7 calls into booked jobs.",
+  url: "/blog/ai-voice-agent-hvac-appointments",
+  tags: ["Voice AI","HVAC","Telephony"],
+  date: "2026-03-10",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How Zapier Scaled to $5B Using AI: Exclusive Lessons from CEO Wade Foster",
+  desc: "Zapier's CEO reveals how they transformed their company with AI - from hackathons that boosted adoption from 10% to 50% in one week to their controversial '100% AI fluency' hiring policy. Learn the scaling frameworks that took Zapier to a $5B valuation.",
+  url: "/blog/zapier-ai-scaling-lessons-wade-foster",
+  tags: ["AI Agents","Make.com","Productivity"],
+  date: "2026-03-10",
+  readTime: 14,
+  target: "_blank"
+},
+{
+  title: "Stop Chatting. Start Appointing: The AI Agent Revolution (2026 Guide)",
+  desc: "If you're still chatting with AI in <span data-year="current"></span>, you're already behind. Discover how agentic workflows outperform conversational AI and learn to build autonomous AI teams that execute without micromanagement.",
+  url: "/blog/ai-agent-revolution-guide",
+  tags: ["AI Agents","GPT","LLM"],
+  date: "2026-03-10",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Voice AI Call Settings Decoded: How to Prevent Lagging, Missing, and Random Hang-Ups",
+  desc: "Deploying voice AI agents? Avoid frustrating lag, missed responses, and random disconnects by optimizing these 10 critical transcription and call settings in Retell AI.",
+  url: "/blog/voice-ai-call-settings-retell-ai",
+  tags: ["Voice AI","Retell AI","Telephony"],
+  date: "2024-05-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Create Realistic AI Voices with ElevenLabs — Full Step-by-Step Guide",
+  desc: "Struggling with robotic-sounding AI voices? This ElevenLabs tutorial shows exactly how to generate human-like speech with emotional tones — perfect for videos, podcasts, and voiceovers.",
+  url: "/blog/how-to-create-realistic-ai-voices-with-elevenlabs",
+  tags: ["AI Agents","Voice AI","Content Creation"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "The Most Profitable AI Voice Agent Use Cases Right Now (2026)",
+  desc: "Discover the 8 AI voice agent implementations actually generating ROI in 2026 - from healthcare intake to real estate lead qualification - ranked by deployment ease and revenue impact.",
+  url: "/blog/most-profitable-ai-voice-agent-use-cases",
+  tags: ["Voice AI","AI Agents","Business Automation"],
+  date: "2026-03-10",
+  readTime: 8,
+  target: "_blank"
+},
+{
   title: "How to Automate Lead Generation with n8n — 37.5% Efficiency Boost",
   desc: "Stop losing leads in disconnected systems. This n8n workflow captures leads from any source, cleans the data with AI, and routes qualified prospects to your CRM — cutting manual work by 37.5%.",
   url: "/blog/automate-lead-generation-n8n",
