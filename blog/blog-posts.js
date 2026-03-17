@@ -1,5 +1,59 @@
 const BLOG_POSTS = [
 {
+  title: "How Claude Code and n8n Work Together to Build Better Automations",
+  desc: "Discover how combining Claude's AI-powered coding with n8n's visual automation builder creates the perfect workflow lifecycle - rapid prototyping with AI, then reliable execution with no-code.",
+  url: "/blog/claude-code-n8n-automation-workflow",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2024-06-01",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Build AI Voice Agents That Actually Work - Vapi AI Tutorial for Businesses",
+  desc: "Learn to create human-like voice AI agents with Vapi that handle phone calls, lead capture, and customer support - no coding required. Perfect for businesses wanting 24/7 AI phone agents.",
+  url: "/blog/build-ai-voice-agents-vapi-tutorial",
+  tags: ["Voice AI","Vapi","Telephony"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Set Up an AI Voice Demo Agent for Your Website (Step-by-Step Guide)",
+  desc: "Learn how to implement a professional AI voice demo for your website using Vapi or similar platforms. This guide walks through agent setup, prompt customization, and testing your 24/7 voice demo.",
+  url: "/blog/ai-voice-demo-prompt-guide",
+  tags: ["Voice AI","AI Agents","Vapi"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "This AI Agent Calls Your Leads Back in 10 Seconds (VAPI + n8n)",
+  desc: "Stop losing leads to competitors while you're busy. This VAPI + n8n AI agent calls leads instantly, qualifies them, and books appointments - all while sounding completely human. See the exact workflow that reduces response time from hours to seconds.",
+  url: "/blog/ai-agent-calls-leads-back-10-seconds-vapi-n8n",
+  tags: ["Voice AI","n8n","CRM"],
+  date: "2024-03-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Connect Facebook Pages to n8n in 2026 (Quick & Easy)",
+  desc: "Learn how to connect Facebook Pages to n8n without coding. Set up webhooks to trigger workflows from page events like posts, comments, and messages in just minutes.",
+  url: "/blog/how-to-connect-facebook-pages-to-n8n",
+  tags: ["n8n","Social Media","Facebook"],
+  date: "2026-03-10",
+  readTime: 3,
+  target: "_blank"
+},
+{
+  title: "How Chatbots Unify Your Marketing Across Every Platform — No More Siloed Data",
+  desc: "Stop losing leads across disconnected platforms. A single chatbot integrates WhatsApp, Instagram, email and more — syncing conversations and data into one dashboard for 360° customer views.",
+  url: "/blog/chatbots-unified-marketing-ecosystem",
+  tags: ["AI Agents","CRM","Marketing"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
   title: "Automate Emails & Team Notifications for Lawyers' New Leads | Make.com + Typeform + Telegram",
   desc: "Stop losing potential clients in your inbox. This Make.com automation instantly processes new leads from Typeform, adds them to your CRM, sends personalized emails, and alerts your team via Telegram—all without manual work.",
   url: "/blog/automate-lawyer-lead-notifications-make-typeform-telegram",
