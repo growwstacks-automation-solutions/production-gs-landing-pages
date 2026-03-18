@@ -46,7 +46,9 @@
 <script>
 window.onload = function () {
 
-  if (window.location.pathname.indexOf('/blog') === -1) return;
+  const path = window.location.pathname;
+
+  if (!path.includes('/blog') && !path.includes('/workflows')) return;
 
   const themes = [
 
@@ -150,6 +152,11 @@ window.onload = function () {
   // Reading time
   document.querySelectorAll(".blog-reading-time").forEach(el => {
     el.style.background = randomTheme.tagColor;
+    el.style.color = randomTheme.tagText;
+  });
+  document.querySelectorAll(".btn-download").forEach(el => {
+    el.style.background = randomTheme.tagColor;
+    el.style.borderColor = randomTheme.tagColor;
     el.style.color = randomTheme.tagText;
   });
 
