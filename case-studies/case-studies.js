@@ -61,39 +61,67 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ─────────────────────────────────────────────────────────
-     HUB PAGE — Filter Pills Logic
+ /* ─────────────────────────────────────────────────────────
+     HUB PAGE — Filter Pills Logic + Pagination (9 per page)
   ───────────────────────────────────────────────────────── */
-  var pills   = document.querySelectorAll('.csh-pill');
-  var cards   = document.querySelectorAll('.csh-card');
-  var countEl = document.getElementById('csh-count');
-  var emptyEl = document.getElementById('csh-empty');
+  var PER_PAGE = 9;
+  var pills    = document.querySelectorAll('.csh-pill');
+  var cards    = Array.prototype.slice.call(document.querySelectorAll('.csh-card'));
+  var countEl  = document.getElementById('csh-count');
+  var emptyEl  = document.getElementById('csh-empty');
+  var moreBtn  = document.getElementById('csh-more-btn');
+  var moreWrap = document.getElementById('csh-more-wrap');
+
+  var currentFilter = 'all';
+  var visibleCount  = PER_PAGE;
+
+  function getFiltered() {
+    if (currentFilter === 'all') return cards;
+    return cards.filter(function(c) {
+      var cats = (c.getAttribute('data-category') || '').split(' ');
+      return cats.indexOf(currentFilter) !== -1;
+    });
+  }
+
+  function renderCards() {
+    var filtered = getFiltered();
+    var toShow   = filtered.slice(0, visibleCount);
+
+    cards.forEach(function(c) { c.style.display = 'none'; });
+    toShow.forEach(function(c) { c.style.display = ''; });
+
+    var shown = Math.min(visibleCount, filtered.length);
+    if (countEl) {
+      countEl.innerHTML = 'Showing <strong>' + shown + '</strong> of <strong>' + filtered.length + '</strong> projects';
+    }
+    if (emptyEl) {
+      emptyEl.style.display = filtered.length === 0 ? 'block' : 'none';
+    }
+    if (moreWrap) {
+      moreWrap.style.display = visibleCount < filtered.length ? 'block' : 'none';
+    }
+  }
 
   if (pills.length) {
     pills.forEach(function (pill) {
       pill.addEventListener('click', function () {
         pills.forEach(function (p) { p.classList.remove('active'); });
         pill.classList.add('active');
-
-        var filter  = pill.getAttribute('data-filter');
-        var visible = 0;
-
-        cards.forEach(function (card) {
-          var cats = (card.getAttribute('data-category') || '').split(' ');
-          var show = filter === 'all' || cats.indexOf(filter) !== -1;
-          card.style.display = show ? '' : 'none';
-          if (show) visible++;
-        });
-
-        if (countEl) {
-          countEl.innerHTML = 'Showing <strong>' + visible + '</strong> project' + (visible !== 1 ? 's' : '');
-        }
-        if (emptyEl) {
-          emptyEl.style.display = visible === 0 ? 'block' : 'none';
-        }
+        currentFilter = pill.getAttribute('data-filter');
+        visibleCount = PER_PAGE;
+        renderCards();
       });
     });
   }
+
+  if (moreBtn) {
+    moreBtn.addEventListener('click', function () {
+      visibleCount += PER_PAGE;
+      renderCards();
+    });
+  }
+
+  renderCards();
 
   /* ─────────────────────────────────────────────────────────
      HUB PAGE — Card Click → Navigate
