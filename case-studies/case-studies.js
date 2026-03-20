@@ -495,7 +495,7 @@ pageSchemas['case-studies-hub'] = {
       '@type': 'Organization',
       'name': 'GrowwStacks',
       'url': 'https://growwstacks.com',
-      'logo': 'https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png'
+      'logo': 'https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png'
     }
   },
   breadcrumb: {

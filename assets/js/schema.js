@@ -66,7 +66,7 @@ const organizationSchema = {
   "legalName": "M TEC Software and Business Automation Private Limited",
   "description": "AI Agents, Voice AI, and Business Automation Agency. Make.com Platinum Partner.",
   "url": "https://www.growwstacks.com",
-  "logo": "https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png",
+  "logo": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png",
   "address": [
     {
       "@type": "PostalAddress",

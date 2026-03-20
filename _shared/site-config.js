@@ -60,7 +60,7 @@ const SITE = {
 
   // ─── Assets (ImageKit base — for page-specific images only) ───
   imagekit: {
-    favicon: 'https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png'
+    favicon: 'https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png'
   },
 
   // ─── Partner / Tool Logos (favicon helper — consistent sz=64) ─
@@ -467,8 +467,8 @@ SITE.images = {
   },
 
   BRANDING: {
-    favicon: 'https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png',
-    logo:    'https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png'
+    favicon: 'https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png',
+    logo:    'https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png'
   }
 
 };
