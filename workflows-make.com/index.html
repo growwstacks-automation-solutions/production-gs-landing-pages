@@ -272,7 +272,7 @@
 
 <!-- Hero -->
 <section class="wf-hero">
-  <span class="wf-count">100+ Scenarios</span>
+  <span class="wf-count"id="wf-count"></span>
   <h1>Make.com Scenario Templates</h1>
   <p>Browse our library of ready-to-use Make.com automation scenarios. Click any template to view details and import directly.</p>
   <div class="wf-search-wrap">
@@ -309,7 +309,7 @@
 <script src="../assets/js/images-helper.js"></script>
 <script src="../_shared/page-builder.js"></script>
 
-<!-- Make.com Workflow Data -->
+<!-- Make.com Workflow Data and Logic -->
 <script src="/workflows-make.com/workflows-make.com.js"></script>
 
 <script>
@@ -392,6 +392,10 @@
   visibleCount = CARDS_PER_PAGE;
   render();
 })();
+// Set dynamic count (rounded down to nearest 50)
+var total = ALL_WORKFLOWS.length;
+var rounded = Math.floor(total / 50) * 50;
+document.getElementById('wf-count').textContent = rounded + '+ Templates';
 </script>
 
 </body>
