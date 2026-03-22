@@ -1,5 +1,158 @@
 const BLOG_POSTS = [
 {
+  title: "How to Automatically Re-Engage Cold HubSpot Leads with AI & n8n",
+  desc: "Stop losing bad-timing leads forever. This n8n workflow scans HubSpot daily, generates personalized AI follow-ups in Gmail, and alerts your team when cold leads are ready to re-engage.",
+  url: "/blog/how-to-follow-up-with-cold-hubspot-leads-using-ai-n8n-automation",
+  tags: ["n8n","CRM","AI Agents"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Million Dollar AI Agency in 12 Months — The 17-Year-Old's Blueprint",
+  desc: "Discover the exact step-by-step roadmap a 17-year-old used to build a million-dollar AI automation agency in one year — from learning Zapier/Python to landing first clients.",
+  url: "/blog/million-dollar-ai-agency-blueprint",
+  tags: ["AI Agents","Make.com","Business Growth"],
+  date: "2024-05-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Smart Entrepreneurs Are Renting AI for Monthly Income",
+  desc: "Discover how forward-thinking business owners are generating $1,400+ monthly by renting AI agents to businesses. Learn the exact system used to close $6,500 deals while sleeping.",
+  url: "/blog/how-smart-entrepreneurs-are-renting-ai-for-monthly-income",
+  tags: ["AI Agents","Voice AI","Business Automation"],
+  date: "2026-03-10",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Build Your Own AI Agent Desktop App with Multi-LLM Support & Browser Control",
+  desc: "Create a powerful desktop AI assistant that can research products, scrape websites, and automate tasks using multiple LLM models including OpenAI, Claude, Gemini and local models - all running locally on your machine.",
+  url: "/blog/ai-agent-desktop-app-multi-llm-browser-control",
+  tags: ["AI Agents","LLM","Automation"],
+  date: "2024-03-15",
+  readTime: 11,
+  target: "_blank"
+},
+{
+  title: "Unlocked: The AI Voice System That Prints Money (Full Walkthrough)",
+  desc: "Discover how to ethically generate warm leads and automate follow-ups using AI voice technology - without cold outreach or interrupting strangers' days.",
+  url: "/blog/ai-voice-system-that-prints-money",
+  tags: ["Voice AI","AI Agents","Sales"],
+  date: "2024-03-01",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automate Lead Qualification Using Make.com + Airtable (Save 15 Hours/Month)",
+  desc: "Stop wasting time on unqualified leads. This Make.com + Airtable system automatically filters for high-intent prospects, schedules calls, and notifies your team - while ignoring tire-kickers.",
+  url: "/blog/automate-lead-qualification-make-airtable",
+  tags: ["Make.com","CRM","Sales"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Agentic Workflows Just Changed AI Automation Forever! (Claude Code)",
+  desc: "Discover how agentic workflows revolutionize automation by letting you describe outcomes instead of building steps. See a live demo of Claude Code building a lead gen system in minutes.",
+  url: "/blog/agentic-workflows-changed-ai-automation",
+  tags: ["AI Agents","Automation","Workflows"],
+  date: "2024-06-15",
+  readTime: 11,
+  target: "_blank"
+},
+{
+  title: "Zapier vs n8n: The Ultimate Automation Showdown for Business Owners",
+  desc: "Discover which automation tool wins for your business needs: Zapier's simplicity or n8n's power. We break down pricing, ease-of-use, and customization to help you choose.",
+  url: "/blog/zapier-vs-n8n-automation-comparison",
+  tags: ["n8n","Make.com","Business Automation"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Connect Any Data Source to Domo Using APIs & Zapier",
+  desc: "Struggling to get data from niche tools into Domo? Learn how to use APIs and Zapier as universal connectors - even when no native integration exists.",
+  url: "/blog/connect-any-data-source-to-domo-using-apis-zapier",
+  tags: ["Domo","API Integration","Zapier"],
+  date: "2024-03-15",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automate Email Responses Instantly with Zapier (Step-by-Step Guide)",
+  desc: "Stop manually sending emails for every form submission or spreadsheet update. This Zapier automation sends personalized responses instantly whenever new data comes in - tested and working in 2024.",
+  url: "/blog/how-to-automate-emails-with-zapier",
+  tags: ["Zapier","Email Automation","Google Sheets"],
+  date: "2024-03-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Connect Slack to Zapier in 2026 (Step-by-Step Guide)",
+  desc: "Stop manually copying messages between apps. This guide shows you exactly how to connect Slack to Zapier to automate routine tasks and keep conversations flowing effortlessly.",
+  url: "/blog/how-to-connect-slack-to-zapier",
+  tags: ["Zapier","Slack","Automation"],
+  date: "2026-03-10",
+  readTime: 4,
+  target: "_blank"
+},
+{
+  title: "How to Secure OpenClaw with Zapier MCP (10x Easier Than Adding Skills)",
+  desc: "Stop worrying about AI security risks - this Zapier MCP integration gives OpenClaw controlled access without exposing your API keys or files. Works 10x faster than manual skill setup.",
+  url: "/blog/secure-openclaw-with-zapier-mcp",
+  tags: ["AI Agents","Zapier","Security"],
+  date: "2023-11-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Gmail to GoHighLevel Notifications with Zapier",
+  desc: "Stop missing important emails by automating notifications from Gmail to GoHighLevel. This Zapier workflow instantly alerts you when critical emails arrive, with no manual checking required.",
+  url: "/blog/automate-gmail-to-ghl-notifications-zapier",
+  tags: ["Zapier","GoHighLevel","Email Automation"],
+  date: "2023-11-15",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "How to Automate Real Estate Lead Capture in 15 Minutes — Zapier + Google Sheets",
+  desc: "Stop losing leads to manual data entry. This Zapier workflow automatically captures inquiries, saves them to Google Sheets, and sends personalized confirmation emails — all without touching a keyboard.",
+  url: "/blog/automate-real-estate-leads-zapier-google-sheets",
+  tags: ["Zapier","Real Estate","Lead Capture"],
+  date: "2026-03-10",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Build Powerful AI Agents in Your Homelab with n8n (Step-by-Step Guide)",
+  desc: "Transform your homelab into an AI-powered automation hub with this n8n tutorial. Learn to connect SSH commands, OpenAI analysis, and email alerts into a seamless workflow that monitors your systems automatically.",
+  url: "/blog/build-ai-agents-homelab-n8n",
+  tags: ["n8n","AI Agents","Homelab"],
+  date: "2023-11-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Build a Smart AI Agent in Make.com (No Coding Required)",
+  desc: "Transform Make.com from basic automations to intelligent agents that understand context and make decisions. This step-by-step guide shows how to build a customer support AI that reads emails and drafts responses using your knowledge base.",
+  url: "/blog/build-ai-agent-make-com",
+  tags: ["Make.com","AI Agents","Automation"],
+  date: "2026-03-15",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "How to Automatically Send WordPress Form Submissions to Slack in 10 Minutes",
+  desc: "Stop manually copying form data to Slack. This Make.com automation instantly posts WordPress form submissions to any Slack channel, saving hours of repetitive work each week.",
+  url: "/blog/how-to-send-wordpress-forms-to-slack-with-make",
+  tags: ["Make.com","WordPress","Slack"],
+  date: "2024-03-15",
+  readTime: 7,
+  target: "_blank"
+},
+{
   title: "Create a WhatsApp AI Chatbot that Reaches Out For You",
   desc: "Stop waiting for leads to come to you - build a WhatsApp chatbot that proactively contacts potential customers using BotPress and Make.com. This tutorial shows you how to automate lead outreach at scale.",
   url: "/blog/create-whatsapp-ai-chatbot-lead-generation",
