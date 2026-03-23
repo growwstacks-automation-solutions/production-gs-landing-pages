@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to build AI agents with Make | Make | GrowwStacks</title>
+<meta name="description" content="A simple guide to building Make AI Agents from scratch. We’ll walk through setting up an agent, giving it tools, connecting it to inputs, and returning structured responses.">
+<link rel="canonical" href="https://growwstacks.com/how_to_guide/how_to_build_ai_agents_with_make_make/">
+<meta property="og:title" content="How to build AI agents with Make">
+<meta property="og:description" content="A simple guide to building Make AI Agents from scratch. We’ll walk through setting up an agent, giving it tools, connecting it to inputs, and returning structured responses.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/how_to_guide/how_to_build_ai_agents_with_make_make/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_4hbLse6B5.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to build AI agents with Make">
+<meta name="twitter:description" content="A simple guide to building Make AI Agents from scratch. We’ll walk through setting up an agent, giving it tools, connecting it to inputs, and returning structured responses.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to build AI agents with Make","description":"A simple guide to building Make AI Agents from scratch. We'll walk through setting up an agent, giving it tools, connecting it to inputs, and returning structured responses.","author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"publisher":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com","logo":{"@type":"ImageObject","url":"https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"}},"image":"https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_4hbLse6B5.jpg","url":"https://growwstacks.com/how_to_guide/how_to_build_ai_agents_with_make_make/","datePublished":"2026-03-23T12:00:31.612Z"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"How-To Guides","item":"https://growwstacks.com/how_to_guide/"},{"@type":"ListItem","position":3,"name":"How to build AI agents with Make"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What exactly is a Make AI Agent?","acceptedAnswer":{"@type":"Answer","text":"A Make AI Agent is a goal-driven automation powered by large language models that can determine how to accomplish tasks rather than following fixed steps. Unlike traditional automation, agents analyze requests, select appropriate tools from those you provide, and return structured responses based on reasoning."}},{"@type":"Question","name":"Do I need coding skills to create AI agents in Make?","acceptedAnswer":{"@type":"Answer","text":"No coding is required. Make provides a visual interface where you connect pre-built modules to create agent tools. The platform handles all the underlying complexity, allowing you to focus on defining the agent's purpose and connecting it to your existing apps and workflows."}},{"@type":"Question","name":"What kinds of tasks are AI agents best suited for?","acceptedAnswer":{"@type":"Answer","text":"AI agents excel at tasks requiring decision-making based on context, such as customer support inquiries, inventory management, or processing unstructured requests. They're ideal when you need flexibility in how a task gets completed rather than rigid, predetermined steps."}},{"@type":"Question","name":"How do AI agents differ from regular Make scenarios?","acceptedAnswer":{"@type":"Answer","text":"Traditional scenarios follow fixed paths you define, while agents determine their own path to achieve goals. Scenarios execute predefined steps, whereas agents analyze requests and dynamically select from available tools to accomplish objectives based on your instructions."}},{"@type":"Question","name":"Can I connect my AI agent to multiple platforms?","acceptedAnswer":{"@type":"Answer","text":"Yes, agents can integrate with all 3,000+ apps in Make's ecosystem simultaneously. You can build tools that pull data from one platform, process it, and push results to another, creating cross-platform workflows with intelligent decision-making at the core."}},{"@type":"Question","name":"How do I ensure my agent provides accurate responses?","acceptedAnswer":{"@type":"Answer","text":"Accuracy comes from clear instructions in the agent description, well-defined tools with descriptive names, and thorough testing. Start with narrow use cases, review logs to see how the agent interprets requests, and refine both tools and descriptions based on performance."}},{"@type":"Question","name":"Can I get custom automation help for building AI agents?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Our team specializes in creating tailored AI agent solutions for businesses. We can design agents specific to your workflows, integrate them with your existing systems, and ensure they deliver maximum value for your unique operational needs."}}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/how_to_guide/">How-To Guides</a> <span aria-hidden="true">/</span>
+      <span>How to build AI agents with Make</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Make.com</span>
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">Workflow Design</span>
+        </div>
+        <h1>How to build AI agents with Make</h1>
+        <p class="cs-hero-sub">A simple guide to building Make AI Agents from scratch. We'll walk through setting up an agent, giving it tools, connecting it to inputs, and returning structured responses.</p>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_4hbLse6B5.jpg" alt="Illustration of AI agent workflow in Make" width="580" height="380" loading="eager" fetchpriority="high" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <h3>In This Guide</h3>
+      <ol>
+        <li><a href="#what-are-ai-agents">What are AI agents in Make?</a></li>
+        <li><a href="#inventory-agent-example">Example: shop inventory agent</a></li>
+        <li><a href="#create-agent">Step 1: Create your AI agent</a></li>
+        <li><a href="#add-tools">Step 2: Add tools (scenarios)</a></li>
+        <li><a href="#connect-inputs">Step 3: Connect the agent to inputs and outputs</a></li>
+        <li><a href="#test-refine">Step 4: Test and refine the agent</a></li>
+        <li><a href="#best-practices">Best practices</a></li>
+        <li><a href="#use-cases">Other real-world use cases</a></li>
+      </ol>
+      <article class="cs-article">
+
+        <h2 id="what-are-ai-agents">What are AI agents in Make?</h2>
+        <p>Make AI Agents are goal-driven automations powered by large language models (LLMs). Unlike traditional scenarios that follow fixed paths, agents receive tasks, analyze them using AI reasoning, select appropriate tools from those you've provided, and return structured responses.</p>
+        
+        <p>The key difference lies in flexibility. With regular automation, you define every step in advance. With agents, you define the goal and available tools, then let the AI determine how to accomplish it based on the incoming request.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Think of agents as virtual employees. You train them by defining their role (description) and tools (scenarios), then let them figure out how to handle each specific request.</p>
+        </div>
+
+        <h2 id="inventory-agent-example">Example: shop inventory agent</h2>
+        <p>To illustrate how agents work, let's build a Shop Inventory Assistant. This agent will help manage stock by answering questions like "Do we have blue hoodies?" and handling requests like "Order 10 more coffee bags."</p>
+        
+        <p>Our agent will need three core capabilities:</p>
+        <ul>
+          <li>Check current inventory levels</li>
+          <li>Place orders for new stock</li>
+          <li>Communicate through Slack</li>
+        </ul>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/4IntxNdjjj1DDqasV092yn/12b3efd58d1acc9bc7fbc80cd00b3b62/Make_AI_Agents_in_more_detail__1_.png" alt="Make AI Agents interface showing agent creation" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">The Make AI Agents interface where you define your agent's behavior and connect tools</div>
+        </div>
+
+        <h2 id="create-agent">Step 1: Create your AI agent</h2>
+        <p>Creating your agent is the foundation of the automation. This is where you define what the agent does and connect it to an AI model for reasoning capabilities.</p>
+
+        <h3>1. Open the AI Agents section</h3>
+        <p>In your Make dashboard, navigate to the AI Agents section from the left sidebar. Click "Create agent" to begin setting up your new automation assistant.</p>
+
+        <h3>2. Name and describe the agent</h3>
+        <p>Give your agent a clear, descriptive name like "Inventory Assistant." Then write a detailed description of its role and limitations. For our example:</p>
+        
+        <p>"You help manage store inventory. You can check stock levels or place restock orders using the tools provided. Only respond based on tool outputs and available data. Do not order more than 100 units of any product at once."</p>
+
+        <h3>3. Connect a language model</h3>
+        <p>Select your preferred LLM provider (like OpenAI) and enter your API key. This gives your agent the ability to understand requests and determine appropriate actions.</p>
+
+        <h3>4. Save the agent</h3>
+        <p>Click "Create agent" to save your setup. Your agent is now ready to receive tools, which we'll add in the next step.</p>
+
+        <h2 id="add-tools">Step 2: Add tools (scenarios)</h2>
+        <p>Tools are the capabilities your agent can use to accomplish tasks. In Make, each tool is a separate scenario that performs a specific function.</p>
+
+        <h3>1. Create your tool scenarios</h3>
+        <p>For our inventory agent, we'll create two main tools:</p>
+        
+        <p><strong>Tool 1: List Inventory</strong> - This scenario connects to your inventory system (like Google Sheets or Airtable), accepts optional product name filters, retrieves stock data, and returns it using the Return output module.</p>
+        
+        <p><strong>Tool 2: Order Stock</strong> - This scenario creates purchase orders or sends restock requests to your suppliers. It should accept product names and quantities, process the order, and return a confirmation message.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Each tool scenario must end with a Return output module (found under Scenarios tools). This sends structured data back to the agent for processing into a final response.</p>
+        </div>
+
+        <h3>2. Add tools to your agent</h3>
+        <p>Return to your agent's settings and navigate to the Agent-level tools section. Click "Add" and select the scenarios you created. The agent will now consider these when determining how to handle requests.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/6Lszsga3KqbrmH4MB3SN8D/6f2c2f74eac984b9897c39e26e4156a5/image__1_.png" alt="Adding tools to a Make AI Agent" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Selecting scenarios to add as tools for your AI agent</div>
+        </div>
+
+        <h2 id="connect-inputs">Step 3: Connect the agent to inputs and outputs</h2>
+        <p>With your agent and tools ready, you need a way to send it requests and receive responses. We'll use Slack as our interface in this example.</p>
+
+        <h3>1. Set up the Slack trigger</h3>
+        <p>Create a new scenario with the Slack "Watch messages" module. Configure it to monitor the channel where users will interact with your agent. Add filters to ignore messages from your bot to prevent loops.</p>
+
+        <h3>2. Add the Run an agent module</h3>
+        <p>After the trigger, add the "Run an agent" module from Make's AI Agents section. Select your Inventory Assistant and map the Slack message text to the agent's Message field.</p>
+
+        <h3>3. Reply in Slack</h3>
+        <p>Add the Slack "Create a message" module to send the agent's response back to the user. Map the agent's Response field to the message content and use the original message's Thread Timestamp to keep conversations organized.</p>
+
+        <h3>4. Use a custom Slack app (optional)</h3>
+        <p>For better control over your agent's identity in Slack, connect using a custom app. This lets you set the bot's name, avatar, and other details that help users recognize it.</p>
+
+        <h2 id="test-refine">Step 4: Test and refine the agent</h2>
+        <p>Thorough testing ensures your agent behaves as expected before deploying it to users.</p>
+
+        <h3>1. Try simple requests</h3>
+        <p>Start with straightforward queries like "What's our hoodie inventory?" Check that the agent selects the List Inventory tool and returns accurate stock data.</p>
+
+        <h3>2. Test edge cases</h3>
+        <p>Try less direct prompts like "We're running low on espresso" to ensure the agent understands the intent to check stock levels rather than immediately placing orders.</p>
+
+        <h3>3. Check thread behavior</h3>
+        <p>Verify that responses stay in the correct Slack threads, especially when handling multiple simultaneous conversations.</p>
+
+        <h3>4. Review the logs</h3>
+        <p>Examine scenario run histories to see which tools were used, what inputs they received, and what outputs they returned. This helps identify where refinements are needed.</p>
+
+        <h3>5. Adjust as needed</h3>
+        <p>Based on test results, refine your agent's description or tool configurations. You might need to clarify instructions, add example interactions, or adjust tool descriptions.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/3VQGwnaH1OiJ5gFXp1hPip/448e802e95cdd71040c55c1e9d2acdc9/Deterministicvs__1_.png" alt="Testing Make AI Agent responses" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Example of agent testing showing input, tool selection, and response</div>
+        </div>
+
+        <h2 id="best-practices">Best practices</h2>
+        <p>Follow these guidelines to create effective, reliable AI agents:</p>
+
+        <h3>Keep the scope focused</h3>
+        <p>Start with a specific task like inventory management. Once that works well, you can expand to related functions like supplier communication or sales reporting.</p>
+
+        <h3>Write clear descriptions</h3>
+        <p>Your agent's description guides its decisions. Be explicit about what it should do, which tools to use, and how to behave. Include limitations like "Only use the tools provided" or "Ask for clarification if requests are unclear."</p>
+
+        <h3>Use descriptive tool names</h3>
+        <p>Name tools based on how users might phrase requests. "List Inventory" is clearer than "Get Info" because the agent matches requests to tool names.</p>
+
+        <h3>Always return results</h3>
+        <p>Every tool scenario must end with a Return output module. Without this, the agent can't generate helpful responses based on the tool's actions.</p>
+
+        <h3>Start with essential tools</h3>
+        <p>Begin with just the tools your agent absolutely needs. Too many options can confuse its decision-making. You can always add more capabilities later.</p>
+
+        <h2 id="use-cases">Other real-world use cases</h2>
+        <p>The inventory agent is just one example. This same approach works across many business functions:</p>
+
+        <h3>Customer Support Agent</h3>
+        <p>Handle FAQs, check order statuses, and create support tickets through chat widgets or messaging apps.</p>
+
+        <h3>Marketing Assistant</h3>
+        <p>Pull campaign analytics, generate performance reports, and provide insights when marketers ask questions.</p>
+
+        <h3>HR Onboarding Bot</h3>
+        <p>Answer employee questions, fetch policy documents, and log IT requests through Slack or Teams.</p>
+
+        <h3>Project Coordinator</h3>
+        <p>Create tasks in Asana or Jira, schedule meetings, and update project statuses based on team requests.</p>
+
+      </article>
+
+      <section class="cs-faq" id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="cs-faq-subtitle">Common questions about building AI agents with Make</p>
+          <div class="faq-inner">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What exactly is a Make AI Agent?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>A Make AI Agent is a goal-driven automation powered by large language models that can determine how to accomplish tasks rather than following fixed steps. Unlike traditional automation, agents analyze requests, select appropriate tools from those you provide, and return structured responses based on reasoning.</p>
+                <p>The key difference from regular scenarios is flexibility. You define the goal and available tools, then let the agent figure out how to achieve it based on each specific request's context and your instructions.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Do I need coding skills to create AI agents in Make?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>No coding is required. Make provides a visual interface where you connect pre-built modules to create agent tools. The platform handles all the underlying complexity, allowing you to focus on defining the agent's purpose and connecting it to your existing apps and workflows.</p>
+                <p>You'll work with dropdown menus, text fields, and drag-and-drop connections rather than writing code. The most technical aspect might be obtaining API keys for any AI services you want to use.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What kinds of tasks are AI agents best suited for?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>AI agents excel at tasks requiring decision-making based on context, such as customer support inquiries, inventory management, or processing unstructured requests. They're ideal when you need flexibility in how a task gets completed rather than rigid, predetermined steps.</p>
+                <p>Good candidates include: answering variable customer questions, triaging support tickets, analyzing and summarizing reports, or handling requests that could be phrased multiple ways. They're less suited for completely predictable, repetitive tasks where traditional automation suffices.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How do AI agents differ from regular Make scenarios?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Traditional scenarios follow fixed paths you define, while agents determine their own path to achieve goals. Scenarios execute predefined steps, whereas agents analyze requests and dynamically select from available tools to accomplish objectives based on your instructions.</p>
+                <p>Think of scenarios as train tracks (fixed route) versus agents as self-driving cars (dynamic routing). Both get you somewhere, but agents adapt to road conditions while scenarios always take the same path.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I connect my AI agent to multiple platforms?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, agents can integrate with all 3,000+ apps in Make's ecosystem simultaneously. You can build tools that pull data from one platform, process it, and push results to another, creating cross-platform workflows with intelligent decision-making at the core.</p>
+                <p>For example, your agent might check inventory in Shopify, update records in Airtable, message your team on Slack, and email suppliers—all within a single automated decision flow triggered by a simple request.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How do I ensure my agent provides accurate responses?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Accuracy comes from clear instructions in the agent description, well-defined tools with descriptive names, and thorough testing. Start with narrow use cases, review logs to see how the agent interprets requests, and refine both tools and descriptions based on performance.</p>
+                <p>Key strategies include: setting explicit boundaries ("Never suggest products we don't carry"), providing examples of good responses, and building verification steps into your tool scenarios before taking actions like placing orders.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I get custom automation help for building AI agents?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Absolutely. Our team specializes in creating tailored AI agent solutions for businesses. We can design agents specific to your workflows, integrate them with your existing systems, and ensure they deliver maximum value for your unique operational needs.</p>
+                <p>Whether you need help designing the agent architecture, connecting to proprietary systems, or training your team, we offer end-to-end support to implement AI agents that transform how your business operates.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <script>
+      (function(){
+        var items = document.querySelectorAll('.faq-item');
+        items.forEach(function(item){
+          var btn = item.querySelector('.faq-q');
+          var answer = item.querySelector('.faq-a');
+          btn.addEventListener('click', function(){
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            items.forEach(function(other){
+              other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+              other.querySelector('.faq-a').removeAttribute('style');
+              other.classList.remove('faq-item--open');
+            });
+            if(!expanded){
+              btn.setAttribute('aria-expanded','true');
+              answer.style.display = 'block';
+              item.classList.add('faq-item--open');
+            }
+          });
+        });
+      })();
+      </script>
+
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need Custom Automation Help?</h2>
+    <p>This guide is a starting point. Our team builds fully tailored automation systems for your specific workflow needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/how_to_guide/" class="btn btn-outline">Browse More Guides</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
