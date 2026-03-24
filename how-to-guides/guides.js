@@ -15,9 +15,4 @@ var ALL_WORKFLOWS = [
 {u:'https://www.growwstacks.com/how-to-guides/how_to_create_ai_chatbots_make',i:'https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_LYYHIeZ0q.jpg',t:'how to create ai chatbots make'},
 {u:'https://www.growwstacks.com/how-to-guides/abandoned_shopify_carts_are_a_problem_autopilot_and_make_help_you_solve_it_make',i:'https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_xT2BENA1N.jpg',t:'abandoned shopify carts are a problem autopilot and make help you solve it make'},
 {u:'https://www.growwstacks.com/how-to-guides/classify_unsorted_data_and_speed_up_onboarding_with_ai_make_make',i:'https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_s_599sQwI.jpg',t:'classify unsorted data and speed up onboarding with ai make make'},
-{u:'https://www.growwstacks.com/how-to-guides/how_to_automate_employee_onboarding_in_minutes_with_make_make',i:'https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_8mdx4RcDJ.jpg',t:'how to automate employee onboarding in minutes with make make'},
-
-
-
-
   ];
