@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Build an AI Recruiting Agent with Make | GrowwStacks</title>
+<meta name="description" content="Learn how to automate resume screening with Make's AI recruiting agent. Step-by-step guide to building a no-code workflow that fetches, evaluates, and ranks candidates.">
+<link rel="canonical" href="https://growwstacks.com/how_to_guide/how_to_build_an_ai_recruiting_agent_with_make_make">
+<meta property="og:title" content="How to Build an AI Recruiting Agent with Make">
+<meta property="og:description" content="Automate resume screening with Make's AI recruiting agent. Learn how to build a no-code workflow that fetches, evaluates, and ranks candidates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/how_to_guide/how_to_build_an_ai_recruiting_agent_with_make_make">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_40a2LPaVN.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Build an AI Recruiting Agent with Make">
+<meta name="twitter:description" content="Automate resume screening with Make's AI recruiting agent. Learn how to build a no-code workflow that fetches, evaluates, and ranks candidates.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.cs-toc{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #059669;border-radius:12px;padding:28px 32px;margin:40px 0 48px}
+.cs-toc-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748b;margin:0 0 14px}
+.cs-toc ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.cs-toc ol li{font-size:15px;line-height:1.5;color:#374151}
+.cs-toc ol li a{color:#059669;text-decoration:none;font-weight:500}
+.cs-toc ol li a:hover{text-decoration:underline}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.cs-toc{padding:20px 18px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Build an AI Recruiting Agent with Make","description":"Learn how to automate resume screening with Make's AI recruiting agent. Step-by-step guide to building a no-code workflow that fetches, evaluates, and ranks candidates.","author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"publisher":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com","logo":{"@type":"ImageObject","url":"https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"}},"image":"https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_40a2LPaVN.jpg","url":"https://growwstacks.com/how_to_guide/how_to_build_an_ai_recruiting_agent_with_make_make","datePublished":"2026-03-24T09:42:45.112Z"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"How-To Guides","item":"https://growwstacks.com/how_to_guide/"},{"@type":"ListItem","position":3,"name":"How to Build an AI Recruiting Agent with Make"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does an AI recruiting agent differ from traditional resume screening?","acceptedAnswer":{"@type":"Answer","text":"An AI recruiting agent automates the entire screening process by fetching resumes, extracting key details, evaluating candidates against predefined criteria, and logging results. Unlike manual screening which is time-consuming and subjective, the AI agent provides consistent, bias-free evaluations at scale."}},{"@type":"Question","name":"What types of screening questions can I ask the AI agent to evaluate?","acceptedAnswer":{"@type":"Answer","text":"You can configure the agent to answer any job-specific questions based on resume content, such as verifying required skills, years of experience, education level, or specific qualifications. Each answer can be scored numerically for easy comparison."}},{"@type":"Question","name":"Can the AI agent handle resumes in different formats?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow converts PDFs, Word docs, and other formats into structured text before analysis. The agent can process resumes from various sources including Google Drive, email attachments, or applicant tracking systems."}},{"@type":"Question","name":"How accurate is the AI agent's resume evaluation?","acceptedAnswer":{"@type":"Answer","text":"Accuracy depends on how clearly you define your screening criteria in the agent's instructions. With well-structured prompts and testing, the agent can achieve high accuracy, though we recommend reviewing top candidates manually."}},{"@type":"Question","name":"What happens if the AI agent can't answer a screening question?","acceptedAnswer":{"@type":"Answer","text":"The agent is configured to return \"Not found\" and assign 0 points when information isn't available in the resume. You can set up follow-up workflows to request missing information from candidates."}},{"@type":"Question","name":"Can I customize the scoring system for different job roles?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. You can create different agent configurations with role-specific questions and scoring weights. The system is fully customizable to match your hiring criteria."}},{"@type":"Question","name":"Can I get custom automation help for AI recruiting workflows?","acceptedAnswer":{"@type":"Answer","text":"Yes! Our team specializes in building tailored recruitment automation solutions. We can design custom AI agents, integrate with your existing HR systems, and optimize the workflow for your specific hiring needs."}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/how_to_guide/">How-To Guides</a> <span aria-hidden="true">/</span>
+      <span>AI Recruiting Agent</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Make.com</span>
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">Recruitment</span>
+        </div>
+        <h1>How to Build an AI Recruiting Agent with Make</h1>
+        <p class="cs-hero-sub">Automate resume screening with Make's AI recruiting agent. Learn how to build a no-code workflow that fetches, evaluates, and ranks candidates.</p>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_40a2LPaVN.jpg" alt="AI recruiting agent workflow diagram" width="580" height="380" loading="eager" fetchpriority="high" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <div class="cs-toc">
+        <p class="cs-toc-title">In This Guide</p>
+        <ol>
+          <li><a href="#what-is-agent">What is an AI recruiting agent?</a></li>
+          <li><a href="#agent-benefits">What an AI recruiting agent does (and why it's useful)</a></li>
+          <li><a href="#architecture">How it works: two-scenario architecture</a></li>
+          <li><a href="#apps-used">Apps used in this example</a></li>
+          <li><a href="#step-by-step">Step-by-step: How to build the recruiting AI agent</a></li>
+        </ol>
+      </div>
+      <article class="cs-article">
+
+        <h2 id="what-is-agent">What is an AI recruiting agent?</h2>
+        <p>An AI Recruiting Agent is a goal-based assistant that automates early hiring tasks. Instead of manually opening each CV, it extracts candidate data and runs evaluations based on your instructions.</p>
+        <p>In Make, you set a clear goal (for example, "screen marketing applicants"), link supporting scenarios, and connect an input, such as a resume folder. When new resumes arrive, the agent selects the right scenarios to run and returns structured results - fast, consistent, and ready to review.</p>
+
+        <h2 id="agent-benefits">What an AI recruiting agent does (and why it's useful)</h2>
+        <p>Manual resume screening is slow and inconsistent. This AI recruiting agent automates early-stage hiring to deliver fast, objective results. Here's how it works:</p>
+        <ul>
+          <li><strong>Detects new resumes:</strong> Monitors a Google Drive folder (or other cloud storage) for incoming PDFs.</li>
+          <li><strong>Extracts candidate info:</strong> Parses each file to pull name, email, LinkedIn URL, and other contact details.</li>
+          <li><strong>Answers screening questions:</strong> Reads the resume to answer four predefined questions (for example, "Has this person written scripts for YouTube?").</li>
+          <li><strong>Scores responses:</strong> Assigns a score from 0–2 for each answer, along with a short explanation.</li>
+          <li><strong>Logs results in a sheet:</strong> Adds a row to Google Sheets with contact info, answers, scores, and total points—ready to sort by top candidates.</li>
+        </ul>
+        <p>With this setup, every resume is screened the same way - no bias, no bottlenecks - just structured, actionable results for your team.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/6vJsYw38ZQrzifiuQdfFZK/5f2ab36cdc0304e2da960f27267d86db/Screenshot_2025-06-04_at_10.34.12.png" alt="Step 1: Setting up the resume monitor in Make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Step 1: Configuring the Google Drive folder watcher in Make</div>
+        </div>
+
+        <h2 id="architecture">How it works: two-scenario architecture</h2>
+        <p>This setup uses two connected scenarios:</p>
+        <ul>
+          <li><strong>Resume Processing scenario:</strong> Triggers when a new resume is added to a Google Drive folder. It converts the PDF to JSON and sends the data to the AI Agent.</li>
+          <li><strong>Google Sheets Logging scenario:</strong> Receives the agent's output - contact info, answers, and scores - and appends a new row to a Google Sheet.</li>
+        </ul>
+        <p>These scenarios act as tools for the AI agent. When a resume arrives, the first scenario handles conversion and parsing. The agent answers four screening questions, assigns scores (0–2), and triggers the second scenario to log results.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a simple version of your workflow focusing on core functionality, then add enhancements like email notifications or CRM integration once the basic process is working smoothly.</p>
+        </div>
+
+        <h2 id="apps-used">Apps used in this example</h2>
+        <p>This recruiting agent uses several Make modules. You can swap in equivalents if needed:</p>
+        <ul>
+          <li><strong>Google Drive</strong> – Monitors a folder of resumes and fetches new files.</li>
+          <li><strong>PDF.co</strong> – Converts each PDF resume into structured JSON text.</li>
+          <li><strong>HTTP</strong> – Makes a simple HTTP GET request to download the JSON output.</li>
+          <li><strong>Make AI Agent</strong> – The core AI that reads the resume data and produces structured answers.</li>
+          <li><strong>Google Sheets</strong> – Logs each candidate's details and scores.</li>
+        </ul>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/79dQsXjOVaB5suydNK2WS9/f863b2dff253279bcb922f6c96634f5f/Screenshot_2025-06-04_at_10.36.38.png" alt="Step 2: Downloading resume files in Make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Step 2: Configuring the file download module in Make</div>
+        </div>
+
+        <h2 id="step-by-step">Step-by-step: How to build the recruiting AI agent</h2>
+        <p>Now let's assemble everything in Make step by step.</p>
+
+        <h3>Step 1: Set up the Resume Monitor scenario</h3>
+        <p>Create a new scenario called "Resume Intake" and add a Google Drive "Watch Files in a Folder" module. Configure it to monitor your resumes folder and trigger when new files are added.</p>
+
+        <h3>Step 2: Get the resume file</h3>
+        <p>Add a Google Drive "Download a File" module connected to the watcher. Configure it to fetch the resume content and convert documents to a consistent format.</p>
+
+        <h3>Step 3: Convert PDF to JSON</h3>
+        <p>Insert a PDF.co "Convert from PDF" module to parse the resume file into structured JSON text that the AI can analyze.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/5p9pkOkadX9AW7hfomPgRL/9fcaa23789e60cc095c7ae1bb8ae8b8b/Screenshot_2025-06-04_at_10.41.39.png" alt="Step 3: PDF conversion settings" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Step 3: Configuring the PDF to JSON conversion</div>
+        </div>
+
+        <h3>Step 4: Fetch the JSON via HTTP</h3>
+        <p>Add an HTTP "Make a Request" module to download the parsed JSON content from the PDF.co service.</p>
+
+        <h3>Step 5: Add the AI Agent module</h3>
+        <p>Insert a Make "AI Agents > Run an Agent" module. Configure it with your screening questions and connect it to the parsed resume data.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> When writing your agent prompts, be specific about answer formats (e.g., "Respond with 'Yes' or 'No' for each question") to ensure consistent, machine-readable outputs.</p>
+        </div>
+
+        <h3>Step 6: Create the Google Sheets logging scenario</h3>
+        <p>Build a separate scenario that receives the agent's output and logs candidate details to a Google Sheet with columns for each screening question and score.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/67XJFzxwQghgRUMPPWYgLo/78783d5bccf3fcb0108fc491814e145c/Screenshot_2025-06-04_at_10.44.57.png" alt="Step 4: HTTP request configuration" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Step 4: Setting up the HTTP request to fetch parsed resume data</div>
+        </div>
+
+        <h3>Step 7: Define scenario inputs and connect the agent</h3>
+        <p>Configure the inputs for your logging scenario to match the outputs from your AI agent, then connect the two scenarios so results flow automatically from analysis to recording.</p>
+
+      </article>
+
+      <section class="cs-faq" id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="cs-faq-subtitle">Common questions about AI recruiting automation</p>
+          <div class="faq-inner">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How does an AI recruiting agent differ from traditional resume screening?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>An AI recruiting agent automates the entire screening process by fetching resumes, extracting key details, evaluating candidates against predefined criteria, and logging results. Unlike manual screening which is time-consuming and subjective, the AI agent provides consistent, bias-free evaluations at scale.</p>
+                <p>The agent can process hundreds of resumes in the time it takes a human to review a handful, while applying your exact criteria uniformly to every applicant. This eliminates the variability and potential bias of human reviewers while freeing up your HR team for higher-value tasks.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What types of screening questions can I ask the AI agent to evaluate?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>You can configure the agent to answer any job-specific questions based on resume content, such as verifying required skills, years of experience, education level, or specific qualifications. Each answer can be scored numerically for easy comparison.</p>
+                <p>Good question types include verification of technical skills, confirmation of certifications, assessment of relevant experience duration, and identification of specific achievements or responsibilities. The more precise your questions, the more accurate the agent's evaluations will be.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can the AI agent handle resumes in different formats?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, the workflow converts PDFs, Word docs, and other formats into structured text before analysis. The agent can process resumes from various sources including Google Drive, email attachments, or applicant tracking systems.</p>
+                <p>The system handles common formats like PDF, DOCX, and even scanned documents (using OCR). For best results, encourage applicants to submit searchable PDFs rather than image-based files or complex layouts that might be harder to parse accurately.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How accurate is the AI agent's resume evaluation?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Accuracy depends on how clearly you define your screening criteria in the agent's instructions. With well-structured prompts and testing, the agent can achieve high accuracy, though we recommend reviewing top candidates manually.</p>
+                <p>In our testing, properly configured agents achieve 85-95% accuracy on straightforward factual questions (like verifying degrees or certifications). More subjective assessments may require additional refinement of your prompts and scoring criteria.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What happens if the AI agent can't answer a screening question?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>The agent is configured to return "Not found" and assign 0 points when information isn't available in the resume. You can set up follow-up workflows to request missing information from candidates.</p>
+                <p>This conservative approach ensures candidates aren't penalized for information that simply isn't present in their resume, while still allowing you to identify incomplete applications that may need follow-up.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I customize the scoring system for different job roles?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Absolutely. You can create different agent configurations with role-specific questions and scoring weights. The system is fully customizable to match your hiring criteria.</p>
+                <p>For example, you might create separate agents for technical vs. non-technical roles, with different question sets and scoring rubrics. Each agent can have its own Google Sheet template for recording results specific to that role's requirements.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I get custom automation help for AI recruiting workflows?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes! Our team specializes in building tailored recruitment automation solutions. We can design custom AI agents, integrate with your existing HR systems, and optimize the workflow for your specific hiring needs.</p>
+                <p>Whether you need to process high volumes of applicants, integrate with your ATS, or create specialized evaluation criteria, we can build a solution that fits your exact requirements and scales with your hiring process.</p>
+                <ul>
+                  <li>Custom integrations with your existing HR tech stack</li>
+                  <li>Role-specific screening configurations</li>
+                  <li>Advanced reporting and analytics</li>
+                </ul>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <script>
+      (function(){
+        var items = document.querySelectorAll('.faq-item');
+        items.forEach(function(item){
+          var btn = item.querySelector('.faq-q');
+          var answer = item.querySelector('.faq-a');
+          btn.addEventListener('click', function(){
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            items.forEach(function(other){
+              other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+              other.querySelector('.faq-a').removeAttribute('style');
+              other.classList.remove('faq-item--open');
+            });
+            if(!expanded){
+              btn.setAttribute('aria-expanded','true');
+              answer.style.display = 'block';
+              item.classList.add('faq-item--open');
+            }
+          });
+        });
+      })();
+      </script>
+
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need Custom Automation Help?</h2>
+    <p>This guide is a starting point. Our team builds fully tailored automation systems for your specific workflow needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/how_to_guide/" class="btn btn-outline">Browse More Guides</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

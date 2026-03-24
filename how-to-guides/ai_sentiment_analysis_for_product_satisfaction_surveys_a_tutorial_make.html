@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Sentiment Analysis for Product Satisfaction Surveys: A Tutorial | GrowwStacks</title>
+<meta name="description" content="Learn how to automate sentiment analysis for product surveys using Make and ChatGPT with this step-by-step tutorial">
+<link rel="canonical" href="https://growwstacks.com/how_to_guide/ai_sentiment_analysis_for_product_satisfaction_surveys_a_tutorial_make">
+<meta property="og:title" content="AI Sentiment Analysis for Product Satisfaction Surveys: A Tutorial">
+<meta property="og:description" content="Learn how to automate sentiment analysis for product surveys using Make and ChatGPT with this step-by-step tutorial">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/how_to_guide/ai_sentiment_analysis_for_product_satisfaction_surveys_a_tutorial_make">
+<meta property="og:image" content="https://images.ctfassets.net/un655fb9wln6/2CTJvLcsDmhuK9xHypD8VP/1d83981b9f595ec81aab5e6fbeb1f4ce/ai-sentiment-analysis-chatgpt.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Sentiment Analysis for Product Satisfaction Surveys: A Tutorial">
+<meta name="twitter:description" content="Learn how to automate sentiment analysis for product surveys using Make and ChatGPT with this step-by-step tutorial">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.cs-toc{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #059669;border-radius:12px;padding:28px 32px;margin:40px 0 48px}
+.cs-toc-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748b;margin:0 0 14px}
+.cs-toc ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.cs-toc ol li{font-size:15px;line-height:1.5;color:#374151}
+.cs-toc ol li a{color:#059669;text-decoration:none;font-weight:500}
+.cs-toc ol li a:hover{text-decoration:underline}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.cs-toc{padding:20px 18px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI Sentiment Analysis for Product Satisfaction Surveys: A Tutorial","description":"Learn how to automate sentiment analysis for product surveys using Make and ChatGPT with this step-by-step tutorial","author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"publisher":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com","logo":{"@type":"ImageObject","url":"https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"}},"image":"https://images.ctfassets.net/un655fb9wln6/2CTJvLcsDmhuK9xHypD8VP/1d83981b9f595ec81aab5e6fbeb1f4ce/ai-sentiment-analysis-chatgpt.png","url":"https://growwstacks.com/how_to_guide/ai_sentiment_analysis_for_product_satisfaction_surveys_a_tutorial_make","datePublished":"2026-03-24T09:54:44.696Z"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"How-To Guides","item":"https://growwstacks.com/how_to_guide/"},{"@type":"ListItem","position":3,"name":"AI Sentiment Analysis Tutorial"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is sentiment analysis in product surveys?","acceptedAnswer":{"@type":"Answer","text":"Sentiment analysis evaluates customer feedback to determine emotional tone (positive, negative, neutral). For product surveys, it helps identify satisfaction levels and areas needing improvement by analyzing open-ended responses."}},{"@type":"Question","name":"Why use AI for sentiment analysis instead of manual review?","acceptedAnswer":{"@type":"Answer","text":"AI-powered sentiment analysis processes responses faster and more consistently than humans. Large language models like ChatGPT understand context and nuance better than traditional keyword-based analysis, providing more accurate results."}},{"@type":"Question","name":"Can I use this Make scenario with survey tools other than Typeform?","acceptedAnswer":{"@type":"Answer","text":"Yes, Make supports dozens of survey platforms including Google Forms, SurveyMonkey, and Qualtrics. The workflow structure remains similar - you'd just replace the Typeform module with your preferred survey tool's trigger."}},{"@type":"Question","name":"How accurate is ChatGPT for sentiment analysis?","acceptedAnswer":{"@type":"Answer","text":"GPT-3.5 achieves 85-90% accuracy for sentiment analysis when properly prompted. The tutorial includes optimized prompts that specify response formats and evaluation criteria to maximize accuracy for product feedback."}},{"@type":"Question","name":"What's the cost of running this automated sentiment analysis?","acceptedAnswer":{"@type":"Answer","text":"Costs include Make subscription ($9-29/month) and OpenAI API usage (~$0.002 per 1K tokens). For 500 survey responses/month analyzing 100 words each, expect ~$5-10 in API costs plus your Make plan."}},{"@type":"Question","name":"How can I customize the sentiment categories?","acceptedAnswer":{"@type":"Answer","text":"Modify the prompt in the OpenAI module to specify your desired sentiment labels (e.g. 'Very Positive' to 'Very Negative' scale) and criteria. The tutorial explains how to adjust the analysis framework."}},{"@type":"Question","name":"Can I get custom automation help for product sentiment analysis?","acceptedAnswer":{"@type":"Answer","text":"Yes, our team builds tailored sentiment analysis systems for specific business needs. We can customize the survey integration, analysis parameters, reporting formats, and connect to your existing tools."}}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/how_to_guide/">How-To Guides</a> <span aria-hidden="true">/</span>
+      <span>AI Sentiment Analysis Tutorial</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Make.com</span>
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">Customer Feedback</span>
+        </div>
+        <h1>AI Sentiment Analysis for Product Satisfaction Surveys: A Tutorial</h1>
+        <p class="cs-hero-sub">Learn how to automate sentiment analysis for product surveys using Make and ChatGPT with this step-by-step tutorial</p>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://images.ctfassets.net/un655fb9wln6/2CTJvLcsDmhuK9xHypD8VP/1d83981b9f595ec81aab5e6fbeb1f4ce/ai-sentiment-analysis-chatgpt.png" alt="AI analyzing product survey responses with sentiment analysis" width="580" height="380" loading="eager" fetchpriority="high" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <div class="cs-toc">
+        <p class="cs-toc-title">In This Guide</p>
+        <ol>
+          <li><a href="#step-1-create-a-new-scenario-and-add-the-typeform-module">Step 1: Create a new scenario and add the Typeform module</a></li>
+          <li><a href="#step-2-add-the-openai-module">Step 2: Add the OpenAI module</a></li>
+          <li><a href="#step-3-add-a-variable-module-to-your-scenario">Step 3: Add a variable module to your scenario</a></li>
+          <li><a href="#step-4-add-the-airtable-module">Step 4: Add the Airtable module</a></li>
+          <li><a href="#step-5-add-the-final-module-to-your-scenario">Step 5: Add the final module to your scenario</a></li>
+          <li><a href="#final-words-outgrowing-old-processes-with-new-technologies">Final words: Outgrowing old processes with new technologies</a></li>
+        </ol>
+      </div>
+      <article class="cs-article">
+
+        <p>Up until recently, people conducting sentiment analysis had to make a trade-off between accuracy and efficiency. Traditional methods either required extensive manual review or relied on simplistic keyword matching that often missed nuances in customer feedback.</p>
+
+        <p>With the emergence of large language models like ChatGPT, we can now achieve highly accurate sentiment analysis at scale. This tutorial shows how to combine Make's automation capabilities with ChatGPT's natural language understanding to analyze product satisfaction surveys automatically.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> While this guide uses Typeform for surveys, Make supports dozens of survey platforms. The same principles apply whether you're using Google Forms, SurveyMonkey, or other tools.</p>
+        </div>
+
+        <h2 id="step-1-create-a-new-scenario-and-add-the-typeform-module">Step 1: Create a new scenario and add the Typeform module</h2>
+
+        <p>Begin by logging into your Make account and creating a new scenario. This provides the canvas where we'll build our automation workflow. The first component we'll add is the Typeform integration to capture survey responses as they're submitted.</p>
+
+        <p>The "Watch responses" module in Typeform uses webhooks to instantly trigger your workflow whenever someone completes your survey. This real-time processing ensures feedback gets analyzed immediately rather than waiting for batch processing.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/4Pznm9KwZWBHqW1uJBjQXs/607c4d3e611c46f7073b92acf56bda74/ai-sentiment-analysis-create-new-scenario.png" alt="Creating new scenario in Make interface" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">The Make scenario builder interface where we'll construct our automation</div>
+        </div>
+
+        <h2 id="step-2-add-the-openai-module">Step 2: Add the OpenAI module</h2>
+
+        <p>After configuring the Typeform trigger, we'll add the OpenAI module to process the survey responses. The "Create a Completion" module allows us to send the survey text to ChatGPT for analysis.</p>
+
+        <p>Key configuration points for the OpenAI module include selecting the gpt-3.5-turbo model (which offers the best balance of cost and performance) and crafting a detailed prompt that specifies exactly how we want the sentiment analysis performed.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/56E3xWVhqXDPX2LUN4HMJM/35b7d8da6546c0bc5f6c2763a21adbe7/ai-sentiment-analysis-chatgpt.png" alt="Adding OpenAI module in Make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Configuring the OpenAI module to analyze survey responses</div>
+        </div>
+
+        <h2 id="step-3-add-a-variable-module-to-your-scenario">Step 3: Add a variable module to your scenario</h2>
+
+        <p>ChatGPT returns sentiment analysis results as a single text block. We'll use Make's "Set variable" tool to parse this into structured data by splitting the response at line breaks.</p>
+
+        <p>This step is crucial for mapping the analysis to database fields later. The variable module assigns numbers to each line of the response, making it easy to reference specific components like sentiment score, usefulness rating, and analysis comments.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> When configuring the split function, use the newline character (\n) as your delimiter to properly separate the different components of ChatGPT's response.</p>
+        </div>
+
+        <h2 id="step-4-add-the-airtable-module">Step 4: Add the Airtable module</h2>
+
+        <p>With the sentiment data properly parsed, we'll add an Airtable module to store the results. The "Create a record" action lets us map each piece of analyzed data to specific fields in our database.</p>
+
+        <p>This creates a searchable, sortable repository of customer feedback that you can use to identify trends over time. The tutorial includes a pre-built Airtable base you can copy, or you can connect to your existing customer feedback database.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/1n9oCo4aTPvAmOKXbjNVmm/741482208a944b672b54d0d151ebd95c/ai-sentiment-analysis-questions-and-answers.png" alt="Mapping data to Airtable fields" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Configuring Airtable to store analyzed survey data</div>
+        </div>
+
+        <h2 id="step-5-add-the-final-module-to-your-scenario">Step 5: Add the final module to your scenario</h2>
+
+        <p>As an optional final step, we'll add a Slack notification to alert your team when new feedback comes in. This keeps stakeholders informed in real-time about customer sentiment.</p>
+
+        <p>The Slack message can include key details like the sentiment score and a summary of the feedback. You can customize this to highlight particularly negative responses that might require immediate attention or positive feedback worth celebrating.</p>
+
+        <h2 id="final-words-outgrowing-old-processes-with-new-technologies">Final words: Outgrowing old processes with new technologies</h2>
+
+        <p>This automated sentiment analysis solution demonstrates how AI can transform previously manual, time-consuming processes. What used to require hours of human review can now be handled in seconds with greater consistency and accuracy.</p>
+
+        <p>The combination of Make's automation platform with ChatGPT's language understanding creates powerful possibilities for customer experience management. You can adapt this foundation to analyze support tickets, social media mentions, or any other text-based customer feedback.</p>
+
+      </article>
+
+      <section class="cs-faq" id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="cs-faq-subtitle">Common questions about automated sentiment analysis</p>
+          <div class="faq-inner">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What is sentiment analysis in product surveys?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Sentiment analysis evaluates customer feedback to determine emotional tone (positive, negative, neutral). For product surveys, it helps identify satisfaction levels and areas needing improvement by analyzing open-ended responses.</p>
+                <p>Unlike simple rating scales, sentiment analysis extracts insights from written comments where customers express their opinions in their own words. This provides richer, more nuanced understanding of customer perceptions.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Why use AI for sentiment analysis instead of manual review?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>AI-powered sentiment analysis processes responses faster and more consistently than humans. Large language models like ChatGPT understand context and nuance better than traditional keyword-based analysis, providing more accurate results.</p>
+                <p>Manual analysis becomes impractical at scale - a human might take 5 minutes to properly analyze each response, while AI handles hundreds in seconds. AI also eliminates subjective bias that can affect human reviewers.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I use this Make scenario with survey tools other than Typeform?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, Make supports dozens of survey platforms including Google Forms, SurveyMonkey, and Qualtrics. The workflow structure remains similar - you'd just replace the Typeform module with your preferred survey tool's trigger.</p>
+                <p>Each platform has slightly different data structures, so you may need to adjust how you map response fields to the ChatGPT analysis. The core sentiment analysis process remains unchanged regardless of the survey tool.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How accurate is ChatGPT for sentiment analysis?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>GPT-3.5 achieves 85-90% accuracy for sentiment analysis when properly prompted. The tutorial includes optimized prompts that specify response formats and evaluation criteria to maximize accuracy for product feedback.</p>
+                <p>Accuracy depends on providing clear guidelines in your prompt. The model performs best when you define specific sentiment categories and provide examples of how to classify different types of responses.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What's the cost of running this automated sentiment analysis?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Costs include Make subscription ($9-29/month) and OpenAI API usage (~$0.002 per 1K tokens). For 500 survey responses/month analyzing 100 words each, expect ~$5-10 in API costs plus your Make plan.</p>
+                <p>The total cost is typically far less than manual analysis, especially when you factor in the time savings and improved consistency of AI-powered analysis versus human reviewers.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How can I customize the sentiment categories?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Modify the prompt in the OpenAI module to specify your desired sentiment labels (e.g. 'Very Positive' to 'Very Negative' scale) and criteria. The tutorial explains how to adjust the analysis framework.</p>
+                <p>You can add custom categories like "Mixed" for neutral feedback or "Urgent" for complaints requiring immediate action. The key is providing clear definitions so ChatGPT applies your criteria consistently.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I get custom automation help for product sentiment analysis?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, our team builds tailored sentiment analysis systems for specific business needs. We can customize the survey integration, analysis parameters, reporting formats, and connect to your existing tools.</p>
+                <p>Custom solutions might include sentiment trend dashboards, automated alerting for negative feedback, or integration with your CRM to link feedback to customer profiles. We'll design a system that fits your unique requirements.</p>
+                <ul>
+                  <li>Custom survey tool integration</li>
+                  <li>Tailored analysis criteria</li>
+                  <li>Automated reporting and alerts</li>
+                </ul>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <script>
+      (function(){
+        var items = document.querySelectorAll('.faq-item');
+        items.forEach(function(item){
+          var btn = item.querySelector('.faq-q');
+          var answer = item.querySelector('.faq-a');
+          btn.addEventListener('click', function(){
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            items.forEach(function(other){
+              other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+              other.querySelector('.faq-a').removeAttribute('style');
+              other.classList.remove('faq-item--open');
+            });
+            if(!expanded){
+              btn.setAttribute('aria-expanded','true');
+              answer.style.display = 'block';
+              item.classList.add('faq-item--open');
+            }
+          });
+        });
+      })();
+      </script>
+
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need Custom Automation Help?</h2>
+    <p>This guide is a starting point. Our team builds fully tailored automation systems for your specific workflow needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/how_to_guide/" class="btn btn-outline">Browse More Guides</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
