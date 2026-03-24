@@ -1,5 +1,86 @@
 const BLOG_POSTS = [
 {
+  title: "How to Connect Any API to Your Business Without Coding — Make.com HTTP Module Guide",
+  desc: "The Make.com HTTP module acts as a universal API connector - learn how to securely connect to any REST API without writing code and automate data flows across your business.",
+  url: "/blog/how-to-use-http-module-make-com",
+  tags: ["Make.com","Workflow","API"],
+  date: "2026-03-10",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "How to Build Secure AI Agents for Financial Fraud Detection Using Google ADK & MCP Toolbox",
+  desc: "Learn how financial institutions can deploy AI agents with strict security controls to detect fraud patterns in real-time while preventing data exfiltration and connection flooding.",
+  url: "/blog/secure-ai-agents-google-adk-mcp-toolbox",
+  tags: ["AI Agents","Google Cloud","Security"],
+  date: "2024-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Voice AI SaaS in Minutes Using Gemini 3 Pro (No-Code 2026)",
+  desc: "Discover how to create a profitable AI voice agent SaaS without coding using Gemini 3 Pro's revolutionary tools - including how we built a Vietnamese language tutor with zero upfront costs.",
+  url: "/blog/build-voice-ai-saas-gemini-3-pro",
+  tags: ["Voice AI","Gemini","SaaS"],
+  date: "2026-03-10",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Your Business Workflows with Airtable, Zapier & Make.com",
+  desc: "Stop wasting hours on manual tasks. Learn how to build efficient workflows that connect your CRM, automate client pipelines, and sync data across platforms — saving 20+ hours per week.",
+  url: "/blog/automate-business-workflows-airtable-zapier-make",
+  tags: ["Make.com","CRM","Automation"],
+  date: "2024-03-21",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Add an AI Chatbot to Your Canva Website with Jotform",
+  desc: "Transform your Canva website into a 24/7 customer service powerhouse by adding a Jotform AI chatbot that answers questions, books appointments, and handles inquiries automatically — no coding required.",
+  url: "/blog/how-to-create-canva-ai-agent-with-jotform",
+  tags: ["AI Agents","Canva","Jotform"],
+  date: "2024-03-15",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How Law Firms Can Win 3X More Cases With Instant AI Follow-Up (Before Competitors Call)",
+  desc: "When injury victims submit consultation forms, they contact 3 firms simultaneously. This AI voice agent system calls within 30 seconds, qualifies leads, and schedules attorney callbacks - capturing cases competitors miss.",
+  url: "/blog/law-firm-follow-up-automation-ai-voice-agents",
+  tags: ["Voice AI","Legal","CRM"],
+  date: "2026-03-10",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Meta's New AI Agent Can Build Mobile Apps & Analyze Your Finances Automatically",
+  desc: "Discover how Meta's newly acquired Manus AI agent can autonomously build iOS/Android apps, design logos, analyze financial data, and even shop for you - all through natural language prompts.",
+  url: "/blog/meta-manus-ai-agent-capabilities",
+  tags: ["AI Agents","Meta","Automation"],
+  date: "2023-11-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Get Flawless JSON from AI Models in n8n (2026 Guide)",
+  desc: "Struggling with messy AI outputs breaking your automations? This n8n workflow forces GPT models to return perfect JSON every time — no formatting errors, no extra text, just clean data ready for your next node.",
+  url: "/blog/how-to-parse-json-data-in-n8n",
+  tags: ["n8n","AI Agents","Make.com"],
+  date: "2026-03-10",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Firecrawl MCP + n8n: Build a Web Scraping AI Agent That Researches Clients Automatically",
+  desc: "Stop manually researching every client inquiry. This Firecrawl MCP + n8n AI agent automatically scrapes websites, analyzes competitors, and delivers research reports in minutes — saving you hours per client.",
+  url: "/blog/firecrawl-mcp-n8n-web-scraping-ai-agent",
+  tags: ["n8n","AI Agents","Web Scraping"],
+  date: "2026-03-10",
+  readTime: 9,
+  target: "_blank"
+},
+{
   title: "How to Build Your Own AI Companion Like 'Her' Using OpenClaw + ElevenLabs",
   desc: "Create a personalized AI companion with memory and phone access using OpenClaw and ElevenLabs. No coding required — just follow this simple cloud-based setup guide.",
   url: "/blog/build-ai-companion-openclaw-elevenlabs",
