@@ -85,14 +85,7 @@
       <article class="cs-article">
         <h2>What This Workflow Does</h2>
         <p>This automation solves the complex challenge of processing video uploads at scale. When businesses upload videos to S3 buckets, they typically need multiple output formats (for different devices and bandwidths), preview thumbnails, and fast global distribution through CDNs. Manual processing creates bottlenecks and delays.</p>
-        <p>The workflow automatically detects new video uploads in specified S3 buckets, triggers transcoding to multiple resolutions/formats, generates thumbnails at key timestamps, and distributes the processed assets to CDN endpoints. This eliminates manual intervention while ensuring consistent output quality and faster delivery to end users.</p>
-
-        <div class="cs-img-block">
-          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Luiza_Vidal_Icatu_00f78cb493.jpeg" alt="Video transcoding process visualization" width="760" height="420" loading="lazy">
-          <div class="cs-img-caption">Example of automated video processing outputs showing multiple resolutions and thumbnails</div>
-        </div>
-
-        <h2>How It Works</h2>
+        <p>The workflow automatically detects new video uploads in specified S3 buckets, triggers transcoding to multiple resolutions/formats, generates thumbnails at key timestamps, and distributes the processed assets to CDN endpoints. This eliminates manual intervention while ensuring consistent output quality and faster delivery to end users.</p><h2>How It Works</h2>
         <h3>1. S3 Upload Detection</h3>
         <p>The workflow continuously monitors designated AWS S3 buckets for new video file uploads. When a new .mp4, .mov or other video file appears, the workflow immediately captures its metadata and location.</p>
         
@@ -100,14 +93,7 @@
         <p>Using FFmpeg or AWS MediaConvert, the system extracts frames at specified intervals (like every 10 seconds) to create multiple thumbnail options. These thumbnails are saved back to S3 with consistent naming conventions.</p>
         
         <h3>3. Multi-Format Transcoding</h3>
-        <p>The original video is automatically transcoded into various resolutions (1080p, 720p, 480p) and formats (MP4, WebM) to ensure compatibility across devices. Each version is optimized for different bandwidth scenarios.</p>
-        
-        <div class="cs-img-block">
-          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Oliver_Zoom_d4152b86d2.PNG" alt="CDN distribution architecture" width="760" height="420" loading="lazy">
-          <div class="cs-img-caption">Automated distribution flow from S3 through CloudFront or other CDNs</div>
-        </div>
-
-        <h3>4. CDN Distribution</h3>
+        <p>The original video is automatically transcoded into various resolutions (1080p, 720p, 480p) and formats (MP4, WebM) to ensure compatibility across devices. Each version is optimized for different bandwidth scenarios.</p><h3>4. CDN Distribution</h3>
         <p>Processed videos and thumbnails are automatically pushed to AWS CloudFront or other configured CDN endpoints. The workflow updates your database or CMS with the new asset URLs for immediate availability.</p>
 
         <div class="cs-highlight">

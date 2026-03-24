@@ -85,14 +85,7 @@
       <article class="cs-article">
         <h2>What This Workflow Does</h2>
         <p>This n8n workflow implements Redis-based distributed locking to prevent concurrent execution of critical tasks. When multiple workflow instances could run simultaneously (through scheduling, webhooks, or manual triggers), Redis locking ensures only one instance proceeds while others wait or exit gracefully.</p>
-        <p>The solution solves common automation problems like duplicate API calls, race conditions in data processing, and overlapping scheduled jobs. By using Redis as a coordination point, it works reliably even across distributed n8n instances in high-availability setups.</p>
-
-        <div class="cs-img-block">
-          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Luiza_Vidal_Icatu_00f78cb493.jpeg" alt="Redis locking mechanism visualization" width="760" height="420" loading="lazy">
-          <div class="cs-img-caption">Visualization of how Redis prevents concurrent workflow executions</div>
-        </div>
-
-        <h2>How It Works</h2>
+        <p>The solution solves common automation problems like duplicate API calls, race conditions in data processing, and overlapping scheduled jobs. By using Redis as a coordination point, it works reliably even across distributed n8n instances in high-availability setups.</p><h2>How It Works</h2>
         <h3>1. Lock Acquisition</h3>
         <p>The workflow attempts to acquire a Redis lock with a unique key at startup. The lock includes an expiration time (TTL) to prevent deadlocks if the workflow fails.</p>
         
@@ -100,14 +93,7 @@
         <p>If the lock is acquired successfully, the workflow proceeds with normal execution. If the lock already exists (indicating another instance is running), the workflow either waits with retries or exits based on configuration.</p>
         
         <h3>3. Lock Release</h3>
-        <p>Upon successful completion, the workflow explicitly releases the lock. If the workflow fails mid-execution, the lock automatically expires after the TTL period.</p>
-
-        <div class="cs-img-block">
-          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Oliver_Zoom_d4152b86d2.PNG" alt="n8n workflow steps for Redis locking" width="760" height="420" loading="lazy">
-          <div class="cs-img-caption">Implementation details in n8n workflow editor</div>
-        </div>
-
-        <h2>Who This Is For</h2>
+        <p>Upon successful completion, the workflow explicitly releases the lock. If the workflow fails mid-execution, the lock automatically expires after the TTL period.</p><h2>Who This Is For</h2>
         <p>This template is ideal for DevOps engineers, backend developers, and automation specialists who manage critical workflows in n8n. Teams running production automation that must maintain data consistency will benefit most from implementing Redis locking.</p>
         <p>Common use cases include financial transaction processing, inventory management systems, CRM sync operations, and any workflow where duplicate execution could cause business logic issues or data corruption.</p>
 

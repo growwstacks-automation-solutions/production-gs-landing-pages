@@ -86,14 +86,7 @@
       <article class="cs-article">
         <h2>What This Workflow Does</h2>
         <p>This n8n workflow template creates a complete Retrieval-Augmented Generation (RAG) system for your Google Drive documents. It automatically processes uploaded files, extracts their content, converts them into searchable vectors using Cohere embeddings, stores them in Milvus vector database, and provides intelligent question-answering capabilities powered by OpenAI's language models.</p>
-        <p>The system solves the challenge of making large document repositories instantly searchable and queryable without manual tagging or categorization. Instead of scanning through hundreds of pages, users can ask natural language questions and receive accurate answers with references to the source documents.</p>
-
-        <div class="cs-img-block">
-          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Luiza_Vidal_Icatu_00f78cb493.jpeg" alt="Diagram showing document processing flow in the RAG system" width="760" height="420" loading="lazy">
-          <div class="cs-img-caption">Document processing flow from Google Drive to vector database to question-answering</div>
-        </div>
-
-        <h2>How It Works</h2>
+        <p>The system solves the challenge of making large document repositories instantly searchable and queryable without manual tagging or categorization. Instead of scanning through hundreds of pages, users can ask natural language questions and receive accurate answers with references to the source documents.</p><h2>How It Works</h2>
         <h3>1. Document Ingestion</h3>
         <p>The workflow monitors a specified Google Drive folder for new document uploads. When a new file is detected (PDF, DOCX, or TXT), it automatically extracts the text content while preserving document structure and metadata.</p>
 
@@ -101,14 +94,7 @@
         <p>The extracted text is divided into logical chunks (typically paragraphs or sections). Each chunk is processed by Cohere's embedding API to convert the text into numerical vectors that capture semantic meaning.</p>
 
         <h3>3. Vector Storage</h3>
-        <p>The generated embeddings along with their metadata (source document, chunk position) are stored in Milvus vector database. Milvus organizes the vectors for efficient similarity search operations.</p>
-
-        <div class="cs-img-block">
-          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Oliver_Zoom_d4152b86d2.PNG" alt="Screenshot showing vector search results in Milvus" width="760" height="420" loading="lazy">
-          <div class="cs-img-caption">Vector search results showing relevant document chunks retrieved from Milvus</div>
-        </div>
-
-        <h3>4. Question Processing</h3>
+        <p>The generated embeddings along with their metadata (source document, chunk position) are stored in Milvus vector database. Milvus organizes the vectors for efficient similarity search operations.</p><h3>4. Question Processing</h3>
         <p>When a user submits a question, the workflow first converts the question into an embedding vector using the same Cohere model. Milvus then performs a similarity search to find the most relevant document chunks based on vector distance.</p>
 
         <h3>5. Answer Generation</h3>
