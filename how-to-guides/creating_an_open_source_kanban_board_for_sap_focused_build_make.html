@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creating an Open Source Kanban Board for SAP - Focused Build | GrowwStacks</title>
+<meta name="description" content="Learn how to create a Kanban board for SAP Focused Build using Make and Taiga with this step-by-step integration guide.">
+<link rel="canonical" href="https://growwstacks.com/how_to_guide/creating_an_open_source_kanban_board_for_sap_focused_build_make">
+<meta property="og:title" content="Creating an Open Source Kanban Board for SAP - Focused Build">
+<meta property="og:description" content="Learn how to create a Kanban board for SAP Focused Build using Make and Taiga with this step-by-step integration guide.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/how_to_guide/creating_an_open_source_kanban_board_for_sap_focused_build_make">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_DgieSax1j.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Creating an Open Source Kanban Board for SAP - Focused Build">
+<meta name="twitter:description" content="Learn how to create a Kanban board for SAP Focused Build using Make and Taiga with this step-by-step integration guide.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.cs-toc{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #059669;border-radius:12px;padding:28px 32px;margin:40px 0 48px}
+.cs-toc-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748b;margin:0 0 14px}
+.cs-toc ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.cs-toc ol li{font-size:15px;line-height:1.5;color:#374151}
+.cs-toc ol li a{color:#059669;text-decoration:none;font-weight:500}
+.cs-toc ol li a:hover{text-decoration:underline}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.cs-toc{padding:20px 18px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Creating an Open Source Kanban Board for SAP - Focused Build","description":"Learn how to create a Kanban board for SAP Focused Build using Make and Taiga with this step-by-step integration guide.","author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"publisher":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com","logo":{"@type":"ImageObject","url":"https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"}},"image":"https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_DgieSax1j.jpg","url":"https://growwstacks.com/how_to_guide/creating_an_open_source_kanban_board_for_sap_focused_build_make","datePublished":"2026-03-25T02:36:45.403Z"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"How-To Guides","item":"https://growwstacks.com/how_to_guide/"},{"@type":"ListItem","position":3,"name":"SAP Kanban Board"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is SAP Focused Build?","acceptedAnswer":{"@type":"Answer","text":"SAP Focused Build is a solution for agile project delivery that helps teams track implementation projects while maintaining traceability of requirements, documents, and changes. It provides structured workflows but lacks built-in Kanban visualization."}},{"@type":"Question","name":"Why use Taiga for Kanban with SAP?","acceptedAnswer":{"@type":"Answer","text":"Taiga is a free open-source project management tool with excellent Kanban capabilities. It provides visual workflow management that complements SAP Focused Build's structured approach, giving teams better visibility into bottlenecks."}},{"@type":"Question","name":"How does the Make integration work?","acceptedAnswer":{"@type":"Answer","text":"Make listens for SAP requests via webhooks, interprets the data for Taiga, and syncs work items as Kanban cards. This creates a real-time connection between SAP's structured system and Taiga's visual interface."}},{"@type":"Question","name":"What information appears on the Kanban cards?","acceptedAnswer":{"@type":"Answer","text":"You can customize which SAP fields appear on Taiga cards. Typically includes work item details, status, assignee, priority, and any relevant metadata from SAP Focused Build."}},{"@type":"Question","name":"Does this require coding knowledge?","acceptedAnswer":{"@type":"Answer","text":"No coding needed. The Make visual builder handles all the integration logic through pre-built modules for webhooks, JSON parsing, and HTTP requests."}},{"@type":"Question","name":"Can I customize the workflow stages?","acceptedAnswer":{"@type":"Answer","text":"Yes, Taiga allows full customization of Kanban columns to match your team's workflow stages. Common setups include To Do, In Progress, Review, and Done columns."}},{"@type":"Question","name":"Can I get custom automation help for SAP workflows?","acceptedAnswer":{"@type":"Answer","text":"Yes, our team specializes in building custom SAP automation solutions. We can create tailored workflows that connect SAP with other tools based on your specific business needs."}}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/how_to_guide/">How-To Guides</a> <span aria-hidden="true">/</span>
+      <span>SAP Kanban Board</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Make.com</span>
+          <span class="cs-tag">SAP</span>
+          <span class="cs-tag">Kanban</span>
+          <span class="cs-tag">Project Management</span>
+        </div>
+        <h1>Creating an Open Source Kanban Board for SAP - Focused Build</h1>
+        <p class="cs-hero-sub">Looking for embedded Kanban boards for your SAP environment? Create a Kanban board for your SAP Focused Build using Integromat and Taiga.</p>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_DgieSax1j.jpg" alt="Kanban board visualization for SAP Focused Build" width="580" height="380" loading="eager" fetchpriority="high" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <div class="cs-toc">
+        <p class="cs-toc-title">In This Guide</p>
+        <ol>
+          <li><a href="#overview">Project Overview</a></li>
+          <li><a href="#setup">Integration Setup</a></li>
+          <li><a href="#configuration">Taiga Configuration</a></li>
+          <li><a href="#benefits">Key Benefits</a></li>
+        </ol>
+      </div>
+      <article class="cs-article">
+
+        <h2 id="overview">Project Overview</h2>
+        <p>SAP Focused Build provides robust project tracking capabilities but lacks visual workflow management tools that many agile teams rely on. This creates a gap between SAP's structured environment and the flexible Kanban approach preferred by development teams.</p>
+        <p>The solution connects SAP Focused Build with Taiga, an open-source project management platform featuring Kanban boards. This integration gives teams the best of both worlds: SAP's traceability combined with Taiga's visual workflow management.</p>
+
+        <h2 id="setup">Integration Setup</h2>
+        <p>The integration uses Make (formerly Integromat) to bridge SAP Focused Build and Taiga. Make listens for SAP requests via webhooks, processes the data, and syncs it to Taiga as Kanban cards. This creates a real-time connection between the two systems.</p>
+        <p>The setup involves configuring webhooks in SAP, creating API connections to Taiga, and mapping SAP fields to Taiga card properties. The entire process is handled visually in Make without requiring any coding knowledge.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/asset-3062314cbab4284ee6d2849c0a31a560/e4d4ae1f70683099c14cbed5e5a3b522/1024x597.gif" alt="Make scenario connecting SAP and Taiga" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Make scenario flow connecting SAP Focused Build to Taiga</div>
+        </div>
+
+        <h3>Webhook Configuration</h3>
+        <p>SAP Focused Build triggers webhooks whenever work items are created or updated. These webhooks contain all relevant work item data in JSON format. Make captures these webhooks and parses the JSON to extract key information.</p>
+        <p>The webhook setup requires administrative access to SAP Focused Build to configure the outgoing notifications. You'll need to specify which events should trigger notifications and define the payload structure.</p>
+
+        <h3>Data Transformation</h3>
+        <p>Make transforms the SAP data into Taiga's expected format. This includes mapping SAP statuses to Taiga columns, converting assignee information, and formatting any custom fields. The JSON module in Make handles this transformation.</p>
+        <p>You can customize exactly which SAP fields appear on the Taiga cards. Common mappings include work item ID, title, description, priority, and due dates. The transformation logic is completely flexible to match your team's workflow.</p>
+
+        <h2 id="configuration">Taiga Configuration</h2>
+        <p>Taiga requires initial setup before receiving data from SAP. This includes creating a project, defining the Kanban board structure, and configuring user permissions. The Taiga API then allows Make to create and update cards programmatically.</p>
+        <p>The Kanban columns in Taiga should mirror your team's workflow stages. Common setups include columns for Backlog, To Do, In Progress, Review, and Done. You can customize these based on your development process.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/asset-8ab7d4ad4eafc0dc7db4fc0d66eb8b52/ffd63fd00c4dd222f06f90e89675f622/1024x553.jpg" alt="Taiga Kanban board showing SAP work items" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">SAP work items displayed as cards in Taiga's Kanban interface</div>
+        </div>
+
+        <h3>Card Customization</h3>
+        <p>Taiga allows extensive customization of Kanban cards. You can configure which fields appear on cards, color coding by priority or type, and card sizing based on work item complexity. This visual customization helps teams quickly assess work status.</p>
+        <p>The integration maintains a link back to the original SAP work item, allowing team members to jump directly to SAP for detailed information when needed. This preserves SAP as the system of record while providing Taiga for daily workflow management.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use Taiga's tagging system to categorize work items by project, team, or work type. This makes filtering and reporting much easier when dealing with multiple concurrent projects.</p>
+        </div>
+
+        <h2 id="benefits">Key Benefits</h2>
+        <p>This integration provides several significant advantages over using SAP Focused Build alone or purchasing commercial Kanban solutions:</p>
+
+        <h3>Visual Workflow Management</h3>
+        <p>The Kanban board gives teams an immediate visual representation of work status across all projects. Bottlenecks become obvious when columns become overloaded, allowing for quick rebalancing of resources.</p>
+        <p>Unlike SAP's list-based interface, the Kanban board shows work distribution at a glance. This is particularly valuable for Scrum Masters and team leads managing multiple concurrent initiatives.</p>
+
+        <h3>Real-Time Synchronization</h3>
+        <p>Changes in either system sync automatically to the other. Updates in SAP appear on Taiga cards within seconds, and status changes in Taiga flow back to SAP. This eliminates duplicate data entry and ensures both systems stay current.</p>
+        <p>The real-time connection means teams can work in Taiga while maintaining all the compliance and traceability benefits of SAP Focused Build behind the scenes.</p>
+
+        <h3>Cost Savings</h3>
+        <p>Taiga is completely free and open-source, unlike commercial Kanban solutions that charge per user. The Make integration replaces expensive plugins or custom development that would otherwise be needed to add Kanban to SAP.</p>
+        <p>For organizations already using SAP Focused Build, this solution provides Kanban capabilities without additional software licensing costs beyond the Make subscription.</p>
+
+      </article>
+
+      <section class="cs-faq" id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="cs-faq-subtitle">Common questions about SAP and Kanban integrations</p>
+          <div class="faq-inner">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What is SAP Focused Build?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>SAP Focused Build is a solution for agile project delivery that helps teams track implementation projects while maintaining traceability of requirements, documents, and changes. It provides structured workflows but lacks built-in Kanban visualization.</p>
+                <p>Originally developed for SAP implementation projects, Focused Build has expanded to support various types of development work. Its strength lies in compliance and documentation tracking, which complements agile delivery methods.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Why use Taiga for Kanban with SAP?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Taiga is a free open-source project management tool with excellent Kanban capabilities. It provides visual workflow management that complements SAP Focused Build's structured approach, giving teams better visibility into bottlenecks.</p>
+                <p>Unlike commercial tools, Taiga imposes no user limits or feature restrictions in its open-source version. It's also highly customizable, allowing you to tailor the Kanban workflow to match your team's specific processes while maintaining SAP as the system of record.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How does the Make integration work?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Make listens for SAP requests via webhooks, interprets the data for Taiga, and syncs work items as Kanban cards. This creates a real-time connection between SAP's structured system and Taiga's visual interface.</p>
+                <p>The integration uses SAP's webhook capability to push updates whenever work items change. Make receives these updates, transforms the data into Taiga's format, and updates the appropriate Kanban card through Taiga's API.</p>
+                <ul>
+                  <li>Webhooks capture SAP changes</li>
+                  <li>JSON parsing converts data formats</li>
+                  <li>HTTP requests update Taiga</li>
+                </ul>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What information appears on the Kanban cards?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>You can customize which SAP fields appear on Taiga cards. Typically includes work item details, status, assignee, priority, and any relevant metadata from SAP Focused Build.</p>
+                <p>The integration allows mapping any SAP field to Taiga card properties. Common configurations show the work item title as the card name, description in the card details, and status as the column position. Custom fields like priority or estimated effort can be displayed as tags or badges.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Does this require coding knowledge?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>No coding needed. The Make visual builder handles all the integration logic through pre-built modules for webhooks, JSON parsing, and HTTP requests.</p>
+                <p>The entire setup uses Make's drag-and-drop interface with configuration forms for each step. You define the field mappings through dropdown menus rather than writing transformation code. Some technical understanding of APIs helps with troubleshooting but isn't required for basic setup.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I customize the workflow stages?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, Taiga allows full customization of Kanban columns to match your team's workflow stages. Common setups include To Do, In Progress, Review, and Done columns.</p>
+                <p>You can create any number of columns representing your workflow steps. The integration maps SAP status values to these columns, allowing you to maintain SAP's status taxonomy while presenting it visually in Taiga. Columns can be added, removed, or renamed at any time without affecting the SAP integration.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I get custom automation help for SAP workflows?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, our team specializes in building custom SAP automation solutions. We can create tailored workflows that connect SAP with other tools based on your specific business needs.</p>
+                <p>Beyond this Kanban integration, we develop comprehensive automation systems for SAP environments. This includes automating data flows between SAP and other business systems, creating custom dashboards, and building approval workflows that span multiple platforms.</p>
+                <ul>
+                  <li>End-to-end SAP automation design</li>
+                  <li>Cross-system workflow integration</li>
+                  <li>Ongoing support and optimization</li>
+                </ul>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <script>
+      (function(){
+        var items = document.querySelectorAll('.faq-item');
+        items.forEach(function(item){
+          var btn = item.querySelector('.faq-q');
+          var answer = item.querySelector('.faq-a');
+          btn.addEventListener('click', function(){
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            items.forEach(function(other){
+              other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+              other.querySelector('.faq-a').removeAttribute('style');
+              other.classList.remove('faq-item--open');
+            });
+            if(!expanded){
+              btn.setAttribute('aria-expanded','true');
+              answer.style.display = 'block';
+              item.classList.add('faq-item--open');
+            }
+          });
+        });
+      })();
+      </script>
+
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need Custom Automation Help?</h2>
+    <p>This guide is a starting point. Our team builds fully tailored automation systems for your specific workflow needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/how_to_guide/" class="btn btn-outline">Browse More Guides</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

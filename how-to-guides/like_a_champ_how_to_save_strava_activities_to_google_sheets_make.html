@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Like a Champ: How to Save Strava Activities to Google Sheets | GrowwStacks</title>
+<meta name="description" content="Learn how to automatically transfer Strava workout data to Google Sheets for detailed tracking and analysis using Make automation.">
+<link rel="canonical" href="https://growwstacks.com/how_to_guide/like_a_champ_how_to_save_strava_activities_to_google_sheets_make">
+<meta property="og:title" content="Like a Champ: How to Save Strava Activities to Google Sheets">
+<meta property="og:description" content="Learn how to automatically transfer Strava workout data to Google Sheets for detailed tracking and analysis using Make automation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/how_to_guide/like_a_champ_how_to_save_strava_activities_to_google_sheets_make">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_eAt1zS54Y.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Like a Champ: How to Save Strava Activities to Google Sheets">
+<meta name="twitter:description" content="Learn how to automatically transfer Strava workout data to Google Sheets for detailed tracking and analysis using Make automation.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.cs-toc{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #059669;border-radius:12px;padding:28px 32px;margin:40px 0 48px}
+.cs-toc-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748b;margin:0 0 14px}
+.cs-toc ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.cs-toc ol li{font-size:15px;line-height:1.5;color:#374151}
+.cs-toc ol li a{color:#059669;text-decoration:none;font-weight:500}
+.cs-toc ol li a:hover{text-decoration:underline}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.cs-toc{padding:20px 18px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Like a Champ: How to Save Strava Activities to Google Sheets","description":"Learn how to automatically transfer Strava workout data to Google Sheets for detailed tracking and analysis using Make automation.","author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"publisher":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com","logo":{"@type":"ImageObject","url":"https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"}},"image":"https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_eAt1zS54Y.jpg","url":"https://growwstacks.com/how_to_guide/like_a_champ_how_to_save_strava_activities_to_google_sheets_make","datePublished":"2026-03-25T00:06:46.577Z"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"How-To Guides","item":"https://growwstacks.com/how_to_guide/"},{"@type":"ListItem","position":3,"name":"Strava to Google Sheets"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What data can I export from Strava to Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"You can export comprehensive workout data including activity dates, distances, durations, elevation gains, speeds, and unique activity IDs. The automation transfers both imperial and metric measurements, allowing for flexible analysis of your training progress over time."}},{"@type":"Question","name":"How often does the Strava to Google Sheets automation run?","acceptedAnswer":{"@type":"Answer","text":"The automation runs whenever new activities are detected in your Strava account. You can configure the frequency in Make to check for updates daily, weekly, or on any schedule that fits your training routine."}},{"@type":"Question","name":"Will this automation overwrite my existing Google Sheets data?","acceptedAnswer":{"@type":"Answer","text":"No, the system includes duplicate checking to prevent overwriting. It only adds new activities that aren't already recorded in your spreadsheet, maintaining data integrity while keeping your historical records safe."}},{"@type":"Question","name":"Can I customize which Strava activities get exported?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can modify the Make scenario to filter specific activity types (like only cycling or running) or set date ranges. The template provides flexibility to track exactly the metrics most relevant to your fitness goals."}},{"@type":"Question","name":"What if I need to analyze data from before setting up this automation?","acceptedAnswer":{"@type":"Answer","text":"The automation can backfill your historical Strava data by adjusting the date parameters. When first setting up, configure it to pull activities from your desired start date to capture your complete training history."}},{"@type":"Question","name":"How secure is my Strava data in this integration?","acceptedAnswer":{"@type":"Answer","text":"The connection uses Strava's official API with OAuth authentication. Your login credentials are never stored, and the automation only accesses the specific activity data needed for your spreadsheet tracking."}},{"@type":"Question","name":"Can I get custom automation help for Strava data tracking?","acceptedAnswer":{"@type":"Answer","text":"Yes, our team can build tailored Strava automation solutions that match your specific analysis needs, whether you're an individual athlete or coaching multiple people. We create custom dashboards, advanced metrics, and integration with other fitness apps."}}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/how_to_guide/">How-To Guides</a> <span aria-hidden="true">/</span>
+      <span>Strava to Google Sheets</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Make.com</span>
+          <span class="cs-tag">Strava</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Fitness Tracking</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Like a Champ: How to Save Strava Activities to Google Sheets</h1>
+        <p class="cs-hero-sub">Learn how to automatically transfer Strava workout data to Google Sheets for detailed tracking and analysis using Make automation.</p>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/Make%20website%20Data/How%20to%20Guided/file_eAt1zS54Y.jpg" alt="Illustration showing Strava activities syncing with Google Sheets" width="580" height="380" loading="eager" fetchpriority="high" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <div class="cs-toc">
+        <p class="cs-toc-title">In This Guide</p>
+        <ol>
+          <li><a href="#why-export-strava-data">Why Export Strava Data to Google Sheets?</a></li>
+          <li><a href="#setup-requirements">Setup Requirements</a></li>
+          <li><a href="#step-by-step-configuration">Step-by-Step Configuration</a></li>
+          <li><a href="#data-points-exported">Data Points Exported</a></li>
+          <li><a href="#advanced-customization">Advanced Customization Options</a></li>
+          <li><a href="#troubleshooting">Troubleshooting Common Issues</a></li>
+        </ol>
+      </div>
+      <article class="cs-article">
+
+        <h2 id="why-export-strava-data">Why Export Strava Data to Google Sheets?</h2>
+        <p>Strava provides excellent social features and basic analytics, but serious athletes often need deeper analysis capabilities. By exporting your workout data to Google Sheets, you unlock powerful customization options for tracking your fitness progress.</p>
+        <p>Google Sheets allows you to create custom dashboards, perform complex calculations, and visualize trends over time. You can combine your Strava data with other metrics like nutrition, sleep, or heart rate information for comprehensive performance analysis.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/asset-2607c5f7192643a52ceb773c9f6e6bd8/ff9360222853575c73a04f31e2782503/strava-account-screenshot.png" alt="Strava account dashboard showing activity data" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Strava's interface provides basic activity tracking but limited analysis capabilities</div>
+        </div>
+
+        <h2 id="setup-requirements">Setup Requirements</h2>
+        <p>Before beginning the automation setup, ensure you have these three essential components:</p>
+        <ul>
+          <li>An active Make.com account (free tier available)</li>
+          <li>Strava account with workout history</li>
+          <li>Google account with access to Google Sheets</li>
+        </ul>
+        <p>The automation uses Make's visual workflow builder to connect Strava and Google Sheets without coding. You'll need to authenticate both services during setup and have edit permissions for the destination spreadsheet.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Create a dedicated Google Sheet for Strava data before starting the setup. The template includes pre-formatted columns for all activity metrics.</p>
+        </div>
+
+        <h2 id="step-by-step-configuration">Step-by-Step Configuration</h2>
+        <p>The automation consists of six key steps that work together to transfer your Strava activities securely to Google Sheets. Each component serves a specific purpose in the data flow.</p>
+
+        <h3>1. Google Sheets Search Module</h3>
+        <p>This initial module locates your most recent recorded activity in Google Sheets. It establishes the starting point for checking new Strava activities, preventing redundant data transfers.</p>
+        <p>When configuring, select your Google account and the specific spreadsheet tab containing your Strava data. The module automatically handles date formatting and lookup logic.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/asset-4b49a8eb6db8d8178168b0d86af20c47/2dff194bfdf336bffb5911a8d0d34949/configure-the-google-sheets-search-rows-module.png" alt="Configuring Google Sheets search module in Make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Google Sheets module setup showing account connection and sheet selection</div>
+        </div>
+
+        <h3>2. Strava List Activities Module</h3>
+        <p>This component retrieves your workout history from Strava's API. It automatically filters activities based on the date range from the previous Google Sheets check.</p>
+        <p>Authentication requires connecting your Strava account through OAuth. The module handles all API calls and data formatting, returning clean activity records for processing.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/asset-d4d95897eb7bfd519bb703b3ab33de8a/ca7507faaa5c75fe6c02b55ed3882794/configure-the-strava-list-activities-module.png" alt="Strava activities module configuration in Make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Strava module setup with activity type and date range parameters</div>
+        </div>
+
+        <h3>3. Duplicate Check Filter</h3>
+        <p>This smart filter prevents duplicate entries by verifying each activity's unique ID against your existing Google Sheets data. It's pre-configured to handle Strava's ID system automatically.</p>
+        <p>The filter ensures your spreadsheet maintains data integrity while accommodating Strava's occasional activity updates or corrections.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/asset-6dcaa102591001709776a6635432b130/3526612b9ffdf2a13af3d02da98e50b6/configure-the-get-ride-activity-filter.png" alt="Duplicate check filter configuration in Make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Filter setup to prevent duplicate activity entries</div>
+        </div>
+
+        <h3>4. Final Google Sheets Export</h3>
+        <p>The last module formats and transfers approved activities to your spreadsheet. It maps all Strava metrics to corresponding columns while maintaining consistent data types.</p>
+        <p>Configuration involves selecting the same Google Sheet and specifying the destination tab. The module handles unit conversions and timestamp formatting automatically.</p>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/asset-27da8056a394899716a914fdf3e6fbf5/215ecd5786eabf0a2da556ce31a960b5/configuring-the-google-sheets-add-a-row-module.png" alt="Final Google Sheets export module configuration" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Google Sheets add row module showing field mappings</div>
+        </div>
+
+        <h2 id="data-points-exported">Data Points Exported</h2>
+        <p>The automation captures comprehensive workout metrics from Strava, providing both raw and calculated values for analysis:</p>
+        <ul>
+          <li>Activity date and time</li>
+          <li>Workout type (run, ride, swim, etc.)</li>
+          <li>Distance in miles/km</li>
+          <li>Duration in hours:minutes and total seconds</li>
+          <li>Elevation gain in feet/meters</li>
+          <li>Average and maximum speed</li>
+          <li>Calories burned</li>
+          <li>Activity description and gear used</li>
+        </ul>
+        <p>This dataset enables sophisticated performance tracking, from simple mileage logs to advanced power curve analysis.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use Google Sheets' pivot tables to analyze your Strava data by activity type, time period, or equipment for deeper insights into your training patterns.</p>
+        </div>
+
+        <h2 id="advanced-customization">Advanced Customization Options</h2>
+        <p>While the template works perfectly as-is, you can enhance it with these optional modifications:</p>
+        <p><strong>Activity Type Filtering:</strong> Modify the Strava module to only capture specific workout types like cycling or running. This creates focused datasets for sport-specific analysis.</p>
+        <p><strong>Custom Calculations:</strong> Add Google Sheets formulas to derive additional metrics like weekly mileage, performance trends, or training load calculations.</p>
+
+        <h2 id="troubleshooting">Troubleshooting Common Issues</h2>
+        <p>Most setup problems stem from authentication or permission errors. Ensure you've:</p>
+        <ul>
+          <li>Granted Make access to both Strava and Google Sheets</li>
+          <li>Enabled the Strava API for your account</li>
+          <li>Set correct sharing permissions on your Google Sheet</li>
+        </ul>
+        <p>For performance issues, check your Make scenario's scheduling settings. Daily or weekly syncs typically provide the best balance of freshness and system load.</p>
+
+      </article>
+
+      <section class="cs-faq" id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="cs-faq-subtitle">Common questions about Strava to Google Sheets automation</p>
+          <div class="faq-inner">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What data can I export from Strava to Google Sheets?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>You can export comprehensive workout data including activity dates, distances, durations, elevation gains, speeds, and unique activity IDs. The automation transfers both imperial and metric measurements, allowing for flexible analysis of your training progress over time.</p>
+                <p>The system captures all standard Strava metrics plus any custom fields you've added to your activities. This includes gear used, perceived exertion, weather conditions (if logged), and personal notes about each workout.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How often does the Strava to Google Sheets automation run?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>The automation runs whenever new activities are detected in your Strava account. You can configure the frequency in Make to check for updates daily, weekly, or on any schedule that fits your training routine.</p>
+                <p>For most users, daily synchronization provides the best balance between data freshness and system resources. Competitive athletes might prefer multiple daily checks during heavy training periods.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Will this automation overwrite my existing Google Sheets data?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>No, the system includes duplicate checking to prevent overwriting. It only adds new activities that aren't already recorded in your spreadsheet, maintaining data integrity while keeping your historical records safe.</p>
+                <p>The automation uses Strava's unique activity IDs to identify duplicates. Even if you edit an activity in Strava (like correcting distance), the system recognizes it as the same workout and preserves your existing data.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I customize which Strava activities get exported?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, you can modify the Make scenario to filter specific activity types (like only cycling or running) or set date ranges. The template provides flexibility to track exactly the metrics most relevant to your fitness goals.</p>
+                <p>Advanced users can add additional filters for distance thresholds, elevation gain, or other Strava metrics. This lets you create specialized datasets for race preparation or equipment testing.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What if I need to analyze data from before setting up this automation?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>The automation can backfill your historical Strava data by adjusting the date parameters. When first setting up, configure it to pull activities from your desired start date to capture your complete training history.</p>
+                <p>For very large histories, consider running initial imports in batches to avoid timeout issues. The system handles incremental updates efficiently once your baseline data is established.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How secure is my Strava data in this integration?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>The connection uses Strava's official API with OAuth authentication. Your login credentials are never stored, and the automation only accesses the specific activity data needed for your spreadsheet tracking.</p>
+                <p>All data transfers occur over encrypted connections. You maintain full control and can revoke access anytime through your Strava account settings without affecting your core Strava functionality.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I get custom automation help for Strava data tracking?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, our team can build tailored Strava automation solutions that match your specific analysis needs, whether you're an individual athlete or coaching multiple people. We create custom dashboards, advanced metrics, and integration with other fitness apps.</p>
+                <p>Our solutions can incorporate heart rate data, power meter outputs, or connect with nutrition tracking systems. We'll design a system that provides exactly the insights you need to optimize your training and performance.</p>
+                <ul>
+                  <li>Custom performance dashboards</li>
+                  <li>Multi-athlete coaching portals</li>
+                  <li>Equipment efficiency analysis</li>
+                  <li>Training load monitoring</li>
+                </ul>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <script>
+      (function(){
+        var items = document.querySelectorAll('.faq-item');
+        items.forEach(function(item){
+          var btn = item.querySelector('.faq-q');
+          var answer = item.querySelector('.faq-a');
+          btn.addEventListener('click', function(){
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            items.forEach(function(other){
+              other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+              other.querySelector('.faq-a').removeAttribute('style');
+              other.classList.remove('faq-item--open');
+            });
+            if(!expanded){
+              btn.setAttribute('aria-expanded','true');
+              answer.style.display = 'block';
+              item.classList.add('faq-item--open');
+            }
+          });
+        });
+      })();
+      </script>
+
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need Custom Automation Help?</h2>
+    <p>This guide is a starting point. Our team builds fully tailored automation systems for your specific workflow needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/how_to_guide/" class="btn btn-outline">Browse More Guides</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

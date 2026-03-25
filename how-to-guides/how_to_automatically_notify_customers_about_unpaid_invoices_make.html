@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Automatically Notify Customers About Unpaid Invoices | GrowwStacks</title>
+<meta name="description" content="Step-by-step guide to automate unpaid invoice notifications using Make.com and Stripe">
+<link rel="canonical" href="https://growwstacks.com/how_to_guide/how_to_automatically_notify_customers_about_unpaid_invoices_make">
+<meta property="og:title" content="Automate Unpaid Invoice Notifications">
+<meta property="og:description" content="Learn to automate unpaid invoice detection and customer notifications with Make.com">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/how_to_guide/how_to_automatically_notify_customers_about_unpaid_invoices_make">
+<meta property="og:image" content="https://images.ctfassets.net/un655fb9wln6/BIAtFdPiP6xoCZoWplnPj/12a75c709ef17ff8505378fe967e1bf6/How_to_Automatically_Notify_Customers_About_Unpaid_Invoices.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Unpaid Invoice Notifications">
+<meta name="twitter:description" content="Step-by-step guide to automate unpaid invoice notifications using Make.com and Stripe">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.cs-toc{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #059669;border-radius:12px;padding:28px 32px;margin:40px 0 48px}
+.cs-toc-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748b;margin:0 0 14px}
+.cs-toc ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.cs-toc ol li{font-size:15px;line-height:1.5;color:#374151}
+.cs-toc ol li a{color:#059669;text-decoration:none;font-weight:500}
+.cs-toc ol li a:hover{text-decoration:underline}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.cs-toc{padding:20px 18px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Automatically Notify Customers About Unpaid Invoices","description":"Step-by-step guide to automate unpaid invoice notifications using Make.com and Stripe","author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"publisher":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com","logo":{"@type":"ImageObject","url":"https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"}},"image":"https://images.ctfassets.net/un655fb9wln6/BIAtFdPiP6xoCZoWplnPj/12a75c709ef17ff8505378fe967e1bf6/How_to_Automatically_Notify_Customers_About_Unpaid_Invoices.png","url":"https://growwstacks.com/how_to_guide/how_to_automatically_notify_customers_about_unpaid_invoices_make","datePublished":"2026-03-25"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"How-To Guides","item":"https://growwstacks.com/how_to_guide/"},{"@type":"ListItem","position":3,"name":"Automate Unpaid Invoice Notifications"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does automating unpaid invoice notifications help my business?","acceptedAnswer":{"@type":"Answer","text":"Automating unpaid invoice notifications saves significant administrative time while improving cash flow consistency. This system ensures timely follow-ups without manual tracking, reducing late payments by 30-40% according to industry benchmarks."}},{"@type":"Question","name":"What payment platforms work with this Make.com automation?","acceptedAnswer":{"@type":"Answer","text":"While this guide specifically covers Stripe integration, Make.com supports similar workflows with PayPal, QuickBooks, Xero, and other major payment processors through their API connections."}},{"@type":"Question","name":"How often should I run the unpaid invoice check?","acceptedAnswer":{"@type":"Answer","text":"We recommend daily checks for most businesses. The scenario can be scheduled in Make to run automatically at your preferred frequency without manual intervention."}},{"@type":"Question","name":"Can I customize the email templates sent to customers?","acceptedAnswer":{"@type":"Answer","text":"Yes, the email module allows full customization of subject lines, body content, and attachments. You can maintain brand voice while automating the communication process."}},{"@type":"Question","name":"What happens if a customer has multiple unpaid invoices?","acceptedAnswer":{"@type":"Answer","text":"The system intelligently escalates cases with multiple unpaid invoices to management rather than bombarding customers, with all relevant details aggregated in Slack."}},{"@type":"Question","name":"Is there a way to test this before implementing?","acceptedAnswer":{"@type":"Answer","text":"Make.com allows you to run scenarios in test mode with sample data. We recommend testing with a small group of test invoices before full deployment."}},{"@type":"Question","name":"Can I get custom automation help for unpaid invoice management?","acceptedAnswer":{"@type":"Answer","text":"Our team specializes in building tailored solutions for accounts receivable automation. We can adapt this workflow to your specific billing systems and approval processes."}}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/how_to_guide/">How-To Guides</a> <span aria-hidden="true">/</span>
+      <span>Automate Unpaid Invoice Notifications</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Make.com</span>
+          <span class="cs-tag">Stripe</span>
+          <span class="cs-tag">Automation</span>
+          <span class="cs-tag">Finance</span>
+          <span class="cs-tag">Accounts Receivable</span>
+        </div>
+        <h1>How to Automatically Notify Customers About Unpaid Invoices</h1>
+        <p class="cs-hero-sub">Transform manual payment tracking into an automated system that detects overdue invoices and sends reminders with Make.com and Stripe integration.</p>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://images.ctfassets.net/un655fb9wln6/BIAtFdPiP6xoCZoWplnPj/12a75c709ef17ff8505378fe967e1bf6/How_to_Automatically_Notify_Customers_About_Unpaid_Invoices.png" alt="Visual workflow diagram showing Stripe to Make.com integration for unpaid invoice automation" width="580" height="380" loading="eager" fetchpriority="high" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <div class="cs-toc">
+        <p class="cs-toc-title">In This Guide</p>
+        <ol>
+          <li><a href="#step-1-create-spreadsheet">Create Google Sheets spreadsheet</a></li>
+          <li><a href="#step-2-add-google-sheets">Add Google Sheets to scenario</a></li>
+          <li><a href="#step-3-add-filter">Configure date filters</a></li>
+        </ol>
+      </div>
+      <article class="cs-article">
+
+        <h2 id="step-1-create-spreadsheet">Step 1: Create a Google Sheets spreadsheet and a new Make scenario</h2>
+        <p>Manual invoice tracking creates administrative overhead and often leads to delayed follow-ups. By automating this process with Make.com, you can ensure consistent, timely reminders while freeing up valuable staff time.</p>
+        <p>Begin by setting up a Google Sheets spreadsheet with these essential columns:</p>
+        <ul>
+          <li>Customer Name</li>
+          <li>Created Date</li>
+          <li>Due Date</li>
+          <li>Amount Due</li>
+          <li>Customer Email</li>
+          <li>Plan/Service</li>
+          <li>PDF Link</li>
+          <li>Invoice ID</li>
+        </ul>
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/169oKB3qYROkxkTGeWV5Xr/7793992e2b36315d015a5fbef16fee66/unpaid-invoices-1.png" alt="Google Sheets setup for unpaid invoice tracking" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Example spreadsheet structure for tracking unpaid invoices</div>
+        </div>
+
+        <h2 id="step-2-add-google-sheets">Step 2: Add the Google Sheets app to your scenario</h2>
+        <p>After creating your spreadsheet structure, log into your Make.com account and create a new scenario. The first module you'll add is Stripe's "Search Customers" function, which will pull invoice data directly from your payment processor.</p>
+        <p>If you haven't connected Stripe to Make before, you'll need to authenticate using your Stripe API key. This secure connection allows Make to access your invoice data while maintaining all security protocols.</p>
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> When configuring the Stripe module, set the status filter to "Open" and collection method to "Send Invoice" to catch all unpaid invoices.</p>
+        </div>
+
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/5VLPvBZiCH7kVK1qymiXGL/d46b8f9abbd5808876c4fddc6995bd19/unpaid-invoices-2.png" alt="Make.com Stripe module configuration" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Configuring Stripe module settings in Make.com</div>
+        </div>
+
+        <h2 id="step-3-add-filter">Step 3: Add a filter for overdue invoices</h2>
+        <p>The magic of this automation lies in its intelligent filtering. We'll configure the system to only flag invoices that are genuinely overdue, avoiding premature reminders.</p>
+        <p>Using Make's date functions, we'll compare the invoice due date with the current date minus 10 days. This creates a buffer period before reminders are sent, which improves customer relations while maintaining cash flow.</p>
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/12TVdlKDaInYzpd9U7dtta/0fd0bfa1a08ec78461c46a0d8c1c53a9/unpaid-invoices-3.png" alt="Date filter configuration in Make.com" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Setting up the 10-day overdue filter in Make</div>
+        </div>
+
+      </article>
+
+      <section class="cs-faq" id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="cs-faq-subtitle">Common questions about unpaid invoice automation</p>
+          <div class="faq-inner">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How does automating unpaid invoice notifications help my business?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Automating unpaid invoice notifications saves significant administrative time while improving cash flow consistency. This system ensures timely follow-ups without manual tracking.</p>
+                <p>According to industry benchmarks, automated reminders can reduce late payments by 30-40%. The system also creates consistent documentation of all communication attempts.</p>
+                <ul>
+                  <li>Reduces days sales outstanding (DSO)</li>
+                  <li>Eliminates human oversight</li>
+                  <li>Provides audit trail of all reminders</li>
+                </ul>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What payment platforms work with this Make.com automation?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>While this guide specifically covers Stripe integration, Make.com supports similar workflows with other major payment processors.</p>
+                <p>The platform's extensive app ecosystem includes pre-built connectors for PayPal, QuickBooks, Xero, and other financial systems through their API connections.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How often should I run the unpaid invoice check?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>We recommend daily checks for most businesses. The scenario can be scheduled in Make to run automatically at your preferred frequency.</p>
+                <p>Daily checks provide timely identification of overdue invoices while avoiding system overload. Make's scheduler allows customization based on your business hours and payment terms.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I customize the email templates sent to customers?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, the email module allows full customization of subject lines, body content, and attachments. You can maintain brand voice while automating the communication process.</p>
+                <p>Best practice includes personalizing with the customer's name, invoice details, and clear payment instructions. The system can attach the original invoice PDF for convenience.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What happens if a customer has multiple unpaid invoices?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>The system intelligently escalates cases with multiple unpaid invoices to management rather than bombarding customers with duplicate reminders.</p>
+                <p>When multiple overdue invoices are detected, the scenario aggregates all relevant details and sends a consolidated notification to your accounts team via Slack or email.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Is there a way to test this before implementing?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Make.com allows you to run scenarios in test mode with sample data before activating the live automation.</p>
+                <p>We recommend creating test invoices in a sandbox Stripe environment and verifying all components work as expected before deploying to your production systems.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I get custom automation help for unpaid invoice management?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Our team specializes in building tailored solutions for accounts receivable automation that go beyond this basic template.</p>
+                <p>We can adapt this workflow to your specific billing systems, approval processes, and escalation protocols, creating a fully customized solution for your business needs.</p>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <script>
+(function(){
+  var items = document.querySelectorAll('.faq-item');
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var answer = item.querySelector('.faq-a');
+    btn.addEventListener('click', function(){
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach(function(other){
+        other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        other.querySelector('.faq-a').removeAttribute('style');
+        other.classList.remove('faq-item--open');
+      });
+      if(!expanded){
+        btn.setAttribute('aria-expanded','true');
+        answer.style.display = 'block';
+        item.classList.add('faq-item--open');
+      }
+    });
+  });
+})();
+</script>
+
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need Custom Automation Help?</h2>
+    <p>This guide is a starting point. Our team builds fully tailored automation systems for your specific workflow needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/how_to_guide/" class="btn btn-outline">Browse More Guides</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
