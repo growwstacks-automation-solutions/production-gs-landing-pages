@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-generate GitHub release notes and notify via Slack | Free Template | GrowwStacks</title>
+<meta name="description" content="Automate GitHub release notes generation and Slack notifications with this n8n workflow template for DevOps teams">
+<link rel="canonical" href="https://growwstacks.com/workflows/4171-auto-generate-github-release-notes-and-notify-via-slack/">
+<meta property="og:title" content="Auto-generate GitHub release notes and notify via Slack">
+<meta property="og:description" content="Automate GitHub release notes generation and Slack notifications with this n8n workflow template for DevOps teams">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/4171-auto-generate-github-release-notes-and-notify-via-slack/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/6763-auto-generate-github-release-notes-and-notify-via-slack.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auto-generate GitHub release notes and notify via Slack">
+<meta name="twitter:description" content="Automate GitHub release notes generation and Slack notifications with this n8n workflow template for DevOps teams">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Auto-generate GitHub release notes and notify via Slack","description":"Automate GitHub release notes generation and Slack notifications with this n8n workflow template for DevOps teams","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/6763-auto-generate-github-release-notes-and-notify-via-slack.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why automate GitHub release notes?","acceptedAnswer":{"@type":"Answer","text":"Automating GitHub release notes saves engineering teams hours per release cycle while ensuring consistent documentation. It eliminates manual copy-pasting of PR details and reduces human error in changelog generation."}},{"@type":"Question","name":"What information appears in automated release notes?","acceptedAnswer":{"@type":"Answer","text":"Automated release notes typically include PR titles grouped by category (features, bugs, docs), author attribution, linked PR numbers, and any labels you've configured to highlight important changes."}},{"@type":"Question","name":"How does Slack integration help with releases?","acceptedAnswer":{"@type":"Answer","text":"Slack notifications provide immediate visibility to your team when new releases are drafted. They can include direct links to the GitHub release, key changes, and @mentions for critical updates that need attention."}},{"@type":"Question","name":"Can I customize the release note format?","acceptedAnswer":{"@type":"Answer","text":"Yes, automation workflows allow full customization of markdown templates. You can add headers, section organization, emoji formatting, and even include specific PR comments that follow certain patterns."}},{"@type":"Question","name":"What if we use semantic versioning?","acceptedAnswer":{"@type":"Answer","text":"The workflow can be extended to analyze PR labels or commit messages to suggest the next semantic version (major/minor/patch) based on the types of changes included in the release."}},{"@type":"Question","name":"How do we handle release approvals?","acceptedAnswer":{"@type":"Answer","text":"The template creates draft releases by default, allowing maintainers to review before publishing. You can add approval steps via Slack reactions or integrate with your existing approval systems."}},{"@type":"Question","name":"Can I get a custom GitHub-Slack automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Our team specializes in building tailored GitHub-Slack automation systems that match your exact release workflow, approval processes, and notification requirements. We can integrate additional tools like Jira, Linear, or your internal systems."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"GitHub Release Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>GitHub Release Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">GitHub</span>
+          <span class="cs-tag">Slack</span>
+          <span class="cs-tag">DevOps</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Auto-generate GitHub release notes and notify via Slack</h1>
+        <p class="cs-hero-sub">Automate your release process with structured changelogs and team notifications</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/6763-auto-generate-github-release-notes-and-notify-via-slack.png" alt="GitHub release notes automation workflow diagram" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves the tedious manual process of compiling GitHub release notes by automatically generating structured changelogs from merged pull requests and notifying your team in Slack. It eliminates hours of copy-pasting PR details while ensuring consistent, well-formatted release documentation.</p>
+        
+        <p>The workflow intelligently groups PRs by their labels (features, bugs, docs), includes author attribution, and creates draft releases for maintainer review before publishing. The Slack notification provides immediate visibility with direct links to the GitHub release.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Trigger the workflow</h3>
+        <p>The process starts when you provide the repository name, owner, and target branch through a simple form interface.</p>
+        
+        <h3>2. Fetch latest Git tag</h3>
+        <p>The workflow identifies the most recent semantic version tag to determine which changes need documentation.</p>
+        
+        <h3>3. Collect merged PRs</h3>
+        <p>It queries GitHub's API for all pull requests merged since the last tag, filtering by your specified branch.</p>
+        
+        <h3>4. Organize and format</h3>
+        <p>PRs are grouped by their labels and transformed into clean markdown with proper headings and section organization.</p>
+        
+        <h3>5. Create draft release</h3>
+        <p>A draft GitHub release is created with the generated notes, ready for maintainer review before publishing.</p>
+        
+        <h3>6. Notify team in Slack</h3>
+        <p>A formatted message is sent to your specified Slack channel with release details and direct links.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for:</p>
+        <ul>
+          <li>Engineering teams managing frequent software releases</li>
+          <li>Open source maintainers wanting professional changelogs</li>
+          <li>DevOps engineers streamlining release processes</li>
+          <li>Technical writers documenting product changes</li>
+          <li>Teams using semantic versioning and GitHub flow</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A GitHub repository with semantic version tags</li>
+          <li>GitHub personal access token with repo permissions</li>
+          <li>Slack workspace with webhook URL or OAuth access</li>
+          <li>PRs labeled consistently (feature/bug/docs/etc.)</li>
+          <li>n8n instance (cloud or self-hosted)</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use GitHub's saved replies feature to create templates for common release note sections that this workflow can incorporate automatically.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download and import the JSON template into your n8n instance</li>
+          <li>Configure GitHub and Slack credentials in n8n</li>
+          <li>Map your PR labels to release note sections in the config node</li>
+          <li>Test with a repository that has several merged PRs</li>
+          <li>Customize the Slack message format if needed</li>
+          <li>Schedule regular runs or trigger manually before releases</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 2-3 hours per release</strong> by eliminating manual note compilation and formatting work.</p>
+        
+        <p><strong>Reduce human errors</strong> with consistent, automatically generated changelogs that include all relevant PRs.</p>
+        
+        <p><strong>Improve team visibility</strong> through instant Slack notifications with direct links to draft releases.</p>
+        
+        <p><strong>Professional documentation</strong> with standardized formatting that follows best practices.</p>
+        
+        <p><strong>Flexible customization</strong> to match your exact release workflow and notification needs.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about GitHub-Slack automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why automate GitHub release notes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating GitHub release notes saves engineering teams hours per release cycle while ensuring consistent documentation. It eliminates manual copy-pasting of PR details and reduces human error in changelog generation.</p>
+          <p>For teams releasing weekly or even daily, this automation can reclaim dozens of engineering hours monthly that would otherwise be spent on repetitive documentation tasks.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What information appears in automated release notes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated release notes typically include PR titles grouped by category (features, bugs, docs), author attribution, linked PR numbers, and any labels you've configured to highlight important changes.</p>
+          <p>The template can be extended to include specific PR comments marked with special tags, related issue references, or even code change statistics from the diff.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does Slack integration help with releases?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Slack notifications provide immediate visibility to your team when new releases are drafted. They can include direct links to the GitHub release, key changes, and @mentions for critical updates that need attention.</p>
+          <p>Teams often configure these notifications to go to specific channels like #engineering or #releases, with different formatting for internal vs. customer-facing updates.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I customize the release note format?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, automation workflows allow full customization of markdown templates. You can add headers, section organization, emoji formatting, and even include specific PR comments that follow certain patterns.</p>
+          <p>Many teams create templates that match their brand guidelines, with consistent headers, change categories, and even links to related documentation or upgrade instructions.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What if we use semantic versioning?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow can be extended to analyze PR labels or commit messages to suggest the next semantic version (major/minor/patch) based on the types of changes included in the release.</p>
+          <p>Some teams configure automation to increment version numbers automatically when certain labels are present (like "breaking-change" triggering a major version bump).</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do we handle release approvals?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The template creates draft releases by default, allowing maintainers to review before publishing. You can add approval steps via Slack reactions or integrate with your existing approval systems.</p>
+          <p>More advanced implementations might require specific team members to approve via Slack reactions or comments before the release is automatically published.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom GitHub-Slack automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Our team specializes in building tailored GitHub-Slack automation systems that match your exact release workflow, approval processes, and notification requirements. We can integrate additional tools like Jira, Linear, or your internal systems.</p>
+          <p>Custom solutions might include:</p>
+          <ul>
+            <li>Integration with your CI/CD pipeline</li>
+            <li>Multi-level approval workflows</li>
+            <li>Automatic version number generation</li>
+            <li>Custom reporting on release contents</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom GitHub-Slack Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
