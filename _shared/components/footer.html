@@ -48,7 +48,7 @@ window.onload = function () {
 
   const path = window.location.pathname;
 
-  if (!path.includes('/blog') && !path.includes('/workflows')) return;
+  if (!path.includes('/blog') && !path.includes('/workflows') && !path.includes('/how-to-guides') ) return;
 
   const themes = [
 
@@ -160,6 +160,12 @@ window.onload = function () {
     el.style.color = randomTheme.tagText;
   });
 
+  document.querySelectorAll(".cs-toc").forEach(tag => {
+       tag.style.borderColor = randomTheme.tagColor;
+  });
+  document.querySelectorAll(".cs-toc-title + ol li a").forEach((a) => {
+      a.style.color = randomTheme.tagColor;
+    });
 };
 </script>
 <script>
