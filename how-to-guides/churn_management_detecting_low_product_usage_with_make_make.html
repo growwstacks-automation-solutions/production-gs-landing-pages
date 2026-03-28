@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Churn Management: Detecting Low Product Usage With Make | GrowwStacks</title>
+<meta name="description" content="Learn how to automatically detect low product usage to anticipate and reduce customer churn with Make automation.">
+<link rel="canonical" href="https://growwstacks.com/how_to_guide/churn_management_detecting_low_product_usage_with_make_make">
+<meta property="og:title" content="Churn Management: Detecting Low Product Usage With Make">
+<meta property="og:description" content="Learn how to automatically detect low product usage to anticipate and reduce customer churn with Make automation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/how_to_guide/churn_management_detecting_low_product_usage_with_make_make">
+<meta property="og:image" content="https://images.ctfassets.net/un655fb9wln6/3RlFwcsirwZ6z8zZPP0bmJ/b56087dd07c0ca7d4059f08353fecd26/Churn_Management.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Churn Management: Detecting Low Product Usage With Make">
+<meta name="twitter:description" content="Learn how to automatically detect low product usage to anticipate and reduce customer churn with Make automation.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.cs-toc{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #059669;border-radius:12px;padding:28px 32px;margin:40px 0 48px}
+.cs-toc-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748b;margin:0 0 14px}
+.cs-toc ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+.cs-toc ol li{font-size:15px;line-height:1.5;color:#374151}
+.cs-toc ol li a{color:#059669;text-decoration:none;font-weight:500}
+.cs-toc ol li a:hover{text-decoration:underline}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.cs-toc{padding:20px 18px}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Churn Management: Detecting Low Product Usage With Make","description":"Learn how to automatically detect low product usage to anticipate and reduce customer churn with Make automation.","author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"publisher":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com","logo":{"@type":"ImageObject","url":"https://ik.imagekit.io/ui4mpbzoy/growwstacks-favicon-logo.png"}},"image":"https://images.ctfassets.net/un655fb9wln6/3RlFwcsirwZ6z8zZPP0bmJ/b56087dd07c0ca7d4059f08353fecd26/Churn_Management.png","url":"https://growwstacks.com/how_to_guide/churn_management_detecting_low_product_usage_with_make_make","datePublished":"2026-03-27T06:45:52.995Z"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"How-To Guides","item":"https://growwstacks.com/how_to_guide/"},{"@type":"ListItem","position":3,"name":"Churn Management"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the key indicators of customer churn?","acceptedAnswer":{"@type":"Answer","text":"Low product usage is one of the strongest predictors of customer churn, especially when usage drops significantly within the first 90 days. Other indicators include reduced login frequency, declining feature adoption, and lack of engagement with product communications."}},{"@type":"Question","name":"How often should I monitor for low usage customers?","acceptedAnswer":{"@type":"Answer","text":"For most SaaS businesses, monitoring weekly or monthly is ideal. The first 90 days are critical, so more frequent monitoring during this period can help identify at-risk customers early when intervention is most effective."}},{"@type":"Question","name":"Can I use this automation with other CRMs besides Salesforce?","acceptedAnswer":{"@type":"Answer","text":"Yes, this workflow can be adapted for any CRM that Make supports, including HubSpot, Zoho CRM, or Pipedrive. The core logic remains the same - you'll just need to adjust the CRM-specific modules in your Make scenario."}},{"@type":"Question","name":"What's the best way to re-engage low usage customers?","acceptedAnswer":{"@type":"Answer","text":"Effective re-engagement strategies include personalized onboarding check-ins, targeted educational content about underused features, and success manager outreach. The key is to understand why usage is low and address specific barriers."}},{"@type":"Question","name":"How do I determine what 'low usage' means for my product?","acceptedAnswer":{"@type":"Answer","text":"Analyze your historical data to identify usage patterns that preceded churn. Common thresholds include users in the bottom 25% of activity metrics or those who haven't logged key actions within a set timeframe."}},{"@type":"Question","name":"Should I automate customer outreach when low usage is detected?","acceptedAnswer":{"@type":"Answer","text":"Automated outreach can be helpful, but we recommend combining it with human follow-up. Automated emails work well for educational content, while sales or customer success teams should handle more personalized interventions."}},{"@type":"Question","name":"Can I get custom automation help for churn management?","acceptedAnswer":{"@type":"Answer","text":"Absolutely! Our team specializes in building tailored churn prevention systems that integrate with your specific tech stack and business processes. We can create custom workflows that go beyond basic usage monitoring."}}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/how_to_guide/">How-To Guides</a> <span aria-hidden="true">/</span>
+      <span>Churn Management</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Make.com</span>
+          <span class="cs-tag">Automation</span>
+          <span class="cs-tag">Churn Prevention</span>
+          <span class="cs-tag">CRM Integration</span>
+        </div>
+        <h1>Churn Management: Detecting Low Product Usage With Make</h1>
+        <p class="cs-hero-sub">Learn how to automatically detect low product usage to anticipate and reduce customer churn with Make automation.</p>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://images.ctfassets.net/un655fb9wln6/3RlFwcsirwZ6z8zZPP0bmJ/b56087dd07c0ca7d4059f08353fecd26/Churn_Management.png" alt="Churn management workflow visualization" width="580" height="380" loading="eager" fetchpriority="high" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <div class="cs-toc">
+        <p class="cs-toc-title">In This Guide</p>
+        <ol>
+          <li><a href="#proactive-churn-reduction">For proactive churn reduction, automate account monitoring</a></li>
+          <li><a href="#step-1">Step 1: Create a new Make scenario and add the Snowflake app</a></li>
+          <li><a href="#step-2">Step 2: Configure the Snowflake module</a></li>
+          <li><a href="#step-3">Step 3: Add the first Salesforce module</a></li>
+          <li><a href="#step-4">Step 4: Add the second Salesforce module</a></li>
+          <li><a href="#step-5">Step 5: Add the Text aggregator module</a></li>
+          <li><a href="#step-6">Step 6: Add the last module</a></li>
+          <li><a href="#step-7">Step 7: Test and save to start preventing churn!</a></li>
+        </ol>
+      </div>
+      <article class="cs-article">
+
+        <h2 id="proactive-churn-reduction">For proactive churn reduction, automate account monitoring</h2>
+        <p>Customer churn remains one of the most significant challenges for subscription-based businesses, with studies showing that 80% of app users churn within the first 3 months. What makes this particularly concerning is that most users churn silently - they don't complain or ask for help, they simply stop using your product.</p>
+        <p>The correlation between product usage and churn is well-documented. When customers sign up but don't engage meaningfully with your product (or their usage declines over time), they're significantly more likely to cancel. This makes usage monitoring one of the most powerful tools in your churn prevention arsenal.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Focus on monitoring the first 90 days after signup - this is when customers are most vulnerable to churn and also when proactive engagement can have the biggest impact.</p>
+        </div>
+
+        <h2 id="step-1">Step 1: Create a new Make scenario and add the Snowflake app</h2>
+        <p>Begin by logging into your Make account and navigating to the Scenarios section. Click "Create a new Scenario" to access the visual workflow builder where we'll construct our churn detection system.</p>
+        <p>In the blank scenario canvas, click the plus sign to add your first module. Search for and select the Snowflake app, then choose the "Execute SQL" module - this will allow us to query your product usage data directly from Snowflake.</p>
+        
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/6XhMnyWNVidJV60unCKTqX/26ca23d705e8b2138af164ea1e14f866/new_scenario_in_make.png" alt="new scenario in make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Creating a new scenario in Make's visual workflow builder</div>
+        </div>
+
+        <h2 id="step-2">Step 2: Configure the Snowflake module</h2>
+        <p>With the Snowflake module added, you'll need to establish a connection between Make and your Snowflake account. Click "Add" to configure the connection, entering your Snowflake credentials and server details.</p>
+        <p>Once connected, you'll configure the SQL query that identifies at-risk accounts. A typical query might look for accounts that are less than 90 days old with usage metrics below your defined threshold (like fewer than 5 logins in the last 30 days).</p>
+        
+        <div class="cs-img-block">
+          <img src="https://images.ctfassets.net/un655fb9wln6/5AmyerIEUEWRA121fjLPjP/a106304f85186c2a855d0d0123c857d5/Snowflake_module_in_Make.png" alt="Snowflake module in Make" loading="lazy" style="display:block;max-width:100%;width:auto;height:auto;max-height:480px;margin:0 auto;" onerror="this.parentElement.style.display='none'">
+          <div class="cs-img-caption">Configuring the Snowflake SQL query module in Make</div>
+        </div>
+
+        <h2 id="step-3">Step 3: Add the first Salesforce module</h2>
+        <p>Now we'll add Salesforce integration to flag at-risk accounts. Add a "Salesforce - Update a Record" module connected to your first Snowflake module. This will allow us to update the status of identified accounts in Salesforce.</p>
+        <p>Configure the module to set a custom field (like "Churn Risk" or "Priority Status") to "High" for all accounts returned by your Snowflake query. This creates visible flags in Salesforce that your team can act upon.</p>
+
+        <h2 id="step-4">Step 4: Add the second Salesforce module</h2>
+        <p>Next, add a "Salesforce - Get a Record" module to retrieve full details for each flagged account. This ensures your team has all necessary context when reviewing at-risk customers.</p>
+        <p>Map the record ID from your initial Snowflake query to this module, pulling in additional fields like company name, ARR, and customer segment that will help prioritize outreach efforts.</p>
+
+        <h2 id="step-5">Step 5: Add the Text aggregator module</h2>
+        <p>To streamline notifications, we'll use Make's Text aggregator module to consolidate all at-risk accounts into a single, organized message rather than sending individual alerts.</p>
+        <p>Configure the aggregator to include key details from Salesforce like account name, days since signup, and usage metrics. Add line breaks between entries for readability.</p>
+
+        <h2 id="step-6">Step 6: Add the last module</h2>
+        <p>The final piece is notification delivery. Add a Slack (or email) module to send the aggregated list to your customer success or sales team.</p>
+        <p>Configure the message with clear formatting and suggested next steps, making it easy for your team to take immediate action on the highest-risk accounts.</p>
+
+        <h2 id="step-7">Step 7: Test and save to start preventing churn!</h2>
+        <p>Before going live, thoroughly test your scenario using the "Run once" feature. Verify that it correctly identifies test accounts, updates Salesforce, and sends properly formatted notifications.</p>
+        <p>Once validated, set your scenario to run on a regular schedule (weekly is common) and activate it. You now have an automated system proactively identifying and flagging at-risk customers!</p>
+
+      </article>
+
+      <section class="cs-faq" id="faq">
+        <div class="container">
+          <h2>Frequently Asked Questions</h2>
+          <p class="cs-faq-subtitle">Common questions about churn management automation</p>
+          <div class="faq-inner">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What are the key indicators of customer churn?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Low product usage is one of the strongest predictors of customer churn, especially when usage drops significantly within the first 90 days. Other indicators include reduced login frequency, declining feature adoption, and lack of engagement with product communications.</p>
+                <p>These behavioral signals often appear weeks or months before a customer actually cancels, giving you valuable time to intervene if you're monitoring them systematically.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How often should I monitor for low usage customers?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>For most SaaS businesses, monitoring weekly or monthly is ideal. The first 90 days are critical, so more frequent monitoring during this period can help identify at-risk customers early when intervention is most effective.</p>
+                <p>The right frequency depends on your product's usage patterns and sales cycle. High-touch enterprise products might warrant daily checks, while simpler tools may only need weekly monitoring.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I use this automation with other CRMs besides Salesforce?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Yes, this workflow can be adapted for any CRM that Make supports, including HubSpot, Zoho CRM, or Pipedrive. The core logic remains the same - you'll just need to adjust the CRM-specific modules in your Make scenario.</p>
+                <p>The key is ensuring your CRM has custom fields to track churn risk status and that your usage data can be accessed via API from your analytics platform or database.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>What's the best way to re-engage low usage customers?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Effective re-engagement strategies include personalized onboarding check-ins, targeted educational content about underused features, and success manager outreach. The key is to understand why usage is low and address specific barriers.</p>
+                <p>Tier your approach based on customer value and risk level. High-value accounts may warrant direct phone calls, while smaller accounts might receive automated email sequences with usage tips.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>How do I determine what 'low usage' means for my product?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Analyze your historical data to identify usage patterns that preceded churn. Common thresholds include users in the bottom 25% of activity metrics or those who haven't logged key actions within a set timeframe.</p>
+                <p>Look for the point where reduced activity strongly predicts future churn. This becomes your "low usage" threshold to monitor proactively.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Should I automate customer outreach when low usage is detected?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Automated outreach can be helpful, but we recommend combining it with human follow-up. Automated emails work well for educational content, while sales or customer success teams should handle more personalized interventions.</p>
+                <p>Consider a blended approach where automated emails provide value (like tutorial videos) while simultaneously alerting your team to accounts needing personal attention.</p>
+              </div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                <span>Can I get custom automation help for churn management?</span>
+                <span class="faq-arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">
+                <p>Absolutely! Our team specializes in building tailored churn prevention systems that integrate with your specific tech stack and business processes. We can create custom workflows that go beyond basic usage monitoring.</p>
+                <p>We'll work with you to identify your highest-risk customer segments, design appropriate intervention workflows, and integrate with all your existing tools to create a comprehensive churn prevention system.</p>
+                <ul>
+                  <li>Custom risk scoring models</li>
+                  <li>Multi-channel engagement workflows</li>
+                  <li>Integration with your existing tech stack</li>
+                </ul>
+              </div></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <script>
+      (function(){
+        var items = document.querySelectorAll('.faq-item');
+        items.forEach(function(item){
+          var btn = item.querySelector('.faq-q');
+          var answer = item.querySelector('.faq-a');
+          btn.addEventListener('click', function(){
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            items.forEach(function(other){
+              other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+              other.querySelector('.faq-a').removeAttribute('style');
+              other.classList.remove('faq-item--open');
+            });
+            if(!expanded){
+              btn.setAttribute('aria-expanded','true');
+              answer.style.display = 'block';
+              item.classList.add('faq-item--open');
+            }
+          });
+        });
+      })();
+      </script>
+
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need Custom Automation Help?</h2>
+    <p>This guide is a starting point. Our team builds fully tailored automation systems for your specific workflow needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/how_to_guide/" class="btn btn-outline">Browse More Guides</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
