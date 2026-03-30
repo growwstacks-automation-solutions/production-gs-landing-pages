@@ -360,8 +360,8 @@ readTime: 7,
 target: "_blank"
 },
 {
-  title: "Zapier vs Make: The Truth About No-Code Automation in <span data-year="current"></span>",
-  desc: "Choosing between Zapier and Make isn't about finding the "best" tool—it's about matching the right automation approach to your team's needs. This breakdown reveals why experienced builders often use both platforms for different scenarios.",
+  title: "Zapier vs Make: The Truth About No-Code Automation in 2026",
+  desc: "Choosing between Zapier and Make isn't about finding the 'best' tool—it's about matching the right automation approach to your team's needs. This breakdown reveals why experienced builders often use both platforms for different scenarios.",
   url: "/blog/zapier-vs-make-comparison",
   tags: ["Make.com","General Business","Productivity"],
 date: "2026-01-27",
@@ -549,7 +549,7 @@ readTime: 5,
 target: "_blank"
 },
 {
-  title: "Gumloop vs Zapier vs Make (<span data-year="current"></span>) — Which Automation Tool Is Right for You?",
+  title: "Gumloop vs Zapier vs Make (2026) — Which Automation Tool Is Right for You?",
   desc: "Choosing between Gumloop, Zapier, and Make? This breakdown reveals which automation platform fits your business size, technical skills, and integration needs — plus when to upgrade.",
   url: "/blog/gumloop-vs-zapier-vs-make-comparison",
   tags: ["Make.com","Workflow","Automation"],
@@ -558,7 +558,7 @@ readTime: 5,
 target: "_blank"
 },
 {
-  title: "WPZap Review <span data-year="current"></span> + $43,000 Bonus | Lifetime WordPress Automation Plugin",
+  title: "WPZap Review 2026 + $43,000 Bonus | Lifetime WordPress Automation Plugin",
   desc: "Stop paying monthly fees for WordPress automation. WPZap delivers Zapier-style workflows inside WordPress with a one-time payment, unlimited automations, and full data control — plus a $43,000 bonus bundle.",
   url: "/blog/wpzap-review-lifetime-wordpress-automation-plugin",
   tags: ["WordPress","Automation","Make.com"],
@@ -3134,7 +3134,7 @@ target: "_blank"
 },
 {
   title: "Stop Chatting. Start Appointing: The AI Agent Revolution (2026 Guide)",
-  desc: "If you're still chatting with AI in <span data-year="current"></span>, you're already behind. Discover how agentic workflows outperform conversational AI and learn to build autonomous AI teams that execute without micromanagement.",
+  desc: "If you're still chatting with AI in 2026, you're already behind. Discover how agentic workflows outperform conversational AI and learn to build autonomous AI teams that execute without micromanagement.",
   url: "/blog/ai-agent-revolution-guide",
   tags: ["AI Agents","GPT","LLM"],
 date: "2026-02-20",
@@ -3260,7 +3260,7 @@ target: "_blank"
 },
 {
   title: "How AI Agents Are Moving From Testing to Profit in 2026",
-  desc: "AI agents are no longer just experiments—they're driving real revenue. Discover the 3 key areas where businesses are deploying production-ready AI agents with measurable ROI in <span data-year="current"></span>.",
+  desc: "AI agents are no longer just experiments—they're driving real revenue. Discover the 3 key areas where businesses are deploying production-ready AI agents with measurable ROI in 2026.",
   url: "/blog/ai-agents-shift-from-testing-to-money-making",
   tags: ["AI Agents","Business Automation","Trends"],
 date: "2026-02-21",
@@ -10592,6 +10592,6 @@ target: "_blank"
 date: "2025-10-28",
 readTime: 9,
 target: "_blank"
-},
+}
 ];
 
