@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reduce LLM Costs with Semantic Caching | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Cut AI API costs by up to 80% with this free n8n workflow. Cache similar LLM responses using Redis & HuggingFace embeddings. Download the template now.">
+<link rel="canonical" href="https://growwstacks.com/workflows/6970-reduce-llm-costs-with-semantic-caching-using-redis-vector-store-and-huggingface/">
+<meta property="og:title" content="Reduce LLM Costs with Semantic Caching | Free n8n Template">
+<meta property="og:description" content="Stop paying for duplicate LLM responses. This n8n workflow uses Redis vector search & HuggingFace to intelligently cache and reuse similar answers.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/6970-reduce-llm-costs-with-semantic-caching-using-redis-vector-store-and-huggingface/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10887-reduce-llm-costs-with-semantic-caching-using-redis-vec.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reduce LLM Costs with Semantic Caching | Free n8n Template">
+<meta name="twitter:description" content="Cut AI API costs by up to 80% with this free n8n workflow. Cache similar LLM responses using Redis & HuggingFace embeddings. Download the template now.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400,500,600,700,800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Reduce LLM Costs with Semantic Caching","description":"Cut AI API costs by up to 80% with this free n8n workflow. Cache similar LLM responses using Redis & HuggingFace embeddings.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10887-reduce-llm-costs-with-semantic-caching-using-redis-vec.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is semantic caching and how does it reduce LLM costs?","acceptedAnswer":{"@type":"Answer","text":"Semantic caching is a technique that stores and retrieves AI-generated responses based on the meaning of a query, not just exact keyword matches. When a new question is asked, the system checks if a semantically similar question has already been answered. If a match is found, it returns the cached answer instantly, avoiding a costly LLM API call. This can cut AI usage costs by 50-80% for applications with repetitive or similar queries, like customer support or FAQ bots."}},{"@type":"Question","name":"How does Redis Vector Store work with HuggingFace embeddings for caching?","acceptedAnswer":{"@type":"Answer","text":"HuggingFace generates numerical vector embeddings that capture the semantic meaning of text. Redis Vector Store acts as a high-speed database that stores these embeddings. When a new user query comes in, it's converted into an embedding, and Redis performs a similarity search against previously stored question-answer pairs. If a close match is found (based on a configurable similarity threshold), the cached answer is returned. This combination provides fast, scalable semantic search without needing to call the LLM."}},{"@type":"Question","name":"What are the main business benefits of implementing semantic caching?","acceptedAnswer":{"@type":"Answer","text":"The primary benefits are significant cost reduction, faster response times, and improved scalability. Businesses can handle more user queries without increasing their AI budget, improve user experience with near-instant responses for common questions, and build more robust AI applications that don't break under high traffic. It's particularly valuable for customer service automation, internal knowledge bases, and any application where users ask variations of the same core questions."}},{"@type":"Question","name":"Can semantic caching work with any LLM provider like OpenAI or Anthropic?","acceptedAnswer":{"@type":"Answer","text":"Yes, semantic caching is provider-agnostic. The workflow uses HuggingFace for embeddings and Redis for storage, which works independently of your LLM choice. You can connect it to OpenAI GPT, Anthropic Claude, Google Gemini, or any other LLM API. The caching layer sits between your application and the LLM, intercepting queries before they reach the expensive API. This means you can switch LLM providers or models without changing your caching infrastructure."}},{"@type":"Question","name":"How accurate is semantic caching compared to fresh LLM responses?","acceptedAnswer":{"@type":"Answer","text":"With proper tuning, semantic caching can achieve 85-95% accuracy for appropriate use cases. The key is setting the right similarity threshold—too low misses valid matches, too high returns irrelevant answers. For factual queries with consistent answers (like refund policies, business hours, or product specs), cached responses are often identical to fresh ones. For time-sensitive or highly contextual questions, you can configure the system to bypass the cache. Most implementations use a hybrid approach where certain query types always get fresh answers."}},{"@type":"Question","name":"What technical setup is required to implement this caching system?","acceptedAnswer":{"@type":"Answer","text":"You need three main components: Redis with vector search capabilities (Redis Stack), access to HuggingFace embeddings (free or paid API), and n8n for orchestration. The n8n workflow handles the entire logic—converting questions to embeddings, searching Redis, calling the LLM when needed, and storing new responses. Technical teams should be comfortable with API integrations and basic vector database concepts, but no deep machine learning expertise is required thanks to pre-built nodes in the template."}},{"@type":"Question","name":"How do I determine the optimal similarity threshold for my use case?","acceptedAnswer":{"@type":"Answer","text":"Start with a threshold of 0.3-0.4 and monitor results. Analyze a sample of user queries and their cached matches. If too many different questions are matching (false positives), increase the threshold. If legitimate similar questions aren't matching (false negatives), decrease it. Most customer support applications work well around 0.35. The n8n template includes a configuration node where you can easily adjust this parameter without changing the workflow logic."}},{"@type":"Question","name":"Can I get a custom LLM cost optimization automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. While this template provides a solid foundation, every business has unique data patterns, query types, and integration requirements. Our team at GrowwStacks specializes in building tailored AI automation systems that match your specific needs. We can customize the similarity algorithms, integrate with your existing databases and tools, add analytics dashboards to track savings, and scale the solution across your entire organization. Book a free consultation to discuss your specific LLM cost challenges and optimization goals."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Reduce LLM Costs with Semantic Caching"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Reduce LLM Costs with Semantic Caching</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AI & ML</span>
+          <span class="cs-tag">Cost Optimization</span>
+          <span class="cs-tag">Redis</span>
+          <span class="cs-tag">HuggingFace</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Reduce LLM Costs with Semantic Caching</h1>
+        <p class="cs-hero-sub">Stop paying for duplicate AI responses. Cache similar questions using Redis vector search and HuggingFace embeddings to cut API costs by up to 80%.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10887-reduce-llm-costs-with-semantic-caching-using-redis-vec.png" alt="Semantic caching workflow diagram showing Redis vector store reducing LLM API calls" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Every time your AI chatbot answers "What's your refund policy?" and then "How do I get my money back?" as separate API calls, you're paying twice for essentially the same answer. This semantic caching workflow solves that problem intelligently.</p>
+        <p>Instead of treating questions as exact string matches, it understands meaning. Using HuggingFace embeddings, it converts questions into mathematical vectors that capture semantic similarity. Redis Vector Store then performs lightning-fast similarity searches to find previously answered questions that mean the same thing. When a match is found above your configured threshold, the cached answer returns instantly—no LLM call, no cost, no latency.</p>
+        <p>This isn't just keyword matching. It understands that "What are your business hours?" and "When are you open?" should return the same answer. For customer support, FAQ systems, and internal knowledge bases, this can reduce LLM API costs by 50-80% while improving response times from seconds to milliseconds.</p>
+
+        <h2>How It Works</h2>
+        <h3>Step 1: Question Processing & Embedding</h3>
+        <p>When a user submits a question, the workflow first normalizes the text and sends it to HuggingFace's embedding model. This converts the natural language question into a high-dimensional vector—a numerical representation of its meaning that machines can compare mathematically.</p>
+        
+        <h3>Step 2: Vector Similarity Search</h3>
+        <p>The generated embedding is queried against Redis Vector Store, which contains embeddings of all previously asked questions along with their answers. Redis performs a cosine similarity search to find the most semantically similar questions in its database based on your configured threshold.</p>
+        
+        <h3>Step 3: Smart Routing Decision</h3>
+        <p>If Redis returns a match with sufficient similarity (typically 0.3-0.4 cosine similarity), the workflow immediately returns the cached answer. If no good match is found, the question proceeds to the LLM (like OpenAI GPT) for a fresh response.</p>
+        
+        <h3>Step 4: Response Generation & Caching</h3>
+        <p>For cache misses, the LLM generates a new answer. This fresh response, along with the original question embedding, is then stored in Redis for future use. The system also maintains conversation context, ensuring cached answers remain relevant within multi-turn dialogues.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template delivers maximum value for businesses running AI-powered applications with predictable query patterns. Customer support teams handling repetitive questions will see immediate cost savings. SaaS companies offering AI features can improve their margins significantly. Internal IT departments managing helpdesk systems can reduce reliance on expensive LLM APIs. Even solo developers building AI chatbots can extend their runway by making their token usage more efficient.</p>
+        <p>The workflow is particularly effective for: FAQ chatbots, product documentation assistants, internal knowledge bases, customer onboarding sequences, and any application where users ask variations of the same core questions. If your AI costs are scaling linearly with user growth, this template breaks that correlation.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Redis with vector search capabilities</strong> (Redis Stack 7.2+ recommended)</li>
+          <li><strong>HuggingFace API key</strong> (free tier available for the sentence-transformers model)</li>
+          <li><strong>OpenAI API key</strong> or access to another LLM provider (Anthropic, Google, etc.)</li>
+          <li><strong>n8n instance</strong> (self-hosted or n8n.cloud)</li>
+          <li><strong>Basic understanding of API keys</strong> and environment variables</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download and import</strong> the JSON template into your n8n instance.</li>
+          <li><strong>Configure credentials</strong> for HuggingFace Inference API and your chosen LLM provider in n8n.</li>
+          <li><strong>Set up Redis connection</strong> with vector search index configured for your embedding dimensions.</li>
+          <li><strong>Adjust similarity threshold</strong> in the "Analyze results from store" node (start with 0.35).</li>
+          <li><strong>Test with sample questions</strong> to verify caching behavior before deploying to production.</li>
+          <li><strong>Monitor cache hit rates</strong> and adjust thresholds based on your actual query patterns.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a higher similarity threshold (0.4-0.5) and gradually lower it as you build confidence in the system. This prevents false matches while the cache is still small.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Cut AI API costs by 50-80%:</strong> Most applications have high query repetition—customer support often sees 60%+ similar questions. Semantic caching turns those duplicate calls into instant, free responses.</p>
+        <p><strong>Millisecond response times for cached queries:</strong> Redis vector search returns answers in single-digit milliseconds versus seconds for LLM API calls, dramatically improving user experience.</p>
+        <p><strong>Reduced latency and improved scalability:</strong> By handling similar queries locally, you decrease load on external APIs, making your application more resilient during traffic spikes.</p>
+        <p><strong>Flexible and provider-agnostic:</strong> The caching layer works with any LLM—switch between OpenAI, Anthropic, or local models without changing your caching logic.</p>
+        <p><strong>Continuous learning and improvement:</strong> Every new question-answer pair enriches your cache, making the system smarter and more comprehensive over time.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about semantic caching and LLM cost optimization</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is semantic caching and how does it reduce LLM costs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Semantic caching is a technique that stores and retrieves AI-generated responses based on the meaning of a query, not just exact keyword matches. When a new question is asked, the system checks if a semantically similar question has already been answered. If a match is found, it returns the cached answer instantly, avoiding a costly LLM API call.</p>
+          <p>This can cut AI usage costs by 50-80% for applications with repetitive or similar queries, like customer support or FAQ bots. Instead of paying for identical answers to differently-worded questions, you pay once and reuse intelligently.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does Redis Vector Store work with HuggingFace embeddings for caching?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>HuggingFace generates numerical vector embeddings that capture the semantic meaning of text. Redis Vector Store acts as a high-speed database that stores these embeddings. When a new user query comes in, it's converted into an embedding, and Redis performs a similarity search against previously stored question-answer pairs.</p>
+          <p>If a close match is found (based on a configurable similarity threshold), the cached answer is returned. This combination provides fast, scalable semantic search without needing to call the LLM, dramatically reducing both cost and latency.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main business benefits of implementing semantic caching?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The primary benefits are significant cost reduction, faster response times, and improved scalability. Businesses can handle more user queries without increasing their AI budget, improve user experience with near-instant responses for common questions, and build more robust AI applications that don't break under high traffic.</p>
+          <p>It's particularly valuable for customer service automation, internal knowledge bases, and any application where users ask variations of the same core questions. The ROI is often measurable within weeks of implementation.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can semantic caching work with any LLM provider like OpenAI or Anthropic?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, semantic caching is provider-agnostic. The workflow uses HuggingFace for embeddings and Redis for storage, which works independently of your LLM choice. You can connect it to OpenAI GPT, Anthropic Claude, Google Gemini, or any other LLM API.</p>
+          <p>The caching layer sits between your application and the LLM, intercepting queries before they reach the expensive API. This means you can switch LLM providers or models without changing your caching infrastructure, giving you flexibility and vendor independence.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate is semantic caching compared to fresh LLM responses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>With proper tuning, semantic caching can achieve 85-95% accuracy for appropriate use cases. The key is setting the right similarity threshold—too low misses valid matches, too high returns irrelevant answers.</p>
+          <p>For factual queries with consistent answers (like refund policies, business hours, or product specs), cached responses are often identical to fresh ones. For time-sensitive or highly contextual questions, you can configure the system to bypass the cache. Most implementations use a hybrid approach where certain query types always get fresh answers.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What technical setup is required to implement this caching system?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You need three main components: Redis with vector search capabilities (Redis Stack), access to HuggingFace embeddings (free or paid API), and n8n for orchestration. The n8n workflow handles the entire logic—converting questions to embeddings, searching Redis, calling the LLM when needed, and storing new responses.</p>
+          <p>Technical teams should be comfortable with API integrations and basic vector database concepts, but no deep machine learning expertise is required thanks to pre-built nodes in the template. The entire system can be deployed in under an hour with the provided configuration.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I determine the optimal similarity threshold for my use case?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Start with a threshold of 0.3-0.4 and monitor results. Analyze a sample of user queries and their cached matches. If too many different questions are matching (false positives), increase the threshold. If legitimate similar questions aren't matching (false negatives), decrease it.</p>
+          <p>Most customer support applications work well around 0.35. The n8n template includes a configuration node where you can easily adjust this parameter without changing the workflow logic. We recommend starting conservative and gradually expanding as you build confidence.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom LLM cost optimization automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. While this template provides a solid foundation, every business has unique data patterns, query types, and integration requirements. Our team at GrowwStacks specializes in building tailored AI automation systems that match your specific needs.</p>
+          <p>We can customize the similarity algorithms, integrate with your existing databases and tools, add analytics dashboards to track savings, and scale the solution across your entire organization. Book a free consultation to discuss your specific LLM cost challenges and optimization goals.</p>
+          <ul>
+            <li>Integration with your current tech stack</li>
+            <li>Custom similarity scoring based on your domain</li>
+            <li>Real-time monitoring and cost analytics dashboard</li>
+            <li>Enterprise-grade security and compliance features</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom LLM Cost Optimization Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

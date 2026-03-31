@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Candidate Creation in Recrutei with AI Matching | Free n8n Template</title>
+<meta name="description" content="Free n8n workflow template to automate candidate creation in Recrutei ATS using AI-powered vacancy matching and resume parsing. Save hours on manual data entry.">
+<link rel="canonical" href="https://growwstacks.com/workflows/6824-automate-candidate-creation-in-recrutei-with-gpt-4-vacancy-matching-and-resume-parsing/">
+<meta property="og:title" content="Automate Recrutei Candidate Creation with AI & Resume Parsing">
+<meta property="og:description" content="Automatically create candidates in Recrutei from form submissions, match them to the right job using AI, and parse resume PDFs.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/6824-automate-candidate-creation-in-recrutei-with-gpt-4-vacancy-matching-and-resume-parsing/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10607-automate-candidate-creation-in-recrutei-with-gpt-4-vac.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Recrutei Candidate Creation with AI & Resume Parsing">
+<meta name="twitter:description" content="Free n8n workflow template to automate candidate creation in Recrutei ATS using AI-powered vacancy matching and resume parsing.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate Candidate Creation in Recrutei with AI","description":"Free n8n workflow template to automate candidate creation in Recrutei ATS using AI-powered vacancy matching and resume parsing.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10607-automate-candidate-creation-in-recrutei-with-gpt-4-vac.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AI-powered candidate matching and why is it useful for recruitment?","acceptedAnswer":{"@type":"Answer","text":"AI-powered candidate matching uses machine learning to automatically match job applicants to the most suitable open vacancies based on their resume content and the job description. This is incredibly useful for recruitment teams because it eliminates manual sorting, reduces human bias, and ensures candidates are instantly routed to the right hiring manager, dramatically speeding up the screening process and improving placement accuracy."}},{"@type":"Question","name":"How does automating candidate creation save time for HR teams?","acceptedAnswer":{"@type":"Answer","text":"Automating candidate creation saves HR teams hours per week by eliminating manual data entry from application forms into the ATS. It automatically creates candidate profiles, attaches resumes, and logs notes. This allows recruiters to focus on high-value tasks like interviewing and relationship-building instead of administrative work, potentially saving 5-10 hours per week per recruiter."}},{"@type":"Question","name":"Can I use this workflow with other Applicant Tracking Systems besides Recrutei?","acceptedAnswer":{"@type":"Answer","text":"Yes, the core automation pattern can be adapted to any ATS with an API, such as Greenhouse, Lever, or Workable. The workflow uses standard webhook triggers and HTTP requests, making it highly portable. You would simply replace the Recrutei API calls with your target ATS's endpoints while maintaining the same AI matching and PDF parsing logic."}},{"@type":"Question","name":"What happens if the AI can't find a matching vacancy for an applicant?","acceptedAnswer":{"@type":"Answer","text":"The workflow includes error handling and fallback logic. If the AI agent cannot confidently match an applicant to a specific vacancy, the system can be configured to either: 1) Place the candidate in a 'General Applications' pipeline, 2) Send an alert to a recruiter for manual review, or 3) Trigger a follow-up email to the applicant requesting clarification on their role preference."}},{"@type":"Question","name":"Is resume text extraction accurate for all PDF formats?","acceptedAnswer":{"@type":"Answer","text":"Modern PDF text extraction tools handle most standard PDF formats with high accuracy, including text-based PDFs and those generated from Word documents. However, scanned PDFs (image-based resumes) require OCR technology. This template focuses on text-based PDFs. For scanned resumes, you would need to add an OCR node to convert images to text before parsing."}},{"@type":"Question","name":"How secure is the candidate data in this automated workflow?","acceptedAnswer":{"@type":"Answer","text":"The workflow maintains security by keeping all data within your n8n instance and the integrated systems. Resume PDFs and candidate information are transferred directly between your form, n8n, and Recrutei via encrypted API connections. No data is stored unnecessarily, and you control all authentication credentials. For extra security, you can implement data masking for sensitive fields."}},{"@type":"Question","name":"What maintenance is required for this automation to keep running?","acceptedAnswer":{"@type":"Answer","text":"Minimal maintenance is required. The primary needs are: 1) Keeping API credentials updated if they expire, 2) Occasionally updating vacancy names in the AI prompt if your job titles change significantly, and 3) Monitoring for failed runs if Recrutei's API changes. The workflow includes error notification nodes to alert you of any issues automatically."}},{"@type":"Question","name":"Can I get a custom recruitment automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. GrowwStacks specializes in building tailored recruitment automation systems that integrate your specific ATS, job boards, assessment tools, and communication platforms. We can create custom workflows for automated screening, interview scheduling, candidate scoring, and onboarding coordination. Our solutions handle complex logic like multi-stage approvals, compliance tracking, and candidate re-engagement that off-the-shelf tools cannot."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Recrutei AI Candidate Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Recrutei AI Candidate Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Zapier</span>
+          <span class="cs-tag">Recrutei</span>
+          <span class="cs-tag">OpenAI GPT-4</span>
+          <span class="cs-tag">ATS Automation</span>
+          <span class="cs-tag">HR</span>
+        </div>
+        <h1>Automate Candidate Creation in Recrutei with AI Vacancy Matching</h1>
+        <p class="cs-hero-sub">Transform 'Apply Now' forms into perfectly matched candidate profiles automatically. This free n8n template uses AI to read resumes, match applicants to the right job, and create complete profiles in your ATS—zero manual work required.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="automate-recrutei-candidate-creation.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10607-automate-candidate-creation-in-recrutei-with-gpt-4-vac.png" alt="Visual diagram of the automated candidate creation workflow connecting n8n Form, OpenAI AI Agent, and Recrutei ATS" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual candidate creation is a time-consuming bottleneck in recruitment. When applicants submit their information through a career page, someone has to manually copy their details into your Applicant Tracking System (ATS), match them to the correct job opening, and upload their resume—a process that can take 10-15 minutes per candidate and is prone to human error.</p>
+        <p>This n8n workflow completely automates that entire process. It captures candidate submissions from an online form, uses AI to intelligently match them to the appropriate vacancy in Recrutei based on the job title they selected, extracts text from their uploaded PDF resume, and creates a fully populated candidate profile with all attachments and notes—all within seconds of application.</p>
+        <p>The system ensures candidates are immediately routed to the correct hiring pipeline, their resume content becomes searchable within Recrutei, and your recruitment team can focus on evaluating qualified candidates rather than data entry. It's particularly valuable for companies receiving high volumes of applications or those with multiple simultaneous openings.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical sequence that mimics what a human recruiter would do, but with perfect consistency and instant execution.</p>
+        
+        <h3>Step 1: Form Submission Trigger</h3>
+        <p>The workflow activates when a candidate submits your n8n-powered application form. It captures their name, email, phone number, selected vacancy name (like "Senior Frontend Developer"), and their uploaded PDF resume.</p>
+        
+        <h3>Step 2: AI-Powered Vacancy Matching</h3>
+        <p>Here's where the magic happens. The vacancy name from the form is sent to an OpenAI GPT-4 agent equipped with Recrutei's Model Context Protocol (MCP) tool. The AI intelligently searches your Recrutei instance to find the exact vacancy ID that corresponds to the job title the applicant selected.</p>
+        
+        <h3>Step 3: Candidate Profile Creation</h3>
+        <p>With the correct vacancy ID identified, the workflow fetches the available pipeline stages for that job and creates a new "Prospect" candidate in Recrutei. All form data is mapped to the appropriate fields in the ATS, and the candidate is placed in the first available stage of the hiring process.</p>
+        
+        <h3>Step 4: Resume Text Extraction & Attachment</h3>
+        <p>The uploaded PDF resume is processed to extract all textual content. This extracted text is then added as an internal observation/note to the candidate's profile (using observation type ID 11 in Recrutei), making their qualifications instantly searchable within the system without needing to open the PDF.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation template is ideal for:</p>
+        <ul>
+          <li><strong>Recruitment agencies</strong> handling high volumes of applications across multiple client roles</li>
+          <li><strong>In-house HR teams</strong> at growing companies with frequent hiring needs</li>
+          <li><strong>Tech companies</strong> that receive hundreds of applications for developer positions</li>
+          <li><strong>Businesses using Recrutei</strong> who want to eliminate manual data entry from their application process</li>
+          <li><strong>Organizations with career pages</strong> that want to provide immediate acknowledgment and professional candidate experience</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Recrutei ATS account</strong> with API access enabled</li>
+          <li><strong>Recrutei API key</strong> for authentication</li>
+          <li><strong>OpenAI API key</strong> (GPT-4 or GPT-3.5-turbo) for the AI matching component</li>
+          <li><strong>Recrutei MCP Server endpoint URL</strong> (provided by Recrutei or configured separately)</li>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) with HTTP Request and Form Trigger nodes available</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Before implementing, ensure your Recrutei vacancy names are consistent and descriptive. The AI matching works best when job titles in your ATS match what candidates would naturally select on your application form.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this automation in your n8n environment:</p>
+        <ol>
+          <li><strong>Import the template</strong> using the download button above</li>
+          <li><strong>Create a Header Auth credential</strong> named "Recrutei API" with Authorization: Bearer YOUR_API_KEY</li>
+          <li><strong>Configure the OpenAI node</strong> with your API key in the "Get Vacancy ID from AI" step</li>
+          <li><strong>Update the Recrutei MCP Tool node</strong> with your actual MCP server endpoint URL</li>
+          <li><strong>Test with a sample application</strong> to verify vacancy matching and profile creation work correctly</li>
+          <li><strong>Embed the n8n form</strong> on your career page or link it from your existing application system</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate 100% of manual data entry</strong> from your recruitment process. What used to take 10-15 minutes per candidate now happens automatically in seconds.</p>
+        <p><strong>Ensure perfect candidate-to-vacancy matching</strong> using AI intelligence that understands job title variations and finds the correct opening even when candidates use slightly different terminology.</p>
+        <p><strong>Make every resume instantly searchable</strong> within Recrutei by extracting and storing the text content as notes, allowing you to quickly find candidates with specific skills or experience.</p>
+        <p><strong>Scale your hiring without scaling administrative overhead</strong>—process hundreds of applications with the same effort as processing ten.</p>
+        <p><strong>Provide immediate professional acknowledgment</strong> to applicants by instantly creating their profile in your ATS, improving candidate experience and your employer brand.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about recruitment automation and AI candidate matching</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is AI-powered candidate matching and why is it useful for recruitment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI-powered candidate matching uses machine learning to automatically match job applicants to the most suitable open vacancies based on their resume content and the job description. This is incredibly useful for recruitment teams because it eliminates manual sorting, reduces human bias, and ensures candidates are instantly routed to the right hiring manager, dramatically speeding up the screening process and improving placement accuracy.</p>
+          <p>Instead of recruiters spending hours reading resumes and trying to remember which positions are open, the AI does this instantly and consistently. It can understand semantic similarities between job titles and candidate experience that humans might miss, like matching "JavaScript Developer" applications to "Frontend Engineer" roles.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating candidate creation save time for HR teams?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating candidate creation saves HR teams hours per week by eliminating manual data entry from application forms into the ATS. It automatically creates candidate profiles, attaches resumes, and logs notes. This allows recruiters to focus on high-value tasks like interviewing and relationship-building instead of administrative work, potentially saving 5-10 hours per week per recruiter.</p>
+          <p>Consider a mid-sized company receiving 50 applications weekly. Manual entry at 10 minutes each consumes over 8 hours weekly. This automation reduces that to near zero, while also eliminating errors from mistyped emails or misplaced resumes. The time savings compound as application volume grows.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this workflow with other Applicant Tracking Systems besides Recrutei?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the core automation pattern can be adapted to any ATS with an API, such as Greenhouse, Lever, or Workable. The workflow uses standard webhook triggers and HTTP requests, making it highly portable. You would simply replace the Recrutei API calls with your target ATS's endpoints while maintaining the same AI matching and PDF parsing logic.</p>
+          <p>The beauty of n8n is its flexibility—you can swap out the Recrutei nodes for nodes supporting your preferred ATS while keeping the intelligent matching and automation flow intact. This makes the template valuable even if you're not using Recrutei specifically.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the AI can't find a matching vacancy for an applicant?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow includes error handling and fallback logic. If the AI agent cannot confidently match an applicant to a specific vacancy, the system can be configured to either: 1) Place the candidate in a 'General Applications' pipeline, 2) Send an alert to a recruiter for manual review, or 3) Trigger a follow-up email to the applicant requesting clarification on their role preference.</p>
+          <p>This ensures no candidate falls through the cracks. You can set confidence thresholds for the AI matching, and when below threshold, implement human-in-the-loop workflows that still save time while ensuring quality control for edge cases.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is resume text extraction accurate for all PDF formats?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Modern PDF text extraction tools handle most standard PDF formats with high accuracy, including text-based PDFs and those generated from Word documents. However, scanned PDFs (image-based resumes) require OCR technology. This template focuses on text-based PDFs. For scanned resumes, you would need to add an OCR node to convert images to text before parsing.</p>
+          <p>Most professional applicants submit text-based PDFs, but if you receive many scanned resumes, consider adding a step like Tesseract OCR or using a service like Adobe PDF Extract. The extracted text quality directly impacts how searchable candidate information becomes within your ATS.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is the candidate data in this automated workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow maintains security by keeping all data within your n8n instance and the integrated systems. Resume PDFs and candidate information are transferred directly between your form, n8n, and Recrutei via encrypted API connections. No data is stored unnecessarily, and you control all authentication credentials. For extra security, you can implement data masking for sensitive fields.</p>
+          <p>Since n8n can be self-hosted behind your firewall, you maintain complete control over where candidate data flows. The automation actually improves security consistency compared to manual processes where resumes might be emailed or stored on individual computers.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What maintenance is required for this automation to keep running?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Minimal maintenance is required. The primary needs are: 1) Keeping API credentials updated if they expire, 2) Occasionally updating vacancy names in the AI prompt if your job titles change significantly, and 3) Monitoring for failed runs if Recrutei's API changes. The workflow includes error notification nodes to alert you of any issues automatically.</p>
+          <p>Unlike manual processes that require constant human attention, this automation runs reliably with occasional check-ins. Set up a monthly review to ensure vacancy names in your ATS align with what candidates select, and monitor the success rate of the AI matching to fine-tune prompts if needed.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom recruitment automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. GrowwStacks specializes in building tailored recruitment automation systems that integrate your specific ATS, job boards, assessment tools, and communication platforms. We can create custom workflows for automated screening, interview scheduling, candidate scoring, and onboarding coordination.</p>
+          <p>Our solutions handle complex logic like multi-stage approvals, compliance tracking, and candidate re-engagement that off-the-shelf tools cannot. Whether you need integration with niche job boards, custom scoring algorithms, or automated interview scheduling across time zones, we design automations that fit your exact recruitment workflow.</p>
+          <ul>
+            <li>Multi-channel application aggregation from LinkedIn, Indeed, and your career page</li>
+            <li>Automated skills assessment and scoring against job requirements</li>
+            <li>Interview scheduling that syncs with hiring team calendars</li>
+            <li>Automated rejection emails with personalized feedback</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Recruitment Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

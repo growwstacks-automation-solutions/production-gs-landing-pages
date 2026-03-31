@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate AI News Curation & Multi-Platform Social Posting | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow template to automate AI news curation from RSS feeds, generate platform-specific posts with GPT-5 mini, and schedule drafts across X, Bluesky, Threads, Mastodon, and Facebook.">
+<link rel="canonical" href="https://growwstacks.com/workflows/7891-curate-and-post-ai-news-to-x-bluesky-threads-and-more-with-gpt-5-mini-and-cue/">
+<meta property="og:title" content="Automate AI News Curation & Multi-Platform Social Posting">
+<meta property="og:description" content="Free n8n workflow template to automate AI news curation from RSS feeds, generate platform-specific posts with GPT-5 mini, and schedule drafts across X, Bluesky, Threads, Mastodon, and Facebook.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/7891-curate-and-post-ai-news-to-x-bluesky-threads-and-more-with-gpt-5-mini-and-cue/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12634-curate-and-post-ai-news-to-x-bluesky-threads-and-more-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate AI News Curation & Multi-Platform Social Posting">
+<meta name="twitter:description" content="Free n8n workflow template to automate AI news curation from RSS feeds, generate platform-specific posts with GPT-5 mini, and schedule drafts across X, Bluesky, Threads, Mastodon, and Facebook.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate AI News Curation & Multi-Platform Social Posting","description":"Free n8n workflow template to automate AI news curation from RSS feeds, generate platform-specific posts with GPT-5 mini, and schedule drafts across X, Bluesky, Threads, Mastodon, and Facebook.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12634-curate-and-post-ai-news-to-x-bluesky-threads-and-more-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How can AI automation help with social media content creation?","acceptedAnswer":{"@type":"Answer","text":"AI automation transforms social media content creation by handling the repetitive, time-consuming tasks of finding, curating, and formatting news. It scans multiple RSS feeds, filters for relevance, and uses AI to generate unique, platform-optimized posts. This frees up hours each week, ensures consistent posting, and allows creators to focus on strategy and engagement instead of manual writing and scheduling."}},{"@type":"Question","name":"What are the benefits of posting the same content across multiple social platforms?","acceptedAnswer":{"@type":"Answer","text":"Cross-posting expands your reach to different audiences on each platform, reinforces your message through repetition, and builds a cohesive brand presence. However, each platform has unique norms and character limits. The key benefit of automation is the ability to tailor the core message for each platform's audience and format automatically, saving you from manually rewriting the same post five different ways."}},{"@type":"Question","name":"Is it safe to automate social media posting with AI?","acceptedAnswer":{"@type":"Answer","text":"Yes, with the right safeguards. This workflow includes a crucial human review step by creating drafts in a scheduling tool like Cue before publishing. This allows you to review tone, accuracy, and appropriateness. Automation handles the heavy lifting of curation and drafting, but you maintain final editorial control, ensuring brand safety and alignment with your community guidelines."}},{"@type":"Question","name":"How do I choose the right RSS feeds for automated news curation?","acceptedAnswer":{"@type":"Answer","text":"Select feeds from authoritative, niche-specific sources you already trust. Look for publications with consistent posting schedules and high-quality content. Start with 3-5 feeds to avoid information overload. The best feeds are those that align closely with your audience's interests. You can easily swap the feed URLs in the n8n template to match your specific industry or topic focus."}},{"@type":"Question","name":"What's the business value of automating social media content?","acceptedAnswer":{"@type":"Answer","text":"Automating social media content delivers direct ROI by saving 5-10 hours per week on manual tasks, increasing posting consistency which boosts algorithm favorability, and allowing you to scale content output without scaling headcount. It turns a sporadic, labor-intensive activity into a reliable, hands-off system that builds audience trust and authority through regular, valuable updates."}},{"@type":"Question","name":"Can I use this automation for platforms other than the ones listed?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The workflow's architecture is platform-agnostic. While this template is configured for X, Bluesky, Threads, Mastodon, and Facebook, you can adapt it for LinkedIn, Instagram, TikTok, or any platform with an API or supported by your scheduling tool. The core process—fetch, filter, generate, schedule—works for any content distribution channel."}},{"@type":"Question","name":"How does AI-generated content compare to human-written posts?","acceptedAnswer":{"@type":"Answer","text":"AI-generated content excels at speed, consistency, and data processing—it can quickly summarize articles and adapt tone for different platforms. Human-written posts often have more nuanced opinion, deeper analysis, and personal voice. The most effective strategy combines both: use AI for the initial draft and factual summarization, then add your unique perspective and commentary during the review stage before scheduling."}},{"@type":"Question","name":"Can I get a custom social media automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, absolutely. GrowwStacks specializes in building tailored automation systems that match your specific brand voice, content mix, and platform strategy. We can design workflows that incorporate your unique data sources, approval processes, and publishing cadence. Book a free consultation to discuss how custom automation can save your team time while improving your social media impact."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"AI News Social Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>AI News Social Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Social Media</span>
+          <span class="cs-tag">AI Content</span>
+          <span class="cs-tag">Multi-Platform</span>
+          <span class="cs-tag">RSS</span>
+          <span class="cs-tag">GPT-5 mini</span>
+        </div>
+        <h1>Automate AI News Curation & Multi-Platform Social Posting</h1>
+        <p class="cs-hero-sub">Free n8n template to automatically curate AI news, generate tailored posts with GPT-5 mini, and schedule drafts across X, Bluesky, Threads, Mastodon, and Facebook.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12634-curate-and-post-ai-news-to-x-bluesky-threads-and-more-.png" alt="Visual diagram showing AI news flowing from RSS feeds through n8n automation to multiple social media platforms" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manually sharing AI and tech news across multiple social platforms is a massive time sink. This automation solves that by creating a complete, hands-off content pipeline. It scans trusted RSS feeds daily, uses AI to craft platform-specific posts, and prepares everything for review—freeing up hours each week for strategic work.</p>
+        <p>The workflow pulls from sources like TechCrunch AI, Ars Technica AI, The Verge AI, and MIT Tech Review. It filters for recent articles, checks against a Google Sheets log to avoid duplicates, selects one story, and uses GPT-5 mini to generate five unique posts tailored for X, Bluesky, Threads, Mastodon, and Facebook. All posts are saved as drafts in Cue for your final review before publishing.</p>
+        <p>This isn't just about saving time—it's about building consistent thought leadership. Regular, valuable updates keep your audience engaged and position you as a reliable source in the fast-moving AI space, all without daily manual effort.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Scheduled Trigger & Feed Collection</h3>
+        <p>A schedule trigger (default: daily at 9 AM) initiates the workflow. It simultaneously fetches articles from your configured RSS feeds, combining them into a single stream of potential content.</p>
+        <h3>2. Deduplication & Selection</h3>
+        <p>The workflow queries a Google Sheet that logs all previously posted articles. It compares new items against this history, filters out anything older than seven days, and randomly selects one fresh, unposted article to ensure variety and avoid repetition.</p>
+        <h3>3. AI-Powered Content Generation</h3>
+        <p>The selected article's URL and metadata are sent to the OpenAI GPT-5 mini node. A custom prompt instructs the AI to generate five distinct social posts—each optimized for the tone, style, and character limits of X, Bluesky, Threads, Mastodon, and Facebook.</p>
+        <h3>4. Draft Creation & Logging</h3>
+        <p>The five generated posts are sent to the Cue node, which creates a single draft containing all platform variations within your connected Cue account. Simultaneously, the article's details are written back to the Google Sheet, creating a permanent record to prevent future duplicates.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for tech content creators, social media managers, startup founders, and marketing teams who need to maintain an active, informed presence across multiple channels. It's perfect for:</p>
+        <ul>
+          <li><strong>AI & Tech Influencers:</strong> Build authority by consistently sharing cutting-edge news.</li>
+          <li><strong>SaaS & Tech Companies:</strong> Keep your social feeds fresh with relevant industry updates without dedicating staff time.</li>
+          <li><strong>Agency Teams:</strong> Manage multiple client accounts with a scalable, repeatable content system.</li>
+          <li><strong>Indie Hackers & Solopreneurs:</strong> Maintain a professional social media presence while focusing on product development.</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A Cue Account:</strong> Free tier available at <a href="https://oncue.so" target="_blank" rel="noopener">oncue.so</a>. Connect your social media accounts (X, Bluesky, Threads, Mastodon, Facebook).</li>
+          <li><strong>OpenAI API Key:</strong> Required for the GPT-5 mini node to generate the social posts. Costs are minimal (~$0.01-0.02 per run).</li>
+          <li><strong>Google Account:</strong> To create and permission the Google Sheet used for tracking posted articles.</li>
+          <li><strong>n8n Instance:</strong> A self-hosted n8n setup or a n8n.cloud account to run the workflow.</li>
+          <li><strong>RSS Feed URLs:</strong> The workflow includes example feeds, but you should replace them with sources relevant to your niche.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to get your automated news curator running in under 15 minutes.</p>
+        <ol>
+          <li><strong>Install the Community Node:</strong> In your n8n settings, go to "Community Nodes" and install <code>@cuehq/n8n-nodes-cue</code>.</li>
+          <li><strong>Create Your Tracking Sheet:</strong> Create a new Google Sheet named "AI News Tracker" with columns: <code>article_url</code>, <code>title</code>, <code>source</code>, <code>processed_at</code>.</li>
+          <li><strong>Configure Credentials:</strong> In the workflow, set up credentials for Google Sheets (OAuth2), OpenAI (API Key), and Cue (API Key from your Cue settings).</li>
+          <li><strong>Connect Your Social Accounts:</strong> In the "Create Draft in Cue" node, select your Cue profile and map each platform slot (1-5) to your connected social accounts.</li>
+          <li><strong>Customize & Activate:</strong> Adjust the schedule trigger if needed, review the AI prompt for tone, then click "Activate" to publish the workflow.</li>
+        </ol>
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start by running the workflow manually once to test the connection flow and see a sample draft appear in your Cue account. This verifies all credentials and permissions are working before enabling the schedule.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5-10 hours weekly</strong> on manual news scanning, writing, and cross-posting. This automation handles the entire process from discovery to draft creation.</p>
+        <p><strong>Ensure consistent posting</strong> across all your platforms, which signals reliability to algorithms and followers, potentially increasing your organic reach and engagement over time.</p>
+        <p><strong>Maintain a unique voice per platform</strong> without extra work. The AI tailors each post's length, hashtags, and tone to match platform-specific best practices.</p>
+        <p><strong>Eliminate duplicate content sharing.</strong> The Google Sheets log ensures you never post the same story twice, keeping your feed fresh and valuable for returning followers.</p>
+        <p><strong>Scale your content output effortlessly.</strong> What works for AI news can be adapted for other niches—product updates, industry reports, or curated content from other RSS sources.</p>
+
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI news curation and multi-platform social automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can AI automation help with social media content creation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI automation transforms social media content creation by handling the repetitive, time-consuming tasks of finding, curating, and formatting news. It scans multiple RSS feeds, filters for relevance, and uses AI to generate unique, platform-optimized posts. This frees up hours each week, ensures consistent posting, and allows creators to focus on strategy and engagement instead of manual writing and scheduling.</p>
+          <p>For example, a marketing team can set this up once and receive five drafted posts every morning, ready for review. This consistency builds audience trust and algorithmic favorability, which manual, sporadic posting often fails to achieve.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of posting the same content across multiple social platforms?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Cross-posting expands your reach to different audiences on each platform, reinforces your message through repetition, and builds a cohesive brand presence. However, each platform has unique norms and character limits. The key benefit of automation is the ability to tailor the core message for each platform's audience and format automatically, saving you from manually rewriting the same post five different ways.</p>
+          <p>This workflow does the heavy lifting: it generates a concise version for X, a more conversational one for Bluesky, a visually descriptive one for Instagram Threads, and so on. You get the reach of multi-platform distribution with the appropriateness of native content.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is it safe to automate social media posting with AI?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, with the right safeguards. This workflow includes a crucial human review step by creating drafts in a scheduling tool like Cue before publishing. This allows you to review tone, accuracy, and appropriateness. Automation handles the heavy lifting of curation and drafting, but you maintain final editorial control, ensuring brand safety and alignment with your community guidelines.</p>
+          <p>The system acts as a highly efficient research assistant and first draft writer. You remain the editor-in-chief, approving every piece of content before it goes live. This balance maximizes efficiency while minimizing risks associated with fully automated posting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I choose the right RSS feeds for automated news curation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Select feeds from authoritative, niche-specific sources you already trust. Look for publications with consistent posting schedules and high-quality content. Start with 3-5 feeds to avoid information overload. The best feeds are those that align closely with your audience's interests. You can easily swap the feed URLs in the n8n template to match your specific industry or topic focus.</p>
+          <p>Consider mixing broad industry news with niche blogs. For example, a cybersecurity firm might combine feeds from KrebsOnSecurity (niche) with general tech updates from Wired. Test different combinations and monitor the quality of the drafted posts to refine your sources.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the business value of automating social media content?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating social media content delivers direct ROI by saving 5-10 hours per week on manual tasks, increasing posting consistency which boosts algorithm favorability, and allowing you to scale content output without scaling headcount. It turns a sporadic, labor-intensive activity into a reliable, hands-off system that builds audience trust and authority through regular, valuable updates.</p>
+          <p>For businesses, this means your social channels become a consistent lead generation and brand awareness tool, not a forgotten chore. The time saved can be reinvested into community engagement, paid advertising strategy, or creating deeper original content.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this automation for platforms other than the ones listed?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. The workflow's architecture is platform-agnostic. While this template is configured for X, Bluesky, Threads, Mastodon, and Facebook, you can adapt it for LinkedIn, Instagram, TikTok, or any platform with an API or supported by your scheduling tool. The core process—fetch, filter, generate, schedule—works for any content distribution channel.</p>
+          <p>Simply modify the AI prompt to include instructions for the new platform's style, and connect that platform in your Cue account. The n8n workflow will pass the generated text to Cue, which handles the final publishing to the newly added channel.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI-generated content compare to human-written posts?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI-generated content excels at speed, consistency, and data processing—it can quickly summarize articles and adapt tone for different platforms. Human-written posts often have more nuanced opinion, deeper analysis, and personal voice. The most effective strategy combines both: use AI for the initial draft and factual summarization, then add your unique perspective and commentary during the review stage before scheduling.</p>
+          <p>Think of AI as your research assistant who prepares a solid first draft. You bring the final polish, personality, and strategic insight. This hybrid approach leverages the strengths of both, creating high-quality content at a sustainable pace.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom social media automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, absolutely. GrowwStacks specializes in building tailored automation systems that match your specific brand voice, content mix, and platform strategy. We can design workflows that incorporate your unique data sources, approval processes, and publishing cadence. Book a free consultation to discuss how custom automation can save your team time while improving your social media impact.</p>
+          <p>Beyond social posting, we can automate content repurposing (blog to social snippets), competitor monitoring, engagement tracking, and performance reporting. A custom system integrates seamlessly with your existing tools and scales as your needs grow.</p>
+          <ul>
+            <li>Tailored AI prompts that match your exact brand voice</li>
+            <li>Multi-stage approval workflows for regulated industries</li>
+            <li>Integration with your internal CMS or data warehouses</li>
+            <li>Performance analytics and optimization feedback loops</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Social Media Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrape Latest GitHub Trending Repositories | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate the tracking of trending GitHub repositories. This free n8n workflow scrapes and structures data on popular open-source projects, saving hours of manual research.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1300-scrape-latest-github-trending-repositories/">
+<meta property="og:title" content="Scrape Latest GitHub Trending Repositories | Free n8n Template">
+<meta property="og:description" content="Automate the tracking of trending GitHub repositories. This free n8n workflow scrapes and structures data on popular open-source projects, saving hours of manual research.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1300-scrape-latest-github-trending-repositories/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2866-scrape-latest-github-trending-repositories.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scrape Latest GitHub Trending Repositories | Free n8n Template">
+<meta name="twitter:description" content="Automate the tracking of trending GitHub repositories. This free n8n workflow scrapes and structures data on popular open-source projects, saving hours of manual research.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Scrape Latest GitHub Trending Repositories","description":"Automate the tracking of trending GitHub repositories. This free n8n workflow scrapes and structures data on popular open-source projects, saving hours of manual research.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2866-scrape-latest-github-trending-repositories.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I automate GitHub trend tracking?","acceptedAnswer":{"@type":"Answer","text":"Automating GitHub trend tracking saves developers and tech leads 5-10 hours per week of manual browsing. It provides structured, actionable data on emerging open-source projects, helping you spot new libraries, frameworks, and tools before they become mainstream. This proactive insight can inform technology decisions, identify collaboration opportunities, and keep your team's skills relevant."}},{"@type":"Question","name":"What data can I extract from GitHub's trending page?","acceptedAnswer":{"@type":"Answer","text":"You can extract repository name, author/owner, description, primary programming language, total stars, stars gained in the trending period, and direct repository URL. This structured data is perfect for analysis, reporting, or feeding into other systems like Slack notifications, Airtable databases, or weekly digest emails for your team."}},{"@type":"Question","name":"How often should I run a GitHub trending scraper?","acceptedAnswer":{"@type":"Answer","text":"Run it daily for the most current insights, as GitHub's trending page updates every 24 hours. For most teams, a daily automated scrape at 9 AM provides fresh data at the start of the workday. You can schedule it weekly if you only need a broader overview, but daily execution ensures you don't miss short-lived trends that appear and disappear quickly."}},{"@type":"Question","name":"Can I filter trending repositories by programming language?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can modify the workflow to target specific language categories on GitHub's trending page. The automation can be configured to scrape only JavaScript, Python, Go, or any other language filter that GitHub supports. This allows development teams to focus exclusively on trends within their tech stack, making the data more relevant and actionable."}},{"@type":"Question","name":"What should I do with scraped GitHub trend data?","acceptedAnswer":{"@type":"Answer","text":"Send daily digests to team Slack channels, populate a shared Notion or Airtable database for reference, create weekly email reports for stakeholders, or trigger alerts when specific keywords appear in repository descriptions. The data can also feed into competitive analysis dashboards or help identify potential open-source contributions for your team."}},{"@type":"Question","name":"Is web scraping GitHub allowed?","acceptedAnswer":{"@type":"Answer","text":"GitHub's terms permit reasonable automated access for data collection, provided you respect rate limits, don't overload their servers, and use the data ethically. This workflow uses a single request to the public trending page, which is acceptable. Always check robots.txt and avoid aggressive scraping that could trigger IP blocks. For production use, consider GitHub's official API for more reliable access."}},{"@type":"Question","name":"Can I get a custom GitHub automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom GitHub automation systems tailored to your specific needs. We can create workflows that integrate trending data with your internal tools, add advanced filtering based on your tech stack, set up real-time alerts for specific projects, or build comprehensive competitor tracking dashboards. Our team designs solutions that fit your workflow and scale with your team's growth."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Scrape Latest GitHub Trending Repositories"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>GitHub Trending Scraper</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Web Scraping</span>
+          <span class="cs-tag">GitHub</span>
+          <span class="cs-tag">Developer Tools</span>
+          <span class="cs-tag">Market Research</span>
+        </div>
+        <h1>Automate GitHub Trending Repository Tracking</h1>
+        <p class="cs-hero-sub">Scrape and structure daily trending open-source projects automatically. Save hours of manual browsing and get actionable insights delivered to your tools.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2866-scrape-latest-github-trending-repositories.json?ik-attachment=true" download="github-trending-scraper-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2866-scrape-latest-github-trending-repositories.png" alt="n8n workflow automation for scraping GitHub trending repositories showing HTTP request and data processing nodes" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manually checking GitHub's trending page every day is time-consuming and inefficient. Developers, tech leads, and open-source enthusiasts need to stay updated on emerging projects, but browsing through dozens of repositories takes valuable time away from actual development work.</p>
+        <p>This n8n workflow automates the entire process. It scrapes GitHub's trending repositories page, extracts structured data including project names, descriptions, programming languages, star counts, and direct links, then formats this information for easy consumption. What used to be a 30-minute daily task becomes a fully automated process that runs in the background.</p>
+        <p>The output is clean, structured data that you can send to Slack, store in a database, or use to generate weekly trend reports. This gives your team a competitive edge by identifying promising new tools and libraries before they become mainstream.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow follows a logical sequence to extract, process, and deliver GitHub trending data.</p>
+        
+        <h3>Step 1: Trigger Execution</h3>
+        <p>The workflow can be triggered manually for testing or scheduled to run automatically every day. A manual trigger node allows you to test the entire process with one click before setting up automation.</p>
+        
+        <h3>Step 2: Fetch GitHub Trending Page</h3>
+        <p>An HTTP Request node sends a request to GitHub's trending repositories page. This retrieves the raw HTML containing all the trending project data for the current day.</p>
+        
+        <h3>Step 3: Extract Repository Containers</h3>
+        <p>HTML Extract nodes parse the page structure to isolate each repository entry. The workflow identifies the specific HTML elements that contain individual project information.</p>
+        
+        <h3>Step 4: Parse Detailed Repository Data</h3>
+        <p>Additional processing nodes extract specific fields from each repository container: project name, author, description, primary language, stars gained, and the repository URL.</p>
+        
+        <h3>Step 5: Structure and Format Data</h3>
+        <p>Set nodes clean and organize the extracted information into a consistent JSON structure. This makes the data ready for integration with other applications and tools.</p>
+        
+        <h3>Step 6: Deliver Results</h3>
+        <p>The final formatted data can be sent to various destinations: posted to a Slack channel, saved to Google Sheets or Airtable, added to a database, or emailed as a daily digest.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Schedule this workflow to run at 9 AM daily to have fresh trending data waiting for your team at the start of each workday. Combine it with a Slack integration to automatically post the top 5 trending repositories to your development channel.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for development teams, tech leads, open-source contributors, and technology researchers. Development managers can use it to keep their teams informed about new tools. Startup founders can identify emerging technologies relevant to their space. Open-source maintainers can track what's gaining popularity in their ecosystem.</p>
+        <p>Tech recruiters and talent acquisition specialists can use this data to understand what skills are trending in the developer community. Investors and analysts can spot early signals about which technologies are gaining developer mindshare before they hit mainstream adoption.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A running n8n instance (self-hosted or n8n.cloud)</li>
+          <li>Basic understanding of n8n's interface</li>
+          <li>Optional: Slack, Google Sheets, or Airtable credentials if you want to send data to these services</li>
+          <li>Optional: A scheduler (n8n's built-in scheduler or external cron) for automated daily execution</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download the template using the button above</li>
+          <li>Import the JSON file into your n8n instance (Settings → Import Workflow)</li>
+          <li>Test the workflow manually by clicking "Execute Workflow"</li>
+          <li>Review the output data in the last node</li>
+          <li>Configure any destination nodes (Slack, Google Sheets, etc.) with your credentials</li>
+          <li>Set up scheduling if you want daily automated execution</li>
+          <li>Monitor the workflow for a few days and adjust filters as needed</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Before connecting to external services, run the workflow a few times to ensure it's extracting data correctly. Check the output against GitHub's actual trending page to verify accuracy.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5-10 hours per week</strong> that would otherwise be spent manually browsing GitHub. That's 250-500 hours annually that your team can redirect toward actual development work.</p>
+        <p><strong>Get structured, actionable data</strong> instead of unstructured browsing. The workflow outputs clean JSON that can be analyzed, filtered, and integrated with your existing tools and dashboards.</p>
+        <p><strong>Never miss emerging trends</strong> because the automation runs consistently, even when your team is busy with other priorities. You'll get notified about promising new projects as they start gaining traction.</p>
+        <p><strong>Make data-driven technology decisions</strong> based on what's actually trending in the developer community rather than gut feelings or outdated information.</p>
+        <p><strong>Customize and extend easily</strong> since n8n's visual interface makes it simple to add filters, integrate with additional services, or modify the data structure to match your specific needs.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about GitHub automation and trend tracking</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I automate GitHub trend tracking?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating GitHub trend tracking saves developers and tech leads 5-10 hours per week of manual browsing. It provides structured, actionable data on emerging open-source projects, helping you spot new libraries, frameworks, and tools before they become mainstream.</p>
+          <p>This proactive insight can inform technology decisions, identify collaboration opportunities, and keep your team's skills relevant. Instead of reactive discovery, you get systematic monitoring that fits into your workflow.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What data can I extract from GitHub's trending page?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You can extract repository name, author/owner, description, primary programming language, total stars, stars gained in the trending period, and direct repository URL. This structured data is perfect for analysis, reporting, or feeding into other systems.</p>
+          <p>The workflow organizes this information into a clean format that can be sent to Slack notifications, Airtable databases, or weekly digest emails for your team. You can also add custom fields like technology category or relevance score.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I run a GitHub trending scraper?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Run it daily for the most current insights, as GitHub's trending page updates every 24 hours. For most teams, a daily automated scrape at 9 AM provides fresh data at the start of the workday.</p>
+          <p>You can schedule it weekly if you only need a broader overview, but daily execution ensures you don't miss short-lived trends that appear and disappear quickly. The n8n scheduler makes this timing configuration simple.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I filter trending repositories by programming language?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, you can modify the workflow to target specific language categories on GitHub's trending page. The automation can be configured to scrape only JavaScript, Python, Go, or any other language filter that GitHub supports.</p>
+          <p>This allows development teams to focus exclusively on trends within their tech stack, making the data more relevant and actionable. You can even create multiple workflow versions for different language teams within your organization.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What should I do with scraped GitHub trend data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Send daily digests to team Slack channels, populate a shared Notion or Airtable database for reference, create weekly email reports for stakeholders, or trigger alerts when specific keywords appear in repository descriptions.</p>
+          <p>The data can also feed into competitive analysis dashboards or help identify potential open-source contributions for your team. Many organizations use this data to inform their technology radar and learning investment decisions.</p>
+          <ul>
+            <li>Slack integration for real-time team notifications</li>
+            <li>Airtable/Google Sheets for historical trend analysis</li>
+            <li>Email digests for non-technical stakeholders</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is web scraping GitHub allowed?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>GitHub's terms permit reasonable automated access for data collection, provided you respect rate limits, don't overload their servers, and use the data ethically. This workflow uses a single request to the public trending page, which is acceptable.</p>
+          <p>Always check robots.txt and avoid aggressive scraping that could trigger IP blocks. For production use, consider GitHub's official API for more reliable access, though this workflow's approach is suitable for most organizational needs.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom GitHub automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom GitHub automation systems tailored to your specific needs. We can create workflows that integrate trending data with your internal tools, add advanced filtering based on your tech stack, or set up real-time alerts for specific projects.</p>
+          <p>Our team designs solutions that fit your workflow and scale with your team's growth. We can build comprehensive competitor tracking dashboards, custom reporting systems, or integrate GitHub data with your CRM and business intelligence tools.</p>
+          <ul>
+            <li>Custom filtering based on your technology stack</li>
+            <li>Integration with internal dashboards and tools</li>
+            <li>Advanced analytics and trend prediction features</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom GitHub Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatic Typebot & GitHub Sync | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow to automatically sync Typebot flows with GitHub. Backup, version control, and migrate your chatbots safely with two-way automation.">
+<link rel="canonical" href="https://growwstacks.com/workflows/3430-automatic-typebot-flows-two-way-sync-with-github-using-typebot-api/">
+<meta property="og:title" content="Automatic Typebot & GitHub Sync | Free n8n Template">
+<meta property="og:description" content="Free n8n workflow to automatically sync Typebot flows with GitHub. Backup, version control, and migrate your chatbots safely with two-way automation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/3430-automatic-typebot-flows-two-way-sync-with-github-using-typebot-api/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5899-automatic-typebot-flows-two-way-sync-with-github-using-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automatic Typebot & GitHub Sync | Free n8n Template">
+<meta name="twitter:description" content="Free n8n workflow to automatically sync Typebot flows with GitHub. Backup, version control, and migrate your chatbots safely with two-way automation.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automatic Typebot & GitHub Sync","description":"Free n8n workflow to automatically sync Typebot flows with GitHub. Backup, version control, and migrate your chatbots safely with two-way automation.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5899-automatic-typebot-flows-two-way-sync-with-github-using-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I backup my Typebot flows to GitHub?","acceptedAnswer":{"@type":"Answer","text":"Backing up Typebot flows to GitHub provides version control, disaster recovery, and safe migration between servers. It creates a complete history of changes, allows team collaboration, and ensures you never lose chatbot configurations due to server failures or accidental deletions."}},{"@type":"Question","name":"What are the benefits of automating chatbot backups?","acceptedAnswer":{"@type":"Answer","text":"Automating chatbot backups saves hours of manual work, eliminates human error, and ensures consistent protection. It provides peace of mind knowing your conversational AI investments are safely versioned, enables quick rollbacks to previous versions, and facilitates testing new flows without risking production data."}},{"@type":"Question","name":"How does Typebot integration with GitHub improve development workflows?","acceptedAnswer":{"@type":"Answer","text":"Typebot-GitHub integration creates a DevOps pipeline for chatbots, enabling proper versioning, peer review through pull requests, and automated deployment. Developers can track changes, collaborate on flow improvements, and maintain separate development and production environments with controlled promotions."}},{"@type":"Question","name":"What happens if a Typebot flow is deleted from the workspace?","acceptedAnswer":{"@type":"Answer","text":"A proper sync automation detects deleted flows and removes corresponding files from GitHub, maintaining synchronization. This prevents repository clutter, ensures your backup accurately reflects current workspace state, and helps identify when flows were removed for audit purposes."}},{"@type":"Question","name":"Can I use this automation to migrate Typebot flows between servers?","acceptedAnswer":{"@type":"Answer","text":"Yes, GitHub-synced Typebot flows can be easily migrated between servers or environments. You can export flows from one workspace to GitHub, then import them to another, maintaining all configurations, logic branches, and settings without manual recreation or configuration drift."}},{"@type":"Question","name":"How often should I sync Typebot flows with GitHub?","acceptedAnswer":{"@type":"Answer","text":"Sync frequency depends on your development pace. For active projects, daily or real-time syncs capture all changes. For stable chatbots, weekly backups may suffice. Consider syncing before major updates, after testing new flows, or whenever multiple team members are collaborating on changes."}},{"@type":"Question","name":"Can I get a custom Typebot automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in custom Typebot automation solutions tailored to specific business needs. We can build advanced chatbot workflows, integrate with your existing systems, create custom triggers, and develop sophisticated conversational AI automations that go beyond basic templates."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Typebot GitHub Sync"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Typebot GitHub Sync</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Typebot</span>
+          <span class="cs-tag">GitHub</span>
+          <span class="cs-tag">Backup</span>
+          <span class="cs-tag">DevOps</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automatic Typebot & GitHub Sync</h1>
+        <p class="cs-hero-sub">Free n8n workflow to automatically backup, version control, and sync your Typebot chatbot flows with GitHub repositories.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5899-automatic-typebot-flows-two-way-sync-with-github-using-.png" alt="Typebot GitHub sync automation workflow diagram showing backup process" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves a critical problem for businesses using Typebot for conversational AI: the risk of losing valuable chatbot configurations, flows, and logic. Without proper backups, hours of work designing sophisticated chatbot conversations can disappear due to server failures, accidental deletions, or migration issues.</p>
+        <p>The workflow automatically creates a two-way sync between your Typebot workspace and GitHub repositories. It exports all your Typebot flows using the Typebot API, checks existing files in GitHub, and intelligently updates, creates, or removes files to maintain perfect synchronization. This gives you version control, disaster recovery, and safe migration capabilities for your chatbot investments.</p>
+        
+        <h2>How It Works</h2>
+        <h3>Step 1: Fetch Typebot Flows</h3>
+        <p>The workflow connects to the Typebot API using your credentials and retrieves all flows from your workspace. It extracts the complete configuration including blocks, options, variables, and settings in JSON format.</p>
+        
+        <h3>Step 2: Check GitHub Repository</h3>
+        <p>For each Typebot flow, the automation checks your specified GitHub repository to see if a corresponding file already exists. It compares the flow ID and current configuration to determine what action is needed.</p>
+        
+        <h3>Step 3: Intelligent Sync Decisions</h3>
+        <p>The workflow makes three types of decisions: update existing GitHub files when Typebot flows change, create new files for new flows, or ignore files that haven't changed to optimize performance.</p>
+        
+        <h3>Step 4: Cleanup Deleted Flows</h3>
+        <p>A critical feature detects when flows have been deleted from your Typebot workspace and automatically removes the corresponding files from GitHub, keeping your repository clean and accurately reflecting your current chatbot setup.</p>
+        
+        <h2>Who This Is For</h2>
+        <p>This automation is essential for businesses and developers who rely on Typebot for customer support, lead generation, onboarding, or internal processes. It's particularly valuable for agencies managing multiple client chatbots, SaaS companies with evolving conversational interfaces, and teams collaborating on chatbot development who need proper version control and backup strategies.</p>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Typebot Account:</strong> Access to a Typebot workspace with flows you want to backup</li>
+          <li><strong>Typebot API Credentials:</strong> Authentication tokens to connect to the Typebot API</li>
+          <li><strong>GitHub Account:</strong> A GitHub account with repository creation permissions</li>
+          <li><strong>GitHub Personal Access Token:</strong> API token with repo scope for repository access</li>
+          <li><strong>n8n Instance:</strong> Self-hosted n8n or n8n.cloud account to run the workflow</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download the template using the button above and import it into your n8n instance</li>
+          <li>Configure the Typebot credentials node with your API authentication details</li>
+          <li>Set up the GitHub credentials with your personal access token</li>
+          <li>Specify your GitHub repository details (owner, repo name, branch)</li>
+          <li>Test the workflow with a single flow before enabling full synchronization</li>
+          <li>Schedule the workflow to run automatically (daily, weekly, or on-demand)</li>
+        </ol>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start by syncing to a private test repository before moving to your main backup repo. This lets you verify the process works correctly without affecting important backups.</p>
+        </div>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate manual backup work</strong> that can take hours each week. This automation handles everything automatically, saving your team valuable time while ensuring consistency.</p>
+        <p><strong>Protect your chatbot investments</strong> with reliable version control. Every change to your Typebot flows is tracked in GitHub, allowing rollbacks to previous versions if needed.</p>
+        <p><strong>Enable safe migrations</strong> between Typebot servers or instances. Export flows from one workspace and import to another without manual recreation or configuration errors.</p>
+        <p><strong>Facilitate team collaboration</strong> through proper version history. Team members can review changes, understand evolution, and collaborate more effectively on chatbot development.</p>
+        <p><strong>Create disaster recovery insurance</strong> for your conversational AI. If your Typebot instance experiences issues, you have complete backups ready for restoration.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about Typebot automation and GitHub integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I backup my Typebot flows to GitHub?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Backing up Typebot flows to GitHub provides version control, disaster recovery, and safe migration between servers. It creates a complete history of changes, allows team collaboration, and ensures you never lose chatbot configurations due to server failures or accidental deletions.</p>
+          <p>Without proper backups, valuable conversational AI investments can disappear instantly. GitHub adds professional development practices to your chatbot workflow, making maintenance and scaling much more manageable.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of automating chatbot backups?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating chatbot backups saves hours of manual work, eliminates human error, and ensures consistent protection. It provides peace of mind knowing your conversational AI investments are safely versioned, enables quick rollbacks to previous versions, and facilitates testing new flows without risking production data.</p>
+          <p>Automation also creates consistency in your backup strategy. Manual backups often get forgotten during busy periods, leaving gaps in your protection. Scheduled automation ensures regular, reliable protection without depending on human memory.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does Typebot integration with GitHub improve development workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Typebot-GitHub integration creates a DevOps pipeline for chatbots, enabling proper versioning, peer review through pull requests, and automated deployment. Developers can track changes, collaborate on flow improvements, and maintain separate development and production environments with controlled promotions.</p>
+          <p>This integration brings software engineering best practices to conversational AI development. Teams can implement code review processes, maintain change logs, and create release management procedures for chatbot updates.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if a Typebot flow is deleted from the workspace?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>A proper sync automation detects deleted flows and removes corresponding files from GitHub, maintaining synchronization. This prevents repository clutter, ensures your backup accurately reflects current workspace state, and helps identify when flows were removed for audit purposes.</p>
+          <p>The automation compares what exists in Typebot with what's in GitHub, identifying discrepancies and taking appropriate action. This intelligent cleanup maintains an accurate backup without manual intervention.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this automation to migrate Typebot flows between servers?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GitHub-synced Typebot flows can be easily migrated between servers or environments. You can export flows from one workspace to GitHub, then import them to another, maintaining all configurations, logic branches, and settings without manual recreation or configuration drift.</p>
+          <p>This is particularly valuable for moving from development to production environments, changing hosting providers, or consolidating multiple Typebot instances. The migration process becomes systematic rather than manual.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I sync Typebot flows with GitHub?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sync frequency depends on your development pace. For active projects, daily or real-time syncs capture all changes. For stable chatbots, weekly backups may suffice. Consider syncing before major updates, after testing new flows, or whenever multiple team members are collaborating on changes.</p>
+          <p>The automation can be scheduled to run automatically at your preferred interval. More frequent backups provide better protection but consume slightly more resources. Balance protection needs with system performance.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom Typebot automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in custom Typebot automation solutions tailored to specific business needs. We can build advanced chatbot workflows, integrate with your existing systems, create custom triggers, and develop sophisticated conversational AI automations that go beyond basic templates.</p>
+          <p>Our team works with you to understand your unique requirements, design appropriate solutions, and implement robust automations that scale with your business. We handle everything from initial consultation to deployment and ongoing support.</p>
+          <ul>
+            <li>Custom chatbot logic and branching scenarios</li>
+            <li>Integration with CRM, helpdesk, and internal systems</li>
+            <li>Advanced analytics and reporting automation</li>
+            <li>Multi-language and regional customization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Typebot Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

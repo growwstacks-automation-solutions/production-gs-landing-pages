@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Price Drop Analysis with Decodo & AI | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate Amazon price intelligence. Scrape deals with Decodo, analyze with GPT-4.1-mini, and log insights to Google Sheets. Free n8n workflow template.">
+<link rel="canonical" href="https://growwstacks.com/workflows/7004-amazon-price-drop-analysis-with-decodo-gpt-41-mini-and-google-sheets-integration/">
+<meta property="og:title" content="Automate Amazon Price Intelligence with AI & Google Sheets">
+<meta property="og:description" content="Free n8n workflow: Scrape Amazon price drops, analyze with AI, and store insights automatically. Download the template.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/7004-amazon-price-drop-analysis-with-decodo-gpt-41-mini-and-google-sheets-integration/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10962-amazon-price-drop-analysis-with-decodo-gpt-41-mini-and.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Amazon Price Intelligence with AI & Google Sheets">
+<meta name="twitter:description" content="Free n8n workflow: Scrape Amazon price drops, analyze with AI, and store insights automatically. Download the template.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Amazon Price Drop Analysis with Decodo & AI","description":"Automate Amazon price intelligence. Scrape deals with Decodo, analyze with GPT-4.1-mini, and log insights to Google Sheets. Free n8n workflow template.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10962-amazon-price-drop-analysis-with-decodo-gpt-41-mini-and.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Amazon price drop analysis and why is it important for e-commerce?","acceptedAnswer":{"@type":"Answer","text":"Amazon price drop analysis involves tracking product price changes on Amazon to identify discounts, sales trends, and competitive pricing. It's crucial for e-commerce businesses to optimize pricing strategies, identify profitable deals for resale, and understand market dynamics. Manual tracking is time-consuming and error-prone, which is why automation delivers significant competitive advantage."}},{"@type":"Question","name":"How does AI enhance Amazon price tracking compared to traditional methods?","acceptedAnswer":{"@type":"Answer","text":"Traditional price tracking only captures numbers. AI-enhanced analysis, like in this workflow, adds sentiment analysis and summarization. It can tell you not just that a price dropped, but whether the product description is positive, highlight key features, and assess the deal's attractiveness. This transforms raw data into actionable business intelligence for better purchasing or pricing decisions."}},{"@type":"Question","name":"Can I use this automation for other e-commerce platforms besides Amazon?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. While this template uses Amazon via Decodo, the core architecture—web scraping, AI analysis, and Google Sheets logging—can be adapted for any e-commerce site. You would modify the scraping source and potentially the AI prompts to match different product data structures. The workflow demonstrates a reusable pattern for any price intelligence automation."}},{"@type":"Question","name":"What are the main benefits of automating price intelligence?","acceptedAnswer":{"@type":"Answer","text":"Automating price intelligence saves dozens of hours per week in manual research, reduces human error in data entry, provides real-time market insights, enables faster reaction to price changes, and creates a searchable historical database for trend analysis. For businesses, this means better margins, smarter purchasing, and staying ahead of competitors."}},{"@type":"Question","name":"Do I need coding skills to set up and customize this n8n workflow?","acceptedAnswer":{"@type":"Answer","text":"No extensive coding is required. n8n's visual interface lets you configure nodes through forms. Basic understanding of APIs (entering keys) and spreadsheet structure is helpful. Customization involves changing URLs, adjusting AI prompts in plain English, and mapping data fields—all done through point-and-click configuration, not programming."}},{"@type":"Question","name":"How often should I run an automated price tracking workflow?","acceptedAnswer":{"@type":"Answer","text":"Frequency depends on your needs. For daily deal monitoring, run it once per day. For competitive price tracking in fast-moving categories, consider every few hours. For broader market analysis, weekly may suffice. n8n's scheduler lets you set any interval. Start with daily, then adjust based on data freshness requirements and API rate limits."}},{"@type":"Question","name":"What other tools can I connect to this price analysis automation?","acceptedAnswer":{"@type":"Answer","text":"Beyond Google Sheets, you can connect Slack for instant deal alerts, Airtable for collaborative dashboards, databases like PostgreSQL for large-scale storage, or CRM systems like HubSpot to enrich lead/customer data with pricing insights. You could also trigger purchase orders in procurement systems when certain price thresholds are met."}},{"@type":"Question","name":"Can I get a custom Amazon price drop automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes! GrowwStacks specializes in building tailored automation solutions. We can create a custom system that tracks your specific competitor products, analyzes pricing against your inventory, triggers alerts based on your margin targets, and integrates with your existing e-commerce stack. We handle the technical complexity so you get actionable insights without the setup headache."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Amazon Price Drop Analysis"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Amazon Price Drop Analysis</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">OpenAI</span>
+          <span class="cs-tag">Decodo</span>
+          <span class="cs-tag">E-commerce</span>
+        </div>
+        <h1>Automate Amazon Price Intelligence with AI & Google Sheets</h1>
+        <p class="cs-hero-sub">Scrape price drops, generate AI summaries & sentiment analysis, and log everything to Sheets—fully automated.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10962-amazon-price-drop-analysis-with-decodo-gpt-41-mini-and.json?ik-attachment=true" download="amazon-price-drop-analysis-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/10962-amazon-price-drop-analysis-with-decodo-gpt-41-mini-and.png" alt="Visual diagram of Amazon price drop analysis automation workflow connecting Decodo, OpenAI, and Google Sheets" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves a critical problem for e-commerce businesses, affiliate marketers, and product researchers: manually tracking Amazon price drops is slow, inconsistent, and misses valuable insights. This workflow creates a complete price intelligence pipeline that runs automatically.</p>
+        <p>It scrapes daily deal pages (like CamelCamelCamel), extracts product details using Decodo's web scraping, enriches each item with AI-generated summaries and sentiment scores via OpenAI GPT-4.1-mini, and stores the structured analysis in Google Sheets. The result is a real-time, searchable database of discounted products with contextual insights—not just raw numbers.</p>
+        <p>You get automated market monitoring that identifies not just <em>when</em> prices drop, but <em>why</em> a deal might be attractive based on product descriptions and reviews. This enables smarter purchasing decisions, competitive analysis, and trend spotting without manual effort.</p>
+
+        <div class="cs-img-block">
+          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/image_10f2884371.png" alt="Screenshot showing the n8n workflow canvas for Amazon price drop extraction and AI analysis" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">The workflow canvas showing the integration of Decodo scraping, OpenAI processing, and Google Sheets output.</div>
+        </div>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical sequence from data collection to actionable insights.</p>
+
+        <h3>1. Trigger & Source Configuration</h3>
+        <p>The workflow starts manually or on a schedule. You configure the target URL (default is CamelCamelCamel's daily drops page). This flexibility lets you monitor specific product categories, competitor listings, or deal aggregators.</p>
+
+        <h3>2. Web Scraping with Decodo</h3>
+        <p>The Decodo node visits the configured page and extracts raw product listings—including titles, prices, savings percentages, and direct Amazon links. This replaces hours of manual copying and pasting with seconds of automated data collection.</p>
+
+        <div class="cs-img-block">
+          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/image_874c5823cc.png" alt="n8n interface showing the community nodes installation panel" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">Installing the Decodo community node in n8n to enable web scraping capabilities.</div>
+        </div>
+
+        <h3>3. AI-Powered Structuring & Enrichment</h3>
+        <p>Each product URL is revisited by Decodo for detailed page content. OpenAI's GPT-4.1-mini then performs two key analyses: generating a concise summary of the product and its deal context, and calculating a sentiment score (positive/neutral/negative) based on description language.</p>
+
+        <h3>4. Data Aggregation & Storage</h3>
+        <p>All enriched data—product name, current price, savings, link, AI summary, and sentiment—is merged into a clean dataset. The Google Sheets node appends this structured information to a designated spreadsheet, creating a growing log of analyzed deals.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Schedule this workflow to run daily at 9 AM to get fresh deal insights before your team starts work. You'll have a ready-made report waiting in Sheets.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template delivers immediate value to several key audiences:</p>
+        <ul>
+          <li><strong>E-commerce Managers</strong> monitoring competitor pricing and market trends.</li>
+          <li><strong>Affiliate Marketers</strong> seeking high-converting deals to promote.</li>
+          <li><strong>Product Researchers</strong> analyzing pricing patterns for new product launches.</li>
+          <li><strong>Retail Arbitrage Sellers</strong> identifying profitable resale opportunities.</li>
+          <li><strong>Business Intelligence Teams</strong> building automated market data pipelines.</li>
+        </ul>
+        <p>If you currently spend time manually checking deal sites, copying data into spreadsheets, or trying to gauge whether a discount is truly valuable, this automation eliminates that busywork.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (self-hosted or cloud)</li>
+          <li><strong>Decodo API access</strong> (free sign-up provides scraping credits)</li>
+          <li><strong>OpenAI API key</strong> (GPT-4.1-mini offers excellent cost-performance)</li>
+          <li><strong>Google Sheets</strong> with write permissions configured via OAuth</li>
+          <li><strong>Target URL</strong> for price drops (CamelCamelCamel, Slickdeals, etc.)</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Get this price intelligence system running in under 30 minutes:</p>
+        <ol>
+          <li><strong>Import the template</strong> into your n8n workspace using the downloaded JSON file.</li>
+          <li><strong>Install the Decodo community node</strong> via n8n's "Community Nodes" settings.</li>
+          <li><strong>Configure credentials</strong> for Decodo, OpenAI, and Google Sheets in their respective nodes.</li>
+          <li><strong>Update the price_drop_url</strong> in the "Set" node to your target deal page.</li>
+          <li><strong>Test the workflow</strong> with the "Execute Workflow" button to verify data flows to Sheets.</li>
+          <li><strong>Add scheduling</strong> (Cron node) for daily automated runs.</li>
+        </ol>
+
+        <div class="cs-img-block">
+          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/image_f464f9cb6b.png" alt="Configuration panel for the Decodo community node in n8n showing authentication settings" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">Configuring the Decodo node with API credentials to enable web scraping functionality.</div>
+        </div>
+
+        <div class="cs-highlight">
+          <p><strong>Important:</strong> This workflow requires n8n self-hosted because it uses the Decodo community node. Cloud users can adapt it using alternative scraping methods or contact us for a cloud-compatible version.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10+ hours weekly</strong> on manual price monitoring and data entry. The automation works while you sleep, compiling comprehensive deal reports.</p>
+        <p><strong>Gain AI-powered insights</strong> beyond simple price tracking. Understand deal sentiment and product context, not just percentage changes.</p>
+        <p><strong>Build a historical database</strong> of price movements and market trends. Spot seasonal patterns and predict future discounts.</p>
+        <p><strong>React faster to market changes</strong> with real-time alerts. Configure notifications when specific products hit your target price points.</p>
+        <p><strong>Scale effortlessly</strong> from monitoring 10 products to 10,000. The automated pipeline handles volume without additional manual effort.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about Amazon price intelligence automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is Amazon price drop analysis and why is it important for e-commerce?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Amazon price drop analysis involves tracking product price changes on Amazon to identify discounts, sales trends, and competitive pricing. It's crucial for e-commerce businesses to optimize pricing strategies, identify profitable deals for resale, and understand market dynamics.</p>
+          <p>Manual tracking is time-consuming and error-prone, which is why automation delivers significant competitive advantage by providing consistent, real-time data without human intervention.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI enhance Amazon price tracking compared to traditional methods?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Traditional price tracking only captures numbers. AI-enhanced analysis, like in this workflow, adds sentiment analysis and summarization. It can tell you not just that a price dropped, but whether the product description is positive, highlight key features, and assess the deal's attractiveness.</p>
+          <p>This transforms raw data into actionable business intelligence for better purchasing or pricing decisions, helping you prioritize which deals warrant immediate action versus which are less compelling.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this automation for other e-commerce platforms besides Amazon?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. While this template uses Amazon via Decodo, the core architecture—web scraping, AI analysis, and Google Sheets logging—can be adapted for any e-commerce site.</p>
+          <p>You would modify the scraping source and potentially the AI prompts to match different product data structures. The workflow demonstrates a reusable pattern for any price intelligence automation across eBay, Walmart, or specialty retail sites.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of automating price intelligence?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating price intelligence saves dozens of hours per week in manual research, reduces human error in data entry, provides real-time market insights, enables faster reaction to price changes, and creates a searchable historical database for trend analysis.</p>
+          <p>For businesses, this means better margins, smarter purchasing, and staying ahead of competitors who still rely on manual methods. The consistent data collection also enables more accurate forecasting and inventory planning.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do I need coding skills to set up and customize this n8n workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No extensive coding is required. n8n's visual interface lets you configure nodes through forms. Basic understanding of APIs (entering keys) and spreadsheet structure is helpful.</p>
+          <p>Customization involves changing URLs, adjusting AI prompts in plain English, and mapping data fields—all done through point-and-click configuration, not programming. Most business users can adapt this template to their specific needs within an hour.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I run an automated price tracking workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Frequency depends on your needs. For daily deal monitoring, run it once per day. For competitive price tracking in fast-moving categories like electronics, consider every few hours.</p>
+          <p>For broader market analysis, weekly may suffice. n8n's scheduler lets you set any interval. Start with daily, then adjust based on data freshness requirements and API rate limits. Consider running during off-peak hours to avoid website traffic spikes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What other tools can I connect to this price analysis automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Beyond Google Sheets, you can connect Slack for instant deal alerts, Airtable for collaborative dashboards, databases like PostgreSQL for large-scale storage, or CRM systems like HubSpot to enrich lead/customer data with pricing insights.</p>
+          <p>You could also trigger purchase orders in procurement systems when certain price thresholds are met, or send SMS alerts via Twilio for time-sensitive deals. The modular design makes adding destinations straightforward.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom Amazon price drop automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes! GrowwStacks specializes in building tailored automation solutions. We can create a custom system that tracks your specific competitor products, analyzes pricing against your inventory, triggers alerts based on your margin targets, and integrates with your existing e-commerce stack.</p>
+          <p>We handle the technical complexity so you get actionable insights without the setup headache. Our team can add features like multi-platform monitoring, custom scoring algorithms, and automated reporting tailored to your business processes.</p>
+          <ul>
+            <li>Integration with your existing inventory management system</li>
+            <li>Custom alert thresholds based on your profit margins</li>
+            <li>Multi-user dashboards with role-based access</li>
+            <li>Historical trend analysis and forecasting</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Amazon Price Intelligence Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
