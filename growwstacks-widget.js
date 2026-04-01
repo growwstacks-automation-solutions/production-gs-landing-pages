@@ -1,34 +1,36 @@
-import { widgetData } from './widget-data.js';
+import { widgetData } from "./widget-data.js";
 
 export function initGrowwStacksWidget(config = {}) {
-  const {
-    cycleTime = 6000,
-    containerId = 'gs-spw'
-  } = config;
+  const { cycleTime = 6000, containerId = "gs-spw" } = config;
 
   injectStyles();
 
   const root = document.getElementById(containerId);
   if (!root) {
-    console.error(`GrowwStacks Widget Error: Container #${containerId} not found`);
+    console.error(
+      `GrowwStacks Widget Error: Container #${containerId} not found`,
+    );
     return;
   }
 
-  root.innerHTML = '';
+  root.innerHTML = "";
 
   const records = widgetData.map((item) => ({
-    clientName: item.clientName || 'Unknown Client',
-    projectName: item.projectName || 'New Project',
-    projectType: item.projectType || 'Service',
-    country: item.country || '',
-    logoUrl: item.logoUrl || '',
+    clientName: item.clientName || "Unknown Client",
+    projectName: item.projectName || "New Project",
+    projectType: item.projectType || "Service",
+    city: item.city || "",
+    country: item.country || "",
+    mapimageUrl: item.mapimageUrl || "",
+    logoUrl: item.logoUrl || "",
     color: randomColor(),
-    init: getInitials(item.clientName || 'UC'),
-    mapColors: getCountryMapColors(item.country || '')
+    status: item.ProjectStatus || "Active",
+    init: getInitials(item.clientName || "UC"),
+    mapColors: getCountryMapColors(item.country || ""),
   }));
 
   if (!records.length) {
-    console.warn('No widget records found');
+    console.warn("No widget records found");
     return;
   }
 
@@ -37,10 +39,10 @@ export function initGrowwStacksWidget(config = {}) {
 
   function showNext() {
     const rec = records[idx++ % records.length];
-    const existing = root.querySelector('.gs-spw-card');
+    const existing = root.querySelector(".gs-spw-card");
 
     if (existing) {
-      existing.classList.add('gs-spw-leaving');
+      existing.classList.add("gs-spw-leaving");
       setTimeout(() => {
         existing.remove();
         root.appendChild(buildCard(rec, cycleTime, root));
@@ -57,62 +59,76 @@ export function initGrowwStacksWidget(config = {}) {
 }
 
 function buildCard(rec, cycleTime, root) {
-  const card = document.createElement('div');
-  card.className = 'gs-spw-card';
+  const card = document.createElement("div");
+  card.className = "gs-spw-card";
 
   // Map
-  const mapDiv = document.createElement('div');
-  mapDiv.className = 'gs-spw-map';
-  mapDiv.innerHTML = makeFakeMapSVG(rec.mapColors) +
-    '<div class="gs-spw-map-ring"></div><div class="gs-spw-map-pin"></div>';
+  const mapDiv = document.createElement("div");
+  mapDiv.className = "gs-spw-map";
+
+  if (rec.mapimageUrl) {
+    mapDiv.innerHTML = `
+      <img src="${rec.mapimageUrl}" alt="${rec.city || rec.country}" class="gs-spw-map-img" />
+      <div class="gs-spw-map-ring"></div>
+      <div class="gs-spw-map-pin"></div>
+    `;
+  } else {
+    mapDiv.innerHTML = `
+      ${makeFakeMapSVG(rec.mapColors)}
+      <div class="gs-spw-map-ring"></div>
+      <div class="gs-spw-map-pin"></div>
+    `;
+  }
+
   card.appendChild(mapDiv);
 
   // Body
-  const body = document.createElement('div');
-  body.className = 'gs-spw-body';
+  const body = document.createElement("div");
+  body.className = "gs-spw-body";
 
   // Logo / Avatar
-  const avWrap = document.createElement('div');
-  avWrap.className = 'gs-spw-av-wrap';
+  const avWrap = document.createElement("div");
+  avWrap.className = "gs-spw-av-wrap";
 
   let av;
   if (rec.logoUrl) {
-    av = document.createElement('img');
-    av.className = 'gs-spw-logo';
+    av = document.createElement("img");
+    av.className = "gs-spw-logo";
     av.src = rec.logoUrl;
     av.alt = rec.clientName;
   } else {
-    av = document.createElement('div');
-    av.className = 'gs-spw-av';
+    av = document.createElement("div");
+    av.className = "gs-spw-av";
     av.style.background = rec.color;
     av.textContent = rec.init;
   }
 
-  const live = document.createElement('div');
-  live.className = 'gs-spw-live';
+  const live = document.createElement("div");
+  live.className = `gs-spw-live ${getStatusClass(rec.status)}`;
+  live.title = rec.status;
 
   avWrap.append(av, live);
 
   // Text
-  const txt = document.createElement('div');
-  txt.className = 'gs-spw-text';
+  const txt = document.createElement("div");
+  txt.className = "gs-spw-text";
 
-  const nm = document.createElement('div');
-  nm.className = 'gs-spw-name';
+  const nm = document.createElement("div");
+  nm.className = "gs-spw-name";
   nm.textContent = rec.clientName;
 
-  const act = document.createElement('div');
-  act.className = 'gs-spw-action';
+  const act = document.createElement("div");
+  act.className = "gs-spw-action";
   act.innerHTML = `started <b>${rec.projectName}</b>`;
 
-  const meta = document.createElement('div');
-  meta.className = 'gs-spw-meta';
+  const meta = document.createElement("div");
+  meta.className = "gs-spw-meta";
   meta.innerHTML = `
     <div class="gs-spw-loc">
       <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
         <path d="M5 .5C3.07.5 1.5 2.07 1.5 4c0 2.63 3.5 5.5 3.5 5.5S8.5 6.63 8.5 4C8.5 2.07 6.93.5 5 .5Zm0 4.75A1.25 1.25 0 1 1 5 3a1.25 1.25 0 0 1 0 2.25Z" fill="#c9a84c"/>
       </svg>
-      ${rec.country}
+      ${[rec.city, rec.country].filter(Boolean).join(", ")}
     </div>
     <div class="gs-spw-badge">${rec.projectType}</div>
   `;
@@ -122,18 +138,18 @@ function buildCard(rec, cycleTime, root) {
   card.appendChild(body);
 
   // Progress bar
-  const prog = document.createElement('div');
-  prog.className = 'gs-spw-progress';
-  prog.style.setProperty('--dur', `${cycleTime}ms`);
+  const prog = document.createElement("div");
+  prog.className = "gs-spw-progress";
+  prog.style.setProperty("--dur", `${cycleTime}ms`);
   card.appendChild(prog);
 
   // Close
-  const x = document.createElement('button');
-  x.className = 'gs-spw-x';
-  x.innerHTML = '&#x2715;';
-  x.setAttribute('aria-label', 'Dismiss');
-  x.onclick = () => root.remove();
-  card.appendChild(x);
+//   const x = document.createElement("button");
+//   x.className = "gs-spw-x";
+//   x.innerHTML = "&#x2715;";
+//   x.setAttribute("aria-label", "Dismiss");
+//   x.onclick = () => root.remove();
+//   card.appendChild(x);
 
   return card;
 }
@@ -166,50 +182,63 @@ function makeFakeMapSVG(colors) {
   `;
 }
 
-function getInitials(name = '') {
-  return name
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map(word => word[0].toUpperCase())
-    .join('') || 'GS';
+function getInitials(name = "") {
+  return (
+    name
+      .split(" ")
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((word) => word[0].toUpperCase())
+      .join("") || "GS"
+  );
 }
 
 function randomColor() {
-  const colors = ['#1d4e89', '#2d6a4f', '#6b2d8b', '#8b2252', '#7d6608'];
+  const colors = ["#1d4e89", "#2d6a4f", "#6b2d8b", "#8b2252", "#7d6608"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
-function getCountryMapColors(country = '') {
+function getCountryMapColors(country = "") {
   const c = country.toLowerCase();
 
-  if (c.includes('us') || c.includes('united states')) {
-    return ['#d8e8ff', '#9fc4ff', 'rgba(80,120,180,.4)'];
+  if (c.includes("us") || c.includes("united states")) {
+    return ["#d8e8ff", "#9fc4ff", "rgba(80,120,180,.4)"];
   }
-  if (c.includes('india')) {
-    return ['#fff0d8', '#ffd39f', 'rgba(180,120,80,.4)'];
+  if (c.includes("india")) {
+    return ["#fff0d8", "#ffd39f", "rgba(180,120,80,.4)"];
   }
-  if (c.includes('uk') || c.includes('united kingdom')) {
-    return ['#e2e6f5', '#b7c2e8', 'rgba(90,110,170,.4)'];
+  if (c.includes("uk") || c.includes("united kingdom")) {
+    return ["#e2e6f5", "#b7c2e8", "rgba(90,110,170,.4)"];
   }
-  if (c.includes('uae')) {
-    return ['#f1eadb', '#d6c29a', 'rgba(150,120,80,.4)'];
+  if (c.includes("uae")) {
+    return ["#f1eadb", "#d6c29a", "rgba(150,120,80,.4)"];
   }
-  if (c.includes('canada')) {
-    return ['#fbe1e1', '#efb0b0', 'rgba(180,80,80,.4)'];
+  if (c.includes("canada")) {
+    return ["#fbe1e1", "#efb0b0", "rgba(180,80,80,.4)"];
   }
-  if (c.includes('australia')) {
-    return ['#e1f1fb', '#b0d9ef', 'rgba(80,140,180,.4)'];
+  if (c.includes("australia")) {
+    return ["#e1f1fb", "#b0d9ef", "rgba(80,140,180,.4)"];
   }
 
-  return ['#e8dcc8', '#d4c4a0', 'rgba(180,160,130,.5)'];
+  return ["#e8dcc8", "#d4c4a0", "rgba(180,160,130,.5)"];
+}
+
+function getStatusClass(status = "") {
+  const s = status.toLowerCase().trim();
+
+  if (s === "active") return "status-active";
+  if (s === "in progress") return "status-progress";
+  if (s === "ongoing") return "status-ongoing";
+  if (s === "completed") return "status-completed";
+
+  return "status-active"; // default fallback
 }
 
 function injectStyles() {
-  if (document.getElementById('gs-widget-styles')) return;
+  if (document.getElementById("gs-widget-styles")) return;
 
-  const style = document.createElement('style');
-  style.id = 'gs-widget-styles';
+  const style = document.createElement("style");
+  style.id = "gs-widget-styles";
   style.textContent = `
     #gs-spw{
       position:fixed;
@@ -259,6 +288,13 @@ function injectStyles() {
     .gs-spw-map-svg{
       width:100%;
       height:100%;
+      display:block;
+    }
+
+    .gs-spw-map-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
       display:block;
     }
 
@@ -325,16 +361,37 @@ function injectStyles() {
     }
 
     .gs-spw-live{
-      position:absolute;
-      bottom:-2px;
-      right:-2px;
-      width:9px;
-      height:9px;
-      background:#22c55e;
-      border-radius:50%;
-      border:1.5px solid #fff;
-      animation:gs-blink 2.2s ease-in-out infinite;
-    }
+  position:absolute;
+  bottom:-2px;
+  right:-2px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  border:1.5px solid #fff;
+  animation:gs-blink 2.2s ease-in-out infinite;
+  box-shadow:0 0 0 2px rgba(255,255,255,.35);
+}
+
+/* Active = Green */
+.gs-spw-live.status-active{
+  background:#22c55e;
+}
+
+/* In Progress = Blue */
+.gs-spw-live.status-progress{
+  background:#3b82f6;
+}
+
+/* Ongoing = Orange */
+.gs-spw-live.status-ongoing{
+  background:#f59e0b;
+}
+
+/* Completed = Gray */
+.gs-spw-live.status-completed{
+  background:#9ca3af;
+  animation:none;
+}
 
     @keyframes gs-blink{
       0%,100%{opacity:1}
