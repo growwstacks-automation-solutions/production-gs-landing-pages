@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Domain & Website Traffic Enrichment with SimilarWeb, Google Sheets & Airtable | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow template: Automatically enrich domain lists with SimilarWeb traffic data. Clean URLs, fetch analytics, and update Google Sheets or Airtable. Save hours of manual research.">
+<link rel="canonical" href="https://growwstacks.com/workflows/4814-enrich-domains-with-similarweb-traffic-analytics-in-google-sheets-and-airtable/">
+<meta property="og:title" content="Automate Domain & Website Traffic Enrichment with SimilarWeb, Google Sheets & Airtable">
+<meta property="og:description" content="Free n8n workflow template: Automatically enrich domain lists with SimilarWeb traffic data. Clean URLs, fetch analytics, and update Google Sheets or Airtable. Save hours of manual research.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/4814-enrich-domains-with-similarweb-traffic-analytics-in-google-sheets-and-airtable/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7623-enrich-domains-with-similarweb-traffic-analytics-in-goo.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Domain & Website Traffic Enrichment with SimilarWeb, Google Sheets & Airtable">
+<meta name="twitter:description" content="Free n8n workflow template: Automatically enrich domain lists with SimilarWeb traffic data. Clean URLs, fetch analytics, and update Google Sheets or Airtable. Save hours of manual research.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate Domain & Website Traffic Enrichment with SimilarWeb, Google Sheets & Airtable","description":"Free n8n workflow template: Automatically enrich domain lists with SimilarWeb traffic data. Clean URLs, fetch analytics, and update Google Sheets or Airtable. Save hours of manual research.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7623-enrich-domains-with-similarweb-traffic-analytics-in-goo.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is domain enrichment and why is it important for businesses?","acceptedAnswer":{"@type":"Answer","text":"Domain enrichment is the process of appending valuable data to a list of website domains, such as traffic metrics, audience demographics, and engagement stats. It's crucial for businesses in competitive analysis, lead scoring, market research, and investment decisions. Without automation, manually researching hundreds of domains can take weeks and is prone to errors. This workflow automates that entire process, pulling live data from SimilarWeb directly into your spreadsheets."}},{"@type":"Question","name":"What kind of traffic data can I get from SimilarWeb via automation?","acceptedAnswer":{"@type":"Answer","text":"You can automatically retrieve key website performance metrics including global and country rank, total monthly visits, bounce rate, pages per visit, average visit duration, traffic sources (direct, search, social, referral), top geographic countries with traffic share, and device split (mobile vs. desktop). This data provides a comprehensive view of a website's audience and engagement, which is invaluable for sales prospecting, partnership evaluation, and market analysis."}},{"@type":"Question","name":"Can this workflow handle messy or incomplete domain URLs?","acceptedAnswer":{"@type":"Answer","text":"Yes, a core feature of this workflow is its URL cleaning step. It automatically strips unnecessary prefixes like http://, https://, www., and trailing slashes, converting any input into a clean, standardized domain format (e.g., 'example.com'). This ensures the SimilarWeb API receives a valid domain and prevents errors from malformed data, saving you the manual step of cleaning your lists before analysis."}},{"@type":"Question","name":"How does automating this process save time compared to manual research?","acceptedAnswer":{"@type":"Answer","text":"Manually looking up a single domain's traffic data on SimilarWeb can take 2-3 minutes. For a list of 500 companies, that's over 16 hours of repetitive work. This automation completes the same task in seconds per domain, running unattended. It eliminates copy-pasting, reduces human error, and allows your team to focus on analyzing the insights rather than collecting them, potentially saving dozens of hours per month."}},{"@type":"Question","name":"Is the data from SimilarWeb reliable for business decisions?","acceptedAnswer":{"@type":"Answer","text":"SimilarWeb provides estimated traffic data based on a combination of direct measurement, partnerships, and modeling. While it may not match a site's internal analytics exactly, it offers a highly reliable comparative benchmark. It's widely used by investors, marketers, and analysts to gauge website scale, growth trends, and audience quality, making it excellent for relative analysis and prioritization in business contexts."}},{"@type":"Question","name":"Can I use this data to enrich leads in my CRM, not just spreadsheets?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. While this template outputs to Google Sheets and Airtable, the structured data it produces can easily be connected to any CRM like Salesforce, HubSpot, or Pipedrive using n8n. You can map the traffic metrics to custom fields in your CRM, automatically scoring leads based on website traffic or triggering follow-up sequences for high-traffic prospects, creating a powerful, data-driven sales process."}},{"@type":"Question","name":"What are the common use cases for automated domain enrichment?","acceptedAnswer":{"@type":"Answer","text":"Common use cases include sales teams enriching prospect lists to prioritize high-traffic companies; investors screening potential portfolio companies; marketers analyzing competitor website performance; business development teams researching partnership opportunities; and recruiters identifying growing companies to target for talent acquisition. Any process that benefits from understanding a company's digital footprint can be enhanced with this automation."}},{"@type":"Question","name":"Can I get a custom domain enrichment automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored automation solutions. We can customize this workflow to connect with your specific CRM, add additional data sources, implement custom scoring logic, schedule automated runs, and create dashboards. Whether you need to process thousands of domains daily or integrate with internal databases, our team can design a system that fits your exact workflow and scales with your needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Domain Enrichment with SimilarWeb"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Domain Enrichment with SimilarWeb</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Airtable</span>
+          <span class="cs-tag">SimilarWeb</span>
+          <span class="cs-tag">Market Research</span>
+          <span class="cs-tag">Zapier Alternative</span>
+        </div>
+        <h1>Automate Domain & Website Traffic Enrichment</h1>
+        <p class="cs-hero-sub">Free n8n workflow to automatically enrich domain lists with SimilarWeb traffic data, clean URLs, and update Google Sheets or Airtable—saving hours of manual research.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7623-enrich-domains-with-similarweb-traffic-analytics-in-goo.png" alt="Visual diagram showing automation flow from Google Sheets to SimilarWeb API to Airtable for domain traffic enrichment" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manually researching website traffic for a list of companies is a tedious, time-consuming task that stalls business development, sales prospecting, and market analysis. This free n8n automation template solves that by connecting Google Sheets or Airtable directly to the SimilarWeb API.</p>
+        <p>Whenever a new domain is added to your spreadsheet, the workflow automatically cleans the URL, fetches comprehensive traffic insights—including global rank, monthly visits, bounce rate, traffic sources, and geographic data—and writes the enriched data back into your sheet. It transforms raw domain lists into actionable intelligence, enabling data-driven decisions without manual effort.</p>
+        <p>The process eliminates human error, ensures consistency, and scales to handle thousands of domains, making it perfect for agencies, investors, sales teams, and marketers who need to quickly assess digital presence at scale.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical, step-by-step process to ensure accurate and reliable data enrichment.</p>
+
+        <h3>1. Trigger on New Domain Entry</h3>
+        <p>The workflow is activated whenever a new row is added to your designated Google Sheet. It captures the raw domain or URL input by the user, ready for processing. This setup allows for both batch processing of existing lists and real-time enrichment as new prospects are identified.</p>
+
+        <h3>2. Clean & Standardize the Domain</h3>
+        <p>Many domain entries contain inconsistencies like "http://", "https://", "www.", or trailing slashes. This step programmatically strips these elements, outputting a clean, standardized domain format (e.g., "example.com"). It also preserves the original row reference to ensure data is written back to the correct location.</p>
+
+        <h3>3. Fetch Traffic Insights from SimilarWeb</h3>
+        <p>Using the cleaned domain, the workflow makes an authenticated API call to SimilarWeb. It retrieves a rich dataset including global and country rank, category rank, total visits, bounce rate, pages per visit, average visit duration, and breakdowns of traffic sources (direct, search, social, etc.).</p>
+
+        <h3>4. Extract & Structure Key Metrics</h3>
+        <p>The raw API response is parsed to extract the most valuable business metrics. The workflow structures this data into clear categories: ranking data, engagement metrics, traffic source percentages, top countries, and device split (mobile vs. desktop). This transforms complex API data into a spreadsheet-ready format.</p>
+
+        <h3>5. Update Your Google Sheet</h3>
+        <p>The structured insights are written back into your Google Sheet, appending new columns with the enriched data. Each row is updated with the corresponding metrics, creating a comprehensive, analysis-ready dataset without ever leaving your spreadsheet.</p>
+
+        <h3>6. (Optional) Sync to Airtable</h3>
+        <p>For teams using Airtable, the workflow can simultaneously create or update a record in a specified base. This allows you to maintain a centralized, relational database of enriched company profiles, linking traffic data with other business information for richer reporting and segmentation.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is designed for professionals and teams who rely on web data to inform their strategy. It's particularly valuable for <strong>Sales & Business Development teams</strong> who need to prioritize leads based on company digital footprint; <strong>Market Researchers & Analysts</strong> conducting competitive landscape analysis; <strong>Investors & VCs</strong> screening potential portfolio companies; <strong>Digital Marketing Agencies</strong> auditing prospect websites; and <strong>Recruiters</strong> identifying high-growth companies for talent sourcing.</p>
+        <p>If you currently spend hours copying and pasting domains into SimilarWeb or other analytics tools, this workflow will save you significant time and improve data accuracy.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use the "Device Split" data to tailor your outreach. A mobile-heavy audience might prefer different communication channels (like SMS or mobile apps) compared to a desktop-dominant one.</p>
+        </div>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A running n8n instance</strong> (cloud or self-hosted).</li>
+          <li><strong>Google Sheets credentials</strong> with edit access to your target spreadsheet.</li>
+          <li><strong>A SimilarWeb API key</strong> (obtainable from their developer portal).</li>
+          <li><strong>(Optional) An Airtable account</strong> and base with a prepared table schema.</li>
+          <li>A spreadsheet containing a list of company domains or URLs you wish to enrich.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Import and configure this workflow in under 10 minutes to start automating your domain research.</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n workspace.</li>
+          <li><strong>Configure the Google Sheets trigger</strong> node to point to your source spreadsheet and the column containing domains.</li>
+          <li><strong>Add your SimilarWeb API key</strong> to the HTTP Request node's authorization headers.</li>
+          <li><strong>Map the output fields</strong> in the Google Sheets update node to your desired column structure.</li>
+          <li><strong>(Optional) Configure the Airtable node</strong> with your base ID, table name, and API key.</li>
+          <li><strong>Test the workflow</strong> with a single domain row to ensure data flows correctly from sheet to SimilarWeb and back.</li>
+          <li><strong>Activate the workflow</strong> and let it process your entire list automatically.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate Manual Grunt Work:</strong> Stop the copy-paste cycle. Automate the enrichment of hundreds of domains in the time it used to take for one.</p>
+        <p><strong>Improve Data Accuracy & Consistency:</strong> Automated cleaning and API calls remove human typos and ensure every domain is processed with the same logic, yielding reliable, comparable metrics.</p>
+        <p><strong>Enable Scalable Prospecting & Analysis:</strong> Process large lead lists, competitor databases, or market landscapes without proportional increases in research time, allowing your team to scale efforts efficiently.</p>
+        <p><strong>Centralize Intelligence:</strong> Bring valuable external web data directly into your primary work surfaces (Sheets, Airtable) where your team already operates, eliminating context switching.</p>
+        <p><strong>Build a Foundation for Advanced Automation:</strong> The enriched data becomes a trigger for further actions—like scoring leads, segmenting campaigns, or prioritizing outreach—creating a fully automated intelligence pipeline.</p>
+
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about domain enrichment and traffic analytics automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is domain enrichment and why is it important for businesses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Domain enrichment is the process of appending valuable data to a list of website domains, such as traffic metrics, audience demographics, and engagement stats. It's crucial for businesses in competitive analysis, lead scoring, market research, and investment decisions.</p>
+          <p>Without automation, manually researching hundreds of domains can take weeks and is prone to errors. This workflow automates that entire process, pulling live data from SimilarWeb directly into your spreadsheets.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What kind of traffic data can I get from SimilarWeb via automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You can automatically retrieve key website performance metrics including global and country rank, total monthly visits, bounce rate, pages per visit, average visit duration, traffic sources (direct, search, social, referral), top geographic countries with traffic share, and device split (mobile vs. desktop).</p>
+          <p>This data provides a comprehensive view of a website's audience and engagement, which is invaluable for sales prospecting, partnership evaluation, and market analysis.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow handle messy or incomplete domain URLs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, a core feature of this workflow is its URL cleaning step. It automatically strips unnecessary prefixes like http://, https://, www., and trailing slashes, converting any input into a clean, standardized domain format (e.g., 'example.com').</p>
+          <p>This ensures the SimilarWeb API receives a valid domain and prevents errors from malformed data, saving you the manual step of cleaning your lists before analysis.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating this process save time compared to manual research?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manually looking up a single domain's traffic data on SimilarWeb can take 2-3 minutes. For a list of 500 companies, that's over 16 hours of repetitive work. This automation completes the same task in seconds per domain, running unattended.</p>
+          <p>It eliminates copy-pasting, reduces human error, and allows your team to focus on analyzing the insights rather than collecting them, potentially saving dozens of hours per month.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is the data from SimilarWeb reliable for business decisions?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>SimilarWeb provides estimated traffic data based on a combination of direct measurement, partnerships, and modeling. While it may not match a site's internal analytics exactly, it offers a highly reliable comparative benchmark.</p>
+          <p>It's widely used by investors, marketers, and analysts to gauge website scale, growth trends, and audience quality, making it excellent for relative analysis and prioritization in business contexts.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this data to enrich leads in my CRM, not just spreadsheets?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. While this template outputs to Google Sheets and Airtable, the structured data it produces can easily be connected to any CRM like Salesforce, HubSpot, or Pipedrive using n8n.</p>
+          <p>You can map the traffic metrics to custom fields in your CRM, automatically scoring leads based on website traffic or triggering follow-up sequences for high-traffic prospects, creating a powerful, data-driven sales process.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the common use cases for automated domain enrichment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common use cases include sales teams enriching prospect lists to prioritize high-traffic companies; investors screening potential portfolio companies; marketers analyzing competitor website performance; business development teams researching partnership opportunities; and recruiters identifying growing companies to target for talent acquisition.</p>
+          <p>Any process that benefits from understanding a company's digital footprint can be enhanced with this automation.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom domain enrichment automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored automation solutions. We can customize this workflow to connect with your specific CRM, add additional data sources, implement custom scoring logic, schedule automated runs, and create dashboards.</p>
+          <p>Whether you need to process thousands of domains daily or integrate with internal databases, our team can design a system that fits your exact workflow and scales with your needs. Book a free consultation to discuss your requirements.</p>
+          <ul>
+            <li>Connect to proprietary data sources or internal APIs</li>
+            <li>Build custom scoring models based on traffic thresholds</li>
+            <li>Set up automated alerts for significant website changes</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Domain Enrichment Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
