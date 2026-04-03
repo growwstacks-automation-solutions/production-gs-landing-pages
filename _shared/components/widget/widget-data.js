@@ -190,5 +190,35 @@ export const widgetData = [
     "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/smta-logo1.png",
     "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_AEzcNtiT9.png",
     "ProjectStatus": "Completed"
+  },
+  {
+    "clientName": "Rohit Kavar",
+    "projectName": "Lead Scraping",
+    "projectType": "Automation",
+    "country": "India",
+    "city": "Gujrat",
+    "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/logo-dark-1.svg",
+    "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_zHiD2Z5JZ.png",
+    "ProjectStatus": "Completed"
+  },
+  {
+    "clientName": "Ben Austin",
+    "projectName": "Final Three scenarios for emails, transcript and summary as well as the status update",
+    "projectType": "Automation",
+    "country": "UK",
+    "city": "London",
+    "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/image.png",
+    "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_QGf1LN2OyI.png",
+    "ProjectStatus": "Completed"
+  },
+  {
+    "clientName": "Renegade Lemonade",
+    "projectName": "Event management setup",
+    "projectType": "Automation",
+    "country": "USA",
+    "city": "Florida",
+    "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/image.png",
+    "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_jN-FWRM72.png",
+    "ProjectStatus": "Completed"
   }
 ];
