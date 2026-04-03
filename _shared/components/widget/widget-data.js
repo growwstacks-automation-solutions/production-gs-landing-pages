@@ -220,5 +220,45 @@ export const widgetData = [
     "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/image.png",
     "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_jN-FWRM72.png",
     "ProjectStatus": "Completed"
+  },
+  {
+    "clientName": "Manat Kaur",
+    "projectName": "Airtable architecture",
+    "projectType": "Web + Automation",
+    "country": "USA",
+    "city": "New York",
+    "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/image.png",
+    "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_FvEmxHsF-c.png",
+    "ProjectStatus": "Completed"
+  },
+  {
+    "clientName": "Scott Middleton",
+    "projectName": "Export data from hubspot to google sheet and create G-slides",
+    "projectType": "Automation",
+    "country": "US",
+    "city": "New Zealand",
+    "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/terem-logo2.svg",
+    "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_XoxPN-AyG.png",
+    "ProjectStatus": "Completed"
+  },
+  {
+    "clientName": "Craig Anderson",
+    "projectName": "Generating content and articles for website",
+    "projectType": "Automation",
+    "country": "UK",
+    "city": "Dundee",
+    "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/image.png",
+    "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_sRcr69WJE.png",
+    "ProjectStatus": "Completed"
+  },
+  {
+    "clientName": "Nathan Broadbridge",
+    "projectName": "Seo optimizing in Auto gates website",
+    "projectType": "Automation",
+    "country": "Australia",
+    "city": "Sydney",
+    "logoUrl": "https://ik.imagekit.io/r2zdlyze2o/Growwstacks%20widget/image.png",
+    "mapimageUrl": "https://ik.imagekit.io/r2zdlyze2o/GS-Website/Widget/Map_Image/image_0cURDSVIF.png",
+    "ProjectStatus": "Completed"
   }
 ];
