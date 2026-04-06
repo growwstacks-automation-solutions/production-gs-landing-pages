@@ -15,7 +15,7 @@ export function initGrowwStacksWidget(config = {}) {
 
   root.innerHTML = "";
 
-  const records = widgetData.map((item) => ({
+  const records = widgetData.slice(-20).map((item) => ({
     clientName: item.clientName || "Unknown Client",
     projectName: item.projectName || "New Project",
     projectType: item.projectType || "Service",
