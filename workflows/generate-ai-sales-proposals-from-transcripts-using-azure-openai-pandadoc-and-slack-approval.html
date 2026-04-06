@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate AI Sales Proposals from Transcripts | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate proposal creation: Turn sales call transcripts into polished proposals with AI, get Slack approval, send via PandaDoc, and update your CRM. Free n8n workflow.">
+<link rel="canonical" href="https://growwstacks.com/workflows/7091-generate-ai-sales-proposals-from-transcripts-using-azure-openai-pandadoc-and-slack-approval/">
+<meta property="og:title" content="AI Sales Proposal Automation | Free n8n Workflow">
+<meta property="og:description" content="Automate your sales proposals with AI. Free n8n template integrates Azure OpenAI, PandaDoc, Slack, and your CRM.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/7091-generate-ai-sales-proposals-from-transcripts-using-azure-openai-pandadoc-and-slack-approval/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11123-generate-ai-sales-proposals-from-transcripts-using-azu.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Sales Proposal Automation | Free n8n Workflow">
+<meta name="twitter:description" content="Automate your sales proposals with AI. Free n8n template integrates Azure OpenAI, PandaDoc, Slack, and your CRM.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Sales Proposal Automation","description":"Automate proposal creation: Turn sales call transcripts into polished proposals with AI, get Slack approval, send via PandaDoc, and update your CRM.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11123-generate-ai-sales-proposals-from-transcripts-using-azu.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AI-powered sales proposal automation?","acceptedAnswer":{"@type":"Answer","text":"AI-powered sales proposal automation uses artificial intelligence to draft, refine, and send sales proposals automatically. It pulls data from sales calls, intake forms, and CRM systems to generate personalized, professional proposals in minutes, eliminating manual drafting and reducing errors."}},{"@type":"Question","name":"How does AI improve the quality of sales proposals?","acceptedAnswer":{"@type":"Answer","text":"AI improves proposal quality by analyzing call transcripts to understand client pain points, using structured data to tailor solutions, and generating consistent, persuasive language. It ensures every proposal is personalized, addresses specific client needs, and maintains a professional tone, which increases close rates."}},{"@type":"Question","name":"What are the benefits of integrating Slack for proposal approvals?","acceptedAnswer":{"@type":"Answer","text":"Integrating Slack for approvals speeds up the sales cycle by allowing managers to review and approve proposals directly within their communication tool. It creates a clear audit trail, enables quick feedback loops, and prevents bottlenecks, ensuring proposals are sent out faster while maintaining quality control."}},{"@type":"Question","name":"Can I use different AI models besides Azure OpenAI for proposal generation?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can use various AI models like OpenAI's GPT, Anthropic's Claude, or Google's Gemini. The workflow is modular, allowing you to connect to any LLM via API. The key is providing structured prompts with client data and call insights to generate coherent, tailored proposal content."}},{"@type":"Question","name":"How does automated proposal follow-up work?","acceptedAnswer":{"@type":"Answer","text":"Automated follow-up monitors the proposal's status via the document platform's audit trail. If the proposal isn't signed within a set period (e.g., 48 hours), the system automatically sends a reminder email and updates the CRM stage. This ensures no opportunity slips through the cracks without manual tracking."}},{"@type":"Question","name":"What CRM systems can I connect to this automation?","acceptedAnswer":{"@type":"Answer","text":"You can connect most popular CRM systems including HubSpot, Salesforce, Pipedrive, Zoho CRM, and Monday.com. The workflow uses API connections to update deal stages, log activities, and sync client information, keeping your sales pipeline accurate and up-to-date automatically."}},{"@type":"Question","name":"How much time can AI proposal automation save my sales team?","acceptedAnswer":{"@type":"Answer","text":"AI proposal automation can save 3-5 hours per proposal by eliminating manual drafting, formatting, and approval chasing. For teams sending 10 proposals weekly, this translates to 30-50 hours monthly, allowing sales reps to focus on selling and relationship building instead of administrative tasks."}},{"@type":"Question","name":"Can I get a custom sales proposal automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom sales automation solutions tailored to your specific tools, processes, and business rules. We can integrate with your existing CRM, document systems, and approval workflows to create a seamless, efficient proposal generation system that matches your brand and sales methodology."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"AI Sales Proposal Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>AI Sales Proposal Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">Sales</span>
+          <span class="cs-tag">Proposals</span>
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">CRM</span>
+        </div>
+        <h1>AI Sales Proposal Automation</h1>
+        <p class="cs-hero-sub">Turn sales call transcripts into polished, approved proposals automatically. Integrates Azure OpenAI, PandaDoc, Slack, and your CRM.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="ai-sales-proposal-automation.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11123-generate-ai-sales-proposals-from-transcripts-using-azu.png" alt="Visual diagram of AI sales proposal automation workflow integrating transcript analysis, AI generation, and approval steps" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves the time-consuming, error-prone process of manually creating sales proposals after discovery calls. Sales teams often lose momentum waiting for proposals to be drafted, formatted, approved, and sent—delaying deals and creating inconsistent client experiences.</p>
+        <p>The workflow automatically transforms sales call transcripts and client intake data into professionally formatted proposals using AI. It routes drafts for quick Slack approval, sends the final document via PandaDoc (or similar), updates your CRM, and even handles follow-up reminders—all without manual intervention.</p>
+        <p>By connecting your conversation intelligence platform (like Fireflies or Gong) with AI, document generation, and approval systems, you ensure proposals are accurate, personalized, and delivered within hours instead of days.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Trigger & Data Collection</h3>
+        <p>When a client completes your proposal intake form, the workflow is triggered. It immediately fetches the latest sales call transcript associated with that client's email from your conversation intelligence platform.</p>
+        <h3>2. AI Analysis & Drafting</h3>
+        <p>The transcript and form data are sent to Azure OpenAI (or your chosen LLM). The AI analyzes the conversation, identifies key pain points and discussed solutions, and generates a structured proposal draft with introduction, problem statement, proposed solution, scope, deliverables, timeline, and investment.</p>
+        <h3>3. Document Creation</h3>
+        <p>The AI-generated content populates a pre-designed template in PandaDoc, DocuSign, or similar document platform. Pricing tables are automatically inserted based on the budget discussed, creating a client-ready document.</p>
+        <h3>4. Approval Workflow</h3>
+        <p>A Slack message is sent to the designated approver (sales manager, legal, etc.) with the draft proposal and interactive Approve/Request Changes buttons. If changes are requested, feedback is incorporated via AI and the approval loop repeats until approved.</p>
+        <h3>5. Sending & CRM Sync</h3>
+        <p>Once approved, the proposal is automatically sent to the client via the document platform. The deal stage in your CRM (Airtable, HubSpot, Salesforce) is immediately updated to "Proposal Sent" with a link to the document.</p>
+        <h3>6. Automated Follow-up</h3>
+        <p>After 48 hours, the workflow checks the document's audit trail. If not signed, it sends a polite reminder to the client and updates the CRM to "Reminder Sent." If signed, it updates to "Document Signed" and can trigger next steps.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Customize the AI prompt to match your company's voice and proposal structure. Include examples of your best past proposals to train the AI on what works for your specific services and clients.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for B2B service businesses, agencies, consultants, and SaaS companies that send multiple proposals weekly. Sales teams spending 3+ hours per proposal will see immediate ROI. It's particularly valuable for:</p>
+        <p><strong>Agency owners</strong> who need to respond quickly to RFPs with polished, customized proposals. <strong>Consulting firms</strong> where proposal quality directly impacts win rates. <strong>Tech sales teams</strong> that want to leverage call intelligence for better proposals. <strong>Solo entrepreneurs</strong> who need to appear larger and more systematic. <strong>RevOps leaders</strong> aiming to standardize and accelerate the sales process.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted)</li>
+          <li><strong>Transcript source</strong> (Fireflies.ai, Gong, Fathom, Avoma, or similar)</li>
+          <li><strong>AI API access</strong> (Azure OpenAI, OpenAI, Anthropic Claude, etc.)</li>
+          <li><strong>Document platform</strong> (PandaDoc, DocuSign, Qwilr, or Google Docs API)</li>
+          <li><strong>Slack workspace</strong> with app permissions for approval flows</li>
+          <li><strong>CRM system</strong> (Airtable, HubSpot, Salesforce, Pipedrive, etc.)</li>
+          <li><strong>Client intake form</strong> (Typeform, Tally, Jotform, or native form)</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download and import</strong> the JSON template into your n8n instance.</li>
+          <li><strong>Configure credentials</strong> for each service (AI, documents, Slack, CRM) in n8n.</li>
+          <li><strong>Customize the AI prompt</strong> in the LLM node to match your proposal style and services.</li>
+          <li><strong>Upload your proposal template</strong> to your document platform and map the field tokens.</li>
+          <li><strong>Set up your Slack approval channel</strong> and configure the webhook or bot.</li>
+          <li><strong>Test the workflow</strong> with a sample transcript and form submission.</li>
+          <li><strong>Activate the workflow</strong> and connect it to your live intake form.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a simplified version using just AI generation and document creation. Once that works smoothly, add the Slack approval and CRM update steps. This phased approach reduces complexity during initial setup.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Cut proposal creation time by 80%:</strong> What used to take 3-5 hours now happens automatically in minutes, freeing your sales team to focus on selling rather than administrative work.</p>
+        <p><strong>Increase proposal quality and consistency:</strong> AI ensures every proposal addresses the client's specific pain points with professional language, while maintaining brand voice and compliance standards across all documents.</p>
+        <p><strong>Accelerate sales cycles:</strong> Proposals go out within hours instead of days, maintaining momentum from the sales call and significantly improving close rates through timely, relevant follow-up.</p>
+        <p><strong>Eliminate approval bottlenecks:</strong> Slack-based approval flows with clear audit trails prevent proposals from getting stuck in email inboxes, ensuring faster internal review and client delivery.</p>
+        <p><strong>Automate follow-up and tracking:</strong> Never let a proposal go cold again. Automated reminders based on document activity ensure timely follow-up while keeping your CRM perfectly synchronized with reality.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI sales proposal automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is AI-powered sales proposal automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI-powered sales proposal automation uses artificial intelligence to draft, refine, and send sales proposals automatically. It pulls data from sales calls, intake forms, and CRM systems to generate personalized, professional proposals in minutes, eliminating manual drafting and reducing errors.</p>
+          <p>This technology transforms unstructured conversation data into structured proposal content, ensuring every document addresses the client's specific needs while maintaining brand consistency. It's like having a dedicated proposal writer who never sleeps and knows all your past successful proposals.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI improve the quality of sales proposals?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI improves proposal quality by analyzing call transcripts to understand client pain points, using structured data to tailor solutions, and generating consistent, persuasive language. It ensures every proposal is personalized, addresses specific client needs, and maintains a professional tone, which increases close rates.</p>
+          <p>Unlike human writers who might miss subtle cues or have inconsistent days, AI consistently applies best practices from your highest-performing proposals. It can reference industry-specific terminology, compliance requirements, and pricing structures that might be overlooked in manual drafting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of integrating Slack for proposal approvals?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Integrating Slack for approvals speeds up the sales cycle by allowing managers to review and approve proposals directly within their communication tool. It creates a clear audit trail, enables quick feedback loops, and prevents bottlenecks, ensuring proposals are sent out faster while maintaining quality control.</p>
+          <p>With Slack integration, approvers can review proposals on mobile devices, add comments directly in threads, and make decisions in real-time. This eliminates the back-and-forth emails that typically delay proposals by days and provides visibility into where each proposal stands in the approval process.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use different AI models besides Azure OpenAI for proposal generation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, you can use various AI models like OpenAI's GPT, Anthropic's Claude, or Google's Gemini. The workflow is modular, allowing you to connect to any LLM via API. The key is providing structured prompts with client data and call insights to generate coherent, tailored proposal content.</p>
+          <p>Different models offer varying strengths—some are better at creative writing, others at technical accuracy or compliance. You can test multiple models to find which produces the best results for your specific industry and proposal style, then configure the workflow accordingly.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automated proposal follow-up work?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated follow-up monitors the proposal's status via the document platform's audit trail. If the proposal isn't signed within a set period (e.g., 48 hours), the system automatically sends a reminder email and updates the CRM stage. This ensures no opportunity slips through the cracks without manual tracking.</p>
+          <p>The system can be configured with multiple follow-up sequences—gentle reminders after 2 days, more direct follow-ups after 5 days, and escalation to the sales rep after 7 days. Each touchpoint can be personalized based on the client's engagement history and the proposal's specific content.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What CRM systems can I connect to this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You can connect most popular CRM systems including HubSpot, Salesforce, Pipedrive, Zoho CRM, and Monday.com. The workflow uses API connections to update deal stages, log activities, and sync client information, keeping your sales pipeline accurate and up-to-date automatically.</p>
+          <p>The automation doesn't just update stages—it can also attach the proposal document to the deal record, log the sending activity, and even create tasks for the sales rep based on the client's response. This creates a complete audit trail within your CRM without manual data entry.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much time can AI proposal automation save my sales team?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI proposal automation can save 3-5 hours per proposal by eliminating manual drafting, formatting, and approval chasing. For teams sending 10 proposals weekly, this translates to 30-50 hours monthly, allowing sales reps to focus on selling and relationship building instead of administrative tasks.</p>
+          <p>Beyond time savings, the consistency and quality improvements often lead to higher win rates—sometimes 15-25% increases. When proposals are more personalized, professionally formatted, and delivered faster, clients perceive greater value and expertise, directly impacting revenue.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom sales proposal automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom sales automation solutions tailored to your specific tools, processes, and business rules. We can integrate with your existing CRM, document systems, and approval workflows to create a seamless, efficient proposal generation system that matches your brand and sales methodology.</p>
+          <p>Our team works with you to understand your unique proposal requirements, compliance needs, and integration points. We then design, build, and deploy a customized automation that works with your exact tech stack, complete with training and ongoing support to ensure maximum ROI from your investment.</p>
+          <ul>
+            <li>Integration with your unique tech stack</li>
+            <li>Custom AI prompts trained on your best proposals</li>
+            <li>Brand-aligned document templates and approval flows</li>
+            <li>Ongoing optimization and support</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Sales Proposal Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
