@@ -1,5 +1,203 @@
 const BLOG_POSTS = [
 {
+  title: "AI Voice Agents That Convert Calls Into Customers — Telentir Demo",
+  desc: "Replace expensive human call centers with AI voice agents that handle inbound/outbound calls, qualify leads, and book appointments 24/7. See how Telentir's platform integrates with your existing systems using 11 Labs and OpenAI voices.",
+  url: "/blog/ai-voice-agents-convert-calls-into-customers-telentir",
+  tags: ["Voice AI","Telephony","AI Agents"],
+  date: "2026-02-18",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "From Chaos to Clarity: Building Production-Ready AI Agents That Scale",
+  desc: "Learn how to transform AI agent development from experimental chaos to production-ready systems with context engineering, sub-agent architectures, and memory systems that actually work in enterprise environments.",
+  url: "/blog/building-production-ai-agents",
+  tags: ["AI Agents","Enterprise AI","Context Engineering"],
+  date: "2026-02-18",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Build Your First Telegram AI Agent with n8n and OpenAI in Under 10 Minutes",
+  desc: "Transform Telegram into a powerful AI chatbot by connecting it to OpenAI through n8n. No coding required - just follow this step-by-step guide to create your own conversational agent.",
+  url: "/blog/build-telegram-ai-agent-n8n-openai",
+  tags: ["n8n","AI Agents","Telegram"],
+  date: "2026-02-18",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Google Opal vs n8n vs Make vs Zapier: The Speed vs Reliability Tradeoff Every Business Must Understand",
+  desc: "Google Opal builds AI apps in 60 seconds while n8n takes hours — but which one will still be running your business processes at 3 AM next year? We break down the speed vs reliability tradeoffs across all four platforms.",
+  url: "/blog/google-opal-vs-n8n-vs-make-vs-zapier",
+  tags: ["AI Agents","n8n","Make.com"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Your Entire Email Inbox with n8n AI Agents (100% Hands-Free)",
+  desc: "Stop drowning in emails. This n8n AI agent workflow automatically categorizes incoming messages, prioritizes urgent requests, drafts replies, and even marks promotional emails as read — saving you hours per week.",
+  url: "/blog/automate-email-inbox-n8n-ai-agent",
+  tags: ["n8n","AI Agents","Email Automation"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a WhatsApp AI Agent in Under 15 Minutes (No Coding Required)",
+  desc: "Stop paying monthly fees for WhatsApp automation platforms. This step-by-step guide shows how to create your own AI-powered WhatsApp agent using n8n and Digital Ocean - with complete data ownership and $200 hosting credit.",
+  url: "/blog/how-to-build-whatsapp-ai-agent-n8n-digital-ocean",
+  tags: ["n8n","WhatsApp Automation","AI Agents"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build AI Agents with Persistent Memory Using Vertex AI Memory Bank",
+  desc: "Learn how to implement persistent memory in AI agents using Vertex AI Memory Bank - the solution for remembering user preferences across sessions and after restarts.",
+  url: "/blog/build-ai-agents-with-long-term-memory-vertex-ai",
+  tags: ["AI Agents","Vertex AI","Memory"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "AI Voice Agents: How They Actually Work & Why They Sound So Human",
+  desc: "Discover the 5-layer technology stack behind modern AI voice agents that deliver shockingly human conversations. Learn how they understand intent, take actions, and handle interruptions naturally.",
+  url: "/blog/ai-voice-agents-how-they-work",
+  tags: ["Voice AI","AI Agents","Telephony"],
+  date: "2026-02-18",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automatically Turn HubSpot Contacts Into Trello Tasks (2026 Guide)",
+  desc: "Stop manually copying data between HubSpot and Trello. This Zapier integration automatically creates Trello cards for new contacts, deals, and form submissions - saving sales teams 5+ hours per week.",
+  url: "/blog/how-to-integrate-trello-with-hubspot",
+  tags: ["CRM","Sales","Outreach"],
+  date: "2026-02-18",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Automate Facebook Lead Alerts via SMS in Minutes with Zapier",
+  desc: "Stop missing hot leads sitting in your Facebook inbox. This Zapier automation instantly texts you every new lead with their contact info - perfect for service businesses needing real-time response.",
+  url: "/blog/automate-facebook-leads-to-sms-zapier",
+  tags: ["Zapier","Facebook Ads","SMS Marketing"],
+  date: "2026-02-18",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Set Up and Run OpenClaw - The Autonomous AI Agent for Your Business",
+  desc: "OpenClaw is an open-source AI agent that runs 24/7 on your PC or VPS. This guide walks you through installation, configuration with Claude/OpenAI, WhatsApp/Telegram integration, and security best practices.",
+  url: "/blog/openclaw-tutorial-beginners-crash-course",
+  tags: ["AI Agents","Automation","Open Source"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "24/7 Referrals: How Voice AI + Referral Platforms Capture Every Opportunity, Even After Hours",
+  desc: "Discover how integrating voice AI with automated referral platforms creates a 24/7 healthcare ecosystem that eliminates administrative bottlenecks and captures critical referrals after hours.",
+  url: "/blog/24-7-referrals-voice-ai-referral-platforms",
+  tags: ["Healthcare","Voice AI","HIPAA"],
+  date: "2026-02-18",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How Ochatbot AI Converts 25% More WooCommerce Visitors Into Buyers",
+  desc: "Struggling with abandoned carts and low conversion rates? Ochatbot AI engages shoppers 24/7, answering questions and recommending products — proven to convert 1 in 4 conversations into sales while reducing support tickets by 45%.",
+  url: "/blog/ochatbot-ai-woocommerce-sales-conversion",
+  tags: ["eCommerce","AI Agents","WooCommerce"],
+  date: "2026-02-17",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Connect Yaraa AI Sales Agent to Google Sheets (Complete Guide)",
+  desc: "Learn how to deploy Yaraa AI Sales Agent on your WordPress site and automatically push leads to Google Sheets for seamless automation of your customer journey.",
+  url: "/blog/connect-yaraa-ai-sales-agent-to-google-sheets",
+  tags: ["Google Workspace","AI Agents","WordPress"],
+  date: "2026-02-18",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How NLP-Powered Chatbots Are Revolutionizing Customer Service (Real Case Study)",
+  desc: "Discover how SNS Institutions implemented an NLP chatbot to handle 70-80% of customer queries automatically, reducing wait times and operational costs while improving satisfaction.",
+  url: "/blog/nlp-chatbot-customer-service-case-study",
+  tags: ["AI Agents","NLP","Customer Service"],
+  date: "2026-02-18",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Automate AI Agent Testing with Copilot Studio Evals (Step-by-Step Guide)",
+  desc: "Discover how Microsoft's Copilot Studio Evals let you automatically test AI agents with structured scenarios and quality metrics - saving hours of manual testing.",
+  url: "/blog/automate-ai-agent-testing-copilot-studio-evals",
+  tags: ["AI Agents","Copilot Studio","Automation"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Make Your AI Voice Agent Sound Surprisingly Human (Retell AI Settings Guide)",
+  desc: "Most AI voice agents sound robotic because they're missing these critical speech settings. Learn how to configure interruption sensitivity, backchanneling, and pronunciation to create natural-sounding conversations.",
+  url: "/blog/make-voice-agent-sound-human-retell-ai-settings",
+  tags: ["Voice AI","Retell AI","AI Agents"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Sell AI Receptionists to Local Businesses (Even as a Beginner)",
+  desc: "Discover how even beginners can offer AI receptionist services to brick-and-mortar businesses with no experience. Includes free pre-built AI agent and 30-day trial of the essential software.",
+  url: "/blog/sell-ai-receptionists-to-local-businesses",
+  tags: ["Voice AI","AI Agents","Local Business"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Enterprise AI Agent Orchestration: Building a Multi-Tool Gateway with Amazon Bedrock",
+  desc: "Learn how to architect an enterprise-grade AI agent system that brokers between client requests and multiple backend tools through a centralized gateway - complete with Python client integration.",
+  url: "/blog/enterprise-ai-agent-orchestration-multi-tool-gateway",
+  tags: ["AI Agents","Amazon Bedrock","Enterprise Automation"],
+  date: "2026-02-18",
+  readTime: 15,
+  target: "_blank"
+},
+{
+  title: "Build Your Own AI WhatsApp Receptionist with n8n and WAHA",
+  desc: "Transform WhatsApp into a 24/7 AI receptionist that answers FAQs, books appointments, and updates client records automatically — no coding required. See how n8n + WAHA API creates a Stella AI agent for healthcare labs.",
+  url: "/blog/whatsapp-chatbot-ai-receptionist-n8n-waha",
+  tags: ["n8n","WhatsApp","AI Agents"],
+  date: "2026-02-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Build an AI Agent with n8n: No-Code Automation for Business Tasks",
+  desc: "Learn how to create powerful AI agents using n8n without writing any code. Automate sentiment analysis, data processing, and business workflows with this step-by-step guide.",
+  url: "/blog/build-ai-agent-with-n8n",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2026-02-18",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "OneNote and ChatGPT | Form Responses Into Summaries Automatically? Here's How",
+  desc: "Tired of manually summarizing form responses? This Zapier automation pulls Google Form data, processes it through ChatGPT, and logs structured summaries directly into OneNote — saving hours of busywork.",
+  url: "/blog/onenote-chatgpt-form-summaries-automation",
+  tags: ["Zapier","AI Agents","Productivity"],
+  date: "2026-02-18",
+  readTime: 5,
+  target: "_blank"
+},
+{
   title: "The Code That Writes Itself: How Claude Code Changed Software Development Forever",
   desc: "From accidental prototype to billion-dollar business in 6 months - the untold story of how Claude Code transformed software development and what it means for the future of coding.",
   url: "/blog/the-code-that-writes-itself-claude-code-story",
