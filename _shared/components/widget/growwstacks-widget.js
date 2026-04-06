@@ -108,29 +108,6 @@ function buildCard(rec, cycleTime, root) {
   const body = document.createElement("div");
   body.className = "gs-spw-body";
 
-  // Logo / Avatar
-  const avWrap = document.createElement("div");
-  avWrap.className = "gs-spw-av-wrap";
-
-  let av;
-  if (rec.logoUrl) {
-    av = document.createElement("img");
-    av.className = "gs-spw-logo";
-    av.src = rec.logoUrl;
-    av.alt = rec.clientName;
-  } else {
-    av = document.createElement("div");
-    av.className = "gs-spw-av";
-    av.style.background = rec.color;
-    av.textContent = rec.init;
-  }
-
-  const live = document.createElement("div");
-  live.className = `gs-spw-live ${getStatusClass(rec.status)}`;
-  live.title = rec.status;
-
-  avWrap.append(av, live);
-
   // Text
   const txt = document.createElement("div");
   txt.className = "gs-spw-text";
@@ -141,7 +118,7 @@ function buildCard(rec, cycleTime, root) {
 
   const act = document.createElement("div");
   act.className = "gs-spw-action";
-  act.innerHTML = `started <b>${rec.projectName}</b>`;
+  act.innerHTML = `<b> Project: </b>${rec.projectName}`;
 
   const meta = document.createElement("div");
   meta.className = "gs-spw-meta";
@@ -156,7 +133,7 @@ function buildCard(rec, cycleTime, root) {
   `;
 
   txt.append(nm, act, meta);
-  body.append(avWrap, txt);
+  body.append(txt);
   card.appendChild(body);
 
   // Progress bar
@@ -282,6 +259,7 @@ function injectStyles() {
       cursor:default;
       animation:gs-in .42s cubic-bezier(.34,1.56,.64,1) both;
       position:relative;
+      padding-left:10px;
     }
 
     @keyframes gs-in{
@@ -305,6 +283,7 @@ function injectStyles() {
       position:relative;
       overflow:hidden;
       background:#dde3e8;
+      border-radius:5px;
     }
 
     .gs-spw-map-svg{
