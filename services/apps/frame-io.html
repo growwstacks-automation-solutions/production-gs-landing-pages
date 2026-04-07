@@ -259,7 +259,7 @@
 /* ── Case Studies ── */
 .fio-cs{padding:80px 0;background:#fff}
 .fio-cs-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:40px;
 }
 .fio-cs-card{
   background:#fff;border:1px solid var(--gray-200);
@@ -272,16 +272,16 @@
 .fio-cs-img{
   width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--gray-100);
 }
-.fio-cs-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.fio-cs-body{padding:16px;flex:1;display:flex;flex-direction:column}
 .fio-cs-cat{
-  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--green-700);margin-bottom:8px;
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--green-700);margin-bottom:6px;
 }
 .fio-cs-card h3{
-  font-family:var(--font-display);font-size:16px;font-weight:800;
-  margin-bottom:8px;line-height:1.4;
+  font-family:var(--font-display);font-size:14px;font-weight:800;
+  margin-bottom:6px;line-height:1.4;
 }
-.fio-cs-card p{font-size:13px;color:var(--gray-500);line-height:1.65;flex:1}
+.fio-cs-card p{font-size:12px;color:var(--gray-500);line-height:1.6;flex:1}
 .fio-cs-link{
   display:inline-flex;align-items:center;gap:6px;
   margin-top:16px;font-size:13px;font-weight:700;
@@ -323,6 +323,9 @@
 .fio-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* ── Responsive ── */
+@media(max-width:1200px){
+  .fio-cs-grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:1024px){
   .fio-hero-inner{grid-template-columns:1fr;gap:48px}
   .fio-hero-visual{display:none}
@@ -543,9 +546,9 @@
       <!-- Populated by JS -->
     </div>
     <div class="fio-cs-cta">
-      <a href="https://www.growwstacks.com/case-studies/" target="_blank" rel="noopener noreferrer" class="fio-btn-more">
+      <a href="https://growwstacks.com/case-studies/" target="_blank" rel="noopener noreferrer" class="fio-btn-more">
         View All Case Studies
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
@@ -569,6 +572,7 @@
 
 <script src="../../_shared/site-config.js"></script>
 <script src="../../assets/js/images-helper.js"></script>
+<script src="/case-studies/case-studies-cart.js"></script>
 <script src="../../_shared/page-builder.js"></script>
 
 <script>
@@ -584,24 +588,32 @@
   f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')open()});
 }();
 
-/* ── Case Studies — pick 3 random ── */
+/* ── Case Studies — pick 12 random from CS_CARDS (case-studies-data.js) ── */
 !function(){
-  var all=[
-    {title:'AI Lead Qualification Agent for SaaS Platform',cat:'SaaS · AI Agents',desc:'Built an AI agent that qualifies inbound leads 24/7, reducing sales team workload by 70% and increasing qualified pipeline by 3x.',img:'https://ik.imagekit.io/r2zdlyze2o/GS-Website/Home%20Page/AI%20Lead%20Qualification%20Agent%20for%20SaaS%20Platform.jpeg?tr=w-400,h-225,q-80,f-auto',href:'https://www.growwstacks.com/case-studies/smart-lead-qualification-ai/'},
-    {title:'Voice AI for Patient Appointment Booking',cat:'Healthcare · Voice AI',desc:'Deployed a Vapi-powered voice AI that handles 300+ patient booking calls daily — zero wait time, 98% accuracy.',img:'https://ik.imagekit.io/r2zdlyze2o/GS-Website/Home%20Page/Voice%20AI%20for%20Patient%20Appointment%20Booking.png?tr=w-400,h-225,q-80,f-auto',href:'https://www.growwstacks.com/case-studies/voice-ai-patient-appointment/'},
-    {title:'AI Chatbot + Social Media Automation for Real Estate',cat:'Real Estate · Automation',desc:'Combined an AI chatbot with multi-channel social automation to generate 5x more qualified property enquiries.',img:'https://ik.imagekit.io/r2zdlyze2o/GS-Website/Home%20Page/AI%20Chatbot%20+%20Social%20Media%20Automation%20for%20Real%20Estate.png?tr=w-400,h-225,q-80,f-auto',href:'https://www.growwstacks.com/case-studies/ai-chatbot-real-estate/'},
-    {title:'Google Drive → Frame.io → Asana Automation',cat:'Video Production · Frame.io',desc:'Built end-to-end video production pipeline: upload to Drive, auto-create Frame.io assets, generate review links, create Asana tasks.',img:'https://ik.imagekit.io/r2zdlyze2o/GS-Website/Home%20Page/placeholder-cs.png?tr=w-400,h-225,q-80,f-auto',href:'https://www.growwstacks.com/case-studies/'},
-    {title:'Shopify + HubSpot Revenue Automation',cat:'E-commerce · CRM',desc:'Automated order sync, customer segmentation, and abandoned cart recovery — adding $240K annual revenue for a DTC brand.',img:'https://ik.imagekit.io/r2zdlyze2o/GS-Website/Home%20Page/3.png?tr=w-400,h-225,q-80,f-auto',href:'https://www.growwstacks.com/case-studies/'},
-    {title:'n8n Self-Hosted Workflow for Healthcare',cat:'Healthcare · n8n',desc:'Deployed HIPAA-compliant self-hosted n8n instance handling patient data sync across EHR, billing, and scheduling systems.',img:'https://ik.imagekit.io/r2zdlyze2o/GS-Website/Home%20Page/4.png?tr=w-400,h-225,q-80,f-auto',href:'https://www.growwstacks.com/case-studies/'}
-  ];
-  var shuffled=all.slice().sort(function(){return Math.random()-.5});
-  var picked=shuffled.slice(0,3);
+  if(typeof CS_CARDS==='undefined'||!CS_CARDS.length){
+    console.warn('CS_CARDS not loaded — check case-studies-data.js path');
+    return;
+  }
   var grid=document.getElementById('cs-grid');
   if(!grid)return;
+  /* Shuffle and pick 12 */
+  var shuffled=CS_CARDS.slice().sort(function(){return Math.random()-.5});
+  var picked=shuffled.slice(0,12);
   picked.forEach(function(cs){
     var a=document.createElement('a');
     a.href=cs.href;a.target='_blank';a.rel='noopener noreferrer';a.className='fio-cs-card';
-    a.innerHTML='<img class="fio-cs-img" src="'+cs.img+'" alt="'+cs.title+'" width="400" height="225" loading="lazy"><div class="fio-cs-body"><div class="fio-cs-cat">'+cs.cat+'</div><h3>'+cs.title+'</h3><p>'+cs.desc+'</p><span class="fio-cs-link">Read case study →</span></div>';
+    /* Add ImageKit transform for optimized loading */
+    var imgSrc=cs.img;
+    if(imgSrc.indexOf('ik.imagekit.io')!==-1&&imgSrc.indexOf('tr=')===-1){
+      imgSrc+=imgSrc.indexOf('?')!==-1?'&tr=w-320,h-180,q-80,f-auto':'?tr=w-320,h-180,q-80,f-auto';
+    }
+    a.innerHTML='<img class="fio-cs-img" src="'+imgSrc+'" alt="'+cs.imgAlt+'" width="320" height="180" loading="lazy">'
+      +'<div class="fio-cs-body">'
+      +'<div class="fio-cs-cat">'+cs.tag+' · '+cs.meta+'</div>'
+      +'<h3>'+cs.title+'</h3>'
+      +'<p>'+cs.desc+'</p>'
+      +'<span class="fio-cs-link">View case study →</span>'
+      +'</div>';
     grid.appendChild(a);
   });
   /* Scroll fade-in */
@@ -609,7 +621,7 @@
     var cards=grid.querySelectorAll('.fio-cs-card');
     cards.forEach(function(c,i){
       c.style.opacity='0';c.style.transform='translateY(20px)';
-      c.style.transition='opacity .45s ease '+(i*120)+'ms,transform .45s ease '+(i*120)+'ms';
+      c.style.transition='opacity .45s ease '+(i*80)+'ms,transform .45s ease '+(i*80)+'ms';
     });
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
