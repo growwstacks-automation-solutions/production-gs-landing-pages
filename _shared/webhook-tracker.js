@@ -1,8 +1,7 @@
 // webhook-tracker.js — Add this ONCE to your global JS file or <head>
 (function () {
-  const WEBHOOK_URL = "https://hook.eu2.make.com/f4hhxsqaoxz3216523v1w6g1ispxs8gu";
+  const WEBHOOK_URL = "https://n8nadmin.1automation.us/webhook/0cf70a7a-eae6-4ac8-8c0e-030b3571d43b";
 
-  console.log("dfffffffffffffffffffffffffffff");
 
   document.addEventListener("click", function (e) {
     const btn = e.target.closest(".btn-download, .btn.btn-download");
