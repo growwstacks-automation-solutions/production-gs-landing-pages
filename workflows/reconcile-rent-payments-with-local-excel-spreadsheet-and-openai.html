@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Rent Payment Reconciliation with Excel & AI | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow to automate rent payment reconciliation. Match bank statements with tenant Excel records using AI, identify late/missing payments, and generate reports.">
+<link rel="canonical" href="https://growwstacks.com/workflows/914-reconcile-rent-payments-with-local-excel-spreadsheet-and-openai/">
+<meta property="og:title" content="Automate Rent Payment Reconciliation with Excel & AI">
+<meta property="og:description" content="Free n8n template to reconcile rent payments automatically. Uses AI to compare bank statements with Excel tenant records, saving hours of manual work.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/914-reconcile-rent-payments-with-local-excel-spreadsheet-and-openai/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2338-reconcile-rent-payments-with-local-excel-spreadsheet-an.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Rent Payment Reconciliation with Excel & AI">
+<meta name="twitter:description" content="Free n8n template to reconcile rent payments automatically. Uses AI to compare bank statements with Excel tenant records, saving hours of manual work.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automated Rent Payment Reconciliation with Excel & AI","description":"Free n8n workflow to automate rent payment reconciliation. Match bank statements with tenant Excel records using AI, identify late/missing payments, and generate reports.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2338-reconcile-rent-payments-with-local-excel-spreadsheet-an.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is rent payment reconciliation and why is it important for landlords?","acceptedAnswer":{"@type":"Answer","text":"Rent payment reconciliation is the process of matching incoming bank deposits with tenant lease records to verify payments are correct and on time. It's crucial for landlords to maintain cash flow, identify late payments early, and ensure accurate accounting for tax purposes. Manual reconciliation is error-prone and time-consuming, especially with multiple properties."}},{"@type":"Question","name":"How can AI improve rent payment reconciliation accuracy?","acceptedAnswer":{"@type":"Answer","text":"AI can read and interpret bank statement line items, even with inconsistent descriptions, and match them to specific tenants and properties. It understands context like partial payments, bank fees, and transfers that humans might miss. This reduces false positives for 'missing' payments and provides clearer insights into payment patterns."}},{"@type":"Question","name":"What are the biggest challenges in manual rent reconciliation?","acceptedAnswer":{"@type":"Answer","text":"Manual reconciliation faces bank statement format inconsistencies, tenant payment description variations, handling partial payments or arrears, tracking multiple properties with different due dates, and time consumption (often 2-4 hours monthly per 10 units). Errors lead to incorrect late fees, strained tenant relationships, and accounting discrepancies."}},{"@type":"Question","name":"Can this automation work with different bank statement formats?","acceptedAnswer":{"@type":"Answer","text":"Yes, AI-powered workflows can be trained to recognize patterns across various bank statement formats (PDF, CSV, Excel). The system extracts key data like date, amount, and description regardless of layout. For consistent automation, standardizing how you download statements (e.g., always CSV from your bank portal) yields best results."}},{"@type":"Question","name":"How does automating reconciliation improve tenant relationships?","acceptedAnswer":{"@type":"Answer","text":"Automation ensures fair and accurate late fee application, provides timely payment confirmation to tenants, reduces confrontational 'payment missing' errors, and allows property managers to focus on service rather than payment chasing. Tenants appreciate prompt receipts and accurate account statements, building trust and professionalism."}},{"@type":"Question","name":"What security considerations are there for automating financial data?","acceptedAnswer":{"@type":"Answer","text":"Self-hosted automation keeps sensitive bank and tenant data within your network. Use encrypted connections, secure credential storage, and limit data access. The workflow should process but not permanently store full bank statements. Regular security audits and keeping automation software updated are essential for financial data protection."}},{"@type":"Question","name":"Can I integrate this with my existing property management software?","acceptedAnswer":{"@type":"Answer","text":"Yes, automation platforms like n8n can connect to most property management systems via API or database connections. You can push reconciliation results directly into your software, update tenant ledgers automatically, and trigger follow-up workflows like email reminders or maintenance request approvals based on payment status."}},{"@type":"Question","name":"Can I get a custom rent payment automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored rent payment automation systems for property managers and landlords. We can integrate with your specific bank, property management software, and reporting needs, creating a complete solution that saves you 10+ hours monthly and improves cash flow accuracy."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Rent Payment Reconciliation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Rent Payment Reconciliation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Excel</span>
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">Property Management</span>
+          <span class="cs-tag">Bank Reconciliation</span>
+        </div>
+        <h1>Automated Rent Payment Reconciliation with Excel & AI</h1>
+        <p class="cs-hero-sub">Free n8n workflow that automatically matches bank statements with tenant records, identifies late/missing payments, and generates reconciliation reports—saving hours of manual work monthly.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2338-reconcile-rent-payments-with-local-excel-spreadsheet-an.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2338-reconcile-rent-payments-with-local-excel-spreadsheet-an.png" alt="Visual diagram showing rent payment reconciliation automation workflow connecting bank statements, AI analysis, and Excel reporting" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>For property managers and landlords, monthly rent reconciliation is a tedious, error-prone task that consumes valuable time. This automation solves that by creating a seamless connection between your bank statements and tenant records.</p>
+        <p>The workflow monitors your local network for new bank statement files, extracts payment information using AI, compares it against your Excel-based tenant database, and automatically flags discrepancies like late payments, incorrect amounts, or missing deposits. Instead of spending hours cross-referencing spreadsheets, you receive a clear report showing exactly which tenants are current, which need follow-up, and any potential accounting issues.</p>
+        <p>Beyond simple matching, the AI component understands payment patterns—recognizing partial payments, bank fees, and transfers that might confuse manual review. This transforms a monthly administrative burden into a fully automated process that improves accuracy while freeing up 5-10 hours of your time each month.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Bank Statement Monitoring & Import</h3>
+        <p>The workflow watches a designated folder on your local network where you save downloaded bank statements. When a new statement file appears (PDF, CSV, or Excel), it automatically imports the data and extracts all transaction details including dates, amounts, and descriptions.</p>
+        
+        <h3>2. AI-Powered Payment Analysis</h3>
+        <p>Using OpenAI's language models, the system intelligently analyzes transaction descriptions to identify rent payments—even when descriptions vary between tenants. It distinguishes rent from other deposits, handles partial payments, and extracts tenant identifiers from payment notes.</p>
+        
+        <h3>3. Tenant Record Matching</h3>
+        <p>The workflow accesses your local Excel spreadsheet containing tenant information: names, properties, monthly amounts, due dates, and lease terms. It matches bank transactions to specific tenants based on amount, date ranges, and payment patterns.</p>
+        
+        <h3>4. Discrepancy Detection & Reporting</h3>
+        <p>For each tenant, the system compares expected payment (from Excel) with actual payment (from bank). It flags late payments, missing payments, incorrect amounts, and partial payments. The final report is generated in your Excel file with clear status indicators and actionable insights.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for <strong>property managers</strong> handling 5+ rental units, <strong>real estate investors</strong> with multiple properties, <strong>small to medium rental businesses</strong>, and <strong>accounting professionals</strong> serving landlords. If you currently spend more than 2 hours monthly manually matching bank deposits to tenant records, this workflow will save you significant time and reduce errors.</p>
+        <p>It's particularly valuable for those using Excel or Google Sheets for tenant tracking but lacking integration with their banking. The solution bridges that gap without requiring expensive property management software subscriptions.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Schedule this workflow to run automatically on the 3rd of each month (allowing for payment processing delays). This gives you early visibility into payment issues before they become serious cash flow problems.</p>
+        </div>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Self-hosted n8n instance</strong> running on your local network (required for accessing local files)</li>
+          <li><strong>OpenAI API key</strong> for the AI analysis component (GPT-3.5 or higher)</li>
+          <li><strong>Excel spreadsheet</strong> with tenant records including: Tenant Name, Property Address, Monthly Rent, Due Date, Lease Start/End</li>
+          <li><strong>Consistent bank statement format</strong> (ideally CSV exports from your banking portal)</li>
+          <li><strong>Designated network folder</strong> where you'll save monthly bank statements</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this automation in under 30 minutes:</p>
+        <ol>
+          <li><strong>Download and import</strong> the JSON template into your n8n instance.</li>
+          <li><strong>Configure the Local File Trigger</strong> node to monitor your bank statement folder.</li>
+          <li><strong>Connect your OpenAI credentials</strong> in the AI Agent node settings.</li>
+          <li><strong>Update the Excel file path</strong> in the workflow to point to your tenant spreadsheet.</li>
+          <li><strong>Test with a sample bank statement</strong> to verify matching accuracy.</li>
+          <li><strong>Schedule the workflow</strong> to run automatically each month after statements are available.</li>
+        </ol>
+        <p>The workflow includes detailed configuration comments at each node. For most users, only the file paths and API credentials need updating.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with 2-3 months of historical bank statements to test the matching accuracy before going live. This helps the AI learn your tenants' payment patterns and description variations.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5-10 hours monthly</strong> on manual reconciliation work. What used to take an entire morning now happens automatically while you focus on higher-value property management tasks.</p>
+        <p><strong>Reduce payment errors by 90%+</strong> compared to manual matching. The AI system catches discrepancies humans miss, ensuring accurate late fee application and tenant accounting.</p>
+        <p><strong>Improve cash flow visibility</strong> with immediate reporting. Know exactly which payments are missing by the 3rd of each month rather than discovering issues weeks later.</p>
+        <p><strong>Enhance tenant relationships</strong> through accurate accounting and timely payment confirmation. Automated receipts and clear communication build professional trust.</p>
+        <p><strong>Scalable foundation</strong> that grows with your portfolio. The same workflow handles 10 units or 100 with minimal additional configuration.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about rent payment automation and reconciliation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is rent payment reconciliation and why is it important for landlords?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Rent payment reconciliation is the process of matching incoming bank deposits with tenant lease records to verify payments are correct and on time. It's crucial for landlords to maintain cash flow, identify late payments early, and ensure accurate accounting for tax purposes.</p>
+          <p>Manual reconciliation is error-prone and time-consuming, especially with multiple properties. A single missed payment can significantly impact monthly revenue, while incorrect late fees damage tenant relationships.</p>
+          <ul>
+            <li>Ensures accurate rent collection tracking</li>
+            <li>Identifies payment issues before they escalate</li>
+            <li>Provides clean financial records for tax season</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can AI improve rent payment reconciliation accuracy?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI can read and interpret bank statement line items, even with inconsistent descriptions, and match them to specific tenants and properties. It understands context like partial payments, bank fees, and transfers that humans might miss.</p>
+          <p>For example, when a tenant writes "Aug rent - apt 4B" versus "August payment for 123 Main St," a human might struggle to match these, but AI recognizes both refer to the same tenant. This reduces false positives for 'missing' payments and provides clearer insights into payment patterns.</p>
+          <ul>
+            <li>Handles varied payment descriptions automatically</li>
+            <li>Recognizes patterns in partial or split payments</li>
+            <li>Learns from historical matches to improve over time</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the biggest challenges in manual rent reconciliation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual reconciliation faces bank statement format inconsistencies, tenant payment description variations, handling partial payments or arrears, tracking multiple properties with different due dates, and time consumption (often 2-4 hours monthly per 10 units).</p>
+          <p>Errors lead to incorrect late fees, strained tenant relationships, and accounting discrepancies. Property managers often discover missing payments weeks late, impacting cash flow and requiring difficult collection conversations.</p>
+          <ul>
+            <li>Time-intensive cross-referencing of multiple documents</li>
+            <li>Human error in amount matching or date tracking</li>
+            <li>Difficulty scaling with portfolio growth</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this automation work with different bank statement formats?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, AI-powered workflows can be trained to recognize patterns across various bank statement formats (PDF, CSV, Excel). The system extracts key data like date, amount, and description regardless of layout.</p>
+          <p>For consistent automation, standardizing how you download statements (e.g., always CSV from your bank portal) yields best results. The workflow includes preprocessing steps to normalize data from different sources before analysis begins.</p>
+          <ul>
+            <li>Supports PDF, CSV, XLS, and XLSX formats</li>
+            <li>Can be customized for your specific bank's export format</li>
+            <li>Data normalization ensures consistent processing</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating reconciliation improve tenant relationships?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automation ensures fair and accurate late fee application, provides timely payment confirmation to tenants, reduces confrontational 'payment missing' errors, and allows property managers to focus on service rather than payment chasing.</p>
+          <p>Tenants appreciate prompt receipts and accurate account statements, building trust and professionalism. When payments are correctly matched automatically, you avoid the tension of incorrectly accusing tenants of late payment.</p>
+          <ul>
+            <li>Automatic payment confirmation messages</li>
+            <li>Accurate late fee calculation (no guesswork)</li>
+            <li>More time for proactive tenant communication</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What security considerations are there for automating financial data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Self-hosted automation keeps sensitive bank and tenant data within your network. Use encrypted connections, secure credential storage, and limit data access. The workflow should process but not permanently store full bank statements.</p>
+          <p>Regular security audits and keeping automation software updated are essential for financial data protection. Consider implementing access controls so only authorized personnel can trigger or modify the reconciliation workflow.</p>
+          <ul>
+            <li>Data never leaves your local network</li>
+            <li>API keys stored securely in n8n's credential system</li>
+            <li>Regular security updates for all components</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I integrate this with my existing property management software?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, automation platforms like n8n can connect to most property management systems via API or database connections. You can push reconciliation results directly into your software, update tenant ledgers automatically, and trigger follow-up workflows.</p>
+          <p>For example, after identifying a late payment, the workflow could automatically create a reminder task in your property management system, send an email to the tenant, and update their account balance—all without manual intervention.</p>
+          <ul>
+            <li>API connections to popular property management platforms</li>
+            <li>Database integration for custom systems</li>
+            <li>Automated status updates and task creation</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom rent payment automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored rent payment automation systems for property managers and landlords. We can integrate with your specific bank, property management software, and reporting needs.</p>
+          <p>Our team creates complete solutions that save you 10+ hours monthly and improve cash flow accuracy. We handle everything from initial consultation to implementation and ongoing support, ensuring the automation works perfectly for your unique business processes.</p>
+          <ul>
+            <li>Custom integration with your banking and software</li>
+            <li>Tailored reporting matching your business needs</li>
+            <li>Ongoing support and optimization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Rent Payment Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

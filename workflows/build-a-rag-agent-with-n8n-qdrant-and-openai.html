@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a RAG Agent with n8n, Qdrant & OpenAI | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n template to build an intelligent document assistant. Automatically process files from Google Drive, store them in Qdrant, and chat with your data using OpenAI.">
+<link rel="canonical" href="https://growwstacks.com/workflows/7257-build-a-rag-agent-with-n8n-qdrant-and-openai/">
+<meta property="og:title" content="Build a RAG Agent with n8n, Qdrant & OpenAI">
+<meta property="og:description" content="Free n8n template to build an intelligent document assistant. Automatically process files from Google Drive, store them in Qdrant, and chat with your data using OpenAI.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/7257-build-a-rag-agent-with-n8n-qdrant-and-openai/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11468-build-a-rag-agent-with-n8n-qdrant-and-openai.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build a RAG Agent with n8n, Qdrant & OpenAI">
+<meta name="twitter:description" content="Free n8n template to build an intelligent document assistant. Automatically process files from Google Drive, store them in Qdrant, and chat with your data using OpenAI.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Build a RAG Agent with n8n, Qdrant & OpenAI","description":"Free n8n template to build an intelligent document assistant. Automatically process files from Google Drive, store them in Qdrant, and chat with your data using OpenAI.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11468-build-a-rag-agent-with-n8n-qdrant-and-openai.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is RAG and why is it important for businesses?","acceptedAnswer":{"@type":"Answer","text":"RAG (Retrieval-Augmented Generation) combines AI language models with a searchable database of your own documents. This allows AI to provide accurate, source-cited answers based on your company's specific information, reducing hallucinations and improving response quality."}},{"@type":"Question","name":"How can a document assistant improve team productivity?","acceptedAnswer":{"@type":"Answer","text":"A document assistant allows employees to ask questions in natural language instead of manually searching through files. This saves hours per week on information retrieval, ensures consistent answers across teams, and makes company knowledge instantly accessible to everyone."}},{"@type":"Question","name":"What types of documents work best with RAG automation?","acceptedAnswer":{"@type":"Answer","text":"RAG works well with structured documents like policies, procedures, research papers, contracts, product documentation, and compliance materials. The system handles PDFs, Word documents, Google Docs, and text files, converting them into searchable chunks for the AI to reference."}},{"@type":"Question","name":"How secure is it to connect Google Drive with AI models?","acceptedAnswer":{"@type":"Answer","text":"When implemented correctly, the connection is secure. Files are processed through secure APIs, and sensitive data can be kept within your infrastructure using self-hosted vector databases. The automation only accesses specifically shared folders and processes data through encrypted channels."}},{"@type":"Question","name":"What's the difference between a simple chatbot and a RAG system?","acceptedAnswer":{"@type":"Answer","text":"A simple chatbot relies only on its training data and often provides generic answers. A RAG system searches your specific documents first, then uses that context to generate precise, relevant responses. This makes it ideal for company-specific questions that require accurate, up-to-date information."}},{"@type":"Question","name":"How much technical setup is required for this type of automation?","acceptedAnswer":{"@type":"Answer","text":"The initial setup requires configuring API connections to Google Drive, Qdrant, and OpenAI, which takes about 30-60 minutes. Once running, the system automatically processes new documents and maintains itself. No ongoing technical maintenance is needed for basic operation."}},{"@type":"Question","name":"Can I get a custom RAG automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom RAG systems tailored to specific business needs. We can integrate with your existing document repositories, customize the AI's behavior for your industry, and scale the system to handle thousands of documents with enterprise-grade security."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Build a RAG Agent"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Build a RAG Agent</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">OpenAI</span>
+          <span class="cs-tag">Qdrant</span>
+          <span class="cs-tag">Google Drive</span>
+          <span class="cs-tag">AI Automation</span>
+        </div>
+        <h1>Build a RAG Agent with n8n, Qdrant & OpenAI</h1>
+        <p class="cs-hero-sub">Create an intelligent document assistant that answers questions from your files. Automatically process documents, store them in a vector database, and chat with your data using natural language.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11468-build-a-rag-agent-with-n8n-qdrant-and-openai.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11468-build-a-rag-agent-with-n8n-qdrant-and-openai.png" alt="Visual diagram showing RAG workflow connecting Google Drive, n8n, Qdrant vector database, and OpenAI chat interface" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves the problem of information silos in businesses. When company knowledge is locked away in documents, employees waste time searching for answers or make decisions without complete information. This RAG (Retrieval-Augmented Generation) system creates a single source of truth that anyone can query naturally.</p>
+        <p>The workflow automatically processes documents uploaded to Google Drive, converts them into searchable chunks, stores them in a Qdrant vector database, and provides a chat interface powered by OpenAI. When someone asks a question, the system searches your documents first, then uses that context to generate accurate, source-cited answers.</p>
+        <p>Unlike generic chatbots, this system provides answers specific to your company's documentation—whether it's HR policies, technical specifications, compliance requirements, or internal procedures. It maintains conversation context and improves over time as you add more documents.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Document Detection & Processing</h3>
+        <p>The workflow monitors a designated Google Drive folder. When new files are added (Google Docs, PDFs, Word documents), it automatically downloads and converts them to markdown format while preserving structure.</p>
+        
+        <h3>2. Chunking & Vector Embedding</h3>
+        <p>Documents are split into logical chunks using a recursive text splitter. Each chunk is converted into a vector embedding using OpenAI's embedding model, capturing the semantic meaning of the text.</p>
+        
+        <h3>3. Vector Storage in Qdrant</h3>
+        <p>Embeddings are stored in a Qdrant vector database with metadata about the source document. This creates a searchable knowledge base that can find relevant information based on semantic similarity, not just keyword matching.</p>
+        
+        <h3>4. Query Processing & Response Generation</h3>
+        <p>When a user asks a question, the system converts it to an embedding, searches Qdrant for the most relevant document chunks, then sends those chunks plus the question to OpenAI's chat model to generate a contextual answer with source citations.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for businesses with substantial documentation that needs to be accessible to teams. Legal firms can query case files and regulations. Tech companies can search through technical documentation and API specs. HR departments can provide instant answers to policy questions. Research teams can interrogate academic papers and reports.</p>
+        <p>It's particularly valuable for organizations with compliance requirements, customer support teams needing quick access to product information, or any business where employees regularly need to find information across multiple documents. The system scales from small teams with hundreds of documents to enterprises with thousands of files.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (self-hosted or cloud)</li>
+          <li><strong>Google Cloud credentials</strong> with Drive API enabled</li>
+          <li><strong>Qdrant account</strong> and API key (cloud or self-hosted)</li>
+          <li><strong>OpenAI API key</strong> with access to embedding and chat models</li>
+          <li><strong>Google Drive folder</strong> where documents will be uploaded</li>
+          <li><strong>Basic understanding</strong> of API key management</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a small test folder containing 5-10 representative documents. This lets you verify the system works correctly before scaling to your entire document library.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Import the template</strong> into your n8n instance using the downloaded JSON file.</li>
+          <li><strong>Configure Google Drive credentials</strong> in the "Detect New Files" trigger node following n8n's OAuth guide.</li>
+          <li><strong>Set up Qdrant credentials</strong> by creating an account at qdrant.tech and adding your API key to the "Insert into Vector Store" node.</li>
+          <li><strong>Add your OpenAI API key</strong> to both the embedding and chat model nodes.</li>
+          <li><strong>Specify your Google Drive folder ID</strong> in the trigger node settings.</li>
+          <li><strong>Activate the workflow</strong> and upload test documents to your Drive folder.</li>
+          <li><strong>Start chatting</strong> with your documents using the provided chat interface.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Reduce information retrieval time by 80%.</strong> Employees get answers in seconds instead of searching through folders for hours each week. This translates to significant productivity gains across your organization.</p>
+        <p><strong>Ensure consistent, accurate information sharing.</strong> Everyone gets answers based on the same source documents, eliminating confusion from outdated or conflicting information circulating through emails and chats.</p>
+        <p><strong>Scale knowledge access without scaling support staff.</strong> New employees can onboard themselves by asking questions, and teams can access specialized knowledge without bothering subject matter experts constantly.</p>
+        <p><strong>Maintain audit trails and source citations.</strong> Every answer includes references to the source documents, creating accountability and allowing users to verify information for compliance purposes.</p>
+        <p><strong>Future-proof your knowledge management.</strong> As documents update, the system automatically incorporates changes. The AI improves its understanding as it processes more of your specific content.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about RAG automation and document intelligence</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is RAG and why is it important for businesses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>RAG (Retrieval-Augmented Generation) combines AI language models with a searchable database of your own documents. This allows AI to provide accurate, source-cited answers based on your company's specific information, reducing hallucinations and improving response quality.</p>
+          <p>For businesses, this means employees can ask questions in natural language and get precise answers from your actual documentation, policies, and procedures. It transforms static documents into interactive knowledge resources.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can a document assistant improve team productivity?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>A document assistant allows employees to ask questions in natural language instead of manually searching through files. This saves hours per week on information retrieval, ensures consistent answers across teams, and makes company knowledge instantly accessible to everyone.</p>
+          <p>For example, instead of searching through 50-page policy documents, an employee can simply ask "What's our remote work policy for international employees?" and get the exact relevant sections with citations. This reduces frustration and speeds up decision-making.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of documents work best with RAG automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>RAG works well with structured documents like policies, procedures, research papers, contracts, product documentation, and compliance materials. The system handles PDFs, Word documents, Google Docs, and text files, converting them into searchable chunks for the AI to reference.</p>
+          <p>Technical documentation, HR manuals, legal contracts, and academic papers are ideal because they contain specific information that employees need to reference accurately. The system preserves document structure and can handle complex formatting.</p>
+          <ul>
+            <li>Policy documents and employee handbooks</li>
+            <li>Technical specifications and API documentation</li>
+            <li>Research papers and case studies</li>
+            <li>Compliance requirements and regulatory guidelines</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is it to connect Google Drive with AI models?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>When implemented correctly, the connection is secure. Files are processed through secure APIs, and sensitive data can be kept within your infrastructure using self-hosted vector databases. The automation only accesses specifically shared folders and processes data through encrypted channels.</p>
+          <p>You control exactly which folders are accessible, and sensitive documents can be excluded. For highly regulated industries, the entire system can be deployed on-premises with local AI models and vector databases, keeping all data within your network.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the difference between a simple chatbot and a RAG system?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>A simple chatbot relies only on its training data and often provides generic answers. A RAG system searches your specific documents first, then uses that context to generate precise, relevant responses. This makes it ideal for company-specific questions that require accurate, up-to-date information.</p>
+          <p>While a chatbot might give a general answer about "data protection policies," a RAG system will quote your actual company policy document, reference specific sections, and provide citations. This accuracy is crucial for legal, compliance, and technical domains.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much technical setup is required for this type of automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The initial setup requires configuring API connections to Google Drive, Qdrant, and OpenAI, which takes about 30-60 minutes. Once running, the system automatically processes new documents and maintains itself. No ongoing technical maintenance is needed for basic operation.</p>
+          <p>Most of the setup involves creating API keys and connecting services—tasks that follow straightforward documentation. The template handles the complex workflow logic, so you don't need to build anything from scratch.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom RAG automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom RAG systems tailored to specific business needs. We can integrate with your existing document repositories, customize the AI's behavior for your industry, and scale the system to handle thousands of documents with enterprise-grade security.</p>
+          <p>Our team works with you to understand your document types, user needs, and compliance requirements. We then build a solution that fits seamlessly into your workflow, often integrating with existing systems like SharePoint, Confluence, or proprietary databases.</p>
+          <ul>
+            <li>Industry-specific tuning for legal, healthcare, or technical domains</li>
+            <li>Integration with existing knowledge management systems</li>
+            <li>Custom security and access control layers</li>
+            <li>Scalable architecture for large document collections</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom RAG Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

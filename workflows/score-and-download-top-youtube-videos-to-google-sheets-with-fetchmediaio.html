@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Score and Download Top YouTube Videos to Google Sheets | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate YouTube video discovery, scoring, and downloading. This free n8n workflow searches YouTube, filters quality content, scores videos, saves to Google Sheets, and downloads via FetchMedia.io.">
+<link rel="canonical" href="https://growwstacks.com/workflows/8080-score-and-download-top-youtube-videos-to-google-sheets-with-fetchmediaio/">
+<meta property="og:title" content="Automate YouTube Video Research & Download to Sheets | n8n Template">
+<meta property="og:description" content="Free automation workflow to find, score, and download top YouTube videos directly into Google Sheets. Perfect for content curation and research.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/8080-score-and-download-top-youtube-videos-to-google-sheets-with-fetchmediaio/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12965-score-and-download-top-youtube-videos-to-google-sheets.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate YouTube Video Research & Download to Sheets | n8n Template">
+<meta name="twitter:description" content="Free automation workflow to find, score, and download top YouTube videos directly into Google Sheets. Perfect for content curation and research.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Score and Download Top YouTube Videos to Google Sheets","description":"Automate YouTube video discovery, scoring, and downloading. This free n8n workflow searches YouTube, filters quality content, scores videos, saves to Google Sheets, and downloads via FetchMedia.io.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12965-score-and-download-top-youtube-videos-to-google-sheets.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How can automation improve YouTube content research for my business?","acceptedAnswer":{"@type":"Answer","text":"Automation transforms YouTube research from a manual, time-consuming task into a scalable system. Instead of spending hours searching and evaluating videos, an automated workflow continuously scans for new content, applies your quality criteria, and delivers curated results. This frees up your team for analysis and strategy, ensures you never miss trending videos, and provides consistent, data-driven insights for content planning, competitor analysis, or market research."}},{"@type":"Question","name":"What are the benefits of integrating YouTube data directly with Google Sheets?","acceptedAnswer":{"@type":"Answer","text":"Connecting YouTube to Google Sheets creates a centralized, living database of video content. Benefits include having all video metadata, engagement stats, and your custom scores in one searchable location. This enables easy sorting, filtering, and analysis. Teams can collaborate on the data, build dashboards with charts, and trigger further actions—like sharing top videos via email or Slack—directly from the spreadsheet, turning raw data into actionable business intelligence."}},{"@type":"Question","name":"Is it safe to use third-party services like FetchMedia.io for downloading videos?","acceptedAnswer":{"@type":"Answer","text":"Using reputable third-party services for specific tasks like video downloading can be safe and efficient, provided you review their terms of service, privacy policy, and data handling practices. For business use, ensure the service complies with relevant copyright laws (fair use for research/analysis) and your company's data security policies. A well-designed automation workflow keeps your API keys secure via environment variables and can include error handling to manage download failures gracefully."}},{"@type":"Question","name":"What metrics should I use to score and filter YouTube videos for quality?","acceptedAnswer":{"@type":"Answer","text":"Effective scoring combines quantitative and qualitative signals. Key metrics include view count, like-to-dislike ratio, comments engagement, and upload recency. Also consider video duration (filtering out Shorts vs. long-form), channel authority (subscriber count), and title/keyword relevance. The best scoring system is tailored to your goal: for educational content, prioritize watch time and detailed descriptions; for viral trends, focus on recent uploads and high engagement velocity."}},{"@type":"Question","name":"How often should I run a YouTube research automation workflow?","acceptedAnswer":{"@type":"Answer","text":"Frequency depends on your niche's pace. For fast-moving topics like news or tech, run the workflow daily or even multiple times a day. For evergreen educational content, a weekly or bi-weekly schedule is sufficient. Use n8n's scheduler to run the workflow automatically. To avoid hitting API rate limits, implement smart batching—search for different keyword sets on different days—and store results to track changes in video performance over time."}},{"@type":"Question","name":"Can I extend this workflow to analyze video transcripts or comments?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. This workflow is a perfect foundation for deeper analysis. You can add steps to fetch video transcripts using the YouTube API and then use AI nodes (like OpenAI or local LLMs) to summarize content, extract key topics, or gauge sentiment. Similarly, you can fetch comments and analyze them for audience questions, sentiment, or frequently mentioned terms. This transforms simple video listing into powerful qualitative research and content gap analysis."}},{"@type":"Question","name":"Can I get a custom YouTube research automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored automation systems. While this free template handles core discovery and scoring, we can build a complete solution for your specific needs. This could include custom scoring algorithms, integration with your internal CRM or CMS, automated reporting dashboards, AI-powered content analysis, and secure handling of large-scale video libraries. We work with you to understand your research goals and create a robust, maintainable automation pipeline."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"YouTube Video Research Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>YouTube Video Research Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">YouTube</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Content Research</span>
+          <span class="cs-tag">Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate YouTube Video Research & Download to Google Sheets</h1>
+        <p class="cs-hero-sub">Discover, score, and archive high-quality YouTube videos automatically. Perfect for content teams, marketers, and researchers.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12965-score-and-download-top-youtube-videos-to-google-sheets.json?ik-attachment=true" download="youtube-research-automation.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12965-score-and-download-top-youtube-videos-to-google-sheets.png" alt="Screenshot of n8n workflow for YouTube video research automation" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual YouTube research is slow, inconsistent, and impossible to scale. This automation solves that by creating a complete pipeline that discovers educational or relevant videos, evaluates their quality using your criteria, organizes the best candidates in a spreadsheet, and can even download them for offline archives or analysis.</p>
+        <p>The workflow connects YouTube's vast content library directly to Google Sheets, turning a chaotic search process into a structured, repeatable system. It's designed for content curators, market researchers, educators, and anyone who needs to systematically track video content without manual effort.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical, multi-stage process to ensure only high-quality, relevant videos are captured and stored.</p>
+
+        <h3>1. Search & Discovery</h3>
+        <p>The workflow starts by querying the YouTube Data API using your predefined search terms (e.g., "digital marketing tutorials 2024"). It fetches a broad set of videos based on relevance, date, or view count.</p>
+
+        <h3>2. Quality Filtering</h3>
+        <p>Raw results are filtered through multiple gates. It checks video duration to exclude shorts, ensures a minimum view count, verifies a positive like ratio, and filters by publish date. The ISO-8601 duration format is converted to seconds for precise numeric comparisons.</p>
+
+        <h3>3. Scoring & Deduplication</h3>
+        <p>Each passing video receives a custom relevance score based on engagement metrics (views, likes) and metadata. Duplicates are removed using the unique YouTube video ID. The top-scoring videos are then selected for the final output.</p>
+
+        <h3>4. Storage in Google Sheets</h3>
+        <p>Selected video metadata—title, URL, channel, views, likes, publish date, and your custom score—is written to a designated Google Sheet. The video ID acts as a primary key, allowing the workflow to update rows if information changes later.</p>
+
+        <h3>5. Optional Asynchronous Download</h3>
+        <p>For videos marked for download, the workflow submits a request to the FetchMedia.io API. It then polls the service at intervals, checking the status (pending, success, failed). Upon completion, the download URL or error message is written back to the corresponding row in the sheet.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start by using the workflow without the download step to build your curated video database. The download functionality is ideal for creating offline video libraries for training or compliance purposes.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation delivers value to several key roles and industries:</p>
+        <ul>
+          <li><strong>Content & Marketing Teams:</strong> Continuously discover trending videos for inspiration, competitor analysis, or content gap identification.</li>
+          <li><strong>Educators & Trainers:</strong> Build curated libraries of high-quality educational videos for courses or internal training materials.</li>
+          <li><strong>Market Researchers:</strong> Track video content related to specific products, industries, or consumer sentiments over time.</li>
+          <li><strong>AI/ML Practitioners:</strong> Automate the collection of video datasets (metadata and files) for model training or analysis projects.</li>
+          <li><strong>SEO & Growth Specialists:</strong> Monitor video performance for keywords and identify successful content formats.</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>YouTube Data API v3 Credentials:</strong> A Google Cloud project with the YouTube Data API enabled and OAuth 2.0 credentials set up.</li>
+          <li><strong>Google Sheets API Access:</strong> OAuth credentials to read from and write to your Google Sheets.</li>
+          <li><strong>FetchMedia.io API Key (Optional):</strong> Required only if you plan to use the video download functionality. Available via their free tier.</li>
+          <li><strong>n8n Instance:</strong> A self-hosted n8n setup or a n8n.cloud account to import and run the workflow.</li>
+          <li><strong>A Target Google Sheet:</strong> A prepared spreadsheet with appropriate column headers for the video data.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download & Import:</strong> Click the download button above to get the JSON file. In your n8n instance, go to Workflows > Import from File and select the downloaded JSON.</li>
+          <li><strong>Configure Credentials:</strong> Set up the "YouTube" and "Google Sheets" node credentials in n8n using your OAuth client IDs and secrets.</li>
+          <li><strong>Set Environment Variable:</strong> If using downloads, create an environment variable named <code>FETCHMEDIA_API_KEY</code> and add your API key.</li>
+          <li><strong>Customize Search Queries:</strong> In the "YouTube" node, edit the "q" parameter to reflect your target search terms (e.g., "project management basics").</li>
+          <li><strong>Update Sheet ID:</strong> In the "Google Sheets" node, paste the ID of your target spreadsheet and specify the worksheet name.</li>
+          <li><strong>Test & Activate:</strong> Click "Execute Workflow" to test. Once confirmed, add a Schedule Trigger node to run the workflow daily or weekly.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10+ Hours Per Week on Manual Research.</strong> Eliminate the tedious process of browsing YouTube, copying links, and pasting data into spreadsheets. The automation does it all consistently and without fatigue.</p>
+        <p><strong>Ensure Consistent, Bias-Free Video Selection.</strong> By applying predefined numeric filters and scoring, you remove human inconsistency. Every video is evaluated against the same objective criteria, improving the quality of your curated lists.</p>
+        <p><strong>Build a Living, Searchable Video Database.</strong> Your Google Sheet becomes a powerful central repository. Use built-in filters, pivot tables, and charts to analyze trends, track channel performance, and share insights with your team instantly.</p>
+        <p><strong>Scale Your Content Curation Effortlessly.</strong> What works for ten videos can work for ten thousand. The workflow can process large batches of search results, making it easy to expand your research scope without proportional increases in effort.</p>
+        <p><strong>Future-Proof Your Research Process.</strong> The modular n8n workflow can be easily extended. Add steps to send notifications via Slack, enrich data with AI summaries, or integrate with your CRM to link videos to client profiles.</p>
+
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about YouTube research automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can automation improve YouTube content research for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automation transforms YouTube research from a manual, time-consuming task into a scalable system. Instead of spending hours searching and evaluating videos, an automated workflow continuously scans for new content, applies your quality criteria, and delivers curated results.</p>
+          <p>This frees up your team for analysis and strategy, ensures you never miss trending videos, and provides consistent, data-driven insights for content planning, competitor analysis, or market research.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of integrating YouTube data directly with Google Sheets?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Connecting YouTube to Google Sheets creates a centralized, living database of video content. Benefits include having all video metadata, engagement stats, and your custom scores in one searchable location.</p>
+          <p>This enables easy sorting, filtering, and analysis. Teams can collaborate on the data, build dashboards with charts, and trigger further actions—like sharing top videos via email or Slack—directly from the spreadsheet, turning raw data into actionable business intelligence.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is it safe to use third-party services like FetchMedia.io for downloading videos?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Using reputable third-party services for specific tasks like video downloading can be safe and efficient, provided you review their terms of service, privacy policy, and data handling practices.</p>
+          <p>For business use, ensure the service complies with relevant copyright laws (fair use for research/analysis) and your company's data security policies. A well-designed automation workflow keeps your API keys secure via environment variables and can include error handling to manage download failures gracefully.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What metrics should I use to score and filter YouTube videos for quality?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Effective scoring combines quantitative and qualitative signals. Key metrics include view count, like-to-dislike ratio, comments engagement, and upload recency.</p>
+          <p>Also consider video duration (filtering out Shorts vs. long-form), channel authority (subscriber count), and title/keyword relevance. The best scoring system is tailored to your goal: for educational content, prioritize watch time and detailed descriptions; for viral trends, focus on recent uploads and high engagement velocity.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I run a YouTube research automation workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Frequency depends on your niche's pace. For fast-moving topics like news or tech, run the workflow daily or even multiple times a day. For evergreen educational content, a weekly or bi-weekly schedule is sufficient.</p>
+          <p>Use n8n's scheduler to run the workflow automatically. To avoid hitting API rate limits, implement smart batching—search for different keyword sets on different days—and store results to track changes in video performance over time.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I extend this workflow to analyze video transcripts or comments?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. This workflow is a perfect foundation for deeper analysis. You can add steps to fetch video transcripts using the YouTube API and then use AI nodes (like OpenAI or local LLMs) to summarize content, extract key topics, or gauge sentiment.</p>
+          <p>Similarly, you can fetch comments and analyze them for audience questions, sentiment, or frequently mentioned terms. This transforms simple video listing into powerful qualitative research and content gap analysis.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom YouTube research automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored automation systems. While this free template handles core discovery and scoring, we can build a complete solution for your specific needs.</p>
+          <p>This could include custom scoring algorithms, integration with your internal CRM or CMS, automated reporting dashboards, AI-powered content analysis, and secure handling of large-scale video libraries. We work with you to understand your research goals and create a robust, maintainable automation pipeline.</p>
+          <ul>
+            <li>Tailored scoring logic for your niche</li>
+            <li>Integration with your existing data stack</li>
+            <li>Ongoing support and optimization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom YouTube Research Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

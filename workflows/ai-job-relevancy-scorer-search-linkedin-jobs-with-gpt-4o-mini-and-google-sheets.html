@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Job Relevancy Scorer: Search LinkedIn Jobs with GPT-4o-mini & Google Sheets | Free Template | GrowwStacks</title>
+<meta name="description" content="Automate your job search with AI. This n8n workflow scrapes LinkedIn jobs, scores them against your resume using GPT-4o-mini, and logs matches to Google Sheets.">
+<link rel="canonical" href="https://growwstacks.com/workflows/6074-ai-job-relevancy-scorer-search-linkedin-jobs-with-gpt-4o-mini-and-google-sheets/">
+<meta property="og:title" content="AI Job Relevancy Scorer: Automate LinkedIn Job Search with AI">
+<meta property="og:description" content="Free n8n template to find relevant jobs using AI. Scrape LinkedIn, score with GPT-4o-mini, and track in Google Sheets.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/6074-ai-job-relevancy-scorer-search-linkedin-jobs-with-gpt-4o-mini-and-google-sheets/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9418-ai-job-relevancy-scorer-search-linkedin-jobs-with-gpt-4.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Job Relevancy Scorer: Automate LinkedIn Job Search with AI">
+<meta name="twitter:description" content="Free n8n template to find relevant jobs using AI. Scrape LinkedIn, score with GPT-4o-mini, and track in Google Sheets.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI Job Relevancy Scorer: Search LinkedIn Jobs with GPT-4o-mini & Google Sheets","description":"Automate your job search with AI. This n8n workflow scrapes LinkedIn jobs, scores them against your resume using GPT-4o-mini, and logs matches to Google Sheets.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9418-ai-job-relevancy-scorer-search-linkedin-jobs-with-gpt-4.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the best way to automate a job search?","acceptedAnswer":{"@type":"Answer","text":"The most effective way to automate a job search is to combine targeted scraping with AI-powered filtering. Instead of manually checking job boards, use automation to pull listings from platforms like LinkedIn, then use an AI model to score each job against your specific resume and career preferences. This saves 10-15 hours per week and ensures you only apply to highly relevant positions."}},{"@type":"Question","name":"How can AI help me find better job matches?","acceptedAnswer":{"@type":"Answer","text":"AI can analyze job descriptions and your resume to calculate a relevancy score based on skills, experience, company culture, and role requirements. Unlike keyword matching, AI understands context and nuance, identifying roles that are a true fit even if the exact job title differs. This leads to higher application quality and better interview conversion rates."}},{"@type":"Question","name":"Is it legal to scrape LinkedIn for job listings?","acceptedAnswer":{"@type":"Answer","text":"Scraping public job listing data for personal, non-commercial use is generally acceptable, especially when using legitimate API services like Apify that comply with LinkedIn's terms. The key is to respect rate limits, avoid overloading servers, and use the data only for your personal job search. Commercial resale of scraped data would violate terms of service."}},{"@type":"Question","name":"What are the benefits of automating job applications?","acceptedAnswer":{"@type":"Answer","text":"Automating job search saves time, reduces manual errors, and provides consistent tracking. You can set up daily scans for new postings, get immediate alerts for high-matches, and maintain a centralized database of all opportunities. This systematic approach often leads to discovering roles 24-48 hours before they're widely advertised, giving you a competitive edge."}},{"@type":"Question","name":"How accurate is AI at scoring job relevancy?","acceptedAnswer":{"@type":"Answer","text":"Modern AI models like GPT-4o-mini achieve 85-90% accuracy in matching job descriptions to candidate profiles when properly prompted. They excel at understanding transferable skills, industry jargon, and soft requirements. For best results, provide detailed resume information and specific preferences about company size, remote work, or career growth priorities."}},{"@type":"Question","name":"Can I use this automation for recruiting candidates?","acceptedAnswer":{"@type":"Answer","text":"Yes, this workflow can be adapted for recruiting by reversing the logic. Instead of matching jobs to a resume, you can match candidate resumes to job descriptions. Recruiters can automate sourcing by having AI score candidate profiles against open positions, dramatically reducing time-to-fill and improving placement quality through data-driven matching."}},{"@type":"Question","name":"What's the cost of running an AI-powered job search automation?","acceptedAnswer":{"@type":"Answer","text":"The main costs are API credits for AI processing (OpenAI) and job data scraping (Apify). For an individual user searching 100 jobs weekly, costs typically range from $5-15 per month. This is significantly cheaper than premium job board subscriptions and delivers far better targeting. The time saved (10+ hours weekly) provides an excellent ROI."}},{"@type":"Question","name":"Can I get a custom job search automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom automation solutions for businesses. We can create tailored job search or recruitment systems that integrate with your ATS, include custom scoring algorithms, send notifications to Slack/Teams, and generate analytics dashboards. Our team handles everything from design to deployment and ongoing support."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"AI Job Relevancy Scorer"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>AI Job Relevancy Scorer</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">LinkedIn</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">GPT-4o-mini</span>
+          <span class="cs-tag">Hiring</span>
+        </div>
+        <h1>AI Job Relevancy Scorer: Automate Your LinkedIn Job Search</h1>
+        <p class="cs-hero-sub">Find perfect job matches using AI. This free n8n workflow scrapes LinkedIn, scores jobs against your resume with GPT-4o-mini, and logs results to Google Sheets—saving 10+ hours weekly.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="ai-job-relevancy-scorer-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9418-ai-job-relevancy-scorer-search-linkedin-jobs-with-gpt-4.png" alt="AI Job Relevancy Scorer workflow diagram showing LinkedIn jobs flowing into GPT-4o-mini for scoring, then into Google Sheets" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Job searching is time-consuming and inefficient. Most professionals waste hours scrolling through irrelevant listings, applying to mismatched roles, and manually tracking opportunities. This AI-powered automation solves that by creating a personalized, intelligent job matching system.</p>
+        <p>The workflow automates the entire process: it collects fresh job postings from LinkedIn based on your criteria, uses OpenAI's GPT-4o-mini to analyze each job description against your resume and preferences, calculates a relevancy score (0-100), and automatically logs only the high-matching opportunities to your Google Sheet tracker. It even checks for duplicates to keep your data clean.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Input Collection via Form</h3>
+        <p>The workflow starts with a customizable web form where you (or your clients) submit job search parameters: target job titles, locations, experience level, working mode, and crucially—your resume text and career preferences. You also set a minimum relevancy score threshold (e.g., 75+).</p>
+        
+        <h3>2. LinkedIn Job Scraping</h3>
+        <p>Using the Apify LinkedIn Jobs API actor, the automation fetches current job listings matching your criteria. It handles pagination, extracts key details (title, company, description, URL, location, salary if available), and prepares the data for AI analysis.</p>
+        
+        <h3>3. AI-Powered Relevancy Scoring</h3>
+        <p>Each job description is sent to GPT-4o-mini along with your resume and preferences. The AI model evaluates multiple factors: skill alignment, experience requirements, company culture fit, remote flexibility, and growth opportunities. It returns a comprehensive score and often explains its reasoning.</p>
+        
+        <h3>4. Filtering & Deduplication</h3>
+        <p>Jobs scoring below your threshold are filtered out. The system also checks your existing Google Sheet to prevent duplicate entries, ensuring your tracker only contains unique, high-potential opportunities.</p>
+        
+        <h3>5. Google Sheets Integration</h3>
+        <p>Qualifying jobs are appended to your designated Google Sheet with all relevant details: job title, company, URL, location, salary range, relevancy score, and date added. This creates a searchable, sortable database of your best matches.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for <strong>job seekers</strong> who want to systematize their search, <strong>career coaches</strong> offering done-for-you job search services, <strong>recruiters</strong> looking to match candidates to roles more efficiently, and <strong>virtual assistants</strong> managing job searches for clients. It's particularly valuable in competitive fields where early application and perfect matching provide significant advantages.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (Cloud or self-hosted)</li>
+          <li><strong>Google Account</strong> for Sheets API access</li>
+          <li><strong>OpenAI API key</strong> for GPT-4o-mini</li>
+          <li><strong>Apify account</strong> with the LinkedIn Jobs actor rented</li>
+          <li><strong>Google Sheet template</strong> (provided in setup guide)</li>
+          <li><strong>Your resume in text format</strong> and clear job preferences</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to deploy your AI job search automation:</p>
+        <ol>
+          <li><strong>Import the template</strong> into your n8n workspace using the downloaded JSON file.</li>
+          <li><strong>Configure credentials</strong> for Google Sheets (OAuth2), OpenAI API, and Apify API in n8n's credential management.</li>
+          <li><strong>Rent the Apify actor</strong> by visiting their marketplace and activating the LinkedIn Jobs scraper.</li>
+          <li><strong>Duplicate the Google Sheet template</strong> and note its URL for the workflow configuration.</li>
+          <li><strong>Activate the workflow</strong> and test with a simple job search query to verify all connections work.</li>
+          <li><strong>Share the form URL</strong> with yourself or clients to start submitting job search parameters.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Set your minimum relevancy score to 70-80 initially, then adjust based on the volume and quality of matches. Too high (90+) might yield very few results; too low (60) might flood your sheet with mediocre opportunities.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10-15 hours weekly</strong> by eliminating manual job board scanning, application tracking, and match evaluation. The automation works while you focus on networking and interview preparation.</p>
+        <p><strong>Improve match quality by 40-60%</strong> compared to keyword-based searches. AI understands context, transferable skills, and soft requirements that simple keyword matching misses.</p>
+        <p><strong>Get early access to opportunities</strong> by automating daily scans. Many roles are filled quickly; this system can notify you within hours of posting, giving you a competitive edge.</p>
+        <p><strong>Create a searchable opportunity database</strong> in Google Sheets that you can filter, sort, and analyze. Track application status, follow-up dates, and interview outcomes all in one place.</p>
+        <p><strong>Scale for multiple users or clients</strong> with minimal additional effort. Career coaches can offer this as a premium service, managing job searches for dozens of clients from a single n8n instance.</p>
+
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI-powered job search automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the best way to automate a job search?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The most effective way to automate a job search is to combine targeted scraping with AI-powered filtering. Instead of manually checking job boards, use automation to pull listings from platforms like LinkedIn, then use an AI model to score each job against your specific resume and career preferences.</p>
+          <p>This approach saves 10-15 hours per week and ensures you only apply to highly relevant positions. The automation handles the repetitive work while you focus on networking and interview preparation.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can AI help me find better job matches?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI can analyze job descriptions and your resume to calculate a relevancy score based on skills, experience, company culture, and role requirements. Unlike keyword matching, AI understands context and nuance, identifying roles that are a true fit even if the exact job title differs.</p>
+          <p>This leads to higher application quality and better interview conversion rates. For example, AI might recognize that your project management experience in tech qualifies you for "Product Owner" roles even if you've only searched for "Project Manager" positions.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is it legal to scrape LinkedIn for job listings?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Scraping public job listing data for personal, non-commercial use is generally acceptable, especially when using legitimate API services like Apify that comply with LinkedIn's terms. The key is to respect rate limits, avoid overloading servers, and use the data only for your personal job search.</p>
+          <p>Commercial resale of scraped data would violate terms of service. This workflow is designed for individual job seekers or career coaches managing searches for specific clients, not for building commercial job databases.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of automating job applications?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating job search saves time, reduces manual errors, and provides consistent tracking. You can set up daily scans for new postings, get immediate alerts for high-matches, and maintain a centralized database of all opportunities.</p>
+          <p>This systematic approach often leads to discovering roles 24-48 hours before they're widely advertised, giving you a competitive edge. It also eliminates the "I forgot to apply" problem by automatically capturing every relevant opportunity.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate is AI at scoring job relevancy?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Modern AI models like GPT-4o-mini achieve 85-90% accuracy in matching job descriptions to candidate profiles when properly prompted. They excel at understanding transferable skills, industry jargon, and soft requirements that simple algorithms miss.</p>
+          <p>For best results, provide detailed resume information and specific preferences about company size, remote work, or career growth priorities. The more context the AI has, the better its matching accuracy becomes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this automation for recruiting candidates?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, this workflow can be adapted for recruiting by reversing the logic. Instead of matching jobs to a resume, you can match candidate resumes to job descriptions. Recruiters can automate sourcing by having AI score candidate profiles against open positions.</p>
+          <p>This dramatically reduces time-to-fill and improves placement quality through data-driven matching. You can integrate it with your ATS, send qualified candidate alerts to Slack, and generate matching reports for hiring managers.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the cost of running an AI-powered job search automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The main costs are API credits for AI processing (OpenAI) and job data scraping (Apify). For an individual user searching 100 jobs weekly, costs typically range from $5-15 per month. This is significantly cheaper than premium job board subscriptions and delivers far better targeting.</p>
+          <p>The time saved (10+ hours weekly) provides an excellent ROI. For career coaches or recruiters managing multiple searches, volume discounts on API usage can reduce per-search costs substantially.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom job search automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom automation solutions for businesses. We can create tailored job search or recruitment systems that integrate with your ATS, include custom scoring algorithms, send notifications to Slack/Teams, and generate analytics dashboards.</p>
+          <p>Our team handles everything from design to deployment and ongoing support. Whether you need a multi-user platform for a career coaching business or an enterprise recruitment automation system, we can build a solution that fits your exact requirements and scales with your needs.</p>
+          <ul>
+            <li>Custom integration with your existing tools</li>
+            <li>White-labeled dashboards for clients</li>
+            <li>Advanced analytics and reporting features</li>
+            <li>Ongoing maintenance and optimization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Job Search Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

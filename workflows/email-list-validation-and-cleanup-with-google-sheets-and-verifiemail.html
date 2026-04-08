@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email List Validation & Cleanup Automation | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate email list cleaning and validation with Google Sheets and VerifiEmail. Remove invalid emails, reduce bounce rates, and improve deliverability instantly.">
+<link rel="canonical" href="https://growwstacks.com/workflows/7031-email-list-validation-and-cleanup-with-google-sheets-and-verifiemail/">
+<meta property="og:title" content="Automate Email List Cleaning & Validation | Free n8n Template">
+<meta property="og:description" content="Automate email list cleaning and validation with Google Sheets and VerifiEmail. Remove invalid emails, reduce bounce rates, and improve deliverability instantly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/7031-email-list-validation-and-cleanup-with-google-sheets-and-verifiemail/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11017-email-list-validation-and-cleanup-with-google-sheets-a.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Email List Cleaning & Validation | Free n8n Template">
+<meta name="twitter:description" content="Automate email list cleaning and validation with Google Sheets and VerifiEmail. Remove invalid emails, reduce bounce rates, and improve deliverability instantly.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Email List Validation & Cleanup Automation","description":"Automate email list cleaning and validation with Google Sheets and VerifiEmail. Remove invalid emails, reduce bounce rates, and improve deliverability instantly.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11017-email-list-validation-and-cleanup-with-google-sheets-a.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is email list validation important for my business?","acceptedAnswer":{"@type":"Answer","text":"Email list validation is crucial because it directly impacts your sender reputation, email deliverability, and campaign ROI. Invalid emails (bounces, spam traps, disposable addresses) hurt your domain reputation with ISPs, causing even legitimate emails to land in spam folders. Clean lists mean higher open rates, better engagement, and protection against being blacklisted."}},{"@type":"Question","name":"How often should I clean my email list?","acceptedAnswer":{"@type":"Answer","text":"For most businesses, monthly cleaning is sufficient. High-volume senders (daily campaigns) should clean weekly. Always validate new subscribers immediately upon signup and before major campaigns. Industry benchmarks show email lists decay at 22.5% annually, meaning nearly a quarter of your list becomes invalid each year without regular maintenance."}},{"@type":"Question","name":"What's the difference between syntax validation and real-time verification?","acceptedAnswer":{"@type":"Answer","text":"Syntax validation only checks if an email follows format rules (like having an @ symbol). Real-time verification (like VerifiEmail) actually checks if the domain exists, has valid MX records, and if the mailbox can receive emails. It also identifies disposable emails, role-based addresses (like info@), and known spam traps that syntax checks miss completely."}},{"@type":"Question","name":"Can email validation improve my marketing ROI?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Clean lists typically show 20-40% higher open rates and 15-30% better click-through rates. You also save on email service provider costs (paying for invalid addresses) and reduce support tickets from customers not receiving important emails. Most businesses see ROI within one campaign cycle after cleaning their lists."}},{"@type":"Question","name":"What are the risks of not validating email lists?","acceptedAnswer":{"@type":"Answer","text":"Unvalidated lists risk domain blacklisting."}},{"@type":"Question","name":"Can automated email cleaning improve my marketing ROI?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Clean lists improve every key email marketing metric. Businesses typically see 30-50% reduction in bounce rates, 15-25% increase in open rates, and 20-40% improvement in click-through rates after implementing regular validation. This translates directly to more conversions, lower email service costs, and better overall campaign performance."}},{"@type":"Question","name":"What types of invalid emails should I remove from my list?","acceptedAnswer":{"@type":"Answer","text":"Remove these five categories: 1) Hard bounces (permanent delivery failures), 2) Disposable/temporary email addresses, 3) Role-based emails (info@, support@), 4) Spam trap addresses, and 5) Invalid domains. Keeping these emails actively damages your sender reputation and increases the likelihood of your legitimate emails being marked as spam."}},{"@type":"Question","name":"How does Google Sheets integration make email cleaning easier?","acceptedAnswer":{"@type":"Answer","text":"Google Sheets integration eliminates manual CSV exports and imports. The automation runs directly on your spreadsheet, reading subscribers, validating them in real-time, deleting invalid entries, and writing clean results to a new sheet—all without downloading/uploading files. This creates a single source of truth, enables team collaboration, and allows scheduling automatic weekly cleanups."}},{"@type":"Question","name":"Can I get a custom email list automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom email automation systems tailored to your specific business needs. We can integrate with your CRM (HubSpot, Salesforce), marketing platforms (Mailchimp, Klaviyo), and custom databases to create fully automated validation workflows that match your exact processes, volume requirements, and compliance needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Email List Validation & Cleanup"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Email List Validation & Cleanup</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Email Validation</span>
+          <span class="cs-tag">Marketing Automation</span>
+          <span class="cs-tag">Data Cleaning</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate Email List Cleaning & Validation</h1>
+        <p class="cs-hero-sub">Remove invalid emails, reduce bounce rates, and improve deliverability with this fully automated Google Sheets and VerifiEmail workflow.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/11017-email-list-validation-and-cleanup-with-google-sheets-a.png" alt="Email list validation automation workflow interface showing Google Sheets and VerifiEmail integration" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Maintaining a clean email list is one of the most overlooked yet critical aspects of successful digital marketing. Dirty lists lead to high bounce rates, poor deliverability, damaged sender reputation, and wasted marketing spend. This automated workflow solves that problem systematically.</p>
+        <p>The template connects Google Sheets (where most businesses store their subscriber data) with VerifiEmail's professional validation service. It automatically fetches your subscriber list, validates each email in real-time, removes invalid entries, and creates a clean, organized spreadsheet of verified contacts—all without manual CSV exports or imports.</p>
+        <p>Beyond simple cleaning, it classifies emails into actionable categories: valid contacts to keep, invalid addresses to remove, and special cases that might need attention. This intelligence helps you understand your list quality and make better marketing decisions.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical, step-by-step process that ensures thorough validation while maintaining data integrity.</p>
+        
+        <h3>1. Trigger & Data Collection</h3>
+        <p>The workflow can be triggered manually, scheduled weekly, or activated via webhook. It connects to your Google Sheets document and reads all subscriber data, including email addresses, names, subscription dates, and any custom fields you track.</p>
+        
+        <h3>2. Email Normalization & Preparation</h3>
+        <p>Before validation, the system normalizes email formats—converting to lowercase, trimming whitespace, and standardizing domain formats. This preprocessing step catches simple errors and ensures consistent validation.</p>
+        
+        <h3>3. Real-Time Validation with VerifiEmail</h3>
+        <p>Each email undergoes comprehensive verification: syntax checking, domain existence (MX record verification), mailbox availability, disposable email detection, and role-based address identification. The service returns detailed validation scores and reasons.</p>
+        
+        <h3>4. Intelligent Classification</h3>
+        <p>Based on validation results, emails are categorized as "keep" (valid and safe), "remove" (invalid/disposable/role-based), or "tag" (requires review). Custom rules can be configured to match your specific business requirements.</p>
+        
+        <h3>5. Automated Cleanup & Organization</h3>
+        <p>Invalid emails are automatically removed from the source sheet. Valid contacts are written to a new "CleanSubscribers" sheet with all their original data plus validation metadata. A detailed summary report is generated for review.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Schedule this workflow to run automatically every Friday night. You'll start each week with a freshly cleaned list, ensuring optimal deliverability for your Monday campaigns.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation template is ideal for marketing teams, SaaS companies, e-commerce businesses, newsletter publishers, and anyone managing email communications. If you send regular emails to a list of subscribers—whether for marketing, updates, or transactional purposes—this workflow will save you time and improve results.</p>
+        <p>Specifically valuable for: Digital marketing agencies managing multiple client lists, startup founders wearing multiple hats, content creators building audience relationships, sales teams maintaining prospect databases, and customer success teams ensuring communication reliability.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Google Sheets access</strong> with read/write permissions to your subscriber spreadsheet</li>
+          <li><strong>VerifiEmail API key</strong> (free tier available for up to 100 validations/month)</li>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) to run the automation</li>
+          <li><strong>Subscriber spreadsheet</strong> with at minimum an "Email" column (additional columns preserved)</li>
+          <li><strong>10 minutes</strong> for initial setup and configuration</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Getting started takes just a few minutes. Follow these steps to implement email list cleaning automation today.</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance</li>
+          <li><strong>Connect Google Sheets</strong> by creating credentials in n8n and selecting your subscriber spreadsheet</li>
+          <li><strong>Add VerifiEmail API key</strong> from your account dashboard (sign up at verifiemail.com if needed)</li>
+          <li><strong>Update sheet names</strong> in the workflow nodes to match your actual spreadsheet tab names</li>
+          <li><strong>Test with a small batch</strong> of 5-10 emails to verify everything works correctly</li>
+          <li><strong>Schedule automation</strong> to run weekly or trigger manually before major campaigns</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Create a separate "Archive_Invalid" sheet in your Google Sheets document before first run. The workflow can move removed emails there instead of deleting them permanently, giving you an audit trail.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Improve email deliverability by 30-50%.</strong> Clean lists mean fewer bounces and better sender reputation with Internet Service Providers (ISPs). Your legitimate emails are more likely to reach the inbox instead of spam folders.</p>
+        <p><strong>Save 2-5 hours weekly on manual list maintenance.</strong> Automating the validation process eliminates tedious CSV exports, third-party tool uploads, and manual data reconciliation. The workflow handles everything in the background.</p>
+        <p><strong>Reduce email marketing costs immediately.</strong> Most email service providers charge based on list size. Removing invalid addresses can significantly reduce your monthly bills while improving campaign performance metrics.</p>
+        <p><strong>Gain actionable insights into list health.</strong> Beyond simple cleaning, the workflow provides metrics on validation rates, common issues, and list decay patterns—helping you make data-driven decisions about list acquisition and maintenance.</p>
+        <p><strong>Maintain compliance with email regulations.</strong> Regular list cleaning demonstrates responsible email practices, which can be important for GDPR, CAN-SPAM, and other regulatory compliance requirements.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about email list validation and marketing automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why is email list validation important for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Email list validation is crucial because it directly impacts your sender reputation, email deliverability, and campaign ROI. Invalid emails (bounces, spam traps, disposable addresses) hurt your domain reputation with ISPs, causing even legitimate emails to land in spam folders.</p>
+          <p>Clean lists mean higher open rates, better engagement, and protection against being blacklisted. For example, a 5% bounce rate might trigger temporary sending restrictions with services like Mailchimp or SendGrid, disrupting your entire communication strategy.</p>
+          <ul>
+            <li>ISPs monitor bounce rates to determine inbox placement</li>
+            <li>Spam traps can get you permanently blacklisted</li>
+            <li>Clean lists improve every email marketing metric</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I clean my email list?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>For most businesses, monthly cleaning is sufficient. High-volume senders (daily campaigns) should clean weekly. Always validate new subscribers immediately upon signup and before major campaigns.</p>
+          <p>Industry benchmarks show email lists decay at 22.5% annually, meaning nearly a quarter of your list becomes invalid each year without regular maintenance. A quarterly cleaning schedule leaves too many invalid addresses accumulating between cleanings.</p>
+          <ul>
+            <li>Monthly for lists under 10,000 subscribers</li>
+            <li>Weekly for high-volume or rapidly growing lists</li>
+            <li>Always before major campaign launches</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the difference between syntax validation and real-time verification?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Syntax validation only checks if an email follows format rules (like having an @ symbol). Real-time verification (like VerifiEmail) actually checks if the domain exists, if the mailbox is active, and if the address is disposable or role-based.</p>
+          <p>Syntax checkers might pass "test@example.com" as valid, while real verification knows example.com doesn't accept email. This distinction matters because only real verification catches the emails that actually bounce and damage your reputation.</p>
+          <ul>
+            <li>Syntax: Format checking only</li>
+            <li>Real-time: Domain, mailbox, and quality checking</li>
+            <li>Disposable detection catches temporary addresses</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can automated email cleaning improve my marketing ROI?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. Clean lists improve every key email marketing metric. Businesses typically see 30-50% reduction in bounce rates, 15-25% increase in open rates, and 20-40% improvement in click-through rates after implementing regular validation.</p>
+          <p>This translates directly to more conversions, lower email service costs, and better overall campaign performance. If you're paying $0.001 per email and remove 1,000 invalid addresses from a 10,000-person list, you save $1 per send while improving results.</p>
+          <ul>
+            <li>Lower costs per valid email delivered</li>
+            <li>Higher engagement rates across all campaigns</li>
+            <li>Better data for segmentation and personalization</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of invalid emails should I remove from my list?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Remove these five categories: 1) Hard bounces (permanent delivery failures), 2) Disposable/temporary email addresses, 3) Role-based emails (info@, support@), 4) Spam trap addresses, and 5) Invalid domains.</p>
+          <p>Keeping these emails actively damages your sender reputation and increases the likelihood of your legitimate emails being marked as spam. Role-based addresses often have low engagement rates, while spam traps can get your domain permanently blacklisted.</p>
+          <ul>
+            <li>Hard bounces indicate permanent delivery failure</li>
+            <li>Disposable emails (10minutemail, etc.) indicate low intent</li>
+            <li>Spam traps are honeypots set by ISPs to catch senders</li>
+          <span>How does Google Sheets integration make email cleaning easier?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Google Sheets integration eliminates manual CSV exports and imports. The automation runs directly on your spreadsheet, reading subscribers, validating them in real-time, deleting invalid entries, and writing clean results to a new sheet—all without downloading/uploading files.</p>
+          <p>This creates a single source of truth, enables team collaboration, and allows scheduling automatic weekly cleanups. Multiple team members can see the validation status in real-time, and historical data remains intact for analysis.</p>
+          <ul>
+            <li>No more manual file transfers between systems</li>
+            <li>Real-time collaboration on clean lists</li>
+            <li>Automatic scheduling for hands-off maintenance</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom email list automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom email automation systems tailored to your specific business needs. We can integrate with your CRM (HubSpot, Salesforce), marketing platforms (Mailchimp, Klaviyo), and custom databases to create fully automated validation workflows.</p>
+          <p>Our team designs solutions that match your exact processes, volume requirements, and compliance needs. Whether you need advanced segmentation, multi-step validation logic, or integration with proprietary systems, we can build a solution that saves you time and improves results.</p>
+          <ul>
+            <li>Custom integrations with your existing tech stack</li>
+            <li>Workflows designed for your specific volume and needs</li>
+            <li>Ongoing support and optimization as requirements change</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Email List Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

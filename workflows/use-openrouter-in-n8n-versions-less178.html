@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Use OpenRouter in n8n versions <1.78 | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow to access OpenRouter AI models in versions before 1.78. Use any LLM model dynamically with OpenAI node configuration.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1323-use-openrouter-in-n8n-versions-less178/">
+<meta property="og:title" content="Use OpenRouter in n8n versions <1.78 | Free n8n Template">
+<meta property="og:description" content="Free n8n workflow to access OpenRouter AI models in versions before 1.78. Use any LLM model dynamically with OpenAI node configuration.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1323-use-openrouter-in-n8n-versions-less178/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2897-use-openrouter-in-n8n-versions-less178.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Use OpenRouter in n8n versions <1.78 | Free n8n Template">
+<meta name="twitter:description" content="Free n8n workflow to access OpenRouter AI models in versions before 1.78. Use any LLM model dynamically with OpenAI node configuration.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Use OpenRouter in n8n versions <1.78","description":"Free n8n workflow to access OpenRouter AI models in versions before 1.78. Use any LLM model dynamically with OpenAI node configuration.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2897-use-openrouter-in-n8n-versions-less178.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is OpenRouter and why is it useful for AI automation?","acceptedAnswer":{"@type":"Answer","text":"OpenRouter is a unified API that gives you access to dozens of different AI models from providers like OpenAI, Anthropic, Google, and open-source options. It's useful because you can switch between models without changing your entire workflow, compare outputs, and choose the most cost-effective model for each task."}},{"@type":"Question","name":"How does using multiple AI models benefit business automation?","acceptedAnswer":{"@type":"Answer","text":"Using multiple AI models lets you match the right tool to each task. For example, use a fast, cheap model for simple classification, a powerful model for complex reasoning, and a specialized model for coding tasks. This approach optimizes both cost and performance in automated workflows."}},{"@type":"Question","name":"What are the main challenges when integrating different AI services?","acceptedAnswer":{"@type":"Answer","text":"The main challenges include managing different API formats, handling varying rate limits and costs, maintaining consistent output formats, and dealing with different authentication methods. Services like OpenRouter solve these by providing a unified interface, but you still need proper error handling and fallback strategies."}},{"@type":"Question","name":"How can AI automation improve content generation workflows?","acceptedAnswer":{"@type":"Answer","text":"AI automation can generate, edit, and personalize content at scale. For instance, you can automatically create blog post drafts, generate social media captions, personalize email campaigns, or summarize customer feedback. By using different AI models, you can ensure each piece of content gets the most appropriate treatment."}},{"@type":"Question","name":"What should businesses consider when choosing between different AI models?","acceptedAnswer":{"@type":"Answer","text":"Consider cost per token, speed, context window size, specific capabilities (like coding or creative writing), reliability, and whether the model supports your required features like function calling or image understanding. Testing multiple models on your actual use cases is crucial for making informed decisions."}},{"@type":"Question","name":"How can I ensure my AI automation remains cost-effective as usage scales?","acceptedAnswer":{"@type":"Answer","text":"Implement usage monitoring, set budget alerts, use caching for repeated queries, implement fallback to cheaper models when appropriate, batch similar requests, and regularly review which models provide the best value for each task type. Also consider implementing usage quotas for different departments or use cases."}},{"@type":"Question","name":"Can I get a custom AI model integration automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, our team at GrowwStacks specializes in building custom AI automation solutions tailored to specific business needs. We can design workflows that integrate multiple AI models, connect to your existing systems, and optimize for your unique requirements, whether it's customer support, content creation, data analysis, or specialized business processes."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Use OpenRouter in n8n versions <1.78"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Use OpenRouter in n8n versions <1.78</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">AI Integration</span>
+          <span class="cs-tag">OpenRouter</span>
+          <span class="cs-tag">LLM Models</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Use OpenRouter in n8n versions <1.78</h1>
+        <p class="cs-hero-sub">Access dozens of AI models through a single API in older n8n versions using this workaround template.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2897-use-openrouter-in-n8n-versions-less178.png" alt="n8n workflow interface showing OpenRouter configuration with AI model selection" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This template solves a specific technical challenge: accessing the OpenRouter service in n8n versions before 1.78. OpenRouter provides a unified API to dozens of AI models from different providers, but n8n only introduced a dedicated OpenRouter node in version 1.78. If you're running an older version, this workflow gives you the same capability through a clever workaround.</p>
+        <p>The automation configures the existing OpenAI node in n8n to connect to OpenRouter's API instead. This lets you dynamically switch between different large language models (LLMs) like GPT-4, Claude, Gemini, and open-source alternatives—all within your existing n8n workflows. You can change models on the fly based on cost, performance needs, or specific task requirements.</p>
+        <p>For businesses using AI automation, this means you're no longer locked into a single AI provider. You can optimize costs by using cheaper models for simple tasks and reserve expensive models for complex reasoning. The workflow maintains all the flexibility of n8n's visual automation while giving you access to the broader AI ecosystem.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow uses n8n's existing OpenAI integration with modified configuration to route requests through OpenRouter instead.</p>
+        
+        <h3>1. Credential Configuration</h3>
+        <p>You create OpenAI-type credentials in n8n but set the Base URL to OpenRouter's API endpoint. This simple change redirects all AI requests to OpenRouter while maintaining compatibility with n8n's OpenAI node structure.</p>
+        
+        <h3>2. Model Selection</h3>
+        <p>The workflow includes a settings node where you specify which OpenRouter model to use. You can hardcode a specific model or make this dynamic—changing models based on input content, cost considerations, or performance requirements.</p>
+        
+        <h3>3. API Communication</h3>
+        <p>When the workflow runs, it sends requests to OpenRouter's unified API. OpenRouter then routes these to the appropriate AI provider (OpenAI, Anthropic, Google, etc.) based on your model selection, handles the API differences, and returns standardized responses.</p>
+        
+        <h3>4. Response Processing</h3>
+        <p>The AI responses come back through the same OpenAI node structure, so all your existing n8n logic for handling AI outputs continues to work seamlessly.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for businesses and developers who need AI automation flexibility but are constrained by their n8n version. It's particularly valuable for:</p>
+        <p><strong>Teams running stable n8n deployments</strong> who can't immediately upgrade to version 1.78 but want access to multiple AI models. Many enterprises maintain specific software versions for stability and compliance reasons.</p>
+        <p><strong>Cost-conscious AI implementers</strong> who want to compare different models and choose the most economical option for each task. OpenRouter lets you see pricing across providers and switch models as needed.</p>
+        <p><strong>AI automation specialists</strong> building complex workflows that require different models for different steps—like using a fast model for classification and a powerful model for generation.</p>
+        <p><strong>Businesses experimenting with AI</strong> who want to test multiple providers without rebuilding their automation infrastructure each time.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (version before 1.78) - either self-hosted or cloud</li>
+          <li><strong>OpenRouter account</strong> with API credits - free tier available for testing</li>
+          <li><strong>OpenRouter API key</strong> - obtained from your OpenRouter dashboard</li>
+          <li><strong>Basic n8n knowledge</strong> - understanding of how to import workflows and configure credentials</li>
+          <li><strong>Clear use case</strong> - know what AI tasks you want to automate (content generation, classification, analysis, etc.)</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with OpenRouter's free credits to test different models before committing to a paid plan. Monitor your usage in the OpenRouter dashboard to understand cost patterns for your specific use cases.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this OpenRouter workaround in your n8n environment:</p>
+        <ol>
+          <li><strong>Import the workflow</strong> into your n8n instance using the downloaded JSON file.</li>
+          <li><strong>Create an OpenRouter account</strong> at openrouter.ai and generate an API key from your dashboard.</li>
+          <li><strong>Configure n8n credentials</strong> by creating new OpenAI-type credentials. Set the Base URL field to "https://openrouter.ai/api/v1" and use your OpenRouter API key as the password.</li>
+          <li><strong>Select your model</strong> in the workflow's settings node. Choose from OpenRouter's model list based on your needs and budget.</li>
+          <li><strong>Test the connection</strong> with a simple prompt to ensure everything is working correctly.</li>
+          <li><strong>Integrate with your existing workflows</strong> by connecting this OpenRouter setup to your automation logic.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Model flexibility without upgrading:</strong> Access dozens of AI models while staying on your stable n8n version. No need to risk upgrading your entire automation platform just for AI capabilities.</p>
+        <p><strong>Cost optimization:</strong> Compare pricing across AI providers and choose the most economical model for each task. OpenRouter shows real-time pricing, so you can make informed decisions about where to spend your AI budget.</p>
+        <p><strong>Future-proofing:</strong> When you do upgrade to n8n 1.78+, transitioning to the native OpenRouter node is straightforward. Your workflow logic remains largely the same.</p>
+        <p><strong>Reduced vendor lock-in:</strong> By abstracting AI model selection, you're not tied to any single provider's pricing changes, API limitations, or service disruptions.</p>
+        <p><strong>Consistent integration pattern:</strong> All AI interactions use the same n8n node structure, making your workflows easier to maintain and understand compared to using multiple different AI integrations.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI model integration and automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is OpenRouter and why is it useful for AI automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>OpenRouter is a unified API that gives you access to dozens of different AI models from providers like OpenAI, Anthropic, Google, and open-source options. It's useful because you can switch between models without changing your entire workflow, compare outputs, and choose the most cost-effective model for each task.</p>
+          <p>For automation purposes, this means you can build workflows that intelligently select the right AI tool for each job. A customer support automation might use a cheaper, faster model for initial classification, then switch to a more capable model for complex responses.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does using multiple AI models benefit business automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Using multiple AI models lets you match the right tool to each task. Different models have different strengths—some are better at creative writing, others at logical reasoning, coding, or data extraction. By having access to multiple options, you can optimize both quality and cost.</p>
+          <p>For example, an e-commerce business might use a fast, inexpensive model to categorize customer inquiries, a mid-tier model to generate product descriptions, and a premium model for complex customer service scenarios. This tiered approach can reduce AI costs by 40-60% compared to using a single premium model for everything.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main challenges when integrating different AI services?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The main challenges include managing different API formats, handling varying rate limits and costs, maintaining consistent output formats, and dealing with different authentication methods. Each AI provider has its own quirks and limitations that you need to account for in your automation logic.</p>
+          <p>Services like OpenRouter solve these by providing a unified interface, but you still need proper error handling and fallback strategies. For instance, if your preferred model is unavailable or too expensive at the moment, your workflow should automatically switch to an alternative without breaking.</p>
+          <ul>
+            <li>Implement retry logic with exponential backoff</li>
+            <li>Set budget limits per model or per workflow run</li>
+            <li>Normalize outputs from different models for consistent processing</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can AI automation improve content generation workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI automation can generate, edit, and personalize content at scale. For instance, you can automatically create blog post drafts, generate social media captions, personalize email campaigns, or summarize customer feedback. By using different AI models, you can ensure each piece of content gets the most appropriate treatment.</p>
+          <p>A marketing team might use one model for generating creative headlines, another for writing detailed product descriptions, and a third for proofreading and tone adjustment. The automation handles the entire pipeline from idea to publication-ready content, with human review at key checkpoints.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What should businesses consider when choosing between different AI models?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Consider cost per token, speed, context window size, specific capabilities (like coding or creative writing), reliability, and whether the model supports your required features like function calling or image understanding. Testing multiple models on your actual use cases is crucial for making informed decisions.</p>
+          <p>Also consider the total cost of integration—some models might be cheaper per token but require more extensive prompt engineering or post-processing. The best choice often depends on your specific use case, volume of requests, and quality requirements.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can I ensure my AI automation remains cost-effective as usage scales?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Implement usage monitoring, set budget alerts, use caching for repeated queries, implement fallback to cheaper models when appropriate, batch similar requests, and regularly review which models provide the best value for each task type. Also consider implementing usage quotas for different departments or use cases.</p>
+          <p>As your automation scales, small optimizations can lead to significant savings. For example, caching common responses, using smaller models for simple classification tasks, and implementing request queuing during peak hours can reduce costs by 30-50% while maintaining service quality.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom AI model integration automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, our team at GrowwStacks specializes in building custom AI automation solutions tailored to specific business needs. We can design workflows that integrate multiple AI models, connect to your existing systems, and optimize for your unique requirements, whether it's customer support, content creation, data analysis, or specialized business processes.</p>
+          <p>We start by understanding your specific use cases, data flows, and business objectives. Then we design an automation architecture that selects the right AI tools for each task, implements proper error handling and cost controls, and integrates seamlessly with your existing software stack.</p>
+          <ul>
+            <li>Custom model selection logic based on content type and priority</li>
+            <li>Integration with your CRM, CMS, or internal databases</li>
+            <li>Comprehensive monitoring and cost optimization features</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom AI Model Integration Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
