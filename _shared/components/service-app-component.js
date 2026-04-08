@@ -32,19 +32,10 @@
           />
         </div>
         <div class="card-content">
-          <div class="card-top">
-            <span class="account-id">ID: ${item.accountId || ""}</span>
-          </div>
           <h3>${item.title || ""}</h3>
           <p class="display-title">${item.description || item.displayTitle || ""}</p>
-          <div class="apps-wrap">
-            ${(item.apps || [])
-              .map((app) => `<span class="app-badge">${app}</span>`)
-              .join("")}
-          </div>
           <div class="card-actions">
-            <a href="${item.makeUrl || "#"}" target="_blank" rel="noopener noreferrer">Open Make</a>
-            <a href="${item.driveUrl || "#"}" target="_blank" rel="noopener noreferrer">View Template</a>
+            <a href="${item.driveUrl || "#"}" target="_blank" rel="noopener noreferrer">Download Template</a>
           </div>
         </div>
       </div>

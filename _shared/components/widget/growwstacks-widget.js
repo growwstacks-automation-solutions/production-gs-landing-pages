@@ -1,7 +1,7 @@
 import { widgetData } from "./widget-data.js";
 
 export function initGrowwStacksWidget(config = {}) {
-  const { cycleTime = 6000, containerId = "gs-spw" } = config;
+  const { cycleTime = 12000, containerId = "gs-spw" } = config;
 
   injectStyles();
 
