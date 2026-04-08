@@ -92,7 +92,7 @@
         container.innerHTML = `
           <div class="no-templates">
             <h3>No templates found</h3>
-            <p>No templates available for <strong>${appName}</strong>.</p>
+            <p style="text-align: center;">No templates available for <strong>${appName}</strong>.</p>
           </div>
         `;
         return;
