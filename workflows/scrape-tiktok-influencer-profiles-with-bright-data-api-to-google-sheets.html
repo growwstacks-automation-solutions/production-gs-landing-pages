@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Influencer Scraper with Bright Data & Google Sheets | Free n8n Template</title>
+<meta name="description" content="Automate TikTok influencer research. This free n8n workflow scrapes TikTok profiles using Bright Data API and saves detailed data to Google Sheets for marketing analysis.">
+<link rel="canonical" href="https://growwstacks.com/workflows/3076-scrape-tiktok-influencer-profiles-with-bright-data-api-to-google-sheets/">
+<meta property="og:title" content="Automate TikTok Influencer Research with Bright Data & Google Sheets">
+<meta property="og:description" content="Free n8n workflow template to scrape TikTok influencer profiles, extract engagement data, and automatically populate Google Sheets for marketing campaigns.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/3076-scrape-tiktok-influencer-profiles-with-bright-data-api-to-google-sheets/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5434-scrape-tiktok-influencer-profiles-with-bright-data-api-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate TikTok Influencer Research with Bright Data & Google Sheets">
+<meta name="twitter:description" content="Free n8n workflow template to scrape TikTok influencer profiles, extract engagement data, and automatically populate Google Sheets for marketing campaigns.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"TikTok Influencer Scraper with Bright Data & Google Sheets","description":"Automate TikTok influencer research. This free n8n workflow scrapes TikTok profiles using Bright Data API and saves detailed data to Google Sheets for marketing analysis.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5434-scrape-tiktok-influencer-profiles-with-bright-data-api-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is TikTok influencer scraping and why is it useful for businesses?","acceptedAnswer":{"@type":"Answer","text":"TikTok influencer scraping is the automated collection of public profile data from TikTok creators. It's essential for businesses running influencer marketing campaigns to identify relevant creators, analyze audience demographics, track engagement metrics, and build targeted outreach lists without manual research."}},{"@type":"Question","name":"How does Bright Data help with TikTok data collection compared to manual methods?","acceptedAnswer":{"@type":"Answer","text":"Bright Data provides reliable, structured access to TikTok's public data through their official datasets, bypassing anti-scraping protections that often block simple scripts. This ensures consistent data quality, avoids IP bans, and provides comprehensive metrics like engagement rates, follower authenticity, and content performance that are difficult to gather manually at scale."}},{"@type":"Question","name":"What specific data points can I extract about TikTok influencers using this automation?","acceptedAnswer":{"@type":"Answer","text":"This workflow extracts comprehensive profile data including follower counts, following counts, total likes, video counts, verification status, biography text, profile URLs, profile pictures, bio links, engagement rates (like and comment percentages), geographic region, age indicators, and lists of top-performing videos—all formatted for immediate analysis in Google Sheets."}},{"@type":"Question","name":"How accurate and up-to-date is the TikTok data collected through Bright Data?","acceptedAnswer":{"@type":"Answer","text":"Bright Data's TikTok dataset provides near real-time data directly from TikTok's public APIs, offering higher accuracy and freshness than manual scraping. The data reflects current follower counts, recent engagement metrics, and up-to-date profile information, typically within hours of changes occurring on the platform itself."}},{"@type":"Question","name":"Can I use this TikTok scraper for competitive analysis and market research?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. This automation is perfect for competitive analysis by tracking competitors' influencer partnerships, monitoring industry trends, identifying rising creators in your niche, benchmarking engagement rates, and understanding what content performs best with target audiences—all automated and organized in Google Sheets for easy comparison."}},{"@type":"Question","name":"What are the main benefits of automating TikTok influencer research versus doing it manually?","acceptedAnswer":{"@type":"Answer","text":"Automation saves 90%+ of the time spent on manual research, ensures data consistency, eliminates human error in data entry, allows scaling to hundreds or thousands of profiles, provides structured data ready for analysis, and enables regular updates without recurring manual work—transforming what was a days-long research project into minutes of automated processing."}},{"@type":"Question","name":"Can I get a custom TikTok influencer automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom TikTok automation solutions tailored to specific business needs. We can create workflows that integrate with your CRM, add sentiment analysis, track campaign performance, automate outreach, and provide real-time dashboards—going far beyond basic scraping to create complete influencer marketing systems."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"TikTok Influencer Scraper"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>TikTok Influencer Scraper</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">TikTok</span>
+          <span class="cs-tag">Bright Data</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Market Research</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate TikTok Influencer Research with Bright Data & Google Sheets</h1>
+        <p class="cs-hero-sub">Scrape TikTok profiles at scale, extract engagement metrics, and build targeted influencer lists automatically—no coding required.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5434-scrape-tiktok-influencer-profiles-with-bright-data-api-.png" alt="TikTok influencer scraper automation workflow diagram showing data flow from TikTok to Google Sheets" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual TikTok influencer research is time-consuming and inconsistent. Marketing teams spend hours scrolling through profiles, manually recording follower counts, engagement rates, and contact information—only to have that data become outdated within weeks. This n8n automation solves that problem by systematically scraping TikTok influencer profiles using Bright Data's reliable API and organizing everything into Google Sheets.</p>
+        <p>The workflow accepts TikTok profile URLs through a simple web form, sends them to Bright Data for processing, monitors the scraping status, retrieves comprehensive profile data, and automatically populates a structured spreadsheet. What used to take hours of manual work now happens automatically in minutes, giving marketing teams accurate, up-to-date data for campaign planning and outreach.</p>
+        <p>Beyond basic scraping, this template includes intelligent error handling, retry logic for failed requests, and status monitoring—ensuring complete data collection even when dealing with thousands of profiles. The result is a scalable system for influencer discovery, competitive analysis, and market intelligence that grows with your business needs.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Profile Submission & API Trigger</h3>
+        <p>Users submit TikTok profile URLs through a customizable web form. The workflow captures these URLs and sends them to Bright Data's TikTok dataset API with your specified parameters—including country targeting, data fields to extract, and processing preferences.</p>
+        
+        <h3>2. Intelligent Status Polling</h3>
+        <p>Since TikTok data scraping isn't instantaneous, the workflow implements smart polling. It checks the Bright Data API every 30 seconds to monitor scraping progress, automatically retrying if data isn't ready yet. This ensures reliable completion without manual intervention.</p>
+        
+        <h3>3. Data Extraction & Validation</h3>
+        <p>Once Bright Data returns the scraped information, the workflow extracts and validates key metrics: follower counts, engagement rates, verification status, biography content, profile links, and performance data. It cleans and formats this data for optimal spreadsheet organization.</p>
+        
+        <h3>4. Automated Google Sheets Population</h3>
+        <p>The validated data automatically populates your Google Sheets spreadsheet with structured columns for each metric. The template includes timestamp tracking, status indicators, and error messages—creating a complete audit trail of your influencer research activities.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for marketing agencies running influencer campaigns, brands building creator partnerships, market research firms analyzing social trends, and startups identifying brand ambassadors. If you regularly need to evaluate TikTok creators for partnerships, track competitor influencer relationships, or build targeted outreach lists, this workflow eliminates the manual grunt work.</p>
+        <p>Particularly valuable for teams managing multiple campaigns simultaneously, businesses scaling their influencer marketing efforts, or anyone needing to regularly update creator databases with fresh engagement metrics. The automated approach ensures consistency across team members and prevents data degradation over time.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted)</li>
+          <li><strong>Google account</strong> with Sheets access</li>
+          <li><strong>Bright Data account</strong> with TikTok dataset access</li>
+          <li><strong>TikTok profile URLs</strong> to test the workflow</li>
+          <li><strong>10-15 minutes</strong> for initial setup and configuration</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with 5-10 test profiles to verify your setup before scaling to hundreds. This helps identify any configuration issues with minimal API usage costs.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Import the workflow:</strong> Copy the JSON template and import it into your n8n instance under Workflows → Add workflow → Import from JSON.</li>
+          <li><strong>Configure Bright Data:</strong> Create HTTP Request credentials in n8n with your Bright Data API key as a Bearer Token. Verify access to the TikTok dataset (gd_l1villgoiiidt09ci).</li>
+          <li><strong>Prepare Google Sheets:</strong> Create a new spreadsheet named "TikTok Influencer Data" with a sheet tab called "TikTok profile by url." Set up Google Sheets OAuth2 credentials in n8n.</li>
+          <li><strong>Update workflow settings:</strong> Replace the placeholder Google Sheet ID with your actual document ID. Update the Bright Data API key in the HTTP Request node.</li>
+          <li><strong>Test with sample profiles:</strong> Use the generated webhook URL to submit 2-3 TikTok profile URLs. Monitor execution and verify data appears correctly in your spreadsheet.</li>
+          <li><strong>Activate for production:</strong> Once testing succeeds, share the form URL with your team and begin scaling your influencer research.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 90%+ research time:</strong> What takes hours manually completes in minutes automatically. Process hundreds of profiles while focusing on strategy rather than data entry.</p>
+        <p><strong>Ensure data consistency:</strong> Automated extraction eliminates human error in recording follower counts, engagement rates, and other metrics. Every profile gets evaluated with the same criteria.</p>
+        <p><strong>Scale effortlessly:</strong> From 10 to 10,000 profiles, the system handles volume without additional manual effort. Perfect for growing marketing campaigns or expanding into new markets.</p>
+        <p><strong>Maintain current data:</strong> Regularly refresh your influencer database with up-to-date metrics. Run the workflow monthly to track growth trends and identify rising creators.</p>
+        <p><strong>Integrate with existing tools:</strong> The Google Sheets output easily connects to CRMs, marketing automation platforms, data visualization tools, and team collaboration systems.</p>
+
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about TikTok influencer automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is TikTok influencer scraping and why is it useful for businesses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>TikTok influencer scraping is the automated collection of public profile data from TikTok creators. It's essential for businesses running influencer marketing campaigns to identify relevant creators, analyze audience demographics, track engagement metrics, and build targeted outreach lists without manual research.</p>
+          <p>For marketing teams, this means moving from guesswork to data-driven decisions. Instead of manually browsing TikTok for hours, you get structured data showing exactly which creators align with your brand, their actual engagement rates (not just follower counts), and contact information—all ready for campaign planning.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does Bright Data help with TikTok data collection compared to manual methods?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Bright Data provides reliable, structured access to TikTok's public data through their official datasets, bypassing anti-scraping protections that often block simple scripts. This ensures consistent data quality, avoids IP bans, and provides comprehensive metrics like engagement rates, follower authenticity, and content performance that are difficult to gather manually at scale.</p>
+          <p>Manual methods typically hit rate limits, get blocked by TikTok's defenses, and miss important data points. Bright Data's infrastructure handles these challenges automatically, giving you clean, complete data without technical headaches. The difference is like having a research team working 24/7 versus one person occasionally checking profiles.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What specific data points can I extract about TikTok influencers using this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>This workflow extracts comprehensive profile data including follower counts, following counts, total likes, video counts, verification status, biography text, profile URLs, profile pictures, bio links, engagement rates (like and comment percentages), geographic region, age indicators, and lists of top-performing videos—all formatted for immediate analysis in Google Sheets.</p>
+          <p>Beyond basic metrics, you get calculated insights like engagement rates (crucial for identifying authentic influencers), content patterns from top videos, and demographic indicators. This depth transforms simple follower numbers into actionable intelligence for partnership decisions and campaign forecasting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate and up-to-date is the TikTok data collected through Bright Data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Bright Data's TikTok dataset provides near real-time data directly from TikTok's public APIs, offering higher accuracy and freshness than manual scraping. The data reflects current follower counts, recent engagement metrics, and up-to-date profile information, typically within hours of changes occurring on the platform itself.</p>
+          <p>This timeliness is critical for influencer marketing where follower counts can change rapidly and engagement rates fluctuate with content performance. Unlike static manual research that becomes outdated quickly, automated updates ensure your outreach lists target creators with current relevance and audience size.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this TikTok scraper for competitive analysis and market research?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. This automation is perfect for competitive analysis by tracking competitors' influencer partnerships, monitoring industry trends, identifying rising creators in your niche, benchmarking engagement rates, and understanding what content performs best with target audiences—all automated and organized in Google Sheets for easy comparison.</p>
+          <p>By systematically analyzing which influencers your competitors work with, their engagement patterns, and audience demographics, you gain strategic insights for your own campaigns. The automated approach lets you monitor multiple competitors simultaneously without dedicating full-time researchers to the task.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of automating TikTok influencer research versus doing it manually?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automation saves 90%+ of the time spent on manual research, ensures data consistency, eliminates human error in data entry, allows scaling to hundreds or thousands of profiles, provides structured data ready for analysis, and enables regular updates without recurring manual work—transforming what was a days-long research project into minutes of automated processing.</p>
+          <p>The consistency factor is particularly valuable for teams. Different researchers might record data differently or miss key metrics. Automated systems apply the same criteria to every profile, creating reliable datasets for comparison and decision-making across your entire influencer portfolio.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom TikTok influencer automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom TikTok automation solutions tailored to specific business needs. We can create workflows that integrate with your CRM, add sentiment analysis, track campaign performance, automate outreach, and provide real-time dashboards—going far beyond basic scraping to create complete influencer marketing systems.</p>
+          <p>Our team designs automations that fit your exact workflow: perhaps you need automated scoring of influencers based on custom criteria, integration with your marketing platform, scheduled reporting, or multi-platform analysis combining TikTok with Instagram and YouTube data. We build what you need, not just what's available in templates.</p>
+          <ul>
+            <li>Custom influencer scoring algorithms based on your brand values</li>
+            <li>Automated outreach and follow-up sequences</li>
+            <li>Campaign performance tracking against influencer costs</li>
+            <li>Integration with your existing marketing tech stack</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom TikTok Influencer Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

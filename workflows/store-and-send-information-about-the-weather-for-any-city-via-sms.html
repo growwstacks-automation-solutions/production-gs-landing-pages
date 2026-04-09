@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather SMS Alerts Automation | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automatically fetch weather data for any city and send SMS alerts. Free n8n workflow template integrates OpenWeatherMap and Twilio for instant notifications.">
+<link rel="canonical" href="https://growwstacks.com/workflows/255-store-and-send-information-about-the-weather-for-any-city-via-sms/">
+<meta property="og:title" content="Automate Weather Alerts via SMS | Free n8n Workflow">
+<meta property="og:description" content="Get a free n8n template to pull weather data and send SMS notifications automatically. Perfect for businesses, events, or personal use.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/255-store-and-send-information-about-the-weather-for-any-city-via-sms/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/738-store-and-send-information-about-the-weather-for-any-cit.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Weather Alerts via SMS | Free n8n Workflow">
+<meta name="twitter:description" content="Get a free n8n template to pull weather data and send SMS notifications automatically. Perfect for businesses, events, or personal use.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Weather SMS Alerts Automation","description":"Automatically fetch weather data for any city and send SMS alerts. Free n8n workflow template integrates OpenWeatherMap and Twilio for instant notifications.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/738-store-and-send-information-about-the-weather-for-any-cit.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why automate weather alerts for my business?","acceptedAnswer":{"@type":"Answer","text":"Automating weather alerts saves time, reduces manual monitoring, and ensures timely communication. It's crucial for outdoor events, logistics, construction, and agriculture where weather impacts operations. Automated SMS ensures your team or customers get instant updates without you checking forecasts constantly."}},{"@type":"Question","name":"What are the main benefits of using SMS for weather notifications?","acceptedAnswer":{"@type":"Answer","text":"SMS has near 100% open rates and delivers alerts instantly, even without internet. It's reliable for critical notifications like storm warnings, schedule changes, or safety instructions. Unlike email, SMS gets immediate attention, making it ideal for time-sensitive weather updates."}},{"@type":"Question","name":"Can I customize the weather data I receive via SMS?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can customize which weather parameters are sent. Common data includes temperature, conditions, humidity, wind speed, and precipitation chance. You can also set thresholds to trigger alerts only when specific conditions are met, like temperature drops below freezing or rain probability exceeds 70%."}},{"@type":"Question","name":"How reliable are weather APIs for automation?","acceptedAnswer":{"@type":"Answer","text":"Services like OpenWeatherMap offer highly reliable, real-time data with uptime exceeding 99.9%. They provide accurate forecasts, historical data, and severe weather alerts. For automation, you can implement error handling and fallback logic to ensure your workflow continues even if the API has a temporary issue."}},{"@type":"Question","name":"What's the typical cost for sending automated weather SMS?","acceptedAnswer":{"@type":"Answer","text":"Costs depend on your SMS provider and volume. Twilio typically charges fractions of a cent per SMS. For 100 daily alerts, you might spend $1-3 monthly. Many providers offer free tiers for testing. The main expense is the SMS service, not the weather data, which often has generous free tiers."}},{"@type":"Question","name":"Can I send weather alerts to multiple recipients or groups?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. You can configure the workflow to send to individual numbers, groups, or entire contact lists. Common use cases include notifying field teams, event attendees, or school parents. You can personalize messages with location-specific data and schedule different alerts for different groups."}},{"@type":"Question","name":"How do I ensure my weather automation runs reliably 24/7?","acceptedAnswer":{"@type":"Answer","text":"Host your n8n instance on a reliable cloud server or use n8n.cloud. Set up monitoring for failed runs and implement retry logic for API calls. Use webhook triggers for real-time alerts or schedule regular checks. Test during different weather conditions and maintain an error notification system."}},{"@type":"Question","name":"Can I get a custom weather automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in custom weather automation solutions. We can build workflows that integrate with your existing systems, add location tracking, multi-language support, or combine weather data with other business logic like inventory management or staff scheduling. Book a free consultation to discuss your specific needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Weather SMS Alerts Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Weather SMS Alerts</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Weather</span>
+          <span class="cs-tag">SMS</span>
+          <span class="cs-tag">OpenWeatherMap</span>
+          <span class="cs-tag">Twilio</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Automate Weather Alerts & Send SMS Notifications</h1>
+        <p class="cs-hero-sub">Fetch real-time weather data for any city and automatically send SMS alerts to your team or customers. Free n8n template with OpenWeatherMap and Twilio integration.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="weather-sms-alerts-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/738-store-and-send-information-about-the-weather-for-any-cit.png" alt="Visual diagram of weather data automation workflow fetching data and sending SMS alerts" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves a common business problem: staying informed about weather conditions without manual checking. It automatically pulls current weather data for specified cities from OpenWeatherMap, processes the information, and sends customized SMS alerts via Twilio.</p>
+        <p>Whether you're managing outdoor events, coordinating field teams, running delivery services, or simply want personal weather updates, this workflow eliminates the need for constant manual monitoring. It transforms raw weather data into actionable notifications that reach people where they are—on their phones.</p>
+        <p>The template is particularly valuable for businesses where weather impacts operations. Construction companies can receive frost warnings, event planners can monitor rain probabilities, logistics managers can track storm conditions, and agricultural operations can get temperature alerts—all automatically delivered via SMS for immediate attention.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow follows a logical sequence that ensures reliable delivery of weather information to the right people at the right time.</p>
+        
+        <h3>Step 1: Trigger & Weather Data Fetch</h3>
+        <p>The automation can be triggered on a schedule (daily, hourly) or via webhook. It connects to the OpenWeatherMap API using your API key and location parameters (city name or coordinates) to retrieve current weather conditions including temperature, humidity, wind speed, and precipitation.</p>
+        
+        <h3>Step 2: Data Processing & Customization</h3>
+        <p>Raw weather data is transformed into human-readable messages. The workflow extracts relevant metrics, applies conditional logic (like "send alert only if rain probability > 50%"), and formats the information for SMS delivery. You can customize which data points are included and how they're presented.</p>
+        
+        <h3>Step 3: SMS Delivery via Twilio</h3>
+        <p>Processed weather information is sent through Twilio's SMS API to designated phone numbers. The workflow handles message formatting, character limits, and delivery status tracking. You can configure multiple recipients, group messaging, and personalized content based on location or recipient preferences.</p>
+        
+        <h3>Step 4: Error Handling & Logging</h3>
+        <p>The template includes built-in error handling for API failures, network issues, or invalid phone numbers. Failed attempts are logged and can trigger alternative notifications (like email fallback) to ensure you're aware of any delivery problems.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation template serves multiple business scenarios and user types. <strong>Event management companies</strong> can alert attendees about weather-related schedule changes. <strong>Construction and landscaping businesses</strong> can notify crews about unsafe working conditions. <strong>Delivery and logistics operations</strong> can monitor route conditions and driver safety.</p>
+        <p><strong>Agricultural operations</strong> benefit from frost, heat, or precipitation alerts for crop protection. <strong>Schools and educational institutions</strong> can communicate weather-related closures or delays to parents. <strong>Personal users</strong> who want automated weather updates for travel, gardening, or outdoor activities will find this workflow eliminates daily manual checking.</p>
+        <p>The solution is particularly valuable for businesses with distributed teams, time-sensitive operations, or customer-facing services where weather conditions directly impact service delivery or safety protocols.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) with workflow execution capabilities</li>
+          <li><strong>OpenWeatherMap API key</strong> (free tier available with 1,000 calls/day)</li>
+          <li><strong>Twilio account</strong> with SMS capabilities and verified phone numbers</li>
+          <li><strong>List of target cities/locations</strong> for weather monitoring</li>
+          <li><strong>Recipient phone numbers</strong> (properly formatted with country codes)</li>
+          <li><strong>Basic understanding</strong> of API credentials and webhook configuration</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Import and configure this weather alert system in under 15 minutes with these steps:</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance.</li>
+          <li><strong>Configure OpenWeatherMap node</strong> by adding your API key and setting your target city/cities.</li>
+          <li><strong>Set up Twilio credentials</strong> in the SMS node with your Account SID, Auth Token, and Twilio phone number.</li>
+          <li><strong>Add recipient phone numbers</strong> in the correct international format (+1234567890).</li>
+          <li><strong>Customize the message template</strong> to include the weather data points most relevant to your use case.</li>
+          <li><strong>Set the trigger schedule</strong> (daily at 7 AM, hourly, or on-demand via webhook).</li>
+          <li><strong>Test the workflow</strong> with a single recipient before enabling full automation.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a single city and recipient for testing. Use OpenWeatherMap's "One Call API" for more detailed forecasts including minute-by-minute precipitation if you need hyper-local alerts.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate manual weather checking</strong> – Save 15-30 minutes daily that would otherwise be spent checking multiple weather sources and compiling information for your team or customers.</p>
+        <p><strong>Improve response time to weather events</strong> – Get instant notifications about changing conditions rather than discovering them after they've impacted your operations, reducing weather-related disruptions by up to 70%.</p>
+        <p><strong>Ensure reliable communication</strong> – SMS has near 100% open rates compared to 20% for email, ensuring critical weather information actually reaches your intended audience when it matters most.</p>
+        <p><strong>Scale across multiple locations</strong> – Monitor weather in dozens of cities simultaneously without additional manual effort, perfect for businesses with multiple locations or service areas.</p>
+        <p><strong>Customizable alert thresholds</strong> – Only receive notifications when conditions meet your specific criteria (temperature thresholds, precipitation levels, wind speeds), reducing alert fatigue while maintaining situational awareness.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about weather automation and SMS integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why automate weather alerts for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating weather alerts saves time, reduces manual monitoring, and ensures timely communication. It's crucial for outdoor events, logistics, construction, and agriculture where weather impacts operations. Automated SMS ensures your team or customers get instant updates without you checking forecasts constantly.</p>
+          <p>Beyond efficiency, automation provides consistency and reliability. Manual processes often get overlooked during busy periods, but automated systems work 24/7. This is especially important for safety-critical notifications where delayed information could have serious consequences.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of using SMS for weather notifications?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>SMS has near 100% open rates and delivers alerts instantly, even without internet. It's reliable for critical notifications like storm warnings, schedule changes, or safety instructions. Unlike email, SMS gets immediate attention, making it ideal for time-sensitive weather updates.</p>
+          <p>SMS works on all mobile phones regardless of smartphone capabilities or app installations. This universal accessibility makes it perfect for reaching diverse audiences including field workers, event attendees, or customers who may not regularly check email or specific apps.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I customize the weather data I receive via SMS?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, you can customize which weather parameters are sent. Common data includes temperature, conditions, humidity, wind speed, and precipitation chance. You can also set thresholds to trigger alerts only when specific conditions are met, like temperature drops below freezing or rain probability exceeds 70%.</p>
+          <p>The template allows message personalization based on recipient preferences or location. For example, construction sites might want wind speed alerts while farmers need frost warnings. You can even include actionable recommendations like "reschedule outdoor work" or "bring plants indoors."</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How reliable are weather APIs for automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Services like OpenWeatherMap offer highly reliable, real-time data with uptime exceeding 99.9%. They provide accurate forecasts, historical data, and severe weather alerts. For automation, you can implement error handling and fallback logic to ensure your workflow continues even if the API has a temporary issue.</p>
+          <p>Professional weather APIs use multiple data sources including satellites, radar, and ground stations. They update frequently (some every 10 minutes) and offer global coverage. For critical applications, consider redundant data sources or premium tiers with guaranteed SLAs.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the typical cost for sending automated weather SMS?</span>
+          <span class="faq-arrow" aria-expanded="false">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Costs depend on your SMS provider and volume. Twilio typically charges fractions of a cent per SMS. For 100 daily alerts, you might spend $1-3 monthly. Many providers offer free tiers for testing. The main expense is the SMS service, not the weather data, which often has generous free tiers.</p>
+          <p>Weather API costs vary by provider and data volume. OpenWeatherMap's free tier includes 1,000 calls/day—enough for checking 10 locations every hour. For most business use cases, costs remain under $20/month even at scale, significantly cheaper than manual monitoring or missed opportunity costs.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I send weather alerts to multiple recipients or groups?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. You can configure the workflow to send to individual numbers, groups, or entire contact lists. Common use cases include notifying field teams, event attendees, or school parents. You can personalize messages with location-specific data and schedule different alerts for different groups.</p>
+          <p>The template supports dynamic recipient lists from databases or spreadsheets. You can segment audiences by location, role, or preference. For example, send frost warnings only to agricultural clients while sending rain alerts to event planners—all from the same automated workflow.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I ensure my weather automation runs reliably 24/7?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Host your n8n instance on a reliable cloud server or use n8n.cloud. Set up monitoring for failed runs and implement retry logic for API calls. Use webhook triggers for real-time alerts or schedule regular checks. Test during different weather conditions and maintain an error notification system.</p>
+          <p>Implement redundancy by having backup weather data sources and SMS providers. Monitor delivery rates and message costs. Regular maintenance includes updating API keys before expiration and adjusting alert thresholds seasonally. Consider timezone awareness for global operations.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom weather automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in custom weather automation solutions. We can build workflows that integrate with your existing systems, add location tracking, multi-language support, or combine weather data with other business logic like inventory management or staff scheduling.</p>
+          <p>Our team creates tailored solutions that match your specific operational needs—whether you need alerts based on multiple weather sources, integration with your CRM or project management tools, or complex conditional logic for different business units. We handle the technical implementation so you can focus on your business.</p>
+          <ul>
+            <li>Integration with your existing software stack</li>
+            <li>Custom alert thresholds and escalation procedures</li>
+            <li>Detailed analytics on alert effectiveness and cost optimization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Weather Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

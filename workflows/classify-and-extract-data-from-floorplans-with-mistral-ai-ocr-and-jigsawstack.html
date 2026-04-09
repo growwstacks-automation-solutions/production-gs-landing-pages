@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Floorplan Classification & Data Extraction | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow to automatically classify floorplan images/PDFs and extract room dimensions using Mistral AI OCR & JigsawStack. Filter junk files, get structured data.">
+<link rel="canonical" href="https://growwstacks.com/workflows/5425-classify-and-extract-data-from-floorplans-with-mistral-ai-ocr-and-jigsawstack/">
+<meta property="og:title" content="Automated Floorplan Classification & Data Extraction | Free n8n Template">
+<meta property="og:description" content="Free n8n workflow to automatically classify floorplan images/PDFs and extract room dimensions using Mistral AI OCR & JigsawStack. Filter junk files, get structured data.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/5425-classify-and-extract-data-from-floorplans-with-mistral-ai-ocr-and-jigsawstack/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8420-classify-and-extract-data-from-floorplans-with-mistral-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automated Floorplan Classification & Data Extraction | Free n8n Template">
+<meta name="twitter:description" content="Free n8n workflow to automatically classify floorplan images/PDFs and extract room dimensions using Mistral AI OCR & JigsawStack. Filter junk files, get structured data.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automated Floorplan Classification & Data Extraction","description":"Free n8n workflow to automatically classify floorplan images/PDFs and extract room dimensions using Mistral AI OCR & JigsawStack. Filter junk files, get structured data.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8420-classify-and-extract-data-from-floorplans-with-mistral-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the business value of automating floorplan processing?","acceptedAnswer":{"@type":"Answer","text":"Automating floorplan processing saves real estate and property management teams 10-20 hours per week on manual file review. It eliminates human error in measurement extraction, ensures consistent data formatting for CRM entry, and accelerates property listing timelines by instantly converting visual plans into structured, actionable data."}},{"@type":"Question","name":"How accurate is AI at extracting measurements from floorplans?","acceptedAnswer":{"@type":"Answer","text":"Modern OCR and AI models like Mistral achieve 90-95% accuracy on clean floorplan images. The workflow includes confidence scoring and validation steps to flag uncertain readings. For business use, this accuracy is sufficient for preliminary quotes and listings, with human verification recommended for final contracts."}},{"@type":"Question","name":"Can this automation integrate with real estate CRMs like Salesforce or HubSpot?","acceptedAnswer":{"@type":"Answer","text":"Yes, the structured JSON output can be seamlessly connected to any CRM via webhooks or API nodes. The workflow can be extended to automatically create property records, update custom fields with room dimensions, and trigger follow-up sequences based on extracted data quality."}},{"@type":"Question","name":"What file formats work best for automated floorplan analysis?","acceptedAnswer":{"@type":"Answer","text":"High-resolution PNG or JPG images yield the best OCR results. PDFs with embedded vector graphics also work well. The workflow includes preprocessing to enhance image quality, but optimal results come from clear scans with legible measurements and minimal visual clutter."}},{"@type":"Question","name":"How does automated classification handle ambiguous or poor-quality floorplans?","acceptedAnswer":{"@type":"Answer","text":"The workflow uses a two-tier confidence system. Files scoring below a threshold are flagged for manual review, preventing garbage data from entering your system. This maintains data quality while automating the majority of clear cases, giving teams the best of both automation and human oversight."}},{"@type":"Question","name":"What are the cost savings compared to manual floorplan processing?","acceptedAnswer":{"@type":"Answer","text":"Businesses processing 50+ floorplans monthly save $2,000-$5,000 in labor costs. Additional savings come from reduced errors in measurement transcription, faster client response times, and the ability to reallocate staff to higher-value tasks like client relationships instead of data entry."}},{"@type":"Question","name":"Can I get a custom floorplan automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored automation systems for real estate, construction, and property management. We can integrate with your specific software stack, add custom validation rules, and create dashboards for your extracted data. Book a free consultation to discuss your requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Floorplan Classification"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Floorplan Classification</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AI & OCR</span>
+          <span class="cs-tag">Document Processing</span>
+          <span class="cs-tag">Real Estate</span>
+          <span class="cs-tag">Data Extraction</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automated Floorplan Classification & Data Extraction</h1>
+        <p class="cs-hero-sub">Free n8n workflow to automatically classify floorplan images/PDFs and extract room dimensions using Mistral AI OCR & JigsawStack. Filter junk files, get structured data.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8420-classify-and-extract-data-from-floorplans-with-mistral-.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8420-classify-and-extract-data-from-floorplans-with-mistral-.png" alt="Visual diagram showing floorplan classification workflow with AI OCR extracting room measurements" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves a critical bottleneck for real estate, construction, and property management businesses: manually reviewing uploaded floorplan files to determine if they're valid, then painstakingly extracting room measurements. The workflow automatically classifies uploaded files (PDFs or images) as legitimate floorplans or irrelevant documents, filtering out junk uploads instantly.</p>
+        <p>For valid floorplans, it performs intelligent optical character recognition (OCR) using Mistral AI to extract room dimensions, square footage, and other structural data. The output is clean, structured JSON and user-friendly HTML tables—transforming visual information into actionable data without manual transcription.</p>
+        <h2>How It Works</h2>
+        <h3>Step 1: File Upload & Initial Routing</h3>
+        <p>The workflow triggers when a user uploads a file via webhook or form submission. It immediately routes PDFs and images (JPG, PNG) to specialized processing paths while rejecting unsupported formats.</p>
+        <h3>Step 2: Two-Layer Quality Classification</h3>
+        <p>First, heuristic checks analyze file characteristics. Then, AI classification determines if the content represents an actual floorplan versus unrelated documents. A confidence score decides whether to proceed or flag for manual review.</p>
+        <h3>Step 3: Intelligent Data Extraction</h3>
+        <p>Valid floorplans are processed through Mistral AI's OCR engine, which identifies text, measurements, and spatial relationships. The AI is constrained to output data in a strict JSON schema, ensuring consistency.</p>
+        <h3>Step 4: Data Enrichment & Aggregation</h3>
+        <p>Beyond simple extraction, the workflow calculates derived metrics like total wall surface area, aggregates measurements by floor level, and categorizes rooms by type (bedroom, bathroom, kitchen).</p>
+        <h3>Step 5: Structured Output Delivery</h3>
+        <p>Results are delivered as both machine-readable JSON for system integration and human-readable HTML tables for immediate review, completing the transformation from visual file to structured data.</p>
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for real estate platforms processing agent uploads, property management companies handling tenant documentation, construction firms estimating material requirements, and automation builders creating specialized solutions for the built environment. It's particularly valuable for businesses receiving inconsistent file quality from various sources.</p>
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Combine this workflow with your CRM's webhook capabilities to automatically create property records with pre-filled dimensions, accelerating listing creation by 80%.</p>
+        </div>
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A running n8n instance (cloud or self-hosted)</li>
+          <li>JigsawStack API key for OCR processing</li>
+          <li>Webhook endpoint to receive uploaded files</li>
+          <li>Basic understanding of JSON data structures</li>
+          <li>File storage solution (like Google Drive or S3) for processed documents</li>
+        </ol>
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download the template JSON file using the button above.</li>
+          <li>Import it into your n8n instance via the workflow import feature.</li>
+          <li>Configure the Webhook node with your endpoint URL.</li>
+          <li>Add your JigsawStack API credentials to the HTTP Request nodes.</li>
+          <li>Test with a sample floorplan image to verify extraction accuracy.</li>
+          <li>Connect output to your database, CRM, or notification system.</li>
+        </ol>
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate manual file review:</strong> Automatically filter out 40-60% of non-floorplan uploads that typically waste staff time, allowing your team to focus on qualified documents.</p>
+        <p><strong>Accelerate data entry:</strong> Reduce measurement extraction time from 15-30 minutes per floorplan to seconds, enabling faster client responses and property listings.</p>
+        <p><strong>Ensure data consistency:</strong> Structured JSON output eliminates formatting variations from manual entry, creating reliable data for quotes, contracts, and CRM records.</p>
+        <p><strong>Scale without adding staff:</strong> Process hundreds of floorplans daily with zero additional labor costs, supporting business growth without proportional overhead increase.</p>
+        <p><strong>Improve client experience:</strong> Provide instant feedback on upload quality and rapid turnaround on measurement extraction, enhancing professional reputation.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about floorplan automation and AI data extraction</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the business value of automating floorplan processing?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating floorplan processing saves real estate and property management teams 10-20 hours per week on manual file review. It eliminates human error in measurement extraction, ensures consistent data formatting for CRM entry, and accelerates property listing timelines by instantly converting visual plans into structured, actionable data.</p>
+          <p>Beyond time savings, automation improves data quality for pricing models and material estimates. Construction firms using automated extraction report 15% more accurate initial quotes due to consistent measurement interpretation.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate is AI at extracting measurements from floorplans?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Modern OCR and AI models like Mistral achieve 90-95% accuracy on clean floorplan images. The workflow includes confidence scoring and validation steps to flag uncertain readings. For business use, this accuracy is sufficient for preliminary quotes and listings, with human verification recommended for final contracts.</p>
+          <p>The system performs best on digital floorplans with clear text. Hand-drawn or low-quality scans may require manual review, but even these see 70-80% automation rates with proper preprocessing.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this automation integrate with real estate CRMs like Salesforce or HubSpot?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the structured JSON output can be seamlessly connected to any CRM via webhooks or API nodes. The workflow can be extended to automatically create property records, update custom fields with room dimensions, and trigger follow-up sequences based on extracted data quality.</p>
+          <p>Common integrations include creating property objects in Salesforce, updating custom fields in HubSpot, and syncing to Airtable for portfolio management. The modular design allows connection to virtually any business system.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What file formats work best for automated floorplan analysis?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>High-resolution PNG or JPG images yield the best OCR results. PDFs with embedded vector graphics also work well. The workflow includes preprocessing to enhance image quality, but optimal results come from clear scans with legible measurements and minimal visual clutter.</p>
+          <p>For consistent results, provide upload guidelines to users: minimum 150 DPI resolution, good lighting, and unobstructed measurement labels. The system can handle various formats but performs best with these standards.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automated classification handle ambiguous or poor-quality floorplans?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow uses a two-tier confidence system. Files scoring below a threshold are flagged for manual review, preventing garbage data from entering your system. This maintains data quality while automating the majority of clear cases, giving teams the best of both automation and human oversight.</p>
+          <p>Ambiguous files trigger automated notifications requesting better quality uploads, creating a feedback loop that improves future submissions without staff intervention.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the cost savings compared to manual floorplan processing?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Businesses processing 50+ floorplans monthly save $2,000-$5,000 in labor costs. Additional savings come from reduced errors in measurement transcription, faster client response times, and the ability to reallocate staff to higher-value tasks like client relationships instead of data entry.</p>
+          <p>The ROI typically materializes within 1-3 months. One property management company reported saving 120 hours monthly across their team, allowing them to handle 40% more properties without adding staff.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom floorplan automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored automation systems for real estate, construction, and property management. We can integrate with your specific software stack, add custom validation rules, and create dashboards for your extracted data. Book a free consultation to discuss your requirements.</p>
+          <p>Our custom solutions often include additional features like automated quote generation from extracted measurements, integration with material calculators, and custom reporting dashboards that turn floorplan data into business intelligence.</p>
+          <ul>
+            <li>Seamless integration with your existing tools</li>
+            <li>Custom validation rules for your business logic</li>
+            <li>Ongoing support and optimization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Floorplan Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
