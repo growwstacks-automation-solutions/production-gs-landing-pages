@@ -455,7 +455,7 @@ SITE.images = {
   },
 
   VIDEOS: {
-    hero:   'https://i9.ytimg.com/vi_webp/x3RdjxHS2pI/maxresdefault.webp?v=695e26ca&sqp=CPC_4s4G&rs=AOn4CLCaLxfpNjManCzdKr7cwO9sD9JOTg',
+    hero:   'https://ik.imagekit.io/r2zdlyze2o/GS-Website/Home%20Page/project_lifecycle_explained',
     andrey: 'https://i.ytimg.com/vi/FFxoaHm3MwM/mqdefault.jpg',
     noor:   'https://i.ytimg.com/vi/v3cpr16oHGw/mqdefault.jpg',
     ankit:  'https://i.ytimg.com/vi/lJ5Z52LX4j8/mqdefault.jpg'
