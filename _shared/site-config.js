@@ -66,8 +66,8 @@ const SITE = {
   // ─── Partner / Tool Logos (favicon helper — consistent sz=64) ─
 logos: {
   // ── Automation Platforms ──
-  make:            favicon('make.com'),
-  zapier:          favicon('zapier.com'),
+  make:            'https://ik.imagekit.io/r2zdlyze2o/GS-Website/make.png',
+  zapier:          'https://ik.imagekit.io/r2zdlyze2o/GS-Website/zapier.png',
   n8n:             favicon('n8n.io'),
   monday:          favicon('monday.com'),
   airtable:        favicon('airtable.com'),
@@ -185,7 +185,7 @@ logos: {
   cin7:            favicon('cin7.com'),
   whop:            favicon('whop.com'),
   sandcloud:       favicon('sandcloud.com'),
-  bigcommerce:       favicon('bigcommerce.com'),
+  bigcommerce:     favicon('bigcommerce.com'),
 
 
   // ── Productivity ──
