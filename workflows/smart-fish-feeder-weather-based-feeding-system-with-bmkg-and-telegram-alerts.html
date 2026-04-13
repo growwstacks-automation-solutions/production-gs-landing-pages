@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Fish Feeder: Weather-Based Feeding System with BMKG & Telegram Alerts | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate fish farming with intelligent weather-based feeding. This n8n workflow integrates BMKG weather data, IoT hardware, and Telegram alerts to optimize aquaculture.">
+<link rel="canonical" href="https://growwstacks.com/workflows/5609-smart-fish-feeder-weather-based-feeding-system-with-bmkg-and-telegram-alerts/">
+<meta property="og:title" content="Smart Fish Feeder: Weather-Based Automation with BMKG & Telegram">
+<meta property="og:description" content="Free n8n template for intelligent aquaculture. Automate fish feeding based on weather forecasts to save feed and improve fish health.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/5609-smart-fish-feeder-weather-based-feeding-system-with-bmkg-and-telegram-alerts/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8667-smart-fish-feeder-weather-based-feeding-system-with-bmk.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Smart Fish Feeder: Weather-Based Automation with BMKG & Telegram">
+<meta name="twitter:description" content="Free n8n template for intelligent aquaculture. Automate fish feeding based on weather forecasts to save feed and improve fish health.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Smart Fish Feeder: Weather-Based Feeding System","description":"Automate fish farming with intelligent weather-based feeding. This n8n workflow integrates BMKG weather data, IoT hardware, and Telegram alerts to optimize aquaculture.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8667-smart-fish-feeder-weather-based-feeding-system-with-bmk.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How can weather data improve fish farming efficiency?","acceptedAnswer":{"@type":"Answer","text":"Weather data directly impacts fish feeding behavior and water quality. During rainy periods, fish eat less naturally, and overfeeding leads to wasted feed and polluted water. By integrating BMKG forecasts, you can automatically reduce feeding by 20-30% when high rain probability is detected, matching feed to actual fish appetite and environmental conditions."}},{"@type":"Question","name":"What are the main benefits of automating aquaculture operations?","acceptedAnswer":{"@type":"Answer","text":"Aquaculture automation reduces labor costs by 60-80% for feeding tasks, improves feed conversion ratios by 15-25%, prevents water quality issues from overfeeding, and enables 24/7 monitoring without physical presence. Automated systems also provide data logs for optimizing feeding schedules and predicting growth patterns."}},{"@type":"Question","name":"How does IoT hardware integrate with automation platforms like n8n?","acceptedAnswer":{"@type":"Answer","text":"IoT devices like ESP8266 microcontrollers communicate via HTTP webhooks or MQTT protocols. n8n sends structured JSON commands to device IP addresses, triggering physical actions like servo motor activation for feeding. The platform handles authentication, scheduling, error handling, and notification workflows while the hardware executes the physical tasks."}},{"@type":"Question","name":"What weather parameters matter most for aquaculture automation?","acceptedAnswer":{"@type":"Answer","text":"Rain probability (6-12 hour forecasts) is most critical for feeding adjustments. Temperature affects fish metabolism and feeding rates. Wind speed influences water oxygenation. Solar radiation impacts algae growth. For Indonesian operations, BMKG provides localized ADM4 data with precise rainfall predictions essential for pond management decisions."}},{"@type":"Question","name":"How much can smart feeding systems reduce operational costs?","acceptedAnswer":{"@type":"Answer","text":"Smart feeding typically reduces feed costs by 15-30% through precise portion control and weather-based adjustments. Labor savings of 10-20 hours weekly per farm location. Reduced mortality rates from better water quality add 5-15% to harvest yields. The ROI period for automation setups is typically 3-8 months for commercial operations."}},{"@type":"Question","name":"Can this system work for other livestock besides fish?","acceptedAnswer":{"@type":"Answer","text":"Yes, the weather-based automation concept applies to poultry (adjusting ventilation based on temperature), dairy (modifying feed supplements during heat stress), and shrimp farming (managing aeration during low-pressure systems). The core workflow of fetching weather data, making decisions, and controlling hardware adapts to various agricultural contexts."}},{"@type":"Question","name":"What technical skills are needed to implement aquaculture automation?","acceptedAnswer":{"@type":"Answer","text":"Basic understanding of IoT hardware setup (ESP8266/ESP32), ability to configure n8n credentials and webhooks, familiarity with weather API data formats, and fundamental aquaculture knowledge. No advanced programming is required—most logic uses n8n's visual workflow builder with simple JavaScript for data processing."}},{"@type":"Question","name":"Can I get a custom aquaculture automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in tailored automation solutions for aquaculture businesses. We can design systems integrating multiple data sources (water quality sensors, weather APIs, inventory systems), create custom hardware interfaces, and build comprehensive dashboards for farm management. Our solutions scale from small ponds to large commercial operations with multi-location monitoring."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Smart Fish Feeder Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Smart Fish Feeder Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Aquaculture</span>
+          <span class="cs-tag">IoT Automation</span>
+          <span class="cs-tag">Weather Integration</span>
+          <span class="cs-tag">Telegram</span>
+          <span class="cs-tag">BMKG API</span>
+        </div>
+        <h1>Smart Fish Feeder: Weather-Based Feeding System with BMKG & Telegram Alerts</h1>
+        <p class="cs-hero-sub">Automate fish farming with intelligent weather-based feeding. Reduce feed waste by 20% and optimize aquaculture operations with real-time weather data integration.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="smart-fish-feeder-workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8667-smart-fish-feeder-weather-based-feeding-system-with-bmk.png" alt="Smart fish feeder automation workflow diagram showing weather integration and feeding control" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This intelligent automation system transforms traditional fish farming by connecting weather forecasts directly to feeding decisions. It solves the common problem of overfeeding during rainy periods, which wastes expensive feed and degrades water quality. By fetching official BMKG weather data for Indonesia, the workflow analyzes 6-hour and 12-hour rain probabilities, then automatically adjusts feeding schedules and quantities.</p>
+        <p>The system reduces feed by 20% when rain probability exceeds 60%, matching natural fish behavior during adverse weather. It sends commands to ESP8266-based fish feeder hardware via HTTP webhooks and provides comprehensive Telegram notifications with weather analysis, feeding decisions, and hardware status. This creates a complete feedback loop where environmental data drives operational decisions without manual intervention.</p>
+        
+        <h2>How It Works</h2>
+        <h3>1. Weather Data Collection</h3>
+        <p>The workflow triggers twice daily (05:30 and 16:30 WIB) using n8n's schedule node. It fetches official BMKG weather forecasts for your specific ADM4 region via HTTP request, extracting precise rain probability percentages for the coming 6 and 12-hour periods.</p>
+        
+        <h3>2. Intelligent Decision Making</h3>
+        <p>A JavaScript code node processes the weather data, applying configurable thresholds. If rain probability exceeds your set limit (default: 60%), it calculates appropriate feed reduction (default: -20%) and generates specific command payloads for the hardware.</p>
+        
+        <h3>3. Hardware Control</h3>
+        <p>The system sends structured JSON commands via HTTP POST to your ESP8266/ESP32 device's IP address. These commands trigger servo motors or other feeding mechanisms, executing the precise feeding amount determined by the weather analysis.</p>
+        
+        <h3>4. Notification & Logging</h3>
+        <p>Comprehensive Telegram messages detail the weather analysis, feeding decision rationale, hardware response status, and next scheduled feeding. All activities are logged with timestamps for operational monitoring and pattern analysis.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a conservative 15% feed reduction during initial testing. Monitor fish behavior and water parameters for 1-2 weeks before adjusting thresholds. Different fish species have varying sensitivity to weather changes.</p>
+        </div>
+        
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for commercial aquaculture operations in Indonesia seeking to optimize feed costs and labor. Hobbyist fish farmers with medium to large ponds will benefit from reduced daily maintenance. Agricultural technology companies can use this as a foundation for more complex farm management systems. Educational institutions teaching IoT and smart agriculture concepts will find this a practical, real-world application. Environmental researchers studying the impact of weather on aquaculture can adapt the data collection and analysis components.</p>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (self-hosted or cloud) with internet access</li>
+          <li><strong>Telegram bot</strong> created via @BotFather for notifications</li>
+          <li><strong>ESP8266 or ESP32 microcontroller</strong> with servo motor for automated feeding mechanism</li>
+          <li><strong>Basic Arduino programming knowledge</strong> to set up the hardware webhook endpoint</li>
+          <li><strong>Indonesian location</strong> with known BMKG ADM4 regional code</li>
+          <li><strong>Stable internet connection</strong> at both n8n and hardware locations</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Import the template:</strong> Download the JSON file and import into your n8n instance via the workflow import function.</li>
+          <li><strong>Configure credentials:</strong> Set up your Telegram bot token and chat ID in n8n's credential management system.</li>
+          <li><strong>Update location settings:</strong> Modify the configuration node with your latitude, longitude, and BMKG ADM4 code.</li>
+          <li><strong>Set hardware IP:</strong> Enter your ESP8266 device's local IP address in the HTTP request node targeting your feeder.</li>
+          <li><strong>Adjust thresholds:</strong> Customize the rain probability threshold (default: 60%) and feed reduction percentage (default: -20%) in the code node.</li>
+          <li><strong>Test the workflow:</strong> Execute manually once to verify all connections work before enabling the schedule trigger.</li>
+        </ol>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>20-30% feed cost reduction</strong> through precise weather-based portion control. Fish naturally eat less during rainy periods, and this system matches feeding to actual appetite rather than fixed schedules.</p>
+        
+        <p><strong>Improved water quality</strong> by preventing overfeeding that leads to ammonia spikes and oxygen depletion. Better water parameters directly correlate with reduced disease incidence and faster growth rates.</p>
+        
+        <p><strong>Labor savings of 10-20 hours weekly</strong> per farm location by automating twice-daily feeding routines. Staff can focus on monitoring, maintenance, and value-added tasks rather than repetitive feeding.</p>
+        
+        <p><strong>Data-driven decision making</strong> with comprehensive logs of weather conditions, feeding decisions, and hardware performance. This historical data helps optimize thresholds and identify patterns for further efficiency gains.</p>
+        
+        <p><strong>Scalable architecture</strong> that supports multiple ponds or locations from a single workflow. Each location can have customized thresholds while sharing the same core automation logic.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about aquaculture automation and weather integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can weather data improve fish farming efficiency?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Weather data directly impacts fish feeding behavior and water quality. During rainy periods, fish eat less naturally, and overfeeding leads to wasted feed and polluted water. By integrating BMKG forecasts, you can automatically reduce feeding by 20-30% when high rain probability is detected, matching feed to actual fish appetite and environmental conditions.</p>
+          <p>This precision feeding improves feed conversion ratios, reduces waste accumulation, and maintains optimal water parameters. The system also accounts for temperature variations that affect fish metabolism, allowing seasonal adjustment of feeding schedules without manual intervention.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of automating aquaculture operations?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Aquaculture automation reduces labor costs by 60-80% for feeding tasks, improves feed conversion ratios by 15-25%, prevents water quality issues from overfeeding, and enables 24/7 monitoring without physical presence. Automated systems also provide data logs for optimizing feeding schedules and predicting growth patterns.</p>
+          <p>Beyond efficiency gains, automation brings consistency to operations—feeding happens at exact times with precise amounts regardless of staff availability. This consistency reduces stress on fish populations and creates more predictable growth curves for commercial planning.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does IoT hardware integrate with automation platforms like n8n?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>IoT devices like ESP8266 microcontrollers communicate via HTTP webhooks or MQTT protocols. n8n sends structured JSON commands to device IP addresses, triggering physical actions like servo motor activation for feeding. The platform handles authentication, scheduling, error handling, and notification workflows while the hardware executes the physical tasks.</p>
+          <p>This separation of concerns allows business logic to reside in n8n where it's easily modified, while the hardware focuses on reliable execution. The HTTP interface means any microcontroller with network connectivity can be integrated without custom drivers or complex programming.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What weather parameters matter most for aquaculture automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Rain probability (6-12 hour forecasts) is most critical for feeding adjustments. Temperature affects fish metabolism and feeding rates. Wind speed influences water oxygenation. Solar radiation impacts algae growth. For Indonesian operations, BMKG provides localized ADM4 data with precise rainfall predictions essential for pond management decisions.</p>
+          <p>Barometric pressure changes often precede weather shifts and can signal feeding behavior changes. Humidity affects evaporation rates and water temperature stability. A comprehensive system might monitor multiple parameters, but rainfall probability delivers the highest immediate impact on feeding decisions.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much can smart feeding systems reduce operational costs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Smart feeding typically reduces feed costs by 15-30% through precise portion control and weather-based adjustments. Labor savings of 10-20 hours weekly per farm location. Reduced mortality rates from better water quality add 5-15% to harvest yields. The ROI period for automation setups is typically 3-8 months for commercial operations.</p>
+          <p>Additional savings come from reduced chemical treatments for water quality management, lower energy consumption for aeration (when coordinated with feeding), and decreased waste disposal costs. The data collected also helps optimize stocking densities and harvest timing for maximum profitability.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this system work for other livestock besides fish?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the weather-based automation concept applies to poultry (adjusting ventilation based on temperature), dairy (modifying feed supplements during heat stress), and shrimp farming (managing aeration during low-pressure systems). The core workflow of fetching weather data, making decisions, and controlling hardware adapts to various agricultural contexts.</p>
+          <p>For poultry, temperature thresholds trigger cooling system activation. In dairy operations, heat index calculations adjust feed formulations. The modular design allows swapping weather parameters, decision logic, and hardware commands while reusing the scheduling, notification, and error handling components.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What technical skills are needed to implement aquaculture automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Basic understanding of IoT hardware setup (ESP8266/ESP32), ability to configure n8n credentials and webhooks, familiarity with weather API data formats, and fundamental aquaculture knowledge. No advanced programming is required—most logic uses n8n's visual workflow builder with simple JavaScript for data processing.</p>
+          <p>The hardware component typically involves loading pre-written Arduino sketches rather than coding from scratch. Most implementation time focuses on configuring location-specific parameters and testing threshold values rather than complex technical work. Basic network troubleshooting skills help resolve connectivity issues.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom aquaculture automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in tailored automation solutions for aquaculture businesses. We can design systems integrating multiple data sources (water quality sensors, weather APIs, inventory systems), create custom hardware interfaces, and build comprehensive dashboards for farm management. Our solutions scale from small ponds to large commercial operations with multi-location monitoring.</p>
+          <p>We'll assess your specific fish species, pond configurations, existing equipment, and business goals to design an automation strategy that delivers measurable ROI. Implementation includes hardware selection, workflow development, staff training, and ongoing support to ensure the system adapts as your operation grows.</p>
+          <ul>
+            <li>Integration with existing farm management software</li>
+            <li>Custom sensor networks for water quality monitoring</li>
+            <li>Multi-language notification systems for staff</li>
+            <li>Predictive analytics for growth and harvest planning</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Aquaculture Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

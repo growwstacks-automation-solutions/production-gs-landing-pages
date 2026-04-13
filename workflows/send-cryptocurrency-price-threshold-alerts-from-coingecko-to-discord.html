@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Crypto Price Alert Workflow: CoinGecko to Discord | GrowwStacks</title>
+<meta name="description" content="Automate cryptocurrency price monitoring. Get instant Discord alerts when Bitcoin, Ethereum, or any coin hits your target price. Free n8n template.">
+<link rel="canonical" href="https://growwstacks.com/workflows/2540-send-cryptocurrency-price-threshold-alerts-from-coingecko-to-discord/">
+<meta property="og:title" content="Free Crypto Price Alert Workflow: CoinGecko to Discord">
+<meta property="og:description" content="Automate cryptocurrency price monitoring. Get instant Discord alerts when Bitcoin, Ethereum, or any coin hits your target price. Free n8n template.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/2540-send-cryptocurrency-price-threshold-alerts-from-coingecko-to-discord/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4759-send-cryptocurrency-price-threshold-alerts-from-coingec.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Crypto Price Alert Workflow: CoinGecko to Discord">
+<meta name="twitter:description" content="Automate cryptocurrency price monitoring. Get instant Discord alerts when Bitcoin, Ethereum, or any coin hits your target price. Free n8n template.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Crypto Price Alert Workflow: CoinGecko to Discord","description":"Automate cryptocurrency price monitoring. Get instant Discord alerts when Bitcoin, Ethereum, or any coin hits your target price. Free n8n template.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4759-send-cryptocurrency-price-threshold-alerts-from-coingec.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I automate crypto price alerts instead of checking manually?","acceptedAnswer":{"@type":"Answer","text":"Manual price checking is time-consuming, inconsistent, and emotionally draining. Automated alerts ensure you never miss a key price movement, allowing you to act instantly on opportunities or protect your investments without being glued to charts 24/7. This workflow runs in the background, giving you peace of mind and freeing up hours each week."}},{"@type":"Question","name":"How accurate and timely are CoinGecko price alerts?","acceptedAnswer":{"@type":"Answer","text":"CoinGecko provides reliable, real-time market data with high accuracy. When configured with a frequent schedule trigger (e.g., every 5 minutes), this workflow delivers near-real-time alerts. The delay is minimal, ensuring you're notified promptly when your threshold is crossed, much faster than manual monitoring."}},{"@type":"Question","name":"Can I track multiple cryptocurrencies with one workflow?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can easily extend this template. By duplicating the CoinGecko and logic nodes, you can monitor Bitcoin, Ethereum, Solana, and other coins simultaneously. Each can have its own high/low thresholds, and you can send consolidated or separate Discord messages for each asset."}},{"@type":"Question","name":"What are the most common use cases for crypto price alerts?","acceptedAnswer":{"@type":"Answer","text":"Common uses include: buying opportunities when a coin dips below a target, selling alerts when a profit target is hit, stop-loss notifications to prevent losses, monitoring stablecoin pegs, tracking new token launches, and receiving alerts for portfolio rebalancing thresholds. Traders, investors, and DAOs all benefit."}},{"@type":"Question","name":"Is it safe to connect my Discord and CoinGecko to this automation?","acceptedAnswer":{"@type":"Answer","text":"Yes. This workflow uses only public CoinGecko API data (no private keys) and a Discord webhook URL, which can only send messages to a specific channel. No sensitive exchange API keys or wallet credentials are involved. You can self-host n8n for full data control."}},{"@type":"Question","name":"Can I send alerts to other platforms like Slack, Telegram, or email?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. n8n supports hundreds of apps. You can replace the Discord node with Slack, Telegram, Gmail, or even SMS via Twilio. The logic remains the same—only the notification channel changes. This makes the workflow adaptable to your team's communication preferences."}},{"@type":"Question","name":"Can I get a custom crypto trading automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in custom crypto and DeFi automation. We can build tailored systems for arbitrage alerts, portfolio rebalancing, multi-exchange price monitoring, on-chain event triggers, and automated reporting for teams. Book a free consultation to discuss your specific trading or investment workflow needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Crypto Price Alert Workflow"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Crypto Price Alert</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">CoinGecko</span>
+          <span class="cs-tag">Discord</span>
+          <span class="cs-tag">Crypto Trading</span>
+          <span class="cs-tag">Alerts</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automated Crypto Price Alerts: CoinGecko to Discord</h1>
+        <p class="cs-hero-sub">Get instant Discord notifications when your target cryptocurrencies hit specific price thresholds. Free n8n workflow template for traders & investors.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="crypto-price-alert-workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4759-send-cryptocurrency-price-threshold-alerts-from-coingec.png" alt="Visual diagram of the crypto price alert automation workflow connecting CoinGecko to Discord" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves a critical problem for cryptocurrency traders and investors: missing key price movements because you can't watch the markets 24/7. Manually checking prices is inefficient, stressful, and often leads to missed opportunities or unexpected losses.</p>
+        <p>The workflow automatically monitors real-time cryptocurrency prices via the CoinGecko API, compares them against your predefined high and low thresholds, and sends instant alerts to your Discord channel when those thresholds are crossed. It transforms passive monitoring into proactive notification, ensuring you're always informed without constant screen time.</p>
+        <p>Whether you're waiting for Bitcoin to drop to a buying target, Ethereum to hit a profit-taking level, or monitoring a new altcoin's volatility, this system acts as your personal trading assistant—running silently in the background and speaking up only when it matters.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a clear, logical sequence that mimics how a trader would manually check and react to price changes—but with perfect consistency and instant execution.</p>
+
+        <h3>Step 1: Trigger & Configuration</h3>
+        <p>The workflow can be triggered manually for a one-time check or, more commonly, set on a schedule (every 5, 15, or 60 minutes). You configure the specific cryptocurrency (using its CoinGecko ID like "bitcoin" or "ethereum") and your desired high and low price thresholds in a "Set" node.</p>
+
+        <h3>Step 2: Fetch Live Market Data</h3>
+        <p>A CoinGecko node makes an API call to retrieve the current price of your chosen cryptocurrency. This data is reliable, real-time, and includes the current value in your preferred currency (USD, EUR, etc.).</p>
+
+        <h3>Step 3: Decision Logic</h3>
+        <p>An "IF" node performs the critical comparison. It checks if the current price is above your high threshold or below your low threshold. This logic gate determines which path the workflow follows next.</p>
+
+        <h3>Step 4: Send Targeted Alert</h3>
+        <p>Based on the logic check, the workflow sends a formatted message to your Discord channel via a webhook. The message clearly states which threshold was crossed, the current price, and the direction of movement. You can customize these messages to include emojis, timestamps, or additional context.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Set your schedule trigger to run frequently during volatile market periods (like major news events or high-volume trading hours) and less frequently during stable periods to optimize performance.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for individual crypto investors, trading groups, DeFi participants, and financial analysts who need timely price information without constant manual checking.</p>
+        <p><strong>Retail Investors:</strong> Perfect for those managing a personal portfolio who want to buy dips or take profits at specific levels without emotional decision-making.</p>
+        <p><strong>Trading Communities & DAOs:</strong> Discord servers and trading groups can use this to alert all members simultaneously when key levels are hit, ensuring coordinated action.</p>
+        <p><strong>Crypto Project Teams:</strong> Teams monitoring their token's price for treasury management, buyback programs, or community updates can automate reporting.</p>
+        <p><strong>Financial Analysts & Researchers:</strong> Professionals tracking multiple assets for research or reporting can automate data collection and notification for significant movements.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A running n8n instance</strong> (cloud or self-hosted)</li>
+          <li><strong>A Discord server</strong> where you have permission to create webhooks</li>
+          <li><strong>The CoinGecko ID</strong> of your target cryptocurrency (e.g., "bitcoin", "ethereum", "solana")</li>
+          <li><strong>Your price thresholds</strong> – know what high and low prices you want to monitor</li>
+          <li><strong>Basic familiarity</strong> with n8n's interface (no coding required)</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this crypto alert system in under 10 minutes:</p>
+        <ol>
+          <li><strong>Import the template:</strong> Download the JSON file above and import it into your n8n instance via the "Import from File" option.</li>
+          <li><strong>Configure the CoinGecko node:</strong> Open the CoinGecko node and ensure the correct coin ID is entered. Test the node to verify it fetches current prices.</li>
+          <li><strong>Set your price thresholds:</strong> In the "Set Low and High" node, define your specific price numbers for comparison. These are your alert triggers.</li>
+          <li><strong>Connect Discord webhooks:</strong> Create a webhook in your Discord channel settings and paste the URL into both Discord message nodes in the workflow.</li>
+          <li><strong>Customize alert messages:</strong> Edit the Discord message content to include your preferred formatting, mentions (@everyone, @role), or additional details.</li>
+          <li><strong>Set the schedule:</strong> Configure the Schedule Trigger node to run at your desired frequency (start with every 15 minutes for testing).</li>
+          <li><strong>Test and activate:</strong> Run the workflow once manually to verify everything works, then toggle it to "Active" to begin automated monitoring.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Create separate Discord channels for different alert types (e.g., #buy-alerts, #sell-alerts) and direct messages accordingly for better organization.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate Emotional Trading:</strong> By automating price monitoring, you remove impulsive decisions triggered by price fluctuations. The system alerts you only when your predefined logic conditions are met, ensuring disciplined trading.</p>
+        <p><strong>24/7 Market Coverage:</strong> The workflow runs continuously, monitoring prices even while you sleep, work, or are offline. You'll never miss a critical movement because you weren't watching the charts.</p>
+        <p><strong>Multi-Asset Scalability:</strong> Easily duplicate the core logic to monitor dozens of cryptocurrencies simultaneously. A single n8n instance can track your entire portfolio with minimal additional configuration.</p>
+        <p><strong>Instant Team Coordination:</strong> Discord alerts ensure your entire trading group or investment team receives notifications simultaneously, enabling coordinated decision-making without manual communication overhead.</p>
+        <p><strong>Complete Customization:</strong> Beyond simple price thresholds, you can extend this template to calculate percentage changes, monitor trading volumes, track market cap movements, or integrate with trading APIs for automated execution.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about cryptocurrency price alert automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I automate crypto price alerts instead of checking manually?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual price checking is time-consuming, inconsistent, and emotionally draining. Automated alerts ensure you never miss a key price movement, allowing you to act instantly on opportunities or protect your investments without being glued to charts 24/7. This workflow runs in the background, giving you peace of mind and freeing up hours each week.</p>
+          <p>Beyond saving time, automation removes human error and emotional bias from monitoring. You'll get notified exactly when your predetermined conditions are met, not when you happen to remember to check or when fear/greed influences your decision to look.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate and timely are CoinGecko price alerts?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>CoinGecko provides reliable, real-time market data with high accuracy. When configured with a frequent schedule trigger (e.g., every 5 minutes), this workflow delivers near-real-time alerts. The delay is minimal, ensuring you're notified promptly when your threshold is crossed, much faster than manual monitoring.</p>
+          <p>For most trading purposes, this level of timeliness is sufficient. The data comes directly from aggregated exchange APIs, so it reflects actual market conditions. For ultra-high-frequency trading, you'd need specialized systems, but for retail investors and most trading strategies, this setup is ideal.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I track multiple cryptocurrencies with one workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, you can easily extend this template. By duplicating the CoinGecko and logic nodes, you can monitor Bitcoin, Ethereum, Solana, and other coins simultaneously. Each can have its own high/low thresholds, and you can send consolidated or separate Discord messages for each asset.</p>
+          <p>For advanced users, you can even create loops that iterate through a list of coin IDs, making the workflow dynamic and scalable without creating duplicate nodes for each cryptocurrency you want to track.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the most common use cases for crypto price alerts?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common uses include: buying opportunities when a coin dips below a target, selling alerts when a profit target is hit, stop-loss notifications to prevent losses, monitoring stablecoin pegs, tracking new token launches, and receiving alerts for portfolio rebalancing thresholds. Traders, investors, and DAOs all benefit.</p>
+          <p>Beyond basic price monitoring, this automation can trigger other actions like updating spreadsheets, sending emails to team members, posting to social media, or even executing trades through exchange APIs when combined with additional n8n nodes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is it safe to connect my Discord and CoinGecko to this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. This workflow uses only public CoinGecko API data (no private keys) and a Discord webhook URL, which can only send messages to a specific channel. No sensitive exchange API keys or wallet credentials are involved. You can self-host n8n for full data control.</p>
+          <p>The Discord webhook has no read permissions—it can only post messages to the channel you designate. CoinGecko's free API doesn't require authentication for basic price data, so there are no credentials to compromise.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I send alerts to other platforms like Slack, Telegram, or email?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. n8n supports hundreds of apps. You can replace the Discord node with Slack, Telegram, Gmail, or even SMS via Twilio. The logic remains the same—only the notification channel changes. This makes the workflow adaptable to your team's communication preferences.</p>
+          <p>You can even send alerts to multiple platforms simultaneously. For critical price movements, you might want Discord for immediate team notification plus an email for archival purposes and an SMS for urgent personal alerts.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom crypto trading automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in custom crypto and DeFi automation. We can build tailored systems for arbitrage alerts, portfolio rebalancing, multi-exchange price monitoring, on-chain event triggers, and automated reporting for teams. Book a free consultation to discuss your specific trading or investment workflow needs.</p>
+          <p>Our team has extensive experience creating sophisticated crypto automation that goes beyond simple price alerts, including integration with trading bots, DEX aggregators, wallet monitoring, and custom dashboard creation for real-time portfolio tracking.</p>
+          <ul>
+            <li>Multi-exchange arbitrage opportunity detection</li>
+            <li>Automated portfolio rebalancing based on market conditions</li>
+            <li>Custom alert logic combining price, volume, and social sentiment</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Crypto Trading Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

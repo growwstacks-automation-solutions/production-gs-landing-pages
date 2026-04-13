@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Run weekly WAF security audits with WAFtester and Slack alerts | Free Template | GrowwStacks</title>
+<meta name="description" content="Automate weekly security assessments for your Web Application Firewall. This n8n workflow uses WAFtester to detect your WAF vendor, run penetration tests, grade protection, and alert your team via Slack.">
+<link rel="canonical" href="https://growwstacks.com/workflows/8340-run-weekly-waf-security-audits-with-waftester-and-slack-alerts/">
+<meta property="og:title" content="Run weekly WAF security audits with WAFtester and Slack alerts">
+<meta property="og:description" content="Automate weekly security assessments for your Web Application Firewall. This n8n workflow uses WAFtester to detect your WAF vendor, run penetration tests, grade protection, and alert your team via Slack.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/8340-run-weekly-waf-security-audits-with-waftester-and-slack-alerts/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/13444-run-weekly-waf-security-audits-with-waftester-and-slac.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Run weekly WAF security audits with WAFtester and Slack alerts">
+<meta name="twitter:description" content="Automate weekly security assessments for your Web Application Firewall. This n8n workflow uses WAFtester to detect your WAF vendor, run penetration tests, grade protection, and alert your team via Slack.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Run weekly WAF security audits with WAFtester and Slack alerts","description":"Automate weekly security assessments for your Web Application Firewall. This n8n workflow uses WAFtester to detect your WAF vendor, run penetration tests, grade protection, and alert your team via Slack.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/13444-run-weekly-waf-security-audits-with-waftester-and-slac.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is continuous WAF testing important for modern businesses?","acceptedAnswer":{"@type":"Answer","text":"Continuous WAF testing is critical because web application threats evolve daily. A firewall configuration that was secure last month might have new vulnerabilities today. Automated weekly audits ensure your security posture doesn't degrade over time, helping prevent data breaches, compliance violations, and service disruptions that can cost businesses thousands in recovery and reputational damage."}},{"@type":"Question","name":"What's the difference between WAF testing and traditional vulnerability scanning?","acceptedAnswer":{"@type":"Answer","text":"Traditional vulnerability scanners check for known weaknesses in your applications and infrastructure. WAF testing specifically evaluates your firewall's ability to block actual attack payloads like SQL injection, cross-site scripting, and command injection. It tests whether your security rules are correctly configured and effective against real-world attack techniques, which is essential for protecting customer data and maintaining trust."}},{"@type":"Question","name":"How does automating security audits improve team efficiency?","acceptedAnswer":{"@type":"Answer","text":"Automating security audits saves security teams 10-15 hours per week that would otherwise be spent on manual testing and reporting. Instead of running tests, compiling results, and creating alert reports manually, the automation handles everything on a schedule. This frees up security professionals to focus on strategic initiatives like threat hunting, policy development, and incident response planning."}},{"@type":"Question","name":"What types of attacks does WAFtester simulate in these automated assessments?","acceptedAnswer":{"@type":"Answer","text":"WAFtester simulates over 2,800 attack payloads across 18 critical categories including SQL injection, cross-site scripting (XSS), server-side request forgery (SSRF), server-side template injection (SSTI), command injection, XML external entity (XXE) attacks, and path traversal. This comprehensive testing ensures your WAF can block the most common and dangerous web application attacks that businesses face daily."}},{"@type":"Question","name":"How do automated security reports help with compliance requirements?","acceptedAnswer":{"@type":"Answer","text":"Automated security reports provide consistent, timestamped documentation of your security controls' effectiveness. For compliance frameworks like PCI DSS, SOC 2, ISO 27001, and GDPR, these reports demonstrate ongoing security monitoring and due diligence. They show auditors that you're regularly testing and validating your security measures, not just implementing them once and forgetting about them."}},{"@type":"Question","name":"Can this automation integrate with other security tools besides Slack?","acceptedAnswer":{"@type":"Answer","text":"Yes, this workflow can be extended to integrate with virtually any security or communication tool. Beyond Slack, you can send alerts to Microsoft Teams, create Jira tickets for failed tests, log results to Splunk or Datadog for correlation with other security events, trigger PagerDuty for critical failures, or even send encrypted email reports to compliance teams. The automation acts as a central orchestrator for your security notification ecosystem."}},{"@type":"Question","name":"What happens if the WAF grade drops below the acceptable threshold?","acceptedAnswer":{"@type":"Answer","text":"When the WAF grade drops below your configured threshold (typically 'A' or better), the workflow triggers immediate alerts to your security team via Slack. The alert includes specific details about which attack categories bypassed the firewall, the detection rate percentage, and the number of successful bypasses. This enables rapid investigation and remediation before attackers can exploit the weakened security posture."}},{"@type":"Question","name":"Can I get a custom WAF security automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. GrowwStacks specializes in building custom security automation solutions tailored to your specific infrastructure, compliance requirements, and team workflows. We can integrate with your existing WAF vendor (Cloudflare, AWS WAF, Azure WAF, etc.), customize the attack simulations based on your threat model, add integration with your SIEM or ticketing system, and create executive dashboards showing security posture over time. Our team works with you to design, implement, and maintain automation that fits your unique security needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"WAF Security Audits"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>WAF Security Audits</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Security</span>
+          <span class="cs-tag">WAF Testing</span>
+          <span class="cs-tag">Slack</span>
+          <span class="cs-tag">Automation</span>
+          <span class="cs-tag">Compliance</span>
+        </div>
+        <h1>Run weekly WAF security audits with WAFtester and Slack alerts</h1>
+        <p class="cs-hero-sub">Automate continuous security assessments for your web application firewall. Detect vulnerabilities, grade protection, and get instant alerts when security weakens.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/13444-run-weekly-waf-security-audits-with-waftester-and-slac.png" alt="Visualization of WAF security audit automation workflow connecting WAFtester testing tools to Slack alert notifications" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual security testing is time-consuming, inconsistent, and often gets deprioritized in busy IT schedules. This creates dangerous security gaps where your web application firewall (WAF) might be misconfigured or ineffective against new attack techniques.</p>
+        <p>This automation solves that problem by running comprehensive WAF security assessments every week without human intervention. It automatically detects your WAF vendor, executes penetration tests using thousands of attack payloads, calculates a security grade, and immediately alerts your team via Slack if protection drops below acceptable levels. What used to be a manual 2-3 hour process now happens automatically while your team focuses on higher-value security work.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow orchestrates security testing through a precise sequence of steps:</p>
+        <h3>1. Weekly Schedule Trigger</h3>
+        <p>The automation starts automatically every Monday at 3 AM (configurable to any schedule). This ensures consistent testing without requiring manual initiation.</p>
+        <h3>2. WAF Vendor Detection</h3>
+        <p>The system calls WAFtester's detection tools to fingerprint your specific WAF vendor and CDN. This allows for targeted testing based on your actual security infrastructure.</p>
+        <h3>3. Security Assessment Execution</h3>
+        <p>An asynchronous assessment task launches, testing against critical attack categories including SQL injection, XSS, path traversal, command injection, and SSRF using 2,800+ payloads.</p>
+        <h3>4. Results Processing & Grading</h3>
+        <p>The system polls for completed results, analyzes detection rates and bypass counts, then calculates a letter grade (A+ through F) based on enterprise security scoring metrics.</p>
+        <h3>5. Conditional Alert Routing</h3>
+        <p>Based on the security grade, the workflow routes to appropriate notification channels. Grades "A" or better trigger success reports, while lower grades trigger immediate security alerts.</p>
+        <h3>6. Team Notification</h3>
+        <p>Detailed Slack messages deliver the assessment results, including specific vulnerabilities detected, detection percentages, and actionable recommendations for remediation.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with testing your staging environment first. Once confident, point the automation at production with appropriate rate limiting to avoid impacting legitimate traffic.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation delivers value across multiple roles in technology organizations:</p>
+        <p><strong>Security Teams</strong> needing continuous monitoring of WAF effectiveness without manual testing overhead. It provides consistent documentation for compliance audits and reduces mean time to detection for configuration drift.</p>
+        <p><strong>DevOps & SRE Engineers</strong> responsible for maintaining secure infrastructure. The automation helps validate that deployment changes haven't inadvertently weakened security controls.</p>
+        <p><strong>Compliance Officers</strong> requiring regular evidence of security control testing for frameworks like PCI DSS, SOC 2, ISO 27001, or GDPR. Automated reports provide timestamped proof of due diligence.</p>
+        <p><strong>Technology Leaders</strong> (CTOs, CISOs) who need visibility into security posture without micromanaging testing schedules. The Slack alerts provide executive-level awareness of security status.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>WAFtester MCP Server</strong> – Either the Docker container running locally or a binary installation accessible to your n8n instance.</li>
+          <li><strong>Target URL</strong> – The web application endpoint you have explicit permission to test (never test systems without authorization).</li>
+          <li><strong>Slack Workspace</strong> – With OAuth2 bot credentials and a dedicated channel for security alerts.</li>
+          <li><strong>n8n Instance</strong> – Self-hosted or cloud version with HTTP Request node capabilities.</li>
+          <li><strong>Environment Variables</strong> – Configure WAF_TARGET_URL, WAFTESTER_MCP_URL, and SLACK_CHANNEL in your n8n settings.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this security automation in under 30 minutes:</p>
+        <ol>
+          <li><strong>Launch WAFtester</strong> – Run the Docker command: <code>docker run -p 8080:8080 ghcr.io/waftester/waftester:latest mcp --http :8080</code></li>
+          <li><strong>Import the Template</strong> – Download the JSON file above and import it into your n8n instance via the workflow import function.</li>
+          <li><strong>Configure Environment Variables</strong> – Set WAF_TARGET_URL to your test endpoint, WAFTESTER_MCP_URL to your server address, and SLACK_CHANNEL to your alert channel.</li>
+          <li><strong>Connect Slack</strong> – Add your Slack OAuth2 credentials in n8n and select them in both Slack notification nodes.</li>
+          <li><strong>Test & Activate</strong> – Run the workflow once manually to verify connections, then activate it to run on the weekly schedule.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use the included docker-compose.yml file to run both n8n and WAFtester together if you're deploying this as a dedicated security monitoring solution.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10-15 hours monthly</strong> that security teams would spend on manual WAF testing and reporting. The automation handles the entire process from execution to notification.</p>
+        <p><strong>Improve security consistency</strong> with standardized testing performed at regular intervals. Unlike manual processes that might be skipped during busy periods, automation ensures no testing gaps.</p>
+        <p><strong>Accelerate incident response</strong> by detecting security degradation immediately rather than during quarterly penetration tests. Early detection means faster remediation before exploitation.</p>
+        <p><strong>Simplify compliance reporting</strong> with automatically generated, timestamped security assessment records that demonstrate ongoing due diligence to auditors.</p>
+        <p><strong>Reduce human error</strong> in security testing procedures. The automation follows the exact same testing protocol every time, eliminating variations in manual testing approaches.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about WAF security automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why is continuous WAF testing important for modern businesses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Continuous WAF testing is critical because web application threats evolve daily. A firewall configuration that was secure last month might have new vulnerabilities today. Automated weekly audits ensure your security posture doesn't degrade over time, helping prevent data breaches, compliance violations, and service disruptions that can cost businesses thousands in recovery and reputational damage.</p>
+          <p>Without regular testing, you're essentially flying blind between annual penetration tests. Attackers don't wait for your next security assessment—they probe constantly for weaknesses. This automation gives you the same advantage of continuous testing that sophisticated attackers use against you.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the difference between WAF testing and traditional vulnerability scanning?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Traditional vulnerability scanners check for known weaknesses in your applications and infrastructure. WAF testing specifically evaluates your firewall's ability to block actual attack payloads like SQL injection, cross-site scripting, and command injection.</p>
+          <p>Think of it this way: vulnerability scanning tells you if you have unlocked doors. WAF testing tells you if your security guard (the firewall) is actually stopping people from walking through those doors. Both are important, but WAF testing validates that your active security controls are working as intended against real attack techniques.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating security audits improve team efficiency?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating security audits saves security teams 10-15 hours per week that would otherwise be spent on manual testing and reporting. Instead of running tests, compiling results, and creating alert reports manually, the automation handles everything on a schedule.</p>
+          <p>This efficiency gain allows security professionals to focus on strategic initiatives like threat hunting, policy development, and incident response planning. The automation becomes a force multiplier, enabling smaller teams to maintain enterprise-level security monitoring without proportional increases in headcount.</p>
+          <ul>
+            <li>Eliminates repetitive manual testing tasks</li>
+            <li>Provides consistent documentation for audits</li>
+            <li>Enables proactive rather than reactive security</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of attacks does WAFtester simulate in these automated assessments?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>WAFtester simulates over 2,800 attack payloads across 18 critical categories including SQL injection, cross-site scripting (XSS), server-side request forgery (SSRF), server-side template injection (SSTI), command injection, XML external entity (XXE) attacks, and path traversal.</p>
+          <p>This comprehensive testing ensures your WAF can block the most common and dangerous web application attacks that businesses face daily. The automation tests not just whether attacks are blocked, but also measures detection rates and calculates security grades based on how effectively your firewall identifies and stops each attack type.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do automated security reports help with compliance requirements?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated security reports provide consistent, timestamped documentation of your security controls' effectiveness. For compliance frameworks like PCI DSS, SOC 2, ISO 27001, and GDPR, these reports demonstrate ongoing security monitoring and due diligence.</p>
+          <p>They show auditors that you're regularly testing and validating your security measures, not just implementing them once and forgetting about them. The automated nature of the reports eliminates the "checkbox compliance" problem where organizations perform security activities only when audits are imminent rather than as part of continuous operations.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this automation integrate with other security tools besides Slack?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, this workflow can be extended to integrate with virtually any security or communication tool. Beyond Slack, you can send alerts to Microsoft Teams, create Jira tickets for failed tests, log results to Splunk or Datadog for correlation with other security events, trigger PagerDuty for critical failures, or even send encrypted email reports to compliance teams.</p>
+          <p>The automation acts as a central orchestrator for your security notification ecosystem. Since it's built on n8n's flexible integration platform, adding new notification channels typically takes minutes rather than days of development work.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the WAF grade drops below the acceptable threshold?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>When the WAF grade drops below your configured threshold (typically 'A' or better), the workflow triggers immediate alerts to your security team via Slack. The alert includes specific details about which attack categories bypassed the firewall, the detection rate percentage, and the number of successful bypasses.</p>
+          <p>This enables rapid investigation and remediation before attackers can exploit the weakened security posture. The detailed information in the alert helps security engineers quickly identify whether the issue is a misconfiguration, a rule that needs updating, or a new attack technique that your WAF vendor needs to address.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom WAF security automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. GrowwStacks specializes in building custom security automation solutions tailored to your specific infrastructure, compliance requirements, and team workflows. We can integrate with your existing WAF vendor (Cloudflare, AWS WAF, Azure WAF, etc.), customize the attack simulations based on your threat model, add integration with your SIEM or ticketing system, and create executive dashboards showing security posture over time.</p>
+          <p>Our team works with you to design, implement, and maintain automation that fits your unique security needs. Whether you need enhanced reporting, integration with additional security tools, or custom testing scenarios for your industry-specific threats, we can build a solution that delivers exactly what your organization requires.</p>
+          <ul>
+            <li>Custom integration with your security stack</li>
+            <li>Industry-specific threat modeling</li>
+            <li>Compliance-focused reporting and documentation</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom WAF Security Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

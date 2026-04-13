@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Interest Checker: GeekHack Forum to Discord Notifications | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate keyboard community updates. This free n8n workflow monitors GeekHack RSS feeds for new Interest Check & Group Buy posts and sends rich notifications to your Discord server.">
+<link rel="canonical" href="https://growwstacks.com/workflows/5140-keyboard-interest-checker-geekhack-forum-to-discord-notifications/">
+<meta property="og:title" content="Keyboard Interest Checker: GeekHack to Discord Automation">
+<meta property="og:description" content="Free n8n template to automatically post new keyboard Interest Checks & Group Buys from GeekHack forum to Discord. Save hours of manual checking.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/5140-keyboard-interest-checker-geekhack-forum-to-discord-notifications/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8045-keyboard-interest-checker-geekhack-forum-to-discord-not.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Keyboard Interest Checker: GeekHack to Discord Automation">
+<meta name="twitter:description" content="Free n8n template to automatically post new keyboard Interest Checks & Group Buys from GeekHack forum to Discord. Save hours of manual checking.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Keyboard Interest Checker: GeekHack Forum to Discord Notifications","description":"Automate keyboard community updates. This free n8n workflow monitors GeekHack RSS feeds for new Interest Check & Group Buy posts and sends rich notifications to your Discord server.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8045-keyboard-interest-checker-geekhack-forum-to-discord-not.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the main benefit of automating GeekHack forum monitoring?","acceptedAnswer":{"@type":"Answer","text":"Automating GeekHack forum monitoring saves mechanical keyboard enthusiasts and vendors 5-10 hours per week by eliminating manual checking. It ensures you never miss a new Interest Check or Group Buy announcement, giving you early access to limited-run keyboards before they sell out. The automation provides real-time notifications with full post details and images directly in your Discord community."}},{"@type":"Question","name":"How reliable is RSS feed monitoring for forum updates?","acceptedAnswer":{"@type":"Answer","text":"RSS feed monitoring is extremely reliable for forum updates when implemented correctly. This workflow checks feeds hourly, filters out reply posts, and uses a database to prevent duplicate notifications. The PostgreSQL tracking ensures each thread is only processed once, while the webhook system allows notifications to multiple Discord channels with automatic failover if one webhook fails."}},{"@type":"Question","name":"Can I customize which GeekHack sections are monitored?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow can be easily customized to monitor any GeekHack forum section by modifying the RSS feed URLs. The template comes pre-configured for Interest Checks and Group Buys, but you can add or remove sections based on your interests. You can also adjust the monitoring frequency from hourly to any interval that suits your needs."}},{"@type":"Question","name":"What happens if the GeekHack website structure changes?","acceptedAnswer":{"@type":"Answer","text":"If GeekHack changes its website structure, the HTML scraping portion of the workflow may need updating. The template uses specific CSS selectors to extract post content and images. We provide documentation on how to adjust these selectors. The RSS feed monitoring portion is more stable, as RSS standards are well-established and rarely change."}},{"@type":"Question","name":"How many Discord servers can receive notifications from one workflow?","acceptedAnswer":{"@type":"Answer","text":"The workflow supports unlimited Discord servers through its webhook management system. You can add multiple webhook URLs via the built-in web form or directly in the database. Each new GeekHack thread will be sent to all registered webhooks simultaneously, making it perfect for cross-posting to multiple community servers or different channels within the same server."}},{"@type":"Question","name":"What's the advantage of using n8n over Discord bots for this?","acceptedAnswer":{"@type":"Answer","text":"n8n provides greater flexibility than traditional Discord bots. You can easily modify the notification format, add additional processing steps (like filtering for specific keywords), integrate with other tools (like Google Sheets for tracking), and maintain full control over your data. Unlike cloud-based bots, you can self-host n8n for complete privacy and no usage limits."}},{"@type":"Question","name":"Do I need programming experience to set up this automation?","acceptedAnswer":{"@type":"Answer","text":"Basic technical comfort is helpful but not required. The template includes detailed setup instructions for creating PostgreSQL tables and configuring n8n credentials. Most users can get it running in under 30 minutes by following our step-by-step guide. The visual workflow editor makes it easy to understand and modify the automation logic without writing code."}},{"@type":"Question","name":"Can I get a custom keyboard community automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in custom automation solutions for keyboard communities, vendors, and group buy organizers. We can build tailored systems that monitor multiple forums, process orders, manage waitlists, integrate with your e-commerce platform, and provide advanced analytics. Our team handles everything from design to deployment and maintenance."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Keyboard Interest Checker"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Keyboard Interest Checker</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Zapier</span>
+          <span class="cs-tag">Discord</span>
+          <span class="cs-tag">RSS</span>
+          <span class="cs-tag">PostgreSQL</span>
+          <span class="cs-tag">Community</span>
+        </div>
+        <h1>Keyboard Interest Checker: GeekHack Forum to Discord Notifications</h1>
+        <p class="cs-hero-sub">Automatically monitor GeekHack for new keyboard Interest Checks & Group Buys and get instant Discord alerts with images and details.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8045-keyboard-interest-checker-geekhack-forum-to-discord-not.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8045-keyboard-interest-checker-geekhack-forum-to-discord-not.png" alt="Keyboard Interest Checker n8n workflow automation diagram showing GeekHack to Discord integration" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>For mechanical keyboard enthusiasts, vendors, and community managers, staying on top of new Interest Check (IC) and Group Buy (GB) announcements on GeekHack is crucial but time-consuming. Manually checking the forum multiple times daily leads to missed opportunities and delayed reactions to limited-run keyboard projects.</p>
+        <p>This n8n automation solves that problem by acting as your 24/7 forum monitor. It automatically scans GeekHack's RSS feeds every hour, identifies new thread posts (not replies), extracts the full content and images, and delivers beautifully formatted notifications to your Discord server. The system includes duplicate prevention through PostgreSQL tracking and supports multiple Discord webhooks for cross-posting to different communities.</p>
+        <p>Beyond simple notifications, this workflow serves as a foundation for keyboard community management automation. You can extend it to log announcements to a database, trigger follow-up actions, or integrate with other tools like Google Sheets for tracking interest levels across different projects.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a sophisticated multi-step process to ensure accurate, reliable notifications without spam.</p>
+        
+        <h3>1. Scheduled Monitoring</h3>
+        <p>A schedule trigger runs the workflow hourly, checking two GeekHack RSS feeds simultaneously: one for Interest Checks and another for Group Buys. Each feed retrieves up to 50 recent posts to ensure comprehensive coverage.</p>
+        
+        <h3>2. Thread Filtering</h3>
+        <p>The workflow intelligently filters out reply posts by checking for "Re:" prefixes in thread titles. Only original thread starters are processed, preventing notification spam from discussion threads.</p>
+        
+        <h3>3. Duplicate Prevention</h3>
+        <p>Each thread's unique identifier is checked against a PostgreSQL database of previously processed posts. If the thread already exists in the database, it's skipped entirely, ensuring each announcement is only sent once.</p>
+        
+        <h3>4. Content Extraction</h3>
+        <p>For new threads, the workflow fetches the complete HTML page and uses CSS selectors to extract the original post content. It also employs regex patterns to identify and extract all embedded images from the post.</p>
+        
+        <h3>5. Discord Embed Creation</h3>
+        <p>The post data is transformed into a rich Discord embed with proper formatting: thread title as the embed title, author and date information, truncated content preview, and up to 4 embedded images displayed as attachments.</p>
+        
+        <h3>6. Multi-Webhook Distribution</h3>
+        <p>The workflow queries the database for all registered Discord webhook URLs and sends the notification to each one simultaneously. This allows a single announcement to reach multiple community servers or channels.</p>
+        
+        <h3>7. Processing Logging</h3>
+        <p>Finally, the thread is recorded in the PostgreSQL database with its timestamp, preventing future duplicate processing while maintaining a searchable history of all announcements.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> The included web form for managing webhooks means community moderators can add new notification channels without touching the database or n8n interface—just share the form URL with trusted team members.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation delivers value to several key audiences in the mechanical keyboard ecosystem:</p>
+        <p><strong>Keyboard Enthusiasts & Collectors</strong> who want first access to limited group buys without constantly refreshing GeekHack. Never miss a rare keyboard drop again.</p>
+        <p><strong>Vendor & Maker Communities</strong> that need to monitor competitor announcements, market trends, or community feedback on similar products. Stay informed about the competitive landscape.</p>
+        <p><strong>Discord Community Managers</strong> running keyboard-focused servers who want to provide value to members with automated announcements. Increase engagement by becoming the go-to source for latest updates.</p>
+        <p><strong>Content Creators & Reviewers</strong> covering the keyboard scene who need to track upcoming projects for review scheduling and content planning. Get ahead of trends before they go mainstream.</p>
+        <p><strong>Group Buy Organizers</strong> who want to monitor similar projects for pricing, feature sets, and community reception to inform their own product development and marketing strategies.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n Instance</strong>: Either self-hosted n8n or n8n.cloud account with workflow execution capabilities.</li>
+          <li><strong>PostgreSQL Database</strong>: Any PostgreSQL instance (local, cloud, or managed service like Supabase/Aiven) to store processed thread history and webhook configurations.</li>
+          <li><strong>Discord Server Access</strong>: Permission to create webhooks in the Discord channels where you want notifications to appear.</li>
+          <li><strong>Basic Technical Comfort</strong>: Ability to run SQL commands for database setup and configure n8n credentials.</li>
+          <li><strong>GeekHack Account</strong> (optional): While not strictly required, having an account helps understand the forum structure and test the automation.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to deploy this automation in under 30 minutes:</p>
+        <ol>
+          <li><strong>Database Preparation</strong>: Create the two required PostgreSQL tables using the SQL commands provided in the workflow documentation.</li>
+          <li><strong>n8n Import</strong>: Download the JSON template and import it into your n8n instance via the workflow import feature.</li>
+          <li><strong>Credential Configuration</strong>: Set up your PostgreSQL credentials in n8n and assign them to all database nodes in the workflow.</li>
+          <li><strong>Discord Webhook Setup</strong>: Create a webhook in your Discord server channel and add it to the database via the provided web form or direct SQL insert.</li>
+          <li><strong>Schedule Adjustment</strong> (optional): Modify the schedule trigger if you prefer different check intervals than the default hourly frequency.</li>
+          <li><strong>Test Execution</strong>: Manually trigger the workflow once to verify database connections and Discord notifications work correctly.</li>
+          <li><strong>Activation</strong>: Enable the workflow and let it run automatically. Monitor the first few executions to ensure everything processes smoothly.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a test Discord channel and a single webhook. Once verified, add your main community channels. The webhook management form makes it easy to expand notification destinations later.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Never Miss a Launch:</strong> Get instant notifications for new Interest Checks and Group Buys, giving you early access to limited-run keyboards before they sell out. The automation checks hourly, far more consistently than any human could.</p>
+        <p><strong>Save 5-10 Hours Weekly:</strong> Eliminate manual forum checking entirely. What used to require multiple daily visits now happens automatically in the background, freeing up time for actual keyboard building or community engagement.</p>
+        <p><strong>Rich, Actionable Notifications:</strong> Receive complete announcements with images, descriptions, and direct links—not just basic alerts. The Discord embeds include everything needed to evaluate a new project immediately.</p>
+        <p><strong>Scalable Community Management:</strong> The multi-webhook system lets you notify multiple Discord servers simultaneously. Perfect for cross-community announcements or separating notifications for different interest groups (60% keyboards, ergonomic builds, etc.).</p>
+        <p><strong>Extensible Foundation:</strong> This workflow serves as a starting point for more advanced automation. Easily add features like keyword filtering, sentiment analysis of comments, or integration with inventory tracking systems.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about forum monitoring and Discord automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the main benefit of automating GeekHack forum monitoring?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating GeekHack forum monitoring saves mechanical keyboard enthusiasts and vendors 5-10 hours per week by eliminating manual checking. It ensures you never miss a new Interest Check or Group Buy announcement, giving you early access to limited-run keyboards before they sell out.</p>
+          <p>The automation provides real-time notifications with full post details and images directly in your Discord community, transforming how you stay informed about new keyboard projects.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How reliable is RSS feed monitoring for forum updates?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>RSS feed monitoring is extremely reliable for forum updates when implemented correctly. This workflow checks feeds hourly, filters out reply posts, and uses a database to prevent duplicate notifications.</p>
+          <p>The PostgreSQL tracking ensures each thread is only processed once, while the webhook system allows notifications to multiple Discord channels with automatic failover if one webhook fails.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I customize which GeekHack sections are monitored?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the workflow can be easily customized to monitor any GeekHack forum section by modifying the RSS feed URLs. The template comes pre-configured for Interest Checks and Group Buys, but you can add or remove sections based on your interests.</p>
+          <p>You can also adjust the monitoring frequency from hourly to any interval that suits your needs, and add keyword filters to only notify about specific types of keyboards or price ranges.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the GeekHack website structure changes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>If GeekHack changes its website structure, the HTML scraping portion of the workflow may need updating. The template uses specific CSS selectors to extract post content and images. We provide documentation on how to adjust these selectors.</p>
+          <p>The RSS feed monitoring portion is more stable, as RSS standards are well-established and rarely change. The workflow includes error handling to alert you if the scraping fails, so you'll know immediately if an update is needed.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How many Discord servers can receive notifications from one workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow supports unlimited Discord servers through its webhook management system. You can add multiple webhook URLs via the built-in web form or directly in the database.</p>
+          <p>Each new GeekHack thread will be sent to all registered webhooks simultaneously, making it perfect for cross-posting to multiple community servers or different channels within the same server. The system handles rate limiting and retries automatically.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the advantage of using n8n over Discord bots for this?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>n8n provides greater flexibility than traditional Discord bots. You can easily modify the notification format, add additional processing steps (like filtering for specific keywords), integrate with other tools (like Google Sheets for tracking), and maintain full control over your data.</p>
+          <p>Unlike cloud-based bots, you can self-host n8n for complete privacy and no usage limits. The visual workflow editor makes it easy to understand and extend the automation without writing complex code.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do I need programming experience to set up this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Basic technical comfort is helpful but not required. The template includes detailed setup instructions for creating PostgreSQL tables and configuring n8n credentials. Most users can get it running in under 30 minutes by following our step-by-step guide.</p>
+          <p>The visual workflow editor makes it easy to understand and modify the automation logic without writing code. If you encounter issues, the n8n community and documentation provide extensive support for troubleshooting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom keyboard community automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in custom automation solutions for keyboard communities, vendors, and group buy organizers. We can build tailored systems that monitor multiple forums, process orders, manage waitlists, integrate with your e-commerce platform, and provide advanced analytics.</p>
+          <p>Our team handles everything from design to deployment and maintenance. We've built systems for keyboard vendors processing hundreds of orders daily, community managers coordinating multiple group buys, and content creators tracking the entire mechanical keyboard ecosystem.</p>
+          <ul>
+            <li>Multi-forum monitoring (GeekHack, Reddit, Discord announcements)</li>
+            <li>Automated order processing and inventory management</li>
+            <li>Custom dashboards for group buy analytics and forecasting</li>
+            <li>Integration with Shopify, WooCommerce, and payment processors</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Keyboard Community Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

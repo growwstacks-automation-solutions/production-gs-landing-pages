@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create YouTube Videos Daily from Google Sheets using MagicHour + Gemini | Free Template | GrowwStacks</title>
+<meta name="description" content="Automate AI video creation from text prompts. Generate videos with MagicHour, add music, upload to YouTube, and log results in Google Sheets—all with n8n.">
+<link rel="canonical" href="https://growwstacks.com/workflows/6331-create-youtube-videos-daily-from-google-sheets-using-magichour-gemini/">
+<meta property="og:title" content="Automate YouTube Video Creation from Google Sheets | Free n8n Workflow">
+<meta property="og:description" content="Turn text prompts into AI-generated YouTube videos automatically. Add music, generate metadata, upload, and track results.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/6331-create-youtube-videos-daily-from-google-sheets-using-magichour-gemini/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9843-create-youtube-videos-daily-from-google-sheets-using-ma.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate YouTube Video Creation from Google Sheets | Free n8n Workflow">
+<meta name="twitter:description" content="Turn text prompts into AI-generated YouTube videos automatically. Add music, generate metadata, upload, and track results.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Create YouTube Videos Daily from Google Sheets using MagicHour + Gemini","description":"Automate AI video creation from text prompts. Generate videos with MagicHour, add music, upload to YouTube, and log results in Google Sheets—all with n8n.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9843-create-youtube-videos-daily-from-google-sheets-using-ma.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the business value of automating YouTube video creation?","acceptedAnswer":{"@type":"Answer","text":"Automating YouTube video creation saves dozens of hours per week on manual editing, uploading, and metadata writing. It allows content creators and marketers to scale production, maintain consistent posting schedules, and repurpose content efficiently—freeing up time for strategy and audience engagement."}},{"@type":"Question","name":"How does AI video generation work for content marketing?","acceptedAnswer":{"@type":"Answer","text":"AI video generation tools like MagicHour turn text prompts into visual content using generative models. For marketing, this means quickly producing explainer videos, social clips, or product demos without filming equipment or editing software. The automation adds consistency and speed to content pipelines."}},{"@type":"Question","name":"Can I use Google Sheets as a content calendar for automated videos?","acceptedAnswer":{"@type":"Answer","text":"Yes, Google Sheets works perfectly as a lightweight content calendar. Each row can contain a video prompt, background music URL, target publish date, and status. The automation reads pending prompts, generates videos, and updates the sheet with YouTube links and metadata—creating a fully trackable system."}},{"@type":"Question","name":"What are the benefits of integrating Gemini AI with video automation?","acceptedAnswer":{"@type":"Answer","text":"Gemini AI enhances video automation by parsing and refining text prompts, generating compelling YouTube titles and descriptions, and suggesting relevant tags. This ensures each video is optimized for search and engagement, improving reach without manual copywriting."}},{"@type":"Question","name":"How reliable is automated YouTube uploading for business content?","acceptedAnswer":{"@type":"Answer","text":"Automated YouTube uploading via API is highly reliable when properly configured with error handling and retry logic. The workflow includes status tracking and fallback steps to ensure videos are published even if temporary issues occur, making it suitable for business-critical content schedules."}},{"@type":"Question","name":"What are common pitfalls when scaling AI video production?","acceptedAnswer":{"@type":"Answer","text":"Common pitfalls include inconsistent prompt quality, lack of brand voice in AI‑generated content, API cost overruns, and insufficient error handling for render failures. Successful scaling requires prompt templates, quality checks, budget monitoring, and robust workflow logic to manage exceptions."}},{"@type":"Question","name":"Can I get a custom AI video automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom AI video automation systems tailored to your brand, content strategy, and integration needs. We can design workflows that incorporate your existing tools, enforce brand guidelines, and scale production based on your specific requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Create YouTube Videos Daily from Google Sheets"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Create YouTube Videos Daily from Google Sheets</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">YouTube</span>
+          <span class="cs-tag">AI Video</span>
+          <span class="cs-tag">MagicHour</span>
+          <span class="cs-tag">Gemini AI</span>
+        </div>
+        <h1>Create YouTube Videos Daily from Google Sheets using MagicHour + Gemini</h1>
+        <p class="cs-hero-sub">Automate AI video creation, background music, YouTube uploads, and result logging—all from a single text prompt.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9843-create-youtube-videos-daily-from-google-sheets-using-ma.png" alt="Automated YouTube video creation workflow diagram showing Google Sheets, MagicHour AI, and YouTube integration" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This n8n template solves the time‑consuming challenge of producing consistent YouTube content. Instead of manually scripting, filming, editing, and uploading videos, you can automate the entire pipeline from a simple text prompt stored in Google Sheets.</p>
+        <p>The workflow reads a prompt, uses the MagicHour API to generate an AI video, optionally mixes in background music, creates SEO‑friendly metadata with Gemini, uploads the video to YouTube, and logs all results back to your spreadsheet. It’s designed for creators, marketers, and startups who need to scale video production without increasing overhead.</p>
+        <p>Whether you’re producing daily AI Shorts, product explainers, or repurposing blog posts into video format, this automation turns a batch of text ideas into published YouTube videos—hands‑free.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Trigger & Prompt Reading</h3>
+        <p>The workflow can be triggered by a new row in Google Sheets or a scheduled cron job (e.g., daily at 9 AM). It reads the text prompt and any optional background music URL from the sheet.</p>
+        <h3>2. AI Video Generation</h3>
+        <p>The prompt is sent to the MagicHour API, which generates a video based on the text description. The workflow polls the API until the render is complete, ensuring reliable delivery.</p>
+        <h3>3. Audio Mixing (Optional)</h3>
+        <p>If a background music URL is provided, the MediaFX community node can blend the audio track with the generated video, creating a polished final product.</p>
+        <h3>4. Metadata Creation</h3>
+        <p>Google Gemini analyzes the prompt and generates an engaging YouTube title, description, and relevant tags—optimizing the video for search and viewer engagement.</p>
+        <h3>5. YouTube Upload</h3>
+        <p>The finished video file, along with its metadata, is uploaded to your YouTube channel via the YouTube API. The video can be set as public, private, or unlisted based on your configuration.</p>
+        <h3>6. Results Logging</h3>
+        <p>Finally, the workflow updates the original Google Sheets row with the YouTube URL, generated metadata, and a status of “Done,” creating a complete audit trail.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for content creators, digital marketers, SaaS companies, and educators who want to maintain a consistent video presence without the manual effort. It’s especially valuable for:</p>
+        <ul>
+          <li><strong>Social media managers</strong> producing daily AI‑powered Shorts or Reels.</li>
+          <li><strong>Startup founders</strong> creating product‑explainer videos at scale.</li>
+          <li><strong>Marketing teams</strong> repurposing blog articles into video content.</li>
+          <li><strong>Course creators</strong> automating lesson‑video production.</li>
+          <li><strong>Agencies</strong> managing multiple client YouTube channels efficiently.</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>MagicHour API Key</strong> – for text‑to‑video generation.</li>
+          <li><strong>Google Gemini API Key</strong> – for prompt parsing and metadata creation.</li>
+          <li><strong>YouTube OAuth2 Credentials</strong> – to upload videos to your channel.</li>
+          <li><strong>Google Sheets OAuth2 Access</strong> – to read prompts and write back results.</li>
+          <li><strong>Optional: MediaFX Community Node</strong> – if you want to mix background audio automatically.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a small batch of 5–10 prompts to test the quality and settings before scaling to hundreds of videos. Adjust the MagicHour parameters (style, duration, aspect ratio) to match your brand’s visual identity.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance.</li>
+          <li><strong>Configure credentials</strong> for MagicHour, Gemini, YouTube, and Google Sheets in n8n’s credentials panel.</li>
+          <li><strong>Prepare your Google Sheet</strong> with columns for Prompt, Background Music URL (optional), Status, YouTube URL, and Metadata.</li>
+          <li><strong>Set the trigger</strong> – either a Google Sheets trigger for new rows or a Schedule trigger for daily automation.</li>
+          <li><strong>Test with one prompt</strong> and verify the video is generated, uploaded, and logged correctly.</li>
+          <li><strong>Scale up</strong> by adding more prompts to your sheet and letting the automation run on schedule.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10+ hours per week on video production.</strong> Eliminate manual editing, uploading, and metadata writing by automating the entire pipeline from idea to published video.</p>
+        <p><strong>Ensure consistent posting schedules.</strong> Never miss a upload deadline—set a daily cron trigger and let the workflow generate and publish videos automatically.</p>
+        <p><strong>Improve SEO with AI‑generated metadata.</strong> Gemini creates compelling titles, descriptions, and tags tailored to each video, boosting discoverability.</p>
+        <p><strong>Scale content production without extra hires.</strong> One workflow can produce hundreds of videos, allowing small teams to compete with larger media operations.</p>
+        <p><strong>Full transparency and tracking.</strong> Every video’s status, YouTube link, and metadata are logged back to Google Sheets, giving you complete oversight.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI video automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the business value of automating YouTube video creation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating YouTube video creation saves dozens of hours per week on manual editing, uploading, and metadata writing. It allows content creators and marketers to scale production, maintain consistent posting schedules, and repurpose content efficiently—freeing up time for strategy and audience engagement.</p>
+          <p>For businesses, this translates to higher content output, improved audience retention, and better SEO performance without proportional increases in labor cost. The automation also ensures brand consistency and reduces human error in the publishing process.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI video generation work for content marketing?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI video generation tools like MagicHour turn text prompts into visual content using generative models. For marketing, this means quickly producing explainer videos, social clips, or product demos without filming equipment or editing software. The automation adds consistency and speed to content pipelines.</p>
+          <p>Marketers can feed campaign messaging, blog summaries, or product features into the system and receive ready‑to‑publish videos. This enables rapid A/B testing of visual styles, faster time‑to‑market for promotional content, and the ability to localize videos by simply translating the input prompts.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use Google Sheets as a content calendar for automated videos?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, Google Sheets works perfectly as a lightweight content calendar. Each row can contain a video prompt, background music URL, target publish date, and status. The automation reads pending prompts, generates videos, and updates the sheet with YouTube links and metadata—creating a fully trackable system.</p>
+          <p>This approach is especially useful for teams: multiple members can add ideas to the sheet, and the automation processes them in order. You can also add columns for performance metrics later, turning the sheet into a central dashboard for your video content.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of integrating Gemini AI with video automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Gemini AI enhances video automation by parsing and refining text prompts, generating compelling YouTube titles and descriptions, and suggesting relevant tags. This ensures each video is optimized for search and engagement, improving reach without manual copywriting.</p>
+          <p>Beyond metadata, Gemini can also rewrite prompts for clarity, extract key themes for consistency across a series, and even generate script variations for A/B testing. This turns a simple text input into a strategically optimized video asset.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How reliable is automated YouTube uploading for business content?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated YouTube uploading via API is highly reliable when properly configured with error handling and retry logic. The workflow includes status tracking and fallback steps to ensure videos are published even if temporary issues occur, making it suitable for business‑critical content schedules.</p>
+          <p>Best practices include setting appropriate retry intervals, logging each upload attempt, and implementing notifications for failures. With these safeguards, businesses can trust the system to deliver videos on time, every time.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are common pitfalls when scaling AI video production?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common pitfalls include inconsistent prompt quality, lack of brand voice in AI‑generated content, API cost overruns, and insufficient error handling for render failures. Successful scaling requires prompt templates, quality checks, budget monitoring, and robust workflow logic to manage exceptions.</p>
+          <p>To avoid these issues, start with a small batch, establish clear prompt guidelines, set API spending alerts, and build in manual review steps for critical content. Gradually increase volume as you refine the process.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom AI video automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom AI video automation systems tailored to your brand, content strategy, and integration needs. We can design workflows that incorporate your existing tools, enforce brand guidelines, and scale production based on your specific requirements.</p>
+          <p>Our team will work with you to understand your content goals, set up the appropriate AI models, integrate with your CMS or CRM, and provide ongoing support. This ensures you get a solution that fits perfectly into your operations.</p>
+          <ul>
+            <li>Custom prompt templates aligned with your brand voice</li>
+            <li>Integration with your existing marketing stack</li>
+            <li>Performance analytics and optimization recommendations</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom AI Video Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
