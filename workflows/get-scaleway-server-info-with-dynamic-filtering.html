@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Scaleway Server Info with Dynamic Filtering | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate Scaleway server inventory & management. This n8n workflow dynamically filters servers by tags, name, IP, or zone. Free template for DevOps & SysAdmins.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1746-get-scaleway-server-info-with-dynamic-filtering/">
+<meta property="og:title" content="Get Scaleway Server Info with Dynamic Filtering | Free n8n Template">
+<meta property="og:description" content="Automate Scaleway server inventory & management. This n8n workflow dynamically filters servers by tags, name, IP, or zone. Free template for DevOps & SysAdmins.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1746-get-scaleway-server-info-with-dynamic-filtering/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3571-get-scaleway-server-info-with-dynamic-filtering.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Get Scaleway Server Info with Dynamic Filtering | Free n8n Template">
+<meta name="twitter:description" content="Automate Scaleway server inventory & management. This n8n workflow dynamically filters servers by tags, name, IP, or zone. Free template for DevOps & SysAdmins.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Get Scaleway Server Info with Dynamic Filtering","description":"Automate Scaleway server inventory & management. This n8n workflow dynamically filters servers by tags, name, IP, or zone. Free template for DevOps & SysAdmins.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3571-get-scaleway-server-info-with-dynamic-filtering.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Scaleway server automation and why is it useful?","acceptedAnswer":{"@type":"Answer","text":"Scaleway server automation involves using tools like n8n to programmatically manage and monitor your cloud servers. It's useful for automatically gathering inventory data, checking server statuses, filtering instances by tags or zones, and integrating this data into monitoring dashboards or alerting systems without manual SSH or console access."}},{"@type":"Question","name":"How does automating server inventory save time for DevOps teams?","acceptedAnswer":{"@type":"Answer","text":"Manual server inventory checks can take hours across multiple zones and projects. Automation runs in seconds, providing real-time visibility into all your instances, their states, IP addresses, and tags. This eliminates human error in tracking and ensures your asset management is always current, freeing up engineers for higher-value tasks."}},{"@type":"Question","name":"Can I use this workflow with other cloud providers besides Scaleway?","acceptedAnswer":{"@type":"Answer","text":"The core pattern of this workflow—trigger via webhook, fetch data via API, process and filter results—is applicable to any cloud provider with an API (AWS EC2, Google Compute Engine, DigitalOcean, etc.). You would replace the Scaleway API calls with the respective provider's endpoints and authentication method."}},{"@type":"Question","name":"What are the most common use cases for filtering servers dynamically?","acceptedAnswer":{"@type":"Answer","text":"Common use cases include: identifying all servers with a specific tag (like 'production' or 'backend'), finding instances by name pattern for batch operations, locating servers by public IP for security audits, and grouping servers by zone for maintenance scheduling. This enables targeted actions like restarting a service group or applying security patches."}},{"@type":"Question","name":"How secure is it to automate cloud server management?","acceptedAnswer":{"@type":"Answer","text":"When implemented correctly, automation can be more secure than manual access. Use API tokens with minimal required permissions (read-only for inventory), secure webhook endpoints with authentication, and run automation from a secure, isolated environment. Always follow the principle of least privilege and audit access logs regularly."}},{"@type":"Question","name":"What should I do with the filtered server data from this workflow?","acceptedAnswer":{"@type":"Answer","text":"The filtered data can be sent to Slack/Teams for team alerts, added to a Google Sheet for inventory tracking, pushed to a monitoring tool like Datadog or Grafana, used to trigger other automations (like scaling or backups), or integrated into your internal CMDB for accurate asset management."}},{"@type":"Question","name":"Can I get a custom Scaleway server automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. GrowwStacks specializes in building tailored automation solutions for cloud infrastructure management. We can create custom workflows that integrate Scaleway with your specific monitoring tools, ticketing systems, or internal dashboards, implement complex filtering logic, and set up automated remediation actions based on server states."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Get Scaleway Server Info with Dynamic Filtering"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Scaleway Server Info</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Scaleway</span>
+          <span class="cs-tag">DevOps</span>
+          <span class="cs-tag">Server Management</span>
+          <span class="cs-tag">API Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Get Scaleway Server Info with Dynamic Filtering</h1>
+        <p class="cs-hero-sub">Automatically retrieve and filter your Scaleway instance and baremetal server data by tags, name, IP, or zone. Perfect for inventory management and monitoring.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3571-get-scaleway-server-info-with-dynamic-filtering.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3571-get-scaleway-server-info-with-dynamic-filtering.png" alt="n8n workflow diagram for Scaleway server info automation with dynamic filtering" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Managing cloud infrastructure manually is time-consuming and error-prone, especially when you need to quickly find specific servers across multiple zones or projects. This n8n workflow automates the retrieval and intelligent filtering of your Scaleway server inventory.</p>
+        <p>It connects to the Scaleway API to fetch data from both instances and baremetal servers across all your configured zones. You can then filter results dynamically based on criteria like server tags, name patterns, public IP addresses, or specific zones—all through a simple webhook request. This turns what would be a manual console-hopping session into a single API call that returns exactly the server information you need.</p>
+        <p>The workflow is particularly valuable for DevOps teams, system administrators, and platform engineers who need to maintain accurate server inventories, perform quick audits, trigger automated actions based on server states, or integrate server data with other monitoring and management systems.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow follows a logical sequence to gather, process, and return your server data efficiently.</p>
+        
+        <h3>1. Webhook Trigger with Authentication</h3>
+        <p>The workflow starts with a secure webhook node that accepts POST requests. You can configure basic authentication for added security. The webhook expects a JSON payload containing your search criteria—specifically what to search by (tags, name, public_ip, or zone) and the actual search value.</p>
+        
+        <h3>2. API Data Collection</h3>
+        <p>Once triggered, the workflow makes parallel API calls to Scaleway to fetch server data from both the instance and baremetal services. It iterates through your predefined zones (which you can customize) to ensure comprehensive coverage of your infrastructure.</p>
+        
+        <h3>3. Data Processing & Normalization</h3>
+        <p>A Code node processes the raw API responses, extracting and standardizing the most relevant server attributes: name, ID, tags, public IP, type, state, zone, and creation date. This creates a clean, uniform dataset regardless of whether the server is an instance or baremetal.</p>
+        
+        <h3>4. Dynamic Filtering Logic</h3>
+        <p>Based on the "search_by" parameter from your webhook request, the workflow routes the data through specialized filtering logic. It can match servers by exact tag values, partial name matches, specific IP addresses, or particular zones, returning only the servers that meet your criteria.</p>
+        
+        <h3>5. Structured Response</h3>
+        <p>The filtered results are formatted into a clean JSON array and returned through the webhook response node. If no servers match your criteria, you receive an appropriate message instead of an empty array.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Extend this workflow by connecting the output to notification channels like Slack or email, or use it to trigger subsequent automation based on the filtered server list—like restarting services or applying updates.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template is designed for technical teams managing cloud infrastructure:</p>
+        <p><strong>DevOps Engineers</strong> who need to quickly audit server states before deployments or identify servers for maintenance windows.</p>
+        <p><strong>System Administrators</strong> responsible for keeping accurate inventory of cloud resources across multiple projects and environments.</p>
+        <p><strong>Platform Teams</strong> building internal tools for developer self-service or infrastructure visibility.</p>
+        <p><strong>IT Operations</strong> teams that need to generate regular reports on server utilization, costs, or compliance status.</p>
+        <p><strong>Startups and SMBs</strong> that want to implement basic infrastructure automation without building custom tooling from scratch.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A Scaleway account</strong> with active servers (instances or baremetal).</li>
+          <li><strong>Scaleway API token</strong> with appropriate read permissions for your servers.</li>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) to import and run the workflow.</li>
+          <li><strong>Webhook access</strong> to trigger the workflow from your tools or scripts.</li>
+          <li><strong>Basic understanding</strong> of your server naming conventions, tagging structure, and zone configuration.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Get this automation running in your environment in under 10 minutes:</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance.</li>
+          <li><strong>Configure the "Edit Fields" node</strong> by replacing the placeholder text with your actual Scaleway API token.</li>
+          <li><strong>Review zone lists</strong> in the workflow (ZONE_INSTANCE and ZONE_BAREMETAL) and update them to match your Scaleway regions if needed.</li>
+          <li><strong>Test the webhook</strong> by sending a POST request with JSON like: <code>{"search_by": "tags", "search": "production"}</code></li>
+          <li><strong>Integrate with your tools</strong> by calling the webhook URL from your monitoring systems, scripts, or other workflows.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Note:</strong> For production use, consider adding rate limiting, error handling for API failures, and logging of all queries for audit purposes.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save hours of manual work</strong> each week by automating server discovery and inventory management. What used to require logging into multiple consoles and running manual queries now happens with a single API call.</p>
+        <p><strong>Eliminate human error</strong> in server tracking. Automated data collection ensures your inventory is always accurate and up-to-date, unlike spreadsheets that quickly become outdated.</p>
+        <p><strong>Enable proactive monitoring</strong> by integrating this workflow with alerting systems. Get notified when servers enter unexpected states or when specific conditions are met across your infrastructure.</p>
+        <p><strong>Standardize server management</strong> across your organization. Provide teams with a consistent, self-service way to query server information without granting full console access.</p>
+        <p><strong>Build foundation for advanced automation</strong> like auto-scaling, cost optimization, or security compliance checks. This workflow provides the data layer for more sophisticated infrastructure automation.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about Scaleway server automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is Scaleway server automation and why is it useful?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Scaleway server automation involves using tools like n8n to programmatically manage and monitor your cloud servers. It's useful for automatically gathering inventory data, checking server statuses, filtering instances by tags or zones, and integrating this data into monitoring dashboards or alerting systems without manual SSH or console access.</p>
+          <p>This approach transforms reactive, manual server management into proactive, automated oversight. Instead of logging into multiple consoles to check server states, you can query your entire infrastructure programmatically and trigger actions based on the results.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating server inventory save time for DevOps teams?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual server inventory checks can take hours across multiple zones and projects. Automation runs in seconds, providing real-time visibility into all your instances, their states, IP addresses, and tags. This eliminates human error in tracking and ensures your asset management is always current, freeing up engineers for higher-value tasks.</p>
+          <p>Consider a team managing 200+ servers across development, staging, and production environments. Manual audits might consume 4-5 hours weekly. Automation reduces this to minutes while providing more accurate, actionable data for capacity planning and cost optimization.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this workflow with other cloud providers besides Scaleway?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The core pattern of this workflow—trigger via webhook, fetch data via API, process and filter results—is applicable to any cloud provider with an API (AWS EC2, Google Compute Engine, DigitalOcean, etc.). You would replace the Scaleway API calls with the respective provider's endpoints and authentication method.</p>
+          <p>The filtering logic and webhook interface remain largely unchanged. This makes the workflow a excellent template for building multi-cloud inventory systems that provide a unified view of your infrastructure regardless of where it's hosted.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the most common use cases for filtering servers dynamically?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common use cases include: identifying all servers with a specific tag (like 'production' or 'backend'), finding instances by name pattern for batch operations, locating servers by public IP for security audits, and grouping servers by zone for maintenance scheduling. This enables targeted actions like restarting a service group or applying security patches.</p>
+          <p>For example, you could automatically find all servers tagged "needs-patch" and trigger your patching workflow, or identify development servers that have been running for over 30 days to schedule decommissioning, all without manual intervention.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is it to automate cloud server management?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>When implemented correctly, automation can be more secure than manual access. Use API tokens with minimal required permissions (read-only for inventory), secure webhook endpoints with authentication, and run automation from a secure, isolated environment. Always follow the principle of least privilege and audit access logs regularly.</p>
+          <p>This workflow uses API tokens scoped to read-only server access, preventing any modification of your infrastructure. The webhook can be secured with basic authentication or IP whitelisting, and all data processing happens within your controlled n8n instance.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What should I do with the filtered server data from this workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The filtered data can be sent to Slack/Teams for team alerts, added to a Google Sheet for inventory tracking, pushed to a monitoring tool like Datadog or Grafana, used to trigger other automations (like scaling or backups), or integrated into your internal CMDB for accurate asset management.</p>
+          <p>For instance, you could create a daily report of all production servers with their current states, or set up an alert when a critical server's state changes unexpectedly. The structured output makes it easy to connect to virtually any other business system.</p>
+          <ul>
+            <li>Feed into cost allocation systems by tagging and grouping servers</li>
+            <li>Trigger automated backups for filtered servers</li>
+            <li>Update service discovery registries automatically</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom Scaleway server automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. GrowwStacks specializes in building tailored automation solutions for cloud infrastructure management. We can create custom workflows that integrate Scaleway with your specific monitoring tools, ticketing systems, or internal dashboards, implement complex filtering logic, and set up automated remediation actions based on server states.</p>
+          <p>Our team can design workflows that match your exact operational requirements—whether you need multi-account aggregation, compliance reporting, automated scaling policies, or integration with your existing DevOps toolchain. We handle the complexity so you get a solution that works seamlessly with your processes.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Scaleway Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

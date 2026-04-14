@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Daily Standup Bot for Teams | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate daily team standups with this free n8n workflow. Sends morning questions via Mattermost, collects responses, and posts summaries to a channel.">
+<link rel="canonical" href="https://growwstacks.com/workflows/515-standup-bot-44-worker/">
+<meta property="og:title" content="Free Automated Daily Standup Bot for Teams | n8n Template">
+<meta property="og:description" content="Automate daily team standups with this free n8n workflow. Sends morning questions via Mattermost, collects responses, and posts summaries to a channel.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/515-standup-bot-44-worker/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1475-standup-bot-44-worker.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Automated Daily Standup Bot for Teams | n8n Template">
+<meta name="twitter:description" content="Automate daily team standups with this free n8n workflow. Sends morning questions via Mattermost, collects responses, and posts summaries to a channel.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automated Daily Standup Bot for Teams","description":"Automate daily team standups with this free n8n workflow. Sends morning questions via Mattermost, collects responses, and posts summaries to a channel.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1475-standup-bot-44-worker.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a daily standup bot and why should I automate it?","acceptedAnswer":{"@type":"Answer","text":"A daily standup bot automates the process of asking team members what they accomplished yesterday, what they plan to do today, and any blockers. Automating this saves 10-15 minutes per team member daily, ensures consistency, and creates a searchable record of progress and issues."}},{"@type":"Question","name":"How does automating standups improve team productivity?","acceptedAnswer":{"@type":"Answer","text":"Automated standups eliminate scheduling conflicts and meeting fatigue. Team members can respond asynchronously, reducing interruptions to deep work. The collected data helps managers spot trends, identify recurring blockers early, and track project momentum without manual follow-ups."}},{"@type":"Question","name":"Can I use this workflow with tools other than Mattermost?","acceptedAnswer":{"@type":"Answer","text":"Yes, the core logic is platform-agnostic. You can adapt this n8n template to work with Slack, Microsoft Teams, Discord, or email. n8n's HTTP Request and Function nodes allow you to connect to virtually any communication API with minimal configuration changes."}},{"@type":"Question","name":"What are the key benefits of using n8n for team automation?","acceptedAnswer":{"@type":"Answer","text":"n8n provides complete control over your automation logic with visual workflow building. Unlike closed platforms, you can self-host it, extend it with custom code, and connect to any tool via API. It's ideal for businesses needing flexible, scalable automations without vendor lock-in."}},{"@type":"Question","name":"How secure is an automated standup workflow?","acceptedAnswer":{"@type":"Answer","text":"When self-hosted, n8n keeps all your data within your infrastructure. The workflow uses encrypted connections (HTTPS) for API calls. Access controls ensure only authorized users receive questions and view responses. You maintain full ownership of all standup data and conversation history."}},{"@type":"Question","name":"What happens if someone doesn't respond to the standup questions?","acceptedAnswer":{"@type":"Answer","text":"The template can be extended with reminder logic. You can add conditional branches to send follow-up messages after a timeout, escalate to managers via DM, or log missed responses for review. This ensures accountability while respecting different working hours and patterns."}},{"@type":"Question","name":"Can I customize the standup questions and schedule?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The workflow uses a Cron trigger that you can set to any schedule (daily, weekly, specific weekdays). Questions are stored in a configuration node or database, making them easy to update without touching the workflow logic. You can add, remove, or rotate questions."}},{"@type":"Question","name":"Can I get a custom standup automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored automation solutions. We can create a custom standup system that integrates with your existing tools (Jira, Asana, GitHub), includes advanced analytics, handles multiple teams, and incorporates your specific reporting requirements. Book a free consultation to discuss your needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Automated Daily Standup Bot"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Automated Daily Standup Bot</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Mattermost</span>
+          <span class="cs-tag">Team Collaboration</span>
+          <span class="cs-tag">Project Management</span>
+          <span class="cs-tag">Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automated Daily Standup Bot for Teams</h1>
+        <p class="cs-hero-sub">Free n8n template to automate daily team check-ins, collect progress updates, and post summaries to Mattermost—saving hours of manual coordination.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1475-standup-bot-44-worker.png" alt="Visual diagram of the automated standup bot workflow showing question distribution and response collection" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Daily standup meetings are essential for team alignment but often become time-consuming rituals that interrupt deep work. This automated standup bot solves that by running the entire process asynchronously through Mattermost.</p>
+        <p>The workflow sends personalized messages to each team member every morning with three standard standup questions: what they accomplished yesterday, what they plan to do today, and any blockers preventing progress. Once responses are collected, it formats them into a clean summary and posts it to a designated team channel.</p>
+        <p>This eliminates scheduling conflicts, reduces meeting fatigue, and creates a searchable record of team progress—all while saving 10-15 minutes per person daily that would otherwise be spent in a synchronous meeting.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Scheduled Trigger & Configuration</h3>
+        <p>A Cron node triggers the workflow daily at your specified time (e.g., 9 AM). The workflow first reads configuration settings from a separate "Standup Bot - Read Config" workflow, which contains team member lists, channel IDs, and question templates.</p>
+
+        <h3>2. Personalized Message Distribution</h3>
+        <p>Using the Mattermost node, the workflow sends direct messages to each team member with the three standup questions. The messages are personalized with the team member's name and include interactive buttons or formatted text for easy responding.</p>
+
+        <h3>3. Response Collection & Processing</h3>
+        <p>As team members reply throughout the day, a Webhook node captures their responses. The workflow parses each answer, timestamps it, and stores it temporarily while waiting for all responses or until a cutoff time.</p>
+
+        <h3>4. Summary Compilation & Posting</h3>
+        <p>Once responses are collected (or at a designated summary time), a Function node formats all answers into a clean, readable summary. The workflow then posts this summary to your team's Mattermost channel, highlighting accomplishments, plans, and blockers for easy visibility.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Extend this workflow by adding a "Reminder" branch that sends follow-up messages to team members who haven't responded by a certain time, ensuring complete participation without manual chasing.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for distributed teams, remote-first companies, engineering squads, and project managers who want to maintain daily alignment without the overhead of synchronous meetings. It's particularly valuable for:</p>
+        <ul>
+          <li><strong>Remote teams</strong> across different time zones who can't meet simultaneously</li>
+          <li><strong>Engineering managers</strong> tracking sprint progress and blockers</li>
+          <li><strong>Startup founders</strong> keeping distributed teams aligned without daily meetings</li>
+          <li><strong>Agencies</strong> managing multiple client projects with clear daily updates</li>
+          <li><strong>DevOps teams</strong> needing visibility into daily operations and incidents</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) with webhook capabilities</li>
+          <li><strong>Mattermost workspace</strong> with appropriate permissions to send messages and create webhooks</li>
+          <li><strong>Team channel</strong> designated for standup summaries</li>
+          <li><strong>List of team members</strong> and their Mattermost user IDs</li>
+          <li><strong>Basic understanding</strong> of n8n workflow configuration (10-15 minute setup)</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this standup bot in under 30 minutes:</p>
+        <ol>
+          <li><strong>Download and import</strong> the JSON template into your n8n instance</li>
+          <li><strong>Configure Mattermost credentials</strong> in the Mattermost nodes with your bot token</li>
+          <li><strong>Update the "Read Config" nodes</strong> to point to your configuration workflow ID</li>
+          <li><strong>Set the "Override Config" node</strong> to reference your override workflow</li>
+          <li><strong>Adjust the Cron trigger</strong> to your team's preferred standup time</li>
+          <li><strong>Test with a small group</strong> first, then roll out to the entire team</li>
+          <li><strong>Monitor for a week</strong> and tweak questions or timing based on team feedback</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Implementation note:</strong> Start with a pilot group of 3-5 team members for the first week. This lets you iron out timing issues and response formats before scaling to the entire organization.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5+ hours per week in meeting time</strong> for a 10-person team. Instead of 15-minute daily meetings (2.5 hours weekly), this automation reduces active meeting time to zero while maintaining alignment.</p>
+        <p><strong>Eliminate scheduling conflicts</strong> across time zones and working hours. Team members respond when it's convenient for them, and managers get a complete picture by the designated summary time.</p>
+        <p><strong>Create searchable records</strong> of daily progress and blockers. Unlike verbal standups that disappear, these written summaries become a valuable historical record for retrospectives and performance reviews.</p>
+        <p><strong>Identify patterns and bottlenecks</strong> through consistent data collection. When blockers are documented daily across weeks, you can spot systemic issues that need process changes or additional resources.</p>
+        <p><strong>Scale effortlessly</strong> as your team grows. Adding new members requires only updating the configuration—no additional meeting time or coordination overhead.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about team standup automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is a daily standup bot and why should I automate it?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>A daily standup bot automates the process of asking team members what they accomplished yesterday, what they plan to do today, and any blockers. Automating this saves 10-15 minutes per team member daily, ensures consistency, and creates a searchable record of progress and issues.</p>
+          <p>Traditional standup meetings often waste time with scheduling, off-topic discussions, and repetition. An automated bot runs asynchronously, allowing team members to respond when most productive while giving managers comprehensive visibility.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating standups improve team productivity?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated standups eliminate scheduling conflicts and meeting fatigue. Team members can respond asynchronously, reducing interruptions to deep work. The collected data helps managers spot trends, identify recurring blockers early, and track project momentum without manual follow-ups.</p>
+          <p>Productivity improves because team members spend less time in meetings and more time doing actual work. The structured format ensures everyone provides the same information, making it easier to compare progress week over week and identify who might need support.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this workflow with tools other than Mattermost?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the core logic is platform-agnostic. You can adapt this n8n template to work with Slack, Microsoft Teams, Discord, or email. n8n's HTTP Request and Function nodes allow you to connect to virtually any communication API with minimal configuration changes.</p>
+          <p>The workflow structure remains the same—trigger, message distribution, response collection, and summary posting. You would simply replace the Mattermost nodes with equivalent nodes for your preferred platform, maintaining the same business logic and scheduling.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the key benefits of using n8n for team automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>n8n provides complete control over your automation logic with visual workflow building. Unlike closed platforms, you can self-host it, extend it with custom code, and connect to any tool via API. It's ideal for businesses needing flexible, scalable automations without vendor lock-in.</p>
+          <p>For team standups specifically, n8n lets you customize question logic, add conditional reminders, integrate with project management tools like Jira or Trello, and maintain all data within your infrastructure. You're not limited by what a SaaS standup tool decides to offer.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is an automated standup workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>When self-hosted, n8n keeps all your data within your infrastructure. The workflow uses encrypted connections (HTTPS) for API calls. Access controls ensure only authorized users receive questions and view responses. You maintain full ownership of all standup data and conversation history.</p>
+          <p>Compared to third-party standup SaaS tools that store your team's daily progress on their servers, this approach gives you complete control over data residency, retention policies, and access auditing—critical for organizations with compliance requirements.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if someone doesn't respond to the standup questions?</span>
+          <span class="faq-arrow" aria-expanded="false">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The template can be extended with reminder logic. You can add conditional branches to send follow-up messages after a timeout, escalate to managers via DM, or log missed responses for review. This ensures accountability while respecting different working hours and patterns.</p>
+          <p>For example, you could configure the workflow to send a gentle reminder after 2 hours, a more urgent follow-up after 4 hours, and finally notify the team lead if there's still no response by the cutoff time—all automatically without manual intervention.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I customize the standup questions and schedule?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. The workflow uses a Cron trigger that you can set to any schedule (daily, weekly, specific weekdays). Questions are stored in a configuration node or database, making them easy to update without touching the workflow logic. You can add, remove, or rotate questions.</p>
+          <p>Advanced customization might include: conditional questions based on team role, integration with holiday calendars to skip days, or dynamic scheduling that adjusts for different time zones. The modular n8n design makes these enhancements straightforward to implement.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom standup automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored automation solutions. We can create a custom standup system that integrates with your existing tools (Jira, Asana, GitHub), includes advanced analytics, handles multiple teams, and incorporates your specific reporting requirements.</p>
+          <p>Our team will work with you to understand your team structure, communication preferences, and reporting needs, then build a solution that fits seamlessly into your workflow. Book a free consultation to discuss your needs.</p>
+          <ul>
+            <li>Integration with your existing project management stack</li>
+            <li>Custom reporting and analytics dashboards</li>
+            <li>Multi-team coordination with different schedules</li>
+            <li>Ongoing support and optimization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Standup Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

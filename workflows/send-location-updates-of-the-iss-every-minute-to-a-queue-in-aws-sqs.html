@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate ISS Location Updates to AWS SQS | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow template to send International Space Station location updates to AWS SQS every minute. Automate real-time data streaming without coding.">
+<link rel="canonical" href="https://growwstacks.com/workflows/394-send-location-updates-of-the-iss-every-minute-to-a-queue-in-aws-sqs/">
+<meta property="og:title" content="Automate ISS Location Updates to AWS SQS | Free n8n Template">
+<meta property="og:description" content="Free n8n workflow template to send International Space Station location updates to AWS SQS every minute. Automate real-time data streaming without coding.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/394-send-location-updates-of-the-iss-every-minute-to-a-queue-in-aws-sqs/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1047-send-location-updates-of-the-iss-every-minute-to-a-queu.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate ISS Location Updates to AWS SQS | Free n8n Template">
+<meta name="twitter:description" content="Free n8n workflow template to send International Space Station location updates to AWS SQS every minute. Automate real-time data streaming without coding.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate ISS Location Updates to AWS SQS","description":"Free n8n workflow template to send International Space Station location updates to AWS SQS every minute. Automate real-time data streaming without coding.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1047-send-location-updates-of-the-iss-every-minute-to-a-queu.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the benefits of streaming real-time data to AWS SQS?","acceptedAnswer":{"@type":"Answer","text":"Streaming real-time data to AWS SQS provides reliable message queuing, decouples data producers from consumers, and enables scalable event-driven architectures. It ensures data persistence during processing failures and allows multiple services to consume the same data stream independently."}},{"@type":"Question","name":"How can businesses use real-time location data from APIs?","acceptedAnswer":{"@type":"Answer","text":"Businesses use real-time location data for tracking shipments, monitoring fleet vehicles, analyzing customer movement patterns, triggering location-based notifications, and integrating with mapping services. This data powers logistics optimization, geofencing applications, and real-time dashboard updates."}},{"@type":"Question","name":"Why use n8n instead of custom code for API-to-queue integrations?","acceptedAnswer":{"@type":"Answer","text":"n8n eliminates the need to write and maintain complex API integration code, handle error recovery, and manage connection pooling. It provides visual workflow building, built-in scheduling, error handling, and monitoring—reducing development time from weeks to hours while ensuring reliability."}},{"@type":"Question","name":"What types of data are suitable for streaming to message queues?","acceptedAnswer":{"@type":"Answer","text":"Ideal data for streaming includes IoT sensor readings, API webhook payloads, user activity logs, financial transactions, social media feeds, and real-time analytics data. Any time-sensitive information that needs reliable delivery to multiple systems benefits from queue-based architecture."}},{"@type":"Question","name":"How do you ensure reliability when streaming data between systems?","acceptedAnswer":{"@type":"Answer","text":"Ensure reliability by implementing retry logic for failed API calls, using message queues with persistence, adding data validation checks, monitoring error rates, setting up alerts for service disruptions, and maintaining data backups. n8n provides built-in retry mechanisms and error handling nodes."}},{"@type":"Question","name":"What are common use cases for AWS SQS in business automation?","acceptedAnswer":{"@type":"Answer","text":"Common AWS SQS use cases include processing e-commerce orders asynchronously, handling user registration workflows, distributing workload across microservices, buffering database writes, managing email sending queues, and coordinating between different SaaS applications in event-driven architectures."}},{"@type":"Question","name":"Can I get a custom real-time data streaming automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom real-time data streaming automations tailored to your specific business needs. We design workflows that connect your APIs, databases, and cloud services with reliable queuing systems, ensuring scalable and maintainable data pipelines."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"ISS Location Updates to AWS SQS"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>ISS Location Updates to AWS SQS</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AWS SQS</span>
+          <span class="cs-tag">Real-time Data</span>
+          <span class="cs-tag">API Integration</span>
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Automate ISS Location Updates to AWS SQS</h1>
+        <p class="cs-hero-sub">Stream International Space Station position data to your message queue every minute—no coding required. Perfect for real-time data pipelines and event-driven architectures.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1047-send-location-updates-of-the-iss-every-minute-to-a-queu.png" alt="n8n workflow diagram showing ISS location data flowing to AWS SQS" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solution solves the challenge of reliably streaming real-time data from external APIs to cloud message queues. Instead of building custom integration code that requires constant maintenance, this n8n workflow automatically fetches International Space Station position data every minute and delivers it to AWS Simple Queue Service (SQS).</p>
+        <p>The workflow creates a fully automated data pipeline that transforms raw API responses into structured messages ready for downstream processing. This eliminates manual data collection, ensures data consistency, and provides a scalable foundation for real-time analytics, monitoring systems, or event-driven applications.</p>
+        
+        <h2>How It Works</h2>
+        <p>The workflow follows a clean, four-step process that demonstrates best practices for API-to-queue integrations.</p>
+        
+        <h3>1. Scheduled Trigger</h3>
+        <p>A Cron node initiates the workflow every minute, providing reliable scheduling without external dependencies. This time-based trigger ensures consistent data collection intervals, which is crucial for time-series analysis and real-time monitoring applications.</p>
+        
+        <h3>2. API Data Fetching</h3>
+        <p>The HTTP Request node calls the Where the ISS At API (api.wheretheiss.at) to retrieve current satellite position data. This public API provides latitude, longitude, altitude, velocity, and visibility status—perfect for demonstrating real-time data streaming patterns.</p>
+        
+        <h3>3. Data Transformation</h3>
+        <p>A Set node structures the raw API response into a clean, standardized format. This step filters unnecessary fields, renames properties for clarity, and adds metadata like timestamp and data source identifiers. Proper data transformation ensures downstream systems receive consistent, well-formed messages.</p>
+        
+        <h3>4. Queue Delivery</h3>
+        <p>The AWS SQS node delivers the transformed data to your specified message queue. This provides guaranteed delivery, message persistence, and enables multiple consumer applications to process the data independently. The queue acts as a buffer during high-load periods or consumer downtime.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use this workflow as a template for any API-to-queue integration. Simply replace the ISS API endpoint with your data source and configure the SQS node for your AWS environment.</p>
+        </div>
+        
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for developers building real-time data pipelines, IoT platform engineers streaming sensor data, data scientists collecting time-series datasets, and businesses implementing event-driven architectures. It's particularly valuable for teams that need reliable API data collection without investing in custom infrastructure.</p>
+        <p>Startups can use this pattern to quickly prototype data streaming solutions, while enterprises can adapt it for mission-critical data integration between cloud services. The workflow also serves as an excellent educational tool for understanding message queue patterns and real-time data processing.</p>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A running n8n instance</strong> (cloud or self-hosted) with network access to public APIs</li>
+          <li><strong>AWS account</strong> with SQS permissions and a configured queue</li>
+          <li><strong>AWS credentials</strong> (Access Key ID and Secret Access Key) with SQS send message permissions</li>
+          <li><strong>Basic understanding</strong> of message queues and API data formats</li>
+          <li><strong>Optional:</strong> Downstream service ready to consume messages from your SQS queue</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <p>Get this workflow running in your environment in under 15 minutes with these simple steps.</p>
+        <ol>
+          <li><strong>Download and import</strong> the template JSON file into your n8n instance</li>
+          <li><strong>Configure AWS credentials</strong> in the SQS node using your IAM access keys</li>
+          <li><strong>Update the queue URL</strong> in the SQS node to point to your AWS SQS queue</li>
+          <li><strong>Test the workflow</strong> manually to verify API connectivity and queue delivery</li>
+          <li><strong>Activate the workflow</strong> to begin automatic minute-by-minute execution</li>
+          <li><strong>Monitor message delivery</strong> in AWS CloudWatch or your queue monitoring tool</li>
+        </ol>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Before going live, test with a dedicated test queue. Once verified, switch to your production queue and consider adding error handling nodes for production resilience.</p>
+        </div>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate custom integration code</strong> that requires ongoing maintenance and debugging. This visual workflow approach reduces technical debt and makes data pipeline logic transparent to your entire team.</p>
+        <p><strong>Ensure data reliability</strong> with built-in error handling, retry logic, and message persistence. AWS SQS guarantees message delivery even during consumer outages, preventing data loss.</p>
+        <p><strong>Scale effortlessly</strong> as your data volume grows. Message queues naturally handle variable loads, and n8n's workflow execution can be distributed across multiple workers for high-throughput scenarios.</p>
+        <p><strong>Accelerate development</strong> from weeks to hours. This template provides production-ready patterns that you can adapt to any API and queue combination, saving hundreds of development hours.</p>
+        <p><strong>Future-proof your architecture</strong> with decoupled, event-driven design. By separating data collection from processing, you can independently scale, update, or replace components without system-wide disruptions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about real-time data streaming and AWS SQS integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of streaming real-time data to AWS SQS?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Streaming real-time data to AWS SQS provides reliable message queuing, decouples data producers from consumers, and enables scalable event-driven architectures. It ensures data persistence during processing failures and allows multiple services to consume the same data stream independently.</p>
+          <p>For businesses, this means you can collect data once and use it across multiple systems—analytics platforms, notification services, databases—without building point-to-point integrations. The queue acts as a buffer during traffic spikes, preventing data loss when downstream systems are overloaded.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can businesses use real-time location data from APIs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Businesses use real-time location data for tracking shipments, monitoring fleet vehicles, analyzing customer movement patterns, triggering location-based notifications, and integrating with mapping services. This data powers logistics optimization, geofencing applications, and real-time dashboard updates.</p>
+          <p>Beyond traditional uses, innovative companies apply location data for predictive maintenance (when equipment moves outside designated areas), dynamic pricing (based on regional demand patterns), and personalized marketing (triggered by customer proximity to physical stores).</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why use n8n instead of custom code for API-to-queue integrations?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>n8n eliminates the need to write and maintain complex API integration code, handle error recovery, and manage connection pooling. It provides visual workflow building, built-in scheduling, error handling, and monitoring—reducing development time from weeks to hours while ensuring reliability.</p>
+          <p>The visual interface makes data transformations transparent and modifiable by non-developers. Built-in features like rate limiting, authentication management, and data validation reduce the boilerplate code you'd otherwise need to write and test extensively.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of data are suitable for streaming to message queues?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Ideal data for streaming includes IoT sensor readings, API webhook payloads, user activity logs, financial transactions, social media feeds, and real-time analytics data. Any time-sensitive information that needs reliable delivery to multiple systems benefits from queue-based architecture.</p>
+          <p>Message queues excel with data that arrives unpredictably or in bursts, needs guaranteed delivery, or must be processed by multiple independent services. They're less suitable for extremely large binary files or data requiring immediate synchronous responses.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do you ensure reliability when streaming data between systems?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Ensure reliability by implementing retry logic for failed API calls, using message queues with persistence, adding data validation checks, monitoring error rates, setting up alerts for service disruptions, and maintaining data backups. n8n provides built-in retry mechanisms and error handling nodes.</p>
+          <p>Design your workflow with idempotency in mind—processing the same message twice should produce the same result. Implement dead-letter queues for messages that repeatedly fail, and establish clear monitoring dashboards to track data flow health end-to-end.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are common use cases for AWS SQS in business automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common AWS SQS use cases include processing e-commerce orders asynchronously, handling user registration workflows, distributing workload across microservices, buffering database writes, managing email sending queues, and coordinating between different SaaS applications in event-driven architectures.</p>
+          <p>Companies also use SQS for decoupling data collection from processing in analytics pipelines, managing background job queues, implementing publish-subscribe patterns for notifications, and creating resilient communication channels between geographically distributed services.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom real-time data streaming automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom real-time data streaming automations tailored to your specific business needs. We design workflows that connect your APIs, databases, and cloud services with reliable queuing systems, ensuring scalable and maintainable data pipelines.</p>
+          <p>Our team handles everything from architecture design and implementation to monitoring and maintenance. We'll work with your existing infrastructure or recommend optimal solutions based on your data volume, latency requirements, and business objectives.</p>
+          <ul>
+            <li>Custom API integrations with authentication and rate limiting</li>
+            <li>Multi-destination data routing and transformation</li>
+            <li>Comprehensive error handling and alerting systems</li>
+            <li>Performance optimization for high-volume data streams</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Real-Time Data Streaming Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

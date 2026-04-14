@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated Website Traffic & Backlink Tracker | Free n8n Template</title>
+<meta name="description" content="Free n8n workflow template to automate SEO tracking. Pull Ahrefs data into Google Sheets for traffic, backlinks, and domain authority monitoring.">
+<link rel="canonical" href="https://growwstacks.com/workflows/5673-track-website-traffic-and-backlinks-with-ahref-api-and-google-sheets/">
+<meta property="og:title" content="Automated SEO & Traffic Tracker: Ahrefs to Google Sheets">
+<meta property="og:description" content="Free n8n workflow to automate website traffic and backlink monitoring. Log Ahrefs API data directly into Google Sheets.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/5673-track-website-traffic-and-backlinks-with-ahref-api-and-google-sheets/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8757-track-website-traffic-and-backlinks-with-ahref-api-and-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automated SEO & Traffic Tracker: Ahrefs to Google Sheets">
+<meta name="twitter:description" content="Free n8n workflow to automate website traffic and backlink monitoring. Log Ahrefs API data directly into Google Sheets.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automated Website Traffic & Backlink Tracker","description":"Free n8n workflow template to automate SEO tracking. Pull Ahrefs data into Google Sheets for traffic, backlinks, and domain authority monitoring.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8757-track-website-traffic-and-backlinks-with-ahref-api-and-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the business value of automating SEO data collection?","acceptedAnswer":{"@type":"Answer","text":"Automating SEO data collection saves hours of manual work each week, provides consistent, error-free reporting, and enables data-driven decisions. Instead of manually checking Ahrefs or SEMrush, this workflow automatically logs key metrics like traffic, backlinks, and domain authority into a Google Sheet. This gives you a single source of truth for tracking performance over time, spotting trends, and reporting to clients or stakeholders without the copy-paste hassle."}},{"@type":"Question","name":"How does automating Ahrefs data with Google Sheets improve SEO workflows?","acceptedAnswer":{"@type":"Answer","text":"It centralizes your SEO data, making it easier to analyze trends, create reports, and share insights. By automatically pulling data from Ahrefs API into Google Sheets, you eliminate manual exports and reduce human error. You can set up dashboards, track competitor performance, and monitor keyword rankings over time—all within a familiar spreadsheet interface. This automation ensures your data is always up-to-date and ready for analysis or presentation."}},{"@type":"Question","name":"Can I track multiple websites or competitors with this automation?","acceptedAnswer":{"@type":"Answer","text":"Yes, absolutely. The workflow is designed to handle multiple domains. You can create a list of websites (yours and competitors) and run the automation to fetch metrics for each one sequentially. This allows you to build a comparative dashboard showing traffic, backlink profiles, and authority scores across your entire competitive landscape. It's perfect for agencies managing multiple clients or businesses tracking several competitors."}},{"@type":"Question","name":"What SEO metrics can I track with the Ahrefs API and this workflow?","acceptedAnswer":{"@type":"Answer","text":"You can track a wide range of SEO metrics including domain rating (DR), URL rating (UR), total backlinks, referring domains, organic traffic estimates, top organic keywords, and traffic value. The workflow can be extended to capture data like top pages, keyword positions, and historical trends. This gives you a comprehensive view of your website's SEO health and competitive positioning without manual data gathering."}},{"@type":"Question","name":"How often should I run this SEO tracking automation?","acceptedAnswer":{"@type":"Answer","text":"For most businesses, running this automation weekly provides optimal insights without API overuse. SEO metrics don't change dramatically day-to-day, but weekly tracking captures meaningful trends and alerts you to significant drops or gains. You can schedule the workflow in n8n to run automatically every Monday morning, ensuring your Google Sheet is updated with fresh data for weekly team meetings or client reports."}},{"@type":"Question","name":"What are the main benefits of connecting Ahrefs to Google Sheets vs. using their dashboard?","acceptedAnswer":{"@type":"Answer","text":"The main benefits are data consolidation, customization, and collaboration. While Ahrefs' dashboard is excellent for exploration, Google Sheets allows you to combine SEO data with other business metrics, create custom calculations, and build tailored reports. You can easily share sheets with team members who don't have Ahrefs access, create automated alerts for metric thresholds, and integrate SEO data with your broader marketing analytics stack."}},{"@type":"Question","name":"Can this workflow be extended to include other SEO tools or data sources?","acceptedAnswer":{"@type":"Answer","text":"Yes, n8n's flexibility allows you to integrate multiple data sources. You could combine Ahrefs data with Google Search Console metrics, Google Analytics traffic data, or SEMrush keyword rankings. This creates a comprehensive SEO performance dashboard that pulls from all your tools into one centralized location. You can also add notification steps to alert your team when critical metrics change beyond certain thresholds."}},{"@type":"Question","name":"Can I get a custom SEO tracking automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom automation solutions for SEO and marketing teams. We can create workflows that integrate multiple data sources, generate automated reports, trigger alerts, and connect your SEO data to other business systems like CRMs or project management tools. Our team will work with you to understand your specific tracking needs and build a solution that saves time while providing actionable insights."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Website Traffic Tracker"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Website Traffic Tracker</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">SEO</span>
+          <span class="cs-tag">Data Automation</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Ahrefs</span>
+          <span class="cs-tag">Marketing</span>
+        </div>
+        <h1>Automated Website Traffic & Backlink Tracker</h1>
+        <p class="cs-hero-sub">Free n8n workflow to monitor SEO performance automatically. Pull Ahrefs API data into Google Sheets for traffic, backlinks, and domain authority tracking.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="website-traffic-tracker-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8757-track-website-traffic-and-backlinks-with-ahref-api-and-.png" alt="Visual diagram of the automated website traffic tracking workflow connecting Ahrefs API to Google Sheets" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual SEO tracking is time-consuming and error-prone. This automation solves that by connecting the Ahrefs API directly to Google Sheets, creating a live dashboard of your website's performance metrics. Every time the workflow runs, it fetches the latest traffic estimates, backlink counts, domain authority scores, and other critical SEO data, then logs it neatly into predefined spreadsheet columns.</p>
+        <p>The system handles the entire process: from accepting a domain input via a simple web form, making the API call to Ahrefs, processing the JSON response, to appending clean, structured data into your Google Sheet. If the API call fails, it automatically sends an email alert so you never miss a data point. This transforms sporadic manual checks into consistent, scheduled reporting.</p>
+        <p>Beyond just data collection, this workflow creates a historical record. By running weekly or monthly, you build a timeline of SEO performance, enabling trend analysis, competitor benchmarking, and clear reporting for clients or management. It turns raw API data into actionable business intelligence.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow follows a logical sequence to ensure reliable data capture and error handling.</p>
+
+        <h3>1. Form Trigger & Data Collection</h3>
+        <p>The process begins with an n8n Form Trigger node, which creates a simple web form. Users or scheduled triggers submit a domain name (e.g., growwstacks.com). This input is captured and passed to the next step. You can also trigger this workflow manually from within n8n or set it on a schedule to run automatically for a predefined list of domains.</p>
+
+        <h3>2. API Request to Ahrefs</h3>
+        <p>The workflow sends the domain to the Website Traffic Checker - Ahref API via an HTTP Request node. It uses your RapidAPI key for authentication. The node is configured to handle the API's specific parameters and headers, ensuring a successful connection and data retrieval.</p>
+
+        <h3>3. Success/Failure Logic Branch</h3>
+        <p>An IF node checks the HTTP status code of the API response. If successful (status 200), the workflow proceeds to extract and parse the data. If it fails (any other status), the workflow branches to an Email node, which sends an alert with the domain and error code to a designated email address for immediate troubleshooting.</p>
+
+        <h3>4. Data Parsing & Transformation</h3>
+        <p>Two Code nodes process the successful API response. One extracts backlink-specific metrics (authority score, referring domains, total backlinks). The other extracts comprehensive traffic data (organic visits, bounce rate, pages per visit, traffic sources, etc.). These nodes transform the complex JSON into clean, column-ready arrays.</p>
+
+        <h3>5. Google Sheets Logging</h3>
+        <p>The final step appends the parsed data to two separate sheets in your Google Spreadsheet. The "Backlink Info" sheet logs authority metrics, while the "Traffic Data" sheet captures visit and engagement metrics. Each run adds a new row with a timestamp, building a historical dataset perfect for charting and analysis.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for SEO professionals, digital marketing agencies, content teams, and business owners who need to track website performance without manual labor. If you're managing multiple client websites, conducting competitive analysis, or reporting on SEO ROI, this automation eliminates the grunt work. It's also perfect for startups and SaaS companies monitoring their own domain authority and backlink growth over time.</p>
+        <p>Marketing directors will appreciate the automated reporting capabilities, while technical teams can extend the workflow to feed data into BI tools or internal dashboards. It's particularly valuable for businesses that bill clients based on SEO performance, as it provides transparent, automated data delivery.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An <strong>n8n instance</strong> (cloud or self-hosted).</li>
+          <li>A <strong>RapidAPI account</strong> with subscription to the "Website Traffic Checker - Ahref" API.</li>
+          <li>Your <strong>RapidAPI key</strong> (x-rapidapi-key) for authentication.</li>
+          <li>A <strong>Google Cloud Project</strong> with the Google Sheets API enabled.</li>
+          <li><strong>Google Service Account credentials</strong> (JSON key file) to connect n8n to your Sheets.</li>
+          <li>A <strong>Google Spreadsheet</strong> with two sheets named "Backlink Info" and "Traffic Data" (or adjust the template to match your sheet names).</li>
+          <li>Basic understanding of how to <strong>import and activate workflows</strong> in n8n.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use a dedicated Google Service Account for automation, not a personal account. Share your target spreadsheet with the service account's email address as an editor. This keeps permissions secure and separate from individual user accounts.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to get your automated SEO tracker running in under 15 minutes.</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance.</li>
+          <li><strong>Get your Ahrefs API key:</strong> Sign up at RapidAPI, subscribe to the "Website Traffic Checker - Ahref" API, and copy your x-rapidapi-key from the Endpoints section.</li>
+          <li><strong>Configure the HTTP Request node:</strong> Paste your API key into the Headers section under "x-rapidapi-key". Set "x-rapidapi-host" to "website-traffic-checker-ahref.p.rapidapi.com".</li>
+          <li><strong>Set up Google Sheets credentials:</strong> In n8n, create new credentials of type "Google Service Account". Upload your JSON key file from Google Cloud.</li>
+          <li><strong>Update the Google Sheets nodes:</strong> In both "Google Sheet: Backlink Info" and "Google Sheet: Traffic Data" nodes, select your credentials, enter your spreadsheet's Document ID, and specify the sheet names.</li>
+          <li><strong>Test with a single domain:</strong> Use the Form Trigger's test button or manually trigger the workflow with a domain you want to track. Check that data appears correctly in your sheets.</li>
+          <li><strong>Schedule it:</strong> Add a Schedule Trigger node to run the workflow weekly or monthly, or keep the Form Trigger for on-demand checks.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5-10 hours monthly on manual SEO reporting.</strong> Eliminate the tedious process of logging into multiple tools, exporting CSVs, and compiling data. This workflow does it all automatically, giving you back time for strategic analysis.</p>
+        <p><strong>Create a single source of truth for SEO performance.</strong> All your critical metrics—traffic, backlinks, domain authority—live in one organized Google Sheet. This makes reporting to clients, stakeholders, or your team straightforward and professional.</p>
+        <p><strong>Spot trends and issues faster with historical data.</strong> Automated, consistent logging builds a timeline. You can easily chart traffic growth, backlink acquisition rate, or authority score changes over weeks and months, identifying what's working and what's not.</p>
+        <p><strong>Scale monitoring across multiple domains effortlessly.</strong> Once configured, tracking 10 websites takes no more effort than tracking one. Perfect for agencies managing client portfolios or businesses monitoring a competitive set.</p>
+        <p><strong>Reduce human error in data entry and reporting.</strong> Manual copy-pasting from dashboards to spreadsheets is prone to mistakes. This automation ensures data accuracy and consistency every time, improving the reliability of your insights.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about SEO tracking automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the business value of automating SEO data collection?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating SEO data collection saves hours of manual work each week, provides consistent, error-free reporting, and enables data-driven decisions. Instead of manually checking Ahrefs or SEMrush, this workflow automatically logs key metrics like traffic, backlinks, and domain authority into a Google Sheet.</p>
+          <p>This gives you a single source of truth for tracking performance over time, spotting trends, and reporting to clients or stakeholders without the copy-paste hassle. The automation ensures data is always current and formatted for analysis.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating Ahrefs data with Google Sheets improve SEO workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>It centralizes your SEO data, making it easier to analyze trends, create reports, and share insights. By automatically pulling data from Ahrefs API into Google Sheets, you eliminate manual exports and reduce human error.</p>
+          <p>You can set up dashboards, track competitor performance, and monitor keyword rankings over time—all within a familiar spreadsheet interface. This automation ensures your data is always up-to-date and ready for analysis or presentation.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I track multiple websites or competitors with this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, absolutely. The workflow is designed to handle multiple domains. You can create a list of websites (yours and competitors) and run the automation to fetch metrics for each one sequentially.</p>
+          <p>This allows you to build a comparative dashboard showing traffic, backlink profiles, and authority scores across your entire competitive landscape. It's perfect for agencies managing multiple clients or businesses tracking several competitors.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What SEO metrics can I track with the Ahrefs API and this workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You can track a wide range of SEO metrics including domain rating (DR), URL rating (UR), total backlinks, referring domains, organic traffic estimates, top organic keywords, and traffic value.</p>
+          <p>The workflow can be extended to capture data like top pages, keyword positions, and historical trends. This gives you a comprehensive view of your website's SEO health and competitive positioning without manual data gathering.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I run this SEO tracking automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>For most businesses, running this automation weekly provides optimal insights without API overuse. SEO metrics don't change dramatically day-to-day, but weekly tracking captures meaningful trends and alerts you to significant drops or gains.</p>
+          <p>You can schedule the workflow in n8n to run automatically every Monday morning, ensuring your Google Sheet is updated with fresh data for weekly team meetings or client reports.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of connecting Ahrefs to Google Sheets vs. using their dashboard?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The main benefits are data consolidation, customization, and collaboration. While Ahrefs' dashboard is excellent for exploration, Google Sheets allows you to combine SEO data with other business metrics, create custom calculations, and build tailored reports.</p>
+          <p>You can easily share sheets with team members who don't have Ahrefs access, create automated alerts for metric thresholds, and integrate SEO data with your broader marketing analytics stack.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow be extended to include other SEO tools or data sources?</span>
+          <span class="faq-arrow" aria-expanded="false">
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, n8n's flexibility allows you to integrate multiple data sources. You could combine Ahrefs data with Google Search Console metrics, Google Analytics traffic data, or SEMrush keyword rankings.</p>
+          <p>This creates a comprehensive SEO performance dashboard that pulls from all your tools into one centralized location. You can also add notification steps to alert your team when critical metrics change beyond certain thresholds.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom SEO tracking automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom automation solutions for SEO and marketing teams. We can create workflows that integrate multiple data sources, generate automated reports, trigger alerts, and connect your SEO data to other business systems like CRMs or project management tools.</p>
+          <p>Our team will work with you to understand your specific tracking needs and build a solution that saves time while providing actionable insights. Whether you need advanced filtering, custom dashboards, or integration with your existing tech stack, we can develop a tailored automation that fits your workflow perfectly.</p>
+          <ul>
+            <li>Combine data from 5+ SEO and analytics platforms</li>
+            <li>Build custom KPIs and calculated metrics</li>
+            <li>Automate client reporting with branded templates</li>
+            <li>Set up smart alerts for significant metric changes</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom SEO Tracking Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
