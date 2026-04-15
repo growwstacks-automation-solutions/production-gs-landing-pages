@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gather Complete YouTube Channel Data to Google Sheets | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate YouTube channel research. This free n8n template fetches channel title, description, stats, and more from any YouTube URL and logs it to Google Sheets.">
+<link rel="canonical" href="https://growwstacks.com/workflows/3291-gather-complete-youtube-channel-data-to-google-sheets/">
+<meta property="og:title" content="Automate YouTube Channel Research to Google Sheets | Free n8n Template">
+<meta property="og:description" content="Free n8n workflow to automatically collect YouTube channel data (subscribers, views, description) and save it to Google Sheets for analysis.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/3291-gather-complete-youtube-channel-data-to-google-sheets/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5728-gather-complete-youtube-channel-data-to-google-sheets.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate YouTube Channel Research to Google Sheets | Free n8n Template">
+<meta name="twitter:description" content="Free n8n workflow to automatically collect YouTube channel data (subscribers, views, description) and save it to Google Sheets for analysis.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"YouTube Channel Data to Google Sheets Automation","description":"Automate YouTube channel research. This free n8n template fetches channel title, description, stats, and more from any YouTube URL and logs it to Google Sheets.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5728-gather-complete-youtube-channel-data-to-google-sheets.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I automate YouTube channel data collection?","acceptedAnswer":{"@type":"Answer","text":"Manual YouTube research is slow and error-prone. Automating data collection saves hours per week, ensures data accuracy for competitive analysis, influencer vetting, and market research, and allows you to track channel growth over time automatically."}},{"@type":"Question","name":"What kind of YouTube data can I collect automatically?","acceptedAnswer":{"@type":"Answer","text":"You can collect channel title, description, custom URL, subscriber count, total views, video count, country, keywords, thumbnails, published date, and channel ID. This data is essential for content strategy, partnership decisions, and market analysis."}},{"@type":"Question","name":"How does automating YouTube-to-Sheets help my business?","acceptedAnswer":{"@type":"Answer","text":"It enables data-driven decisions. Marketing agencies can track competitor channels. Influencer platforms can vet creators faster. Content teams can analyze trends. The automation turns raw YouTube data into structured insights in Sheets, ready for reporting and analysis."}},{"@type":"Question","name":"Do I need coding skills to set up this YouTube automation?","acceptedAnswer":{"@type":"Answer","text":"No. This n8n template uses a visual workflow builder. You connect your Google Sheets and YouTube API credentials, paste channel URLs, and run the workflow. No programming is required—just configuration following our step-by-step guide."}},{"@type":"Question","name":"Can I schedule this workflow to run automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes. After importing the template, you can add a Schedule Trigger node to run daily, weekly, or monthly. This keeps your Google Sheets updated with the latest channel stats without manual intervention, perfect for ongoing monitoring."}},{"@type":"Question","name":"What if I need to collect data from hundreds of channels?","acceptedAnswer":{"@type":"Answer","text":"The workflow handles batch processing. Add all channel URLs to your Google Sheet, mark them 'Ready,' and the automation will process each row sequentially. For very large volumes, you can adjust batch sizes and add error handling for rate limits."}},{"@type":"Question","name":"Can I get a custom YouTube data automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. GrowwStacks specializes in custom automation solutions. We can build workflows that combine YouTube data with CRM platforms, social media analytics, custom dashboards, or trigger actions based on channel metrics. Book a free consultation to discuss your needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"YouTube Channel Data to Sheets"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>YouTube Channel Data to Sheets</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">YouTube</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Data Collection</span>
+          <span class="cs-tag">Market Research</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate YouTube Channel Research to Google Sheets</h1>
+        <p class="cs-hero-sub">Free n8n template to collect channel titles, descriptions, subscriber counts, views, and other key metrics from any YouTube URL—automatically logged into a Google Sheet for analysis.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/5728-gather-complete-youtube-channel-data-to-google-sheets.png" alt="Visual diagram of YouTube channel data automation workflow connecting to Google Sheets" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manually researching YouTube channels for competitive analysis, influencer partnerships, or market intelligence is a tedious, time-consuming task. This free n8n automation template solves that by connecting directly to the YouTube Data API, fetching comprehensive channel information, and organizing it neatly into a Google Sheet—all with a single click.</p>
+        <p>The workflow extracts critical data points including the channel's title, description, custom URL, subscriber count, total view count, number of uploaded videos, country, keywords, thumbnail URLs, published date, and unique channel ID. This turns hours of manual copying and pasting into a fully automated, reliable process that ensures data accuracy and consistency.</p>
+        <p>Whether you're a marketing agency tracking competitor growth, a brand vetting potential influencer partners, or a content creator analyzing niche trends, this automation provides the structured data you need to make informed decisions without the manual grunt work.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical, step-by-step process to gather, validate, and store channel data.</p>
+        <h3>1. Read Channel URLs from Google Sheets</h3>
+        <p>The workflow starts by connecting to your designated Google Sheet. It reads a list of YouTube channel URLs from a "Channel URLs" tab. It only processes rows marked with a "Ready" status, allowing you to control which channels are analyzed.</p>
+        <h3>2. Determine URL Type & Route Accordingly</h3>
+        <p>A "Switch" node intelligently detects whether each input is a full YouTube channel URL (e.g., youtube.com/c/ChannelName) or a custom URL handle (e.g., @ChannelName). It routes each URL to the appropriate API request path within the YouTube Data API.</p>
+        <h3>3. Fetch Data via YouTube API</h3>
+        <p>Using authenticated HTTP Request nodes, the workflow calls the YouTube API's `channels.list` endpoint. It requests the specific statistics and snippet data for the channel, including the vital metrics needed for analysis.</p>
+        <h3>4. Parse & Transform the Response</h3>
+        <p>The raw JSON data from the API is parsed and transformed. The workflow extracts the relevant fields, formats dates and numbers consistently, and prepares a clean dataset for writing back to your spreadsheet.</p>
+        <h3>5. Write Results & Update Status</h3>
+        <p>The final step writes the fetched channel data—title, stats, description, etc.—back into the same row in your Google Sheet. It then updates the row's status to "Finished" for successful fetches or "Error" if the API call fails, providing clear visibility into the process.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use the "Split In Batches" node if you have a large list of channels to avoid hitting YouTube API rate limits. Process channels in groups of 50-100 with a short pause between batches.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template is designed for professionals and businesses that rely on YouTube data for strategic decisions.</p>
+        <p><strong>Marketing & Digital Agencies:</strong> Conduct competitor analysis and track industry channel growth over time to inform client strategies and reporting.</p>
+        <p><strong>Influencer & Talent Managers:</strong> Quickly vet potential creator partners by aggregating their key metrics (subscribers, views, engagement rate) into a single dashboard for evaluation.</p>
+        <p><strong>Content Strategists & SEO Specialists:</strong> Research successful channels in your niche to understand what content performs, identify keyword trends from channel descriptions, and benchmark your own performance.</p>
+        <p><strong>Market Researchers & Analysts:</strong> Build datasets on YouTube channel landscapes for specific industries or topics, enabling longitudinal studies and trend analysis without manual data entry.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A Google Cloud Platform Project</strong> with the YouTube Data API v3 enabled.</li>
+          <li><strong>YouTube API Credentials</strong> (an API key) with sufficient quota for your expected number of channel lookups.</li>
+          <li><strong>A Google Sheets document</strong> duplicated from the provided template, with edit permissions granted to your service account or OAuth client.</li>
+          <li><strong>An n8n instance</strong> (cloud or self-hosted) where you can import and run the workflow JSON file.</li>
+          <li><strong>A list of YouTube channel URLs or handles</strong> you want to analyze, added to your Google Sheet.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Get this automation running in your n8n environment in under 15 minutes.</p>
+        <ol>
+          <li><strong>Download the Template:</strong> Click the "Download Template" button above to get the JSON file.</li>
+          <li><strong>Import into n8n:</strong> In your n8n dashboard, go to Workflows > Import from File and select the downloaded JSON.</li>
+          <li><strong>Duplicate the Google Sheet:</strong> Make a copy of the linked template sheet in your own Google Drive.</li>
+          <li><strong>Configure API Credentials:</strong> In the "HTTP Request" nodes, replace the placeholder API key with your own YouTube Data API key.</li>
+          <li><strong>Connect Google Sheets:</strong> Use OAuth2 or a service account to connect the "Google Sheets" nodes to your copied spreadsheet.</li>
+          <li><strong>Add Channel URLs:</strong> Paste the YouTube channel URLs you want to analyze into the "Channel URLs" tab of your sheet and set their status to "Ready".</li>
+          <li><strong>Execute Workflow:</strong> Click "Execute Workflow" in n8n. The automation will run, fetch the data, and populate your sheet.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> For recurring analysis, add an "n8n Schedule Trigger" node to the start of the workflow. Set it to run weekly or monthly to keep your channel data continuously updated.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10+ Hours Per Month on Manual Research.</strong> Eliminate the need to manually visit each channel, copy stats, and paste them into a spreadsheet. This automation completes in minutes what used to take hours.</p>
+        <p><strong>Ensure Data Accuracy & Eliminate Human Error.</strong> Manual data entry is prone to mistakes. By pulling directly from the YouTube API, you get clean, consistent, and verified data every single time.</p>
+        <p><strong>Build a Searchable, Historical Database.</strong> By logging data to Google Sheets over time, you create a valuable historical record of channel growth. This allows for trend analysis, performance benchmarking, and data-driven reporting.</p>
+        <p><strong>Scale Your Analysis Effortlessly.</strong> Need to analyze 10 channels or 1,000? The workflow processes them all the same way. Simply add more URLs to your sheet and run the automation again.</p>
+        <p><strong>Integrate with Your Existing Stack.</strong> The data in Google Sheets can easily be connected to data visualization tools like Looker Studio, CRMs like HubSpot, or notification platforms like Slack for automated alerts.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about YouTube data automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I automate YouTube channel data collection?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual YouTube research is slow and error-prone. Automating data collection saves hours per week, ensures data accuracy for competitive analysis, influencer vetting, and market research, and allows you to track channel growth over time automatically.</p>
+          <p>For example, an agency tracking 50 competitor channels manually might spend 5 hours monthly. Automation reduces this to 5 minutes, freeing up time for strategic analysis instead of data entry.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What kind of YouTube data can I collect automatically?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You can collect channel title, description, custom URL, subscriber count, total views, video count, country, keywords, thumbnails, published date, and channel ID. This data is essential for content strategy, partnership decisions, and market analysis.</p>
+          <p>Beyond basic stats, you can also extract custom channel URLs and branding elements, which are crucial for understanding a channel's positioning and audience targeting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating YouTube-to-Sheets help my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>It enables data-driven decisions. Marketing agencies can track competitor channels. Influencer platforms can vet creators faster. Content teams can analyze trends. The automation turns raw YouTube data into structured insights in Sheets, ready for reporting and analysis.</p>
+          <p>This directly impacts ROI by reducing labor costs, improving campaign targeting accuracy, and providing a competitive edge through timely market intelligence.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do I need coding skills to set up this YouTube automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No. This n8n template uses a visual workflow builder. You connect your Google Sheets and YouTube API credentials, paste channel URLs, and run the workflow. No programming is required—just configuration following our step-by-step guide.</p>
+          <p>The visual interface lets you see exactly how data flows from YouTube to your spreadsheet, making it easy to troubleshoot or modify the process without writing a single line of code.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I schedule this workflow to run automatically?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. After importing the template, you can add a Schedule Trigger node to run daily, weekly, or monthly. This keeps your Google Sheets updated with the latest channel stats without manual intervention, perfect for ongoing monitoring.</p>
+          <p>Set it to run every Monday morning, and you'll start each week with a fresh dataset of your tracked channels' performance, ready for your team meeting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What if I need to collect data from hundreds of channels?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow handles batch processing. Add all channel URLs to your Google Sheet, mark them 'Ready,' and the automation will process each row sequentially. For very large volumes, you can adjust batch sizes and add error handling for rate limits.</p>
+          <p>For enterprise-scale needs, we can help you implement parallel processing, dedicated API quota management, and database integration to handle thousands of channels efficiently.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom YouTube data automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. GrowwStacks specializes in custom automation solutions. We can build workflows that combine YouTube data with CRM platforms, social media analytics, custom dashboards, or trigger actions based on channel metrics.</p>
+          <p>Book a free consultation to discuss your needs. We'll help you design a system that fits your specific use case, whether it's automated outreach to growing channels, real-time alerts for competitor activity, or integrated reporting across multiple data sources.</p>
+          <ul>
+            <li>Connect YouTube data to your CRM or marketing automation platform</li>
+            <li>Build custom dashboards with Looker Studio or Power BI</li>
+            <li>Add sentiment analysis on channel descriptions using AI</li>
+            <li>Create alerts when channels hit specific subscriber milestones</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom YouTube Data Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
