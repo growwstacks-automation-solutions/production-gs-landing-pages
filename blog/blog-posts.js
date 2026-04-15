@@ -1,5 +1,275 @@
 const BLOG_POSTS = [
 {
+  title: "How to Build a 24/7 AI Telegram Chatbot with n8n & Gemini API",
+  desc: "Stop losing customers after hours. This n8n workflow combines Telegram with Google's Gemini AI to provide instant, human-like responses to customer queries 24/7 - no coding required.",
+  url: "/blog/24-7-telegram-chatbot-n8n-gemini-api",
+  tags: ["n8n","AI Agents","Telegram"],
+  date: "2026-03-01",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How I Automated My Entire Business With 13 AI Agents on a $600 Mac Mini",
+  desc: "Discover how one entrepreneur automated podcast production, social media, newsletters, and analytics with OpenClaw AI agents - saving hours daily while scaling content output.",
+  url: "/blog/how-openclaw-runs-my-entire-business",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-03-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How MCP Servers Give AI the Hands It's Been Missing",
+  desc: "Discover how the Model Context Protocol (MCP) bridges the gap between AI intelligence and real-world digital actions, transforming chatbots into capable digital assistants.",
+  url: "/blog/how-mcp-servers-give-ai-hands",
+  tags: ["AI Agents","MCP","Automation"],
+  date: "2026-02-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Supervisor AI Agent in n8n for Multi-Agent Orchestration",
+  desc: "Learn to create a supervisor AI agent in n8n that intelligently routes queries between specialized agents (user and order agents) connected to PostgreSQL, with complete workflow walkthrough.",
+  url: "/blog/build-supervisor-ai-agent-n8n-multi-agent-orchestration",
+  tags: ["n8n","AI Agents","PostgreSQL"],
+  date: "2026-03-01",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Build Working Apps Without Writing Code: A Beginner's Guide to Claude Code",
+  desc: "Discover how to create fully functional applications without coding using Claude Code. This beginner-friendly guide walks you through installation, pricing, usage limits, and building your first AI video generator app step-by-step.",
+  url: "/blog/build-apps-without-code-claude-code-beginners-guide",
+  tags: ["AI Agents","Claude","No-Code"],
+  date: "2026-02-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Run 19 AI Agents for Just $6/Month with OpenClaw",
+  desc: "Discover how to slash your AI agent costs by 97% while running 19 continuous agents. This OpenClaw optimization guide reveals the exact VPS setup and model switching techniques that cut our monthly bill from $1000+ to just $6.",
+  url: "/blog/how-to-run-19-ai-agents-for-6-dollars-month-openclaw",
+  tags: ["AI Agents","Cost Optimization","OpenClaw"],
+  date: "2026-03-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Build a Smart AI Resume Builder with n8n & Gemini in Under 1 Hour",
+  desc: "Stop wasting hours formatting resumes. This n8n workflow automatically generates ATS-optimized resumes with multiple templates, powered by Google Gemini AI. Perfect for recruiters, career coaches, and busy professionals.",
+  url: "/blog/build-ai-resume-builder-n8n-gemini",
+  tags: ["n8n","AI Agents","Career Tools"],
+  date: "2026-03-01",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "AI Voice Agents for CSM: Automate Case Status Checks & Case Creation",
+  desc: "Speednet's new AI voice agents handle customer service calls end-to-end — authenticating callers, retrieving case details, answering questions, and creating new cases without human intervention. Launched March 2026.",
+  url: "/blog/ai-voice-agents-for-csm",
+  tags: ["Voice AI","Customer Support","AI Agents"],
+  date: "2026-04-14",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Build a Telegram AI Chatbot Without Coding Using n8n",
+  desc: "Learn how to create an AI-powered Telegram chatbot that automatically responds to messages using n8n and OpenAI - no coding required.",
+  url: "/blog/telegram-ai-chatbot-n8n-no-code",
+  tags: ["n8n","AI Agents","Telegram"],
+  date: "2026-04-14",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Build a 24/7 Multi-Agent Team with OpenClaw (Complete Guide)",
+  desc: "Discover how to create an autonomous AI team that runs 24/7 - complete with CEO, CTO, CMO roles, scheduled standups, and inter-agent communication using OpenClaw.",
+  url: "/blog/build-multi-agent-team-openclaw",
+  tags: ["AI Agents","OpenClaw","Automation"],
+  date: "2026-03-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "From Zero to Your First Agentic AI Workflow in 26 Minutes (Claude Code)",
+  desc: "Discover how to build your first agentic AI workflow with Claude Code - no coding required. Learn the WAT framework (Workflows, Agents, Tools) and automate competitor research with branded PDF outputs.",
+  url: "/blog/first-agentic-ai-workflow-claude-code",
+  tags: ["AI Agents","Claude","Automation"],
+  date: "2026-03-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Instantly Connect Microsoft OneDrive to n8n in 2 Minutes (2026 Guide)",
+  desc: "Stop manually checking OneDrive for new files. This n8n workflow automatically triggers when files arrive, saving hours of repetitive work while eliminating missed documents.",
+  url: "/blog/connect-onedrive-to-n8n",
+  tags: ["n8n","Microsoft 365","Automation"],
+  date: "2026-03-01",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Stop AI Blindness: How a Knowledge Graph Sees What Your LLM Misses",
+  desc: "Discover how context engineering with knowledge graphs solves the #1 AI limitation - siloed data that misses critical business relationships. See how this approach cuts supply chain risks by 30%.",
+  url: "/blog/stop-ai-blindness-knowledge-graph",
+  tags: ["AI Agents","Knowledge Graph","Supply Chain"],
+  date: "2026-02-14",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Build Your First WhatsApp Chatbot Today with n8n",
+  desc: "Learn how to create an AI-powered WhatsApp chatbot using n8n that answers questions about job markets, provides career advice, and even creates personalized study plans - all automated.",
+  url: "/blog/build-whatsapp-chatbot-with-n8n",
+  tags: ["n8n","WhatsApp","AI Agents"],
+  date: "2026-03-01",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "AI Agents Are Already Doing the Work. This Is What That Looks Like",
+  desc: "See how AI agents like Manis and Work Beaver are already automating research, hiring, and competitive analysis tasks in real businesses today — saving hours per day on routine work.",
+  url: "/blog/ai-agents-automating-work",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-03-01",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Automate Threads Posts with AI Using n8n (No Coding Required)",
+  desc: "Stop wasting time manually posting to Threads. This n8n workflow generates AI-powered content and publishes it automatically - even handles Meta API token refreshes for you.",
+  url: "/blog/automate-threads-posts-ai-n8n",
+  tags: ["n8n","Social Media","AI Agents"],
+  date: "2026-03-01",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "n8n vs LangFlow vs Flowise: Which Workflow Automation Tool Wins in 2026?",
+  desc: "Struggling to choose between n8n, LangFlow and Flowise for workflow automation? Our 2026 comparison reveals which tool dominates for startups, enterprises, and developers based on performance benchmarks and real-world use cases.",
+  url: "/blog/n8n-vs-langflow-vs-flowise-comparison",
+  tags: ["n8n","Workflow","AI Agents"],
+  date: "2026-03-01",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Connect Elementor Forms to n8n (With or Without Pro)",
+  desc: "Learn two methods to connect Elementor forms to n8n for automation - one using Elementor Pro's built-in webhook feature, and another free method using Contact Form 7.",
+  url: "/blog/how-to-connect-elementor-forms-to-n8n",
+  tags: ["n8n","WordPress","Automation"],
+  date: "2026-04-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "OpenClaw Tutorial: How to Automate Your Workflow with This Powerful AI Agent",
+  desc: "Discover how OpenClaw can check your emails, schedule meetings, and summarize documents automatically - all controlled through simple chat commands. This step-by-step guide shows you how to set it up securely.",
+  url: "/blog/openclaw-tutorial-automate-workflow",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-03-15",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Connect AI Agents to Business APIs for Full-Cycle Automation",
+  desc: "Transform your AI agents from conversational assistants to operational powerhouses by connecting them to business APIs. Learn how to enable your AI to send emails, update CRMs, trigger workflows and interact with real business systems.",
+  url: "/blog/connect-ai-to-apis-for-automation",
+  tags: ["AI Agents","APIAutomation","n8n"],
+  date: "2026-03-01",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Autonomy with Oversight: Building Secure, Reliable AI Agents for Business",
+  desc: "Discover how to operationalize autonomous AI agents with reliability through fine-tuning, trust through rigorous evaluation, and seamless integration using standards like MCP.",
+  url: "/blog/autonomy-with-oversight-building-secure-reliable-ai-agents",
+  tags: ["AI Agents","LLM","Enterprise AI"],
+  date: "2026-02-14",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Scrape Any Website Without Code Using Claude + Firecrawl MCP",
+  desc: "Learn how to extract website data, screenshots, and branding guidelines without writing code using Claude AI and Firecrawl MCP. Perfect for competitive analysis and design inspiration.",
+  url: "/blog/scrape-website-claude-firecrawl-mcp",
+  tags: ["AI Agents","Web Scraping","No Code"],
+  date: "2026-02-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Why I Gave OpenClaw Its Own Dedicated Computer (And Why You Should Too)",
+  desc: "Discover why running OpenClaw on a dedicated Mac Mini solves the 24/7 availability problem while providing seamless Apple ecosystem integration, local security advantages, and persistent agent capabilities.",
+  url: "/blog/why-give-openclaw-its-own-computer",
+  tags: ["AI Agents","Mac Mini","Automation"],
+  date: "2026-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Conversational AI Agent With Claude Code (Full Tutorial)",
+  desc: "Step-by-step guide to creating an AI agent that understands context, remembers conversations, and answers questions from documents - all using Claude Code's CLI interface.",
+  url: "/blog/build-conversational-ai-agent-claude-code",
+  tags: ["AI Agents","Claude","LLM"],
+  date: "2026-02-14",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Run Qwen 3.5 Locally for Free - AI Agent Setup with OpenClaw in 10 Minutes",
+  desc: "Alibaba's Qwen 3.5 outperforms models 13x its size while running locally on a Mac mini. This guide shows how to set up a completely free AI agent using OpenClaw and Qwen 3.5 - no API keys, no cloud costs, just pure local AI power.",
+  url: "/blog/run-qwen-35-locally-free-ai-agent-openclaw",
+  tags: ["AI Agents","Local AI","Qwen"],
+  date: "2026-03-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Claude Code Teams Let Multiple AI Agents Build Apps Together",
+  desc: "Discover how Claude's new orchestrated teams feature enables multiple AI agents to collaborate on projects simultaneously - building a complete habit tracker web app in just 10 minutes without manual coding.",
+  url: "/blog/claude-code-teams-multiple-ai-agents",
+  tags: ["AI Agents","Claude","Automation"],
+  date: "2026-02-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Voice Closer Dashboard: Searchable Transcripts & Agent Performance Tracking",
+  desc: "See inside the Voice Closer dashboard with searchable call transcripts, per-agent performance metrics, and real-time change requests - all designed for businesses needing smarter phone automation.",
+  url: "/blog/voice-closer-dashboard-searchable-transcripts-agent-breakdown",
+  tags: ["Voice AI","Telephony","AI Agents"],
+  date: "2026-04-14",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "WebMCP Explained: How Google’s New AI Agent API Turns Every Website Into a Tool (Hidden AEO Play)",
+  desc: "Discover how WebMCP is creating a parallel internet for AI agents, where websites expose structured tools instead of forcing bots to fake human clicks. Learn why Agent Experience Optimization (AEO) is becoming as crucial as SEO.",
+  url: "/blog/webmcp-explained-google-ai-agent-api",
+  tags: ["AI Agents","Web Development","Google"],
+  date: "2026-02-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Automate Beta Tester Onboarding by Platform & Language with n8n",
+  desc: "Stop manually routing beta testers by platform and language. This n8n workflow captures signups, sends personalized emails, and tracks tester status automatically — cutting onboarding time by 80%.",
+  url: "/blog/automate-beta-tester-onboarding-n8n",
+  tags: ["n8n","Workflow","Make.com"],
+  date: "2026-03-01",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Build Your Own Custom AI Agent with n8n & MCP",
+  desc: "Discover how to create a secure AI agent that connects all your business apps (Google Drive, Slack, CRM) and automates workflows without manual intervention - perfect for sales teams and operations.",
+  url: "/blog/build-custom-ai-agent-n8n-mcp",
+  tags: ["AI Agents","n8n","Automation"],
+  date: "2026-03-01",
+  readTime: 8,
+  target: "_blank"
+},
+{
   title: "The Universal Language for AI: How Model Context Protocol (MCP) Solves Integration Chaos",
   desc: "Discover how MCP is transforming AI integration from a fragmented nightmare into a seamless ecosystem where any AI can connect to any tool - just like USB-C revolutionized device connectivity.",
   url: "/blog/model-context-protocol-universal-ai-language",
