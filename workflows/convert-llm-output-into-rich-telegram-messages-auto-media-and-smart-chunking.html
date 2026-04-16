@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convert LLM Output to Rich Telegram Messages | Free n8n Workflow | GrowwStacks</title>
+<meta name="description" content="Automatically format AI chatbot replies into rich Telegram messages with media previews & smart text chunking. Free n8n workflow template for Telegram bots.">
+<link rel="canonical" href="https://growwstacks.com/workflows/2018-convert-llm-output-into-rich-telegram-messages-auto-media-and-smart-chunking/">
+<meta property="og:title" content="Convert LLM Output to Rich Telegram Messages | Free n8n Automation">
+<meta property="og:description" content="Transform long AI outputs into Telegram-friendly messages with auto-media detection & smart text splitting. Download the free n8n workflow template.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/2018-convert-llm-output-into-rich-telegram-messages-auto-media-and-smart-chunking/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3961-convert-llm-output-into-rich-telegram-messages-auto-med.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convert LLM Output to Rich Telegram Messages | Free n8n Workflow">
+<meta name="twitter:description" content="Automatically format AI chatbot replies into rich Telegram messages with media previews & smart text chunking. Free n8n workflow template for Telegram bots.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Convert LLM Output to Rich Telegram Messages","description":"Automatically format AI chatbot replies into rich Telegram messages with media previews & smart text chunking. Free n8n workflow template for Telegram bots.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3961-convert-llm-output-into-rich-telegram-messages-auto-med.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the main benefit of automating Telegram message formatting?","acceptedAnswer":{"@type":"Answer","text":"Automating Telegram message formatting saves hours of manual work by instantly converting raw AI outputs into user-friendly, media-rich messages. It ensures your bot delivers a polished experience with inline images, videos, and audio, while automatically splitting long text to avoid Telegram's 1,000-character limit. This improves engagement and reduces development time."}},{"@type":"Question","name":"Can this workflow handle different types of media links from an LLM?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow automatically detects and processes various media links. It uses a JavaScript node to scan the output, identify URLs, and classify them by file extension (like .jpg, .mp4, .mp3). Each link is then routed to the correct Telegram API method—sendPhoto for images, sendVideo for videos, sendAudio for audio—so users see native previews and players directly in the chat."}},{"@type":"Question","name":"How does the smart text chunking work for long messages?","acceptedAnswer":{"@type":"Answer","text":"The workflow checks if the remaining text exceeds Telegram's 1,000-character limit. If it does, a Code node splits the text at natural line breaks or sentences, preserving readability. The Split in Batches node then sends these chunks sequentially, ensuring the entire message is delivered without truncation or errors, maintaining the conversation flow."}},{"@type":"Question","name":"Do I need coding skills to set up this Telegram automation?","acceptedAnswer":{"@type":"Answer","text":"No advanced coding is required. You need basic familiarity with n8n to import the template and configure your Telegram bot token. The workflow uses visual nodes for logic, and the provided JavaScript code is pre-written. The guide walks you through connecting your bot and mapping input data, making it accessible for low-code users."}},{"@type":"Question","name":"What happens if the LLM output contains both text and multiple media links?","acceptedAnswer":{"@type":"Answer","text":"The workflow processes both simultaneously. Media links are extracted and sent as separate, rich messages with inline previews. The remaining plain text is checked for length, split if necessary, and sent sequentially. All messages are dispatched within the same execution, keeping the conversation thread intact and ensuring users receive a complete, multimedia response."}},{"@type":"Question","name":"Can I customize this workflow for other messaging platforms like Discord or Slack?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The core logic—extracting links, classifying media, and chunking text—is platform-agnostic. You can adapt it for Discord or Slack by replacing the Telegram nodes with their respective platform nodes and adjusting API payloads. The smart text splitting and media detection remain valuable for any chat platform with message length limits."}},{"@type":"Question","name":"How does this automation improve user experience for Telegram bot interactions?","acceptedAnswer":{"@type":"Answer","text":"It transforms raw, unformatted AI responses into engaging, structured messages. Users receive media as interactive previews instead of plain URLs, and long answers are broken into readable chunks. This mimics human conversation, reduces cognitive load, and increases interaction rates, making your bot feel more responsive and professional."}},{"@type":"Question","name":"Can I get a custom Telegram bot automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored Telegram bot automations for businesses. We can design workflows that integrate with your CRM, support system, or internal tools, add custom logic for user management, analytics, and multi-language support, and ensure reliable deployment. Book a free consultation to discuss your specific use case and requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Telegram LLM Message Formatter"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Telegram LLM Message Formatter</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Telegram</span>
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Chatbots</span>
+          <span class="cs-tag">Free Template</span>
+        </div>
+        <h1>Convert LLM Output to Rich Telegram Messages</h1>
+        <p class="cs-hero-sub">Automatically format AI chatbot replies into rich Telegram messages with media previews & smart text chunking. Free n8n workflow template.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3961-convert-llm-output-into-rich-telegram-messages-auto-med.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3961-convert-llm-output-into-rich-telegram-messages-auto-med.png" alt="Diagram showing LLM output being converted into rich Telegram messages with media previews and text chunking" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>If you're building AI-powered Telegram bots or notification services, you've likely faced a common headache: Large Language Models (LLMs) generate long, unstructured text mixed with media links, but Telegram has strict limits and expects formatted messages. Manually parsing this output is tedious and error-prone.</p>
+        <p>This automation solves that. It acts as a post‑processing layer for your AI assistant. You feed it raw LLM output—text with embedded image, video, or audio URLs—and it automatically transforms that into Telegram‑friendly messages. Media links become native previews (images show inline, videos/audio get players), and long text is intelligently split into sequential chunks that respect Telegram's character limits. The entire process happens in a single n8n execution, ensuring your bot delivers a polished, professional user experience without manual intervention.</p>
+        <p>Essentially, it bridges the gap between raw AI creativity and Telegram's messaging constraints, turning clunky outputs into engaging conversations.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow is triggered by a parent process (like your main AI bot workflow) via the Execute Workflow node. It receives the chat ID and the raw LLM output string.</p>
+
+        <h3>Step 1: Extract & Classify Media Links</h3>
+        <p>A JavaScript Code node scans the input string for HTTP/HTTPS URLs using a regex pattern. It deduplicates links and classifies each by file extension (.jpg, .png, .mp4, .mp3, etc.). Extracted links are stored separately, and the original text is cleaned of those URLs.</p>
+
+        <h3>Step 2: Route Media to Correct Telegram Methods</h3>
+        <p>A Switch node evaluates each link's type. Image URLs are sent via the Telegram node's "Send Photo" method, video links via "Send Video", and audio links via "Send Audio". This ensures Telegram renders native previews and players—users don't just see a plain link.</p>
+
+        <h3>Step 3: Smart Text Chunking & Sending</h3>
+        <p>If the cleaned text exceeds 1,000 characters, another Code node splits it at line breaks or sentence boundaries to preserve readability. A Split in Batches node then sends each chunk as a separate Telegram message, in order, preventing truncation.</p>
+
+        <h3>Step 4: Convergence & Completion</h3>
+        <p>All branches—media sends and text sends—converge. The workflow completes, logging success. Your parent workflow receives confirmation that the rich message was delivered.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> You can adjust the character limit in the "If text too long" node's expression to match Telegram's exact limits or your preferred chunk size.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for developers, product managers, and entrepreneurs building automated communication systems. Specifically:</p>
+        <ul>
+          <li><strong>Telegram Bot Developers</strong> creating customer support, content delivery, or notification bots that integrate with AI like ChatGPT or Claude.</li>
+          <li><strong>AI Assistant Builders</strong> who want their agents to respond in Telegram with rich media and well‑formatted long‑form answers.</li>
+          <li><strong>SaaS Companies</strong> sending automated alerts, reports, or summaries to users/clients via Telegram, where presentation matters.</li>
+          <li><strong>Content Creators & Marketers</strong> automating distribution of updates, newsletters, or media‑rich announcements to Telegram channels or groups.</li>
+        </ul>
+        <p>If you're already using n8n to orchestrate AI workflows and need a reliable way to deliver those results into Telegram, this template eliminates the formatting grunt work.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A Telegram bot created via <strong>@BotFather</strong> and its HTTP API token.</li>
+          <li>That token saved as a <strong>Telegram API credential</strong> in your n8n instance.</li>
+          <li>n8n version 1.0 or higher with the built‑in Telegram node installed.</li>
+          <li>A parent workflow that calls this template via the <strong>Execute Workflow</strong> node, passing the <code>chatId</code> (integer) and <code>output</code> (string) parameters.</li>
+          <li>Basic familiarity with n8n's interface to import the JSON and map your data.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to get the automation running in under 10 minutes:</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance.</li>
+          <li><strong>Add your Telegram bot token</strong> in the Telegram node credentials. Create a new credential if you haven't already.</li>
+          <li><strong>Connect your parent workflow</strong> to the Execute Workflow Trigger node, ensuring you pass the <code>chatId</code> and <code>output</code> parameters correctly.</li>
+          <li><strong>Test with a sample payload</strong> containing text and a few image/video URLs. Use the n8n "Test Workflow" feature to verify media detection and chunking.</li>
+          <li><strong>Deploy and activate</strong> the workflow. It will now process any LLM output sent to it, delivering polished Telegram messages automatically.</li>
+        </ol>
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> For high‑volume bots, consider adding a "Limit" node before the Telegram sends to respect API rate limits and avoid being flagged as spam.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminates manual formatting:</strong> No more copying, pasting, and splitting messages by hand. The workflow handles everything, saving 15–30 minutes per complex response.</p>
+        <p><strong>Enhances user experience:</strong> Recipients see media as inline previews and players, not just URLs. Text is delivered in readable chunks, improving comprehension and engagement.</p>
+        <p><strong>Prevents message truncation:</strong> Automatically splits long AI responses to fit Telegram's 1,000‑character limit, ensuring no content is lost.</p>
+        <p><strong>Future‑proof and adaptable:</strong> The logic can be extended to support other media types (documents, voice notes) or integrated with other messaging platforms like Discord or Slack with minor adjustments.</p>
+        <p><strong>Scalable and reliable:</strong> Built on n8n's robust execution engine, it handles errors gracefully and can process hundreds of messages per hour without breaking.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about Telegram bot automation and AI integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the main benefit of automating Telegram message formatting?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating Telegram message formatting saves hours of manual work by instantly converting raw AI outputs into user-friendly, media-rich messages. It ensures your bot delivers a polished experience with inline images, videos, and audio, while automatically splitting long text to avoid Telegram's 1,000-character limit. This improves engagement and reduces development time.</p>
+          <p>Instead of manually editing each AI response, you set up this workflow once. Your bot automatically presents information in the most digestible format, making interactions feel seamless and professional.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow handle different types of media links from an LLM?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the workflow automatically detects and processes various media links. It uses a JavaScript node to scan the output, identify URLs, and classify them by file extension (like .jpg, .mp4, .mp3). Each link is then routed to the correct Telegram API method—sendPhoto for images, sendVideo for videos, sendAudio for audio—so users see native previews and players directly in the chat.</p>
+          <p>This means if your AI generates a response with an image link, a video tutorial URL, and an audio note, all three will be delivered as interactive media within Telegram, not as plain text links.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the smart text chunking work for long messages?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow checks if the remaining text exceeds Telegram's 1,000-character limit. If it does, a Code node splits the text at natural line breaks or sentences, preserving readability. The Split in Batches node then sends these chunks sequentially, ensuring the entire message is delivered without truncation or errors, maintaining the conversation flow.</p>
+          <p>This intelligent splitting prevents mid‑word breaks and maintains context. For example, a 2,500‑word AI analysis becomes three coherent messages sent one after another, giving users a smooth reading experience.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do I need coding skills to set up this Telegram automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No advanced coding is required. You need basic familiarity with n8n to import the template and configure your Telegram bot token. The workflow uses visual nodes for logic, and the provided JavaScript code is pre-written. The guide walks you through connecting your bot and mapping input data, making it accessible for low-code users.</p>
+          <p>If you can copy a bot token from Telegram and paste it into n8n, you can have this automation running in under 10 minutes. The template handles the complex parsing and routing logic for you.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the LLM output contains both text and multiple media links?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow processes both simultaneously. Media links are extracted and sent as separate, rich messages with inline previews. The remaining plain text is checked for length, split if necessary, and sent sequentially. All messages are dispatched within the same execution, keeping the conversation thread intact and ensuring users receive a complete, multimedia response.</p>
+          <p>For instance, an AI reply containing two image URLs and a paragraph of text will result in three Telegram messages: two images (as previews) followed by the text, all appearing in quick succession.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I customize this workflow for other messaging platforms like Discord or Slack?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. The core logic—extracting links, classifying media, and chunking text—is platform-agnostic. You can adapt it for Discord or Slack by replacing the Telegram nodes with their respective platform nodes and adjusting API payloads. The smart text splitting and media detection remain valuable for any chat platform with message length limits.</p>
+          <p>This makes the template a versatile foundation for any AI‑to‑chat integration, saving you from rebuilding the parsing logic from scratch for each platform.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does this automation improve user experience for Telegram bot interactions?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>It transforms raw, unformatted AI responses into engaging, structured messages. Users receive media as interactive previews instead of plain URLs, and long answers are broken into readable chunks. This mimics human conversation, reduces cognitive load, and increases interaction rates, making your bot feel more responsive and professional.</p>
+          <p>A well‑formatted bot encourages users to ask more complex questions, knowing they'll receive clear, digestible answers. This directly improves satisfaction and retention for AI‑powered services.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom Telegram bot automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored Telegram bot automations for businesses. We can design workflows that integrate with your CRM, support system, or internal tools, add custom logic for user management, analytics, and multi‑language support, and ensure reliable deployment.</p>
+          <p>Book a free consultation to discuss your specific use case and requirements. We'll help you scale your Telegram automation beyond basic templates, adding features like user authentication, payment triggers, or complex multi‑step conversational flows.</p>
+          <ul>
+            <li>Integration with your existing databases and APIs</li>
+            <li>Advanced error handling and logging for mission‑critical bots</li>
+            <li>Custom media processing (watermarking, resizing, format conversion)</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Telegram Bot Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

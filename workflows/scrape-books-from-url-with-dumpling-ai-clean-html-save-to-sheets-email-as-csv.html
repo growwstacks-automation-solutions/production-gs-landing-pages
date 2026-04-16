@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Book Data Scraping & Export | Free n8n Workflow | GrowwStacks</title>
+<meta name="description" content="Automatically scrape book listings from any URL, clean the HTML, sort by price, save to Google Sheets, and email as CSV. Perfect for researchers, VAs, and data analysts.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1846-scrape-books-from-url-with-dumpling-ai-clean-html-save-to-sheets-email-as-csv/">
+<meta property="og:title" content="Automate Book Data Scraping & Export with n8n">
+<meta property="og:description" content="Free n8n workflow: Scrape book data, clean HTML, sort, save to Sheets, and email CSV automatically.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1846-scrape-books-from-url-with-dumpling-ai-clean-html-save-to-sheets-email-as-csv/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3701-scrape-books-from-url-with-dumpling-ai-clean-html-save-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Book Data Scraping & Export with n8n">
+<meta name="twitter:description" content="Free n8n workflow: Scrape book data, clean HTML, sort, save to Sheets, and email CSV automatically.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate Book Data Scraping & Export","description":"Automatically scrape book listings from any URL, clean the HTML, sort by price, save to Google Sheets, and email as CSV. Perfect for researchers, VAs, and data analysts.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3701-scrape-books-from-url-with-dumpling-ai-clean-html-save-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is web scraping and why is it useful for businesses?","acceptedAnswer":{"@type":"Answer","text":"Web scraping is the automated process of extracting data from websites. For businesses, it's a powerful way to gather competitive intelligence, monitor pricing, collect product catalogs, or aggregate content for research without manual copying and pasting. This saves dozens of hours per week and ensures data accuracy."}},{"@type":"Question","name":"How does AI-powered web scraping differ from traditional methods?","acceptedAnswer":{"@type":"Answer","text":"Traditional scraping relies on fixed HTML structures that break when a website updates. AI-powered tools like Dumpling AI can understand page layouts semantically, making them more resilient to changes. They can also extract data from complex, dynamic pages where traditional selectors fail, leading to more reliable and maintainable automations."}},{"@type":"Question","name":"Can I use this workflow for e-commerce product monitoring?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. While this template is built for book listings, you can adapt it to monitor prices, availability, and specifications for any e-commerce product. Simply adjust the CSS selectors to target product titles, prices, and images on sites like Amazon, eBay, or Shopify stores for competitive analysis and price tracking."}},{"@type":"Question","name":"What are the legal considerations for web scraping?","acceptedAnswer":{"@type":"Answer","text":"Always check a website's robots.txt file and terms of service before scraping. Generally, scraping publicly available data for personal use or market research is acceptable, but redistributing copyrighted content or overloading servers with requests can lead to legal issues. Use reasonable request rates and respect copyright laws."}},{"@type":"Question","name":"How do I handle websites with anti-scraping protections?","acceptedAnswer":{"@type":"Answer","text":"Some sites use CAPTCHAs, rate limiting, or JavaScript rendering to block scrapers. Solutions include using headless browsers, rotating user agents, implementing delays between requests, or using specialized scraping services with built-in bypass capabilities. For critical business data, consider professional scraping APIs."}},{"@type":"Question","name":"What's the advantage of automating data export to Google Sheets and email?","acceptedAnswer":{"@type":"Answer","text":"Automating the export creates a seamless data pipeline. Google Sheets provides real-time collaboration and visualization, while email delivery ensures stakeholders receive processed data immediately. This eliminates manual download-upload cycles and creates audit trails, making the entire process from collection to distribution hands-off."}},{"@type":"Question","name":"Can this workflow be scheduled to run automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes, n8n includes powerful scheduling capabilities. You can set this workflow to run hourly, daily, or weekly to monitor websites for changes. This is perfect for price tracking, inventory monitoring, or regular market research where you need updated data without manual intervention."}},{"@type":"Question","name":"Can I get a custom web scraping automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes! GrowwStacks specializes in building custom web scraping and data automation solutions. We can create tailored workflows that extract specific data from complex websites, handle authentication, bypass protections, and integrate with your existing CRM, databases, or analytics tools. Book a free consultation to discuss your requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Book Data Scraping Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Book Data Scraping</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Web Scraping</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Email Automation</span>
+          <span class="cs-tag">Data Extraction</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate Book Data Scraping & Export</h1>
+        <p class="cs-hero-sub">Scrape book listings from any URL, clean HTML, sort by price, save to Google Sheets, and email as CSV—fully automated.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3701-scrape-books-from-url-with-dumpling-ai-clean-html-save-.png" alt="Visual diagram of the automated book data scraping workflow showing URL input, AI processing, data cleaning, and CSV export" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves the tedious, manual process of copying product information from websites. It's specifically built for book listings but can be adapted for any catalog-style webpage. The workflow watches a Google Sheet for new URLs, uses Dumpling AI to scrape the HTML content, extracts book titles and prices using CSS selectors, sorts the data by price, converts it to a clean CSV file, and emails that file to you—all without any manual intervention.</p>
+        <p>For virtual assistants, researchers, and data analysts, this represents a massive time savings. Instead of spending hours copying and pasting data, you get structured, sorted information delivered directly to your inbox. The automation handles the entire pipeline from data collection to delivery, ensuring consistency and eliminating human error in data entry.</p>
+        <p>The system is particularly valuable for competitive analysis, price monitoring, market research, or building product databases. Whether you're tracking book prices across retailers, compiling research materials, or monitoring inventory changes, this workflow transforms what was previously a manual chore into a fully automated process.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical sequence that mimics how a human would collect and process this data, but with perfect consistency and at scale.</p>
+        
+        <h3>1. Trigger from Google Sheets</h3>
+        <p>The workflow starts when a new URL is added to a designated Google Sheet. This could be a book listing page from any retailer or catalog website. The Google Sheets trigger node monitors a specific column and passes new URLs to the next step.</p>
+        
+        <h3>2. AI-Powered Web Scraping</h3>
+        <p>Each URL is sent to Dumpling AI via an HTTP request. Dumpling AI handles the complexities of web scraping—rendering JavaScript, navigating dynamic content, and returning clean HTML. This is far more reliable than traditional scraping methods that break when websites change their layout.</p>
+        
+        <h3>3. Data Extraction with CSS Selectors</h3>
+        <p>The cleaned HTML is processed through n8n's HTML node using CSS selectors. First, it extracts individual book containers (using selectors like ".row > li"), then parses each container for specific fields: book titles (from "h3 > a" elements) and prices (from ".price_color" elements).</p>
+        
+        <h3>4. Sorting and Formatting</h3>
+        <p>Extracted data is sorted in descending order by price, ensuring the most expensive items appear first. The Sort node handles this automatically, though you can modify the sorting logic to prioritize other criteria like alphabetical order or publication date.</p>
+        
+        <h3>5. CSV Conversion and Delivery</h3>
+        <p>The sorted data is converted to CSV format using n8n's Convert node, creating a clean, spreadsheet-ready file. Finally, the Gmail node attaches this CSV and sends it to your specified email address, completing the automated pipeline from URL to delivered data.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This workflow is ideal for several professional roles and use cases. <strong>Virtual assistants</strong> who manage product research for clients will save hours of manual work. <strong>Market researchers</strong> tracking competitor pricing or product availability can set up ongoing monitoring. <strong>Data analysts</strong> needing clean datasets for visualization or reporting will appreciate the automated formatting.</p>
+        <p>E-commerce managers monitoring competitor book prices, academic researchers compiling bibliographies, and content creators building resource lists will all find this automation valuable. The template is particularly useful for anyone who regularly needs to extract structured data from websites with consistent layouts but varying content.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) with workflow execution capabilities</li>
+          <li><strong>Google Sheets account</strong> with a spreadsheet containing URLs to scrape</li>
+          <li><strong>Dumpling AI API key</strong> (sign up at app.dumplingai.com for scraping credits)</li>
+          <li><strong>Gmail account</strong> or SMTP credentials for sending emails</li>
+          <li><strong>Basic understanding of CSS selectors</strong> to adapt to different website structures</li>
+          <li><strong>Target websites</strong> that allow automated access (check robots.txt and terms of service)</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a test URL to verify your CSS selectors work correctly before automating at scale. Use browser developer tools (F12) to inspect elements and find the right selectors for your target website.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this automation in your n8n environment:</p>
+        <ol>
+          <li><strong>Import the template</strong> by downloading the JSON file and importing it into your n8n instance</li>
+          <li><strong>Configure Google Sheets</strong> by connecting your account and specifying the spreadsheet and column containing URLs</li>
+          <li><strong>Set up Dumpling AI</strong> by creating an account, generating an API key, and adding it to the HTTP Request node</li>
+          <li><strong>Adjust CSS selectors</strong> in the HTML nodes to match your target website's structure</li>
+          <li><strong>Connect Gmail</strong> by adding your email credentials and specifying the recipient address</li>
+          <li><strong>Test with one URL</strong> to ensure the entire pipeline works before automating at scale</li>
+          <li><strong>Activate the workflow</strong> and add URLs to your Google Sheet to trigger automatic processing</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10+ hours weekly</strong> on manual data collection and entry. What used to take hours of copying, pasting, and formatting now happens automatically while you focus on higher-value analysis.</p>
+        <p><strong>Eliminate human error</strong> in data transcription. Automated extraction ensures perfect consistency—no missed entries, typos, or formatting inconsistencies that plague manual processes.</p>
+        <p><strong>Scale your research capabilities</strong> from monitoring a few pages to hundreds without additional effort. The same workflow that handles one URL can process dozens with minimal configuration changes.</p>
+        <p><strong>Get real-time insights</strong> with scheduled execution. Set the workflow to run hourly or daily to track price changes, inventory updates, or new listings as they appear.</p>
+        <p><strong>Create reusable data pipelines</strong> that can be adapted for different websites and data types. Once you understand the pattern, you can modify it for real estate listings, job postings, product catalogs, or any structured web data.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about web scraping automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is web scraping and why is it useful for businesses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Web scraping is the automated process of extracting data from websites. For businesses, it's a powerful way to gather competitive intelligence, monitor pricing, collect product catalogs, or aggregate content for research without manual copying and pasting. This saves dozens of hours per week and ensures data accuracy.</p>
+          <p>Beyond time savings, automated scraping provides consistent, structured data that's ready for analysis. Unlike manual collection which is prone to errors and inconsistencies, automated scraping delivers clean, formatted data that can be directly imported into databases, spreadsheets, or business intelligence tools.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI-powered web scraping differ from traditional methods?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Traditional scraping relies on fixed HTML structures that break when a website updates. AI-powered tools like Dumpling AI can understand page layouts semantically, making them more resilient to changes. They can also extract data from complex, dynamic pages where traditional selectors fail, leading to more reliable and maintainable automations.</p>
+          <p>AI scraping tools use computer vision and natural language processing to identify data patterns, meaning they can adapt to minor layout changes without requiring selector updates. This significantly reduces maintenance overhead compared to traditional scraping that needs constant monitoring and adjustment.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this workflow for e-commerce product monitoring?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. While this template is built for book listings, you can adapt it to monitor prices, availability, and specifications for any e-commerce product. Simply adjust the CSS selectors to target product titles, prices, and images on sites like Amazon, eBay, or Shopify stores for competitive analysis and price tracking.</p>
+          <p>The same pattern works for monitoring hotel rates, flight prices, stock availability, or any regularly changing commercial data. By modifying the extraction logic, you can build a comprehensive competitive intelligence system that alerts you to price changes or new product listings.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the legal considerations for web scraping?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Always check a website's robots.txt file and terms of service before scraping. Generally, scraping publicly available data for personal use or market research is acceptable, but redistributing copyrighted content or overloading servers with requests can lead to legal issues. Use reasonable request rates and respect copyright laws.</p>
+          <p>For commercial applications, consider: checking if the website offers an official API, limiting request frequency to avoid impacting server performance, not scraping personal or sensitive data, and using scraped data for analysis rather than republication. When in doubt, consult legal counsel about your specific use case.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I handle websites with anti-scraping protections?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Some sites use CAPTCHAs, rate limiting, or JavaScript rendering to block scrapers. Solutions include using headless browsers, rotating user agents, implementing delays between requests, or using specialized scraping services with built-in bypass capabilities. For critical business data, consider professional scraping APIs.</p>
+          <p>Technical approaches include: implementing random delays between requests, rotating IP addresses using proxy services, using headless browsers like Puppeteer for JavaScript-heavy sites, and mimicking human browsing patterns. More sophisticated sites may require commercial scraping solutions with built-in anti-blocking technology.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the advantage of automating data export to Google Sheets and email?</span>
+          <span class="faq-arrow" aria-expanded="false">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating the export creates a seamless data pipeline. Google Sheets provides real-time collaboration and visualization, while email delivery ensures stakeholders receive processed data immediately. This eliminates manual download-upload cycles and creates audit trails, making the entire process from collection to distribution hands-off.</p>
+          <p>The combination allows for both immediate notification (via email) and persistent storage (in Sheets). Team members can access the data in familiar spreadsheet format, create charts and dashboards, and set up additional automations using Google Sheets' built-in functions or connected apps.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow be scheduled to run automatically?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, n8n includes powerful scheduling capabilities. You can set this workflow to run hourly, daily, or weekly to monitor websites for changes. This is perfect for price tracking, inventory monitoring, or regular market research where you need updated data without manual intervention.</p>
+          <p>Scheduled execution transforms one-time data collection into ongoing monitoring. You can configure different schedules for different URLs—daily for fast-changing prices, weekly for inventory updates, or monthly for catalog completeness checks—all from the same workflow template.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom web scraping automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes! GrowwStacks specializes in building custom web scraping and data automation solutions. We can create tailored workflows that extract specific data from complex websites, handle authentication, bypass protections, and integrate with your existing CRM, databases, or analytics tools.</p>
+          <p>Our team handles the technical complexity so you get reliable, maintainable automations. We'll work with you to understand your data needs, target websites, and output requirements, then build a solution that fits seamlessly into your business processes.</p>
+          <ul>
+            <li>Custom data extraction from any website structure</li>
+            <li>Integration with your existing tools and databases</li>
+            <li>Ongoing maintenance and selector updates</li>
+            <li>Compliance with legal and technical requirements</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Web Scraping Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
