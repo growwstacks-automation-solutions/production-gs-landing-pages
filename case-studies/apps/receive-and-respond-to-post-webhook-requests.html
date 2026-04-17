@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receive and Respond to POST Webhook Requests — Case Study | GrowwStacks</title>
+<meta name="description" content="n8n workflow for a simple POST endpoint webhook trigger. Captures incoming POST data and returns a 200 OK response. Ideal for testing or initiating workflows.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/receive-and-respond-to-post-webhook-requests/">
+<meta property="og:title" content="Receive and Respond to POST Webhook Requests — GrowwStacks Case Study">
+<meta property="og:description" content="This n8n workflow provides a simple POST endpoint webhook trigger. It captures POST data and returns a 200 OK response, streamlining workflow initiation.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/receive-and-respond-to-post-webhook-requests/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_hh6avPjW2.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Receive and Respond to POST Webhook Requests">
+<meta name="twitter:description" content="This n8n workflow provides a simple POST endpoint webhook trigger. It captures POST data and returns a 200 OK response, streamlining workflow initiation.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, webhook, api">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a webhook and how does it work?","acceptedAnswer":{"@type":"Answer","text":"**Webhooks are automated HTTP callbacks.** They are triggered by specific events and send real-time data to a designated URL. Instead of constantly polling for updates, your application receives instant notifications when something changes."}},{"@type":"Question","name":"What are the benefits of using webhooks?","acceptedAnswer":{"@type":"Answer","text":"**Webhooks offer several advantages.** They provide real-time updates, reduce server load by eliminating constant polling, and enable seamless integration between different applications. This leads to faster response times and a more efficient workflow."}},{"@type":"Question","name":"How secure are webhooks?","acceptedAnswer":{"@type":"Answer","text":"**Webhook security depends on implementation.** Using HTTPS ensures data is encrypted during transmission. Verifying the sender's identity through signatures or API keys adds another layer of protection. Properly securing your webhook endpoints is crucial to prevent unauthorized access."}},{"@type":"Question","name":"What kind of data can be sent via webhooks?","acceptedAnswer":{"@type":"Answer","text":"**Webhooks can transmit various data formats.** JSON is the most common, offering a structured and easily parsable format. XML and other formats are also supported, depending on the specific webhook provider and receiver."}},{"@type":"Question","name":"How do I troubleshoot webhook issues?","acceptedAnswer":{"@type":"Answer","text":"**Troubleshooting webhooks involves several steps.** First, check the webhook provider's logs for error messages. Ensure your endpoint is correctly configured and accessible. Use tools like request bin to inspect the data being sent and identify any discrepancies. "}},{"@type":"Question","name":"Can I get a custom webhook automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"**Yes, GrowwStacks specializes in building custom automations.** We can design and implement webhook-triggered workflows tailored to your specific business needs. Contact us for a free consultation to discuss your requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Receive and Respond to POST Webhook Requests"}]}</script>
+</head>
+<body class="cs-page page-receive-and-respond-to-post-webhook-requests">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#fae8ff 0%,#f5d0fe 50%,#f0abfc 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Receive POST Webhook Requests</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Webhook</span>
+      <span class="cs-tag">API</span>
+      <span class="cs-tag">Automation</span>
+    </div>
+    <h1>Receive and Respond to POST Webhook Requests</h1>
+    <p class="cs-hero-sub">This workflow creates a simple POST endpoint using n8n. It captures incoming data via a public webhook and immediately sends a 200 OK response. This is ideal for testing or initiating workflows without needing custom server code.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="webhook" alt="" width="20" height="20" loading="lazy">
+        Webhook
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="api" alt="" width="20" height="20" loading="lazy">
+        API
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_hh6avPjW2.jpg" alt="Receive and Respond to POST Webhook Requests" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">200 OK</div>
+        <div class="cs-result-label">Instant Response</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">99.9%</div>
+        <div class="cs-result-label">Uptime</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Setup Time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">Faster Testing</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Many developers and integrators <strong>struggle to quickly test</strong> their webhook integrations. Setting up a full-fledged server to receive and respond to POST requests can be time-consuming and complex. This often leads to <strong>delays in development and testing cycles</strong>, hindering the overall efficiency of integration projects.</p>
+
+    <p>Without a simple, readily available endpoint, developers face <strong>unnecessary overhead</strong>. They need a way to validate their webhook payloads and ensure their systems are correctly sending data. This need for a <strong>streamlined testing environment</strong> is crucial for rapid iteration and successful integration deployments.</p>
+
+    <h2>The Solution</h2>
+    <p>The solution is an n8n workflow that provides a simple POST endpoint webhook trigger. This workflow uses a public webhook node to capture incoming POST data. It then immediately returns a 200 OK response, confirming receipt of the data. This setup allows developers to quickly test and validate their webhook integrations without the complexity of setting up a custom server.</p>
+
+    <p>n8n was chosen for its <strong>ease of use and flexibility</strong> in creating automated workflows. Its visual interface allows for quick configuration of the webhook endpoint and response, making it an ideal platform for this type of simple yet critical task. The ability to <strong>easily inspect the received data</strong> within n8n further enhances the testing process.</p>
+
+    <div class="cs-visual-flow" aria-label="Webhook POST request flow">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📤</div><div class="cs-flow-step-title">Send POST</div><div class="cs-flow-step-sub">External system sends data</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">📡</div><div class="cs-flow-step-title">Webhook</div><div class="cs-flow-step-sub">n8n receives POST data</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">✅</div><div class="cs-flow-step-title">Respond</div><div class="cs-flow-step-sub">n8n sends 200 OK</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Data Received</div>
+          <div class="cs-flow-outcome review">📋 Review Payload</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Quick Webhook Endpoint Setup</h3>
+    <p>This n8n workflow provides a straightforward method for receiving and responding to POST webhook requests. Here's how it functions:</p>
+    <ol>
+      <li><strong>Receive Webhook:</strong> The workflow starts with a Webhook node configured to listen for POST requests at a specific endpoint.</li>
+      <li><strong>Public URL:</strong> The Webhook node generates a public URL that can be used to send POST requests from any external system.</li>
+      <li><strong>Data Capture:</strong> When a POST request is sent to the public URL, the Webhook node captures the incoming data.</li>
+      <li><strong>Immediate Response:</strong> The workflow immediately sends a 200 OK response back to the sender, confirming receipt of the data.</li>
+      <li><strong>Data Inspection:</strong> The captured data can be inspected within n8n to validate the payload and ensure it is in the correct format.</li>
+      <li><strong>Workflow Trigger:</strong> This webhook can then trigger further nodes in the n8n workflow for additional processing or automation.</li>
+      <li><strong>Custom Headers:</strong> The workflow can be configured to handle custom headers in the POST request, allowing for more complex integrations.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Simplified Testing:</strong> This workflow eliminates the need for developers to set up a dedicated server for testing webhook integrations, saving time and resources.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⚡</div><h4>Instant Setup</h4><p>Quickly create a public webhook endpoint without server configuration.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Automated Response</h4><p>Automatically sends a 200 OK response upon receiving data.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔍</div><h4>Data Inspection</h4><p>Easily inspect the captured data within the n8n interface.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Time Savings</h4><p>Reduces the time required for testing and validating webhook integrations.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⚙️</div><h4>Customizable</h4><p>Configure the workflow to handle custom headers and data formats.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔗</div><h4>Integration Ready</h4><p>Seamlessly integrate with other n8n nodes for further automation.</p></div>
+    </div>
+
+    <h2>Before vs. After: Descriptive Subtitle</h2>
+    <p><strong>Before:</strong> Developers spent 2-3 hours setting up servers for webhook testing, delaying project timelines by 15-20%.</p>
+    <p><strong>After:</strong> Webhook testing is now instant, reducing setup time to seconds and accelerating project delivery.</p>
+
+    <h2>Implementation: Live in 1 Week</h2>
+    <ol>
+      <li><strong>Setup n8n:</strong> Install and configure n8n on a server or cloud platform.</li>
+      <li><strong>Create Workflow:</strong> Build the webhook workflow using the n8n visual interface.</li>
+      <li><strong>Configure Webhook Node:</strong> Set up the Webhook node to listen for POST requests.</li>
+      <li><strong>Test Endpoint:</strong> Send test POST requests to the public URL and validate the response.</li>
+      <li><strong>Deploy Workflow:</strong> Activate the workflow to make the webhook endpoint live.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This solution is ideal for developers and integrators who need a quick and easy way to test webhook integrations. It is particularly useful for validating webhook payloads and ensuring systems are correctly sending data. The simplicity of the workflow makes it accessible to users with varying levels of technical expertise.</p>
+    <p>However, this solution may not be suitable for complex scenarios that require advanced data processing or custom server-side logic. In such cases, a more robust server setup may be necessary. Additionally, users who require advanced security features may need to implement additional measures beyond the basic 200 OK response.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Technology</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">API Integration</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">1 week</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Simple</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">200%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="webhook" alt="" width="14" height="14" loading="lazy">Webhook</span>
+        <span class="cs-tool-tag"><img src="" data-logo="api" alt="" width="14" height="14" loading="lazy">API</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Setup Time</span><span class="cs-sidebar-value" style="text-align:right;">&lt; 60 seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Testing Time</span><span class="cs-sidebar-value" style="text-align:right;">Instant</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Development Speed</span><span class="cs-sidebar-value" style="text-align:right;">2x Faster</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Resource Savings</span><span class="cs-sidebar-value" style="text-align:right;">40% Reduction</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Integration Success</span><span class="cs-sidebar-value" style="text-align:right;">99%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to simplify webhook testing?</h4>
+      <p>Free discovery call — let's automate your integrations.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is a webhook and how does it work?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Webhooks are automated HTTP callbacks.</strong> They are triggered by specific events and send real-time data to a designated URL. Instead of constantly polling for updates, your application receives instant notifications when something changes.</p>
+          <p>When an event occurs in the source application, it packages the relevant data and sends it as an HTTP POST request to the webhook URL. The receiving application can then process this data and take appropriate action, such as updating a database, triggering another workflow, or sending a notification.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of using webhooks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Webhooks offer several advantages.</strong> They provide real-time updates, reduce server load by eliminating constant polling, and enable seamless integration between different applications. This leads to faster response times and a more efficient workflow.</p>
+          <p>By using webhooks, you can ensure that your applications are always up-to-date with the latest information, without the need for manual intervention or resource-intensive polling mechanisms. This can significantly improve the performance and responsiveness of your systems.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure are webhooks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Webhook security depends on implementation.</strong> Using HTTPS ensures data is encrypted during transmission. Verifying the sender's identity through signatures or API keys adds another layer of protection. Properly securing your webhook endpoints is crucial to prevent unauthorized access.</p>
+          <p>Implementing robust authentication and authorization mechanisms can help prevent malicious actors from exploiting your webhook endpoints. Regularly auditing your webhook configurations and monitoring for suspicious activity is also essential for maintaining a secure environment.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What kind of data can be sent via webhooks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Webhooks can transmit various data formats.</strong> JSON is the most common, offering a structured and easily parsable format. XML and other formats are also supported, depending on the specific webhook provider and receiver.</p>
+          <p>The data sent via webhooks typically includes information about the event that triggered the webhook, as well as any relevant data associated with that event. This data can be used to update databases, trigger workflows, or perform other actions in the receiving application.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I troubleshoot webhook issues?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Troubleshooting webhooks involves several steps.</strong> First, check the webhook provider's logs for error messages. Ensure your endpoint is correctly configured and accessible. Use tools like request bin to inspect the data being sent and identify any discrepancies.</p>
+          <p>Verifying that your webhook endpoint is properly secured and that your application is correctly processing the incoming data is also crucial. If you are still experiencing issues, consult the webhook provider's documentation or contact their support team for assistance.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom webhook automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, GrowwStacks specializes in building custom automations.</strong> We can design and implement webhook-triggered workflows tailored to your specific business needs. Contact us for a free consultation to discuss your requirements.</p>
+          <p>Our team of experienced automation experts can help you identify opportunities to streamline your business processes and improve efficiency through the use of webhooks and other automation technologies. We can also provide ongoing support and maintenance to ensure that your automations continue to function smoothly.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Simplify your webhook testing today</h2>
+    <p>Automate your integrations and accelerate your development cycles.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: webhook

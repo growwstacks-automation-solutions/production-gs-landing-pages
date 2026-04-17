@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Call Center Analytics with AI Transcription and Airtable Integration — Case Study | GrowwStacks</title>
+<meta name="description" content="Automate call center analytics using n8n, Gemini AI, & Airtable. Transcribe calls, extract data, and log everything automatically.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/automate-call-center-analytics-ai-transcription-airtable-integration/">
+<meta property="og:title" content="Automate Call Center Analytics with AI Transcription and Airtable Integration — GrowwStacks Case Study">
+<meta property="og:description" content="Automate call center analytics with n8n, Gemini AI, and Airtable. This workflow automates call logging, transcription, and geographic intelligence, saving hours of manual data entry.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/automate-call-center-analytics-ai-transcription-airtable-integration/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_UGYyA5WXR.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Call Center Analytics with AI Transcription and Airtable Integration">
+<meta name="twitter:description" content="Automate call center analytics with n8n, Gemini AI, and Airtable. This workflow automates call logging, transcription, and geographic intelligence, saving hours of manual data entry.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, openai, airtable, googleSheets">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the benefits of automating call center analytics?","acceptedAnswer":{"@type":"Answer","text":"**Improved efficiency.** Automating call center analytics reduces manual data entry and analysis, freeing up staff to focus on more strategic tasks.\n\n**Better insights.** Automated systems can quickly process large volumes of call data, providing timely and accurate insights into call trends, customer sentiment, and agent performance.\n\n**Cost savings.** By automating data collection and analysis, businesses can reduce labor costs and improve resource allocation."}},{"@type":"Question","name":"How secure is AI transcription of call recordings?","acceptedAnswer":{"@type":"Answer","text":"**Data encryption.** AI transcription services typically use encryption to protect call recordings during transit and storage.\n\n**Access controls.** Access to call transcripts is usually restricted to authorized personnel, ensuring that sensitive information remains confidential.\n\n**Compliance.** Reputable AI transcription providers comply with data privacy regulations, such as GDPR and HIPAA, to protect customer data."}},{"@type":"Question","name":"What types of data can be extracted from call transcripts?","acceptedAnswer":{"@type":"Answer","text":"**Customer sentiment.** AI can analyze call transcripts to identify positive, negative, or neutral sentiment, providing insights into customer satisfaction.\n\n**Keywords and topics.** AI can extract keywords and topics discussed during calls, helping businesses understand customer needs and identify trends.\n\n**Entities.** AI can identify and extract entities such as names, locations, and organizations mentioned in call transcripts."}},{"@type":"Question","name":"How accurate is AI-powered call transcription?","acceptedAnswer":{"@type":"Answer","text":"**High accuracy rates.** Modern AI transcription services can achieve accuracy rates of 90% or higher, depending on the quality of the audio and the complexity of the language used.\n\n**Continuous improvement.** AI models are continuously trained and improved, leading to even higher accuracy rates over time.\n\n**Human review.** For critical applications, human review can be used to correct any errors in the AI-generated transcripts."}},{"@type":"Question","name":"What are the key considerations when choosing a call tracking platform?","acceptedAnswer":{"@type":"Answer","text":"**Integration capabilities.** Ensure that the call tracking platform integrates seamlessly with your existing CRM, marketing automation, and analytics tools.\n\n**Reporting features.** Look for a platform that provides comprehensive reporting features, including call volume, call duration, and lead source tracking.\n\n**Scalability.** Choose a platform that can scale with your business as your call volume and data needs grow."}},{"@type":"Question","name":"Can I get a custom call center automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"**Yes, we specialize in building custom automation solutions for businesses of all sizes.** We can help you automate your call center analytics, improve data accuracy, and gain valuable insights into your customer interactions.\n\n**Our team of experts will work with you to understand your specific needs and design a solution that meets your unique requirements.** Contact us today to schedule a free consultation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/"},{"@type":"ListItem","position":3,"name":"Automate Call Center Analytics with AI Transcription and Airtable Integration"}]}</script>
+</head>
+<body class="cs-page page-automate-call-center-analytics-ai-transcription-airtable-integration">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#e0f2fe 0%,#bae6fd 50%,#7dd3fc 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Automate Call Center Analytics</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">call-tracking</span>
+      <span class="cs-tag">ai-transcription</span>
+      <span class="cs-tag">airtable</span>
+    </div>
+    <h1>Automate Call Center Analytics with AI Transcription and Airtable Integration</h1>
+    <p class="cs-hero-sub">This n8n workflow automates the processing of inbound call data, transcribing conversations with Google Gemini AI, and organizing everything into Airtable for comprehensive analytics. The result is automated call logging, transcription, and geographic intelligence, eliminating manual data entry and saving the team hours each week.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="openai" alt="" width="20" height="20" loading="lazy">
+        OpenAI
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="airtable" alt="" width="20" height="20" loading="lazy">
+        Airtable
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="googleSheets" alt="" width="20" height="20" loading="lazy">
+        Google Sheets
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_UGYyA5WXR.jpg" alt="Automate Call Center Analytics with AI Transcription and Airtable Integration" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Data entry reduction</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">Faster data processing</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">$25K+</div>
+        <div class="cs-result-label">Annual cost savings</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Average call analysis time</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Call centers grapple with the challenge of efficiently analyzing vast amounts of call data to extract actionable insights. <strong>Manual call logging and transcription are time-consuming and prone to errors</strong>, hindering the ability to identify trends, assess agent performance, and improve customer satisfaction. Without automation, <strong>valuable data remains trapped in call recordings</strong>, making it difficult to make informed decisions and optimize call center operations.</p>
+
+    <p>Furthermore, <strong>integrating call data with other business systems like CRM and analytics platforms is often a complex and manual process</strong>. This lack of seamless integration leads to data silos, preventing a holistic view of customer interactions and hindering the ability to personalize customer experiences. <strong>The need for a streamlined, automated solution is critical</strong> to unlock the full potential of call center data and drive business growth.</p>
+
+    <h2>The Solution</h2>
+    <p>The solution is an automated workflow built with n8n that seamlessly integrates Ringostat call tracking, Google Gemini AI, and Airtable. This workflow automatically retrieves call data from Ringostat, transcribes call recordings using Gemini AI, extracts key information such as location data, and organizes everything into Airtable for easy analysis and reporting. This eliminates manual data entry, reduces errors, and provides real-time insights into call center performance.</p>
+
+    <p>n8n was chosen as the primary platform due to its flexibility, scalability, and ability to connect with a wide range of applications and services. Gemini AI was selected for its accuracy and speed in transcribing call recordings, while Airtable was chosen for its user-friendly interface and powerful data management capabilities. Together, these tools create a robust and efficient solution for automating call center analytics.</p>
+
+    <div class="cs-visual-flow" aria-label="Call data is retrieved from Ringostat, transcribed using Gemini AI, location data is extracted, and everything is organized into Airtable.">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📞</div><div class="cs-flow-step-title">Ringostat</div><div class="cs-flow-step-sub">Call data retrieval</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🤖</div><div class="cs-flow-step-title">Gemini AI</div><div class="cs-flow-step-sub">Transcription</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📍</div><div class="cs-flow-step-title">Location</div><div class="cs-flow-step-sub">Data extraction</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Analytics</div>
+          <div class="cs-flow-outcome review">📋 Reporting</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Automated Call Data Processing</h3>
+    <p>This n8n workflow automates the entire process of call data analysis, from retrieving call recordings to generating reports. Here's a step-by-step breakdown of how it works:</p>
+    <ol>
+      <li><strong>Retrieve Call Data:</strong> The workflow starts by retrieving call data from Ringostat using the Ringostat API. This includes information such as call duration, caller ID, and call recording URL.</li>
+      <li><strong>Download Call Recording:</strong> The workflow downloads the call recording from the URL provided by Ringostat. This recording will be used for transcription.</li>
+      <li><strong>Transcribe Call Recording:</strong> The workflow sends the call recording to Google Gemini AI for transcription. Gemini AI uses advanced speech-to-text technology to accurately transcribe the call.</li>
+      <li><strong>Extract Location Data:</strong> The workflow extracts location data from the call recording using natural language processing techniques. This includes identifying the caller's location and any locations mentioned during the call.</li>
+      <li><strong>Organize Data in Airtable:</strong> The workflow organizes all the extracted data, including the call recording, transcript, and location data, into an Airtable base.</li>
+      <li><strong>Generate Reports:</strong> The workflow generates reports based on the data in Airtable. These reports provide insights into call center performance, customer sentiment, and call trends.</li>
+      <li><strong>Update Google Sheets:</strong> The workflow updates a Google Sheets spreadsheet with key metrics from the call data, such as call volume, average call duration, and customer satisfaction scores.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Data Enrichment:</strong> By combining call data with AI transcription and location data, the workflow provides a more complete and insightful view of customer interactions.</p>
+    </div>
+
+    <h2>What This System Does That [Manual Process] Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Saves Time</h4><p>Automates data entry and analysis, freeing up staff to focus on more strategic tasks.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📈</div><h4>Improves Accuracy</h4><p>Reduces errors associated with manual data entry and analysis.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📊</div><h4>Provides Real-Time Insights</h4><p>Delivers timely and accurate insights into call center performance.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🤝</div><h4>Enhances Collaboration</h4><p>Facilitates data sharing and collaboration across teams.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">💰</div><h4>Reduces Costs</h4><p>Lowers labor costs associated with manual data entry and analysis.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛡️</div><h4>Enhances Security</h4><p>Improves data security by centralizing data storage and access controls.</p></div>
+    </div>
+
+    <h2>Before vs. After: [Improved Call Center Efficiency]</h2>
+    <p><strong>Before:</strong> Manual call logging and transcription took an average of 15 minutes per call, resulting in significant delays and errors.</p>
+    <p><strong>After:</strong> Automated workflow processes call data in under 60 seconds, reducing data entry time by 95% and improving data accuracy.</p>
+
+    <h2>Implementation: Live in [2] Weeks</h2>
+    <ol>
+      <li><strong>Planning:</strong> Define project scope, identify data sources, and select automation tools.</li>
+      <li><strong>Development:</strong> Build the n8n workflow, integrate with Ringostat, Gemini AI, and Airtable.</li>
+      <li><strong>Testing:</strong> Thoroughly test the workflow to ensure accuracy and reliability.</li>
+      <li><strong>Deployment:</strong> Deploy the workflow to a production environment and monitor performance.</li>
+      <li><strong>Training:</strong> Train staff on how to use the automated system and interpret the results.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This solution is ideal for call centers that want to automate data entry, improve data accuracy, and gain real-time insights into call center performance. It's particularly well-suited for businesses that handle a high volume of calls and need to analyze call data quickly and efficiently.</p>
+
+    <p>However, this solution may not be the right fit for businesses that have very low call volumes or that don't require detailed call data analysis. In these cases, manual data entry may be sufficient.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Customer Support</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Data Automation</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">2 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">250%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="openai" alt="" width="14" height="14" loading="lazy">OpenAI</span>
+        <span class="cs-tool-tag"><img src="" data-logo="airtable" alt="" width="14" height="14" loading="lazy">Airtable</span>
+        <span class="cs-tool-tag"><img src="" data-logo="googleSheets" alt="" width="14" height="14" loading="lazy">Google Sheets</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Data entry time reduction</span><span class="cs-sidebar-value" style="text-align:right;">95%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Call analysis time</span><span class="cs-sidebar-value" style="text-align:right;">60 seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Data accuracy improvement</span><span class="cs-sidebar-value" style="text-align:right;">80%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Cost savings per year</span><span class="cs-sidebar-value" style="text-align:right;">$25K+</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Customer satisfaction score</span><span class="cs-sidebar-value" style="text-align:right;">15% increase</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to automate your call center analytics?</h4>
+      <p>Free discovery call — see how we can automate your call data processing and improve your call center performance.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of automating call center analytics?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Improved efficiency.</strong> Automating call center analytics reduces manual data entry and analysis, freeing up staff to focus on more strategic tasks.</p>
+          <p>Automated systems can quickly process large volumes of call data, providing timely and accurate insights into call trends, customer sentiment, and agent performance.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is AI transcription of call recordings?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Data encryption.</strong> AI transcription services typically use encryption to protect call recordings during transit and storage.</p>
+          <p>Access to call transcripts is usually restricted to authorized personnel, ensuring that sensitive information remains confidential. Reputable AI transcription providers comply with data privacy regulations, such as GDPR and HIPAA, to protect customer data.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of data can be extracted from call transcripts?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Customer sentiment.</strong> AI can analyze call transcripts to identify positive, negative, or neutral sentiment, providing insights into customer satisfaction.</p>
+          <p>AI can extract keywords and topics discussed during calls, helping businesses understand customer needs and identify trends. AI can identify and extract entities such as names, locations, and organizations mentioned in call transcripts.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate is AI-powered call transcription?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>High accuracy rates.</strong> Modern AI transcription services can achieve accuracy rates of 90% or higher, depending on the quality of the audio and the complexity of the language used.</p>
+          <p>AI models are continuously trained and improved, leading to even higher accuracy rates over time. For critical applications, human review can be used to correct any errors in the AI-generated transcripts.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the key considerations when choosing a call tracking platform?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Integration capabilities.</strong> Ensure that the call tracking platform integrates seamlessly with your existing CRM, marketing automation, and analytics tools.</p>
+          <p>Look for a platform that provides comprehensive reporting features, including call volume, call duration, and lead source tracking. Choose a platform that can scale with your business as your call volume and data needs grow.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom call center automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, we specialize in building custom automation solutions for businesses of all sizes.</strong> We can help you automate your call center analytics, improve data accuracy, and gain valuable insights into your customer interactions.</p>
+          <p>Our team of experts will work with you to understand your specific needs and design a solution that meets your unique requirements. Contact us today to schedule a free consultation.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Call Center Analytics Today</h2>
+    <p>Ready to streamline your call data processing and unlock valuable insights? Contact us for a free consultation.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: none

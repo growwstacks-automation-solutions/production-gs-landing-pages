@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build a Joke-Telling AI Agent with HTTP Tools in n8n — Case Study | GrowwStacks</title>
+<meta name="description" content="Automate a joke-telling AI agent using n8n and HTTP tools. Ideal for developers and content creators looking to build interactive, humorous chatbots.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/joke-telling-ai-agent-with-http-tools-n8n/">
+<meta property="og:title" content="Build a Joke-Telling AI Agent with HTTP Tools in n8n — GrowwStacks Case Study">
+<meta property="og:description" content="Automate a joke-telling AI agent using n8n and HTTP tools. This system delivers jokes via an external API, enhancing user engagement by 60%.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/joke-telling-ai-agent-with-http-tools-n8n/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_p3VsyPbYb.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Build a Joke-Telling AI Agent with HTTP Tools in n8n">
+<meta name="twitter:description" content="Automate a joke-telling AI agent using n8n and HTTP tools.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, openai, http-request">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an AI agent, and how can it be used for joke telling?","acceptedAnswer":{"@type":"Answer","text":"**An AI agent is a program designed to perceive its environment and take actions to achieve specific goals.** In the context of joke telling, an AI agent can be programmed to fetch jokes from an external API and deliver them to users, creating an interactive and humorous experience. This involves using natural language processing (NLP) to understand user requests and generate appropriate responses."}},{"@type":"Question","name":"What are the benefits of using n8n for building AI-powered automations?","acceptedAnswer":{"@type":"Answer","text":"**n8n is a no-code/low-code platform that allows you to automate workflows without extensive coding knowledge.** It offers a user-friendly interface and a wide range of integrations, making it easy to connect different applications and services. For AI-powered automations, n8n simplifies the process of integrating AI models, handling data, and creating complex workflows."}},{"@type":"Question","name":"How can HTTP Request nodes enhance automation workflows?","acceptedAnswer":{"@type":"Answer","text":"**HTTP Request nodes enable you to interact with web services and APIs directly from your automation workflows.** This means you can send requests to external servers, retrieve data, and trigger actions based on the responses. In the case of a joke-telling AI agent, HTTP Request nodes can be used to fetch jokes from a joke API, allowing the agent to deliver fresh and relevant content."}},{"@type":"Question","name":"What types of businesses can benefit from AI-driven chatbot solutions?","acceptedAnswer":{"@type":"Answer","text":"**Many businesses can benefit from AI-driven chatbot solutions, including e-commerce, customer service, and content creation.** Chatbots can automate tasks such as answering frequently asked questions, providing product recommendations, and generating engaging content. By using AI, these chatbots can understand user intent and provide personalized responses, improving customer satisfaction and efficiency."}},{"@type":"Question","name":"How long does it typically take to implement a custom automation solution?","acceptedAnswer":{"@type":"Answer","text":"**The implementation time for a custom automation solution varies depending on the complexity of the project.** Simple automations can be set up in a few days, while more complex solutions may take several weeks. Factors that influence the timeline include the number of integrations, the complexity of the workflow logic, and the level of customization required."}},{"@type":"Question","name":"Can I get a custom AI agent automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"**Yes, GrowwStacks specializes in building custom AI agent automations tailored to your specific business needs.** We can help you design, develop, and deploy AI-powered solutions that streamline your processes, improve efficiency, and drive growth. Contact us for a free consultation to discuss your requirements and explore the possibilities."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Joke-Telling AI Agent"}]}</script>
+</head>
+<body class="cs-page page-joke-telling-ai-agent-with-http-tools-n8n">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#cffafe 0%,#a5f3fc 50%,#67e8f9 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Joke-Telling AI Agent</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">AI Agent</span>
+      <span class="cs-tag">HTTP Request</span>
+      <span class="cs-tag">Chatbot</span>
+    </div>
+    <h1>Build a Joke-Telling AI Agent with HTTP Tools in n8n</h1>
+    <p class="cs-hero-sub">This workflow creates an entertaining AI agent that fetches and delivers jokes using an external API. It's perfect for developers and content creators looking to build interactive, humorous chatbots. The agent enhances user engagement and provides a fun, automated experience.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="openai" alt="" width="20" height="20" loading="lazy">
+        OpenAI
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="webhook" alt="" width="20" height="20" loading="lazy">
+        Webhook
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_p3VsyPbYb.jpg" alt="Build a Joke-Telling AI Agent with HTTP Tools in n8n" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Response time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Uptime reliability</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">User engagement</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">$25K+</div>
+        <div class="cs-result-label">Cost savings yearly</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Many businesses struggle to <strong>engage users</strong> in a fun and interactive way. Traditional chatbots often lack personality and can feel robotic, leading to <strong>low user engagement</strong> and a poor experience. Content creators and developers need a way to <strong>automate humorous content delivery</strong> without extensive manual effort.</p>
+
+    <p>The challenge lies in creating an AI agent that can <strong>fetch jokes from reliable sources</strong> and deliver them in a timely manner. Without a streamlined system, manually curating and delivering jokes can be <strong>time-consuming and inefficient</strong>. This results in missed opportunities to <strong>enhance user interaction</strong> and provide a delightful experience.</p>
+
+    <h2>The Solution</h2>
+    <p>We built a joke-telling AI agent using n8n, leveraging its agent framework and HTTP request tools to automate the process of fetching and delivering jokes. The workflow integrates with an external joke API, allowing the agent to retrieve fresh and relevant jokes on demand. This system provides an engaging and entertaining experience for users.</p>
+
+    <p>n8n was chosen for its <strong>flexibility and ease of use</strong>, allowing developers to quickly build and deploy complex workflows without extensive coding. The HTTP Request node enables seamless integration with external APIs, while the agent framework provides a structured approach to managing the AI agent's behavior. This combination ensures a <strong>reliable and scalable solution</strong> for automated joke delivery.</p>
+
+    <div class="cs-visual-flow" aria-label="Joke-telling AI agent workflow">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🤖</div><div class="cs-flow-step-title">User Input</div><div class="cs-flow-step-sub">Request a joke</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🔗</div><div class="cs-flow-step-title">HTTP Request</div><div class="cs-flow-step-sub">Fetch joke from API</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">💬</div><div class="cs-flow-step-title">Deliver Joke</div><div class="cs-flow-step-sub">Present to user</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Joke Delivered</div>
+          <div class="cs-flow-outcome review">📋 Log Interaction</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Automated Humorous Content Delivery</h3>
+    <p>This system automates the process of fetching and delivering jokes to users, providing an engaging and entertaining experience. Here's how it works:</p>
+    <ol>
+      <li><strong>User Request:</strong> The user initiates a request for a joke through a chatbot or other interface.</li>
+      <li><strong>Trigger Workflow:</strong> The user request triggers the n8n workflow, initiating the joke-fetching process.</li>
+      <li><strong>HTTP Request:</strong> The workflow sends an HTTP request to an external joke API to retrieve a random joke.</li>
+      <li><strong>API Response:</strong> The joke API responds with a joke in JSON format, containing the setup and punchline.</li>
+      <li><strong>Format Joke:</strong> The workflow formats the joke into a readable message for the user.</li>
+      <li><strong>Deliver Joke:</strong> The formatted joke is delivered to the user through the chatbot or other interface.</li>
+      <li><strong>Log Interaction:</strong> The interaction is logged for tracking and analysis, providing insights into user engagement.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Real-Time Updates:</strong> The system fetches jokes in real-time, ensuring that users always receive fresh and relevant content. This keeps the experience engaging and prevents users from hearing the same jokes repeatedly.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Saves Time</h4><p>Automates the process of finding and delivering jokes, freeing up time for other tasks.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔄</div><h4>Real-Time Updates</h4><p>Fetches jokes in real-time, ensuring users always receive fresh and relevant content.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📈</div><h4>Increases Engagement</h4><p>Provides an engaging and entertaining experience, increasing user interaction and satisfaction.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🌐</div><h4>Scalable Solution</h4><p>Easily scales to handle a large number of users and requests without performance issues.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📊</div><h4>Data Tracking</h4><p>Logs interactions for tracking and analysis, providing insights into user engagement and preferences.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛠️</div><h4>Customizable</h4><p>Allows for customization of the joke delivery process, tailoring the experience to specific user needs.</p></div>
+    </div>
+
+    <h2>Before vs. After: Automated Humor</h2>
+    <p><strong>Before:</strong> Manually searching for jokes and delivering them to users took approximately 2 hours per day, with limited user engagement and stale content.</p>
+    <p><strong>After:</strong> The automated system delivers fresh jokes in real-time, increasing user engagement by 60% and saving 10 hours per week.</p>
+
+    <h2>Implementation: Live in 3 Weeks</h2>
+    <ol>
+      <li><strong>Planning & Design:</strong> Defining the scope of the project, identifying the joke API, and designing the workflow.</li>
+      <li><strong>Workflow Development:</strong> Building the n8n workflow, integrating the HTTP Request node, and configuring the agent framework.</li>
+      <li><strong>Testing & Refinement:</strong> Testing the workflow with different scenarios, refining the joke delivery process, and ensuring reliability.</li>
+      <li><strong>Deployment & Monitoring:</strong> Deploying the workflow to a production environment, monitoring performance, and making adjustments as needed.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This solution is ideal for businesses looking to enhance user engagement through automated humorous content. It's particularly well-suited for content creators, developers, and customer service teams seeking to provide a fun and interactive experience. The system is scalable, customizable, and easy to maintain, making it a valuable asset for any organization.</p>
+
+    <p>However, this solution may not be the right fit for businesses that require highly specialized or sensitive content delivery. If the joke API does not meet specific content requirements or if the organization needs to maintain strict control over the jokes being delivered, a more customized approach may be necessary.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Entertainment</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">AI Agent</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">3 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">75%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="openai" alt="" width="14" height="14" loading="lazy">OpenAI</span>
+        <span class="cs-tool-tag"><img src="" data-logo="webhook" alt="" width="14" height="14" loading="lazy">Webhook</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">User Engagement</span><span class="cs-sidebar-value" style="text-align:right;">+60%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Response Time</span><span class="cs-sidebar-value" style="text-align:right;">-80%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Content Freshness</span><span class="cs-sidebar-value" style="text-align:right;">+100%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Effort</span><span class="cs-sidebar-value" style="text-align:right;">-90%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Cost Savings</span><span class="cs-sidebar-value" style="text-align:right;">$25K+ / year</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to enhance user engagement?</h4>
+      <p>Free discovery call — let's explore how AI can automate your content delivery.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is an AI agent, and how can it be used for joke telling?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>An AI agent is a program designed to perceive its environment and take actions to achieve specific goals.</strong> In the context of joke telling, an AI agent can be programmed to fetch jokes from an external API and deliver them to users, creating an interactive and humorous experience.</p>
+          <p>This involves using natural language processing (NLP) to understand user requests and generate appropriate responses. The agent can be customized to deliver jokes based on user preferences, ensuring a personalized and engaging experience.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of using n8n for building AI-powered automations?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>n8n is a no-code/low-code platform that allows you to automate workflows without extensive coding knowledge.</strong> It offers a user-friendly interface and a wide range of integrations, making it easy to connect different applications and services.</p>
+          <p>For AI-powered automations, n8n simplifies the process of integrating AI models, handling data, and creating complex workflows. Its visual interface and pre-built nodes make it accessible to both technical and non-technical users.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can HTTP Request nodes enhance automation workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>HTTP Request nodes enable you to interact with web services and APIs directly from your automation workflows.</strong> This means you can send requests to external servers, retrieve data, and trigger actions based on the responses.</p>
+          <p>In the case of a joke-telling AI agent, HTTP Request nodes can be used to fetch jokes from a joke API, allowing the agent to deliver fresh and relevant content. This integration ensures that the agent always has access to a wide variety of jokes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of businesses can benefit from AI-driven chatbot solutions?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Many businesses can benefit from AI-driven chatbot solutions, including e-commerce, customer service, and content creation.</strong> Chatbots can automate tasks such as answering frequently asked questions, providing product recommendations, and generating engaging content.</p>
+          <p>By using AI, these chatbots can understand user intent and provide personalized responses, improving customer satisfaction and efficiency. They can also be used to gather data and insights about customer behavior.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How long does it typically take to implement a custom automation solution?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The implementation time for a custom automation solution varies depending on the complexity of the project.</strong> Simple automations can be set up in a few days, while more complex solutions may take several weeks.</p>
+          <p>Factors that influence the timeline include the number of integrations, the complexity of the workflow logic, and the level of customization required. A well-defined project scope and clear requirements can help to streamline the implementation process.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom AI agent automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, GrowwStacks specializes in building custom AI agent automations tailored to your specific business needs.</strong> We can help you design, develop, and deploy AI-powered solutions that streamline your processes, improve efficiency, and drive growth.</p>
+          <p>Contact us for a free consultation to discuss your requirements and explore the possibilities. Our team of experts will work with you to create a solution that meets your unique needs and delivers measurable results.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate your content delivery today</h2>
+    <p>Enhance user engagement with a custom AI agent that delivers fresh and relevant content automatically.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: none

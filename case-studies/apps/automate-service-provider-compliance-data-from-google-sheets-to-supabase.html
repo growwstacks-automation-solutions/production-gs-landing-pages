@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Service Provider Compliance Data from Google Sheets to Supabase — Case Study | GrowwStacks</title>
+<meta name="description" content="Automated workflow processes compliance data from Google Sheets to Supabase, validating records and creating contractor profiles.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/automate-service-provider-compliance-data-from-google-sheets-to-supabase/">
+<meta property="og:title" content="Automate Service Provider Compliance Data from Google Sheets to Supabase — GrowwStacks Case Study">
+<meta property="og:description" content="Automated compliance data processing from Google Sheets to Supabase. This workflow streamlines data validation and contractor profile creation, saving significant time.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/automate-service-provider-compliance-data-from-google-sheets-to-supabase/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_Go2zk5QmZ.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Service Provider Compliance Data from Google Sheets to Supabase">
+<meta name="twitter:description" content="Automated compliance data processing from Google Sheets to Supabase. This workflow streamlines data validation and contractor profile creation, saving significant time.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, googleSheets, supabase, javascript">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an automation platform and why should I use one?","acceptedAnswer":{"@type":"Answer","text":"An automation platform is a tool that allows you to connect different apps and services together to automate repetitive tasks. By using one, you can save time, reduce errors, and improve efficiency in your workflows.\n\nWith a no-code automation platform like n8n, you can visually design and build complex workflows without writing any code. This makes it accessible to anyone, regardless of their technical skills.\n\nAutomation platforms can be used to automate a wide range of tasks, such as data entry, email marketing, customer service, and more. The possibilities are endless!"}},{"@type":"Question","name":"What types of tasks can I automate with a workflow automation platform?","acceptedAnswer":{"@type":"Answer","text":"Workflow automation platforms are incredibly versatile and can automate a wide array of tasks across various departments. Here are a few examples:\n\n*   **Marketing:** Automate email campaigns, social media posting, lead nurturing, and data enrichment.\n*   **Sales:** Automate lead capture, follow-ups, CRM updates, and quote generation.\n*   **Customer Service:** Automate ticket creation, response routing, knowledge base lookups, and customer feedback collection.\n*   **Operations:** Automate data entry, report generation, inventory management, and compliance checks.\n*   **Finance:** Automate invoice processing, payment reminders, expense tracking, and bank reconciliation."}},{"@type":"Question","name":"How secure is workflow automation?","acceptedAnswer":{"@type":"Answer","text":"The security of workflow automation depends on the platform and security measures implemented. When evaluating a platform, consider:\n\n*   **Data Encryption:** Ensure the platform encrypts data both in transit and at rest.\n*   **Access Controls:** Look for robust access controls that allow you to manage user permissions and restrict access to sensitive data.\n*   **Compliance Certifications:** Check if the platform has relevant compliance certifications such as SOC 2, GDPR, or HIPAA.\n*   **Security Audits:** Inquire about regular security audits and penetration testing.\n*   **Data Residency:** Understand where your data is stored and processed, and whether it meets your data residency requirements."}},{"@type":"Question","name":"How much does workflow automation cost?","acceptedAnswer":{"@type":"Answer","text":"The cost of workflow automation varies depending on the platform and the features you need. Some platforms offer free plans with limited features, while others charge a monthly or annual fee based on the number of users, workflows, or tasks.\n\nWhen evaluating pricing, consider:\n\n*   **Free vs. Paid Plans:** Determine if a free plan meets your basic needs, or if you require a paid plan for advanced features or higher usage limits.\n*   **Pricing Models:** Understand the pricing model (e.g., per user, per workflow, per task) and how it aligns with your usage patterns.\n*   **Scalability:** Ensure the pricing scales with your business needs as you automate more workflows.\n*   **Hidden Costs:** Watch out for hidden costs such as overage fees, add-on features, or implementation services."}},{"@type":"Question","name":"What are the key features to look for in a workflow automation platform?","acceptedAnswer":{"@type":"Answer","text":"When choosing a workflow automation platform, consider these key features:\n\n*   **Ease of Use:** Look for a platform with a user-friendly interface and drag-and-drop functionality.\n*   **Integration Capabilities:** Ensure the platform integrates with the apps and services you use.\n*   **Customization Options:** Choose a platform that allows you to customize workflows to meet your specific needs.\n*   **Scalability:** Select a platform that can scale with your business as you automate more workflows.\n*   **Monitoring and Analytics:** Look for a platform with monitoring and analytics capabilities to track workflow performance."}},{"@type":"Question","name":"Can I get a custom compliance data automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"<strong>Yes, absolutely.</strong> Custom automation solutions are designed to address the unique challenges and requirements of your business, offering a tailored approach that off-the-shelf solutions cannot match.\n\nBy opting for a custom solution, you gain the flexibility to integrate specific data sources, implement complex business logic, and adapt the automation to your evolving needs. This ensures a seamless fit with your existing systems and processes, maximizing efficiency and ROI.\n\nTo get started, schedule a free consultation to discuss your specific requirements and explore the possibilities of custom automation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Automate Compliance Data"}]}</script>
+</head>
+<body class="cs-page page-automate-service-provider-compliance-data-from-google-sheets-to-supabase">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#e0f2fe 0%,#bae6fd 50%,#7dd3fc 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Automate Compliance Data</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Google Sheets</span>
+      <span class="cs-tag">Supabase</span>
+      <span class="cs-tag">Data Automation</span>
+    </div>
+    <h1>Automate Service Provider Compliance Data from Google Sheets to Supabase</h1>
+    <p class="cs-hero-sub">This workflow automates the processing of service provider compliance data from Google Sheets to Supabase. It validates records, transforms data, and creates contractor profiles, saving time and improving accuracy for compliance managers and operations teams.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="googleSheets" alt="" width="20" height="20" loading="lazy">
+        Google Sheets
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="supabase" alt="" width="20" height="20" loading="lazy">
+        Supabase
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="javascript" alt="" width="20" height="20" loading="lazy">
+        JavaScript
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_Go2zk5QmZ.jpg" alt="Automate Service Provider Compliance Data from Google Sheets to Supabase" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Data accuracy improvement</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">80%</div>
+        <div class="cs-result-label">Faster data processing</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">More efficient data handling</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">$15K+</div>
+        <div class="cs-result-label">Annual cost savings</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Many organizations rely on manual data entry and validation processes for service provider compliance, which is <strong>time-consuming and prone to errors</strong>. Compliance managers often struggle with <strong>keeping data accurate and up-to-date</strong> across multiple systems, leading to inefficiencies and potential compliance issues.</p>
+
+    <p>The manual effort required to process new compliance form submissions, validate existing records, and create structured contractor profiles can be overwhelming. This often results in <strong>delayed updates and increased operational costs</strong>, making it difficult to maintain a reliable and efficient compliance management system.</p>
+
+    <h2>The Solution</h2>
+    <p>The solution is an automated workflow that processes new service provider compliance form submissions from Google Sheets, validates existing records in Supabase, transforms data with JavaScript, and creates structured contractor profiles. This automation eliminates manual data entry, reduces errors, and ensures data accuracy across systems.</p>
+
+    <p>This tech stack was chosen for its flexibility, scalability, and ease of integration. n8n serves as the primary automation platform, connecting Google Sheets and Supabase. JavaScript is used for data transformation, ensuring the data is in the correct format for Supabase. This combination provides a robust and efficient solution for automating compliance data management.</p>
+
+    <div class="cs-visual-flow" aria-label="Data flow from Google Sheets submission to Supabase update.">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📝</div><div class="cs-flow-step-title">Form Submission</div><div class="cs-flow-step-sub">New data in Google Sheets</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">⚙️</div><div class="cs-flow-step-title">Data Validation</div><div class="cs-flow-step-sub">Validate against Supabase</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🔄</div><div class="cs-flow-step-title">Data Transformation</div><div class="cs-flow-step-sub">Transform with JavaScript</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Profile Created</div>
+          <div class="cs-flow-outcome review">📋 Data Updated</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Streamlining Compliance Data Management</h3>
+    <p>This workflow automates the entire process of managing service provider compliance data, from form submission to database update. Here’s a step-by-step breakdown:</p>
+    <ol>
+      <li><strong>Form Submission:</strong> A service provider submits a compliance form via Google Sheets.</li>
+      <li><strong>Trigger Automation:</strong> n8n is triggered by the new form submission in Google Sheets.</li>
+      <li><strong>Fetch Data:</strong> n8n retrieves the submitted data from Google Sheets.</li>
+      <li><strong>Validate Data:</strong> The workflow checks if the service provider already exists in the Supabase database.</li>
+      <li><strong>Transform Data:</strong> JavaScript transforms the data into the required format for Supabase.</li>
+      <li><strong>Update or Create Record:</strong> If the service provider exists, the record is updated; otherwise, a new record is created.</li>
+      <li><strong>Confirmation:</strong> A confirmation message is sent to the compliance manager.</li>
+      <li><strong>Database Update:</strong> Supabase is updated with the new or modified service provider compliance data.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Data Integrity:</strong> By automating the data validation and transformation process, the workflow ensures that the data in Supabase is always accurate and up-to-date, reducing the risk of compliance issues.</p>
+    </div>
+
+    <h2>What This System Does That [Manual Process] Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Time Savings</h4><p>Automates data entry and validation, saving hours of manual work.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Accuracy</h4><p>Reduces errors associated with manual data entry and validation.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔄</div><h4>Real-time Updates</h4><p>Ensures data in Supabase is always up-to-date with new submissions.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔗</div><h4>Integration</h4><p>Seamlessly connects Google Sheets and Supabase for efficient data flow.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📊</div><h4>Reporting</h4><p>Provides accurate data for compliance reporting and analysis.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛡️</div><h4>Compliance</h4><p>Helps maintain compliance by ensuring data accuracy and completeness.</p></div>
+    </div>
+
+    <h2>Before vs. After: Streamlined Compliance Management</h2>
+    <p><strong>Before:</strong> Manual data entry and validation took approximately 10 hours per week, with a 15% error rate.</p>
+    <p><strong>After:</strong> Automated workflow reduces data entry time to near zero, with a less than 1% error rate, saving significant time and resources.</p>
+
+    <h2>Implementation: Live in 3 Weeks</h2>
+    <ol>
+      <li><strong>Planning:</strong> Define the scope of the automation, identify data sources, and map data fields.</li>
+      <li><strong>Workflow Design:</strong> Design the workflow in n8n, including data validation and transformation steps.</li>
+      <li><strong>Integration:</strong> Configure the integration between Google Sheets and Supabase.</li>
+      <li><strong>Testing:</strong> Thoroughly test the workflow to ensure data accuracy and reliability.</li>
+      <li><strong>Deployment:</strong> Deploy the workflow to production and monitor its performance.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This automation is ideal for organizations that manage a large number of service providers and require accurate, up-to-date compliance data. It is particularly beneficial for compliance managers, operations teams, and HR departments looking to streamline their data management processes.</p>
+
+    <p>However, this solution may not be the right fit for organizations with very small numbers of service providers or those that do not use Google Sheets and Supabase. In such cases, a simpler manual process or a different tech stack may be more appropriate.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Compliance</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Data Automation</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">3 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">25%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="googleSheets" alt="" width="14" height="14" loading="lazy">Google Sheets</span>
+        <span class="cs-tool-tag"><img src="" data-logo="supabase" alt="" width="14" height="14" loading="lazy">Supabase</span>
+        <span class="cs-tool-tag"><img src="" data-logo="javascript" alt="" width="14" height="14" loading="lazy">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Error Rate Reduction</span><span class="cs-sidebar-value" style="text-align:right;">90%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Time Savings</span><span class="cs-sidebar-value" style="text-align:right;">8 Hours/Week</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Data Processing Speed</span><span class="cs-sidebar-value" style="text-align:right;">5x Faster</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Compliance Cost Reduction</span><span class="cs-sidebar-value" style="text-align:right;">$10K/Year</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Data Accuracy</span><span class="cs-sidebar-value" style="text-align:right;">99%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to streamline your compliance data?</h4>
+      <p>Free discovery call — let's discuss your automation needs.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is an automation platform and why should I use one?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>An automation platform streamlines tasks.</strong> It connects different apps and services to automate repetitive processes, saving time and reducing errors.</p>
+          <p>With a no-code automation platform like n8n, you can visually design and build complex workflows without writing code, making it accessible to users of all technical skill levels.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of tasks can I automate with a workflow automation platform?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Workflow automation platforms are versatile.</strong> They can automate tasks across marketing, sales, customer service, operations, and finance.</p>
+          <p>Examples include automating email campaigns, lead nurturing, ticket creation, report generation, and invoice processing, enhancing efficiency and productivity.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Security depends on the platform.</strong> Ensure data encryption, access controls, compliance certifications, and regular security audits.</p>
+          <p>Understanding data residency and the platform's security measures is crucial for protecting sensitive information and maintaining compliance.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much does workflow automation cost?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Costs vary by platform and features.</strong> Some offer free plans, while others charge monthly or annual fees based on usage.</p>
+          <p>Consider pricing models, scalability, and potential hidden costs to align with your business needs and budget.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the key features to look for in a workflow automation platform?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Key features include ease of use and integrations.</strong> Customization options, scalability, and monitoring capabilities are also important.</p>
+          <p>Choose a platform that aligns with your specific needs and can adapt to your evolving business requirements.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom compliance data automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, absolutely.</strong> Custom automation solutions are designed to address the unique challenges and requirements of your business, offering a tailored approach that off-the-shelf solutions cannot match.</p>
+          <p>By opting for a custom solution, you gain the flexibility to integrate specific data sources, implement complex business logic, and adapt the automation to your evolving needs. This ensures a seamless fit with your existing systems and processes, maximizing efficiency and ROI.</p>
+          <p>To get started, schedule a free consultation to discuss your specific requirements and explore the possibilities of custom automation.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate your compliance data management today!</h2>
+    <p>Streamline your processes, reduce errors, and save time with our custom automation solutions.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: none

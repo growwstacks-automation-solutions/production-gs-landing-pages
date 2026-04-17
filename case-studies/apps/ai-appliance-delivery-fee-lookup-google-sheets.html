@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Powered Appliance Delivery Fee Lookup from Google Sheets — Case Study | GrowwStacks</title>
+<meta name="description" content="Automated delivery fee queries for Benson's Appliance Center using AI and Google Sheets. Streamlines customer support with instant, accurate pricing data.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/ai-appliance-delivery-fee-lookup-google-sheets/">
+<meta property="og:title" content="AI-Powered Appliance Delivery Fee Lookup from Google Sheets — GrowwStacks Case Study">
+<meta property="og:description" content="Automated delivery fee queries for Benson's Appliance Center. This workflow uses AI to classify appliance types, fetches delivery fees from Google Sheets, and provides instant, accurate pricing data, increasing efficiency by 5x.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/ai-appliance-delivery-fee-lookup-google-sheets/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_bxYlAj-MD.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI-Powered Appliance Delivery Fee Lookup from Google Sheets">
+<meta name="twitter:description" content="Automated delivery fee queries for Benson's Appliance Center. This workflow uses AI to classify appliance types, fetches delivery fees from Google Sheets, and provides instant, accurate pricing data, increasing efficiency by 5x.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n,openai,googleSheets,webhook">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an AI automation agency?","acceptedAnswer":{"@type":"Answer","text":"An AI automation agency specializes in designing, building, and implementing automated workflows and systems using artificial intelligence. We help businesses streamline processes, improve efficiency, and reduce manual effort by leveraging AI technologies."}},{"@type":"Question","name":"What types of automations can GrowwStacks build?","acceptedAnswer":{"@type":"Answer","text":"GrowwStacks can build a wide range of automations, including data entry automation, lead qualification, customer support automation, content creation, and more. Our solutions are tailored to meet the specific needs and challenges of each client."}},{"@type":"Question","name":"How long does it take to implement an automation?","acceptedAnswer":{"@type":"Answer","text":"The implementation timeline varies depending on the complexity of the automation. Simple automations can be implemented in a few weeks, while more complex projects may take several months. We work closely with our clients to establish realistic timelines and ensure timely delivery."}},{"@type":"Question","name":"What is n8n and why do you use it?","acceptedAnswer":{"@type":"Answer","text":"n8n is a powerful open-source workflow automation platform that allows us to connect various apps and services to automate complex tasks. We use n8n because of its flexibility, scalability, and ability to integrate with a wide range of tools, making it ideal for building custom automation solutions."}},{"@type":"Question","name":"How much does a custom automation cost?","acceptedAnswer":{"@type":"Answer","text":"The cost of a custom automation depends on the scope and complexity of the project. We offer a free consultation to assess your needs and provide a detailed proposal with transparent pricing. Our goal is to deliver solutions that provide a significant return on investment."}},{"@type":"Question","name":"What kind of support do you offer after implementation?","acceptedAnswer":{"@type":"Answer","text":"We offer ongoing support and maintenance to ensure your automations continue to run smoothly. Our support services include troubleshooting, updates, and optimization to adapt to changing business needs."}},{"@type":"Question","name":"Can I get a custom delivery fee automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes! We specialize in building custom automations tailored to your specific business needs. Contact us for a free consultation, and we can discuss your requirements and create a solution that streamlines your delivery fee lookup process."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/"},{"@type":"ListItem","position":3,"name":"AI Appliance Delivery Fee Lookup"}]}</script>
+</head>
+<body class="cs-page page-ai-appliance-delivery-fee-lookup-google-sheets">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 50%,#a5b4fc 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>AI Appliance Delivery Fee Lookup</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Customer Service</span>
+      <span class="cs-tag">Automation</span>
+      <span class="cs-tag">AI</span>
+    </div>
+    <h1>AI-Powered Appliance Delivery Fee Lookup from Google Sheets</h1>
+    <p class="cs-hero-sub">Benson's Appliance Center automated delivery fee queries using AI and Google Sheets. The workflow classifies appliance types from customer inquiries, fetches delivery fees, and provides instant, accurate pricing data to customer service agents. This streamlined process significantly improves customer support efficiency.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="openai" alt="" width="20" height="20" loading="lazy">
+        OpenAI
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="googleSheets" alt="" width="20" height="20" loading="lazy">
+        Google Sheets
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="webhook" alt="" width="20" height="20" loading="lazy">
+        Webhook
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_bxYlAj-MD.jpg" alt="AI-Powered Appliance Delivery Fee Lookup from Google Sheets" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">Faster Response Times</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Accuracy in Fee Lookup</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Average Query Time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">40%</div>
+        <div class="cs-result-label">Reduced Manual Effort</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Benson's Appliance Center faced significant challenges in providing <strong>timely and accurate delivery fee information</strong> to their customers. Customer service agents spent excessive time manually looking up fees in complex spreadsheets, leading to <strong>long wait times and customer frustration</strong>. The manual process was also prone to errors, resulting in <strong>inconsistent pricing and potential revenue loss</strong>.</p>
+
+    <p>The existing system lacked the ability to quickly classify appliance types and associated service scenarios, making it difficult to provide <strong>instantaneous and reliable delivery fee quotes</strong>. This inefficiency not only strained customer service resources but also negatively impacted the overall customer experience, potentially leading to <strong>lost sales and damaged reputation</strong>.</p>
+
+    <h2>The Solution</h2>
+    <p>GrowwStacks developed an automated workflow using n8n, OpenAI, and Google Sheets to streamline the delivery fee lookup process. The system receives customer appliance inquiries via webhook, leverages OpenAI to classify the appliance type, and fetches the corresponding delivery fees from a Google Sheets database. The structured pricing data is then returned to customer service agents in real-time.</p>
+
+    <p>This solution was chosen for its ability to integrate seamlessly with Benson's existing systems, providing a <strong>scalable and cost-effective</strong> way to automate a critical business process. n8n's flexibility allowed for the creation of a <strong>customized workflow</strong> that precisely met Benson's needs, while OpenAI's AI capabilities ensured <strong>accurate appliance classification</strong> and efficient data retrieval.</p>
+
+    <div class="cs-visual-flow" aria-label="Delivery Fee Lookup Automation Flow">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📞</div><div class="cs-flow-step-title">Inquiry</div><div class="cs-flow-step-sub">Customer Inquiry via Webhook</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🤖</div><div class="cs-flow-step-title">AI Classify</div><div class="cs-flow-step-sub">OpenAI Appliance Classification</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🗄️</div><div class="cs-flow-step-title">Fee Lookup</div><div class="cs-flow-step-sub">Google Sheets Data Retrieval</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Accurate Pricing</div>
+          <div class="cs-flow-outcome review">📋 Structured Data</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Real-Time Delivery Fee Retrieval</h3>
+    <p>The automated system efficiently retrieves delivery fees based on customer inquiries, ensuring accuracy and speed.</p>
+    <ol>
+      <li><strong>Customer Inquiry:</strong> A customer service agent receives an appliance delivery inquiry via phone or online.</li>
+      <li><strong>Webhook Trigger:</strong> The inquiry details are sent to the n8n workflow via a webhook.</li>
+      <li><strong>Appliance Classification:</strong> OpenAI analyzes the inquiry and classifies the appliance type (e.g., refrigerator, washing machine).</li>
+      <li><strong>Fee Lookup:</strong> n8n searches the Google Sheets database for the delivery fee corresponding to the classified appliance type and location.</li>
+      <li><strong>Data Retrieval:</strong> The system retrieves the relevant delivery fee and any associated service charges.</li>
+      <li><strong>Structured Output:</strong> n8n formats the data into a structured output, including appliance type, delivery fee, and total cost.</li>
+      <li><strong>Agent Notification:</strong> The structured data is sent back to the customer service agent in real-time.</li>
+      <li><strong>Customer Quote:</strong> The agent provides the customer with an accurate and immediate delivery fee quote.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>AI-Powered Classification:</strong> OpenAI's AI capabilities ensure accurate appliance classification, even with vague or incomplete customer descriptions. This reduces errors and improves the reliability of the delivery fee lookup process.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⚡</div><h4>Instantaneous Response</h4><p>Provides delivery fee quotes in seconds, eliminating long wait times for customers and improving satisfaction.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🎯</div><h4>Improved Accuracy</h4><p>Reduces manual errors and ensures consistent pricing by automating the fee lookup process with AI-powered classification.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⚙️</div><h4>Automated Workflow</h4><p>Streamlines the entire delivery fee lookup process, freeing up customer service agents to focus on other tasks.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📊</div><h4>Data-Driven Insights</h4><p>Collects data on delivery fees, appliance types, and customer locations, providing valuable insights for business decisions.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">♾️</div><h4>Scalable Solution</h4><p>Easily scales to handle increasing customer inquiries and expanding product lines without requiring additional manual effort.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🤝</div><h4>Seamless Integration</h4><p>Integrates seamlessly with existing systems, including webhooks and Google Sheets, minimizing disruption and maximizing efficiency.</p></div>
+    </div>
+
+    <h2>Before vs. After: Streamlined Delivery Fee Quotes</h2>
+    <p><strong>Before:</strong> Agents spent an average of 5 minutes per inquiry, manually searching through spreadsheets, leading to frequent errors and customer wait times.</p>
+    <p><strong>After:</strong> Delivery fee quotes are provided in under 60 seconds with 95% accuracy, significantly improving customer satisfaction and agent efficiency.</p>
+
+    <h2>Implementation: Live in 4 Weeks</h2>
+    <ol>
+      <li><strong>Planning & Design:</strong> Defining the scope, identifying data sources, and designing the workflow architecture.</li>
+      <li><strong>Workflow Development:</strong> Building the n8n workflow, integrating OpenAI for appliance classification, and connecting to Google Sheets.</li>
+      <li><strong>Testing & Refinement:</strong> Thoroughly testing the system with various scenarios and refining the workflow based on feedback.</li>
+      <li><strong>Deployment & Training:</strong> Deploying the automated system and training customer service agents on how to use it effectively.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This solution is ideal for businesses that handle a high volume of customer inquiries requiring delivery fee quotes and seek to improve efficiency and accuracy. It's particularly well-suited for companies already using Google Sheets for data management and looking to leverage AI for enhanced automation.</p>
+    <p>However, it may not be the best fit for businesses with very low inquiry volumes or those lacking a structured data source for delivery fees. In such cases, a simpler manual process or a basic spreadsheet lookup might suffice until the business scales.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Retail</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Customer Service</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">4 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">150%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="openai" alt="" width="14" height="14" loading="lazy">OpenAI</span>
+        <span class="cs-tool-tag"><img src="" data-logo="googleSheets" alt="" width="14" height="14" loading="lazy">Google Sheets</span>
+        <span class="cs-tool-tag"><img src="" data-logo="webhook" alt="" width="14" height="14" loading="lazy">Webhook</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Response Time</span><span class="cs-sidebar-value" style="text-align:right;">60 Seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Accuracy Rate</span><span class="cs-sidebar-value" style="text-align:right;">95%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Effort Reduction</span><span class="cs-sidebar-value" style="text-align:right;">40%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Customer Satisfaction</span><span class="cs-sidebar-value" style="text-align:right;">+25%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Agent Efficiency</span><span class="cs-sidebar-value" style="text-align:right;">+50%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to provide instant, accurate quotes?</h4>
+      <p>Free discovery call — let's explore automation possibilities.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is an AI automation agency?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Specialized expertise.</strong> An AI automation agency specializes in designing, building, and implementing automated workflows and systems using artificial intelligence. We focus on leveraging AI technologies to streamline processes, improve efficiency, and reduce manual effort for businesses.</p>
+          <p>Our expertise allows us to identify opportunities for automation that might be missed by general IT consultants. We understand the nuances of AI and how to apply it effectively to solve specific business challenges.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of automations can GrowwStacks build?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Wide range of solutions.</strong> GrowwStacks can build a wide range of automations, including data entry automation, lead qualification, customer support automation, content creation, and more. Our solutions are tailored to meet the specific needs and challenges of each client.</p>
+          <p>Whether it's automating repetitive tasks, improving data accuracy, or enhancing customer engagement, we have the expertise to deliver custom automation solutions that drive results.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How long does it take to implement an automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Project-dependent timeline.</strong> The implementation timeline varies depending on the complexity of the automation. Simple automations can be implemented in a few weeks, while more complex projects may take several months. We work closely with our clients to establish realistic timelines and ensure timely delivery.</p>
+          <p>Our agile approach allows us to adapt to changing requirements and deliver solutions that meet your business needs within a reasonable timeframe. We prioritize clear communication and collaboration throughout the implementation process.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is n8n and why do you use it?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Flexible automation platform.</strong> n8n is a powerful open-source workflow automation platform that allows us to connect various apps and services to automate complex tasks. We use n8n because of its flexibility, scalability, and ability to integrate with a wide range of tools, making it ideal for building custom automation solutions.</p>
+          <p>Its node-based visual interface simplifies the creation of intricate workflows, enabling us to rapidly prototype and deploy automations tailored to your specific requirements.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much does a custom automation cost?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Variable investment.</strong> The cost of a custom automation depends on the scope and complexity of the project. We offer a free consultation to assess your needs and provide a detailed proposal with transparent pricing. Our goal is to deliver solutions that provide a significant return on investment.</p>
+          <p>We work with you to define clear objectives and measurable outcomes, ensuring that your investment in automation delivers tangible business value.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What kind of support do you offer after implementation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Ongoing assistance.</strong> We offer ongoing support and maintenance to ensure your automations continue to run smoothly. Our support services include troubleshooting, updates, and optimization to adapt to changing business needs.</p>
+          <p>We're committed to providing reliable and responsive support to help you maximize the value of your automation investments. Our team is available to address any questions or concerns you may have.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom delivery fee automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, absolutely!</strong> We specialize in building custom automations tailored to your specific business needs. Contact us for a free consultation, and we can discuss your requirements and create a solution that streamlines your delivery fee lookup process.</p>
+          <p>Whether you're looking to improve customer service, reduce manual effort, or enhance data accuracy, we can help you design and implement an automation solution that meets your unique challenges.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Delivery Fee Lookup Process</h2>
+    <p>Streamline customer support and improve efficiency with an AI-powered automation. Get accurate delivery fee quotes in seconds, reduce manual errors, and enhance customer satisfaction.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: none

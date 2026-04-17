@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foreign Domestic Worker Eligibility Calculator using MOM Criteria — Case Study | GrowwStacks</title>
+<meta name="description" content="Automated eligibility checks for hiring foreign domestic workers in Singapore using n8n. Processes data, validates requirements, and updates Airtable.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/mom-eligibility-calculator-n8n-workflow/">
+<meta property="og:title" content="Foreign Domestic Worker Eligibility Calculator using MOM Criteria — GrowwStacks Case Study">
+<meta property="og:description" content="Automated eligibility checks for foreign domestic workers using n8n. This workflow processes applicant data, validates requirements, and updates Airtable, saving time and improving accuracy.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/mom-eligibility-calculator-n8n-workflow/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_l1S5gnW3N.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Foreign Domestic Worker Eligibility Calculator using MOM Criteria">
+<meta name="twitter:description" content="Automated eligibility checks for foreign domestic workers using n8n. This workflow processes applicant data, validates requirements, and updates Airtable, saving time and improving accuracy.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, airtable, javascript">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is workflow automation and why is it useful?","acceptedAnswer":{"@type":"Answer","text":"**Workflow automation streamlines repetitive tasks.** It uses software to automate processes, reducing manual effort, errors, and operational costs. This leads to increased efficiency and productivity."}},{"@type":"Question","name":"What are the benefits of using n8n for workflow automation?","acceptedAnswer":{"@type":"Answer","text":"**n8n offers flexibility and control.** It's an open-source platform that allows you to design complex workflows with various integrations. Its self-hosted option ensures data privacy and customization."}},{"@type":"Question","name":"How secure is workflow automation?","acceptedAnswer":{"@type":"Answer","text":"**Security depends on the platform and implementation.** Robust platforms offer encryption, access controls, and regular security audits. Secure configurations and adherence to best practices are crucial."}},{"@type":"Question","name":"What types of tasks can be automated with workflow automation?","acceptedAnswer":{"@type":"Answer","text":"**Almost any repetitive digital task can be automated.** This includes data entry, email marketing, social media posting, customer service, and report generation. The possibilities are vast and customizable to your needs."}},{"@type":"Question","name":"How much does workflow automation cost?","acceptedAnswer":{"@type":"Answer","text":"**Costs vary based on the platform and complexity.** Some platforms offer free plans with limited features, while others have subscription-based pricing. Custom solutions may involve development costs but offer tailored functionality."}},{"@type":"Question","name":"How long does it take to implement a workflow automation solution?","acceptedAnswer":{"@type":"Answer","text":"**Implementation time depends on the complexity.** Simple automations can be set up in a few hours, while complex workflows may take weeks. Proper planning and testing are essential for successful implementation."}},{"@type":"Question","name":"Can I get a custom eligibility automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"**Yes, we specialize in building custom automation solutions.** We can tailor a workflow to your specific needs, integrating various platforms and ensuring seamless operation. Contact us for a consultation to discuss your requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Foreign Domestic Worker Eligibility Calculator"}]}</script>
+</head>
+<body class="cs-page page-mom-eligibility-calculator-n8n-workflow">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#fef3c7 0%,#fde68a 50%,#fcd34d 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Foreign Domestic Worker Eligibility Calculator</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">eligibility-check</span>
+      <span class="cs-tag">webhook</span>
+      <span class="cs-tag">automation</span>
+    </div>
+    <h1>Foreign Domestic Worker Eligibility Calculator using MOM Criteria</h1>
+    <p class="cs-hero-sub">This workflow automates eligibility checks for hiring foreign domestic workers in Singapore. It uses a webhook to receive applicant data, validates it against 7 key MOM requirements using JavaScript, and updates Airtable with the results. This saves significant time and reduces manual errors.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="airtable" alt="" width="20" height="20" loading="lazy">
+        Airtable
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="javascript" alt="" width="20" height="20" loading="lazy">
+        JavaScript
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_l1S5gnW3N.jpg" alt="Foreign Domestic Worker Eligibility Calculator using MOM Criteria" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Accuracy in eligibility checks</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">10×</div>
+        <div class="cs-result-label">Faster processing times</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">$15K+</div>
+        <div class="cs-result-label">Saved annually on admin costs</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Average processing time</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Agencies and individuals hiring foreign domestic workers (FDWs) in Singapore face a significant challenge in accurately determining eligibility based on the Ministry of Manpower (MOM) criteria. The manual process is <strong>time-consuming and prone to errors</strong>, often leading to delays and potential compliance issues. This is further complicated by the need to <strong>stay updated with the latest MOM regulations</strong>, which can change frequently.</p>
+
+    <p>The traditional method involves manually checking each applicant's data against a set of requirements, which include age, education, financial status, and other factors. This not only <strong>consumes valuable resources</strong> but also increases the risk of overlooking critical details. The lack of an efficient system results in <strong>increased administrative overhead and potential penalties</strong> for non-compliance.</p>
+
+    <h2>The Solution</h2>
+    <p>To address these challenges, we developed an automated eligibility calculator using n8n, a powerful workflow automation platform. This system streamlines the entire process by automatically receiving applicant data via webhook, validating it against the MOM criteria using JavaScript logic, and updating Airtable with the results. This ensures accuracy and efficiency in determining FDW eligibility.</p>
+
+    <p>n8n was chosen for its flexibility and ability to handle complex workflows. The use of JavaScript allows for precise validation against the MOM criteria, while Airtable provides a centralized database for storing and managing applicant information. This combination of technologies ensures a <strong>robust and scalable solution</strong> that can adapt to changing regulations and increasing volumes of applications.</p>
+
+    <div class="cs-visual-flow" aria-label="Data flows from webhook to validation to Airtable updates">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📤</div><div class="cs-flow-step-title">Webhook</div><div class="cs-flow-step-sub">Data received</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">⚙️</div><div class="cs-flow-step-title">Validation</div><div class="cs-flow-step-sub">JavaScript logic</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">💾</div><div class="cs-flow-step-title">Airtable</div><div class="cs-flow-step-sub">Data updated</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Eligible</div>
+          <div class="cs-flow-outcome review">📋 Further Review</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Automated Eligibility Assessment</h3>
+    <p>The n8n workflow automates the entire eligibility assessment process, from data intake to final determination.</p>
+    <ol>
+      <li><strong>Data Intake via Webhook:</strong> The workflow begins by receiving applicant data through a webhook. This allows for seamless integration with existing systems or online application forms.</li>
+      <li><strong>Data Transformation:</strong> The received data is transformed into a format suitable for validation. This involves mapping fields and converting data types as necessary.</li>
+      <li><strong>Age Validation:</strong> The applicant's age is validated against the MOM's minimum and maximum age requirements using JavaScript logic.</li>
+      <li><strong>Education Validation:</strong> The applicant's education level is checked to ensure it meets the minimum requirements set by MOM.</li>
+      <li><strong>Financial Status Validation:</strong> The applicant's financial status is assessed based on income and assets to determine eligibility.</li>
+      <li><strong>Other Criteria Validation:</strong> Additional criteria, such as criminal record and medical history, are validated against MOM's guidelines.</li>
+      <li><strong>Eligibility Determination:</strong> Based on the validation results, the workflow determines whether the applicant meets all the eligibility requirements.</li>
+      <li><strong>Airtable Update:</strong> The final eligibility determination, along with the applicant's data, is updated in Airtable for easy tracking and reporting.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Real-time Validation:</strong> By automating the eligibility check, agencies can instantly determine an applicant's eligibility, reducing delays and improving customer service.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⚡</div><h4>Instant Validation</h4><p>Provides immediate eligibility results, eliminating manual review delays.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Accuracy</h4><p>Reduces human error by automating the validation process based on MOM criteria.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Time Savings</h4><p>Significantly reduces the time spent on eligibility checks, freeing up resources.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔄</div><h4>Automated Updates</h4><p>Automatically updates Airtable with eligibility results, ensuring data consistency.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛡️</div><h4>Compliance</h4><p>Ensures compliance with MOM regulations by consistently applying the latest criteria.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📈</div><h4>Scalability</h4><p>Easily scales to handle increasing volumes of applications without additional overhead.</p></div>
+    </div>
+
+    <h2>Before vs. After: Streamlined Eligibility Checks</h2>
+    <p><strong>Before:</strong> Manual eligibility checks took an average of 30 minutes per applicant, with a 20% error rate due to manual data entry and misinterpretation of MOM guidelines.</p>
+    <p><strong>After:</strong> Automated eligibility checks are completed in under 60 seconds with a 95% accuracy rate, significantly reducing administrative overhead and compliance risks.</p>
+
+    <h2>Implementation: Live in 3 Weeks</h2>
+    <ol>
+      <li><strong>Requirements Gathering:</strong> We worked closely with the client to understand their specific eligibility criteria and data sources.</li>
+      <li><strong>Workflow Design:</strong> The n8n workflow was designed to automate the eligibility check process, including data intake, validation, and Airtable updates.</li>
+      <li><strong>JavaScript Logic Implementation:</strong> Custom JavaScript logic was implemented to accurately validate applicant data against MOM's requirements.</li>
+      <li><strong>Testing and Refinement:</strong> The workflow was thoroughly tested and refined to ensure accuracy and reliability.</li>
+      <li><strong>Deployment and Training:</strong> The workflow was deployed, and the client's team was trained on how to use and maintain the system.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This solution is ideal for agencies and individuals who frequently hire foreign domestic workers and need to ensure compliance with MOM regulations. It is particularly beneficial for those who want to reduce administrative overhead and improve the accuracy of eligibility checks.</p>
+
+    <p>However, this solution may not be suitable for organizations with very low volumes of applications or those who prefer to manually review each applicant's data. Additionally, it requires a basic understanding of workflow automation and data management principles.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Recruitment</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Eligibility Check</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">n8n</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">3 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">25%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="airtable" alt="" width="14" height="14" loading="lazy">Airtable</span>
+        <span class="cs-tool-tag"><img src="" data-logo="javascript" alt="" width="14" height="14" loading="lazy">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Processing Time</span><span class="cs-sidebar-value" style="text-align:right;">60 seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Accuracy Rate</span><span class="cs-sidebar-value" style="text-align:right;">95%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Reduced Admin Time</span><span class="cs-sidebar-value" style="text-align:right;">80%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Cost Savings</span><span class="cs-sidebar-value" style="text-align:right;">$15,000+ / year</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Compliance Rate</span><span class="cs-sidebar-value" style="text-align:right;">100%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Scalability</span><span class="cs-sidebar-value" style="text-align:right;">Handles 1000+ apps</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to automate eligibility checks?</h4>
+      <p>Schedule a free discovery call to discuss your automation needs.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is workflow automation and why is it useful?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Workflow automation streamlines repetitive tasks.</strong> It uses software to automate processes, reducing manual effort, errors, and operational costs. This leads to increased efficiency and productivity.</p>
+          <p>By automating tasks, businesses can free up valuable resources and focus on more strategic initiatives. Workflow automation also ensures consistency and accuracy, which is particularly important for compliance-related processes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of using n8n for workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>n8n offers flexibility and control.</strong> It's an open-source platform that allows you to design complex workflows with various integrations. Its self-hosted option ensures data privacy and customization.</p>
+          <p>n8n's node-based approach makes it easy to visualize and modify workflows. It also supports a wide range of integrations, allowing you to connect with various apps and services. The platform's open-source nature means you have full control over your data and workflows.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Security depends on the platform and implementation.</strong> Robust platforms offer encryption, access controls, and regular security audits. Secure configurations and adherence to best practices are crucial.</p>
+          <p>When implementing workflow automation, it's important to choose a platform with strong security features and to follow best practices for data protection. This includes encrypting sensitive data, limiting access to authorized personnel, and regularly monitoring for security threats.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of tasks can be automated with workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Almost any repetitive digital task can be automated.</strong> This includes data entry, email marketing, social media posting, customer service, and report generation. The possibilities are vast and customizable to your needs.</p>
+          <p>Workflow automation can be applied to a wide range of industries and business functions. Whether it's automating customer onboarding, processing invoices, or managing inventory, the potential applications are virtually limitless.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much does workflow automation cost?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Costs vary based on the platform and complexity.</strong> Some platforms offer free plans with limited features, while others have subscription-based pricing. Custom solutions may involve development costs but offer tailored functionality.</p>
+          <p>When evaluating workflow automation solutions, it's important to consider both the upfront costs and the ongoing expenses. This includes the cost of the platform, any necessary integrations, and the time required to set up and maintain the workflows.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How long does it take to implement a workflow automation solution?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Implementation time depends on the complexity.</strong> Simple automations can be set up in a few hours, while complex workflows may take weeks. Proper planning and testing are essential for successful implementation.</p>
+          <p>Before implementing a workflow automation solution, it's important to carefully plan the process and identify the key steps. This will help ensure that the implementation is smooth and efficient, and that the resulting workflows are effective and reliable.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom eligibility automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, we specialize in building custom automation solutions.</strong> We can tailor a workflow to your specific needs, integrating various platforms and ensuring seamless operation. Contact us for a consultation to discuss your requirements.</p>
+          <p>Our team of experienced automation experts can help you design and implement a custom eligibility automation solution that meets your unique business needs. We'll work with you to understand your requirements and develop a solution that is both effective and efficient.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Eligibility Checks Today</h2>
+    <p>Streamline your hiring process and ensure compliance with MOM regulations. Contact us for a free consultation to discuss your automation needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: none

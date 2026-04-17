@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Job Offer Form Processing to Google Drive and Airtable — Case Study | GrowwStacks</title>
+<meta name="description" content="Automated maid job offer form processing workflow using n8n, Google Drive, and Airtable. Saves time and improves data accuracy for FDW contracts.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/automate-job-offer-form-processing-google-drive-airtable/">
+<meta property="og:title" content="Automate Job Offer Form Processing to Google Drive and Airtable — GrowwStacks Case Study">
+<meta property="og:description" content="Automated processing of maid job offer forms, creating PDFs in Google Drive and storing data in Airtable. This system saves significant time and ensures accurate record-keeping.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/automate-job-offer-form-processing-google-drive-airtable/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_6E95oIMXS.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Job Offer Form Processing to Google Drive and Airtable">
+<meta name="twitter:description" content="Automated processing of maid job offer forms, creating PDFs in Google Drive and storing data in Airtable. This system saves significant time and ensures accurate record-keeping.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n,googleSheets,airtable">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is workflow automation and why is it important?","acceptedAnswer":{"@type":"Answer","text":"**Workflow automation** involves using technology to automate repeatable tasks and processes, reducing manual effort and increasing efficiency. It's important because it saves time, reduces errors, and allows businesses to focus on more strategic activities.\n\nBy automating workflows, companies can streamline operations, improve productivity, and achieve better outcomes. This leads to cost savings, improved accuracy, and faster turnaround times."}},{"@type":"Question","name":"What types of tasks can be automated with n8n?","acceptedAnswer":{"@type":"Answer","text":"**n8n is a versatile automation platform** that can handle a wide range of tasks, including data entry, email marketing, social media management, customer relationship management (CRM), and e-commerce operations.\n\nn8n can connect to various apps and services, allowing you to create custom workflows that automate complex processes. Whether it's syncing data between different platforms or triggering actions based on specific events, n8n can streamline your operations."}},{"@type":"Question","name":"How secure is workflow automation, especially with sensitive data?","acceptedAnswer":{"@type":"Answer","text":"**Security is a top priority** when implementing workflow automation, especially when dealing with sensitive data. Reputable automation platforms use encryption, access controls, and regular security audits to protect your information.\n\nIt's crucial to choose a platform that complies with industry standards and regulations, such as GDPR or HIPAA. Additionally, implementing strong password policies and access controls can further enhance security."}},{"@type":"Question","name":"What are the key benefits of using Airtable for data management?","acceptedAnswer":{"@type":"Answer","text":"**Airtable offers a user-friendly interface** combined with powerful database capabilities, making it ideal for managing and organizing data. Its key benefits include flexibility, collaboration features, and integration with other apps.\n\nAirtable allows you to create custom databases tailored to your specific needs, whether it's tracking projects, managing inventory, or organizing customer information. Its collaborative features enable teams to work together seamlessly, while its integration capabilities allow you to connect it with other tools for enhanced functionality."}},{"@type":"Question","name":"How does Google Drive enhance document management in automated workflows?","acceptedAnswer":{"@type":"Answer","text":"**Google Drive provides a centralized location** for storing and managing documents, making it an essential component of automated workflows. Its key benefits include accessibility, collaboration features, and integration with other Google Workspace apps.\n\nBy integrating Google Drive into your workflows, you can automatically create, store, and share documents, ensuring that everyone has access to the latest information. Its collaboration features enable teams to work together on documents in real-time, while its integration with other Google Workspace apps streamlines your operations."}},{"@type":"Question","name":"Can I get a custom automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"**Yes, GrowwStacks specializes in building custom automation solutions** tailored to your specific business needs. We can help you identify opportunities for automation, design and implement workflows, and provide ongoing support and maintenance.\n\nWhether you need to automate data entry, streamline customer communications, or optimize your sales process, we can create a custom solution that meets your requirements. Contact us today for a free consultation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Automate Job Offer Form Processing"}]}</script>
+</head>
+<body class="cs-page page-automate-job-offer-form-processing-google-drive-airtable">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#ffedd5 0%,#fed7aa 50%,#fb923c 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Automate Job Offer Form Processing</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Google Drive</span>
+      <span class="cs-tag">Airtable</span>
+      <span class="cs-tag">Automation</span>
+    </div>
+    <h1>Automate Job Offer Form Processing to Google Drive and Airtable</h1>
+    <p class="cs-hero-sub">This workflow automates the processing of maid job offer forms, saving agencies time and reducing manual errors. It receives form data, generates a PDF in Google Drive, and stores the information in Airtable, streamlining foreign domestic worker (FDW) contract management.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="googleDrive" alt="" width="20" height="20" loading="lazy">
+        Google Drive
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="airtable" alt="" width="20" height="20" loading="lazy">
+        Airtable
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_6E95oIMXS.jpg" alt="Automate Job Offer Form Processing to Google Drive and Airtable" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Faster processing time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">More efficient data handling</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">$25K+</div>
+        <div class="cs-result-label">Annual cost savings</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">PDF generation time</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Agencies managing foreign domestic worker (FDW) contracts in Singapore face significant challenges in processing job offer forms. The manual process is <strong>time-consuming and prone to errors</strong>, leading to delays and potential compliance issues. Each form requires manual data entry, PDF creation, and storage, which is <strong>inefficient and costly</strong>.</p>
+    <p>The lack of automation results in <strong>increased administrative overhead</strong>, diverting resources from more critical tasks. Furthermore, ensuring data accuracy and consistency across all forms is difficult, leading to <strong>potential discrepancies and legal complications</strong>. The need for a streamlined, automated solution is evident.</p>
+
+    <h2>The Solution</h2>
+    <p>The solution is an automated workflow built with n8n that streamlines the entire job offer form processing. This system receives form data via webhook, automatically generates a PDF file in Google Drive, shares it publicly, and stores all the details in an Airtable database. This eliminates manual data entry and ensures data accuracy.</p>
+    <p>n8n was chosen for its flexibility and ability to integrate seamlessly with Google Drive and Airtable. This tech stack provides a robust, scalable, and cost-effective solution for automating document management and data storage. The workflow ensures that all job offer forms are processed quickly and accurately, reducing administrative burden and improving overall efficiency.</p>
+
+    <div class="cs-visual-flow" aria-label="Job offer form processing workflow">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📝</div><div class="cs-flow-step-title">Form Submission</div><div class="cs-flow-step-sub">Data received via webhook</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">📄</div><div class="cs-flow-step-title">PDF Generation</div><div class="cs-flow-step-sub">PDF created in Google Drive</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🗄️</div><div class="cs-flow-step-title">Data Storage</div><div class="cs-flow-step-sub">Details stored in Airtable</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ PDF Created & Shared</div>
+          <div class="cs-flow-outcome review">📋 Data Logged in Airtable</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Automated Data Flow</h3>
+    <p>The automated workflow efficiently processes job offer forms, ensuring accuracy and saving time. Here's a detailed breakdown of each step:</p>
+    <ol>
+      <li><strong>Form Submission:</strong> The process begins when a job offer form is submitted. The data is captured and sent via webhook to n8n.</li>
+      <li><strong>Webhook Trigger:</strong> n8n receives the form data via the webhook, triggering the automated workflow.</li>
+      <li><strong>Data Extraction:</strong> The workflow extracts relevant information from the form data, such as candidate details, job specifications, and salary information.</li>
+      <li><strong>PDF Generation:</strong> Using the extracted data, n8n generates a PDF document in Google Drive, creating a professional and standardized job offer form.</li>
+      <li><strong>File Sharing:</strong> The generated PDF is then shared publicly with a shareable link, allowing easy access for all relevant parties.</li>
+      <li><strong>Airtable Integration:</strong> All the extracted data is stored in an Airtable database, providing a centralized location for tracking and managing job offer forms.</li>
+      <li><strong>Data Validation:</strong> The workflow validates the data to ensure accuracy and completeness, reducing the risk of errors.</li>
+      <li><strong>Notification:</strong> A notification is sent to the relevant personnel, informing them that the job offer form has been processed and is ready for review.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Data Accuracy:</strong> Automating the data entry process significantly reduces the risk of human error, ensuring that all information is accurate and consistent.</p>
+    </div>
+
+    <h2>What This System Does That Manual Processing Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Time Savings</h4><p>Automated processing reduces the time required to generate and store job offer forms, freeing up valuable time for other tasks.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Accuracy</h4><p>Eliminates manual data entry errors, ensuring that all information is accurate and consistent across all forms.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🗂️</div><h4>Centralized Data</h4><p>Stores all job offer form data in a centralized Airtable database, making it easy to track and manage information.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔗</div><h4>Easy Sharing</h4><p>Generates a shareable link for each PDF, allowing easy access for all relevant parties.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🚀</div><h4>Scalability</h4><p>The automated workflow can easily handle a large volume of job offer forms, making it ideal for growing agencies.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛡️</div><h4>Compliance</h4><p>Ensures compliance with data privacy regulations by securely storing and managing sensitive information.</p></div>
+    </div>
+
+    <h2>Before vs. After: Streamlined Efficiency</h2>
+    <p><strong>Before:</strong> Manual processing of job offer forms took approximately 30 minutes per form, with a high risk of data entry errors and inconsistencies.</p>
+    <p><strong>After:</strong> Automated processing reduces the time to under 1 minute per form, with near-zero data entry errors and centralized data management.</p>
+
+    <h2>Implementation: Live in 4 Weeks</h2>
+    <ol>
+      <li><strong>Planning and Design:</strong> The initial phase involves understanding the specific requirements of the agency and designing the automated workflow. This includes identifying the data points to be extracted, the PDF template to be used, and the Airtable database structure.</li>
+      <li><strong>Workflow Development:</strong> The second phase involves building the automated workflow in n8n. This includes configuring the webhook trigger, setting up the Google Drive integration, and configuring the Airtable integration.</li>
+      <li><strong>Testing and Validation:</strong> The third phase involves testing the automated workflow to ensure that it is functioning correctly and accurately. This includes validating the data, verifying the PDF generation, and confirming the Airtable integration.</li>
+      <li><strong>Deployment and Training:</strong> The final phase involves deploying the automated workflow and training the agency staff on how to use it. This includes providing documentation and support to ensure a smooth transition.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This automated job offer form processing system is ideal for agencies managing foreign domestic worker (FDW) contracts in Singapore. It is particularly beneficial for agencies that process a large volume of job offer forms and need to ensure data accuracy and compliance.</p>
+    <p>However, this system may not be the right fit for agencies that process a very small number of job offer forms or have very specific and complex requirements that cannot be easily automated. In such cases, a manual process may be more efficient.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Recruitment</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Document Management</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">4 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">200%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="googleDrive" alt="" width="14" height="14" loading="lazy">Google Drive</span>
+        <span class="cs-tool-tag"><img src="" data-logo="airtable" alt="" width="14" height="14" loading="lazy">Airtable</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Processing Time</span><span class="cs-sidebar-value" style="text-align:right;">95% reduction</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Data Entry Errors</span><span class="cs-sidebar-value" style="text-align:right;">Near zero</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Administrative Overhead</span><span class="cs-sidebar-value" style="text-align:right;">60% reduction</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Compliance Costs</span><span class="cs-sidebar-value" style="text-align:right;">$10K savings</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Data Accessibility</span><span class="cs-sidebar-value" style="text-align:right;">Instant access</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to streamline your document management?</h4>
+      <p>Automate your job offer form processing for increased efficiency and accuracy.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is workflow automation and why is it important?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Workflow automation streamlines tasks.</strong> It involves using technology to automate repeatable tasks and processes, reducing manual effort and increasing efficiency.</p>
+          <p>Workflow automation saves time, reduces errors, and allows businesses to focus on more strategic activities. By automating workflows, companies can streamline operations, improve productivity, and achieve better outcomes. This leads to cost savings, improved accuracy, and faster turnaround times.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of tasks can be automated with n8n?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>n8n is a versatile automation platform.</strong> It can handle a wide range of tasks, including data entry, email marketing, social media management, customer relationship management (CRM), and e-commerce operations.</p>
+          <p>n8n can connect to various apps and services, allowing you to create custom workflows that automate complex processes. Whether it's syncing data between different platforms or triggering actions based on specific events, n8n can streamline your operations.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is workflow automation, especially with sensitive data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Security is a top priority.</strong> Reputable automation platforms use encryption, access controls, and regular security audits to protect your information.</p>
+          <p>It's crucial to choose a platform that complies with industry standards and regulations, such as GDPR or HIPAA. Additionally, implementing strong password policies and access controls can further enhance security.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the key benefits of using Airtable for data management?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Airtable offers a user-friendly interface.</strong> It combines this with powerful database capabilities, making it ideal for managing and organizing data. Its key benefits include flexibility, collaboration features, and integration with other apps.</p>
+          <p>Airtable allows you to create custom databases tailored to your specific needs, whether it's tracking projects, managing inventory, or organizing customer information. Its collaborative features enable teams to work together seamlessly, while its integration capabilities allow you to connect it with other tools for enhanced functionality.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does Google Drive enhance document management in automated workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Google Drive provides a centralized location.</strong> It's perfect for storing and managing documents, making it an essential component of automated workflows. Its key benefits include accessibility, collaboration features, and integration with other Google Workspace apps.</p>
+          <p>By integrating Google Drive into your workflows, you can automatically create, store, and share documents, ensuring that everyone has access to the latest information. Its collaboration features enable teams to work together on documents in real-time, while its integration with other Google Workspace apps streamlines your operations.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom document management automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, GrowwStacks specializes in building custom automation solutions</strong> tailored to your specific business needs. We can help you identify opportunities for automation, design and implement workflows, and provide ongoing support and maintenance.</p>
+          <p>Whether you need to automate data entry, streamline customer communications, or optimize your sales process, we can create a custom solution that meets your requirements. Contact us today for a free consultation.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Job Offer Process</h2>
+    <p>Streamline your document management and ensure data accuracy with our custom automation solutions.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: none

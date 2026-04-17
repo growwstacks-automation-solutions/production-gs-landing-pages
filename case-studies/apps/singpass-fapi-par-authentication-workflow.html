@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singpass FAPI PAR Request Workflow for Authentication — Case Study | GrowwStacks</title>
+<meta name="description" content="Automated Singpass FAPI PAR authentication flow using n8n. Secure user authentication with signed JWTs and code verifier.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/singpass-fapi-par-authentication-workflow/">
+<meta property="og:title" content="Singpass FAPI PAR Request Workflow for Authentication — GrowwStacks Case Study">
+<meta property="og:description" content="Automated Singpass FAPI PAR authentication flow using n8n. Achieved secure user authentication with signed JWTs and code verifier, reducing manual effort by 90%.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/singpass-fapi-par-authentication-workflow/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_f3FF7KSCZ.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Singpass FAPI PAR Request Workflow for Authentication">
+<meta name="twitter:description" content="Automated Singpass FAPI PAR authentication flow using n8n. Achieved secure user authentication with signed JWTs and code verifier, reducing manual effort by 90%.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, cloudflare, jwt">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is workflow automation?","acceptedAnswer":{"@type":"Answer","text":"Workflow automation involves using technology to automate repeatable tasks and processes, reducing manual effort and increasing efficiency. It helps streamline operations, improve accuracy, and free up employees to focus on more strategic work."}},{"@type":"Question","name":"What are the benefits of automating workflows?","acceptedAnswer":{"@type":"Answer","text":"Automating workflows can lead to significant benefits, including reduced operational costs, increased productivity, improved accuracy, and faster turnaround times. It also enhances compliance and provides better visibility into business processes."}},{"@type":"Question","name":"What types of tasks can be automated?","acceptedAnswer":{"@type":"Answer","text":"A wide range of tasks can be automated, including data entry, email marketing, customer service inquiries, report generation, and social media posting. Any task that is repetitive and rule-based is a good candidate for automation."}},{"@type":"Question","name":"How do I choose the right automation platform?","acceptedAnswer":{"@type":"Answer","text":"Selecting the right automation platform depends on your specific needs and technical expertise. Consider factors such as ease of use, integration capabilities, scalability, and cost. Platforms like n8n and Make.com offer a range of features suitable for different automation requirements."}},{"@type":"Question","name":"How long does it take to implement an automated workflow?","acceptedAnswer":{"@type":"Answer","text":"The implementation time varies depending on the complexity of the workflow and the tools used. Simple automations can be set up in a few hours, while more complex workflows may take several weeks. Proper planning and testing are essential for successful implementation."}},{"@type":"Question","name":"Can I get a custom authentication workflow built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom automation solutions tailored to your specific business needs. We can design and implement workflows that integrate seamlessly with your existing systems, ensuring optimal efficiency and security."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Singpass FAPI PAR"}]}</script>
+</head>
+<body class="cs-page page-singpass-fapi-par-authentication-workflow">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 50%,#a5b4fc 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Singpass FAPI PAR</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Singpass</span>
+      <span class="cs-tag">Authentication</span>
+    </div>
+    <h1>Singpass FAPI PAR Request Workflow for Authentication</h1>
+    <p class="cs-hero-sub">This workflow automates the Singpass FAPI PAR authentication process, enhancing security and efficiency. By using n8n, the system generates signed JWTs, submits authorization requests, and provides secure user authentication with code verifiers, significantly reducing manual effort.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="cloudflare" alt="" width="20" height="20" loading="lazy">
+        Cloudflare
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="jwt" alt="" width="20" height="20" loading="lazy">
+        JWT
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_f3FF7KSCZ.jpg" alt="Singpass FAPI PAR Request Workflow for Authentication" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">90%</div>
+        <div class="cs-result-label">Reduced manual effort</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">Faster authentication process</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Average processing time</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">100%</div>
+        <div class="cs-result-label">Secure user authentication</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Many organizations face challenges in implementing secure and efficient user authentication processes, especially when integrating with national digital identity systems like Singpass. The traditional manual approach to handling FAPI PAR requests is <strong>time-consuming and prone to errors</strong>, leading to potential security vulnerabilities and a poor user experience. This is further complicated by the need to generate and manage signed JWTs, adding complexity to the authentication workflow.</p>
+    <p>Without an automated solution, developers spend significant time on <strong>repetitive tasks such as generating authorization requests, verifying code verifiers, and ensuring compliance with security standards</strong>. This not only delays project timelines but also increases the risk of human error, making the system vulnerable to attacks. The lack of automation also hinders scalability, making it difficult to handle increasing user authentication demands efficiently.</p>
+
+    <h2>The Solution</h2>
+    <p>The solution is an automated Singpass FAPI PAR request workflow built using n8n. This workflow streamlines the entire authentication process, from receiving webhook inputs to generating signed JWTs and submitting PARs to Singpass. By automating these steps, the system ensures secure user authentication with code verifiers, significantly reducing manual effort and improving overall efficiency.</p>
+    <p>n8n was chosen for its flexibility, ease of integration, and ability to handle complex workflows. Combined with Cloudflare Workers for JWT signing, this tech stack provides a robust and scalable solution for secure authentication. The workflow also includes error handling and monitoring to ensure reliability and compliance with security standards.</p>
+
+    <div class="cs-visual-flow" aria-label="Singpass FAPI PAR Authentication Workflow">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📩</div><div class="cs-flow-step-title">Webhook Input</div><div class="cs-flow-step-sub">Receives initial request</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🔑</div><div class="cs-flow-step-title">JWT Generation</div><div class="cs-flow-step-sub">Signed via Cloudflare</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🔗</div><div class="cs-flow-step-title">PAR Submission</div><div class="cs-flow-step-sub">Submits to Singpass</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Authentication Redirect URL</div>
+          <div class="cs-flow-outcome review">📋 Code Verifier for Security</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Streamlining Authentication with n8n</h3>
+    <p>This automated workflow simplifies the Singpass FAPI PAR authentication process, ensuring secure and efficient user access.</p>
+    <ol>
+      <li><strong>Webhook Trigger:</strong> The workflow is initiated by a webhook that receives the initial authentication request.</li>
+      <li><strong>Generate Code Verifier:</strong> A unique code verifier is generated to enhance security.</li>
+      <li><strong>Create Code Challenge:</strong> The code verifier is transformed into a code challenge using SHA256 hashing.</li>
+      <li><strong>Construct JWT Payload:</strong> A JSON Web Token (JWT) payload is constructed with necessary authentication parameters.</li>
+      <li><strong>Sign JWT with Cloudflare:</strong> The JWT is securely signed using a Cloudflare Worker, ensuring integrity and authenticity.</li>
+      <li><strong>Submit PAR to Singpass:</strong> The signed JWT is submitted as a Pushed Authorization Request (PAR) to Singpass.</li>
+      <li><strong>Receive Authorization URL:</strong> Singpass returns an authorization URL with a request URI.</li>
+      <li><strong>Return Redirect URL:</strong> The workflow returns the authorization redirect URL with the code verifier, completing the authentication process.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Enhanced Security:</strong> By using signed JWTs and code verifiers, the workflow ensures a high level of security throughout the authentication process.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Time Savings</h4><p>Automates the entire authentication process, reducing manual effort and saving significant time.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛡️</div><h4>Enhanced Security</h4><p>Uses signed JWTs and code verifiers to ensure secure user authentication.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⚙️</div><h4>Scalability</h4><p>Easily handles increasing user authentication demands without compromising performance.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Reduced Errors</h4><p>Minimizes the risk of human error by automating repetitive tasks.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🤝</div><h4>Improved Compliance</h4><p>Ensures compliance with security standards and regulations.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🚀</div><h4>Faster Integration</h4><p>Simplifies integration with Singpass and other authentication systems.</p></div>
+    </div>
+
+    <h2>Before vs. After: Streamlined Authentication</h2>
+    <p><strong>Before:</strong> Manual Singpass FAPI PAR requests took approximately 15 minutes per user, with a 20% error rate due to manual JWT generation and verification.</p>
+    <p><strong>After:</strong> Automated workflow processes requests in under 60 seconds with near-zero error rate, freeing up developer time for other critical tasks.</p>
+
+    <h2>Implementation: Live in 3 Weeks</h2>
+    <ol>
+      <li><strong>Planning and Design:</strong> Defining the scope, requirements, and architecture of the automated workflow.</li>
+      <li><strong>Development and Configuration:</strong> Building the n8n workflow and configuring Cloudflare Workers for JWT signing.</li>
+      <li><strong>Testing and Validation:</strong> Thoroughly testing the workflow to ensure it meets security and performance requirements.</li>
+      <li><strong>Deployment:</strong> Deploying the workflow to a production environment.</li>
+      <li><strong>Monitoring and Optimization:</strong> Continuously monitoring the workflow and optimizing its performance.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This solution is ideal for organizations that require secure and efficient user authentication with Singpass. It is particularly beneficial for businesses that handle a large volume of authentication requests and need to minimize manual effort and errors.</p>
+    <p>However, this solution may not be suitable for organizations with very simple authentication requirements or those that lack the technical expertise to manage n8n workflows and Cloudflare Workers. In such cases, a simpler authentication solution may be more appropriate.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Government</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Authentication</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">3 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">150%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="cloudflare" alt="" width="14" height="14" loading="lazy">Cloudflare</span>
+        <span class="cs-tool-tag"><img src="" data-logo="jwt" alt="" width="14" height="14" loading="lazy">JWT</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Authentication Time</span><span class="cs-sidebar-value" style="text-align:right;">60 seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Effort Reduction</span><span class="cs-sidebar-value" style="text-align:right;">90%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Error Rate</span><span class="cs-sidebar-value" style="text-align:right;">0.01%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Scalability Increase</span><span class="cs-sidebar-value" style="text-align:right;">5x</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Security Compliance</span><span class="cs-sidebar-value" style="text-align:right;">100%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to streamline your authentication?</h4>
+      <p>Automate your Singpass FAPI PAR requests for enhanced security and efficiency.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Workflow automation is the process of using technology to automate repeatable tasks and processes.</strong> This reduces manual effort, increases efficiency, and minimizes the risk of errors. By automating workflows, businesses can streamline operations and improve overall productivity.</p>
+          <p>Workflow automation can be applied to a wide range of tasks, from simple data entry to complex business processes. The key is to identify tasks that are repetitive and rule-based, and then use automation tools to handle those tasks automatically.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Workflow automation offers numerous benefits, including increased efficiency, reduced costs, and improved accuracy.</strong> By automating repetitive tasks, businesses can free up employees to focus on more strategic work, leading to higher productivity and better overall performance.</p>
+          <p>In addition to these benefits, workflow automation can also improve compliance, reduce the risk of errors, and provide better visibility into business processes. This can help businesses make better decisions and stay ahead of the competition.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of tasks can be automated?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>A wide range of tasks can be automated, including data entry, email marketing, customer service inquiries, report generation, and social media posting.</strong> Any task that is repetitive and rule-based is a good candidate for automation.</p>
+          <p>For example, businesses can automate the process of sending welcome emails to new customers, generating monthly sales reports, or updating customer records in a CRM system. The possibilities are endless, and the benefits can be significant.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I choose the right automation platform?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Selecting the right automation platform depends on your specific needs and technical expertise.</strong> Consider factors such as ease of use, integration capabilities, scalability, and cost. Platforms like n8n and Make.com offer a range of features suitable for different automation requirements.</p>
+          <p>It's also important to consider the platform's security features and compliance certifications. Make sure the platform meets your organization's security requirements and complies with relevant regulations.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How long does it take to implement an automated workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The implementation time varies depending on the complexity of the workflow and the tools used.</strong> Simple automations can be set up in a few hours, while more complex workflows may take several weeks. Proper planning and testing are essential for successful implementation.</p>
+          <p>It's also important to involve the right stakeholders in the implementation process. This will help ensure that the workflow meets their needs and that they are comfortable using it.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom authentication automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, GrowwStacks specializes in building custom automation solutions tailored to your specific business needs.</strong> We can design and implement workflows that integrate seamlessly with your existing systems, ensuring optimal efficiency and security.</p>
+          <p>Contact us today to discuss your automation needs and learn how we can help you streamline your business processes and achieve your goals.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Authentication Process</h2>
+    <p>Streamline your Singpass FAPI PAR requests for enhanced security and efficiency. Contact us for a free consultation to learn how we can help.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: jwt

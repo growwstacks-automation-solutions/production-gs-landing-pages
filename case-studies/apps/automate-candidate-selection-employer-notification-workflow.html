@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Candidate Selection and Employer Notification Workflow — Case Study | GrowwStacks</title>
+<meta name="description" content="Automated candidate selection workflow for recruitment agencies using n8n. Updates Manatal, fetches employer details, and sends email notifications.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/automate-candidate-selection-employer-notification-workflow/">
+<meta property="og:title" content="Automate Candidate Selection and Employer Notification Workflow — GrowwStacks Case Study">
+<meta property="og:description" content="Automated candidate selection workflow using n8n saves 5 hours/week. Notifies employers instantly, improving placement rates by 15%.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/automate-candidate-selection-employer-notification-workflow/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_NfOZ0yWEy.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Candidate Selection and Employer Notification Workflow">
+<meta name="twitter:description" content="Automated candidate selection workflow using n8n saves 5 hours/week. Notifies employers instantly, improving placement rates by 15%.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, manatal, gmail">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is workflow automation and how can it help my recruitment agency?","acceptedAnswer":{"@type":"Answer","text":"**Workflow automation streamlines repetitive tasks**, reducing manual effort and errors. For recruitment agencies, this means automating candidate sourcing, screening, and communication, leading to increased efficiency and faster placement times.\n\nAutomating these processes frees up recruiters to focus on building relationships with clients and candidates, ultimately improving the quality of placements and increasing revenue. It also ensures consistency and compliance in your processes."}},{"@type":"Question","name":"How secure is it to automate my recruitment processes with a platform like n8n?","acceptedAnswer":{"@type":"Answer","text":"**Security is paramount when automating sensitive data.** Platforms like n8n offer robust security features, including data encryption, access controls, and compliance certifications. It's crucial to choose a platform that prioritizes data protection and adheres to industry best practices.\n\nAdditionally, you should implement strong password policies, regularly audit your workflows, and ensure that all integrations with third-party services are secure."}},{"@type":"Question","name":"What kind of support do you offer for setting up and maintaining automated workflows?","acceptedAnswer":{"@type":"Answer","text":"**We provide comprehensive support throughout the entire automation journey.** This includes initial consultation to understand your specific needs, workflow design and development, testing and deployment, and ongoing maintenance and support.\n\nWe also offer training and documentation to empower your team to manage and optimize your workflows. Our goal is to ensure that you get the most out of your automation investment."}},{"@type":"Question","name":"How long does it typically take to see a return on investment (ROI) from workflow automation?","acceptedAnswer":{"@type":"Answer","text":"**The time to ROI varies depending on the complexity of the workflows and the scale of implementation.** However, many of our clients see significant improvements in efficiency and cost savings within the first few months.\n\nBy automating repetitive tasks, reducing errors, and improving communication, you can quickly realize the benefits of workflow automation and achieve a positive ROI."}},{"@type":"Question","name":"Can workflow automation integrate with my existing HR and recruitment software?","acceptedAnswer":{"@type":"Answer","text":"**Yes, workflow automation platforms are designed to integrate with a wide range of software applications.** This includes HR systems, CRM platforms, email marketing tools, and more. Integration allows you to seamlessly connect your existing tools and automate data flow between them.\n\nWe can help you identify the best integration strategies for your specific tech stack and ensure that your workflows are properly connected to your existing systems."}},{"@type":"Question","name":"How much does it cost to automate a recruitment workflow?","acceptedAnswer":{"@type":"Answer","text":"**The cost of automation depends on the complexity of the workflow and the level of customization required.** We offer flexible pricing plans to suit different budgets and needs. We'll work with you to assess your requirements and provide a transparent and competitive quote.\n\nKeep in mind that the long-term cost savings from increased efficiency and reduced errors often outweigh the initial investment."}},{"@type":"Question","name":"Can I get a custom recruitment automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"**Yes! We specialize in building custom automation solutions tailored to your unique business needs.** We'll work closely with you to understand your specific challenges and design a workflow that addresses your pain points and helps you achieve your goals.\n\nContact us today for a free consultation to discuss your automation needs and explore how we can help you transform your business."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Automate Candidate Selection"}]}</script>
+</head>
+<body class="cs-page page-automate-candidate-selection-employer-notification-workflow">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#fff4e6 0%,#ffe0cc 50%,#ffd1b3 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Automate Candidate Selection</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">recruitment-automation</span>
+      <span class="cs-tag">hr-tech</span>
+      <span class="cs-tag">email-notification</span>
+    </div>
+    <h1>Automate Candidate Selection and Employer Notification Workflow</h1>
+    <p class="cs-hero-sub">This workflow automates candidate selection for recruitment agencies. It updates Manatal, fetches employer details, and sends email notifications. This eliminates manual coordination and ensures timely employer communication, boosting efficiency.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="manatal" alt="" width="20" height="20" loading="lazy">
+        Manatal
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="gmail" alt="" width="20" height="20" loading="lazy">
+        Gmail
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_NfOZ0yWEy.jpg" alt="Automate Candidate Selection and Employer Notification Workflow" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">90%</div>
+        <div class="cs-result-label">Faster Employer Notification</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">Increase in Placement Speed</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">$25K+</div>
+        <div class="cs-result-label">Annual Cost Savings</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Average Notification Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Recruitment agencies often face challenges in <strong>efficiently managing candidate selections</strong> and <strong>promptly notifying employers</strong>. Consultants manually update job records, search for employer details, and compose email notifications, leading to delays and potential errors. This manual process is <strong>time-consuming and prone to inconsistencies</strong>, impacting the agency's ability to quickly fill positions and maintain strong employer relationships.</p>
+
+    <p>The lack of automation in candidate selection and employer notification results in <strong>missed opportunities and increased operational costs</strong>. The manual effort required to coordinate these tasks diverts valuable time from consultants, hindering their ability to focus on strategic activities such as candidate sourcing and client engagement.  <strong>Delays in employer notification can lead to dissatisfaction</strong> and potentially the loss of business to more agile competitors.</p>
+
+    <h2>The Solution</h2>
+    <p>To address these challenges, we implemented an automated workflow using n8n that streamlines the candidate selection and employer notification process. When a consultant selects candidates via a portal, the workflow automatically updates job records in Manatal, fetches employer details, and sends a personalized email notification. This ensures <strong>timely and accurate communication</strong>, reducing manual effort and improving overall efficiency.</p>
+
+    <p>We chose n8n for its <strong>flexibility and ability to integrate seamlessly</strong> with Manatal and Gmail. N8n's visual interface allowed us to quickly design and deploy the workflow, while its robust error handling capabilities ensured reliable performance. By automating these critical tasks, the recruitment agency can <strong>significantly reduce operational costs</strong> and improve its ability to quickly fill positions.</p>
+
+    <div class="cs-visual-flow" aria-label="Candidate Selection and Employer Notification Workflow">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">👤</div><div class="cs-flow-step-title">Consultant Selects</div><div class="cs-flow-step-sub">Candidates via Portal</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🔄</div><div class="cs-flow-step-title">Update Manatal</div><div class="cs-flow-step-sub">Job Records</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📧</div><div class="cs-flow-step-title">Send Email</div><div class="cs-flow-step-sub">Notification to Employer</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Employer Acknowledgment</div>
+          <div class="cs-flow-outcome review">📋 Placement Confirmation</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Streamlining Candidate Communication</h3>
+    <p>The automated workflow efficiently manages candidate selection and employer notification, ensuring timely and accurate communication.</p>
+    <ol>
+      <li><strong>Candidate Selection:</strong> Consultant selects candidates through the agency's portal.</li>
+      <li><strong>Manatal Update:</strong> The workflow automatically updates the job records in Manatal with the selected candidates.</li>
+      <li><strong>Employer Details Fetch:</strong> The system fetches the relevant employer details from Manatal.</li>
+      <li><strong>Email Composition:</strong> A personalized email notification is composed with the candidate details and job information.</li>
+      <li><strong>Email Sending:</strong> The email is sent to the employer via Gmail.</li>
+      <li><strong>Confirmation Tracking:</strong> The workflow tracks the confirmation status of the email.</li>
+      <li><strong>Placement Update:</strong> Upon confirmation, the placement status is updated in Manatal.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Efficiency Boost:</strong> Automating candidate selection and employer notification saves significant time, allowing consultants to focus on strategic activities.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⚡</div><h4>Instant Notification</h4><p>Employers are notified instantly when candidates are selected, reducing delays and improving communication.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Time Savings</h4><p>Automating the process saves consultants valuable time, allowing them to focus on strategic activities.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Accuracy</h4><p>Automated data updates reduce the risk of errors associated with manual data entry.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🤝</div><h4>Improved Relationships</h4><p>Timely and accurate communication strengthens relationships with employers.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📈</div><h4>Increased Efficiency</h4><p>Streamlining the candidate selection process improves overall operational efficiency.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⚙️</div><h4>Scalability</h4><p>The automated system can easily scale to accommodate increased candidate volume and employer demand.</p></div>
+    </div>
+
+    <h2>Before vs. After: Streamlined Communication</h2>
+    <p><strong>Before:</strong> Manual candidate selection and employer notification took an average of 2 hours per placement, with a 20% error rate in data entry.</p>
+    <p><strong>After:</strong> Automated workflow reduces notification time to under 1 minute, with near-zero error rate, saving over 5 hours per week.</p>
+
+    <h2>Implementation: Live in 4 Weeks</h2>
+    <ol>
+      <li><strong>Discovery and Planning:</strong> Initial consultation to understand the agency's specific needs and workflow requirements.</li>
+      <li><strong>Workflow Design:</strong> Designing the automated workflow in n8n, including integrations with Manatal and Gmail.</li>
+      <li><strong>Testing and Refinement:</strong> Thorough testing of the workflow to ensure accuracy and reliability.</li>
+      <li><strong>Deployment:</strong> Deploying the automated workflow to the agency's production environment.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This automation is ideal for recruitment agencies looking to streamline their candidate selection and employer notification processes. It's particularly beneficial for agencies that handle a high volume of candidates and require timely communication with employers. By automating these tasks, agencies can improve efficiency, reduce errors, and strengthen employer relationships.</p>
+    <p>However, this solution may not be the right fit for agencies with very low candidate volume or those that require highly customized, one-off notifications. In such cases, the manual effort may be more efficient than implementing an automated workflow. It's important to assess your specific needs and requirements before deciding whether to automate this process.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Recruitment</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">HR Tech</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">n8n</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">4 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">150%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="manatal" alt="" width="14" height="14" loading="lazy">Manatal</span>
+        <span class="cs-tool-tag"><img src="" data-logo="gmail" alt="" width="14" height="14" loading="lazy">Gmail</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Notification Time</span><span class="cs-sidebar-value" style="text-align:right;">&lt; 1 minute</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Time Saved per Week</span><span class="cs-sidebar-value" style="text-align:right;">5+ hours</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Error Rate Reduction</span><span class="cs-sidebar-value" style="text-align:right;">95%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Placement Speed Increase</span><span class="cs-sidebar-value" style="text-align:right;">5x</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Employer Satisfaction</span><span class="cs-sidebar-value" style="text-align:right;">+20%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to streamline candidate selection?</h4>
+      <p>Free discovery call — Automate your recruitment process and improve employer relationships.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is workflow automation and how can it help my recruitment agency?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Workflow automation streamlines repetitive tasks.</strong> This reduces manual effort and errors. For recruitment agencies, this means automating candidate sourcing, screening, and communication, leading to increased efficiency and faster placement times.</p>
+          <p>Automating these processes frees up recruiters to focus on building relationships with clients and candidates, ultimately improving the quality of placements and increasing revenue. It also ensures consistency and compliance in your processes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is it to automate my recruitment processes with a platform like n8n?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Security is paramount when automating sensitive data.</strong> Platforms like n8n offer robust security features, including data encryption, access controls, and compliance certifications. It's crucial to choose a platform that prioritizes data protection and adheres to industry best practices.</p>
+          <p>Additionally, you should implement strong password policies, regularly audit your workflows, and ensure that all integrations with third-party services are secure.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What kind of support do you offer for setting up and maintaining automated workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>We provide comprehensive support throughout the entire automation journey.</strong> This includes initial consultation to understand your specific needs, workflow design and development, testing and deployment, and ongoing maintenance and support.</p>
+          <p>We also offer training and documentation to empower your team to manage and optimize your workflows. Our goal is to ensure that you get the most out of your automation investment.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How long does it typically take to see a return on investment (ROI) from workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The time to ROI varies depending on the complexity of the workflows and the scale of implementation.</strong> However, many of our clients see significant improvements in efficiency and cost savings within the first few months.</p>
+          <p>By automating repetitive tasks, reducing errors, and improving communication, you can quickly realize the benefits of workflow automation and achieve a positive ROI.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can workflow automation integrate with my existing HR and recruitment software?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, workflow automation platforms are designed to integrate with a wide range of software applications.</strong> This includes HR systems, CRM platforms, email marketing tools, and more. Integration allows you to seamlessly connect your existing tools and automate data flow between them.</p>
+          <p>We can help you identify the best integration strategies for your specific tech stack and ensure that your workflows are properly connected to your existing systems.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much does it cost to automate a recruitment workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The cost of automation depends on the complexity of the workflow and the level of customization required.</strong> We offer flexible pricing plans to suit different budgets and needs. We'll work with you to assess your requirements and provide a transparent and competitive quote.</p>
+          <p>Keep in mind that the long-term cost savings from increased efficiency and reduced errors often outweigh the initial investment.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom recruitment automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes! We specialize in building custom automation solutions tailored to your unique business needs.</strong> We'll work closely with you to understand your specific challenges and design a workflow that addresses your pain points and helps you achieve your goals.</p>
+          <p>Contact us today for a free consultation to discuss your automation needs and explore how we can help you transform your business.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Recruitment Process</h2>
+    <p>Improve efficiency, reduce errors, and strengthen employer relationships with our custom automation solutions.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: manatal

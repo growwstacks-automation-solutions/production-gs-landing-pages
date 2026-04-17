@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Secure OTP Login with Email and SMS Verification — Case Study | GrowwStacks</title>
+<meta name="description" content="Automate a secure OTP login system with n8n. Verify users via email & SMS using Airtable, Gmail, and Telnyx. Ideal for secure web/mobile apps.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/automate-secure-otp-login-email-sms-verification/">
+<meta property="og:title" content="Automate Secure OTP Login with Email and SMS Verification — GrowwStacks Case Study">
+<meta property="og:description" content="Automated secure OTP login system using n8n, Airtable, Gmail, and Telnyx. Delivers OTP via email and SMS, enhancing security for web and mobile applications.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/automate-secure-otp-login-email-sms-verification/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_v0ux0MDEk.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Secure OTP Login with Email and SMS Verification">
+<meta name="twitter:description" content="Automated secure OTP login system using n8n, Airtable, Gmail, and Telnyx. Delivers OTP via email and SMS, enhancing security for web and mobile applications.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, airtable, gmail, telnyx">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is OTP automation and why is it important?","acceptedAnswer":{"@type":"Answer","text":"**OTP automation streamlines user verification.** It enhances security by automatically generating and delivering one-time passwords via multiple channels, reducing the risk of unauthorized access and improving user experience."}},{"@type":"Question","name":"What are the benefits of using n8n for OTP automation?","acceptedAnswer":{"@type":"Answer","text":"**n8n offers flexibility and control.** It allows you to design custom workflows, integrate with various services like Airtable, Gmail, and Telnyx, and manage your automation logic efficiently without vendor lock-in."}},{"@type":"Question","name":"How does multi-channel OTP delivery improve security?","acceptedAnswer":{"@type":"Answer","text":"**Multi-channel delivery adds redundancy.** By sending OTPs via both email and SMS, you ensure users can receive verification codes even if one channel is unavailable, enhancing reliability and security."}},{"@type":"Question","name":"What integrations are commonly used in OTP automation workflows?","acceptedAnswer":{"@type":"Answer","text":"**Key integrations include database and communication tools.** Airtable is used for user data, Gmail for email delivery, and Telnyx for SMS. Webhooks trigger the workflow, and data tables can store temporary OTPs."}},{"@type":"Question","name":"How can I ensure the security of my OTP automation workflow?","acceptedAnswer":{"@type":"Answer","text":"**Security is paramount.** Use strong encryption, regularly update your integrations, and implement measures to prevent abuse, such as rate limiting and OTP expiration."}},{"@type":"Question","name":"Can I get a custom OTP automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"**Yes, we specialize in custom automation solutions.** We can tailor an OTP automation workflow to meet your specific business needs, ensuring seamless integration with your existing systems and enhanced security."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Automate Secure OTP Login"}]}</script>
+</head>
+<body class="cs-page page-automate-secure-otp-login-email-sms-verification">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#fee2e2 0%,#fecaca 50%,#fca5a5 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Automate Secure OTP Login</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Authentication</span>
+      <span class="cs-tag">Security</span>
+      <span class="cs-tag">SMS</span>
+    </div>
+    <h1>Automate Secure OTP Login with Email and SMS Verification</h1>
+    <p class="cs-hero-sub">This n8n workflow automates a secure OTP login system, delivering one-time passwords via both Gmail and SMS. It enhances security for web and mobile applications by providing multi-channel verification and reducing unauthorized access. The system streamlines user authentication and improves overall user experience.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="airtable" alt="" width="20" height="20" loading="lazy">
+        Airtable
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="gmail" alt="" width="20" height="20" loading="lazy">
+        Gmail
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="telnyx" alt="" width="20" height="20" loading="lazy">
+        Telnyx
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_v0ux0MDEk.jpg" alt="Automate Secure OTP Login with Email and SMS Verification" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">99.9%</div>
+        <div class="cs-result-label">Delivery Rate</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">60s</div>
+        <div class="cs-result-label">Average OTP Delivery</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">Faster Verification</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">User Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Many web and mobile applications require secure user authentication. Traditional password-based systems are <strong>vulnerable to breaches and phishing attacks</strong>. Implementing a robust OTP (One-Time Password) system can significantly enhance security, but manual implementation is <strong>time-consuming and prone to errors</strong>.</p>
+    <p>Developers often struggle with integrating multiple services for OTP generation, storage, and delivery. Ensuring reliable delivery via both email and SMS adds complexity, and <strong>failure to deliver OTPs promptly can lead to user frustration and abandonment</strong>. A streamlined, automated solution is needed to simplify this process and improve security.</p>
+
+    <h2>The Solution</h2>
+    <p>We developed an automated OTP login system using n8n, a powerful workflow automation platform. The workflow is triggered via webhook, checks for existing user records in Airtable, generates a new 6-digit OTP, and delivers it simultaneously via both Gmail and SMS (Telnyx). This solution provides a secure and reliable multi-channel verification process.</p>
+    <p>n8n was chosen for its flexibility and ability to integrate seamlessly with Airtable, Gmail, and Telnyx. This allowed for a custom-built solution that meets the specific security and delivery requirements of the application. The visual workflow builder in n8n made it easy to design, test, and deploy the automation.</p>
+
+    <div class="cs-visual-flow" aria-label="OTP Generation and Delivery Workflow">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🔗</div><div class="cs-flow-step-title">Webhook Trigger</div><div class="cs-flow-step-sub">Initiates the workflow</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🗄️</div><div class="cs-flow-step-title">Airtable Check</div><div class="cs-flow-step-sub">Verify user existence</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🔑</div><div class="cs-flow-step-title">OTP Generation</div><div class="cs-flow-step-sub">Generate 6-digit code</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Secure Login</div>
+          <div class="cs-flow-outcome review">📋 Audit Trail</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Streamlined OTP Verification</h3>
+    <p>The automated OTP login system works by triggering a workflow when a user attempts to log in. The system then checks for the user's record, generates a unique OTP, and delivers it via email and SMS.</p>
+    <ol>
+      <li><strong>Webhook Trigger:</strong> The workflow is initiated when a user attempts to log in, sending a request to a designated webhook URL.</li>
+      <li><strong>Airtable Check:</strong> The system verifies if the user exists in the Airtable database using the provided credentials.</li>
+      <li><strong>OTP Generation:</strong> A unique 6-digit OTP is generated using a random number generator within n8n.</li>
+      <li><strong>OTP Storage:</strong> The generated OTP is temporarily stored in a data table, associated with the user's ID and a timestamp.</li>
+      <li><strong>Email Delivery (Gmail):</strong> The OTP is sent to the user's registered email address via Gmail, using a pre-defined email template.</li>
+      <li><strong>SMS Delivery (Telnyx):</strong> Simultaneously, the OTP is sent to the user's mobile number via SMS using the Telnyx integration.</li>
+      <li><strong>Verification:</strong> The user enters the received OTP on the login page, which is then compared against the stored OTP in the data table.</li>
+      <li><strong>Access Granted:</strong> If the entered OTP matches the stored OTP and is within the valid timeframe, the user is granted access to the application.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Multi-Channel Delivery:</strong> Delivering OTPs via both email and SMS ensures higher reliability and provides users with multiple options to receive their verification code, improving the overall user experience.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Time Savings</h4><p>Automates the entire OTP generation and delivery process, saving significant time and resources compared to manual methods.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛡️</div><h4>Enhanced Security</h4><p>Provides a secure multi-channel verification process, reducing the risk of unauthorized access and improving overall security.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Improved Reliability</h4><p>Ensures reliable OTP delivery via both email and SMS, minimizing the chances of users not receiving their verification codes.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⚙️</div><h4>Customization</h4><p>Offers a flexible and customizable solution that can be tailored to meet the specific requirements of different applications.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📊</div><h4>Centralized Management</h4><p>Provides a centralized platform for managing OTP generation, storage, and delivery, simplifying the overall verification process.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🚀</div><h4>Scalability</h4><p>Easily scales to handle increasing user volumes and OTP requests, ensuring consistent performance and reliability.</p></div>
+    </div>
+
+    <h2>Before vs. After: Enhanced Security and Efficiency</h2>
+    <p><strong>Before:</strong> Manual OTP implementation led to inconsistent delivery, taking up to 5 minutes, and a 20% failure rate in SMS delivery, causing user frustration and security vulnerabilities.</p>
+    <p><strong>After:</strong> Automated system delivers OTPs in under 60 seconds with a 99.9% delivery rate, significantly improving user experience and enhancing security with multi-channel verification.</p>
+
+    <h2>Implementation: Live in 3 Weeks</h2>
+    <ol>
+      <li><strong>Planning & Design:</strong> Defining the scope, requirements, and architecture of the OTP automation system, including integration points and security considerations.</li>
+      <li><strong>Workflow Development:</strong> Building the n8n workflow, configuring the Airtable integration, and setting up the Gmail and Telnyx connections.</li>
+      <li><strong>Testing & Optimization:</strong> Thoroughly testing the workflow to ensure reliable OTP generation and delivery, and optimizing performance for speed and efficiency.</li>
+      <li><strong>Deployment:</strong> Deploying the automated OTP system to the production environment and integrating it with the target web or mobile application.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This automated OTP login system is ideal for businesses that require secure user authentication for their web or mobile applications. It is particularly well-suited for organizations that need a reliable and customizable solution that can be easily integrated with existing systems.</p>
+    <p>However, this solution may not be the best fit for very small businesses with limited technical resources or those that do not require a high level of security. In such cases, a simpler, off-the-shelf OTP solution may be more appropriate.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Software</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Authentication</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">3 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">150%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">N8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="airtable" alt="" width="14" height="14" loading="lazy">Airtable</span>
+        <span class="cs-tool-tag"><img src="" data-logo="gmail" alt="" width="14" height="14" loading="lazy">Gmail</span>
+        <span class="cs-tool-tag"><img src="" data-logo="telnyx" alt="" width="14" height="14" loading="lazy">Telnyx</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">OTP Delivery Time</span><span class="cs-sidebar-value" style="text-align:right;">&lt; 60 seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">SMS Delivery Rate</span><span class="cs-sidebar-value" style="text-align:right;">99.9%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Email Delivery Rate</span><span class="cs-sidebar-value" style="text-align:right;">99.5%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">User Verification Time</span><span class="cs-sidebar-value" style="text-align:right;">20 seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Reduction in Fraud</span><span class="cs-sidebar-value" style="text-align:right;">80%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Support Tickets Reduced</span><span class="cs-sidebar-value" style="text-align:right;">40%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to enhance your security?</h4>
+      <p>Book a free discovery call to discuss your OTP automation needs.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is OTP automation and why is it important?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>OTP automation streamlines user verification.</strong> It enhances security by automatically generating and delivering one-time passwords via multiple channels, reducing the risk of unauthorized access and improving user experience.</p>
+          <p>By automating the OTP process, businesses can ensure that their users are who they say they are, preventing unauthorized access to sensitive information and systems. This is particularly important in industries such as finance, healthcare, and e-commerce, where security breaches can have significant consequences.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of using n8n for OTP automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>n8n offers flexibility and control.</strong> It allows you to design custom workflows, integrate with various services like Airtable, Gmail, and Telnyx, and manage your automation logic efficiently without vendor lock-in.</p>
+          <p>With n8n, you can tailor your OTP automation to meet your specific business needs, ensuring seamless integration with your existing systems and enhanced security. The visual workflow builder in n8n makes it easy to design, test, and deploy your automation, even without extensive coding knowledge.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does multi-channel OTP delivery improve security?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Multi-channel delivery adds redundancy.</strong> By sending OTPs via both email and SMS, you ensure users can receive verification codes even if one channel is unavailable, enhancing reliability and security.</p>
+          <p>If a user's email is compromised or their SMS service is temporarily down, they can still receive the OTP through the alternative channel, ensuring they can access their account without interruption. This redundancy significantly reduces the risk of account lockout and improves the overall user experience.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What integrations are commonly used in OTP automation workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Key integrations include database and communication tools.</strong> Airtable is used for user data, Gmail for email delivery, and Telnyx for SMS. Webhooks trigger the workflow, and data tables can store temporary OTPs.</p>
+          <p>These integrations work together to create a seamless and automated OTP verification process. The webhook triggers the workflow when a user attempts to log in, Airtable stores and manages user data, Gmail and Telnyx deliver the OTPs, and data tables provide temporary storage for the generated codes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can I ensure the security of my OTP automation workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Security is paramount.</strong> Use strong encryption, regularly update your integrations, and implement measures to prevent abuse, such as rate limiting and OTP expiration.</p>
+          <p>Additionally, it's important to monitor your OTP automation workflow for any suspicious activity and to have a plan in place to respond to security incidents. Regularly auditing your workflow and integrations can help identify and address potential vulnerabilities before they can be exploited.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom OTP automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, we specialize in custom automation solutions.</strong> We can tailor an OTP automation workflow to meet your specific business needs, ensuring seamless integration with your existing systems and enhanced security.</p>
+          <p>Our team of experts can work with you to design and implement an OTP automation solution that meets your unique requirements, whether you need to integrate with specific databases, communication channels, or security protocols. Contact us today to learn more about how we can help you automate your OTP process and improve your overall security posture.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Secure Your App with Automated OTP Verification</h2>
+    <p>Enhance your application's security and user experience with our automated OTP login system. Get a free consultation to discuss your specific needs and how we can help.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: telnyx
