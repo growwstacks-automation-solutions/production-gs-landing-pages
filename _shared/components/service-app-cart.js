@@ -998,17 +998,7 @@ window.templateData = [
     "displayTitle": "Automated Contact Management & Email Marketing Sync via Monday.com & Flodesk",
     "pageUrl": " https://www.growwstacks.com/case-studies/apps/automated-contact-management-email-marketing-sync-monday-flodesk"
   },
-  {
-    "title": "Blank n8n Workflow Template for Custom Automation",
-    "description": "This is an empty workflow template within the n8n platform, serving as a starting point for users to build custom automations. It's ideal for developers and automation specialists who want to design workflows from scratch to solve unique business problems by connecting various apps and services.",
-    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_r2vl9QwWR.jpg",
-    "apps": [],
-    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_r2vl9QwWR.jpg",
-    "Industry": "Technology",
-    "ROI": "150",
-    "displayTitle": "Blank n8n Workflow Template for Custom Automation",
-    "pageUrl": " https://www.growwstacks.com/case-studies/apps/blank-n8n-workflow-template-for-custom-automation"
-  },
+ 
   {
     "title": "Automate WhatsApp Customer Support with AI Agent in GHL",
     "description": "This n8n workflow processes inbound WhatsApp messages through GoHighLevel, using an OpenAI AI agent to provide automated customer support responses. It maintains conversation memory for context and automatically sends replies back to customers via WhatsApp, streamlining customer communication for businesses.",
