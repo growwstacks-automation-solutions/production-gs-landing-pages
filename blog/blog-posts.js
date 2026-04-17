@@ -1,5 +1,320 @@
 const BLOG_POSTS = [
 {
+  title: "How Self-Hosting n8n on a VPS Saves You $1,000s (Beginner Tutorial)",
+  desc: "Running n8n on a VPS costs 90% less than cloud services while giving you 24/7 reliability. This beginner-friendly tutorial shows how to deploy n8n on Hostinger and build your first automated workflow.",
+  url: "/blog/n8n-vps-tutorial-hostinger",
+  tags: ["n8n","Automation","VPS"],
+  date: "2026-03-25",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Zapier Automation Can Help Build Your Million-Dollar Business",
+  desc: "Discover how Zapier automation transforms business owners from task-doers to workflow directors - freeing up 25+ hours per week while scaling operations to 7 figures.",
+  url: "/blog/how-zapier-automation-builds-million-dollar-business",
+  tags: ["Zapier","Business Automation","AI"],
+  date: "2026-04-05",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Claude Code 2.0: How to Automate Anything with Cloud-Based AI Agents",
+  desc: "Discover how Claude Code 2.0's new routines feature lets you deploy AI agents that work 24/7 - even when your laptop is closed. Learn real business automation use cases you can implement today.",
+  url: "/blog/claude-code-2-automate-anything",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-04-16",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How Claude + Make.com Can Automate Your Digital Product Sales (No Coding Required)",
+  desc: "Discover how to automate your entire digital product business - from AI-generated content to Shopify publishing - using Claude and Make.com. This no-code solution can publish daily blog posts that drive organic traffic to your store.",
+  url: "/blog/claude-make-com-automate-digital-product-sales",
+  tags: ["Make.com","AI Agents","eCommerce"],
+  date: "2026-04-09",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Make.com Triggers & Actions Explained: The Beginner's Guide to Automation",
+  desc: "Struggling with Make.com basics? Learn exactly how triggers and actions work with real examples from JotForm to Airtable. Includes troubleshooting tips for common first-run failures.",
+  url: "/blog/make-com-triggers-actions-explained",
+  tags: ["Make.com","Automation","Workflows"],
+  date: "2026-03-24",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Run an Entire AI Company with Paperclip (Local & VPS Setup)",
+  desc: "Discover how Paperclip AI lets you automate an entire company with AI employees - from CEO to engineers - with zero human intervention. Step-by-step guide for local and VPS setup.",
+  url: "/blog/how-to-run-ai-company-with-paperclip",
+  tags: ["AI Agents","Automation","Business"],
+  date: "2026-04-15",
+  readTime: 11,
+  target: "_blank"
+},
+{
+  title: "How to Build an Autonomous AI Agency That Runs Your Business For You",
+  desc: "Discover how Twin's AI agent builder can create fully autonomous businesses that handle lead generation, customer support, and operations without any technical setup. Just describe what you want in plain English.",
+  url: "/blog/how-to-build-autonomous-ai-agency",
+  tags: ["AI Agents","Automation","Business Growth"],
+  date: "2026-04-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Is Make.com Still the Best Automation Tool? Top Alternatives Compared",
+  desc: "Make.com has dominated automation for years, but new competitors offer simpler interfaces, lower costs, and AI features. We compare the top alternatives to help you choose the right platform for your needs.",
+  url: "/blog/is-make-com-still-the-best-automation-tool",
+  tags: ["Make.com","Automation","n8n"],
+  date: "2026-04-03",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Claude Code + Vapi Creates Voice AI Agents Instantly (No Coding Required)",
+  desc: "Discover how to automate voice agent creation for dental clinics, booking systems, and customer service using Claude Code and Vapi AI - complete with workflow testing and debugging walkthrough.",
+  url: "/blog/claude-code-vapi-voice-ai-agents",
+  tags: ["Voice AI","AI Agents","Vapi"],
+  date: "2026-03-26",
+  readTime: 14,
+  target: "_blank"
+},
+{
+  title: "Is Zapier Worth It in 2026? The Honest Review Every Business Owner Needs",
+  desc: "Zapier's new AI features make it more powerful than ever - but is it right for your business? We break down the pros, cons, and real-world automation results you can expect in 2026.",
+  url: "/blog/is-zapier-worth-it-2026-review",
+  tags: ["Zapier","Automation","AI"],
+  date: "2026-04-05",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "OpenClaw vs Claude: Which AI Agent Actually Wins in 2026?",
+  desc: "Discover how AI agents like OpenClaw and Claude are transforming business automation in 2026 - we compare features, use cases, and reveal which platform delivers real results.",
+  url: "/blog/openclaw-vs-claude-ai-agent-comparison",
+  tags: ["AI Agents","Claude","OpenClaw"],
+  date: "2026-04-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate API Integrations with Zapier in 15 Minutes or Less",
+  desc: "Stop manually copying data between apps every day. This step-by-step Zapier guide shows you how to connect any two applications with API automation — even if you've never written a line of code.",
+  url: "/blog/how-to-automate-api-integrations-with-zapier",
+  tags: ["Zapier","API Integration","Automation"],
+  date: "2026-04-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Gemini 3.1 Flash Live Just Changed Voice Agents Forever - Here's How",
+  desc: "Google's new Gemini 3.1 Flash Live model eliminates awkward pauses in voice AI, understands noisy environments, and responds to interruptions naturally - making it the most human-like voice agent yet.",
+  url: "/blog/gemini-3-1-flash-live-voice-agents",
+  tags: ["AI Agents","Voice AI","Google Gemini"],
+  date: "2026-03-28",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Gemini 3.1 Flash Just Revolutionized Voice AI Agents - Here's What Changed",
+  desc: "Google's new speech-to-speech Gemini 3.1 Flash model eliminates latency, understands tone/sarcasm, and works in noisy environments - changing voice AI forever.",
+  url: "/blog/gemini-3-1-flash-voice-ai-revolution",
+  tags: ["Voice AI","AI Agents","Google Gemini"],
+  date: "2026-03-28",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Zapier Review 2026: Automate Everything Without Coding (Beginners Guide)",
+  desc: "Discover how Zapier's AI co-pilot in <span data-year="current"></span> lets anyone automate workflows between apps using plain English. We build 3 real-world Zaps from scratch in this hands-on tutorial.",
+  url: "/blog/zapier-review-automate-everything-step-by-step",
+  tags: ["Zapier","Automation","AI Agents"],
+  date: "2026-03-29",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Complex Workflows with Make.com's Router Module",
+  desc: "Learn how Make.com's router module lets you split one workflow into multiple parallel paths - handling invoices, receipts, and notifications simultaneously without duplicate work.",
+  url: "/blog/how-to-use-router-module-make-com",
+  tags: ["Make.com","Workflow","Automation"],
+  date: "2026-03-27",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automate Your Invoice Process with QuickBooks, Make.com & Airtable",
+  desc: "Stop wasting hours on manual invoicing. This automated system handles client records, line items, and invoice creation - all triggered from your Airtable database.",
+  url: "/blog/how-to-automate-your-invoice-process-quickbooks-make-airtable",
+  tags: ["Make.com","Finance","Automation"],
+  date: "2026-04-01",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "GoHighLevel Already Does This: Why You Should Cancel Zapier in 2026",
+  desc: "Most agencies are overpaying for automation tools they don't need. Discover how GoHighLevel's native features can replace 80% of common Zapier workflows and simplify your tech stack.",
+  url: "/blog/gohighlevel-replaces-zapier-2026",
+  tags: ["GoHighLevel","CRM","Automation"],
+  date: "2026-04-06",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "10 OpenClaw Side Hustles That Can Make Up to $1,000 Per Day in 2026",
+  desc: "Discover how to leverage OpenClaw AI to build automated income streams ranging from $300 to $1,000 daily. From faceless YouTube channels to AI-powered market research, these proven side hustles require minimal upfront investment but deliver serious returns.",
+  url: "/blog/openclaw-side-hustles",
+  tags: ["AI Agents","Side Hustles","Automation"],
+  date: "2026-04-16",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "How to Automate Purchase Requests to POs Without Expensive Procurement Software",
+  desc: "Most small businesses struggle with messy purchase request processes. This Airtable + Make automation creates a full procurement workflow with approval routing, budget tracking, and automatic PO generation - no expensive software required.",
+  url: "/blog/automate-purchase-requests-to-pos-airtable-make",
+  tags: ["Make.com","Airtable","Procurement"],
+  date: "2026-04-07",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build Your First AI Agent with n8n (Step-by-Step Guide)",
+  desc: "Stop wasting hours on repetitive digital tasks. This beginner-friendly guide shows you how to create intelligent AI agents with n8n that can think, adapt, and automate complex workflows.",
+  url: "/blog/build-first-ai-agent-with-n8n",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2026-04-06",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Build n8n Workflows Without Leaving Your IDE: The Developer's Shortcut",
+  desc: "Stop context switching between IDEs and n8n's UI. This guide shows how to build, edit, and sync workflows directly from VS Code, Cursor, and OpenClaw using n8n-as-code.",
+  url: "/blog/build-n8n-workflows-without-leaving-your-ide",
+  tags: ["n8n","Workflow","Developer Tools"],
+  date: "2026-04-06",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Automatically Post Reels to YouTube, Instagram, TikTok & Telegram with Make.com",
+  desc: "Stop manually posting to multiple platforms. This Make.com automation uploads your content to YouTube, Instagram, TikTok and Telegram simultaneously with one click.",
+  url: "/blog/automate-social-media-posting-make-com",
+  tags: ["Make.com","Social Media","Content Automation"],
+  date: "2026-03-24",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Automate Lead Tracking & Follow-Ups with GoHighLevel + Make.com",
+  desc: "Stop losing leads in your pipeline. This GoHighLevel + Make.com automation instantly captures new leads, logs them to Google Sheets, and sends personalized follow-up emails — all without manual work.",
+  url: "/blog/gohighlevel-make-automated-lead-tracking",
+  tags: ["Make.com","CRM","Sales"],
+  date: "2026-04-04",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Zapier SDK Open Beta: Connect AI Agents to 10,000+ Apps Instantly",
+  desc: "Zapier's new SDK gives AI agents like Claude and Codex instant access to 10,000+ business apps. See how Zapier's CEO uses it to automate customer outreach, hiring reviews, and daily briefs.",
+  url: "/blog/zapier-sdk-open-beta-connect-ai-agents",
+  tags: ["Zapier","AI Agents","Automation"],
+  date: "2026-04-07",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Stop Wasting Time in Claude Chat Mode - Here's How to Automate Real Work in 2026",
+  desc: "Discover how to transform Claude from a simple chatbot into a full AI employee that handles complex workflows, file operations, and scheduled tasks - saving you hours each week.",
+  url: "/blog/claude-cowork-automation-guide-2026",
+  tags: ["AI Agents","Productivity","Automation"],
+  date: "2026-04-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Turn Instagram Reels Into Actionable Business Insights (Zapier Automation)",
+  desc: "Stop letting valuable Instagram Reel insights die in your bookmarks. This Zapier automation transcribes videos, extracts customized action items, and delivers them to Slack - turning passive scrolling into business growth.",
+  url: "/blog/how-to-transcribe-instagram-reels-extract-insights-zapier",
+  tags: ["Zapier","Social Media","AI Agents"],
+  date: "2026-03-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Build a Real-Time Inventory Dashboard in 15 Minutes with Google Antigravity & n8n",
+  desc: "Transform your Google Sheets inventory into a modern dashboard with charts and real-time updates using just one prompt. No coding required - we'll show you the exact n8n workflow and Antigravity setup.",
+  url: "/blog/build-inventory-dashboard-google-antigravity-n8n",
+  tags: ["n8n","Google Antigravity","Inventory Management"],
+  date: "2026-04-03",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Automate AI Research with Google Sheets and Zapier AI Agent",
+  desc: "Stop wasting hours manually tracking AI research papers. This Zapier AI agent automatically scans archive.org weekly, filters the most relevant papers, and delivers structured summaries directly to Google Sheets.",
+  url: "/blog/automate-ai-research-google-sheets-zapier-agent",
+  tags: ["AI Agents","Zapier","Google Sheets"],
+  date: "2026-04-02",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "Build AI Voice Agents That Sound Human with Gemini 3.1 Flash TTS",
+  desc: "Google's new Gemini 3.1 Flash TTS transforms robotic text-to-speech into expressive, emotionally-aware voice agents. Learn how to build custom voice apps with scene direction, audio tags, and 70+ language support—no coding required.",
+  url: "/blog/build-ai-voice-agents-gemini-3-1-flash-tts",
+  tags: ["AI Agents","Voice AI","Gemini"],
+  date: "2026-04-16",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Automate Squarespace Workflows with Zapier in 15 Minutes",
+  desc: "Stop manually transferring data from Squarespace forms. This Zapier integration automatically captures leads, sends notifications, and updates spreadsheets whenever someone interacts with your Squarespace site.",
+  url: "/blog/how-to-automate-squarespace-workflows-with-zapier",
+  tags: ["Zapier","Squarespace","Automation"],
+  date: "2026-03-28",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Is n8n Dead in 2026? The Honest Reality About Visual Automation",
+  desc: "While AI coding tools like Claude Code dominate headlines, n8n remains the secret weapon for production-ready business automations. Discover why visual workflows still outperform pure-code solutions for team collaboration and reliability.",
+  url: "/blog/is-n8n-dead-in-2026-honest-reality",
+  tags: ["n8n","AI Automation","Business Process"],
+  date: "2026-03-31",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How I Sleep at Night Running 50 Voice AI Agents (Without Listening to Every Call)",
+  desc: "Running production voice AI agents? Discover how to monitor 50+ agents without listening to every call recording - and get alerted only when something actually needs your attention.",
+  url: "/blog/voice-ai-agent-monitoring-with-secura",
+  tags: ["Voice AI","AI Agents","Monitoring"],
+  date: "2026-04-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Claude AI Can Build Your Make.com Automations For You",
+  desc: "Discover how to use Claude AI to create complete Make.com automations through simple conversation - no coding required. See a real example of automating meeting notes from Fathom to Airtable.",
+  url: "/blog/how-claude-ai-can-build-your-make-com-automations",
+  tags: ["Make.com","AI Agents","Automation"],
+  date: "2026-03-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Contact Data Collection Between OnceHub and Google Sheets Using Zapier",
+  desc: "Learn how to seamlessly sync contact data from OnceHub bookings to Google Sheets using Zapier's Find Contact action - eliminating manual data entry for your scheduling workflows.",
+  url: "/blog/automate-contact-data-oncehub-google-sheets-zapier",
+  tags: ["Zapier","OnceHub","Automation"],
+  date: "2026-04-04",
+  readTime: 7,
+  target: "_blank"
+},
+{
   title: "The n8n Design Mistake That Breaks at Scale (And How to Fix It)",
   desc: "Most automation failures aren't coding errors - they're architectural flaws. Learn the two service connection models in n8n and why scaling teams use both simultaneously.",
   url: "/blog/n8n-design-mistake-that-breaks-at-scale",
