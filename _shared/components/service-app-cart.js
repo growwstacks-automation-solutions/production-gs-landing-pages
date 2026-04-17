@@ -12,7 +12,7 @@ window.templateData = [
     "Industry": "Human Resources",
     "ROI": "200",
     "displayTitle": "Automate Employment Contract PDF Storage and Airtable Tracking",
-    "pageUrl": ""
+    "pageUrl": "https://www.growwstacks.com/case-studies/apps/automate-employment-contract-pdf-storage-airtable-tracking"
   },
   {
     "title": "Automated Competitive Intelligence Analysis for Business Strategy",
@@ -28,7 +28,7 @@ window.templateData = [
     "Industry": "Multiple",
     "ROI": "200",
     "displayTitle": "Automated Competitive Intelligence Analysis for Business Strategy",
-    "pageUrl": " https://www.growwstacks.com/case-studies/appsautomated-competitive-intelligence-analysis"
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automated-competitive-intelligence-analysis"
   },
   {
     "title": "Automate Airtable Invoice Uploads to Google Drive",
@@ -43,7 +43,7 @@ window.templateData = [
     "Industry": "Financial Services",
     "ROI": "200",
     "displayTitle": "Automate Airtable Invoice Uploads to Google Drive",
-    "pageUrl": " https://www.growwstacks.com/case-studies/appsautomate-airtable-invoice-uploads-to-google-drive"
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-airtable-invoice-uploads-to-google-drive"
   },
   {
     "title": "Automate Construction Build Notifications via WhatsApp",
@@ -58,7 +58,7 @@ window.templateData = [
     "Industry": "Construction",
     "ROI": "200",
     "displayTitle": "Automate Construction Build Notifications via WhatsApp",
-    "pageUrl": " https://www.growwstacks.com/case-studies/appsautomate-construction-build-notifications-via-whatsapp"
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-construction-build-notifications-via-whatsapp"
   },
   {
     "title": "Fatture Webhook Subscription Management & Verification Workflow",
@@ -71,7 +71,7 @@ window.templateData = [
     "Industry": "Accounting",
     "ROI": "200",
     "displayTitle": "Fatture Webhook Subscription Management & Verification Workflow",
-    "pageUrl": " https://www.growwstacks.com/case-studies/appsfatture-webhook-subscription-management-verification"
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/fatture-webhook-subscription-management-verification"
   },
   {
     "title": "VAPI Assistant Call Routing and Spam Logging Workflow",
