@@ -1,5 +1,14 @@
 const BLOG_POSTS = [
 {
+  title: "HubSpot + Make.com Automation: Create Deals, Contacts & Line Items from One Form",
+  desc: "Eliminate manual data entry by automatically creating HubSpot deals, assigning contacts/companies, and adding line items from a single form submission using Make.com.",
+  url: "/blog/hubspot-make-com-automation-create-deals-contacts-line-items",
+  tags: ["Make.com","CRM","HubSpot"],
+  date: "2026-03-30",
+  readTime: 7,
+  target: "_blank"
+},
+{
   title: "How Self-Hosting n8n on a VPS Saves You $1,000s (Beginner Tutorial)",
   desc: "Running n8n on a VPS costs 90% less than cloud services while giving you 24/7 reliability. This beginner-friendly tutorial shows how to deploy n8n on Hostinger and build your first automated workflow.",
   url: "/blog/n8n-vps-tutorial-hostinger",
