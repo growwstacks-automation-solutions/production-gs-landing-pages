@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Microsoft 365 Outage Alerts to Slack with AI | Free n8n Template</title>
+<meta name="description" content="Free n8n workflow: Automatically monitor, summarize, and send Microsoft 365 service alerts to a dedicated Slack channel using ChatGPT. Perfect for IT teams.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1612-summarize-microsoft-365-outage-alerts-with-chatgpt-and-send-to-slack/">
+<meta property="og:title" content="Automate Microsoft 365 Outage Alerts to Slack with AI">
+<meta property="og:description" content="Free n8n template: Get AI-summarized Microsoft 365 outage notifications in Slack. Save time, reduce alert fatigue, and keep your team informed instantly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1612-summarize-microsoft-365-outage-alerts-with-chatgpt-and-send-to-slack/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3353-summarize-microsoft-365-outage-alerts-with-chatgpt-and-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Microsoft 365 Outage Alerts to Slack with AI">
+<meta name="twitter:description" content="Free n8n template: Get AI-summarized Microsoft 365 outage notifications in Slack. Save time, reduce alert fatigue, and keep your team informed instantly.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Microsoft 365 Outage Alert Summarizer","description":"Free n8n workflow template that monitors Microsoft 365 service alerts, summarizes them with ChatGPT, and posts clear notifications to a dedicated Slack channel.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3353-summarize-microsoft-365-outage-alerts-with-chatgpt-and-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I automate Microsoft 365 outage alerts?","acceptedAnswer":{"@type":"Answer","text":"Automating outage alerts saves IT teams hours of manual monitoring, reduces email clutter, and ensures critical service issues are communicated instantly to the right channels. It transforms raw, technical email notifications into clear, actionable Slack messages, improving response time and reducing alert fatigue for your entire team."}},{"@type":"Question","name":"How does AI improve IT incident communication?","acceptedAnswer":{"@type":"Answer","text":"AI, like ChatGPT, can parse lengthy, technical outage emails and extract the core issue, affected services, estimated resolution time, and user impact. It presents this in plain English within Slack, making it understandable for non-technical stakeholders and allowing IT staff to focus on resolution instead of decoding alerts."}},{"@type":"Question","name":"Can this workflow monitor multiple Microsoft 365 tenants or mailboxes?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow can be easily duplicated or modified to monitor multiple shared mailboxes or different tenant alert addresses. By using separate Outlook triggers or looping through a list of mailboxes, you can centralize monitoring for several clients or departments into a single, unified Slack channel."}},{"@type":"Question","name":"What are the main benefits of using Slack for outage notifications?","acceptedAnswer":{"@type":"Answer","text":"Slack provides real-time, mobile-friendly notifications that are more visible than email. It allows for threaded discussions, tagging relevant team members, and integrating with other tools like PagerDuty or Opsgenie. Centralizing alerts in a dedicated #outages channel creates a single source of truth and improves team coordination during incidents."}},{"@type":"Question","name":"Is it secure to connect Microsoft 365 and Slack via automation?","acceptedAnswer":{"@type":"Answer","text":"Yes, when set up correctly. This workflow uses OAuth 2.0 for secure Microsoft 365 API access and Slack's bot tokens with specific channel permissions. The automation runs on your own n8n instance, keeping data within your controlled environment. No sensitive email content is stored permanently, as the original alert is deleted after processing."}},{"@type":"Question","name":"How much does it cost to run this automation?","acceptedAnswer":{"@type":"Answer","text":"The cost is minimal. Running on a self-hosted n8n instance is free. The OpenAI API calls for summarizing alerts cost fractions of a cent per alert (using the GPT-4o-mini model). For a typical organization receiving a few alerts per week, the monthly cost is under $1. The time saved for IT staff far outweighs this expense."}},{"@type":"Question","name":"What happens if the automation fails or misses an alert?","acceptedAnswer":{"@type":"Answer","text":"The workflow includes error handling and can be configured with n8n's built-in monitoring and alerting. You can set up a separate 'watchdog' notification to a different channel if the workflow itself fails. For critical services, it's recommended to keep the original alert emails in a separate folder as a backup, rather than deleting them immediately."}},{"@type":"Question","name":"Can I get a custom IT alert automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. GrowwStacks specializes in building custom automation solutions for IT operations, MSPs, and DevOps teams. We can extend this template to monitor other services (AWS, Azure, Google Workspace), integrate with ticketing systems like Jira or ServiceNow, add escalation paths, or create comprehensive dashboards. Book a free consultation to discuss your specific monitoring and alerting needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Microsoft 365 Outage Alert Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Microsoft 365 Outage Alert Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Microsoft 365</span>
+          <span class="cs-tag">Slack</span>
+          <span class="cs-tag">ChatGPT</span>
+          <span class="cs-tag">IT Operations</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate Microsoft 365 Outage Alerts to Slack with AI</h1>
+        <p class="cs-hero-sub">Free n8n template that monitors Microsoft 365 service alerts, summarizes them with ChatGPT, and posts clear notifications to a dedicated Slack channel.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3353-summarize-microsoft-365-outage-alerts-with-chatgpt-and-.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3353-summarize-microsoft-365-outage-alerts-with-chatgpt-and-.png" alt="Visual diagram of the Microsoft 365 outage alert automation workflow connecting Outlook, ChatGPT, and Slack" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>IT administrators and managed service providers (MSPs) are often flooded with verbose, technical email alerts from Microsoft 365 whenever there's a service incident. These emails are crucial but time-consuming to parse, especially during critical outages. This automation solves that problem by acting as your intelligent alert filter.</p>
+        <p>The workflow automatically scans a designated Outlook mailbox for Microsoft 365 service health notifications every minute. When an alert arrives, it uses OpenAI's GPT-4o-mini model to extract the essential details: what service is affected, the severity, estimated resolution time, and—critically—whether your specific user regions are impacted. It then formats this into a clean, actionable Slack message and posts it to a dedicated channel (like #it-alerts or #m365-status). Finally, it cleans up by deleting the processed email, keeping the inbox tidy.</p>
+        <p>This transforms a reactive, manual process into a proactive, automated communication system, ensuring your team is informed instantly without sifting through emails.</p>
+
+        <div class="cs-img-block">
+          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Screenshot_2025_05_06_162940_47ab449ce9.png" alt="Screenshot of the n8n workflow canvas showing the automation connecting Outlook, Code node, OpenAI, and Slack" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">The workflow canvas showing the connection between Microsoft Outlook, a Code node for filtering, OpenAI for summarization, and Slack for notification delivery.</div>
+        </div>
+
+        <h2>How It Works</h2>
+        <p>The automation follows a logical, step-by-step process to ensure reliable and intelligent alerting.</p>
+
+        <h3>1. Monitor &amp; Trigger</h3>
+        <p>The workflow is triggered on a schedule (every 1 minute) to check a specific Outlook mailbox or shared mailbox for new emails. It filters for emails from Microsoft 365 service notifications, typically identified by sender address or subject line keywords like "Service health incident".</p>
+
+        <h3>2. Parse &amp; Filter</h3>
+        <p>When a matching email is found, the workflow extracts the full HTML or plain text body. A Code node can be used to perform initial checks, such as scanning for mentions of specific countries or user regions you define, to determine immediate relevance to your organization.</p>
+
+        <h3>3. AI Summarization</h3>
+        <p>The raw email content is sent to the OpenAI node (using the cost-effective GPT-4o-mini model). A system prompt instructs the AI to summarize the incident concisely: identify the service, impact, root cause, Microsoft's action, ETA for fix, and—based on the region filter—state if your users are affected. This turns paragraphs of technical jargon into three clear bullet points.</p>
+
+        <h3>4. Slack Notification</h3>
+        <p>The AI-generated summary is formatted into a Slack "block" message. This includes a clear title, the summary, a direct link to the official Microsoft 365 admin center incident page for details, and an appropriate status emoji (e.g., 🔴 for major outage). This message is posted to your pre-configured Slack channel.</p>
+
+        <h3>5. Cleanup</h3>
+        <p>After successful posting to Slack, the workflow uses the Outlook node to move the original alert email to a processed folder or delete it entirely. This prevents duplicate processing and keeps the monitoring mailbox clean.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use OpenAI's "Projects" feature to assign a specific monthly budget to this workflow. This isolates costs and prevents unexpected charges, though usage is typically just pennies per month.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template delivers immediate value for specific roles and business scenarios:</p>
+        <p><strong>IT Administrators &amp; SysAdmins</strong> at companies of any size using Microsoft 365. It eliminates the need to constantly check the admin center or email, providing peace of mind and faster internal communication.</p>
+        <p><strong>Small &amp; Medium MSPs (Managed Service Providers)</strong> managing multiple clients. You can deploy one instance per client mailbox, funneling all client outage alerts into a single, master Slack channel for your team, creating a centralized monitoring dashboard.</p>
+        <p><strong>DevOps &amp; SRE Teams</strong> who prefer ChatOps (managing operations via chat tools like Slack). It integrates service health into the same platform where you handle deployments and incidents, streamlining workflows.</p>
+        <p><strong>Any team lead</strong> who needs to keep non-technical departments (like Sales, Support, or Leadership) informed about IT service disruptions without overwhelming them with technical details.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>An n8n instance:</strong> You can use n8n.cloud (quickest) or self-host n8n on your own server.</li>
+          <li><strong>Microsoft 365/Outlook Credentials:</strong> An account (user or shared mailbox) that receives the Microsoft 365 Service Health notifications. You'll need to create an OAuth 2.0 app credential in n8n.</li>
+          <li><strong>Slack Credentials:</strong> A Slack bot token with the <code>chat:write</code> scope, added to the channel you want to post alerts to.</li>
+          <li><strong>OpenAI API Key:</strong> An API key from OpenAI, preferably assigned to a "Project" with a small monthly budget for cost control.</li>
+          <li><strong>5 minutes for configuration:</strong> To set the target Slack channel and customize the region check in the system prompt.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Get this automation running in your environment in just a few steps:</p>
+        <ol>
+          <li><strong>Download &amp; Import:</strong> Click the "Download Template" button above to get the JSON file. In your n8n instance, go to Workflows > Import from File and select the downloaded file.</li>
+          <li><strong>Configure Outlook:</strong> In the first "Outlook" node, click the credential dropdown and set up a new OAuth 2.0 connection. Authenticate with the Microsoft 365 account that receives the service alerts.</li>
+          <li><strong>Customize the AI Prompt:</strong> Open the "OpenAI" node. In the system prompt field, update the example countries ("U.S. and Australia") to the primary regions where your users are located. This ensures accurate impact statements.</li>
+          <li><strong>Set Your Slack Channel:</strong> In the "Slack" node, configure the credential with your bot token. Then, in the node parameters, specify the exact Slack channel ID (e.g., <code>C1234567890</code>) where alerts should be posted.</li>
+          <li><strong>Activate &amp; Test:</strong> Turn the workflow ON. You can test it by sending a simulated alert email to your monitored mailbox or wait for the next real Microsoft notification.</li>
+        </ol>
+
+        <div class="cs-img-block">
+          <img src="https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Screenshot_2025_05_06_163031_2cc4e2908e.png" alt="Example of the formatted Slack message output showing a clear, summarized Microsoft 365 outage alert" width="760" height="420" loading="lazy">
+          <div class="cs-img-caption">Example Slack output: A clean, formatted message showing service impact, summary, and a direct link for more details.</div>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>⏱️ Save 10+ Hours Monthly on Alert Triage:</strong> No more manually reading and forwarding lengthy outage emails. The AI does the reading and summarizing instantly.</p>
+        <p><strong>🚨 Reduce Mean Time to Awareness (MTTA):</strong> Critical outage information is pushed to your team's primary communication tool (Slack) in under a minute, versus getting lost in an inbox.</p>
+        <p><strong>💬 Improve Communication Clarity:</strong> Technical service alerts are translated into plain-English summaries that everyone on the team can understand, from executives to support staff.</p>
+        <p><strong>🔒 Maintain Control &amp; Security:</strong> The workflow runs on your infrastructure (n8n), processes data through your approved APIs (OpenAI), and doesn't rely on third-party SaaS aggregators that might have access to your alerts.</p>
+        <p><strong>📈 Scalable for MSPs:</strong> Easily duplicate the workflow for multiple client tenants, creating a centralized, multi-tenant monitoring dashboard in your internal Slack, improving service delivery visibility.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> For maximum reliability, consider adding a secondary "watchdog" notification. Create a simple companion workflow that pings a health check URL for this main workflow. If it fails, it can alert a separate Slack channel or send an SMS, ensuring you never miss an alert because the automation itself stopped.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about IT alert automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I automate Microsoft 365 outage alerts?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating outage alerts saves IT teams hours of manual monitoring, reduces email clutter, and ensures critical service issues are communicated instantly to the right channels. It transforms raw, technical email notifications into clear, actionable Slack messages, improving response time and reducing alert fatigue for your entire team.</p>
+          <p>Manual processes are error-prone and slow. When an outage occurs, time spent deciphering emails is time not spent on resolution. Automation ensures consistent, immediate, and clear communication.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI improve IT incident communication?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI, like ChatGPT, can parse lengthy, technical outage emails and extract the core issue, affected services, estimated resolution time, and user impact. It presents this in plain English within Slack, making it understandable for non-technical stakeholders and allowing IT staff to focus on resolution instead of decoding alerts.</p>
+          <p>This shift from reactive reading to proactive notification fundamentally changes incident response. Teams can immediately assess impact and begin coordinating a response, rather than waiting for someone to find and interpret the email.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow monitor multiple Microsoft 365 tenants or mailboxes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the workflow can be easily duplicated or modified to monitor multiple shared mailboxes or different tenant alert addresses. By using separate Outlook triggers or looping through a list of mailboxes, you can centralize monitoring for several clients or departments into a single, unified Slack channel.</p>
+          <p>This is especially powerful for Managed Service Providers (MSPs). You can create a master #client-outages channel that aggregates alerts from all clients, giving your team a single pane of glass for service health across your entire portfolio.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of using Slack for outage notifications?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Slack provides real-time, mobile-friendly notifications that are more visible than email. It allows for threaded discussions, tagging relevant team members, and integrating with other tools like PagerDuty or Opsgenie. Centralizing alerts in a dedicated #outages channel creates a single source of truth and improves team coordination during incidents.</p>
+          <p>Unlike email, Slack messages can be easily acknowledged, reacted to, or turned into actionable tasks. This creates an audit trail of who saw the alert and what the response was, which is invaluable for post-incident reviews.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is it secure to connect Microsoft 365 and Slack via automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, when set up correctly. This workflow uses OAuth 2.0 for secure Microsoft 365 API access and Slack's bot tokens with specific channel permissions. The automation runs on your own n8n instance, keeping data within your controlled environment. No sensitive email content is stored permanently, as the original alert is deleted after processing.</p>
+          <p>Best practices include using dedicated service accounts for API access, restricting Slack bot permissions to only the necessary channel, and running n8n on your own secure infrastructure rather than a public cloud if dealing with highly sensitive information.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much does it cost to run this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The cost is minimal. Running on a self-hosted n8n instance is free. The OpenAI API calls for summarizing alerts cost fractions of a cent per alert (using the GPT-4o-mini model). For a typical organization receiving a few alerts per week, the monthly cost is under $1. The time saved for IT staff far outweighs this expense.</p>
+          <p>You can further control costs by using OpenAI's project-level spending limits and choosing the cheaper GPT-4o-mini model, which is perfectly suited for this structured summarization task.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the automation fails or misses an alert?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow includes error handling and can be configured with n8n's built-in monitoring and alerting. You can set up a separate 'watchdog' notification to a different channel if the workflow itself fails. For critical services, it's recommended to keep the original alert emails in a separate folder as a backup, rather than deleting them immediately.</p>
+          <p>Implementing a simple heartbeat monitor that checks if the workflow has executed recently adds an extra layer of reliability. This ensures you're notified if the automation stops, not just if Microsoft has an outage.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom IT alert automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. GrowwStacks specializes in building custom automation solutions for IT operations, MSPs, and DevOps teams. We can extend this template to monitor other services (AWS, Azure, Google Workspace), integrate with ticketing systems like Jira or ServiceNow, add escalation paths, or create comprehensive dashboards.</p>
+          <p>Book a free consultation to discuss your specific monitoring and alerting needs. We'll help you design a system that fits your team's workflow, reduces noise, and ensures critical issues are never missed.</p>
+          <ul>
+            <li>Multi-service monitoring (cloud, network, internal apps)</li>
+            <li>Advanced escalation rules and on-call rotations</li>
+            <li>Integration with existing incident management platforms</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom IT Alert Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

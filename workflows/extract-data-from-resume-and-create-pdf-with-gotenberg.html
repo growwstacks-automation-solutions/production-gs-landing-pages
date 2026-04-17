@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extract Data from Resume & Create PDF with Gotenberg | Free Template | GrowwStacks</title>
+<meta name="description" content="Automate resume processing: Extract structured data from PDF resumes via Telegram, use AI to parse content, and generate formatted PDFs with Gotenberg.">
+<link rel="canonical" href="https://growwstacks.com/workflows/809-extract-data-from-resume-and-create-pdf-with-gotenberg/">
+<meta property="og:title" content="Automate Resume Data Extraction & PDF Creation">
+<meta property="og:description" content="Free n8n template: Upload resumes via Telegram, extract data with AI, and create structured PDFs automatically.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/809-extract-data-from-resume-and-create-pdf-with-gotenberg/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2170-extract-data-from-resume-and-create-pdf-with-gotenberg.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Resume Data Extraction & PDF Creation">
+<meta name="twitter:description" content="Free n8n template: Upload resumes via Telegram, extract data with AI, and create structured PDFs automatically.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Extract Data from Resume & Create PDF with Gotenberg","description":"Automate resume processing: Extract structured data from PDF resumes via Telegram, use AI to parse content, and generate formatted PDFs with Gotenberg.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2170-extract-data-from-resume-and-create-pdf-with-gotenberg.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is automated resume parsing and why is it useful for recruitment?","acceptedAnswer":{"@type":"Answer","text":"Automated resume parsing extracts key information like skills, experience, and education from unstructured resume documents and turns it into structured data. This saves recruiters hours of manual data entry, reduces human error, and speeds up candidate screening by instantly making resume data searchable and comparable."}},{"@type":"Question","name":"How does AI improve the accuracy of data extracted from resumes?","acceptedAnswer":{"@type":"Answer","text":"AI models, especially LLMs, understand context and synonyms that traditional parsing software misses. They can correctly identify job titles across different companies, infer skill levels from descriptions, and handle varied resume formats. This leads to more accurate extraction of employment history, projects, and qualifications compared to rule-based systems."}},{"@type":"Question","name":"Can automated resume processing integrate with existing ATS or HR systems?","acceptedAnswer":{"@type":"Answer","text":"Yes, automation platforms like n8n can connect parsed resume data directly to Applicant Tracking Systems (ATS), HRIS, CRMs like Salesforce, or databases. Once extracted, candidate information can be automatically added to your recruitment pipeline, trigger follow-up emails, or create standardized candidate profiles without manual copying."}},{"@type":"Question","name":"What are the main challenges when processing resumes from different sources?","acceptedAnswer":{"@type":"Answer","text":"The biggest challenges are inconsistent formats (PDF, Word, text), varying section headings, creative designs that confuse parsers, and multilingual content. A robust automation handles these by first converting documents to plain text, using AI to understand context rather than fixed patterns, and having fallback processes for low-confidence extractions."}},{"@type":"Question","name":"How secure is automated resume processing for candidate personal data?","acceptedAnswer":{"@type":"Answer","text":"Security depends on implementation. Best practices include processing data through secure APIs, not storing sensitive information unnecessarily, using encrypted connections, and complying with data protection regulations like GDPR. Self-hosted automation gives you full control over where data is processed and stored."}},{"@type":"Question","name":"What business value does automating resume screening provide?","acceptedAnswer":{"@type":"Answer","text":"Automating resume screening reduces time-to-hire by 60-80%, cuts recruitment costs by minimizing manual review hours, improves candidate experience through faster responses, and increases hiring quality by ensuring consistent evaluation criteria. It also allows recruiters to focus on high-value tasks like interviews rather than administrative work."}},{"@type":"Question","name":"Can I get a custom resume processing automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom automation solutions for recruitment and HR processes. We can create tailored workflows that integrate with your specific ATS, handle your unique resume formats, extract exactly the data fields you need, and connect to your existing HR systems. Our team handles everything from design to implementation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Extract Data from Resume & Create PDF"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Extract Data from Resume & Create PDF</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Telegram</span>
+          <span class="cs-tag">AI Processing</span>
+          <span class="cs-tag">PDF Generation</span>
+          <span class="cs-tag">HR Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate Resume Data Extraction & PDF Creation</h1>
+        <p class="cs-hero-sub">Upload resumes via Telegram, extract structured data with AI, and generate formatted PDFs automatically—eliminating manual resume processing.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2170-extract-data-from-resume-and-create-pdf-with-gotenberg.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2170-extract-data-from-resume-and-create-pdf-with-gotenberg.png" alt="Visual diagram showing resume PDF upload via Telegram, AI data extraction, and formatted PDF output" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual resume processing is a time-consuming bottleneck in recruitment. HR teams waste hours extracting information from PDFs, copying data into spreadsheets, and creating standardized candidate profiles. This workflow automates the entire process from resume submission to structured data extraction and formatted document creation.</p>
+        <p>Candidates upload their resumes through a Telegram bot, which triggers an automated pipeline that extracts text from PDFs, uses AI to identify and structure key information (employment history, skills, education), and generates a clean, consistently formatted PDF using Gotenberg. The result is searchable candidate data ready for your ATS and professional-looking documents for your records.</p>
+        
+        <h2>How It Works</h2>
+        <h3>1. Resume Submission via Telegram</h3>
+        <p>Candidates send their resume PDFs to your Telegram bot. The workflow authenticates the user based on chat ID to ensure only authorized submissions are processed.</p>
+        
+        <h3>2. PDF Text Extraction</h3>
+        <p>The uploaded PDF is converted to plain text, preserving all content including complex formatting, tables, and bullet points that traditional parsers might miss.</p>
+        
+        <h3>3. AI-Powered Data Parsing</h3>
+        <p>An AI chain with OpenAI Chat Model and Structured Output Parser analyzes the text, identifying sections like work experience, education, skills, and contact information, then outputs this as structured JSON data.</p>
+        
+        <h3>4. HTML Formatting</h3>
+        <p>Each extracted data section is formatted into clean HTML with consistent styling, creating a professional template for the final document.</p>
+        
+        <h3>5. PDF Generation with Gotenberg</h3>
+        <p>The formatted HTML is sent to Gotenberg (or alternative PDF services) to generate a polished, print-ready PDF with proper margins, fonts, and layout.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> You can replace Gotenberg with other PDF generation services like PDFMonkey or ApiTemplate if you prefer cloud-based solutions over self-hosted options.</p>
+        </div>
+        
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for recruitment agencies, corporate HR departments, startups hiring frequently, and any business that processes more than 10 resumes per week. It's particularly valuable for technical recruiting where skill matching is crucial, and for companies wanting to improve candidate experience with faster response times.</p>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A Telegram bot token (create via @BotFather)</li>
+          <li>n8n instance (cloud or self-hosted)</li>
+          <li>OpenAI API key for AI processing</li>
+          <li>Gotenberg installation or alternative PDF service API key</li>
+          <li>Basic understanding of JSON for customizing output schema</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download and import the JSON template into your n8n instance</li>
+          <li>Create your Telegram bot and add credentials to the Telegram trigger node</li>
+          <li>Set your chat ID in the authentication node for security</li>
+          <li>Configure your OpenAI API key in the AI chain nodes</li>
+          <li>Adjust the JSON schema in the Structured Output Parser to match your data needs</li>
+          <li>Point the HTTP Request node to your Gotenberg instance or alternative PDF service</li>
+          <li>Test by uploading a sample resume to your Telegram bot</li>
+        </ol>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Reduce resume processing time by 80%:</strong> What takes a recruiter 15-20 minutes per resume happens automatically in under a minute, freeing up hours each week for strategic hiring activities.</p>
+        <p><strong>Eliminate manual data entry errors:</strong> AI extraction ensures consistent, accurate data capture compared to human copying, improving data quality in your ATS and reducing mis-hires from incorrect information.</p>
+        <p><strong>Create standardized candidate profiles:</strong> Every processed resume outputs consistently formatted data and documents, making comparison and evaluation objective and efficient across your hiring team.</p>
+        <p><strong>Improve candidate experience:</strong> Faster acknowledgment and processing creates positive first impressions, giving you a competitive edge in tight talent markets where response time matters.</p>
+        <p><strong>Scalable recruitment operations:</strong> Handle 10 or 1000 resumes with the same efficiency, allowing your recruitment team to scale without adding administrative staff.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about resume processing automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is automated resume parsing and why is it useful for recruitment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated resume parsing extracts key information like skills, experience, and education from unstructured resume documents and turns it into structured data. This saves recruiters hours of manual data entry, reduces human error, and speeds up candidate screening by instantly making resume data searchable and comparable.</p>
+          <p>For example, instead of a recruiter reading through 50 resumes to find candidates with "Python" experience, the automation extracts all skills into a database where they can be filtered instantly. This transforms resumes from static documents into actionable data that integrates with your existing recruitment systems.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI improve the accuracy of data extracted from resumes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI models, especially LLMs, understand context and synonyms that traditional parsing software misses. They can correctly identify job titles across different companies, infer skill levels from descriptions, and handle varied resume formats. This leads to more accurate extraction of employment history, projects, and qualifications compared to rule-based systems.</p>
+          <p>Traditional parsers might fail with creative resume designs or unusual section headings, but AI understands that "Professional Journey" means work experience and "Core Competencies" means skills. This contextual understanding reduces manual correction work and increases trust in automated processing.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can automated resume processing integrate with existing ATS or HR systems?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, automation platforms like n8n can connect parsed resume data directly to Applicant Tracking Systems (ATS), HRIS, CRMs like Salesforce, or databases. Once extracted, candidate information can be automatically added to your recruitment pipeline, trigger follow-up emails, or create standardized candidate profiles without manual copying.</p>
+          <p>The structured output from this workflow can be formatted to match any system's API requirements. Common integrations include adding candidates to Greenhouse, Lever, or Workday, updating spreadsheets in Google Sheets, or creating contact records in HubSpot for talent pipeline management.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main challenges when processing resumes from different sources?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The biggest challenges are inconsistent formats (PDF, Word, text), varying section headings, creative designs that confuse parsers, and multilingual content. A robust automation handles these by first converting documents to plain text, using AI to understand context rather than fixed patterns, and having fallback processes for low-confidence extractions.</p>
+          <p>This workflow addresses these challenges through the AI's natural language understanding capabilities. It doesn't rely on fixed templates or positional extraction, so it adapts to different resume structures while maintaining extraction quality across diverse candidate submissions.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is automated resume processing for candidate personal data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Security depends on implementation. Best practices include processing data through secure APIs, not storing sensitive information unnecessarily, using encrypted connections, and complying with data protection regulations like GDPR. Self-hosted automation gives you full control over where data is processed and stored.</p>
+          <p>This workflow can be configured to process resumes through your own infrastructure, ensuring candidate data never leaves your controlled environment. You can also implement data retention policies to automatically delete source documents after processing, further reducing privacy risks.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What business value does automating resume screening provide?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating resume screening reduces time-to-hire by 60-80%, cuts recruitment costs by minimizing manual review hours, improves candidate experience through faster responses, and increases hiring quality by ensuring consistent evaluation criteria. It also allows recruiters to focus on high-value tasks like interviews rather than administrative work.</p>
+          <p>For a mid-sized company processing 100 resumes monthly, automation can save approximately 25-30 hours of recruiter time. This translates to faster filling of critical roles, reduced recruitment agency fees, and better allocation of HR budget toward strategic initiatives rather than administrative overhead.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom resume processing automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom automation solutions for recruitment and HR processes. We can create tailored workflows that integrate with your specific ATS, handle your unique resume formats, extract exactly the data fields you need, and connect to your existing HR systems. Our team handles everything from design to implementation.</p>
+          <p>We start by understanding your current recruitment workflow, then build a solution that fits seamlessly into your operations. Whether you need multi-language support, integration with niche ATS platforms, or specialized data validation rules, we create automation that works for your specific business needs.</p>
+          <ul>
+            <li>Custom integration with your existing HR tech stack</li>
+            <li>Tailored data extraction for your industry-specific requirements</li>
+            <li>Ongoing support and optimization as your needs evolve</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Resume Processing Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

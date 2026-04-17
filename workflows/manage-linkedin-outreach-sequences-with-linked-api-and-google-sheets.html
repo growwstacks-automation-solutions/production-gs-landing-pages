@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate LinkedIn Outreach with Linked API & Google Sheets | Free n8n Template</title>
+<meta name="description" content="Free n8n workflow to automate LinkedIn lead generation. Send connection requests, manage follow-up sequences, and track results in Google Sheets automatically.">
+<link rel="canonical" href="https://growwstacks.com/workflows/8051-manage-linkedin-outreach-sequences-with-linked-api-and-google-sheets/">
+<meta property="og:title" content="Automate LinkedIn Outreach with Linked API & Google Sheets">
+<meta property="og:description" content="Free n8n workflow to automate LinkedIn lead generation. Send connection requests, manage follow-up sequences, and track results in Google Sheets automatically.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/8051-manage-linkedin-outreach-sequences-with-linked-api-and-google-sheets/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12915-manage-linkedin-outreach-sequences-with-linked-api-and.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate LinkedIn Outreach with Linked API & Google Sheets">
+<meta name="twitter:description" content="Free n8n workflow to automate LinkedIn lead generation. Send connection requests, manage follow-up sequences, and track results in Google Sheets automatically.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate LinkedIn Outreach with Linked API & Google Sheets","description":"Free n8n workflow to automate LinkedIn lead generation. Send connection requests, manage follow-up sequences, and track results in Google Sheets automatically.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12915-manage-linkedin-outreach-sequences-with-linked-api-and.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the benefits of automating LinkedIn outreach?","acceptedAnswer":{"@type":"Answer","text":"Automating LinkedIn outreach saves 10-15 hours weekly, ensures consistent follow-up timing, eliminates manual data entry errors, and provides measurable ROI tracking through automated reporting in tools like Google Sheets."}},{"@type":"Question","name":"How does LinkedIn automation differ from email marketing automation?","acceptedAnswer":{"@type":"Answer","text":"LinkedIn automation focuses on relationship-building through connection requests and personalized messages within a professional network, while email marketing targets broader audiences. LinkedIn automation typically has higher response rates (15-25%) but requires careful compliance with platform limits to avoid account restrictions."}},{"@type":"Question","name":"What are the daily limits for LinkedIn connection requests?","acceptedAnswer":{"@type":"Answer","text":"LinkedIn typically allows 25-100 connection requests daily depending on account age and activity. Best practice is to stay under 50 daily requests, space them throughout the day, and personalize each message to maintain account health and avoid triggering LinkedIn's anti-spam systems."}},{"@type":"Question","name":"How can I personalize automated LinkedIn messages at scale?","acceptedAnswer":{"@type":"Answer","text":"Use merge tags to insert prospect names, companies, or recent achievements mentioned in their profiles. Create 3-5 message templates for different industries or roles, and use conditional logic to send the most relevant template based on profile data. Always include a genuine value proposition specific to their situation."}},{"@type":"Question","name":"What metrics should I track for LinkedIn outreach campaigns?","acceptedAnswer":{"@type":"Answer","text":"Track connection acceptance rate (15-30% is good), response rate to messages (10-20% is solid), meeting booking rate (2-5% is typical), and overall conversion to opportunities. Monitor daily limits compliance and adjust messaging based on which templates generate the highest engagement."}},{"@type":"Question","name":"How do I integrate LinkedIn automation with my CRM?","acceptedAnswer":{"@type":"Answer","text":"Connect LinkedIn automation workflows to your CRM (like HubSpot or Salesforce) to automatically create contacts, log interactions, and update lead statuses. This creates a single source of truth where sales teams can see the entire engagement history without switching between platforms."}},{"@type":"Question","name":"Can I get a custom LinkedIn automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom LinkedIn automation systems tailored to your specific industry, target audience, and sales process. We can integrate with your existing tech stack, create personalized messaging sequences, and set up advanced tracking and reporting."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"LinkedIn Outreach Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>LinkedIn Outreach Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">LinkedIn</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Lead Generation</span>
+          <span class="cs-tag">Sales Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate LinkedIn Outreach with Linked API & Google Sheets</h1>
+        <p class="cs-hero-sub">Free n8n workflow to send connection requests, manage follow-up sequences, and track results automatically—saving 10+ hours weekly on manual prospecting.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12915-manage-linkedin-outreach-sequences-with-linked-api-and.json?ik-attachment=true" download="linkedin-outreach-automation.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12915-manage-linkedin-outreach-sequences-with-linked-api-and.png" alt="LinkedIn outreach automation workflow diagram showing connection requests, message sequences, and Google Sheets integration" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual LinkedIn prospecting is time-consuming and inconsistent. Sales teams spend hours each day sending connection requests, tracking acceptances, and following up—often losing leads in spreadsheets or forgetting timely follow-ups.</p>
+        <p>This n8n workflow automates your entire LinkedIn outreach sequence. It sends personalized connection requests to targeted prospects, monitors when they accept, delivers your pre-written message sequence, and tracks every interaction in Google Sheets. The system respects LinkedIn's daily limits, includes smart delays between actions, and marks leads as "no response" after appropriate timeouts.</p>
+        <p>You get a fully automated prospecting machine that works 24/7, ensures no lead falls through the cracks, and provides complete visibility into your outreach performance through automated reporting.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Lead Import & Status Check</h3>
+        <p>The workflow reads leads from your Google Sheet where status is marked as "NEW." It checks daily connection limits to ensure compliance with LinkedIn's guidelines before proceeding with any outreach.</p>
+        
+        <h3>2. Connection Request Phase</h3>
+        <p>Using Linked API, the system sends personalized connection requests to each new lead. Each request includes a customized note based on the prospect's profile information, increasing acceptance rates.</p>
+        
+        <h3>3. Acceptance Monitoring</h3>
+        <p>The workflow periodically checks which connection requests were accepted, expired, or declined. Accepted connections trigger the next phase, while expired requests are marked appropriately in your tracking sheet.</p>
+        
+        <h3>4. Message Sequence Delivery</h3>
+        <p>Once a connection is accepted, the system waits a configured delay (typically 24 hours) then sends your first follow-up message. Up to three messages can be configured with increasing delays between each.</p>
+        
+        <h3>5. Response Tracking & Follow-up</h3>
+        <p>The system monitors for replies to your messages. If no reply is received within a configured timeframe, leads are marked as "NO_RESPONSE" in Google Sheets, allowing for future re-engagement campaigns.</p>
+        
+        <h3>6. Complete Activity Logging</h3>
+        <p>Every action—connection sent, acceptance status, messages delivered, replies received—is timestamped and logged in your Google Sheet, creating a complete audit trail of your outreach efforts.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for B2B sales teams, recruiters, agency owners, and consultants who regularly use LinkedIn for business development. If you're spending more than 5 hours weekly on manual LinkedIn outreach, this workflow will save you significant time while improving consistency and results.</p>
+        <p>Marketing agencies serving B2B clients can deploy this for multiple client accounts with customized messaging sequences. SaaS companies can use it for outbound sales prospecting to targeted ideal customer profiles. Executive recruiters can automate initial outreach to passive candidates while maintaining personalization.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) with workflow execution capabilities</li>
+          <li><strong>Linked API account</strong> with valid API credentials for LinkedIn automation</li>
+          <li><strong>Google Sheets</strong> with OAuth2 access configured in n8n</li>
+          <li><strong>Google Sheet template</strong> containing your lead list with columns for status, messages, and timestamps</li>
+          <li><strong>Pre-written message templates</strong> (3 variations recommended) for your follow-up sequence</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with conservative daily limits (20-25 connection requests) and gradually increase as you establish consistent sending patterns. Personalize connection notes with specific references to the prospect's recent activity or shared connections for higher acceptance rates.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to implement this LinkedIn outreach automation in under 30 minutes:</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance.</li>
+          <li><strong>Copy the Google Sheet template</strong> from the provided link in the workflow description and customize the column headers if needed.</li>
+          <li><strong>Configure credentials</strong> in n8n for Google Sheets (OAuth2) and Linked API (API key).</li>
+          <li><strong>Update the Config node</strong> with your Google Sheet URL and adjust timing parameters based on your outreach strategy.</li>
+          <li><strong>Add your leads</strong> to the Google Sheet with status "NEW" and populate your message templates.</li>
+          <li><strong>Test with 5-10 leads</strong> first to ensure everything works correctly before scaling.</li>
+          <li><strong>Activate the workflow</strong> and monitor the initial runs to verify proper execution.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10-15 hours weekly</strong> by eliminating manual connection requests, acceptance tracking, and follow-up reminders. What used to be a daily chore becomes an automated process running in the background.</p>
+        <p><strong>Improve response rates by 30-50%</strong> through consistent, timely follow-ups. The system ensures no lead waits too long for your next message, maintaining engagement momentum.</p>
+        <p><strong>Eliminate spreadsheet chaos</strong> with automatic status updates and timestamp logging. Your Google Sheet becomes a real-time dashboard of outreach performance instead of a manual tracking headache.</p>
+        <p><strong>Scale outreach without adding staff</strong> by automating repetitive tasks. One workflow can handle hundreds of prospects simultaneously, allowing your sales team to focus on conversations rather than administrative work.</p>
+        <p><strong>Maintain LinkedIn account health</strong> with built-in compliance to daily limits and smart delays between actions. The workflow prevents flagging by LinkedIn's anti-spam systems through responsible automation practices.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about LinkedIn automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of automating LinkedIn outreach?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating LinkedIn outreach saves 10-15 hours weekly, ensures consistent follow-up timing, eliminates manual data entry errors, and provides measurable ROI tracking through automated reporting in tools like Google Sheets.</p>
+          <p>Beyond time savings, automation increases response rates by ensuring perfect timing—messages go out immediately after connection acceptance, when engagement is highest. It also enables A/B testing of messaging at scale to optimize performance.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does LinkedIn automation differ from email marketing automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>LinkedIn automation focuses on relationship-building through connection requests and personalized messages within a professional network, while email marketing targets broader audiences. LinkedIn automation typically has higher response rates (15-25%) but requires careful compliance with platform limits to avoid account restrictions.</p>
+          <p>The key distinction is context: LinkedIn interactions happen within professional profiles where you can reference specific work experience, mutual connections, or recent activity. This allows for more personalized, relevant outreach compared to email blasts.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the daily limits for LinkedIn connection requests?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>LinkedIn typically allows 25-100 connection requests daily depending on account age and activity. Best practice is to stay under 50 daily requests, space them throughout the day, and personalize each message to maintain account health and avoid triggering LinkedIn's anti-spam systems.</p>
+          <p>Newer accounts should start with 20-25 daily requests and gradually increase over weeks. Premium accounts generally have higher limits. The workflow includes configurable daily limits to ensure compliance.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can I personalize automated LinkedIn messages at scale?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Use merge tags to insert prospect names, companies, or recent achievements mentioned in their profiles. Create 3-5 message templates for different industries or roles, and use conditional logic to send the most relevant template based on profile data. Always include a genuine value proposition specific to their situation.</p>
+          <p>Advanced personalization can reference recent posts, job changes, or mutual connections. The workflow supports dynamic message templates that pull data from your Google Sheets to create highly relevant outreach.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What metrics should I track for LinkedIn outreach campaigns?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Track connection acceptance rate (15-30% is good), response rate to messages (10-20% is solid), meeting booking rate (2-5% is typical), and overall conversion to opportunities. Monitor daily limits compliance and adjust messaging based on which templates generate the highest engagement.</p>
+          <p>The automated Google Sheets tracking in this workflow captures all these metrics, including timestamps for each interaction. This data helps identify optimal sending times, most effective message templates, and ideal prospect profiles for future targeting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I integrate LinkedIn automation with my CRM?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Connect LinkedIn automation workflows to your CRM (like HubSpot or Salesforce) to automatically create contacts, log interactions, and update lead statuses. This creates a single source of truth where sales teams can see the entire engagement history without switching between platforms.</p>
+          <p>The n8n workflow can be extended with additional nodes to push data to your CRM whenever a lead progresses through the sequence. This ensures your sales team has real-time visibility into which prospects are most engaged and ready for sales conversations.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom LinkedIn automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom LinkedIn automation systems tailored to your specific industry, target audience, and sales process. We can integrate with your existing tech stack, create personalized messaging sequences, and set up advanced tracking and reporting.</p>
+          <p>Our team works with you to understand your ideal customer profile, sales cycle, and compliance requirements, then builds a solution that aligns with your business goals. We handle everything from initial configuration to ongoing optimization and support.</p>
+          <ul>
+            <li>Custom integration with your CRM and marketing tools</li>
+            <li>Industry-specific messaging templates and sequences</li>
+            <li>Advanced reporting and performance dashboards</li>
+            <li>Ongoing optimization based on campaign results</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom LinkedIn Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
