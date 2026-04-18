@@ -136,7 +136,7 @@ const BLOG_POSTS = [
 },
 {
   title: "Zapier Review 2026: Automate Everything Without Coding (Beginners Guide)",
-  desc: "Discover how Zapier's AI co-pilot in <span data-year="current"></span> lets anyone automate workflows between apps using plain English. We build 3 real-world Zaps from scratch in this hands-on tutorial.",
+  desc: "Discover how Zapier's AI co-pilot in 2026 lets anyone automate workflows between apps using plain English. We build 3 real-world Zaps from scratch in this hands-on tutorial.",
   url: "/blog/zapier-review-automate-everything-step-by-step",
   tags: ["Zapier","Automation","AI Agents"],
   date: "2026-03-29",
