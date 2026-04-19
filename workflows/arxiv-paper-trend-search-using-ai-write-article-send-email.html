@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Powered Arxiv Research & Newsletter Automation | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate academic research. This n8n workflow scans Arxiv for new papers, uses AI to summarize trends, and sends personalized newsletters to subscribers via Gmail.">
+<link rel="canonical" href="https://growwstacks.com/workflows/962-arxiv-paper-trend-search-using-ai-write-article-send-email/">
+<meta property="og:title" content="Automate Arxiv Research & AI Newsletters | Free n8n Workflow">
+<meta property="og:description" content="Scan Arxiv, summarize papers with AI, and send automated newsletters. Free n8n template for researchers, academics, and content creators.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/962-arxiv-paper-trend-search-using-ai-write-article-send-email/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2404-arxiv-paper-trend-search-using-ai-write-article-send-em.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Arxiv Research & AI Newsletters | Free n8n Workflow">
+<meta name="twitter:description" content="Scan Arxiv, summarize papers with AI, and send automated newsletters. Free n8n template for researchers, academics, and content creators.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI-Powered Arxiv Research & Newsletter Automation","description":"Automate academic research. This n8n workflow scans Arxiv for new papers, uses AI to summarize trends, and sends personalized newsletters to subscribers via Gmail.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2404-arxiv-paper-trend-search-using-ai-write-article-send-em.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the benefit of automating academic research with AI?","acceptedAnswer":{"@type":"Answer","text":"Automating academic research with AI saves researchers and content creators dozens of hours per week. Instead of manually checking Arxiv, reading abstracts, and writing summaries, this workflow automatically finds, filters, and summarizes relevant papers. This allows you to stay current with the latest developments in your field without the time-consuming manual work, freeing you up for deeper analysis and content creation."}},{"@type":"Question","name":"How does AI help in summarizing complex research papers?","acceptedAnswer":{"@type":"Answer","text":"AI models, like those from OpenAI or Anthropic, are trained on vast amounts of text and can understand context, extract key points, and generate concise summaries. In this workflow, AI analyzes the abstract and key sections of each Arxiv paper, identifying the core problem, methodology, and findings. It then rewrites this into an accessible format suitable for a newsletter, highlighting trends and implications for your specific audience."}},{"@type":"Question","name":"Can I customize which Arxiv categories or keywords are tracked?","acceptedAnswer":{"@type":"Answer","text":"Yes, absolutely. The workflow is designed to be fully customizable. You can specify exact Arxiv categories (like cs.AI, cs.LG, stat.ML) and define a list of keywords or topics. The automation will then filter incoming papers based on these criteria, ensuring you only receive and distribute content that is highly relevant to your subscribers' interests."}},{"@type":"Question","name":"What's the advantage of using a database like Supabase in this workflow?","acceptedAnswer":{"@type":"Answer","text":"Using Supabase (or a similar database) is crucial for personalization and scalability. It allows you to store subscriber preferences—like their email, chosen categories, and specific keywords. The workflow can then query the database to fetch only the papers matching each subscriber's profile, enabling you to send hyper-personalized newsletter digests rather than a generic blast to everyone."}},{"@type":"Question","name":"How reliable is the Arxiv API for automation?","acceptedAnswer":{"@type":"Answer","text":"The Arxiv API is very reliable and widely used for academic automation. It provides a stable interface to search for papers by category, date, and keyword. The workflow includes error handling and retry logic to manage any temporary API issues. For mission-critical systems, you can add additional checks and fallback sources, but for most newsletter purposes, the Arxiv API is perfectly robust."}},{"@type":"Question","name":"What are the common use cases for an automated research newsletter?","acceptedAnswer":{"@type":"Answer","text":"Common use cases include: 1) Academic labs keeping members updated on sub-field publications. 2) Tech companies tracking R&D in adjacent fields. 3) Content creators and educators building a curated news service for their audience. 4) Investment firms monitoring emerging tech trends. 5) Individual researchers staying atop their field without daily manual checks. It's ideal for any group that needs regular, filtered insights from academic literature."}},{"@type":"Question","name":"How do I ensure the AI summaries are accurate and unbiased?","acceptedAnswer":{"@type":"Answer","text":"Accuracy is managed through prompt engineering. The workflow instructs the AI to base summaries strictly on the paper's abstract and introduction, avoiding speculation. You can add a human-in-the-loop step for final review before sending, or set confidence thresholds. Using a vector database (like Qdrant in the template) to store and retrieve similar past papers can also help the AI provide context-aware summaries, reducing hallucination."}},{"@type":"Question","name":"Can I get a custom academic research automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored automation systems for research, analysis, and content distribution. We can extend this template to include more data sources (like PubMed, Google Scholar), integrate with your internal knowledge base, add advanced filtering with custom ML models, or build a complete dashboard for your team. Book a free consultation to discuss your specific workflow, data sources, and output requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Arxiv AI Research Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Arxiv AI Research Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AI Automation</span>
+          <span class="cs-tag">Research</span>
+          <span class="cs-tag">Newsletter</span>
+          <span class="cs-tag">Arxiv</span>
+          <span class="cs-tag">Gmail</span>
+        </div>
+        <h1>Automate Arxiv Research & AI-Powered Newsletters</h1>
+        <p class="cs-hero-sub">Scan the latest academic papers, generate AI summaries, and send personalized email digests—fully automated with n8n.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2404-arxiv-paper-trend-search-using-ai-write-article-send-em.png" alt="Visual diagram of an automation workflow connecting Arxiv, AI processing, and email newsletter delivery" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Staying on top of cutting-edge academic research is a massive time sink. Manually checking Arxiv, reading dozens of abstracts, and synthesizing findings into a digestible format can consume 10–15 hours per week for researchers, content creators, and tech leaders.</p>
+        <p>This intelligent automation solves that problem. It acts as your personal research assistant, automatically scanning the Arxiv preprint server for new papers in your specified categories (like cs.AI, cs.LG). It then uses AI to analyze, score, and summarize the most relevant publications based on your keywords. Finally, it compiles these insights into a polished newsletter and delivers it directly to your subscriber list via Gmail—all without any manual intervention.</p>
+        <p>The result? You and your audience receive a curated, insightful digest of the latest research trends every week, saving you countless hours and ensuring you never miss a pivotal paper.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow connects several powerful tools to create a seamless pipeline from raw research to delivered insight.</p>
+
+        <h3>1. Trigger & Data Collection</h3>
+        <p>A scheduled trigger (like Cron or Schedule Trigger node) runs the workflow weekly. It queries the Arxiv API using your configured search parameters—categories, publication date range, and keywords.</p>
+
+        <h3>2. AI-Powered Analysis & Filtering</h3>
+        <p>Each fetched paper is sent to an AI model (like OpenAI or Anthropic). The AI evaluates the paper's relevance based on your criteria, extracts the core thesis, and generates a concise, readable summary suitable for a non-expert audience.</p>
+
+        <h3>3. Personalization & Database Lookup</h3>
+        <p>The workflow connects to a Supabase database containing your subscriber list. For each subscriber, it retrieves their preferred categories and keywords, ensuring the final newsletter contains only papers that match their individual interests.</p>
+
+        <h3>4. Newsletter Composition & Delivery</h3>
+        <p>Using the filtered and summarized papers, the workflow constructs a well-formatted HTML email newsletter. It then uses the Gmail node (or your preferred email service) to send the personalized digest to each subscriber, complete with links to the full papers.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use the "Split in Batches" node to process large numbers of papers efficiently without hitting API rate limits. Add a "Filter" node after the AI step to only include papers with a relevance score above a threshold you set.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is a game-changer for:</p>
+        <ul>
+          <li><strong>Academic Researchers & Labs:</strong> Keep your team updated on the latest publications in your niche without manual literature reviews.</li>
+          <li><strong>Tech Content Creators & Educators:</strong> Build a loyal audience by providing a valuable, automated service that curates the latest AI or CS research.</li>
+          <li><strong>Startups & R&D Teams:</strong> Monitor competitive and adjacent research fields to inform product development and strategy.</li>
+          <li><strong>Investors & Analysts:</strong> Track emerging trends and innovations in specific technological domains to identify potential opportunities early.</li>
+          <li><strong>Community Managers:</strong> Foster engagement in Discord, Slack, or forum communities by sharing regular, high-quality research digests.</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An <strong>n8n instance</strong> (cloud or self-hosted).</li>
+          <li>Access to an <strong>AI/LLM API</strong> (OpenAI, Anthropic, Groq, etc.) with credits.</li>
+          <li>A <strong>Supabase account</strong> (free tier works) or another database to store subscriber preferences.</li>
+          <li>A <strong>Gmail account</strong> (or SendGrid/Mailgun API keys) for sending emails.</li>
+          <li>(Optional) A <strong>Qdrant or similar vector database</strong> for advanced semantic search and deduplication of papers.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Get this automation running in your n8n instance in under 30 minutes.</p>
+        <ol>
+          <li><strong>Download & Import:</strong> Click the "Download Template" button above and import the JSON file into your n8n canvas.</li>
+          <li><strong>Configure Credentials:</strong> Set up the credentials for your AI service (OpenAI), your database (Supabase), and your email sender (Gmail) in n8n.</li>
+          <li><strong>Set Your Search Parameters:</strong> In the "Arxiv" node, define the categories (e.g., cs.AI, stat.ML) and the query (e.g., "large language models"). Adjust the schedule trigger to your preferred frequency.</li>
+          <li><strong>Populate Your Subscriber Database:</strong> Add test subscribers to your Supabase table with their email and preferred categories/keywords.</li>
+          <li><strong>Test & Activate:</strong> Run the workflow once in manual mode to see the full flow from search to email. Check the results, then activate the schedule trigger.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a small, trusted test group for your newsletter. Use the AI's summary output to fine-tune your prompts for clarity and tone before sending to your full list.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 10+ Hours Weekly:</strong> Eliminate the manual process of searching, reading, and summarizing papers. This workflow does the heavy lifting automatically.</p>
+        <p><strong>Never Miss a Key Paper:</strong> Automated, scheduled scans ensure you're always up-to-date with the latest publications in your field, even during busy periods.</p>
+        <p><strong>Scale Personalized Communication:</strong> Move from a generic newsletter to a personalized digest for each subscriber based on their unique interests, increasing engagement and value.</p>
+        <p><strong>Establish Thought Leadership:</strong> Consistently delivering high-quality, curated research positions you or your brand as a trusted source of insight in your industry.</p>
+        <p><strong>Foundation for Advanced AI Agents:</strong> This workflow is a perfect building block for more complex AI research agents that can answer questions, generate reports, or trigger alerts based on specific findings.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI-powered research and newsletter automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the benefit of automating academic research with AI?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating academic research with AI saves researchers and content creators dozens of hours per week. Instead of manually checking Arxiv, reading abstracts, and writing summaries, this workflow automatically finds, filters, and summarizes relevant papers. This allows you to stay current with the latest developments in your field without the time-consuming manual work, freeing you up for deeper analysis and content creation.</p>
+          <p>Beyond time savings, it also improves consistency and scope. An AI can scan hundreds of papers without fatigue, applying the same objective criteria to each, ensuring your newsletter or internal brief is comprehensive and unbiased.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI help in summarizing complex research papers?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI models, like those from OpenAI or Anthropic, are trained on vast amounts of text and can understand context, extract key points, and generate concise summaries. In this workflow, AI analyzes the abstract and key sections of each Arxiv paper, identifying the core problem, methodology, and findings.</p>
+          <p>It then rewrites this into an accessible format suitable for a newsletter, highlighting trends and implications for your specific audience. You can instruct the AI to focus on practical applications, technical novelty, or commercial potential, tailoring the output to your subscribers' needs.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I customize which Arxiv categories or keywords are tracked?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, absolutely. The workflow is designed to be fully customizable. You can specify exact Arxiv categories (like cs.AI, cs.LG, stat.ML) and define a list of keywords or topics. The automation will then filter incoming papers based on these criteria, ensuring you only receive and distribute content that is highly relevant to your subscribers' interests.</p>
+          <p>This customization happens in the Arxiv node's search query and can be dynamically driven from your subscriber database, allowing for unique digests per user or segment.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the advantage of using a database like Supabase in this workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Using Supabase (or a similar database) is crucial for personalization and scalability. It allows you to store subscriber preferences—like their email, chosen categories, and specific keywords. The workflow can then query the database to fetch only the papers matching each subscriber's profile, enabling you to send hyper-personalized newsletter digests rather than a generic blast to everyone.</p>
+          <p>It also provides a historical record, helps with managing unsubscribes, and is essential for growing your list beyond a simple spreadsheet.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How reliable is the Arxiv API for automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The Arxiv API is very reliable and widely used for academic automation. It provides a stable interface to search for papers by category, date, and keyword. The workflow includes error handling and retry logic to manage any temporary API issues.</p>
+          <p>For mission-critical systems, you can add additional checks and fallback sources, but for most newsletter purposes, the Arxiv API is perfectly robust. Running the workflow once a week provides a good balance between freshness and reliability.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the common use cases for an automated research newsletter?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common use cases include: 1) Academic labs keeping members updated on sub-field publications. 2) Tech companies tracking R&D in adjacent fields. 3) Content creators and educators building a curated news service for their audience. 4) Investment firms monitoring emerging tech trends. 5) Individual researchers staying atop their field without daily manual checks.</p>
+          <p>It's ideal for any group that needs regular, filtered insights from academic literature but lacks the time to manually curate it. The automation turns a scattered, overwhelming feed into a structured, actionable resource.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I ensure the AI summaries are accurate and unbiased?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Accuracy is managed through prompt engineering. The workflow instructs the AI to base summaries strictly on the paper's abstract and introduction, avoiding speculation. You can add a human-in-the-loop step for final review before sending, or set confidence thresholds.</p>
+          <p>Using a vector database (like Qdrant in the template) to store and retrieve similar past papers can also help the AI provide context-aware summaries, reducing hallucination. For critical applications, consider a two-step process where the AI drafts a summary and a second, more conservative model reviews it.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom academic research automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored automation systems for research, analysis, and content distribution. We can extend this template to include more data sources (like PubMed, Google Scholar), integrate with your internal knowledge base, add advanced filtering with custom ML models, or build a complete dashboard for your team.</p>
+          <p>Whether you need to monitor specific authors, cross-reference patents, or generate detailed weekly reports for stakeholders, we can design a system that fits your exact workflow. Book a free consultation to discuss your specific data sources, analysis needs, and output requirements.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Academic Research Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

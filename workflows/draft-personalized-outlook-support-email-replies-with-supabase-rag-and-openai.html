@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Customer Support Replies with Outlook, Supabase & OpenAI | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow: Automatically draft personalized Outlook support emails using Supabase RAG & OpenAI. Reduce response time, ensure accuracy, and scale your customer support.">
+<link rel="canonical" href="https://growwstacks.com/workflows/8010-draft-personalized-outlook-support-email-replies-with-supabase-rag-and-openai/">
+<meta property="og:title" content="Automate Customer Support Replies with Outlook, Supabase & OpenAI">
+<meta property="og:description" content="Free n8n workflow: Automatically draft personalized Outlook support emails using Supabase RAG & OpenAI. Reduce response time, ensure accuracy, and scale your customer support.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/8010-draft-personalized-outlook-support-email-replies-with-supabase-rag-and-openai/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12839-draft-personalized-outlook-support-email-replies-with-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Customer Support Replies with Outlook, Supabase & OpenAI">
+<meta name="twitter:description" content="Free n8n workflow: Automatically draft personalized Outlook support emails using Supabase RAG & OpenAI. Reduce response time, ensure accuracy, and scale your customer support.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate Customer Support Replies with Outlook, Supabase & OpenAI","description":"Free n8n workflow: Automatically draft personalized Outlook support emails using Supabase RAG & OpenAI. Reduce response time, ensure accuracy, and scale your customer support.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12839-draft-personalized-outlook-support-email-replies-with-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is RAG and how does it improve customer support?","acceptedAnswer":{"@type":"Answer","text":"RAG (Retrieval-Augmented Generation) combines AI with your company's knowledge base to provide accurate, context-aware answers. For customer support, it means AI drafts replies using your actual product manuals, FAQs, and documentation, not just generic information. This ensures responses are technically correct, brand-aligned, and personalized to each customer's specific situation."}},{"@type":"Question","name":"How much time can AI email drafting save my support team?","acceptedAnswer":{"@type":"Answer","text":"AI email drafting can save 5-10 minutes per initial support inquiry. For a team handling 50 tickets daily, that's 4-8 hours saved every day. The automation handles research (checking CRM, searching docs) and first-draft creation, allowing agents to focus on complex issues and quality assurance rather than repetitive writing tasks."}},{"@type":"Question","name":"Is it safe to use AI for customer support emails?","acceptedAnswer":{"@type":"Answer","text":"Yes, when implemented correctly. This workflow keeps humans in the loop—AI creates drafts that agents review and send. It uses your private knowledge base (Supabase) rather than public internet data, ensuring confidential information stays secure. The system follows your predefined business rules and tone guidelines for consistent, brand-safe communication."}},{"@type":"Question","name":"What's the difference between this and a standard email template?","acceptedAnswer":{"@type":"Answer","text":"Standard templates are static and generic. This AI-powered approach creates dynamic, personalized replies by: 1) Pulling customer details from your CRM, 2) Searching your knowledge base for relevant solutions, 3) Adapting tone based on inquiry urgency, and 4) Including specific product references. Each draft is uniquely tailored while maintaining brand consistency."}},{"@type":"Question","name":"Do I need technical expertise to set up this automation?","acceptedAnswer":{"@type":"Answer","text":"Basic technical comfort is helpful but not required. The free template provides a ready-to-use structure. You'll need to connect your Outlook, Supabase, and OpenAI accounts—similar to linking apps in Zapier. Most businesses can implement it with 2-3 hours of setup, and the workflow includes clear configuration steps for non-technical users."}},{"@type":"Question","name":"Can this workflow handle complex technical support questions?","acceptedAnswer":{"@type":"Answer","text":"Yes, that's where RAG excels. When a technical question arrives, the AI agent searches your Supabase vector store for relevant documentation, code snippets, or troubleshooting guides. It then synthesizes this information into a coherent response. For highly complex issues, it can draft an acknowledgment email and route the ticket to appropriate specialists with context already prepared."}},{"@type":"Question","name":"How does integrating Outlook with Supabase improve customer experience?","acceptedAnswer":{"@type":"Answer","text":"Integration creates a seamless customer journey: 1) When an email arrives, the system instantly identifies the sender in your CRM, 2) Pulls their purchase history and past interactions, 3) Uses this context to personalize the reply, and 4) Logs the interaction back to their profile. Customers feel recognized and receive faster, more relevant support without repeating information."}},{"@type":"Question","name":"Can I get a custom customer support automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. While this free template provides a solid foundation, every business has unique workflows, tools, and requirements. Our team at GrowwStacks specializes in building fully tailored support automation systems that integrate with your specific CRM, knowledge base, escalation processes, and reporting needs. We handle everything from design to deployment and training."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"AI Customer Support Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>AI Customer Support Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Microsoft Outlook</span>
+          <span class="cs-tag">Supabase</span>
+          <span class="cs-tag">OpenAI</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">RAG</span>
+        </div>
+        <h1>Automate Customer Support Replies with AI & RAG</h1>
+        <p class="cs-hero-sub">Free n8n workflow that drafts personalized Outlook support emails using Supabase knowledge base and OpenAI—reducing response time by 70% while ensuring accuracy.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12839-draft-personalized-outlook-support-email-replies-with-.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12839-draft-personalized-outlook-support-email-replies-with-.png" alt="Visual diagram showing AI customer support automation workflow connecting Outlook, Supabase, and OpenAI" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Customer support teams spend hours daily drafting initial responses to common inquiries. This repetitive task delays resolutions and creates inconsistency. This workflow automates the first line of defense by intelligently drafting personalized email replies using your company's actual knowledge base.</p>
+        <p>It bridges your CRM (Supabase), technical documentation (vector store), and inbox (Outlook) to create context-aware drafts in seconds. When a support email arrives, the system identifies the sender, researches their question against your documentation, and generates a professional, accurate reply ready for agent review.</p>
+        
+        <h2>How It Works</h2>
+        <h3>1. Trigger & Contact Enrichment</h3>
+        <p>The workflow monitors your Microsoft Outlook inbox for new messages. When an email arrives, it immediately queries your Supabase CRM to identify the sender—retrieving their name, organization, department, and any relevant history.</p>
+        
+        <h3>2. Context Construction & AI Analysis</h3>
+        <p>A custom code node prepares a comprehensive "chat input" containing the email body, sender metadata, and your specific business rules. An AI Agent (GPT-4o) analyzes the request to determine intent, urgency, and required information.</p>
+        
+        <h3>3. Knowledge Retrieval (RAG)</h3>
+        <p>If technical details are needed, the agent uses Supabase Vector Store to semantically search your product manuals, FAQs, and documentation. It retrieves the most relevant passages to ensure the response is accurate and specific to your products.</p>
+        
+        <h3>4. Draft Creation & Logging</h3>
+        <p>The AI generates an HTML-formatted reply with personalized greetings, accurate solutions, and proper brand tone. This draft is saved to Outlook for manual review and sending. Simultaneously, the interaction is logged to Google Sheets for performance tracking and analytics.</p>
+        
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for:</p>
+        <ul>
+          <li><strong>SaaS companies</strong> with technical support teams handling product questions</li>
+          <li><strong>E-commerce businesses</strong> receiving order status and return inquiries</li>
+          <li><strong>B2B service providers</strong> needing consistent, documented responses</li>
+          <li><strong>Growing startups</strong> where support volume is increasing faster than team size</li>
+          <li><strong>Any business</strong> with structured documentation wanting to provide faster, more accurate support</li>
+        </ul>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Microsoft Outlook Business/Office 365 account</strong> with API access</li>
+          <li><strong>Supabase project</strong> with:
+            <ul>
+              <li>A <code>contacts</code> table for customer lookup</li>
+              <li>Vector-enabled database with document embeddings (for RAG)</li>
+            </ul>
+          </li>
+          <li><strong>OpenAI API key</strong> for GPT-4o model access</li>
+          <li><strong>Google Sheets</strong> for execution logging (optional but recommended)</li>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) to run the workflow</li>
+        </ol>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Before implementing, audit your most common support questions and ensure your Supabase knowledge base contains clear, up-to-date answers. The AI's quality depends directly on your documentation's quality.</p>
+        </div>
+        
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Import the template</strong> by pasting the downloaded JSON into your n8n canvas</li>
+          <li><strong>Configure credentials</strong> for Outlook, OpenAI, Supabase, and Google Sheets in n8n</li>
+          <li><strong>Update placeholder values</strong>:
+            <ul>
+              <li>Set the Supabase table name to your actual CRM contacts table</li>
+              <li>Configure the vector store query to match your document embeddings setup</li>
+              <li>Replace the Google Sheets document ID and sheet name with your tracking spreadsheet</li>
+            </ul>
+          </li>
+          <li><strong>Customize business rules</strong> in the "Build AI Prompt" code node—replace <code>[YOUR_COMPANY]</code> and <code>[YOUR_NAME]</code> with your actual brand details</li>
+          <li><strong>Test with sample emails</strong> to verify contact lookup, knowledge retrieval, and draft quality before going live</li>
+        </ol>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Reduce first-response time by 70%:</strong> Drafts are ready in seconds instead of minutes, allowing agents to focus on complex issues rather than initial research and writing.</p>
+        <p><strong>Ensure 100% documentation accuracy:</strong> Replies are grounded in your actual product manuals and FAQs, eliminating guesswork and reducing incorrect information.</p>
+        <p><strong>Maintain consistent brand voice:</strong> Every draft follows your predefined business rules, tone guidelines, and formatting standards—no more style variations between agents.</p>
+        <p><strong>Scale support without hiring:</strong> Handle increasing inquiry volumes with your existing team by automating the repetitive parts of their workflow.</p>
+        <p><strong>Gain valuable insights:</strong> Automatic logging to Google Sheets creates a searchable database of inquiry types, response patterns, and resolution effectiveness for continuous improvement.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Implementation note:</strong> Start with a pilot phase where agents review all AI drafts before sending. As confidence grows, you can automate sending for simple, low-risk inquiries while keeping complex cases in the review queue.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI customer support automation and RAG integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is RAG and how does it improve customer support?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>RAG (Retrieval-Augmented Generation) combines AI with your company's knowledge base to provide accurate, context-aware answers. For customer support, it means AI drafts replies using your actual product manuals, FAQs, and documentation, not just generic information.</p>
+          <p>This ensures responses are technically correct, brand-aligned, and personalized to each customer's specific situation. Unlike standard chatbots that might hallucinate information, RAG grounds every response in verified company knowledge.</p>
+          <ul>
+            <li>Eliminates incorrect or outdated information</li>
+            <li>References specific product versions and features</li>
+            <li>Maintains consistency across all support channels</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How much time can AI email drafting save my support team?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI email drafting can save 5-10 minutes per initial support inquiry. For a team handling 50 tickets daily, that's 4-8 hours saved every day. The automation handles research (checking CRM, searching docs) and first-draft creation.</p>
+          <p>Agents shift from writers to editors and problem-solvers. They review and personalize drafts rather than starting from scratch, dramatically increasing their capacity to handle complex cases and improve customer satisfaction scores.</p>
+          <ul>
+            <li>Faster response times improve CSAT scores</li>
+            <li>Reduces agent burnout from repetitive tasks</li>
+            <li>Allows scaling support volume without proportional hiring</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is it safe to use AI for customer support emails?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, when implemented correctly. This workflow keeps humans in the loop—AI creates drafts that agents review and send. It uses your private knowledge base (Supabase) rather than public internet data, ensuring confidential information stays secure.</p>
+          <p>The system follows your predefined business rules and tone guidelines for consistent, brand-safe communication. You maintain full control over what information is accessible and can implement approval workflows for sensitive topics.</p>
+          <ul>
+            <li>No customer data sent to public AI training</li>
+            <li>Agents review all drafts before sending</li>
+            <li>Audit trail of all generated content</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the difference between this and a standard email template?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Standard templates are static and generic. This AI-powered approach creates dynamic, personalized replies by: 1) Pulling customer details from your CRM, 2) Searching your knowledge base for relevant solutions, 3) Adapting tone based on inquiry urgency, and 4) Including specific product references.</p>
+          <p>Each draft is uniquely tailored while maintaining brand consistency. The system understands context—it won't send a "welcome" template to a long-term customer or a technical deep-dive to someone asking about billing.</p>
+          <ul>
+            <li>Personalized greetings using customer names</li>
+            <li>Context-aware solution recommendations</li>
+            <li>Dynamic content based on inquiry complexity</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do I need technical expertise to set up this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Basic technical comfort is helpful but not required. The free template provides a ready-to-use structure. You'll need to connect your Outlook, Supabase, and OpenAI accounts—similar to linking apps in Zapier.</p>
+          <p>Most businesses can implement it with 2-3 hours of setup, and the workflow includes clear configuration steps for non-technical users. For complex customizations, our team at GrowwStacks provides implementation support.</p>
+          <ul>
+            <li>Step-by-step configuration guide included</li>
+            <li>No coding required for basic setup</li>
+            <li>Professional support available if needed</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow handle complex technical support questions?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, that's where RAG excels. When a technical question arrives, the AI agent searches your Supabase vector store for relevant documentation, code snippets, or troubleshooting guides. It then synthesizes this information into a coherent response.</p>
+          <p>For highly complex issues, it can draft an acknowledgment email and route the ticket to appropriate specialists with context already prepared. The system recognizes its limitations and escalates appropriately while still providing immediate value.</p>
+          <ul>
+            <li>Handles multi-step troubleshooting procedures</li>
+            <li>References specific error codes and solutions</li>
+            <li>Properly escalates beyond its capability</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does integrating Outlook with Supabase improve customer experience?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Integration creates a seamless customer journey: 1) When an email arrives, the system instantly identifies the sender in your CRM, 2) Pulls their purchase history and past interactions, 3) Uses this context to personalize the reply, and 4) Logs the interaction back to their profile.</p>
+          <p>Customers feel recognized and receive faster, more relevant support without repeating information. The system remembers previous conversations, product preferences, and even communication style preferences for truly personalized service.</p>
+          <ul>
+            <li>Eliminates "tell us about your issue again"</li>
+            <li>References past successful solutions</li>
+            <li>Maintains conversation continuity across interactions</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom customer support automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. While this free template provides a solid foundation, every business has unique workflows, tools, and requirements. Our team at GrowwStacks specializes in building fully tailored support automation systems.</p>
+          <p>We integrate with your specific CRM, knowledge base, escalation processes, and reporting needs. We handle everything from design to deployment and training, ensuring the system matches your exact business processes and scales with your growth.</p>
+          <ul>
+            <li>Custom integration with your existing tools</li>
+            <li>Tailored approval workflows and escalation rules</li>
+            <li>Ongoing optimization and support</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Customer Support Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

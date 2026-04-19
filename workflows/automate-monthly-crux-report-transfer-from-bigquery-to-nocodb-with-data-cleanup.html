@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Monthly CrUX Report Transfer from BigQuery to NocoDB | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate monthly CrUX data transfer from Google BigQuery to NocoDB with this free n8n workflow. Clean previous data, insert new rankings, and keep your database updated automatically.">
+<link rel="canonical" href="https://growwstacks.com/workflows/6038-automate-monthly-crux-report-transfer-from-bigquery-to-nocodb-with-data-cleanup/">
+<meta property="og:title" content="Automate Monthly CrUX Report Transfer from BigQuery to NocoDB">
+<meta property="og:description" content="Free n8n workflow template to automate CrUX data transfer from Google BigQuery to NocoDB with monthly cleanup and updates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/6038-automate-monthly-crux-report-transfer-from-bigquery-to-nocodb-with-data-cleanup/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9368-automate-monthly-crux-report-transfer-from-bigquery-to-.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Monthly CrUX Report Transfer from BigQuery to NocoDB">
+<meta name="twitter:description" content="Free n8n workflow template to automate CrUX data transfer from Google BigQuery to NocoDB with monthly cleanup and updates.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate Monthly CrUX Report Transfer from BigQuery to NocoDB","description":"Automate monthly CrUX data transfer from Google BigQuery to NocoDB with this free n8n workflow. Clean previous data, insert new rankings, and keep your database updated automatically.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9368-automate-monthly-crux-report-transfer-from-bigquery-to-.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is CrUX data and why is it important for my business?","acceptedAnswer":{"@type":"Answer","text":"CrUX (Chrome User Experience) data provides real user metrics about how people experience your website. It shows loading performance, interactivity, and visual stability based on actual Chrome browser usage. This data helps you identify performance issues affecting user satisfaction and search rankings."}},{"@type":"Question","name":"How does automating CrUX data transfer save time compared to manual processes?","acceptedAnswer":{"@type":"Answer","text":"Manual CrUX data transfer requires monthly login to BigQuery, running queries, exporting results, cleaning data, and importing to your database. This automation eliminates 3-5 hours of manual work each month while ensuring data consistency and eliminating human error in the transfer process."}},{"@type":"Question","name":"What are the benefits of storing CrUX data in NocoDB instead of just viewing it in BigQuery?","acceptedAnswer":{"@type":"Answer","text":"Storing CrUX data in NocoDB creates a historical performance database you can query, visualize, and combine with other business metrics. You can track trends over time, create custom dashboards, set up alerts for performance drops, and correlate website performance with business outcomes like conversions."}},{"@type":"Question","name":"Can I customize this workflow to include additional metrics beyond CrUX rank?","acceptedAnswer":{"@type":"Answer","text":"Yes, the Google BigQuery CrUX dataset includes multiple metrics like Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS). You can modify the query to extract these additional metrics and store them alongside rank data for comprehensive performance monitoring."}},{"@type":"Question","name":"How reliable is the monthly automation for critical business reporting?","acceptedAnswer":{"@type":"Answer","text":"The workflow includes error handling, retry logic, and notification capabilities. You can configure it to send alerts if data transfer fails, ensuring you never miss a monthly update. The automation runs on a schedule you control and provides audit trails of each execution."}},{"@type":"Question","name":"What other data sources can I combine with CrUX data for better insights?","acceptedAnswer":{"@type":"Answer","text":"You can integrate CrUX data with Google Analytics for traffic correlation, server monitoring tools for infrastructure insights, business metrics from your CRM, and competitor analysis data. This creates a holistic view of how technical performance impacts business outcomes."}},{"@type":"Question","name":"Can I get a custom CrUX data automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in custom automation solutions for CrUX data and web performance monitoring. We can build workflows that integrate CrUX data with your specific analytics stack, create custom dashboards, set up automated alerts, and combine multiple data sources for comprehensive insights."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"CrUX Report Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>CrUX Report Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google BigQuery</span>
+          <span class="cs-tag">NocoDB</span>
+          <span class="cs-tag">Data Automation</span>
+          <span class="cs-tag">Monthly Reports</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate Monthly CrUX Report Transfer from BigQuery to NocoDB</h1>
+        <p class="cs-hero-sub">Free n8n workflow to automatically transfer and clean Chrome User Experience data monthly, keeping your performance database always current.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/9368-automate-monthly-crux-report-transfer-from-bigquery-to-.png" alt="n8n workflow automation for CrUX data transfer from BigQuery to NocoDB" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This n8n workflow solves the tedious monthly task of manually extracting Chrome User Experience (CrUX) data from Google BigQuery and updating your performance database. Every month, website owners and digital marketers need fresh performance metrics to track how their sites are performing for real users. Without automation, this requires logging into multiple platforms, running complex queries, cleaning data, and manually updating databases.</p>
+        <p>The workflow automatically retrieves the latest monthly CrUX report from Google's public dataset, cleans previous month's data from your NocoDB database, and inserts the new rankings. It ensures your performance database always contains current data without manual intervention, providing reliable historical tracking of your website's popularity and user experience metrics.</p>
+        
+        <h2>How It Works</h2>
+        <h3>1. Monthly Schedule Trigger</h3>
+        <p>The workflow starts with a schedule trigger configured to run monthly. You can set it for the first day of each month or any date that aligns with your reporting cycle. This automation ensures consistent data collection without manual initiation.</p>
+        
+        <h3>2. Month-to-Table Conversion</h3>
+        <p>The workflow converts the current month name to a numeric format that matches Google BigQuery's table naming convention (e.g., "202509" for September 2025). This dynamic approach ensures the correct dataset is queried each month as new tables are added to the CrUX dataset.</p>
+        
+        <h3>3. Previous Data Cleanup</h3>
+        <p>Before inserting new data, the workflow deletes last month's CrUX records from your NocoDB table. This cleanup prevents duplicate entries and ensures your database only contains the most recent monthly rankings, maintaining data integrity and storage efficiency.</p>
+        
+        <h3>4. BigQuery Data Extraction</h3>
+        <p>The workflow queries Google BigQuery's public CrUX dataset using a configurable SQL query. You can adjust the LIMIT parameter to control how many top-ranked sites are retrieved, from top 100 to thousands, depending on your analysis needs.</p>
+        
+        <h3>5. Data Transformation and Insertion</h3>
+        <p>Extracted data is formatted for NocoDB compatibility and inserted into your designated table. The workflow handles data type conversions and field mappings, ensuring clean integration between BigQuery's raw data and your database structure.</p>
+        
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Configure the workflow to run a few days after month-end when Google's CrUX data is fully processed and available. This ensures you're working with complete datasets rather than partial monthly data.</p>
+        </div>
+        
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for digital marketing agencies tracking client website performance, SEO specialists monitoring search ranking correlations, web development teams maintaining performance baselines, and business owners who need regular insights into their website's user experience metrics. It's particularly valuable for organizations managing multiple websites or needing historical performance data for trend analysis and reporting.</p>
+        
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Google Cloud Project</strong> with BigQuery API enabled and access to the chrome-ux-report public dataset</li>
+          <li><strong>Service Account Credentials</strong> for authenticating n8n with Google BigQuery</li>
+          <li><strong>NocoDB Instance</strong> with a table created for CrUX data (origin and crux_rank fields at minimum)</li>
+          <li><strong>NocoDB API Token</strong> with read/write permissions for your CrUX table</li>
+          <li><strong>n8n Instance</strong> (cloud or self-hosted) with Google BigQuery and NocoDB nodes available</li>
+        </ol>
+        
+        <h2>Quick Setup Guide</h2>
+        <p>1. Download the template and import it into your n8n instance using the workflow import feature.</p>
+        <p>2. Configure the Google BigQuery node with your service account credentials and verify access to the chrome-ux-report dataset.</p>
+        <p>3. Set up the NocoDB node with your API token and test the connection to your CrUX table.</p>
+        <p>4. Adjust the schedule trigger to your preferred monthly execution time (recommended: 2nd day of each month).</p>
+        <p>5. Test the workflow manually first, then activate it for automated monthly execution.</p>
+        
+        <h2>Key Benefits</h2>
+        <p><strong>Save 3-5 hours monthly</strong> on manual data extraction, cleaning, and database updates. What used to be a multi-step manual process now runs automatically while your team focuses on analysis rather than data collection.</p>
+        
+        <p><strong>Ensure data consistency</strong> with automated error handling and retry logic. The workflow includes validation steps that prevent incomplete or corrupted data from entering your database, maintaining data quality over time.</p>
+        
+        <p><strong>Create reliable historical records</strong> for performance trend analysis. With consistent monthly data collection, you can track how website improvements affect user experience metrics and identify seasonal performance patterns.</p>
+        
+        <p><strong>Enable proactive performance monitoring</strong> with up-to-date metrics. Regular data updates allow you to spot performance degradation early and take corrective action before it impacts user experience or search rankings.</p>
+        
+        <p><strong>Integrate with existing dashboards</strong> and reporting tools through NocoDB's API. The structured data in NocoDB can be easily connected to visualization tools like Grafana, Tableau, or custom reporting applications.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about CrUX data automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is CrUX data and why is it important for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>CrUX (Chrome User Experience) data provides real user metrics about how people experience your website. It shows loading performance, interactivity, and visual stability based on actual Chrome browser usage.</p>
+          <p>This data helps you identify performance issues affecting user satisfaction and search rankings. For example, slow loading pages with high CrUX ranks might be losing visitors before they engage with your content.</p>
+          <ul>
+            <li>Direct correlation with Google search rankings</li>
+            <li>Real-world performance data from actual users</li>
+            <li>Monthly updates for trend tracking</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating CrUX data transfer save time compared to manual processes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual CrUX data transfer requires monthly login to BigQuery, running queries, exporting results, cleaning data, and importing to your database. This typically consumes 3-5 hours of technical staff time each month.</p>
+          <p>Automation eliminates this repetitive work while ensuring data consistency and eliminating human error. The workflow runs reliably each month, freeing your team for analysis rather than data collection tasks.</p>
+          <ul>
+            <li>Eliminates manual query execution and export steps</li>
+            <li>Automates data cleaning and formatting</li>
+            <li>Provides consistent scheduling without calendar reminders</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of storing CrUX data in NocoDB instead of just viewing it in BigQuery?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Storing CrUX data in NocoDB creates a historical performance database you can query, visualize, and combine with other business metrics. BigQuery shows current data but doesn't facilitate long-term trend analysis without additional setup.</p>
+          <p>With data in NocoDB, you can track performance trends over time, create custom dashboards, set up alerts for performance drops, and correlate website performance with business outcomes like conversions or revenue.</p>
+          <ul>
+            <li>Enables historical trend analysis</li>
+            <li>Facilitates integration with other business data</li>
+            <li>Supports custom alerting and reporting</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I customize this workflow to include additional metrics beyond CrUX rank?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the Google BigQuery CrUX dataset includes multiple metrics like Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS). These are Core Web Vitals that Google uses for search ranking.</p>
+          <p>You can modify the SQL query in the workflow to extract these additional metrics and store them alongside rank data. This creates a comprehensive performance monitoring system that tracks all key user experience indicators.</p>
+          <ul>
+            <li>Add Core Web Vitals metrics to your analysis</li>
+            <li>Track multiple performance dimensions simultaneously</li>
+            <li>Create composite performance scores</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How reliable is the monthly automation for critical business reporting?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The workflow includes error handling, retry logic, and notification capabilities. You can configure it to send alerts via email, Slack, or other channels if data transfer fails, ensuring you never miss a monthly update.</p>
+          <p>The automation runs on a schedule you control and provides audit trails of each execution. Failed runs can be manually retried, and you can implement additional validation checks to ensure data quality before database insertion.</p>
+          <ul>
+            <li>Built-in error handling and retry mechanisms</li>
+            <li>Configurable failure notifications</li>
+            <li>Execution history and audit trails</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What other data sources can I combine with CrUX data for better insights?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You can integrate CrUX data with Google Analytics for traffic correlation, server monitoring tools for infrastructure insights, business metrics from your CRM, and competitor analysis data from other sources.</p>
+          <p>This creates a holistic view of how technical performance impacts business outcomes. For example, correlating page speed improvements with conversion rate changes or identifying which performance metrics most affect user engagement.</p>
+          <ul>
+            <li>Combine with business metrics for ROI analysis</li>
+            <li>Correlate with marketing campaign data</li>
+            <li>Integrate with infrastructure monitoring tools</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom CrUX data automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in custom automation solutions for CrUX data and web performance monitoring. We can build workflows that integrate CrUX data with your specific analytics stack, create custom dashboards, and set up automated alerts.</p>
+          <p>Our team works with you to understand your unique reporting needs, data sources, and integration requirements. We build tailored solutions that fit your existing tools and processes, ensuring seamless adoption and maximum value.</p>
+          <ul>
+            <li>Custom integration with your existing tools</li>
+            <li>Tailored dashboards and reporting</li>
+            <li>Ongoing support and optimization</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom CrUX Data Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

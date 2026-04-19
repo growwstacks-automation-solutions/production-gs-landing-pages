@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-assign JIRA Support Tickets with AI | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automatically assign stale JIRA tickets using AI and Supabase. Prevent support issues from falling through the cracks. Free n8n workflow template.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1628-auto-assign-support-tickets-with-jira-supabase-and-ai/">
+<meta property="og:title" content="Auto-assign JIRA Support Tickets with AI & Supabase">
+<meta property="og:description" content="Automatically assign stale JIRA tickets using AI and Supabase. Prevent support issues from falling through the cracks. Free n8n workflow template.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1628-auto-assign-support-tickets-with-jira-supabase-and-ai/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3395-auto-assign-support-tickets-with-jira-supabase-and-ai.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auto-assign JIRA Support Tickets with AI & Supabase">
+<meta name="twitter:description" content="Automatically assign stale JIRA tickets using AI and Supabase. Prevent support issues from falling through the cracks. Free n8n workflow template.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Auto-assign JIRA Support Tickets with AI","description":"Automatically assign stale JIRA tickets using AI and Supabase. Prevent support issues from falling through the cracks.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3395-auto-assign-support-tickets-with-jira-supabase-and-ai.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How can AI help with JIRA ticket assignment?","acceptedAnswer":{"@type":"Answer","text":"AI can analyze ticket content, compare it to historical resolved issues, and identify the most relevant team member based on expertise and past work. This reduces manual triage time and ensures tickets go to the right person faster."}},{"@type":"Question","name":"What are the benefits of automating JIRA ticket assignment?","acceptedAnswer":{"@type":"Answer","text":"Automating JIRA ticket assignment prevents tickets from going unassigned for days, reduces response time, balances workload across team members, and ensures consistent assignment based on data rather than guesswork."}},{"@type":"Question","name":"How does vector search work for ticket assignment?","acceptedAnswer":{"@type":"Answer","text":"Vector search converts ticket descriptions into numerical embeddings. It then compares new tickets against a database of past resolved tickets to find the most similar issues and identify which team member handled them."}},{"@type":"Question","name":"What's the difference between rule-based and AI-based ticket assignment?","acceptedAnswer":{"@type":"Answer","text":"Rule-based assignment uses fixed criteria like keywords or departments. AI-based assignment understands context, similarity, and patterns from historical data, making it more accurate for complex or unique tickets."}},{"@type":"Question","name":"How do I balance workload when auto-assigning tickets?","acceptedAnswer":{"@type":"Answer","text":"Track each team member's current assigned and in-progress tickets. The automation should assign new tickets to members with the lowest current workload, ensuring fair distribution and preventing burnout."}},{"@type":"Question","name":"Can this automation work with other ticketing systems besides JIRA?","acceptedAnswer":{"@type":"Answer","text":"Yes, the core logic works with any ticketing system. You would replace the JIRA integration with connections to systems like Linear, Zendesk, or ServiceNow while keeping the AI and vector search components."}},{"@type":"Question","name":"What data should I store for AI-powered ticket assignment?","acceptedAnswer":{"@type":"Answer","text":"Store ticket descriptions, resolution notes, assignee information, resolution time, and categories. This historical data trains the AI to make better assignment decisions based on actual outcomes."}},{"@type":"Question","name":"Can I get a custom JIRA ticket automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom JIRA and AI automation solutions tailored to your specific team structure, workflows, and business rules. We can integrate with your existing tools and create bespoke logic."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Auto-assign JIRA Tickets"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Auto-assign JIRA Tickets</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">JIRA</span>
+          <span class="cs-tag">AI</span>
+          <span class="cs-tag">Supabase</span>
+          <span class="cs-tag">Support</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Auto-assign JIRA Support Tickets with AI</h1>
+        <p class="cs-hero-sub">Prevent tickets from falling through the cracks by automatically assigning stale issues to the most relevant team member using AI and historical data.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/3395-auto-assign-support-tickets-with-jira-supabase-and-ai.png" alt="AI-powered JIRA ticket assignment automation workflow diagram" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Support tickets that go unassigned for days or weeks create frustrated customers and internal chaos. Manual ticket triage is time-consuming and often results in assignments based on who's available rather than who's best suited. This automation solves both problems by ensuring no JIRA issue remains unassigned for more than a week.</p>
+        <p>The workflow uses AI to analyze ticket content and compare it against a historical database of resolved issues stored in Supabase. It identifies which team member has the most relevant expertise based on past work, then automatically assigns the ticket while balancing current workload across the team. A comment is added to notify the assignee they've been auto-assigned due to the ticket's age.</p>
+        <p>This creates a self-correcting system where tickets never get lost in the backlog, response times improve, and team members work on issues that match their expertise—all without manual intervention.</p>
+
+        <h2>How It Works</h2>
+        <p>The automation consists of two coordinated flows that run continuously via schedule triggers.</p>
+        
+        <h3>1. Historical Data Collection</h3>
+        <p>Daily, the workflow pulls recently resolved JIRA issues and stores them in a Supabase vector database. It extracts key metadata including issue descriptions, resolution notes, assignee information, and categories. This creates a searchable knowledge base of past work.</p>
+        
+        <h3>2. Stale Ticket Detection</h3>
+        <p>Another scheduled flow scans for unassigned JIRA issues older than your configured threshold (default: 7 days). For each stale ticket, it generates an AI embedding of the issue description and searches the vector database for similar resolved tickets.</p>
+        
+        <h3>3. Intelligent Assignment</h3>
+        <p>The system identifies team members who have successfully handled similar issues in the past. It then checks each candidate's current workload (number of assigned, in-progress tickets) and assigns the ticket to the member with both relevant expertise and available capacity.</p>
+        
+        <h3>4. Notification & Documentation</h3>
+        <p>Once assigned, the workflow adds a comment to the JIRA ticket explaining the auto-assignment logic and notifying the team member. All assignment decisions are logged for transparency and future optimization.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for support teams, DevOps teams, product teams, or any organization using JIRA for issue tracking with 3+ team members. It's particularly valuable for:</p>
+        <ul>
+          <li><strong>Support teams</strong> drowning in unassigned tickets</li>
+          <li><strong>Engineering teams</strong> where expertise varies by technology or component</li>
+          <li><strong>Growing companies</strong> where manual triage no longer scales</li>
+          <li><strong>Remote teams</strong> needing consistent assignment across time zones</li>
+          <li><strong>Quality-focused teams</strong> wanting data-driven assignment decisions</li>
+        </ul>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>JIRA account</strong> with API access to read issues and update assignments</li>
+          <li><strong>OpenAI API key</strong> for generating embeddings and understanding ticket content</li>
+          <li><strong>Supabase account</strong> with vector extension enabled for storing historical issue data</li>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) to run the automation</li>
+          <li><strong>Team member list</strong> with their JIRA usernames for assignment</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Import the template</strong> into your n8n instance using the downloaded JSON file</li>
+          <li><strong>Configure credentials</strong> for JIRA, OpenAI, and Supabase in n8n's credential management</li>
+          <li><strong>Set your JIRA project key</strong> and adjust the "stale threshold" (default: 7 days)</li>
+          <li><strong>Define your team members</strong> by updating the list of JIRA usernames in the workflow</li>
+          <li><strong>Test with a small project</strong> first to verify assignment logic works as expected</li>
+          <li><strong>Schedule both flows</strong> to run at appropriate intervals (daily for data collection, hourly for assignment)</li>
+          <li><strong>Monitor for a week</strong> and adjust assignment criteria based on results</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a longer stale threshold (10-14 days) during testing to avoid overwhelming your team. Gradually reduce it as confidence in the automation grows.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate lost tickets:</strong> No issue goes unassigned for more than your configured period, preventing customer complaints about ignored requests.</p>
+        <p><strong>Reduce triage time by 80%:</strong> Manual ticket sorting and assignment can take hours each week—this automation handles it instantly.</p>
+        <p><strong>Improve assignment accuracy:</strong> AI matches tickets to team members based on actual historical performance, not just availability or guesswork.</p>
+        <p><strong>Balance team workload:</strong> The system considers current assignment counts, preventing any single team member from becoming overloaded.</p>
+        <p><strong>Create searchable knowledge:</strong> All resolved tickets become part of a vector database that improves future assignment decisions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about JIRA ticket automation and AI assignment</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can AI help with JIRA ticket assignment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI can analyze ticket content, compare it to historical resolved issues, and identify the most relevant team member based on expertise and past work. This reduces manual triage time and ensures tickets go to the right person faster.</p>
+          <p>Instead of relying on simple keyword matching or round-robin assignment, AI understands the context and complexity of each issue. For example, it can distinguish between a database performance issue versus a UI bug, even if both mention "slow response time."</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of automating JIRA ticket assignment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating JIRA ticket assignment prevents tickets from going unassigned for days, reduces response time, balances workload across team members, and ensures consistent assignment based on data rather than guesswork.</p>
+          <p>Teams using automated assignment typically see 40-60% faster initial response times and 30% better assignment accuracy. This leads to higher customer satisfaction and more efficient use of team expertise.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does vector search work for ticket assignment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Vector search converts ticket descriptions into numerical embeddings. It then compares new tickets against a database of past resolved tickets to find the most similar issues and identify which team member handled them.</p>
+          <p>This approach understands semantic similarity, not just keyword matching. A ticket about "payment processing errors" will match with historical issues about "transaction failures" or "billing system bugs," even if the exact words differ.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the difference between rule-based and AI-based ticket assignment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Rule-based assignment uses fixed criteria like keywords or departments. AI-based assignment understands context, similarity, and patterns from historical data, making it more accurate for complex or unique tickets.</p>
+          <p>Rule-based systems work well for predictable, repetitive issues but struggle with novel problems. AI adapts as your team handles new types of issues, continuously improving its assignment accuracy.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I balance workload when auto-assigning tickets?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Track each team member's current assigned and in-progress tickets. The automation should assign new tickets to members with the lowest current workload, ensuring fair distribution and preventing burnout.</p>
+          <p>You can also factor in complexity estimates, due dates, and individual capacity limits. Some teams weight assignments based on ticket priority—high-priority issues might bypass queue balancing to ensure immediate attention.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this automation work with other ticketing systems besides JIRA?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the core logic works with any ticketing system. You would replace the JIRA integration with connections to systems like Linear, Zendesk, or ServiceNow while keeping the AI and vector search components.</p>
+          <p>The assignment algorithm, workload balancing, and historical learning remain the same. Only the API connections and data formatting would change to match your specific ticketing platform.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What data should I store for AI-powered ticket assignment?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Store ticket descriptions, resolution notes, assignee information, resolution time, and categories. This historical data trains the AI to make better assignment decisions based on actual outcomes.</p>
+          <p>Over time, you can add more signals: customer tier, escalation history, related components, or even sentiment analysis. The richer your historical data, the smarter your assignment decisions become.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom JIRA ticket automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom JIRA and AI automation solutions tailored to your specific team structure, workflows, and business rules. We can integrate with your existing tools and create bespoke logic.</p>
+          <p>Our team will work with you to understand your unique challenges—whether it's handling multiple projects, incorporating on-call schedules, integrating with HR systems for vacation tracking, or creating escalation paths.</p>
+          <ul>
+            <li>Custom integration with your tech stack</li>
+            <li>Tailored assignment algorithms</li>
+            <li>Ongoing optimization and support</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom JIRA Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

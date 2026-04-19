@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Periodically Send Data from HTTP Request to Telegram | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n automation template to periodically fetch data from any API and send it to a Telegram channel or chat. Perfect for monitoring, alerts, and scheduled updates.">
+<link rel="canonical" href="https://growwstacks.com/workflows/278-periodically-send-data-from-http-request-node-to-telegram/">
+<meta property="og:title" content="Periodically Send Data from HTTP Request to Telegram | Free n8n Template">
+<meta property="og:description" content="Free n8n automation template to periodically fetch data from any API and send it to a Telegram channel or chat. Perfect for monitoring, alerts, and scheduled updates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/278-periodically-send-data-from-http-request-node-to-telegram/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/781-periodically-send-data-from-http-request-node-to-telegra.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Periodically Send Data from HTTP Request to Telegram | Free n8n Template">
+<meta name="twitter:description" content="Free n8n automation template to periodically fetch data from any API and send it to a Telegram channel or chat. Perfect for monitoring, alerts, and scheduled updates.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Periodically Send Data from HTTP Request to Telegram","description":"Free n8n automation template to periodically fetch data from any API and send it to a Telegram channel or chat. Perfect for monitoring, alerts, and scheduled updates.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/781-periodically-send-data-from-http-request-node-to-telegra.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the best way to send automated alerts to a team?","acceptedAnswer":{"@type":"Answer","text":"The most effective way to send automated alerts is through a dedicated messaging platform like Telegram, integrated with your data sources via automation tools like n8n. This ensures real-time delivery, supports rich formatting, and keeps team communication organized."}},{"@type":"Question","name":"How can I monitor an API and get notified when data changes?","acceptedAnswer":{"@type":"Answer","text":"You can monitor an API by setting up a scheduled workflow that periodically calls the API endpoint, compares the response with previous data, and triggers notifications to platforms like Telegram, Slack, or email when changes are detected. This is ideal for tracking prices, inventory, or system status."}},{"@type":"Question","name":"What are the benefits of using Telegram for business automation?","acceptedAnswer":{"@type":"Answer","text":"Telegram offers high deliverability rates, supports bots and channels, allows rich media messages, and provides a free, reliable platform for team notifications. It's particularly useful for internal alerts, customer updates, and automated reporting due to its simple API and global reach."}},{"@type":"Question","name":"Can I automate data collection from websites without coding?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can automate data collection from websites using no-code tools like n8n with its HTTP Request node. You can schedule regular calls to public APIs or scrape web pages, then process and forward the extracted data to any destination like spreadsheets, databases, or messaging apps."}},{"@type":"Question","name":"How do I schedule automated tasks in n8n?","acceptedAnswer":{"@type":"Answer","text":"In n8n, you schedule automated tasks using the Cron node or Schedule Trigger node. These nodes let you set intervals (every minute, hour, day) or specific times using cron expressions. The workflow then runs automatically at those times without manual intervention."}},{"@type":"Question","name":"What types of data are commonly sent via automated alerts?","acceptedAnswer":{"@type":"Answer","text":"Common data sent via automated alerts includes system health metrics (server uptime, error logs), business metrics (sales figures, website traffic), operational updates (new orders, support tickets), market data (stock prices, currency rates), and scheduled reports (daily summaries, weekly analytics)."}},{"@type":"Question","name":"Can I get a custom API-to-Telegram automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom API-to-Telegram automations tailored to your specific business needs. We can connect any data source, design complex logic for filtering and formatting, and deploy reliable workflows that run 24/7, saving your team hours of manual work."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Periodically Send Data from HTTP Request to Telegram"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>HTTP Request to Telegram</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">API Integration</span>
+          <span class="cs-tag">Telegram</span>
+          <span class="cs-tag">Scheduled Automation</span>
+          <span class="cs-tag">Monitoring</span>
+        </div>
+        <h1>Periodically Send Data from HTTP Request to Telegram</h1>
+        <p class="cs-hero-sub">Free n8n template to automatically fetch data from any API or website and deliver it to Telegram on a schedule. Perfect for alerts, reports, and live updates.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/781-periodically-send-data-from-http-request-node-to-telegra.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/781-periodically-send-data-from-http-request-node-to-telegra.png" alt="n8n workflow diagram showing HTTP Request node connected to Telegram node with a schedule trigger" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves the problem of manually checking websites, APIs, or data sources for updates. Instead of having team members refresh pages or run scripts, this workflow automatically fetches data at scheduled intervals and sends it directly to a Telegram channel or chat.</p>
+        <p>Whether you need daily sales reports, hourly system status updates, real‑time price tracking, or weekly analytics summaries, this template provides the foundation. It connects any HTTP‑accessible data source with Telegram’s powerful messaging platform, creating a reliable pipeline for information delivery.</p>
+        <p>The business value is clear: eliminate repetitive manual checks, ensure timely information delivery, and keep your team informed with zero effort. It turns scattered data into organized, actionable notifications.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow follows a simple but powerful sequence, triggered automatically on a schedule you define.</p>
+        
+        <h3>Step 1: Schedule Trigger</h3>
+        <p>A Cron or Schedule Trigger node initiates the workflow at your chosen frequency—every minute, hour, day, or custom interval. This is the automation’s heartbeat.</p>
+        
+        <h3>Step 2: HTTP Request</h3>
+        <p>The workflow calls an external API, website endpoint, or data service using the HTTP Request node. You configure the URL, method (GET/POST), headers, and parameters to fetch the exact data you need.</p>
+        
+        <h3>Step 3: Data Processing</h3>
+        <p>Optional Function or Set nodes can filter, transform, or enrich the retrieved data. You might extract specific fields, calculate values, or format the output for readability.</p>
+        
+        <h3>Step 4: Telegram Delivery</h3>
+        <p>The processed data is sent to a Telegram chat or channel via the Telegram node. You can send plain text, formatted messages, or even images—all automatically.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use this workflow to monitor competitor prices, track inventory levels, receive server health alerts, or distribute daily KPIs to your team’s Telegram group.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for businesses and teams that rely on timely information from external sources. E‑commerce managers can track pricing changes. DevOps teams can monitor system status. Marketing agencies can receive daily campaign metrics. Founders can get automated business intelligence.</p>
+        <p>If you currently have someone manually checking a dashboard, copying data, and pasting it into a chat, this automation will save them hours per week. It’s also perfect for solopreneurs who want to stay updated without constant manual effort.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A running n8n instance</strong> – either self‑hosted or n8n.cloud.</li>
+          <li><strong>A Telegram Bot Token</strong> – created via @BotFather on Telegram.</li>
+          <li><strong>The Telegram Chat ID</strong> – where messages should be sent (channel, group, or private chat).</li>
+          <li><strong>Access to your target API/URL</strong> – with any required authentication keys or parameters.</li>
+          <li><strong>Basic understanding of the data structure</strong> you want to fetch and send.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Importing and configuring this template takes about 10 minutes.</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and save the JSON file.</li>
+          <li><strong>In your n8n dashboard</strong>, go to Workflows → Import from File and select the downloaded JSON.</li>
+          <li><strong>Configure the Schedule Trigger</strong> node to set your desired frequency (e.g., every day at 9 AM).</li>
+          <li><strong>Update the HTTP Request node</strong> with your API URL, method, and any authentication headers.</li>
+          <li><strong>Edit the Telegram node</strong> with your Bot Token and Chat ID (find these in Telegram).</li>
+          <li><strong>Test the workflow</strong> by clicking “Execute Workflow” and verify the message appears in Telegram.</li>
+          <li><strong>Activate the workflow</strong> to let it run automatically on your schedule.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a short test interval (like every 5 minutes) to confirm everything works, then switch to your production schedule.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5–10 hours per week per employee</strong> by eliminating manual data‑checking routines. This time can be redirected to higher‑value tasks like analysis and strategy.</p>
+        <p><strong>Ensure 100% consistency and timeliness</strong> of information delivery. The automation never forgets, never delays, and never makes copy‑paste errors.</p>
+        <p><strong>Improve team responsiveness</strong> with real‑time alerts delivered directly to where your team communicates. Critical updates are seen immediately.</p>
+        <p><strong>Create a scalable notification system</strong> that can be extended to multiple data sources and channels without additional manual overhead.</p>
+        <p><strong>Gain peace of mind</strong> knowing your monitoring and reporting are running 24/7, even when you’re offline.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about API monitoring and Telegram automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the best way to send automated alerts to a team?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The most effective way to send automated alerts is through a dedicated messaging platform like Telegram, integrated with your data sources via automation tools like n8n. This ensures real-time delivery, supports rich formatting, and keeps team communication organized.</p>
+          <p>Unlike email which can be missed or delayed, Telegram messages arrive instantly and can be structured into dedicated channels for different alert types—such as #system‑alerts, #sales‑updates, or #customer‑notifications.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can I monitor an API and get notified when data changes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You can monitor an API by setting up a scheduled workflow that periodically calls the API endpoint, compares the response with previous data, and triggers notifications to platforms like Telegram, Slack, or email when changes are detected. This is ideal for tracking prices, inventory, or system status.</p>
+          <p>For example, an e‑commerce business can monitor a competitor’s product API every hour. If the price drops below a threshold, an alert is immediately sent to the purchasing team’s Telegram group, enabling quick strategic decisions.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of using Telegram for business automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Telegram offers high deliverability rates, supports bots and channels, allows rich media messages, and provides a free, reliable platform for team notifications. It's particularly useful for internal alerts, customer updates, and automated reporting due to its simple API and global reach.</p>
+          <p>Businesses appreciate Telegram’s speed, lack of spam filters that block legitimate alerts, and the ability to create large groups or broadcast channels where automated messages can be pinned or organized with hashtags.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I automate data collection from websites without coding?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, you can automate data collection from websites using no‑code tools like n8n with its HTTP Request node. You can schedule regular calls to public APIs or scrape web pages, then process and forward the extracted data to any destination like spreadsheets, databases, or messaging apps.</p>
+          <p>This approach eliminates the need for custom Python scripts or manual copying. You can set up complex data pipelines that clean, transform, and distribute information—all through a visual interface.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I schedule automated tasks in n8n?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>In n8n, you schedule automated tasks using the Cron node or Schedule Trigger node. These nodes let you set intervals (every minute, hour, day) or specific times using cron expressions. The workflow then runs automatically at those times without manual intervention.</p>
+          <p>You can create sophisticated schedules like “weekdays at 9 AM and 5 PM” or “every 30 minutes during business hours.” The scheduler is reliable and works even when you’re not logged into the n8n interface.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of data are commonly sent via automated alerts?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common data sent via automated alerts includes system health metrics (server uptime, error logs), business metrics (sales figures, website traffic), operational updates (new orders, support tickets), market data (stock prices, currency rates), and scheduled reports (daily summaries, weekly analytics).</p>
+          <p>These alerts transform raw data into actionable insights delivered directly to decision‑makers. For instance, a sudden spike in website errors can trigger an immediate alert to the tech team, minimizing downtime.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom API‑to‑Telegram automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom API‑to‑Telegram automations tailored to your specific business needs. We can connect any data source, design complex logic for filtering and formatting, and deploy reliable workflows that run 24/7, saving your team hours of manual work.</p>
+          <p>Our team handles everything from API authentication and error handling to multi‑channel delivery and monitoring. We ensure your automation is robust, maintainable, and delivers exactly the information you need, when you need it.</p>
+          <ul>
+            <li>Connect to proprietary or legacy systems</li>
+            <li>Design custom data transformation logic</li>
+            <li>Set up fail‑safes and alert escalation</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom API‑to‑Telegram Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

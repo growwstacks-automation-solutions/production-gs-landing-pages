@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extract Website URLs from Sitemap.XML for SEO Analysis | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate SEO analysis with this free n8n workflow. Crawl any website's sitemap.xml, extract all URLs, and export them for auditing or content monitoring.">
+<link rel="canonical" href="https://growwstacks.com/workflows/2475-extract-website-urls-from-sitemapxml-for-seo-analysis/">
+<meta property="og:title" content="Automate Sitemap URL Extraction for SEO | Free n8n Workflow">
+<meta property="og:description" content="Free n8n template to automatically crawl sitemap.xml files, extract all URLs, and prepare data for SEO analysis and website audits.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/2475-extract-website-urls-from-sitemapxml-for-seo-analysis/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4671-extract-website-urls-from-sitemapxml-for-seo-analysis.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Sitemap URL Extraction for SEO | Free n8n Workflow">
+<meta name="twitter:description" content="Free n8n template to automatically crawl sitemap.xml files, extract all URLs, and prepare data for SEO analysis and website audits.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Extract Website URLs from Sitemap.XML for SEO Analysis","description":"Automate SEO analysis with this free n8n workflow. Crawl any website's sitemap.xml, extract all URLs, and export them for auditing or content monitoring.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4671-extract-website-urls-from-sitemapxml-for-seo-analysis.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is automating sitemap analysis important for SEO?","acceptedAnswer":{"@type":"Answer","text":"Automating sitemap analysis is crucial for SEO because it saves hours of manual work, ensures you never miss new or updated pages, and provides a complete, accurate URL inventory for technical audits. Manual extraction is error-prone and doesn't scale, while automation gives you real-time data for indexing checks, broken link detection, and content gap analysis."}},{"@type":"Question","name":"What can I do with a list of URLs extracted from a sitemap?","acceptedAnswer":{"@type":"Answer","text":"A complete URL list from a sitemap enables multiple SEO actions: you can check indexing status in Google Search Console, analyze page performance in analytics tools, identify orphaned pages, monitor for new content, audit internal linking, and track URL parameter usage. It's the foundation for any comprehensive technical SEO audit."}},{"@type":"Question","name":"How often should I run a sitemap extraction workflow?","acceptedAnswer":{"@type":"Answer","text":"For active websites, run sitemap extraction weekly. For e-commerce or news sites with frequent updates, consider daily runs. For static sites, monthly is sufficient. The key is consistency—regular extraction helps you spot new pages quickly, monitor crawl budget efficiency, and ensure search engines can discover all your content promptly."}},{"@type":"Question","name":"Can this workflow handle large sitemaps with thousands of URLs?","acceptedAnswer":{"@type":"Answer","text":"Yes, this n8n workflow is designed to handle large sitemaps efficiently. It processes sitemap indexes and follows sub-sitemaps recursively. For extremely large sites, you can add pagination or batch processing. The workflow outputs to files or databases, avoiding memory issues, making it suitable for enterprise-level sites with extensive URL structures."}},{"@type":"Question","name":"What's the difference between a sitemap.xml and robots.txt for SEO?","acceptedAnswer":{"@type":"Answer","text":"Sitemap.xml tells search engines which pages to crawl and provides metadata like last modified dates. Robots.txt tells crawlers which pages to avoid. Both are essential: sitemaps ensure discovery of important pages, while robots.txt protects sensitive areas. Automated extraction from sitemaps gives you a positive list of what should be indexed, complementing robots.txt directives."}},{"@type":"Question","name":"How do I use extracted URLs to improve my website's SEO?","acceptedAnswer":{"@type":"Answer","text":"Use extracted URLs to: 1) Verify indexing in Google Search Console, 2) Check for duplicate content issues, 3) Analyze page speed and Core Web Vitals, 4) Identify missing meta descriptions or thin content, 5) Monitor for broken links, and 6) Ensure proper canonicalization. This data becomes your SEO health dashboard when combined with other tools."}},{"@type":"Question","name":"Can I integrate this workflow with other SEO tools?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. This workflow outputs clean URL lists that can feed directly into tools like Screaming Frog, Ahrefs, SEMrush, or Google Sheets. You can extend it to automatically submit URLs to Google Indexing API, check status codes, or compare against analytics data. The modular design makes it easy to add API connections to your preferred SEO platforms."}},{"@type":"Question","name":"Can I get a custom sitemap analysis automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom SEO automation solutions. We can create workflows that not only extract URLs but also analyze them against your analytics, track rankings, monitor competitors, and generate automated SEO reports. Our team integrates sitemap data with your existing SEO stack for complete visibility."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Extract Website URLs from Sitemap.XML"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Extract Website URLs from Sitemap.XML</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">SEO</span>
+          <span class="cs-tag">Web Scraping</span>
+          <span class="cs-tag">Data Extraction</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Extract Website URLs from Sitemap.XML for SEO Analysis</h1>
+        <p class="cs-hero-sub">Automatically crawl any website's sitemap, extract all URLs, and prepare the data for technical SEO audits and content monitoring.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4671-extract-website-urls-from-sitemapxml-for-seo-analysis.png" alt="n8n workflow diagram for extracting URLs from sitemap.xml for SEO analysis" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manual SEO audits are time-consuming and error-prone. This n8n workflow automates the entire process of extracting URLs from a website's sitemap.xml file—the foundational step for any technical SEO analysis. Instead of manually downloading and parsing XML files, this workflow systematically crawls sitemaps (including sitemap indexes that contain multiple sub-sitemaps), extracts every URL, and outputs them in a structured format ready for analysis.</p>
+        <p>The automation handles the complete pipeline: fetching the sitemap, parsing XML data, splitting entries, and converting results into usable files. Whether you're auditing your own site, monitoring competitors, or building a content inventory, this workflow transforms hours of manual work into a fully automated process that runs on schedule or demand.</p>
+        <p>Beyond basic extraction, this template serves as a foundation for more advanced SEO automation. You can easily extend it to check URL indexing status, monitor for new pages, analyze content gaps, or integrate with SEO platforms like Google Search Console, SEMrush, or Ahrefs for comprehensive site health monitoring.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow follows a logical sequence to ensure reliable extraction regardless of sitemap complexity.</p>
+        
+        <h3>1. Manual Trigger & URL Configuration</h3>
+        <p>The workflow begins with a manual trigger for testing, which can be replaced with a schedule trigger for regular audits. A "Set" node defines the target website's base domain, which automatically constructs the sitemap URL (e.g., https://example.com/sitemap.xml).</p>
+        
+        <h3>2. Sitemap Fetching & Parsing</h3>
+        <p>An HTTP Request node fetches the sitemap.xml file from the specified domain. The workflow then uses an XML node to parse the raw XML into structured JSON data, making individual URLs and sitemap entries accessible for processing.</p>
+        
+        <h3>3. Handling Sitemap Indexes</h3>
+        <p>Many large websites use sitemap indexes that reference multiple sub-sitemaps. The workflow intelligently detects these indexes, splits them into individual sitemap entries, and recursively fetches each sub-sitemap to ensure no URLs are missed.</p>
+        
+        <h3>4. URL Extraction & Output</h3>
+        <p>For each sitemap (main or sub-sitemap), the workflow extracts all URL entries using a Split Out node, isolating the loc (location) tags that contain the actual page URLs. Finally, a Convert to File node outputs the complete URL list as a downloadable JSON or text file.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Replace the Convert to File node with a Google Sheets node to automatically append extracted URLs to a spreadsheet for ongoing tracking and analysis with your SEO team.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This workflow is ideal for SEO specialists, digital marketers, content managers, and website owners who need to maintain accurate site inventories. Agencies managing multiple client websites will find it invaluable for scaling their audit processes. Developers and technical marketers can use it as a building block for more complex SEO monitoring systems.</p>
+        <p>Businesses with large e-commerce sites, news publications, or content-heavy platforms benefit most, as manual sitemap analysis becomes impractical at scale. The automation ensures you always have an up-to-date URL inventory for indexing checks, content audits, and technical SEO maintenance.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>An n8n instance</strong> (Cloud, self-hosted, or desktop app)</li>
+          <li><strong>Target website URL</strong> with a publicly accessible sitemap.xml file</li>
+          <li><strong>Basic understanding of XML sitemap structure</strong> (though not required to use the workflow)</li>
+          <li><strong>Optional:</strong> Google Sheets credentials if extending to spreadsheet integration</li>
+          <li><strong>Optional:</strong> Web server access for sites with authentication requirements</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Get this workflow running in your n8n environment in under 5 minutes:</p>
+        <ol>
+          <li><strong>Import the template:</strong> Click the Download Template button above, then import the JSON file into your n8n instance via the workflow editor.</li>
+          <li><strong>Configure the domain:</strong> In the "Set URL" node, replace the example domain with your target website's base URL.</li>
+          <li><strong>Test the extraction:</strong> Click "Execute Workflow" to run a manual test and verify URLs are being extracted correctly.</li>
+          <li><strong>Adjust for complexity:</strong> For sites with very large sitemaps, consider increasing the timeout in the HTTP Request nodes from the default 10 seconds.</li>
+          <li><strong>Add your destination:</strong> Replace the Convert to File node with your preferred output (Google Sheets, database, or other storage).</li>
+          <li><strong>Schedule automation:</strong> Replace the manual trigger with a Schedule Trigger node to run weekly or monthly audits automatically.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5-10 hours monthly</strong> on manual sitemap analysis and URL compilation for SEO audits. What used to be a tedious copy-paste exercise becomes a fully automated process.</p>
+        <p><strong>Eliminate human error</strong> in URL extraction. Manual processes often miss pages or introduce formatting issues—this workflow ensures 100% accuracy and completeness.</p>
+        <p><strong>Scale across multiple websites</strong> effortlessly. Duplicate the workflow for each domain you monitor, or modify it to process multiple sitemaps in sequence for agency use cases.</p>
+        <p><strong>Enable proactive SEO monitoring</strong> by detecting new pages immediately after publication. Regular sitemap extraction helps you identify content opportunities and technical issues faster.</p>
+        <p><strong>Build a foundation for advanced automation</strong> by connecting extracted URLs to indexing checks, performance analysis, or competitive tracking workflows.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about sitemap analysis automation and SEO</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why is automating sitemap analysis important for SEO?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating sitemap analysis is crucial for SEO because it saves hours of manual work, ensures you never miss new or updated pages, and provides a complete, accurate URL inventory for technical audits. Manual extraction is error-prone and doesn't scale, while automation gives you real-time data for indexing checks, broken link detection, and content gap analysis.</p>
+          <p>For example, an e-commerce site with thousands of product pages needs constant monitoring. Automated sitemap extraction can run daily, instantly alerting you to new products that aren't indexed or pages that have disappeared from the sitemap—issues that directly impact revenue.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What can I do with a list of URLs extracted from a sitemap?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>A complete URL list from a sitemap enables multiple SEO actions: you can check indexing status in Google Search Console, analyze page performance in analytics tools, identify orphaned pages, monitor for new content, audit internal linking, and track URL parameter usage. It's the foundation for any comprehensive technical SEO audit.</p>
+          <p>Beyond basic audits, extracted URLs can feed into content gap analysis by comparing against competitor sitemaps, help prioritize technical fixes by identifying poorly performing pages, and serve as a master inventory for site migrations or redesigns where URL structure changes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I run a sitemap extraction workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>For active websites, run sitemap extraction weekly. For e-commerce or news sites with frequent updates, consider daily runs. For static sites, monthly is sufficient. The key is consistency—regular extraction helps you spot new pages quickly, monitor crawl budget efficiency, and ensure search engines can discover all your content promptly.</p>
+          <p>Consider aligning extraction frequency with your content publishing schedule. If you publish daily, extract daily. If you run seasonal campaigns, increase frequency during launch periods. The automation makes frequent checks feasible without additional labor.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow handle large sitemaps with thousands of URLs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, this n8n workflow is designed to handle large sitemaps efficiently. It processes sitemap indexes and follows sub-sitemaps recursively. For extremely large sites, you can add pagination or batch processing. The workflow outputs to files or databases, avoiding memory issues, making it suitable for enterprise-level sites with extensive URL structures.</p>
+          <p>For sites with 50,000+ URLs, consider adding rate limiting between requests and splitting output into multiple files. The modular design allows you to insert additional processing steps like deduplication or filtering before final output.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the difference between a sitemap.xml and robots.txt for SEO?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Sitemap.xml tells search engines which pages to crawl and provides metadata like last modified dates. Robots.txt tells crawlers which pages to avoid. Both are essential: sitemaps ensure discovery of important pages, while robots.txt protects sensitive areas. Automated extraction from sitemaps gives you a positive list of what should be indexed, complementing robots.txt directives.</p>
+          <p>Advanced SEO teams use both files together—extracting sitemap URLs while checking robots.txt to ensure no important pages are accidentally blocked. This workflow can be extended to compare extracted URLs against robots.txt directives for compliance auditing.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I use extracted URLs to improve my website's SEO?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Use extracted URLs to: 1) Verify indexing in Google Search Console, 2) Check for duplicate content issues, 3) Analyze page speed and Core Web Vitals, 4) Identify missing meta descriptions or thin content, 5) Monitor for broken links, and 6) Ensure proper canonicalization. This data becomes your SEO health dashboard when combined with other tools.</p>
+          <p>Create a systematic process: extract URLs weekly, run them through SEO analysis tools, prioritize issues by traffic impact, and track resolution over time. Automation turns reactive firefighting into proactive SEO management with measurable improvements in organic visibility.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I integrate this workflow with other SEO tools?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. This workflow outputs clean URL lists that can feed directly into tools like Screaming Frog, Ahrefs, SEMrush, or Google Sheets. You can extend it to automatically submit URLs to Google Indexing API, check status codes, or compare against analytics data. The modular design makes it easy to add API connections to your preferred SEO platforms.</p>
+          <p>For example, add a step to check each URL's Google indexing status via Search Console API, then flag non-indexed pages for investigation. Or connect to a content analysis tool to score each page's optimization level automatically.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom sitemap analysis automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom SEO automation solutions. We can create workflows that not only extract URLs but also analyze them against your analytics, track rankings, monitor competitors, and generate automated SEO reports. Our team integrates sitemap data with your existing SEO stack for complete visibility.</p>
+          <p>We'll design a system tailored to your specific needs—whether that's monitoring hundreds of client websites, creating executive dashboards, or building alert systems for SEO issues. Custom automation ensures you're not just collecting data but acting on insights that drive organic growth.</p>
+          <ul>
+            <li>Multi-site monitoring for agencies</li>
+            <li>Competitor sitemap tracking and gap analysis</li>
+            <li>Automated reporting with actionable recommendations</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Sitemap Analysis Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

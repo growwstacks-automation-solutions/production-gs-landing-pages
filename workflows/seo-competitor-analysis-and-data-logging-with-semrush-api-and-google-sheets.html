@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated SEO Competitor Analysis with Semrush & Google Sheets | Free n8n Template</title>
+<meta name="description" content="Free n8n workflow template to automate competitor SEO analysis. Pull domain, keyword & page data from Semrush API and log it to Google Sheets for reporting.">
+<link rel="canonical" href="https://growwstacks.com/workflows/4683-seo-competitor-analysis-and-data-logging-with-semrush-api-and-google-sheets/">
+<meta property="og:title" content="Automated SEO Competitor Analysis with Semrush & Google Sheets">
+<meta property="og:description" content="Free n8n workflow template to automate competitor SEO analysis. Pull domain, keyword & page data from Semrush API and log it to Google Sheets for reporting.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/4683-seo-competitor-analysis-and-data-logging-with-semrush-api-and-google-sheets/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7463-seo-competitor-analysis-and-data-logging-with-semrush-a.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automated SEO Competitor Analysis with Semrush & Google Sheets">
+<meta name="twitter:description" content="Free n8n workflow template to automate competitor SEO analysis. Pull domain, keyword & page data from Semrush API and log it to Google Sheets for reporting.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automated SEO Competitor Analysis with Semrush & Google Sheets","description":"Free n8n workflow template to automate competitor SEO analysis. Pull domain, keyword & page data from Semrush API and log it to Google Sheets for reporting.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7463-seo-competitor-analysis-and-data-logging-with-semrush-a.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I automate SEO competitor analysis?","acceptedAnswer":{"@type":"Answer","text":"Manual SEO competitor analysis is time-consuming and error-prone. Automating it with tools like n8n ensures you get consistent, up-to-date data without manual effort. This allows you to track competitor keyword rankings, backlink profiles, and content strategies on a regular schedule, freeing up hours each week for strategic work."}},{"@type":"Question","name":"What kind of SEO data can I pull from Semrush API?","acceptedAnswer":{"@type":"Answer","text":"The Semrush API provides comprehensive SEO data including domain authority metrics, organic search traffic estimates, top-performing organic keywords with volume and difficulty scores, competitor domain lists with relevance scores, and detailed page-level data for top-performing content. This gives you a complete picture of any website's search performance."}},{"@type":"Question","name":"How does automating SEO reporting save time for marketing teams?","acceptedAnswer":{"@type":"Answer","text":"Automated SEO reporting eliminates manual data collection and spreadsheet updates. Instead of spending hours each week gathering data, the workflow automatically pulls fresh metrics and updates your Google Sheets. This can save 5-10 hours per week for SEO specialists, allowing them to focus on strategy and optimization rather than data entry."}},{"@type":"Question","name":"Can I use this workflow for multiple client websites?","acceptedAnswer":{"@type":"Answer","text":"Yes, this workflow can be easily adapted to monitor multiple client websites. You can modify the trigger to accept a list of domains or set up separate workflow instances for each client. The data will be organized in separate Google Sheets tabs or files, making client reporting straightforward and scalable."}},{"@type":"Question","name":"What's the benefit of storing SEO data in Google Sheets versus other databases?","acceptedAnswer":{"@type":"Answer","text":"Google Sheets provides immediate accessibility for team collaboration, easy visualization with charts, and simple sharing with clients or stakeholders. Unlike specialized databases, most team members already know how to use Sheets, reducing training time. It also integrates seamlessly with other Google Workspace tools and allows for real-time collaboration on SEO insights."}},{"@type":"Question","name":"How often should I run competitor SEO analysis?","acceptedAnswer":{"@type":"Answer","text":"For most businesses, monthly analysis is sufficient to track meaningful changes. However, competitive industries or rapidly changing markets might benefit from bi-weekly analysis. The beauty of automation is you can schedule it to run as frequently as needed without additional manual effort—daily, weekly, or monthly—depending on your competitive landscape and resources."}},{"@type":"Question","name":"What other tools can I connect to this SEO automation workflow?","acceptedAnswer":{"@type":"Answer","text":"Beyond Semrush and Google Sheets, you can extend this workflow to connect with Slack for alerting when competitors gain significant traction, Google Data Studio for advanced dashboards, email platforms for automated reports, or CRM systems to link SEO performance with sales data. n8n's flexibility allows integration with hundreds of additional apps."}},{"@type":"Question","name":"Can I get a custom SEO automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. While this free template provides a solid foundation for SEO competitor analysis, every business has unique needs. Our team at GrowwStacks specializes in building custom automation solutions that connect your specific SEO tools, data sources, and reporting requirements. We can create workflows that match your exact competitive landscape, KPIs, and team workflow."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"SEO Competitor Analysis"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>SEO Competitor Analysis</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Semrush</span>
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">SEO</span>
+          <span class="cs-tag">Competitor Analysis</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automated SEO Competitor Analysis with Semrush & Google Sheets</h1>
+        <p class="cs-hero-sub">Free n8n workflow to automatically gather competitor SEO data and log it to Google Sheets for ongoing tracking and reporting.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7463-seo-competitor-analysis-and-data-logging-with-semrush-a.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7463-seo-competitor-analysis-and-data-logging-with-semrush-a.png" alt="Visual representation of an automated SEO competitor analysis workflow connecting Semrush API to Google Sheets" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This n8n workflow automates the entire process of SEO competitor analysis, eliminating manual research and data entry. It connects directly to the Semrush API to pull comprehensive SEO data for any domain you specify, then automatically structures and logs that information into Google Sheets for easy analysis and reporting.</p>
+        <p>The workflow captures four key types of SEO intelligence: domain overview metrics (organic keywords and traffic estimates), organic competitors (identifying who you're actually competing against), top-performing organic pages, and detailed keyword data including search volume, cost-per-click, and difficulty scores. This creates a centralized, always-updated competitor intelligence system that would otherwise require hours of manual work each week.</p>
+        <p>By automating this process, marketing teams, SEO agencies, and business owners can maintain constant visibility into their competitive landscape without the time drain of manual research. The data flows directly into Google Sheets where it can be visualized, shared with stakeholders, or connected to other reporting tools.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow follows a logical sequence to gather, process, and store competitor SEO data efficiently.</p>
+        
+        <h3>1. Trigger & Domain Input</h3>
+        <p>The workflow begins with a manual trigger where you input the competitor domain you want to analyze. This could be configured to run on a schedule (weekly, monthly) or triggered by other events in your marketing stack.</p>
+        
+        <h3>2. Semrush API Data Collection</h3>
+        <p>The core of the workflow makes authenticated requests to the Semrush API, specifically the Competitor Analysis endpoint. It pulls multiple data points including domain authority metrics, traffic estimates, and competitive positioning data.</p>
+        
+        <h3>3. Data Processing & Transformation</h3>
+        <p>n8n's data transformation nodes clean and structure the raw API responses. This includes extracting specific metrics, formatting dates, calculating percentages, and preparing the data for spreadsheet insertion.</p>
+        
+        <h3>4. Google Sheets Integration</h3>
+        <p>The processed data is automatically appended to designated Google Sheets tabs. The workflow creates organized sections for domain overview, competitor lists, page performance, and keyword details—maintaining a clean, historical record of competitive movements.</p>
+        
+        <h3>5. Error Handling & Notifications</h3>
+        <p>Built-in error handling ensures the workflow continues running smoothly even if one data point is missing. Optional notification nodes can alert your team via Slack or email when significant competitive changes are detected.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is particularly valuable for SEO specialists, digital marketing agencies, content teams, and business owners who need to track competitive positioning without manual effort. It's ideal for agencies managing multiple client accounts, in-house marketing teams monitoring industry competitors, or startups benchmarking against established players.</p>
+        <p>If you're currently spending hours each month copying data from Semrush into spreadsheets, or if your competitive intelligence is inconsistent because manual updates get deprioritized, this workflow will transform your SEO monitoring process. It's also perfect for businesses that need to provide regular SEO reports to clients or stakeholders with minimal manual intervention.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> – either self-hosted or n8n.cloud account</li>
+          <li><strong>Semrush API access</strong> – requires a Semrush subscription with API credits</li>
+          <li><strong>Google Sheets</strong> – a Google account with Sheets access</li>
+          <li><strong>Google Service Account</strong> – for automated Sheets integration (setup instructions included)</li>
+          <li><strong>Basic understanding of SEO metrics</strong> – to interpret the collected data effectively</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with just 2-3 key competitors to validate the workflow before scaling to monitor dozens of domains. This helps you refine what metrics matter most to your business before automating at scale.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Getting this workflow running takes about 15-20 minutes if you have your API credentials ready.</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n instance</li>
+          <li><strong>Configure Semrush credentials</strong> in the HTTP Request node with your API key from RapidAPI</li>
+          <li><strong>Set up Google Sheets connection</strong> using a service account (detailed instructions in the workflow notes)</li>
+          <li><strong>Test with a single domain</strong> to ensure data flows correctly from Semrush to your Sheets</li>
+          <li><strong>Schedule the workflow</strong> to run weekly or monthly for ongoing competitive tracking</li>
+          <li><strong>Customize the Sheets output</strong> to match your preferred reporting format and add any additional calculations</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 5-10 hours monthly on manual competitor research.</strong> What used to be a tedious, error-prone process becomes fully automated with consistent results.</p>
+        <p><strong>Maintain always-current competitive intelligence.</strong> With scheduled runs, you'll never miss a competitor's strategic shift or content opportunity.</p>
+        <p><strong>Standardize reporting across your team or clients.</strong> Everyone works from the same data structure, making comparisons and trend analysis straightforward.</p>
+        <p><strong>Identify content gaps and keyword opportunities faster.</strong> Automated analysis surfaces insights that might take weeks to notice manually.</p>
+        <p><strong>Scale competitor monitoring effortlessly.</strong> Add new domains to track without increasing your workload proportionally.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about SEO competitor analysis automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I automate SEO competitor analysis?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual SEO competitor analysis is time-consuming and error-prone. Automating it with tools like n8n ensures you get consistent, up-to-date data without manual effort. This allows you to track competitor keyword rankings, backlink profiles, and content strategies on a regular schedule, freeing up hours each week for strategic work.</p>
+          <p>Beyond time savings, automation provides systematic coverage that humans often miss. While manual analysis might focus on obvious competitors, automated systems can monitor dozens of sites simultaneously, catching emerging threats and opportunities you'd otherwise overlook.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What kind of SEO data can I pull from Semrush API?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The Semrush API provides comprehensive SEO data including domain authority metrics, organic search traffic estimates, top-performing organic keywords with volume and difficulty scores, competitor domain lists with relevance scores, and detailed page-level data for top-performing content. This gives you a complete picture of any website's search performance.</p>
+          <p>You can extract specific metrics like organic traffic trends, keyword gap analysis (keywords they rank for that you don't), backlink profiles, and even advertising research data. The API returns structured data that's perfect for automated analysis and reporting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating SEO reporting save time for marketing teams?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated SEO reporting eliminates manual data collection and spreadsheet updates. Instead of spending hours each week gathering data, the workflow automatically pulls fresh metrics and updates your Google Sheets. This can save 5-10 hours per week for SEO specialists, allowing them to focus on strategy and optimization rather than data entry.</p>
+          <p>The time savings compound when you consider the consistency benefits. Automated reports run on schedule regardless of vacations, sick days, or busy periods, ensuring your competitive intelligence never has gaps. This reliability is particularly valuable for agencies reporting to clients or teams presenting to leadership.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this workflow for multiple client websites?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, this workflow can be easily adapted to monitor multiple client websites. You can modify the trigger to accept a list of domains or set up separate workflow instances for each client. The data will be organized in separate Google Sheets tabs or files, making client reporting straightforward and scalable.</p>
+          <p>For agencies, this means you can standardize competitor analysis across all clients while maintaining separate, confidential data streams. Each client gets their own automated report without cross-contamination of competitive intelligence between accounts.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the benefit of storing SEO data in Google Sheets versus other databases?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Google Sheets provides immediate accessibility for team collaboration, easy visualization with charts, and simple sharing with clients or stakeholders. Unlike specialized databases, most team members already know how to use Sheets, reducing training time. It also integrates seamlessly with other Google Workspace tools and allows for real-time collaboration on SEO insights.</p>
+          <p>For businesses without dedicated data teams, Sheets offers a perfect balance of capability and accessibility. You can build pivot tables, create dashboards, set up automated charts, and share read-only views with clients—all without needing database administration skills or additional software licenses.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I run competitor SEO analysis?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>For most businesses, monthly analysis is sufficient to track meaningful changes. However, competitive industries or rapidly changing markets might benefit from bi-weekly analysis. The beauty of automation is you can schedule it to run as frequently as needed without additional manual effort—daily, weekly, or monthly—depending on your competitive landscape and resources.</p>
+          <p>Consider your business cycle: e-commerce during holiday seasons might need weekly checks, while B2B services might be fine with monthly. The key advantage of automation is you can adjust frequency without increasing workload, letting data needs rather than time constraints dictate your monitoring schedule.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What other tools can I connect to this SEO automation workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Beyond Semrush and Google Sheets, you can extend this workflow to connect with Slack for alerting when competitors gain significant traction, Google Data Studio for advanced dashboards, email platforms for automated reports, or CRM systems to link SEO performance with sales data. n8n's flexibility allows integration with hundreds of additional apps.</p>
+          <p>Popular extensions include connecting to Ahrefs for backlink data, Google Analytics for comparing traffic estimates with actuals, or project management tools like Asana to create tasks when competitive threats are detected. The workflow becomes a central intelligence hub that feeds data to wherever your team works.</p>
+          <ul>
+            <li>Slack/Teams notifications for significant ranking changes</li>
+            <li>Google Data Studio dashboards for executive reporting</li>
+            <li>CRM integration to link SEO performance to deal tracking</li>
+            <li>Content calendar updates when content gaps are identified</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom SEO automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. While this free template provides a solid foundation for SEO competitor analysis, every business has unique needs. Our team at GrowwStacks specializes in building custom automation solutions that connect your specific SEO tools, data sources, and reporting requirements. We can create workflows that match your exact competitive landscape, KPIs, and team workflow.</p>
+          <p>Custom solutions might include integrating multiple SEO tools (Semrush, Ahrefs, Moz), connecting to proprietary databases, creating advanced alerting logic, or building executive dashboards that combine SEO data with other business metrics. We work with marketing teams and agencies to design automation that fits their specific processes.</p>
+          <ul>
+            <li>Multi-tool SEO data aggregation</li>
+            <li>Custom alerting thresholds and notifications</li>
+            <li>Integration with internal data systems</li>
+            <li>White-labeled reporting for agencies</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom SEO Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
