@@ -88,6 +88,11 @@
             <label for="messageInput">Tell us about your project</label>
             <textarea name="message" id="messageInput" placeholder="What processes do you want to automate? What's your biggest bottleneck?"></textarea>
           </div>
+          <div class="cf-turnstile" 
+     data-sitekey="0x4AAAAAADAAC9DrudJi3uS7">
+</div>
+
+<span class="form-error" id="captchaError"></span>
 
           <button type="submit" class="form-submit" id="submitBtn">
             Get My Free Automation Audit →
@@ -523,35 +528,102 @@
     /* ── Submit ── */
     if(form&&!form.__attached){
       form.__attached=true;
-      form.addEventListener('submit',async function(e){
-        e.preventDefault();
-        var ok=true;
-        if(nameIn.value.trim().length<2){showErr('nameError','Please enter your name');setErr(nameIn,true);ok=false;}
-        if(!validEmail(emailIn.value.trim())){showErr('emailError','Please enter a valid email address');setErr(emailIn,true);ok=false;}
-        if(!validPhone(phoneIn.value.trim())){showErr('phoneError','Please enter a valid phone number');phoneWrap.classList.add('error');ok=false;}
-        if(!serviceIn.value){showErr('serviceError','Please select a service');setErr(serviceIn,true);ok=false;}
-        if(!ok)return;
+      form.addEventListener('submit', async function(e){
+  e.preventDefault();
 
-        var btn=document.getElementById('submitBtn');
-        if(btn){btn.textContent='Sending...';btn.disabled=true;}
+  var ok=true;
 
-        document.getElementById('pageUrl').value=window.location.href;
-        document.getElementById('submittedAt').value=new Date().toISOString();
+  if(nameIn.value.trim().length<2){
+    showErr('nameError','Please enter your name');
+    setErr(nameIn,true);
+    ok=false;
+  }
 
-        var fd=new FormData(form),data={};
-        fd.forEach(function(v,k){data[k]=v;});
-        data.phone_full=sel.c+' '+phoneIn.value.trim();
-        data.country=sel.n;
-        data.country_iso=sel.i;
+  if(!validEmail(emailIn.value.trim())){
+    showErr('emailError','Please enter a valid email address');
+    setErr(emailIn,true);
+    ok=false;
+  }
 
-        try{
-          await fetch('https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om',{
-            method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
-          });
-        }catch(err){console.log('Webhook error:',err);}
-        window.location.href='/thank-you-lead';
-      });
+  if(!validPhone(phoneIn.value.trim())){
+    showErr('phoneError','Please enter a valid phone number');
+    phoneWrap.classList.add('error');
+    ok=false;
+  }
+
+  if(!serviceIn.value){
+    showErr('serviceError','Please select a service');
+    setErr(serviceIn,true);
+    ok=false;
+  }
+
+  // ✅ CAPTCHA CHECK
+  const captchaToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+
+  if(!captchaToken){
+    showErr('captchaError','Please verify you are human');
+    ok=false;
+  }
+
+  if(!ok) return;
+
+  var btn=document.getElementById('submitBtn');
+  btn.textContent='Verifying...';
+  btn.disabled=true;
+
+  try {
+    // ✅ VERIFY CAPTCHA (Cloudflare API)
+    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: '0x4AAAAAADAAC_qdrwmM3rN4mPmzMyMaV1U',
+        response: captchaToken
+      })
+    });
+
+    const verifyData = await verifyRes.json();
+
+    if(!verifyData.success){
+      showErr('captchaError','Captcha verification failed. Try again.');
+      btn.textContent='Get My Free Automation Audit →';
+      btn.disabled=false;
+      return;
+    }
+
+  } catch(err){
+    console.log('Captcha error:', err);
+    btn.disabled=false;
+    return;
+  }
+
+  // ✅ CONTINUE IF CAPTCHA SUCCESS
+  btn.textContent='Sending...';
+
+  document.getElementById('pageUrl').value=window.location.href;
+  document.getElementById('submittedAt').value=new Date().toISOString();
+
+  var fd=new FormData(form),data={};
+  fd.forEach(function(v,k){data[k]=v;});
+
+  data.phone_full=sel.c+' '+phoneIn.value.trim();
+  data.country=sel.n;
+  data.country_iso=sel.i;
+
+  try{
+    await fetch('https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+    });
+  }catch(err){
+    console.log('Webhook error:',err);
+  }
+
+  window.location.href='/thank-you-lead';
+});
     }
   })();
   </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </section>
