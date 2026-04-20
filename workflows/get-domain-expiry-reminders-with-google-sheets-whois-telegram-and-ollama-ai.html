@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Domain Expiry Monitoring with Google Sheets, WHOIS & Telegram | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow to monitor domain expiration dates. Get automated Telegram reminders using Google Sheets, WHOIS data, and AI. Prevent downtime, save time.">
+<link rel="canonical" href="https://growwstacks.com/workflows/7785-get-domain-expiry-reminders-with-google-sheets-whois-telegram-and-ollama-ai/">
+<meta property="og:title" content="Automate Domain Expiry Monitoring with Google Sheets, WHOIS & Telegram">
+<meta property="og:description" content="Free n8n workflow to monitor domain expiration dates. Get automated Telegram reminders using Google Sheets, WHOIS data, and AI. Prevent downtime, save time.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/7785-get-domain-expiry-reminders-with-google-sheets-whois-telegram-and-ollama-ai/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12387-get-domain-expiry-reminders-with-google-sheets-whois-t.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Domain Expiry Monitoring with Google Sheets, WHOIS & Telegram">
+<meta name="twitter:description" content="Free n8n workflow to monitor domain expiration dates. Get automated Telegram reminders using Google Sheets, WHOIS data, and AI. Prevent downtime, save time.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Domain Expiry Monitoring Automation","description":"Free n8n workflow to monitor domain expiration dates. Get automated Telegram reminders using Google Sheets, WHOIS data, and AI. Prevent downtime, save time.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12387-get-domain-expiry-reminders-with-google-sheets-whois-t.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is automated domain expiry monitoring important for businesses?","acceptedAnswer":{"@type":"Answer","text":"Automated domain expiry monitoring is critical because a lapsed domain can lead to immediate website downtime, lost revenue, and damage to brand reputation. Manual tracking across dozens or hundreds of domains is error-prone. Automation ensures you never miss a renewal, protecting your online assets and customer trust."}},{"@type":"Question","name":"What are the main benefits of integrating WHOIS data with Google Sheets for domain management?","acceptedAnswer":{"@type":"Answer","text":"Integrating WHOIS data with Google Sheets centralizes all domain information in one accessible, familiar location. You can see expiration dates, registrars, and ownership details alongside your custom notes. This creates a single source of truth for your entire domain portfolio, making audits and planning much easier."}},{"@type":"Question","name":"How does AI improve domain expiry monitoring compared to traditional methods?","acceptedAnswer":{"@type":"Answer","text":"AI, particularly through information extraction, can parse unstructured WHOIS response data to reliably pull out key dates and statuses, even when formats vary between registrars. This eliminates manual data entry errors and ensures your monitoring system works consistently across all your domains, regardless of their registrar."}},{"@type":"Question","name":"What are the best practices for setting up domain expiry alert thresholds?","acceptedAnswer":{"@type":"Answer","text":"Set tiered alerts: a 90-day warning for initial planning, a 30-day alert for action, and a 7-day urgent notice. Also configure post-expiration alerts. This gives your team ample time to budget, approve, and execute renewals without rushing. Always include the registrar contact and renewal link in the alert."}},{"@type":"Question","name":"Can I use this automation for client domain management as an agency?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. This workflow is ideal for agencies. You can maintain a master Google Sheet with all client domains, and the system will send alerts to your internal project manager or directly to clients via their preferred channel (like email, if added to the workflow). It's a scalable way to deliver added value and prevent costly client domain losses."}},{"@type":"Question","name":"What other automations can I build around domain and DNS management?","acceptedAnswer":{"@type":"Answer","text":"Beyond expiry monitoring, you can automate SSL certificate renewal checks, DNS record change alerts, domain name suggestion research, bulk domain registration workflows, and integration with accounting software to track renewal expenses. Automations can also sync domain data with your CRM or IT asset management system."}},{"@type":"Question","name":"How reliable is WHOIS data for automation, and are there rate limits?","acceptedAnswer":{"@type":"Answer","text":"WHOIS data is generally reliable for expiration dates, but public WHOIS servers may have rate limits. For critical portfolios, consider using a paid WHOIS API service for higher reliability and limits. The n8n workflow can be easily modified to switch between free and paid data sources as your needs grow."}},{"@type":"Question","name":"Can I get a custom domain management automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom domain and IT asset automation systems. We can integrate with your specific registrars, internal ticketing systems, financial software, and communication channels. We'll design a solution that matches your exact portfolio size, team structure, and compliance requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Domain Expiry Monitoring"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Domain Expiry Monitoring</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Telegram</span>
+          <span class="cs-tag">WHOIS</span>
+          <span class="cs-tag">AI</span>
+          <span class="cs-tag">DevOps</span>
+        </div>
+        <h1>Automate Domain Expiry Monitoring & Alerts</h1>
+        <p class="cs-hero-sub">Never lose a domain again. This free n8n workflow monitors expiration dates, fetches WHOIS data, and sends proactive Telegram reminders—fully automated.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12387-get-domain-expiry-reminders-with-google-sheets-whois-t.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/12387-get-domain-expiry-reminders-with-google-sheets-whois-t.png" alt="Visual diagram of the domain expiry monitoring automation workflow connecting Google Sheets, WHOIS lookup, AI processing, and Telegram alerts" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Forgetting to renew a domain is a costly mistake that leads to immediate website downtime, lost email functionality, and damage to brand reputation. This automation solves that by creating a hands-off monitoring system for your entire domain portfolio.</p>
+        <p>The workflow reads your domain list from Google Sheets, queries public WHOIS data for each domain's expiration date, uses AI to extract the key information reliably, and sends you a Telegram alert when a renewal is approaching. It runs daily, so you're always informed with plenty of lead time.</p>
+        <p>This is especially valuable for agencies managing client domains, IT departments overseeing corporate assets, or entrepreneurs with multiple projects. It transforms a reactive, stressful task into a proactive, managed process.</p>
+
+        <h2>How It Works</h2>
+        <h3>Step 1: Scheduled Trigger & Data Fetch</h3>
+        <p>A scheduler node (like Cron) triggers the workflow daily at a set time. It then connects to your designated Google Sheet, which acts as the master list of all domains you need to monitor.</p>
+        <h3>Step 2: WHOIS Lookup for Each Domain</h3>
+        <p>For each domain in your sheet, the workflow performs an HTTP request to a WHOIS service or API. This fetches the raw registration data, which contains the expiration date, registrar, and other details.</p>
+        <h3>Step 3: AI-Powered Data Extraction</h3>
+        <p>WHOIS responses are unstructured text that varies by registrar. An AI node (like Ollama or another LLM) is prompted to extract the expiration date, domain status, and registrant name from this text, outputting clean, structured data.</p>
+        <h3>Step 4: Logic & Alert Decision</h3>
+        <p>The workflow calculates how many days are left until expiration. If a domain is within your configured alert window (e.g., 90 days), it proceeds to create a notification message. It also checks a log to avoid sending duplicate alerts.</p>
+        <h3>Step 5: Sending the Telegram Alert</h3>
+        <p>A formatted message is sent to your specified Telegram chat or channel. The message includes the domain name, days until expiry, and often a direct link to renew. The notification date is then recorded back to your sheet.</p>
+
+        <h2>Who This Is For</h2>
+        <p><strong>Digital Agencies & Freelancers:</strong> Manage dozens of client domains without the fear of missing a renewal and damaging client relationships. Provide this monitoring as a value-added service.</p>
+        <p><strong>IT & DevOps Teams:</strong> Oversee corporate domain portfolios systematically. Ensure business-critical domains for email, applications, and websites are always protected from accidental lapse.</p>
+        <p><strong>Entrepreneurs & Startup Founders:</strong> Keep track of domains for your main business, side projects, and future ventures from a single dashboard. Focus on building, not administrative tracking.</p>
+        <p><strong>Domain Investors & Portfolio Managers:</strong> Automate the monitoring of large domain holdings. Get alerts for renewal cycles across hundreds of assets to optimize holding costs.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A running n8n instance</strong> (cloud or self-hosted).</li>
+          <li><strong>A Google Sheets document</strong> with your domain list. Ensure you have columns for domain name and (optionally) last alert date.</li>
+          <li><strong>Google Service Account credentials</strong> configured in n8n to access your sheet.</li>
+          <li><strong>A Telegram Bot Token and Chat ID</strong> to receive the alerts.</li>
+          <li><strong>Access to an LLM/ AI node</strong> like Ollama (local), OpenAI, or Anthropic for information extraction.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> For maximum reliability with large portfolios, consider using a paid WHOIS API instead of free public lookups. They offer higher rate limits and more consistent data formatting, which makes the AI extraction step even more robust.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download and Import:</strong> Click the download button above to get the JSON file. In your n8n instance, go to Workflows > Import from File and select the downloaded template.</li>
+          <li><strong>Configure Google Sheets:</strong> In the "Google Sheets" node, replace the placeholder Spreadsheet ID with your own. Set the correct sheet name and range (e.g., `A2:B100`).</li>
+          <li><strong>Set Up Telegram:</strong> In the "Telegram" node, add your Bot Token (created via @BotFather) and the destination Chat ID.</li>
+          <li><strong>Configure the AI Node:</strong> Connect your preferred LLM provider (Ollama, OpenAI, etc.) in the "Extract Information" node. The prompt is pre-configured, but you can tweak it.</li>
+          <li><strong>Adjust the Schedule:</strong> In the "Cron" or scheduler node, set your preferred run time (e.g., daily at 9 AM).</li>
+          <li><strong>Test and Activate:</strong> Run the workflow once manually with a test domain to ensure all connections work. Then toggle the workflow to "Active" to let it run automatically.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate Costly Downtime:</strong> A single lapsed domain can cost thousands in lost sales and recovery efforts. This automation provides a safety net that pays for itself many times over.</p>
+        <p><strong>Save Administrative Time:</strong> Manually checking WHOIS for dozens of domains is a tedious monthly chore. This workflow automates it completely, freeing up hours for more valuable work.</p>
+        <p><strong>Centralize Domain Intelligence:</strong> Your Google Sheet becomes a living, updated registry. You always have an accurate, current view of your entire portfolio's health and renewal schedule.</p>
+        <p><strong>Scale Without Stress:</strong> Whether you manage 10 domains or 500, the system works the same. Adding a new domain is as simple as adding a row to your sheet.</p>
+        <p><strong>Improve Client Trust (For Agencies):</strong> Proactively notifying clients about upcoming renewals demonstrates professionalism and care, strengthening your client relationships.</p>
+
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about domain management automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why is automated domain expiry monitoring important for businesses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated domain expiry monitoring is critical because a lapsed domain can lead to immediate website downtime, lost revenue, and damage to brand reputation. Manual tracking across dozens or hundreds of domains is error-prone and often falls through the cracks during busy periods.</p>
+          <p>Automation ensures you never miss a renewal, protecting your online assets and customer trust. It provides a systematic, reliable safety net that operates independently of human memory or workload.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of integrating WHOIS data with Google Sheets for domain management?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Integrating WHOIS data with Google Sheets centralizes all domain information in one accessible, familiar location. You can see expiration dates, registrars, and ownership details alongside your custom notes, client names, or project codes.</p>
+          <p>This creates a single source of truth for your entire domain portfolio, making audits, planning, and reporting much easier. The sheet is also easily shareable with team members or clients, fostering transparency.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI improve domain expiry monitoring compared to traditional methods?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>AI, particularly through information extraction, can parse unstructured WHOIS response data to reliably pull out key dates and statuses, even when formats vary between registrars. Traditional scripts often break when a registrar changes its output format.</p>
+          <p>This AI layer eliminates manual data entry errors and ensures your monitoring system works consistently across all your domains, regardless of their registrar. It adds a layer of intelligence and adaptability to the automation.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the best practices for setting up domain expiry alert thresholds?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Set tiered alerts to provide adequate lead time without causing alert fatigue. A common strategy is a 90-day warning for initial planning and budgeting, a 30-day alert for taking action, and a 7-day urgent notice.</p>
+          <p>Also configure a final alert for domains that have just expired. Always include the registrar contact and a direct renewal link in the alert message to reduce friction for the person handling the renewal.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this automation for client domain management as an agency?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. This workflow is ideal for agencies. You can maintain a master Google Sheet with all client domains, tagged by client name or project. The system will send alerts to your internal project manager or, with a small modification, directly to clients via their preferred channel (like email).</p>
+          <p>It's a scalable, professional way to deliver added value and prevent the catastrophic scenario of a client's domain expiring on your watch, which can permanently damage the relationship.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What other automations can I build around domain and DNS management?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Beyond expiry monitoring, you can automate SSL certificate renewal checks, DNS record change alerts, and domain name suggestion research based on keywords. You can also build workflows for bulk domain registration or transfers.</p>
+          <p>Integrations can sync domain data with your CRM, IT asset management system, or accounting software to track renewal expenses. The goal is to create a fully automated IT asset lifecycle management system.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How reliable is WHOIS data for automation, and are there rate limits?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>WHOIS data for expiration dates is generally reliable, but public WHOIS servers often have strict rate limits and may temporarily block IPs that make too many rapid queries. This can break automation for large portfolios.</p>
+          <p>For critical or large-scale monitoring, we recommend using a paid WHOIS API service. These services offer higher query limits, guaranteed uptime, and consistent data formatting. The n8n workflow can be easily modified to switch between data sources.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom domain management automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom domain and IT asset automation systems tailored to your specific business needs. We can integrate with your preferred registrars (like GoDaddy, Cloudflare, Namecheap), internal ticketing systems (Jira, Freshdesk), financial software, and communication channels.</p>
+          <p>We'll design a solution that matches your exact portfolio size, team structure, and compliance requirements. This free template is a starting point; we can build a robust, enterprise-grade system that grows with you.</p>
+          <ul>
+            <li>Multi-registrar support and API integration</li>
+            <li>Custom alerting logic and escalation paths</li>
+            <li>Detailed reporting and audit trails</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Domain Management Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
