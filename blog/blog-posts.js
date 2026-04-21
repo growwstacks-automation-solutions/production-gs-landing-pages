@@ -1,5 +1,86 @@
 const BLOG_POSTS = [
 {
+  title: "How Claude Code's Agent Teams Can Replace an Entire Department (Opus 4.6)",
+  desc: "Discover how Claude Code's AI agent teams can perform complex business tasks like competitor analysis faster and more thoroughly than human departments. Learn to implement this game-changing automation in your business.",
+  url: "/blog/claude-code-agent-teams-replace-departments",
+  tags: ["AI Agents","Business Automation","Claude Code"],
+  date: "2026-02-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Connect Gmail to ChatGPT | Never Manually Reply to Emails Again",
+  desc: "Stop wasting hours drafting email responses. This Zapier workflow connects Gmail to ChatGPT to automatically generate professional replies as drafts - saving you 10+ hours per week.",
+  url: "/blog/connect-gmail-to-chatgpt-automate-email-replies",
+  tags: ["Make.com","AI Agents","Productivity"],
+  date: "2026-02-09",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automate LinkedIn Scraping with Sales Navigator + Vayne API + n8n",
+  desc: "Stop manually checking LinkedIn for new leads. This n8n workflow automatically scrapes Sales Navigator daily, enriches contacts with professional emails, and pushes qualified leads directly to your outreach campaigns.",
+  url: "/blog/how-to-automate-linkedin-scraping-sales-navigator-vayne-api-n8n",
+  tags: ["n8n","CRM","Sales"],
+  date: "2026-02-09",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Meet BotSpace: The #1 AI Agent for eCommerce That Converts 30% More Anonymous Visitors",
+  desc: "Discover how BotSpace's AI agent helps eCommerce businesses convert 30% more anonymous visitors, handle 60% of support conversations automatically, and drive sales through WhatsApp, Instagram and voice calls - all while providing real-time CX insights.",
+  url: "/blog/botspace-ai-agent-for-ecommerce",
+  tags: ["AI Agents","eCommerce","WhatsApp Automation"],
+  date: "2026-02-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Fathom AI Meeting Notes to ClickUp with Zapier",
+  desc: "Stop wasting time manually transferring meeting notes. This Zapier integration automatically sends Fathom AI summaries, action items, and full transcripts to ClickUp documents - including meeting recording URLs.",
+  url: "/blog/automate-fathom-ai-meeting-notes-clickup-zapier",
+  tags: ["Zapier","ClickUp","AI Agents"],
+  date: "2026-02-09",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "I Built a Production-Ready App in 20 Minutes with Claude Opus 4.6",
+  desc: "Under tight deadline pressure, Claude Opus 4.6 built a secure production-ready application in under 30 minutes - complete with authentication, database integration, and security testing.",
+  url: "/blog/claude-opus-build-production-app-20-minutes",
+  tags: ["AI Agents","Claude Opus","App Development"],
+  date: "2026-02-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Automate Client Document Collection for CA Firms with a WhatsApp Chatbot",
+  desc: "Stop chasing clients for documents manually. This WhatsApp chatbot built with Paby Chatflow automatically collects PAN cards, Aadhaar cards, income proofs and more - saving CAs hours of follow-ups.",
+  url: "/blog/whatsapp-chatbot-ca-firms-document-collection",
+  tags: ["WhatsApp Automation","CA Firms","Document Collection"],
+  date: "2026-02-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "This AI Agent Books Directly Onto Your Calendar (Built Step By Step)",
+  desc: "Discover how AI voice agents can autonomously qualify leads, engage prospects, and book appointments directly into your calendar—eliminating scheduling friction and missed opportunities.",
+  url: "/blog/ai-agent-books-appointments-directly-to-calendar",
+  tags: ["Voice AI","AI Agents","Automation"],
+  date: "2026-02-09",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Create Video Ads for $1 Each Using This Automated n8n Workflow",
+  desc: "Discover how to automate professional video ad creation for just $1 per ad using n8n and Atlas Cloud. This workflow generates scenes, images, and videos daily with zero manual effort.",
+  url: "/blog/create-video-ads-for-1-dollar-automated-n8n-workflow",
+  tags: ["n8n","Video Ads","AI Automation"],
+  date: "2026-02-09",
+  readTime: 7,
+  target: "_blank"
+},
+{
   title: "I Spent 2 Weeks Using Claude Code So You Don't Have To (No Coding Needed)",
   desc: "Discover how Claude Code revolutionizes AI automation without requiring any coding skills. Learn how it builds personal knowledge bases, manages your schedule, and connects all your tools through simple conversations.",
   url: "/blog/claude-code-review-no-coding-needed",
