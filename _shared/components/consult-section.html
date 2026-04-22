@@ -130,6 +130,7 @@
     .form-error.visible{display:block}
     .form-group input.input-error,.form-group select.input-error{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.08)}
   </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <script>
   (function(){
@@ -558,50 +559,47 @@
   }
 
   // ✅ CAPTCHA CHECK
-  const captchaToken = document.querySelector('[name="cf-turnstile-response"]')?.value;
+const captchaToken = turnstile.getResponse();
 
-  if(!captchaToken){
-    showErr('captchaError','Please verify you are human');
-    ok=false;
+if (!captchaToken) {
+  showErr('captchaError','Please verify you are human');
+  ok = false;
+}
+
+if(!ok) return;
+
+var btn=document.getElementById('submitBtn');
+btn.textContent='Verifying...';
+btn.disabled=true;
+
+try {
+  const verifyRes = await fetch("https://script.google.com/macros/s/AKfycbxaCgJa3Swn_khuefJdS83fMii6xKWgzU_L5ssI95WZ9aiqniqB0fIY20fB3gerdS8K/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      token: captchaToken
+    })
+  });
+
+  const verifyText = await verifyRes.text();
+  const verifyData = JSON.parse(verifyText);
+
+  if (!verifyData.success) {
+    showErr('captchaError','Captcha verification failed. Try again.');
+    btn.textContent='Get My Free Automation Audit →';
+    btn.disabled=false;
+    turnstile.reset();
+    return;
   }
 
-  if(!ok) return;
-
-  var btn=document.getElementById('submitBtn');
-  btn.textContent='Verifying...';
-  btn.disabled=true;
-
-  try {
-    // ✅ VERIFY CAPTCHA USING PHP
-const verifyRes = await fetch('https://growwstacks.com/verify-turnstile.php', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    token: captchaToken
-  })
-});
-
-const verifyData = await verifyRes.json();
-
-if(!verifyData.success){
-  showErr('captchaError','Captcha verification failed. Try again.');
+} catch(err){
+  console.log('Captcha error:', err);
   btn.textContent='Get My Free Automation Audit →';
   btn.disabled=false;
   return;
 }
-
-    if(!verifyData.success){
-      showErr('captchaError','Captcha verification failed. Try again.');
-      btn.textContent='Get My Free Automation Audit →';
-      btn.disabled=false;
-      return;
-    }
-
-  } catch(err){
-    console.log('Captcha error:', err);
-    btn.disabled=false;
-    return;
-  }
 
   // ✅ CONTINUE IF CAPTCHA SUCCESS
   btn.textContent='Sending...';
@@ -631,5 +629,4 @@ if(!verifyData.success){
     }
   })();
   </script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </section>
