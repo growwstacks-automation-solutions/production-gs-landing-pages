@@ -3053,5 +3053,52 @@ window.templateData = [
     "ROI": "300",
     "displayTitle": "Automate AI Video Generation and Multi-Platform Publishing",
     "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-ai-video-generation-multi-platform-publishing"
+  },
+  {
+    "title": "Automated Multi-Channel Contact Notifications with WhatsApp and Logging",
+    "description": "This n8n workflow listens for contact events via webhook, routes them by channel (email/SMS/WhatsApp), and triggers specific WhatsApp template messages based on a message type. It logs key events to Airtable and can notify admins, making it ideal for customer support or platform notification systems.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_ZYzoXM-Ev.jpg",
+    "apps": [
+      "Microsoft Outlook",
+      "Twilio",
+      "WhatsApp",
+      "Airtable"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Victor_Lignel__send_contact__20260409_194954_PjpbCBQ6G.json",
+    "Industry": "Customer Support",
+    "ROI": "250",
+    "displayTitle": "Automated Multi-Channel Contact Notifications with WhatsApp and Logging",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automated-multi-channel-contact-notifications-whatsapp-logging"
+  },
+  {
+    "title": "Automate Lalamove Deliveries for WooCommerce Orders by Time Slot",
+    "description": "This n8n workflow automates bulk delivery scheduling with Lalamove for WooCommerce orders. It groups orders by time slot and postal sector, creates optimized delivery batches, generates Lalamove tokens, and updates WooCommerce with tracking IDs. Perfect for e-commerce businesses needing efficient last-mile logistics automation.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_dQSo-Pd5oT.jpg",
+    "apps": [
+      "WooCommerce",
+      "Lalamove"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Shubhmoy_Josh__Lalamove_Cron_Automation__20260409_194743_JtvPl3Okh.json",
+    "Industry": "E-commerce",
+    "ROI": "25",
+    "displayTitle": "Automate Lalamove Deliveries for WooCommerce Orders by Time Slot",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-lalamove-deliveries-for-woocommerce-orders-by-time-slot"
+  },
+  {
+    "title": "Automated AI-Powered UGC Video Creation from Telegram Images",
+    "description": "This n8n workflow automates creation of user-generated content videos from Telegram images. It analyzes product images, generates AI image prompts, creates videos with Kie.ai, combines scenes, and delivers final videos back to Telegram. Ideal for marketers and content creators needing fast, scalable UGC production.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_S2DjWgmrO.jpg",
+    "apps": [
+      "Telegram",
+      "OpenAI",
+      "Kie.ai",
+      "Google Sheets",
+      "Railway (ffmpeg service)"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Victor_Lignel__UGC_Workflow__20260409_194921_LJKCjp7qT.json",
+    "Industry": "Marketing",
+    "ROI": "300",
+    "displayTitle": "Automated AI-Powered UGC Video Creation from Telegram Images",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automated-ai-ugc-video-creation-from-telegram-images"
   }
-];;;;;;;
+];;;;;;;;
