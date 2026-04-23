@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrich Company Data from Google Sheets with OpenAI & ScrapingBee | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automatically enrich company data from a Google Sheet using AI and web scraping. This free n8n workflow template extracts business insights, ideal customer profiles, and more.">
+<link rel="canonical" href="https://growwstacks.com/workflows/1007-enrich-company-data-from-google-sheet-with-openai-agent-and-scrapingbee/">
+<meta property="og:title" content="Enrich Company Data from Google Sheets with OpenAI & ScrapingBee">
+<meta property="og:description" content="Free n8n template to automate company data enrichment from spreadsheets using AI and web scraping. Download and import instantly.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/1007-enrich-company-data-from-google-sheet-with-openai-agent-and-scrapingbee/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2463-enrich-company-data-from-google-sheet-with-openai-agent.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enrich Company Data from Google Sheets with OpenAI & ScrapingBee">
+<meta name="twitter:description" content="Free n8n template to automate company data enrichment from spreadsheets using AI and web scraping. Download and import instantly.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Enrich Company Data from Google Sheets with OpenAI & ScrapingBee","description":"Automatically enrich company data from a Google Sheet using AI and web scraping. This free n8n workflow template extracts business insights, ideal customer profiles, and more.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2463-enrich-company-data-from-google-sheet-with-openai-agent.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is company data enrichment and why is it important for sales and marketing?","acceptedAnswer":{"@type":"Answer","text":"Company data enrichment is the process of enhancing basic contact or lead information with additional details like industry, company size, funding, tech stack, and ideal customer profile (ICP). It's crucial for sales and marketing teams because it transforms a simple list of names into actionable intelligence, allowing for highly targeted outreach, personalized messaging, and more effective lead scoring and segmentation."}},{"@type":"Question","name":"How does AI improve traditional web scraping for company data?","acceptedAnswer":{"@type":"Answer","text":"Traditional web scraping just extracts raw text. AI, like the OpenAI Agent in this template, interprets that text. It can understand context, identify key business information like value propositions and business models, and structure the data into usable fields. This turns unstructured website content into structured insights like 'Business Area' or 'ICP' automatically, saving hours of manual research."}},{"@type":"Question","name":"Can I use this workflow for lead generation and prospecting?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. This workflow is ideal for building targeted lead lists. Start with a list of company names and websites from tools like LinkedIn Sales Navigator or Apollo. The workflow will scrape their sites and use AI to identify their business model, target customer, and value proposition. This enriched data helps you prioritize leads that are the best fit for your product or service."}},{"@type":"Question","name":"What are the main benefits of automating company research with n8n?","acceptedAnswer":{"@type":"Answer","text":"Automating company research saves dozens of hours per week, ensures data consistency, and scales effortlessly. Instead of a team member manually visiting 100 websites, n8n can process them overnight. It also reduces human error and bias in data interpretation. The biggest benefit is turning a reactive, manual process into a proactive, scalable data pipeline that fuels your CRM and sales efforts."}},{"@type":"Question","name":"Do I need coding skills to set up this AI and scraping automation?","acceptedAnswer":{"@type":"Answer","text":"No, you don't need coding skills. This n8n template is built visually. You configure API keys for OpenAI and ScrapingBee (or another scraper), connect your Google Sheet, and the workflow handles the rest. n8n's low-code interface lets you see the data flow step-by-step, making it accessible for business users, marketers, and operations teams, not just developers."}},{"@type":"Question","name":"How accurate is the AI in extracting business information from websites?","acceptedAnswer":{"@type":"Answer","text":"The accuracy depends on the quality of the website content and the specificity of your AI prompt. For clear, well-structured company websites, modern AI models like GPT-4 are highly accurate at identifying core business information. The template includes logic to flag 'insufficient' or 'mismatched' content, prompting manual review for ambiguous cases, ensuring data quality."}},{"@type":"Question","name":"What are the legal considerations when scraping company websites for data?","acceptedAnswer":{"@type":"Answer","text":"Always check a website's robots.txt file and Terms of Service before scraping. Use ethical scraping practices: respect rate limits, don't overload servers, and use services like ScrapingBee that handle proxies and browsers legally. The data collected should be for internal business intelligence, not for resale. When in doubt, consult legal advice regarding data collection in your jurisdiction."}},{"@type":"Question","name":"Can I get a custom company data enrichment automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored automation systems. While this free template is a great starting point, we can build a custom solution that integrates directly with your CRM (like HubSpot or Salesforce), uses your specific data points, includes custom error handling and reporting, and scales to process thousands of leads. Book a free consultation to discuss your needs."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Enrich Company Data from Google Sheets"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Enrich Company Data</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">OpenAI</span>
+          <span class="cs-tag">Web Scraping</span>
+          <span class="cs-tag">Lead Enrichment</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Enrich Company Data from Google Sheets with AI & Scraping</h1>
+        <p class="cs-hero-sub">Automate company research: scrape websites, extract business insights with AI, and update your spreadsheet—all in one workflow.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2463-enrich-company-data-from-google-sheet-with-openai-agent.png" alt="Visual diagram of the n8n workflow for enriching company data from Google Sheets with AI and web scraping" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Manually researching companies to understand their business, target market, and value proposition is a massive time sink for sales, marketing, and business development teams. This automation solves that problem by turning a simple spreadsheet of company names and websites into a rich, actionable database.</p>
+        <p>The workflow connects to your Google Sheet, visits each company's website using a scraping service, uses an OpenAI Agent to intelligently analyze the content, and writes back structured insights like business area, offer, value proposition, business model, and ideal customer profile (ICP). It transforms hours of manual work into a fully automated, scalable process.</p>
+        <p>Beyond just data collection, it includes quality checks—flagging insufficient information or mismatched content—so you can trust the output. This is perfect for building targeted lead lists, market research, competitor analysis, or enriching your CRM data.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow is built in n8n and operates in a clear, sequential manner to ensure reliable data enrichment.</p>
+
+        <h3>Step 1: Trigger & Data Input</h3>
+        <p>The process starts with a Webhook node, but you can easily swap this for a Schedule Trigger to run daily or weekly, or a Google Sheets Trigger for when a new row is added. It fetches your list of companies from a predefined Google Sheet, which must at minimum contain "Company" and "Website" columns.</p>
+
+        <h3>Step 2: Looping & Scraping</h3>
+        <p>A Loop Over Items node ensures each company is processed individually. For each row, it calls a sub-workflow (the "Scraper Agent") which uses the ScrapingBee node to fetch the HTML content of the company's website. This HTML is then converted into clean Markdown to reduce token usage for the AI analysis.</p>
+
+        <h3>Step 3: AI-Powered Analysis</h3>
+        <p>The core of the workflow is an AI Agent node. It sends the scraped website content, along with the company name, to an OpenAI Chat Model (like GPT-4). A carefully crafted prompt instructs the AI to extract specific business attributes: Business Area, Offer, Value Proposition, Business Model, and ICP. A Structured Output Parser formats the AI's response into clean, consistent JSON.</p>
+
+        <h3>Step 4: Data Validation & Output</h3>
+        <p>The AI also assesses the quality of its own analysis, tagging entries as "Sufficient" or "Insufficient" and providing notes if information is missing or the page content seems mismatched. Finally, an Update Row node writes all this enriched data back into the original Google Sheet, completing the loop and creating a powerful, self-updating company intelligence system.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template is designed for <strong>sales and business development teams</strong> who need to quickly qualify and understand prospects. It's ideal for <strong>marketers</strong> conducting competitor analysis or market research. <strong>Startups and founders</strong> can use it to map their ecosystem and identify potential partners or customers. <strong>Recruiters and talent acquisition</strong> specialists can enrich data on potential employers or companies. Essentially, any professional who spends time manually visiting company websites to gather intelligence will benefit massively from this automation.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>A Google Sheet</strong> with at least two columns: "Company" and "Website".</li>
+          <li><strong>An n8n instance</strong> (cloud or self-hosted).</li>
+          <li><strong>An OpenAI API key</strong> with access to a model like GPT-4.</li>
+          <li><strong>A ScrapingBee API key</strong> (or an alternative web scraping service configured in n8n).</li>
+          <li><strong>Google Sheets credentials</strong> set up in n8n to read from and write to your spreadsheet.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Before running at scale, test the workflow with 2-3 companies to ensure your AI prompt and scraper are yielding the desired results. Adjust the prompt in the AI Agent node to focus on the specific insights most valuable to your business.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download & Import:</strong> Click the "Download Template" button above and import the JSON file into your n8n instance.</li>
+          <li><strong>Configure Credentials:</strong> In n8n, set up credentials for Google Sheets, OpenAI, and ScrapingBee (or your chosen scraper).</li>
+          <li><strong>Connect Your Sheet:</strong> In the "Get Rows from Google Sheet" node, select your spreadsheet and worksheet.</li>
+          <li><strong>Adjust the AI Prompt:</strong> Review the prompt in the "AI Agent" node to ensure it asks for the business information you need.</li>
+          <li><strong>Test Run:</strong> Use the "Webhook" node's test button or a Manual Trigger to run the workflow for one company and verify the output in your sheet.</li>
+          <li><strong>Schedule or Trigger:</strong> Replace the Webhook with a Schedule Trigger to run automatically (e.g., nightly) or a Google Sheets Trigger to run when new rows are added.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Turn hours into minutes.</strong> What takes a human researcher 10-15 minutes per company is done in seconds by this workflow, freeing your team for higher-value tasks.</p>
+        <p><strong>Improve lead scoring and segmentation.</strong> With structured data on business model and ICP, you can automatically score leads based on fit and route them to the appropriate sales channel.</p>
+        <p><strong>Ensure data consistency.</strong> Manual research leads to inconsistent notes and formats. AI analysis provides uniform, structured data across all companies in your database.</p>
+        <p><strong>Scale your prospecting effortlessly.</strong> Process hundreds or thousands of companies without adding headcount. The workflow runs unattended, constantly building your intelligence asset.</p>
+        <p><strong>Make smarter, data-driven decisions.</strong> Enriched company data empowers better strategy in sales targeting, partnership outreach, marketing campaigns, and competitive analysis.</p>
+
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about AI-powered company data enrichment and automation</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is company data enrichment and why is it important for sales and marketing?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Company data enrichment is the process of enhancing basic contact or lead information with additional details like industry, company size, funding, tech stack, and ideal customer profile (ICP). It's crucial for sales and marketing teams because it transforms a simple list of names into actionable intelligence, allowing for highly targeted outreach, personalized messaging, and more effective lead scoring and segmentation.</p>
+          <p>Without enrichment, your team is working with incomplete data, leading to generic pitches and wasted effort. Automated enrichment ensures every interaction is informed and relevant.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does AI improve traditional web scraping for company data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Traditional web scraping just extracts raw text. AI, like the OpenAI Agent in this template, interprets that text. It can understand context, identify key business information like value propositions and business models, and structure the data into usable fields. This turns unstructured website content into structured insights like 'Business Area' or 'ICP' automatically, saving hours of manual research.</p>
+          <p>The AI acts as a smart analyst, reading between the lines to provide nuanced understanding that simple keyword matching would miss.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this workflow for lead generation and prospecting?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. This workflow is ideal for building targeted lead lists. Start with a list of company names and websites from tools like LinkedIn Sales Navigator or Apollo. The workflow will scrape their sites and use AI to identify their business model, target customer, and value proposition. This enriched data helps you prioritize leads that are the best fit for your product or service.</p>
+          <p>You can then feed this enriched data directly into your CRM or outreach platform, enabling hyper-personalized cold emails and messaging that demonstrates real understanding of the prospect's business.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of automating company research with n8n?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating company research saves dozens of hours per week, ensures data consistency, and scales effortlessly. Instead of a team member manually visiting 100 websites, n8n can process them overnight. It also reduces human error and bias in data interpretation. The biggest benefit is turning a reactive, manual process into a proactive, scalable data pipeline that fuels your CRM and sales efforts.</p>
+          <p>Beyond time savings, it creates a competitive advantage by allowing you to analyze market trends and competitor moves at a scale impossible manually.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do I need coding skills to set up this AI and scraping automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>No, you don't need coding skills. This n8n template is built visually. You configure API keys for OpenAI and ScrapingBee (or another scraper), connect your Google Sheet, and the workflow handles the rest. n8n's low-code interface lets you see the data flow step-by-step, making it accessible for business users, marketers, and operations teams, not just developers.</p>
+          <p>The template is pre-built; you're essentially connecting the dots between your data sources and the AI tools.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate is the AI in extracting business information from websites?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The accuracy depends on the quality of the website content and the specificity of your AI prompt. For clear, well-structured company websites, modern AI models like GPT-4 are highly accurate at identifying core business information. The template includes logic to flag 'insufficient' or 'mismatched' content, prompting manual review for ambiguous cases, ensuring data quality.</p>
+          <p>You can improve accuracy by refining the AI's instructions in the prompt and by using the workflow's quality check outputs to continuously train and adjust your process.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the legal considerations when scraping company websites for data?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Always check a website's robots.txt file and Terms of Service before scraping. Use ethical scraping practices: respect rate limits, don't overload servers, and use services like ScrapingBee that handle proxies and browsers legally. The data collected should be for internal business intelligence, not for resale. When in doubt, consult legal advice regarding data collection in your jurisdiction.</p>
+          <p>This template is designed for ethical, limited-scale enrichment to support legitimate business development, not for mass data harvesting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom company data enrichment automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored automation systems. While this free template is a great starting point, we can build a custom solution that integrates directly with your CRM (like HubSpot or Salesforce), uses your specific data points, includes custom error handling and reporting, and scales to process thousands of leads. Book a free consultation to discuss your needs.</p>
+          <p>We can also add steps to clean data, deduplicate records, trigger follow-up actions in other apps, and create dashboards to monitor the enrichment pipeline's performance.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Company Data Enrichment Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

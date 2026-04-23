@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate PagerDuty Incident Management | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow template to create, update, and get incidents on PagerDuty. Automate IT alerting and incident response to reduce MTTR and improve team coordination.">
+<link rel="canonical" href="https://growwstacks.com/workflows/47-create-update-and-get-an-incident-on-pagerduty/">
+<meta property="og:title" content="Automate PagerDuty Incident Management | Free n8n Template">
+<meta property="og:description" content="Free n8n workflow template to create, update, and get incidents on PagerDuty. Automate IT alerting and incident response to reduce MTTR and improve team coordination.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/47-create-update-and-get-an-incident-on-pagerduty/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/411-create-update-and-get-an-incident-on-pagerduty.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate PagerDuty Incident Management | Free n8n Template">
+<meta name="twitter:description" content="Free n8n workflow template to create, update, and get incidents on PagerDuty. Automate IT alerting and incident response to reduce MTTR and improve team coordination.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate PagerDuty Incident Management","description":"Free n8n workflow template to create, update, and get incidents on PagerDuty. Automate IT alerting and incident response to reduce MTTR and improve team coordination.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/411-create-update-and-get-an-incident-on-pagerduty.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is PagerDuty and why is it important for IT teams?","acceptedAnswer":{"@type":"Answer","text":"PagerDuty is a digital operations management platform that helps IT and DevOps teams respond to incidents and system alerts quickly. It centralizes alerts from monitoring tools, schedules on-call rotations, and ensures the right person is notified at the right time. Automating incident creation and updates in PagerDuty reduces manual work, speeds up response times, and improves service reliability."}},{"@type":"Question","name":"How can automation improve our incident response process?","acceptedAnswer":{"@type":"Answer","text":"Automation eliminates manual steps like copying error details, opening PagerDuty, and filling out forms. When an alert triggers, the workflow automatically creates a PagerDuty incident with all relevant context—error logs, server metrics, affected users. It can also update the incident status as the issue is being resolved and fetch incident details for reporting. This cuts down Mean Time to Acknowledge (MTTA) and Mean Time to Resolve (MTTR) significantly."}},{"@type":"Question","name":"What types of alerts can trigger this PagerDuty automation?","acceptedAnswer":{"@type":"Answer","text":"Any monitoring tool or system that can send webhooks or API calls can trigger this workflow. Common sources include: server monitoring (Datadog, New Relic), application error tracking (Sentry, Rollbar), infrastructure alerts (AWS CloudWatch, Azure Monitor), custom scripts, or even user-reported issues from forms like Jira or Zendesk. The workflow parses the incoming data and creates a structured incident in PagerDuty."}},{"@type":"Question","name":"Can this workflow update existing incidents automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes, the template includes steps to update incidents. For example, when a monitoring system sends a 'resolved' signal, the workflow can automatically change the PagerDuty incident status to 'resolved', add notes about the fix, and assign it for review. This keeps the incident timeline accurate without manual intervention, ensuring your on-call dashboard reflects real-time status."}},{"@type":"Question","name":"How does automating incident management save time for engineers?","acceptedAnswer":{"@type":"Answer","text":"Manual incident handling involves multiple context switches: read the alert, log into PagerDuty, copy-paste details, assign priority, notify teams. Automation does this in seconds. Engineers get notified only when human judgment is needed. Over a month, this can save 10–15 hours per on-call engineer, reduce alert fatigue, and let them focus on solving the actual problem instead of administrative tasks."}},{"@type":"Question","name":"What are the best practices for setting up PagerDuty automation?","acceptedAnswer":{"@type":"Answer","text":"Start by mapping your alert sources to PagerDuty services. Use deduplication logic to avoid creating duplicate incidents for the same issue. Set up escalation rules in PagerDuty itself, not in the automation. Include meaningful context in incident descriptions: error codes, affected service, severity, and a link to logs. Test your workflow with non‑production alerts first. Regularly review incident reports to tune alert thresholds and reduce noise."}},{"@type":"Question","name":"Can I integrate this with other tools like Slack or Jira?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. This n8n template can be extended to post incident details to a Slack channel, create a Jira ticket for post‑mortem analysis, send a summary email to managers, or even trigger a Zoom war room. Since n8n connects to 300+ apps, you can build a full incident response pipeline that coordinates across communication, ticketing, and documentation tools automatically."}},{"@type":"Question","name":"Can I get a custom PagerDuty automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored incident management automations. We can design workflows that match your specific alert sources, escalation policies, and team structure. Whether you need to connect custom monitoring tools, implement complex routing logic, or build a full incident post‑mortem pipeline, our team delivers production‑ready automations with documentation and support."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"PagerDuty Incident Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>PagerDuty Incident Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">PagerDuty</span>
+          <span class="cs-tag">IT Ops</span>
+          <span class="cs-tag">Incident Response</span>
+          <span class="cs-tag">Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate PagerDuty Incident Management</h1>
+        <p class="cs-hero-sub">Free n8n template to create, update, and get incidents automatically—reduce manual work and speed up IT response times.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/411-create-update-and-get-an-incident-on-pagerduty.png" alt="Visual diagram of a PagerDuty incident automation workflow in n8n" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This n8n workflow automates the entire lifecycle of a PagerDuty incident. Instead of manually creating tickets when an alert fires, this template listens for triggers from your monitoring tools (like Datadog, Sentry, or custom scripts) and automatically creates a corresponding incident in PagerDuty with all the necessary context.</p>
+        <p>It also handles updates—when the underlying issue is being worked on or resolved, the workflow can modify the incident status, add notes, or change priority. Finally, it can fetch incident details for reporting or to sync with other systems like Slack or Jira. This end‑to‑end automation ensures your on‑call team is notified instantly with rich context, reducing mean time to acknowledge (MTTA) and resolution (MTTR).</p>
+        <p>By connecting PagerDuty with the rest of your toolchain, you eliminate manual copy‑pasting, reduce human error, and keep everyone in the loop automatically. It’s especially valuable for DevOps, SRE, and IT teams that manage frequent alerts and need a consistent, auditable incident response process.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow is built as a modular n8n canvas that you can trigger via webhook, schedule, or from another app. Here’s the step‑by‑step logic:</p>
+
+        <h3>1. Trigger &amp; Ingest Alert Data</h3>
+        <p>The workflow starts with a webhook, schedule, or app trigger (e.g., from a monitoring tool). It receives the alert payload—error message, severity, service name, timestamp—and parses it into a structured format.</p>
+
+        <h3>2. Create PagerDuty Incident</h3>
+        <p>Using the PagerDuty node, the workflow creates a new incident with the parsed details. It sets the title, description, urgency, and assigns it to the correct service and escalation policy based on the alert source.</p>
+
+        <h3>3. Enrich with Additional Context</h3>
+        <p>Optionally, the workflow can fetch extra data—like recent deployment logs, affected user count, or related dashboard links—and append it to the incident as notes. This gives responders everything they need in one place.</p>
+
+        <h3>4. Update Incident Status</h3>
+        <p>As the situation evolves, the workflow can update the incident. For example, when a remediation script runs, it can change the status to “acknowledged” or “resolved” and add a resolution note automatically.</p>
+
+        <h3>5. Fetch &amp; Sync Incident Details</h3>
+        <p>The “Get Incident” step retrieves the current incident data from PagerDuty. This can be used to post updates to Slack, create a post‑mortem ticket in Jira, or log metrics for monthly reports.</p>
+
+        <h3>6. Notify Stakeholders</h3>
+        <p>Finally, the workflow can send tailored notifications to different channels—Slack for engineers, email for managers, SMS for critical outages—based on the incident severity and stage.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use the “Merge” node to combine data from multiple alert sources before creating the incident. This prevents duplicate tickets for the same underlying issue.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This template is designed for teams that rely on PagerDuty for incident response and want to reduce manual toil. Ideal users include:</p>
+        <ul>
+          <li><strong>DevOps &amp; SRE teams</strong> managing cloud infrastructure and application alerts.</li>
+          <li><strong>IT Operations</strong> handling server, network, or security monitoring.</li>
+          <li><strong>Software engineering teams</strong> that want to automate error tracking (Sentry, Rollbar) into PagerDuty.</li>
+          <li><strong>Tech startups</strong> with limited on‑call staff who need to maximize response efficiency.</li>
+          <li><strong>Managed service providers</strong> that handle incidents for multiple clients and need consistent processes.</li>
+        </ul>
+        <p>If your team spends more than 15 minutes per week manually creating or updating PagerDuty incidents, this automation will pay for itself in reduced friction and faster resolution.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A PagerDuty account with admin or API access.</li>
+          <li>Your PagerDuty API key (generate from your account settings).</li>
+          <li>A running n8n instance (cloud or self‑hosted).</li>
+          <li>A monitoring tool that can send webhooks (Datadog, New Relic, Prometheus Alertmanager, etc.) or a custom script that triggers alerts.</li>
+          <li>Optional: Slack, Microsoft Teams, or email credentials if you want to add notification steps.</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <p>Follow these steps to import and configure the workflow in your n8n environment:</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above. You’ll get a JSON file.</li>
+          <li>In your n8n dashboard, go to <em>Workflows</em> → <em>Import from file</em> and select the downloaded JSON.</li>
+          <li><strong>Configure the PagerDuty node:</strong> Add your PagerDuty API key and select the correct service ID.</li>
+          <li><strong>Set up the trigger:</strong> Replace the sample webhook with your actual alert source (e.g., configure a Datadog webhook integration).</li>
+          <li><strong>Map your alert fields:</strong> Adjust the “Set” nodes to match the data structure your monitoring tool sends.</li>
+          <li><strong>Test with a dummy alert:</strong> Activate the workflow and send a test payload to ensure the incident is created correctly in PagerDuty.</li>
+          <li><strong>Go live:</strong> Once tested, connect it to your production monitoring system and enable the workflow.</li>
+        </ol>
+        <p>The entire setup should take under 30 minutes. The template is pre‑wired with the most common fields, so you only need to adjust the mapping to your specific alert format.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use n8n’s “Test Workflow” feature to simulate alerts before connecting real systems. This lets you verify the incident details without triggering actual pages.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Cut incident creation time from minutes to seconds.</strong> No more switching tabs, copying error logs, or filling out forms manually. The workflow does it instantly with full context.</p>
+        <p><strong>Reduce human error and missed alerts.</strong> Automated incident creation ensures every alert is logged, prioritized, and assigned correctly, following your predefined rules every single time.</p>
+        <p><strong>Improve on‑call team morale.</strong> By eliminating repetitive administrative tasks, engineers can focus on solving problems instead of managing tickets. This reduces alert fatigue and burnout.</p>
+        <p><strong>Gain better visibility and reporting.</strong> Since every incident is created and updated programmatically, you get clean, consistent data for post‑mortems, SLA reports, and process improvement.</p>
+        <p><strong>Scale your incident response without adding headcount.</strong> As your systems grow, the same automation handles hundreds of alerts daily without extra manual effort, letting your team scale efficiently.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about PagerDuty automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is PagerDuty and why is it important for IT teams?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>PagerDuty is a digital operations management platform that helps IT and DevOps teams respond to incidents and system alerts quickly. It centralizes alerts from monitoring tools, schedules on-call rotations, and ensures the right person is notified at the right time. Automating incident creation and updates in PagerDuty reduces manual work, speeds up response times, and improves service reliability.</p>
+          <p>Without automation, teams waste precious minutes copying error details between systems, which delays resolution and increases the impact of outages.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can automation improve our incident response process?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automation eliminates manual steps like copying error details, opening PagerDuty, and filling out forms. When an alert triggers, the workflow automatically creates a PagerDuty incident with all relevant context—error logs, server metrics, affected users. It can also update the incident status as the issue is being resolved and fetch incident details for reporting. This cuts down Mean Time to Acknowledge (MTTA) and Mean Time to Resolve (MTTR) significantly.</p>
+          <p>For example, a critical server alert can automatically create a high‑urgency incident, tag the responsible team, and post a summary to Slack—all within 10 seconds.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of alerts can trigger this PagerDuty automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Any monitoring tool or system that can send webhooks or API calls can trigger this workflow. Common sources include: server monitoring (Datadog, New Relic), application error tracking (Sentry, Rollbar), infrastructure alerts (AWS CloudWatch, Azure Monitor), custom scripts, or even user‑reported issues from forms like Jira or Zendesk. The workflow parses the incoming data and creates a structured incident in PagerDuty.</p>
+          <p>The flexibility of n8n means you can adapt the trigger to almost any source, including databases, IoT devices, or internal health‑check endpoints.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow update existing incidents automatically?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the template includes steps to update incidents. For example, when a monitoring system sends a 'resolved' signal, the workflow can automatically change the PagerDuty incident status to 'resolved', add notes about the fix, and assign it for review. This keeps the incident timeline accurate without manual intervention, ensuring your on‑call dashboard reflects real‑time status.</p>
+          <p>You can also configure it to escalate incidents that haven’t been acknowledged within a certain timeframe, or to add diagnostic data gathered during the investigation.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automating incident management save time for engineers?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual incident handling involves multiple context switches: read the alert, log into PagerDuty, copy‑paste details, assign priority, notify teams. Automation does this in seconds. Engineers get notified only when human judgment is needed. Over a month, this can save 10–15 hours per on‑call engineer, reduce alert fatigue, and let them focus on solving the actual problem instead of administrative tasks.</p>
+          <p>Additionally, automated enrichment (like pulling recent deployment logs) gives engineers the context they need immediately, shortening the debugging cycle.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the best practices for setting up PagerDuty automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Start by mapping your alert sources to PagerDuty services. Use deduplication logic to avoid creating duplicate incidents for the same issue. Set up escalation rules in PagerDuty itself, not in the automation. Include meaningful context in incident descriptions: error codes, affected service, severity, and a link to logs. Test your workflow with non‑production alerts first. Regularly review incident reports to tune alert thresholds and reduce noise.</p>
+          <ul>
+            <li>Always include a unique identifier from the alert source to prevent duplicates.</li>
+            <li>Use PagerDuty’s urgency fields to reflect business impact, not just technical severity.</li>
+            <li>Add a step to notify secondary channels (like Slack) for visibility.</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I integrate this with other tools like Slack or Jira?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. This n8n template can be extended to post incident details to a Slack channel, create a Jira ticket for post‑mortem analysis, send a summary email to managers, or even trigger a Zoom war room. Since n8n connects to 300+ apps, you can build a full incident response pipeline that coordinates across communication, ticketing, and documentation tools automatically.</p>
+          <p>For instance, you could automatically create a Confluence page for major incidents, update a status page (like Statuspage), and log the event to a data warehouse for analytics—all within the same workflow.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom PagerDuty automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored incident management automations. We can design workflows that match your specific alert sources, escalation policies, and team structure. Whether you need to connect custom monitoring tools, implement complex routing logic, or build a full incident post‑mortem pipeline, our team delivers production‑ready automations with documentation and support.</p>
+          <p>We start with a free consultation to understand your current process, pain points, and goals. Then we build, test, and deploy a solution that fits your stack and scales with your needs.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom PagerDuty Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

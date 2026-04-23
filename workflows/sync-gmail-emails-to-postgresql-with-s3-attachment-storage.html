@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sync Gmail Emails to PostgreSQL with S3 Attachment Storage | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate email archiving. This free n8n workflow syncs Gmail emails to a PostgreSQL database and uploads attachments to S3/MinIO for secure, searchable storage.">
+<link rel="canonical" href="https://growwstacks.com/workflows/5741-sync-gmail-emails-to-postgresql-with-s3-attachment-storage/">
+<meta property="og:title" content="Sync Gmail Emails to PostgreSQL with S3 Attachment Storage | Free n8n Template">
+<meta property="og:description" content="Automate email archiving. This free n8n workflow syncs Gmail emails to a PostgreSQL database and uploads attachments to S3/MinIO for secure, searchable storage.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/5741-sync-gmail-emails-to-postgresql-with-s3-attachment-storage/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8871-sync-gmail-emails-to-postgresql-with-s3-attachment-stor.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sync Gmail Emails to PostgreSQL with S3 Attachment Storage | Free n8n Template">
+<meta name="twitter:description" content="Automate email archiving. This free n8n workflow syncs Gmail emails to a PostgreSQL database and uploads attachments to S3/MinIO for secure, searchable storage.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sync Gmail Emails to PostgreSQL with S3 Attachment Storage","description":"Automate email archiving. This free n8n workflow syncs Gmail emails to a PostgreSQL database and uploads attachments to S3/MinIO for secure, searchable storage.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8871-sync-gmail-emails-to-postgresql-with-s3-attachment-stor.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I archive emails to a database instead of just keeping them in Gmail?","acceptedAnswer":{"@type":"Answer","text":"Archiving emails to a database like PostgreSQL provides searchable, structured data that you can analyze and integrate with other business systems. It enables compliance with data retention policies, creates backups independent of your email provider, and allows for advanced reporting and automation based on email content that isn't possible within Gmail alone."}},{"@type":"Question","name":"What are the main benefits of automating email archiving?","acceptedAnswer":{"@type":"Answer","text":"Automated email archiving saves significant manual effort, ensures consistency in data capture, reduces human error, and provides real-time access to historical communications. It helps businesses maintain compliance with regulations, improves data security through organized storage, and enables better customer relationship management by having all communications in one searchable system."}},{"@type":"Question","name":"How does storing attachments in S3 differ from keeping them in email?","acceptedAnswer":{"@type":"Answer","text":"Storing attachments in S3 provides scalable, cost-effective storage with better organization, version control, and access management. Unlike email attachments which consume mailbox limits and can be lost if emails are deleted, S3 offers durable storage, easier sharing via signed URLs, and integration with other cloud services for processing or analysis of the files."}},{"@type":"Question","name":"What types of businesses benefit most from email-to-database automation?","acceptedAnswer":{"@type":"Answer","text":"Legal firms, financial services, healthcare providers, and customer support teams benefit greatly as they handle sensitive communications requiring compliance. Sales and marketing teams use it for tracking prospect interactions. Any business needing audit trails, customer communication analysis, or integration of email data with CRM/ERP systems will find this automation valuable."}},{"@type":"Question","name":"How secure is this email archiving automation?","acceptedAnswer":{"@type":"Answer","text":"The automation can be configured with strong security measures including OAuth2 authentication for Gmail, encrypted database connections, and secure S3 bucket policies with access controls. You maintain control over your data storage location and can implement additional encryption, access logging, and compliance controls specific to your industry requirements."}},{"@type":"Question","name":"Can this workflow handle large volumes of emails and attachments?","acceptedAnswer":{"@type":"Answer","text":"Yes, the workflow includes batch processing and parallel handling of attachments to manage large volumes efficiently. PostgreSQL can scale to handle millions of records, while S3 is designed for virtually unlimited storage. The automation includes error handling and can be scheduled to process emails during off-peak hours to manage system load effectively."}},{"@type":"Question","name":"What other systems can I connect to this email archiving setup?","acceptedAnswer":{"@type":"Answer","text":"Once emails are in PostgreSQL, you can connect them to CRM systems like Salesforce, analytics platforms like Power BI, customer support tools like Zendesk, or document management systems. The structured data enables integration with AI tools for sentiment analysis, compliance monitoring systems, or automated reporting dashboards."}},{"@type":"Question","name":"Can I get a custom email archiving automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom email automation solutions tailored to specific business needs. We can create workflows with custom filtering rules, integration with your existing databases and storage systems, industry-specific compliance features, and specialized reporting dashboards based on your unique requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Sync Gmail Emails to PostgreSQL with S3 Attachment Storage"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Sync Gmail to PostgreSQL</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Gmail</span>
+          <span class="cs-tag">PostgreSQL</span>
+          <span class="cs-tag">S3 Storage</span>
+          <span class="cs-tag">Email Archiving</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Sync Gmail Emails to PostgreSQL with S3 Attachment Storage</h1>
+        <p class="cs-hero-sub">Automatically archive emails, extract metadata, and store attachments in the cloud for secure, searchable communication records.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8871-sync-gmail-emails-to-postgresql-with-s3-attachment-stor.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/8871-sync-gmail-emails-to-postgresql-with-s3-attachment-stor.png" alt="Visual diagram showing Gmail emails flowing into PostgreSQL database with attachments being stored in S3 cloud storage" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves the common business problem of scattered, unsearchable email communications that are difficult to analyze, back up, or integrate with other systems. Instead of manually saving important emails or struggling with Gmail's search limitations, this workflow automatically captures every email, extracts its full metadata, converts HTML to plain text for better searchability, and stores everything in an organized database.</p>
+        <p>The system handles both real-time email capture and scheduled bulk processing, ensuring no communication is missed. Attachments are intelligently separated from emails and uploaded to secure cloud storage (S3 or MinIO) with proper organization, while the email content and metadata are stored in PostgreSQL with relational links to the files. This creates a complete, queryable archive of all business communications.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Email Capture & Triggering</h3>
+        <p>The workflow uses dual triggers: a Gmail trigger for real-time new email detection and a schedule trigger for bulk processing of emails from the last hour. This ensures both immediate capture of important communications and comprehensive archiving of existing emails without overwhelming the system.</p>
+        
+        <h3>2. Parallel Processing & Attachment Detection</h3>
+        <p>Each email is analyzed for attachments. Emails with attachments are routed through binary processing pipelines, while text-only emails proceed directly to transformation. This parallel processing optimizes performance and ensures attachments are handled correctly without slowing down simple email archiving.</p>
+        
+        <h3>3. Attachment Management & Cloud Storage</h3>
+        <p>Attachments are extracted with their metadata (filename, type, size), then uploaded to S3/MinIO storage with organized folder structures. The system creates database references linking each attachment back to its original email, maintaining the relationship while storing files in cost-effective, scalable cloud storage.</p>
+        
+        <h3>4. Data Transformation & Normalization</h3>
+        <p>Email data from Gmail's API format is transformed into a structured PostgreSQL schema. HTML content is converted to plain text for better searchability, while preserving the original HTML separately. All metadata—sender, recipients, timestamps, labels, and headers—is extracted and normalized for consistent querying.</p>
+        
+        <h3>5. Database Storage with Duplicate Prevention</h3>
+        <p>The system uses UPSERT operations to insert new emails while preventing duplicates. Each email is stored with complete metadata and references to any attachments in cloud storage. This creates a searchable, relational archive that can be queried by date, sender, subject, content, or attachment type.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for businesses that need organized, searchable communication records. Legal firms can maintain complete case correspondence archives. Financial services companies can ensure compliance with communication retention regulations. Customer support teams can build searchable knowledge bases from support emails. Sales organizations can track prospect interactions across email threads.</p>
+        <p>Healthcare providers dealing with patient communications, educational institutions managing student correspondence, and any business subject to audit requirements will find this system invaluable. It's also perfect for companies integrating email data with CRM systems, analytics platforms, or AI tools for communication analysis.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>Gmail OAuth2 Credentials</strong> with gmail.readonly scope enabled through Google Cloud Console</li>
+          <li><strong>PostgreSQL Database</strong> instance (local, cloud, or managed service) with connection credentials</li>
+          <li><strong>S3-Compatible Storage</strong> such as AWS S3, MinIO, or compatible service with bucket creation permissions</li>
+          <li><strong>n8n Instance</strong> (self-hosted or cloud) with access to install and configure the workflow</li>
+          <li><strong>SQL Schema</strong> provided in the workflow setup notes to create the necessary database tables</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a test Gmail account and a small subset of emails before processing your primary business account. This lets you verify the archiving structure and attachment handling work correctly with your specific email patterns.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Enable Gmail API:</strong> Create a project in Google Cloud Console, enable the Gmail API, and configure OAuth2 credentials with the necessary scopes.</li>
+          <li><strong>Prepare PostgreSQL:</strong> Create your database and run the SQL schema provided in the workflow's setup sticky note to create the messages table structure.</li>
+          <li><strong>Configure S3/MinIO:</strong> Create a bucket named "gmail-attachments" (or your preferred name) and set up access credentials with upload permissions.</li>
+          <li><strong>Import & Authenticate:</strong> Import the JSON template into your n8n instance, then authenticate the Gmail, PostgreSQL, and S3 nodes with your credentials.</li>
+          <li><strong>Test & Schedule:</strong> Run a test with a single email first, then configure the schedule trigger based on your email volume (start with hourly processing).</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminates manual email archiving</strong> that can consume hours each week. Instead of employees manually saving important emails or attachments, this automation handles everything systematically, freeing up valuable time for revenue-generating activities.</p>
+        <p><strong>Creates searchable communication records</strong> across your entire organization. With emails stored in a structured database, you can perform complex queries that are impossible within Gmail, like finding all emails from a specific client containing PDF attachments sent in the last quarter.</p>
+        <p><strong>Ensures compliance with data retention policies</strong> by providing organized, timestamped archives. Many industries require keeping communications for specific periods—this system makes compliance automatic and verifiable.</p>
+        <p><strong>Protects against data loss</strong> by creating independent backups of critical communications. If email accounts are compromised or accidentally purged, your business communications remain safe in your controlled database and cloud storage.</p>
+        <p><strong>Enables advanced analytics and integration</strong> by transforming unstructured email data into structured database records. This opens possibilities for sentiment analysis, customer communication tracking, and integration with CRM or ERP systems.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about email archiving automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I archive emails to a database instead of just keeping them in Gmail?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Archiving emails to a database like PostgreSQL provides searchable, structured data that you can analyze and integrate with other business systems. It enables compliance with data retention policies, creates backups independent of your email provider, and allows for advanced reporting and automation based on email content that isn't possible within Gmail alone.</p>
+          <p>For example, you could query all emails from a specific client containing contract attachments from the last year, then automatically generate a report. This level of analysis and integration simply isn't feasible when emails remain siloed in Gmail's interface.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of automating email archiving?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated email archiving saves significant manual effort, ensures consistency in data capture, reduces human error, and provides real-time access to historical communications. It helps businesses maintain compliance with regulations, improves data security through organized storage, and enables better customer relationship management by having all communications in one searchable system.</p>
+          <p>Consider a customer support team that can instantly pull up every email exchange with a customer, including all attachments, regardless of which support agent handled the communication. This dramatically improves resolution times and customer satisfaction while reducing training time for new team members.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does storing attachments in S3 differ from keeping them in email?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Storing attachments in S3 provides scalable, cost-effective storage with better organization, version control, and access management. Unlike email attachments which consume mailbox limits and can be lost if emails are deleted, S3 offers durable storage, easier sharing via signed URLs, and integration with other cloud services for processing or analysis of the files.</p>
+          <p>For instance, you could set up automatic virus scanning of uploaded attachments, generate previews for images and documents, or apply optical character recognition to PDFs—all services that integrate naturally with S3 but are difficult or impossible with email-based attachment storage.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of businesses benefit most from email-to-database automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Legal firms, financial services, healthcare providers, and customer support teams benefit greatly as they handle sensitive communications requiring compliance. Sales and marketing teams use it for tracking prospect interactions. Any business needing audit trails, customer communication analysis, or integration of email data with CRM/ERP systems will find this automation valuable.</p>
+          <p>Even small businesses benefit from having organized communication records. When you need to find that important proposal email from six months ago or verify what was promised to a client, having a searchable archive saves hours of frustration and prevents potentially costly misunderstandings.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How secure is this email archiving automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The automation can be configured with strong security measures including OAuth2 authentication for Gmail, encrypted database connections, and secure S3 bucket policies with access controls. You maintain control over your data storage location and can implement additional encryption, access logging, and compliance controls specific to your industry requirements.</p>
+          <p>Since you control the database and storage infrastructure, you can implement your organization's specific security policies, audit requirements, and access controls rather than relying on the security model of your email provider alone.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow handle large volumes of emails and attachments?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, the workflow includes batch processing and parallel handling of attachments to manage large volumes efficiently. PostgreSQL can scale to handle millions of records, while S3 is designed for virtually unlimited storage. The automation includes error handling and can be scheduled to process emails during off-peak hours to manage system load effectively.</p>
+          <p>For organizations with particularly high email volumes, the workflow can be optimized with increased batch sizes, dedicated processing instances, and connection pooling to ensure smooth operation even during peak communication periods.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What other systems can I connect to this email archiving setup?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Once emails are in PostgreSQL, you can connect them to CRM systems like Salesforce, analytics platforms like Power BI, customer support tools like Zendesk, or document management systems. The structured data enables integration with AI tools for sentiment analysis, compliance monitoring systems, or automated reporting dashboards.</p>
+          <p>For example, you could automatically create support tickets from customer emails, update CRM records with communication history, or generate monthly reports on client communication patterns—all by connecting your archived email data to other business systems.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom email archiving automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom email automation solutions tailored to specific business needs. We can create workflows with custom filtering rules, integration with your existing databases and storage systems, industry-specific compliance features, and specialized reporting dashboards based on your unique requirements.</p>
+          <p>Whether you need to archive emails from multiple accounts, apply specific retention policies, integrate with proprietary software, or create custom analytics, our team can design and implement a solution that fits your exact workflow and compliance needs.</p>
+          <ul>
+            <li>Custom filtering and categorization rules</li>
+            <li>Integration with existing database schemas</li>
+            <li>Industry-specific compliance features</li>
+            <li>Custom reporting and alerting systems</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Email Archiving Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

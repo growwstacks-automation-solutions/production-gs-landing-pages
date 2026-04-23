@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG Document Relevance Evaluation | Free n8n AI Workflow Template | GrowwStacks</title>
+<meta name="description" content="Free n8n template to evaluate AI RAG workflows. Automatically measure document relevance for Retrieval-Augmented Generation systems to improve AI accuracy and reliability.">
+<link rel="canonical" href="https://growwstacks.com/workflows/2205-evaluation-metric-example-rag-document-relevance/">
+<meta property="og:title" content="RAG Document Relevance Evaluation | Free n8n AI Workflow Template">
+<meta property="og:description" content="Free n8n template to evaluate AI RAG workflows. Automatically measure document relevance for Retrieval-Augmented Generation systems to improve AI accuracy and reliability.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/2205-evaluation-metric-example-rag-document-relevance/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4273-evaluation-metric-example-rag-document-relevance.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RAG Document Relevance Evaluation | Free n8n AI Workflow Template">
+<meta name="twitter:description" content="Free n8n template to evaluate AI RAG workflows. Automatically measure document relevance for Retrieval-Augmented Generation systems to improve AI accuracy and reliability.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"RAG Document Relevance Evaluation","description":"Free n8n template to evaluate AI RAG workflows. Automatically measure document relevance for Retrieval-Augmented Generation systems to improve AI accuracy and reliability.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4273-evaluation-metric-example-rag-document-relevance.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is RAG evaluation and why is it important for AI systems?","acceptedAnswer":{"@type":"Answer","text":"RAG evaluation measures how well your Retrieval-Augmented Generation system retrieves relevant documents to answer user questions. It's crucial because even the best AI models produce poor answers if they're working with irrelevant source material. Without evaluation, you're flying blind—you won't know if your RAG pipeline is improving or degrading over time."}},{"@type":"Question","name":"How does automated evaluation improve RAG system performance?","acceptedAnswer":{"@type":"Answer","text":"Automated evaluation continuously tests your RAG system with real questions and measures document relevance scores. This creates a feedback loop where you can identify weak retrieval patterns, optimize your vector search parameters, and improve document chunking strategies. Businesses using automated evaluation typically see 30-50% improvements in answer accuracy within weeks."}},{"@type":"Question","name":"What metrics should I track for RAG system quality?","acceptedAnswer":{"@type":"Answer","text":"Beyond document relevance, track answer faithfulness (does the answer stay true to retrieved documents), answer relevance (does it address the question), and retrieval precision. Also monitor latency and cost metrics. The best RAG systems balance accuracy with practical considerations like response time and operational expenses."}},{"@type":"Question","name":"How often should I evaluate my RAG workflow?","acceptedAnswer":{"@type":"Answer","text":"Run evaluations weekly during development and monthly in production. More frequent evaluation is needed when adding new document sources or changing chunking strategies. Consider continuous evaluation for critical business applications where accuracy directly impacts revenue or customer satisfaction."}},{"@type":"Question","name":"Can RAG evaluation work with different AI models and vector databases?","acceptedAnswer":{"@type":"Answer","text":"Yes, proper RAG evaluation is model-agnostic. You can evaluate systems using OpenAI, Anthropic, open-source models, or any combination. The evaluation workflow measures retrieval quality independently of the specific AI model or vector database you're using, making it valuable for comparing different technical approaches."}},{"@type":"Question","name":"What's the business impact of implementing RAG evaluation?","acceptedAnswer":{"@type":"Answer","text":"Companies implementing systematic RAG evaluation reduce AI hallucination rates by 60-80%, decrease customer support escalations, and increase user trust in AI assistants. For knowledge base applications, it means employees get accurate information faster, reducing time spent verifying AI outputs and increasing productivity."}},{"@type":"Question","name":"Can I get a custom RAG evaluation automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom RAG evaluation systems tailored to your specific documents, use cases, and quality requirements. We'll design evaluation workflows that match your business domain, integrate with your existing tools, and provide actionable insights to continuously improve your AI systems."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"RAG Document Relevance Evaluation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>RAG Document Relevance Evaluation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AI Evaluation</span>
+          <span class="cs-tag">RAG Systems</span>
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Quality Assurance</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>RAG Document Relevance Evaluation Template</h1>
+        <p class="cs-hero-sub">Automatically measure and improve your AI retrieval system's accuracy with this free n8n workflow template</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4273-evaluation-metric-example-rag-document-relevance.json?ik-attachment=true" download="rag-document-relevance-evaluation-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/4273-evaluation-metric-example-rag-document-relevance.png" alt="RAG document relevance evaluation workflow showing AI evaluation nodes and metrics dashboard" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This template solves a critical problem in AI implementation: knowing whether your Retrieval-Augmented Generation (RAG) system is actually retrieving relevant documents. Many businesses deploy AI assistants that sound convincing but provide inaccurate information because the underlying document retrieval is flawed.</p>
+        <p>The workflow automatically evaluates your RAG pipeline by comparing retrieved documents against user questions, calculating relevance scores, and identifying patterns where your system struggles. Instead of manually testing dozens of queries, this automation provides systematic, quantitative feedback about your AI's retrieval performance.</p>
+        <p>By implementing this evaluation system, you gain confidence that your AI is working with appropriate source material before generating answers. This prevents "hallucinations" caused by irrelevant context and ensures your AI assistant remains reliable as you add new documents or change your knowledge base structure.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow uses n8n's evaluation feature to systematically test your RAG system with real user questions and measure retrieval quality.</p>
+        
+        <h3>1. Evaluation Dataset Processing</h3>
+        <p>The workflow begins by loading your test dataset—real questions users ask your AI system. These questions serve as the benchmark for measuring retrieval performance across different query types and difficulty levels.</p>
+        
+        <h3>2. Parallel Trigger Configuration</h3>
+        <p>Dual triggers allow the same workflow to handle both evaluation mode and production mode. The evaluation trigger processes test questions with metrics calculation, while the regular trigger handles live user queries without evaluation overhead.</p>
+        
+        <h3>3. Document Retrieval & Agent Execution</h3>
+        <p>Your RAG agent retrieves documents from your vector database and generates answers as usual. The workflow captures both the retrieved documents and the agent's tool usage data for analysis.</p>
+        
+        <h3>4. Relevance Metric Calculation</h3>
+        <p>When in evaluation mode, the workflow uses AI to compare each retrieved document against the original question, scoring relevance on a standardized scale. This happens automatically without manual intervention.</p>
+        
+        <h3>5. Results Aggregation & Reporting</h3>
+        <p>The system aggregates scores across all test questions, identifies patterns (which question types perform poorly), and prepares actionable insights for improving your RAG pipeline.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template is ideal for businesses implementing AI assistants, customer support automation, or internal knowledge management systems. Technical teams building RAG applications will use it to validate their retrieval logic before deployment. Product managers overseeing AI features need it to ensure quality standards are met. Content teams managing knowledge bases benefit from understanding which documents are effectively retrieved.</p>
+        <p>Companies in regulated industries (finance, healthcare, legal) particularly benefit from systematic evaluation to ensure compliance and accuracy. Startups scaling their AI capabilities use this to maintain quality during rapid growth. Even solo developers building AI applications need this validation to build trustworthy systems.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) with AI nodes configured</li>
+          <li><strong>Vector database</strong> (Pinecone, Weaviate, Qdrant, or similar) with your documents indexed</li>
+          <li><strong>AI model access</strong> (OpenAI, Anthropic, or open-source) for both your RAG system and evaluation</li>
+          <li><strong>Test dataset</strong> of real user questions (20-50 questions minimum for meaningful evaluation)</li>
+          <li><strong>Existing RAG workflow</strong> or willingness to build one using n8n's agent nodes</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start with a small but diverse test dataset—include easy, medium, and difficult questions. Include edge cases and questions you know your current system struggles with. This gives you the most actionable improvement insights from day one.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Import the template</strong> into your n8n instance using the downloaded JSON file</li>
+          <li><strong>Configure your AI credentials</strong> for both the RAG agent and evaluation nodes</li>
+          <li><strong>Connect your vector database</strong> and test document retrieval with sample questions</li>
+          <li><strong>Prepare your test dataset</strong> as a CSV or JSON file with question and expected answer pairs</li>
+          <li><strong>Run initial evaluation</strong> to establish baseline performance metrics</li>
+          <li><strong>Analyze results</strong> and identify top improvement opportunities for your RAG system</li>
+          <li><strong>Implement changes</strong> based on insights and re-evaluate to measure improvement</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Reduce AI hallucinations by 60-80%</strong> by ensuring your system retrieves relevant context before generating answers. Businesses using systematic evaluation report dramatically fewer instances of fabricated or inaccurate information.</p>
+        <p><strong>Cut evaluation time from days to minutes</strong> compared to manual testing. What previously required hours of human review now happens automatically, freeing your team for higher-value work.</p>
+        <p><strong>Quantify improvement</strong> with concrete metrics instead of subjective assessments. Track relevance scores over time to prove your RAG system is getting better with each optimization.</p>
+        <p><strong>Scale confidently</strong> knowing you have automatic quality checks in place. Add new documents or change retrieval parameters without worrying about breaking existing functionality.</p>
+        <p><strong>Build stakeholder trust</strong> with transparent performance reporting. Show executives and customers exactly how well your AI system performs with measurable, objective data.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about RAG evaluation and AI quality assurance</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is RAG evaluation and why is it important for AI systems?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>RAG evaluation measures how well your Retrieval-Augmented Generation system retrieves relevant documents to answer user questions. It's crucial because even the best AI models produce poor answers if they're working with irrelevant source material.</p>
+          <p>Without evaluation, you're flying blind—you won't know if your RAG pipeline is improving or degrading over time. Systematic evaluation turns subjective "feels right" assessments into objective metrics you can track and optimize.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automated evaluation improve RAG system performance?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated evaluation continuously tests your RAG system with real questions and measures document relevance scores. This creates a feedback loop where you can identify weak retrieval patterns, optimize your vector search parameters, and improve document chunking strategies.</p>
+          <p>Businesses using automated evaluation typically see 30-50% improvements in answer accuracy within weeks. The system highlights exactly which types of questions fail, allowing targeted improvements rather than guesswork.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What metrics should I track for RAG system quality?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Beyond document relevance, track answer faithfulness (does the answer stay true to retrieved documents), answer relevance (does it address the question), and retrieval precision. Also monitor latency and cost metrics.</p>
+          <p>The best RAG systems balance accuracy with practical considerations like response time and operational expenses. Start with document relevance as your primary metric, then expand to comprehensive quality monitoring.</p>
+          <ul>
+            <li>Document relevance score (0-1 scale)</li>
+            <li>Retrieval precision and recall</li>
+            <li>Answer faithfulness to sources</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How often should I evaluate my RAG workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Run evaluations weekly during development and monthly in production. More frequent evaluation is needed when adding new document sources or changing chunking strategies.</p>
+          <p>Consider continuous evaluation for critical business applications where accuracy directly impacts revenue or customer satisfaction. The evaluation workflow can run automatically on a schedule, providing regular performance reports without manual effort.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can RAG evaluation work with different AI models and vector databases?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, proper RAG evaluation is model-agnostic. You can evaluate systems using OpenAI, Anthropic, open-source models, or any combination. The evaluation workflow measures retrieval quality independently of the specific AI model or vector database you're using.</p>
+          <p>This makes it valuable for comparing different technical approaches—test whether switching vector databases improves retrieval, or whether a different embedding model yields better results, all with consistent metrics.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the business impact of implementing RAG evaluation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Companies implementing systematic RAG evaluation reduce AI hallucination rates by 60-80%, decrease customer support escalations, and increase user trust in AI assistants. For knowledge base applications, it means employees get accurate information faster.</p>
+          <p>The financial impact comes from reduced error correction costs, increased productivity, and better customer satisfaction. One financial services company saved $240,000 annually by catching retrieval issues before they affected client communications.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom RAG evaluation automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom RAG evaluation systems tailored to your specific documents, use cases, and quality requirements. We'll design evaluation workflows that match your business domain, integrate with your existing tools, and provide actionable insights.</p>
+          <p>Our team works with you to understand your unique challenges—whether you're in healthcare needing HIPAA-compliant evaluation, finance requiring audit trails, or e-commerce needing product-specific retrieval testing. We build the automation that gives you confidence in your AI systems.</p>
+          <ul>
+            <li>Domain-specific evaluation criteria</li>
+            <li>Integration with your existing stack</li>
+            <li>Custom reporting and alerting</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom RAG Evaluation Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitor Multiple GitHub Repos via Webhook | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automate GitHub repository monitoring with webhooks. Get instant notifications for commits, pushes, and pull requests across multiple repos without polling. Free n8n workflow template.">
+<link rel="canonical" href="https://growwstacks.com/workflows/982-monitor-multiple-github-repos-via-webhook/">
+<meta property="og:title" content="Monitor Multiple GitHub Repos via Webhook | Free n8n Template">
+<meta property="og:description" content="Automate GitHub repository monitoring with webhooks. Get instant notifications for commits, pushes, and pull requests across multiple repos without polling.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/982-monitor-multiple-github-repos-via-webhook/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2435-monitor-multiple-github-repos-via-webhook.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monitor Multiple GitHub Repos via Webhook | Free n8n Template">
+<meta name="twitter:description" content="Automate GitHub repository monitoring with webhooks. Get instant notifications for commits, pushes, and pull requests across multiple repos without polling.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Monitor Multiple GitHub Repos via Webhook","description":"Automate GitHub repository monitoring with webhooks. Get instant notifications for commits, pushes, and pull requests across multiple repos without polling.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2435-monitor-multiple-github-repos-via-webhook.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the benefits of using webhooks over polling for GitHub monitoring?","acceptedAnswer":{"@type":"Answer","text":"Webhooks provide real-time, event-driven notifications instantly when an action occurs in your repository, eliminating the need for constant polling. This reduces server load, saves bandwidth, and ensures you get notifications within seconds rather than waiting for the next polling interval. Polling requires your system to repeatedly check for changes, which can miss events between checks and consume unnecessary resources."}},{"@type":"Question","name":"How can monitoring multiple GitHub repos improve development workflows?","acceptedAnswer":{"@type":"Answer","text":"Monitoring multiple repositories simultaneously gives teams complete visibility into code changes across all projects. This enables faster response to critical commits, helps maintain code quality standards, and ensures all team members stay informed about updates. It's particularly valuable for organizations managing microservices, multiple client projects, or open-source contributions where changes happen frequently across different codebases."}},{"@type":"Question","name":"What types of GitHub events should I monitor for my development team?","acceptedAnswer":{"@type":"Answer","text":"Key events to monitor include pushes (code commits), pull request creation and merges, issue creation and updates, releases, and deployment statuses. Push events track all code changes, pull request events help with code review workflows, and issue events keep teams aligned on bug reports and feature requests. The specific events you monitor depend on your team's workflow—some teams focus on deployment triggers while others prioritize code review notifications."}},{"@type":"Question","name":"Can GitHub webhook automation integrate with other tools my team uses?","acceptedAnswer":{"@type":"Answer","text":"Yes, GitHub webhooks can integrate with virtually any tool your team uses. Common integrations include Slack or Microsoft Teams for instant notifications, Jira or Trello for automatically creating or updating tickets, email systems for formal notifications, and CI/CD platforms like Jenkins or CircleCI to trigger automated builds. This creates a connected development ecosystem where GitHub activities automatically update all relevant systems without manual intervention."}},{"@type":"Question","name":"How does automated GitHub monitoring help with compliance and audit trails?","acceptedAnswer":{"@type":"Answer","text":"Automated GitHub monitoring creates comprehensive audit trails by logging every repository event with timestamps, user information, and change details. This is essential for compliance requirements like SOC 2, HIPAA, or GDPR where you need to demonstrate who changed what and when. Automated logging ensures no events are missed, provides searchable records for investigations, and helps identify unauthorized access or policy violations quickly."}},{"@type":"Question","name":"What are the security considerations when setting up GitHub webhooks?","acceptedAnswer":{"@type":"Answer","text":"Key security considerations include using HTTPS endpoints for webhooks, implementing secret tokens to verify payload authenticity, restricting webhook permissions to necessary events only, regularly rotating access tokens, and monitoring webhook delivery failures. Always validate incoming webhook payloads, never trust unverified data, and ensure your receiving endpoint has proper authentication and rate limiting to prevent abuse."}},{"@type":"Question","name":"How can small development teams benefit from GitHub automation?","acceptedAnswer":{"@type":"Answer","text":"Small teams benefit significantly from GitHub automation as it acts as a force multiplier, allowing limited personnel to manage multiple projects effectively. Automation handles routine notifications, status updates, and coordination tasks, freeing developers to focus on coding. It ensures nothing slips through the cracks, maintains consistent processes as the team grows, and provides professional-grade workflow management without requiring dedicated DevOps staff."}},{"@type":"Question","name":"Can I get a custom GitHub automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom GitHub automation solutions tailored to your specific development workflows, team structure, and integration needs. We can create systems that monitor your unique repository configurations, integrate with your existing tool stack, implement custom notification logic, and scale with your team's growth. Our solutions help development teams work more efficiently with automated coordination across all their GitHub activities."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Monitor Multiple GitHub Repos via Webhook"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>GitHub Monitoring</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">GitHub</span>
+          <span class="cs-tag">Webhooks</span>
+          <span class="cs-tag">DevOps</span>
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+        <h1>Monitor Multiple GitHub Repos via Webhook</h1>
+        <p class="cs-hero-sub">Get real-time notifications for commits, pushes, and pull requests across all your repositories without constant polling.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="github-multi-repo-monitor-webhook.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/2435-monitor-multiple-github-repos-via-webhook.png" alt="GitHub multi-repository monitoring workflow diagram showing webhook integration" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves the common problem of manually tracking changes across multiple GitHub repositories. Instead of constantly checking each repo or setting up individual notifications, this workflow uses GitHub webhooks to monitor all your repositories simultaneously. Whenever a commit, push, pull request, or other event occurs, you receive instant notifications through your preferred channels like Slack, email, or Microsoft Teams.</p>
+        <p>The system programmatically manages webhook registration and removal, making it easy to add or remove repositories from your watchlist without manual configuration. This eliminates the resource-intensive polling approach, where systems repeatedly check for changes, and replaces it with efficient, event-driven notifications that save bandwidth and server resources while providing faster alerts.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Webhook Registration</h3>
+        <p>The workflow automatically registers webhooks with your specified GitHub repositories using a personal access token. It sets up endpoints that GitHub will call whenever specific events occur, creating a direct communication channel between GitHub and your notification system.</p>
+        
+        <h3>2. Event Listening & Processing</h3>
+        <p>When GitHub sends a webhook payload (triggered by repository activity), the workflow receives it instantly. The system parses the JSON payload to extract relevant information: who made the change, what was changed, which repository was affected, and the type of event.</p>
+        
+        <h3>3. Intelligent Notification Routing</h3>
+        <p>Based on configurable rules, the workflow determines where and how to send notifications. You can set up different channels for different types of events—for example, critical commits might go to a team channel while routine updates go to a dedicated notifications channel.</p>
+        
+        <h3>4. Dynamic Repository Management</h3>
+        <p>The workflow includes functionality to programmatically add or remove repositories from monitoring. This means you can update your watchlist through a simple interface without manually configuring each webhook in GitHub's settings.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is ideal for development teams, engineering managers, DevOps professionals, and organizations managing multiple codebases. It's particularly valuable for agencies serving multiple clients, companies with microservices architectures, open-source project maintainers, and any team that needs visibility into code changes across different repositories. If you're tired of missing important commits or spending time manually checking repositories, this workflow provides the automated oversight you need.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A GitHub account with admin access to the repositories you want to monitor</li>
+          <li>A GitHub personal access token with <code>repo</code> and <code>admin:repo_hook</code> permissions</li>
+          <li>An n8n instance (cloud or self-hosted) to run the workflow</li>
+          <li>Destination channels for notifications (Slack, Teams, Discord, email, etc.)</li>
+          <li>A publicly accessible webhook URL (provided by n8n when you activate the workflow)</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download and import</strong> the template JSON file into your n8n instance.</li>
+          <li><strong>Configure GitHub credentials</strong> by creating a credential with your personal access token in the HTTP Request nodes.</li>
+          <li><strong>Update the webhook URL</strong> in the Register GitHub Webhook node with your n8n production URL.</li>
+          <li><strong>Add repository URLs</strong> to the "Repos to Monitor" list in the workflow.</li>
+          <li><strong>Connect notification channels</strong> by configuring Slack, Telegram, or other nodes with your destination details.</li>
+          <li><strong>Test the workflow</strong> by making a commit to one of your monitored repositories and verifying the notification arrives.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Start by monitoring just 1-2 repositories to verify everything works correctly before adding your entire portfolio. This helps you fine-tune notification formats and routing rules with minimal noise.</p>
+        </div>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Real-time awareness without constant checking:</strong> Get notified within seconds of any repository activity instead of periodically checking multiple repos throughout the day. This ensures you never miss critical changes while freeing up mental bandwidth for actual development work.</p>
+        
+        <p><strong>Reduced infrastructure load:</strong> Webhooks eliminate the need for polling, which can make hundreds of API calls per hour. This significantly reduces bandwidth usage, avoids GitHub API rate limits, and minimizes server resource consumption compared to traditional polling approaches.</p>
+        
+        <p><strong>Centralized monitoring across all projects:</strong> Instead of managing notifications separately for each repository, get a unified view of all activity in one place. This is especially valuable for teams managing client projects, internal tools, and open-source contributions simultaneously.</p>
+        
+        <p><strong>Automated compliance tracking:</strong> Maintain automatic audit trails of all code changes with timestamps, user information, and change details. This documentation is invaluable for security reviews, compliance requirements, and post-incident investigations.</p>
+        
+        <p><strong>Scalable team coordination:</strong> As your team grows or you take on more projects, the system scales effortlessly. New repositories can be added programmatically, and notification rules can be adjusted to match evolving team structures and workflows.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about GitHub automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of using webhooks over polling for GitHub monitoring?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Webhooks provide real-time, event-driven notifications instantly when an action occurs in your repository, eliminating the need for constant polling. This reduces server load, saves bandwidth, and ensures you get notifications within seconds rather than waiting for the next polling interval.</p>
+          <p>Polling requires your system to repeatedly check for changes, which can miss events between checks and consume unnecessary resources. Webhooks are more efficient, reliable, and faster for monitoring dynamic systems like GitHub repositories where changes can happen frequently.</p>
+          <ul>
+            <li>Instant notification vs. delayed discovery</li>
+            <li>Reduced API calls and bandwidth usage</li>
+            <li>More reliable event capture</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can monitoring multiple GitHub repos improve development workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Monitoring multiple repositories simultaneously gives teams complete visibility into code changes across all projects. This enables faster response to critical commits, helps maintain code quality standards, and ensures all team members stay informed about updates.</p>
+          <p>For example, when a developer fixes a security vulnerability in a shared library, all teams using that library can be notified immediately. This proactive approach prevents issues from propagating through dependent projects and helps coordinate updates across your entire codebase.</p>
+          <ul>
+            <li>Cross-project dependency awareness</li>
+            <li>Faster incident response</li>
+            <li>Improved team coordination</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What types of GitHub events should I monitor for my development team?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Key events to monitor include pushes (code commits), pull request creation and merges, issue creation and updates, releases, and deployment statuses. Push events track all code changes, pull request events help with code review workflows, and issue events keep teams aligned on bug reports and feature requests.</p>
+          <p>The specific events you monitor depend on your team's workflow—some teams focus on deployment triggers while others prioritize code review notifications. Start with push and pull request events, then expand based on what information provides the most value to your specific development process.</p>
+          <ul>
+            <li>Push events for all code changes</li>
+            <li>Pull request events for review workflows</li>
+            <li>Issue events for bug tracking</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can GitHub webhook automation integrate with other tools my team uses?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GitHub webhooks can integrate with virtually any tool your team uses. Common integrations include Slack or Microsoft Teams for instant notifications, Jira or Trello for automatically creating or updating tickets, email systems for formal notifications, and CI/CD platforms like Jenkins or CircleCI to trigger automated builds.</p>
+          <p>This creates a connected development ecosystem where GitHub activities automatically update all relevant systems without manual intervention. For instance, when a pull request is merged, it can automatically create a deployment ticket in Jira and post a notification in your team's Slack channel.</p>
+          <ul>
+            <li>Communication tools (Slack, Teams)</li>
+            <li>Project management (Jira, Trello)</li>
+            <li>CI/CD pipelines (Jenkins, CircleCI)</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does automated GitHub monitoring help with compliance and audit trails?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automated GitHub monitoring creates comprehensive audit trails by logging every repository event with timestamps, user information, and change details. This is essential for compliance requirements like SOC 2, HIPAA, or GDPR where you need to demonstrate who changed what and when.</p>
+          <p>These automated logs ensure no events are missed, provide searchable records for investigations, and help identify unauthorized access or policy violations quickly. For regulated industries, this automated documentation can significantly reduce the manual effort required for compliance reporting and audits.</p>
+          <ul>
+            <li>Automatic timestamped event logging</li>
+            <li>User attribution for all changes</li>
+            <li>Searchable compliance records</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the security considerations when setting up GitHub webhooks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Key security considerations include using HTTPS endpoints for webhooks, implementing secret tokens to verify payload authenticity, restricting webhook permissions to necessary events only, regularly rotating access tokens, and monitoring webhook delivery failures.</p>
+          <p>Always validate incoming webhook payloads, never trust unverified data, and ensure your receiving endpoint has proper authentication and rate limiting to prevent abuse. For sensitive repositories, consider implementing additional validation logic to ensure only authorized events trigger notifications or actions.</p>
+          <ul>
+            <li>Use HTTPS and secret tokens</li>
+            <li>Restrict to necessary permissions</li>
+            <li>Monitor for delivery failures</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How can small development teams benefit from GitHub automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Small teams benefit significantly from GitHub automation as it acts as a force multiplier, allowing limited personnel to manage multiple projects effectively. Automation handles routine notifications, status updates, and coordination tasks, freeing developers to focus on coding.</p>
+          <p>It ensures nothing slips through the cracks, maintains consistent processes as the team grows, and provides professional-grade workflow management without requiring dedicated DevOps staff. Even solo developers find value in automated monitoring to maintain oversight while concentrating on development work.</p>
+          <ul>
+            <li>Force multiplier for limited teams</li>
+            <li>Consistent processes as you grow</li>
+            <li>Professional workflows without overhead</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom GitHub automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom GitHub automation solutions tailored to your specific development workflows, team structure, and integration needs. We can create systems that monitor your unique repository configurations, integrate with your existing tool stack, implement custom notification logic, and scale with your team's growth.</p>
+          <p>Our solutions help development teams work more efficiently with automated coordination across all their GitHub activities. Whether you need specialized event filtering, integration with proprietary tools, or complex multi-team notification routing, we can build a system that fits your exact requirements.</p>
+          <ul>
+            <li>Tailored to your workflow</li>
+            <li>Integration with your tool stack</li>
+            <li>Scalable with your team growth</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom GitHub Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
