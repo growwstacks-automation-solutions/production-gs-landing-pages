@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Domain Expiry Dates with Google Sheets & WHOIS API | Free Template | GrowwStacks</title>
+<meta name="description" content="Automatically track domain expiry dates from Google Sheets, fetch real-time DNS expiry data via WHOIS API, and update expiry details back to your sheet with zero manual effort.">
+<link rel="canonical" href="https://growwstacks.com/workflows/8203-track-domain-expiry-dates-with-google-sheets-and-whois-api/">
+<meta property="og:title" content="Track Domain Expiry Dates with Google Sheets & WHOIS API">
+<meta property="og:description" content="Automatically track domain expiry dates from Google Sheets, fetch real-time DNS expiry data via WHOIS API, and update expiry details back to your sheet with zero manual effort.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/8203-track-domain-expiry-dates-with-google-sheets-and-whois-api/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/13211-track-domain-expiry-dates-with-google-sheets-and-whois.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Track Domain Expiry Dates with Google Sheets & WHOIS API">
+<meta name="twitter:description" content="Automatically track domain expiry dates from Google Sheets, fetch real-time DNS expiry data via WHOIS API, and update expiry details back to your sheet with zero manual effort.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Track Domain Expiry Dates with Google Sheets & WHOIS API","description":"Automatically track domain expiry dates from Google Sheets, fetch real-time DNS expiry data via WHOIS API, and update expiry details back to your sheet with zero manual effort.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/13211-track-domain-expiry-dates-with-google-sheets-and-whois.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is tracking domain expiry dates important for my business?","acceptedAnswer":{"@type":"Answer","text":"Domain expiry can lead to website downtime, lost revenue, and damage to your brand reputation. For SEO, an expired domain can cause rankings to plummet overnight. Automated tracking prevents these risks by giving you ample renewal time and ensuring your online presence remains uninterrupted."}},{"@type":"Question","name":"What's the difference between WHOIS API and manual domain checking?","acceptedAnswer":{"@type":"Answer","text":"Manual checking is time-consuming and error-prone, especially with multiple domains. WHOIS API provides real-time, programmatic access to DNS SOA records, delivering accurate expiry timestamps instantly. Automation eliminates human oversight and scales to hundreds of domains without additional effort."}},{"@type":"Question","name":"Can I use this automation for client domain portfolios?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. This workflow is ideal for agencies managing client websites. You can centralize all client domains in one Google Sheet, automate expiry tracking, and set up alerts for renewals. It transforms a manual administrative task into a value-added service you can offer clients."}},{"@type":"Question","name":"How accurate are the expiry dates from WHOIS API?","acceptedAnswer":{"@type":"Answer","text":"WHOIS API queries DNS SOA records directly from registry databases, providing the most accurate expiry information available. Accuracy depends on the domain registrar's reporting, but for most commercial domains, the data is reliable within days of the actual expiry date."}},{"@type":"Question","name":"What happens if my domain expires unexpectedly?","acceptedAnswer":{"@type":"Answer","text":"An expired domain typically enters a grace period (30-45 days) where you can renew it, often with a penalty fee. After that, it may be auctioned or released. Automated tracking with alerts prevents this by giving you 60-90 days notice before the actual expiry date."}},{"@type":"Question","name":"Can I integrate domain expiry alerts with other tools?","acceptedAnswer":{"@type":"Answer","text":"Yes. Beyond Google Sheets, you can extend this automation to send Slack notifications, create calendar events, trigger email reminders, or even auto-renew domains through registrar APIs. The workflow serves as a foundation you can customize with additional notification channels."}},{"@type":"Question","name":"How do I handle domains with privacy protection enabled?","acceptedAnswer":{"@type":"Answer","text":"WHOIS API can still retrieve expiry dates for most domains with privacy protection, as expiry information is typically public in DNS SOA records. However, some privacy services may obscure this data. For critical domains, consider verifying with your registrar directly as a backup."}},{"@type":"Question","name":"Can I get a custom domain management automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes. GrowwStacks specializes in building tailored automation systems for domain portfolio management. We can create custom workflows that integrate with your specific registrar, add multi-channel alerts, implement renewal automation, and build dashboards for enterprise-scale domain tracking."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Track Domain Expiry Dates"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Track Domain Expiry Dates</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">WHOIS API</span>
+          <span class="cs-tag">Domain Management</span>
+          <span class="cs-tag">Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Track Domain Expiry Dates with Google Sheets & WHOIS API</h1>
+        <p class="cs-hero-sub">Automatically monitor domain expiration for all your websites. Fetch real-time DNS data, update tracking sheets, and prevent costly downtime—fully automated.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/13211-track-domain-expiry-dates-with-google-sheets-and-whois.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/13211-track-domain-expiry-dates-with-google-sheets-and-whois.png" alt="Domain expiry tracking automation workflow diagram showing Google Sheets integration with WHOIS API" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Forget manual domain checking. This automation solves the critical problem of domain portfolio management by eliminating the risk of unexpected website downtime. Every expired domain means lost traffic, revenue, and brand damage—especially for SEO-dependent businesses where rankings can plummet overnight.</p>
+        <p>The workflow automatically reads your domain list from Google Sheets, queries the WHOIS API for real-time DNS SOA records, extracts expiry timestamps, converts them to readable dates, and updates your tracking sheet—all without manual intervention. It processes domains sequentially with built-in delays to respect API rate limits, making it production-ready for portfolios of any size.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. Configuration & Domain Retrieval</h3>
+        <p>The workflow starts by loading your Google Sheet ID and worksheet name. It reads all domains listed in your "Websites" column, creating a clean dataset for processing. This setup ensures you can use your existing domain tracking spreadsheet without reformatting.</p>
+
+        <h3>2. WHOIS API Query</h3>
+        <p>For each domain, the system sends a secure request to the WHOIS API (via RapidAPI) to fetch DNS SOA records. These records contain the authoritative expiry timestamp directly from the domain registry, providing the most accurate expiration data available.</p>
+
+        <h3>3. Data Processing & Formatting</h3>
+        <p>The raw expiry timestamp is extracted and converted into human-readable DD-MM-YYYY format. The workflow also parses out the expiry month name and year as separate values, giving you multiple data points for filtering and reporting in your spreadsheet.</p>
+
+        <h3>4. Sheet Update & Loop Control</h3>
+        <p>Processed data is written back to the corresponding row in your Google Sheet, matching domains using the "Websites" column. A 30-second pause between domains prevents API throttling while maintaining steady progress through your entire portfolio.</p>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Schedule this workflow to run monthly. This gives you 60-90 days notice before any domain expires, plenty of time for renewal while avoiding last-minute panic or premium redemption fees.</p>
+        </div>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is essential for <strong>SEO agencies</strong> managing client website portfolios, <strong>digital marketing teams</strong> responsible for corporate domains, <strong>hosting providers</strong> monitoring customer renewals, and <strong>businesses with multiple brand domains</strong>. If you manage more than 5 domains manually, this workflow will save you hours monthly and prevent costly oversights.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (self-hosted or n8n.cloud)</li>
+          <li><strong>Google account</strong> with Sheets access (free tier works)</li>
+          <li><strong>RapidAPI account</strong> with WHOIS API access (free tier available)</li>
+          <li><strong>Google Sheet</strong> with a "Websites" column containing your domains</li>
+          <li><strong>10 minutes</strong> for initial setup and configuration</li>
+        </ol>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Import the workflow:</strong> Copy the JSON template, open n8n, go to Workflows → Import from JSON, paste and import.</li>
+          <li><strong>Configure Google Sheets:</strong> Create OAuth2 credentials in n8n for Google Sheets, then paste your Sheet ID and worksheet name into the "Set Sheet Configuration" node.</li>
+          <li><strong>Set up WHOIS API:</strong> Get your RapidAPI key from their dashboard and add it to the HTTP Request node headers.</li>
+          <li><strong>Test with one domain:</strong> Run the workflow manually with a single domain in your sheet to verify data flows correctly.</li>
+          <li><strong>Schedule automation:</strong> Set the workflow to trigger monthly using n8n's schedule node for hands-off operation.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Prevent revenue loss from downtime:</strong> An expired domain can take your entire website offline, stopping sales and leads immediately. Automated tracking gives you 60-90 days advance notice.</p>
+        <p><strong>Save 5+ hours monthly on manual checking:</strong> Checking dozens of domains across multiple registrars is tedious and error-prone. This automation does it in minutes with perfect accuracy.</p>
+        <p><strong>Protect SEO rankings:</strong> Search engines penalize or drop expired domains from results. Maintaining continuous registration preserves your hard-earned search visibility.</p>
+        <p><strong>Centralize portfolio management:</strong> Instead of logging into multiple registrar accounts, manage all domains from one Google Sheet with real-time expiry data.</p>
+        <p><strong>Scale without additional effort:</strong> Whether you have 10 domains or 1,000, the workflow processes them all with the same reliability—no linear increase in manual work.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about domain expiry tracking automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why is tracking domain expiry dates important for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Domain expiry can lead to website downtime, lost revenue, and damage to your brand reputation. For SEO, an expired domain can cause rankings to plummet overnight. Automated tracking prevents these risks by giving you ample renewal time and ensuring your online presence remains uninterrupted.</p>
+          <p>Consider an e-commerce site losing $10,000 daily in sales during downtime, or a service business missing critical lead generation. The cost of automation is negligible compared to these potential losses.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's the difference between WHOIS API and manual domain checking?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Manual checking is time-consuming and error-prone, especially with multiple domains. WHOIS API provides real-time, programmatic access to DNS SOA records, delivering accurate expiry timestamps instantly. Automation eliminates human oversight and scales to hundreds of domains without additional effort.</p>
+          <p>While manual checking might work for 2-3 domains, it becomes impractical at scale. The API approach also ensures consistency—you get the same data format for every domain, making reporting and analysis straightforward.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this automation for client domain portfolios?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. This workflow is ideal for agencies managing client websites. You can centralize all client domains in one Google Sheet, automate expiry tracking, and set up alerts for renewals. It transforms a manual administrative task into a value-added service you can offer clients.</p>
+          <p>You can even create separate sheets or tabs per client, with automated monthly reports showing expiry status. This demonstrates proactive management and builds client trust through transparency.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How accurate are the expiry dates from WHOIS API?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>WHOIS API queries DNS SOA records directly from registry databases, providing the most accurate expiry information available. Accuracy depends on the domain registrar's reporting, but for most commercial domains, the data is reliable within days of the actual expiry date.</p>
+          <p>For mission-critical domains, we recommend setting renewal reminders 30 days before the API-reported expiry date. This buffer accommodates any minor discrepancies while ensuring you never miss a deadline.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if my domain expires unexpectedly?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>An expired domain typically enters a grace period (30-45 days) where you can renew it, often with a penalty fee. After that, it may be auctioned or released. Automated tracking with alerts prevents this by giving you 60-90 days notice before the actual expiry date.</p>
+          <p>The real risk isn't just the expiry itself—it's the recovery cost. Redeeming a domain after grace period can cost hundreds of dollars in addition to standard renewal fees, not to mention potential brand damage during downtime.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I integrate domain expiry alerts with other tools?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. Beyond Google Sheets, you can extend this automation to send Slack notifications, create calendar events, trigger email reminders, or even auto-renew domains through registrar APIs. The workflow serves as a foundation you can customize with additional notification channels.</p>
+          <p>Common extensions include: Slack alerts to your #operations channel, calendar invites for renewal tasks, automated emails to finance for payment processing, and SMS alerts for critical domains.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I handle domains with privacy protection enabled?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>WHOIS API can still retrieve expiry dates for most domains with privacy protection, as expiry information is typically public in DNS SOA records. However, some privacy services may obscure this data. For critical domains, consider verifying with your registrar directly as a backup.</p>
+          <p>If you encounter domains where WHOIS data is fully masked, you can supplement this workflow with manual checks for those specific domains or use registrar-specific APIs if available.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom domain management automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes. GrowwStacks specializes in building tailored automation systems for domain portfolio management. We can create custom workflows that integrate with your specific registrar, add multi-channel alerts, implement renewal automation, and build dashboards for enterprise-scale domain tracking.</p>
+          <p>Our custom solutions typically include: Integration with your existing tools (CRM, project management), automated renewal workflows with approval chains, custom reporting dashboards, and SLA-based alerting for different domain tiers.</p>
+          <ul>
+            <li>Direct integration with GoDaddy, Namecheap, or Cloudflare APIs</li>
+            <li>Multi-level approval workflows for domain renewals</li>
+            <li>Custom dashboards showing expiry risk across your portfolio</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Domain Management Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

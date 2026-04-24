@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Video RSS Feed with Redis Caching | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Automatically create a personal RSS feed of your favorite YouTube channels. Get videos in your RSS reader with embedded player, no YouTube distractions. Free n8n template.">
+<link rel="canonical" href="https://growwstacks.com/workflows/4067-create-youtube-video-rss-feed-with-redis-caching-and-embedded-video-player/">
+<meta property="og:title" content="YouTube Video RSS Feed with Redis Caching | Free n8n Template">
+<meta property="og:description" content="Automatically create a personal RSS feed of your favorite YouTube channels. Get videos in your RSS reader with embedded player, no YouTube distractions.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/4067-create-youtube-video-rss-feed-with-redis-caching-and-embedded-video-player/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/6646-create-youtube-video-rss-feed-with-redis-caching-and-em.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YouTube Video RSS Feed with Redis Caching | Free n8n Template">
+<meta name="twitter:description" content="Automatically create a personal RSS feed of your favorite YouTube channels. Get videos in your RSS reader with embedded player, no YouTube distractions.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"YouTube Video RSS Feed with Redis Caching","description":"Automatically create a personal RSS feed of your favorite YouTube channels. Get videos in your RSS reader with embedded player, no YouTube distractions.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/6646-create-youtube-video-rss-feed-with-redis-caching-and-em.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why should I use an RSS feed for YouTube instead of subscribing on YouTube?","acceptedAnswer":{"@type":"Answer","text":"Using an RSS feed for YouTube gives you a distraction-free experience without algorithm-driven recommendations, ads, or suggested videos. You get only the content from channels you choose, delivered directly to your RSS reader where you can watch embedded videos without visiting YouTube."}},{"@type":"Question","name":"What are the main benefits of automating YouTube content aggregation?","acceptedAnswer":{"@type":"Answer","text":"Automating YouTube content aggregation saves hours of manual checking, ensures you never miss an upload from favorite creators, centralizes content from multiple channels in one place, and provides a clean, ad-free viewing experience directly in your preferred RSS reader."}},{"@type":"Question","name":"How does Redis caching improve a YouTube RSS feed workflow?","acceptedAnswer":{"@type":"Answer","text":"Redis caching dramatically improves performance by storing video data between requests, reducing API calls to YouTube, preventing rate limiting, and ensuring faster feed generation. It also reduces costs if you're using paid API services and provides more reliable delivery."}},{"@type":"Question","name":"Can I use this workflow for business content monitoring?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Businesses use similar workflows to monitor competitor YouTube channels, track industry thought leaders, aggregate training content for teams, or compile customer testimonial videos. The automation ensures timely updates without manual monitoring."}},{"@type":"Question","name":"What RSS readers work best with embedded YouTube videos?","acceptedAnswer":{"@type":"Answer","text":"Most modern RSS readers support embedded YouTube players, including Feedly, Inoreader, NewsBlur, and self-hosted options like FreshRSS or Miniflux. The workflow generates standard RSS with embedded iframe players that work across most platforms."}},{"@type":"Question","name":"How difficult is it to set up Redis for this automation?","acceptedAnswer":{"@type":"Answer","text":"Setting up Redis is straightforward with cloud services like Redis Cloud, Upstash, or AWS ElastiCache offering free tiers. For local development, Docker makes installation simple. The workflow includes clear configuration steps for Redis connection."}},{"@type":"Question","name":"Can I get a custom YouTube automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in custom YouTube automation solutions for businesses. We can build systems for competitor monitoring, content aggregation, video analytics, automated clipping, or integration with your internal tools and databases."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"YouTube RSS Feed Automation"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>YouTube RSS Feed Automation</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">YouTube</span>
+          <span class="cs-tag">RSS</span>
+          <span class="cs-tag">Redis</span>
+          <span class="cs-tag">Content Aggregation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Create YouTube Video RSS Feed with Redis Caching</h1>
+        <p class="cs-hero-sub">Automatically build a personal RSS feed of your favorite YouTube channels. Watch videos directly in your RSS reader without YouTube distractions.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/6646-create-youtube-video-rss-feed-with-redis-caching-and-em.json?ik-attachment=true" download="youtube-rss-feed-workflow.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/6646-create-youtube-video-rss-feed-with-redis-caching-and-em.png" alt="YouTube RSS feed automation workflow diagram showing integration between YouTube, Redis, and RSS output" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This automation solves a common problem for content consumers: YouTube's algorithm-driven interface filled with distractions, recommendations, and ads. Instead of visiting YouTube directly, this workflow creates a clean, personalized RSS feed containing only the latest videos from channels you actually care about.</p>
+        <p>The system pulls video data from YouTube's API, filters out shorts and older content, embeds video players directly in the RSS items, and caches everything in Redis for performance. You get a distraction-free reading experience where you can watch videos directly in your preferred RSS reader without ever visiting YouTube.com.</p>
+        <p>For businesses, this provides a powerful content monitoring tool. Track competitor channels, industry thought leaders, or compile training materials—all delivered automatically to your team's RSS feeds without manual checking.</p>
+
+        <h2>How It Works</h2>
+        <h3>1. RSS Client Trigger</h3>
+        <p>Your RSS reader pings the workflow's webhook URL, triggering the automation to generate fresh content. This happens automatically based on your reader's refresh schedule.</p>
+        
+        <h3>2. YouTube Channel Data Collection</h3>
+        <p>The workflow fetches the latest videos from your configured YouTube channels using the YouTube Data API. You can add any channel by simply entering its ID.</p>
+        
+        <h3>3. Content Filtering & Processing</h3>
+        <p>Videos are filtered to exclude shorts and content older than your specified timeframe (default: one week). Only regular uploads from your selected time window proceed.</p>
+        
+        <h3>4. Video Metadata Enhancement</h3>
+        <p>For each video, the workflow retrieves the embedded player code and full description from YouTube's API, preparing rich content for the RSS feed.</p>
+        
+        <h3>5. Redis Caching Layer</h3>
+        <p>Processed video data is stored in Redis, preventing duplicate API calls on subsequent requests. This reduces YouTube API usage and dramatically speeds up feed generation.</p>
+        
+        <h3>6. RSS Feed Generation</h3>
+        <p>The system builds a complete RSS 2.0 feed with embedded video players, descriptions, and proper metadata, returning it to your RSS reader as valid XML.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This workflow is ideal for content creators, marketers, researchers, and anyone who follows multiple YouTube channels but wants to avoid YouTube's distracting interface. It's perfect for professionals who need to monitor industry content without getting sucked into unrelated videos.</p>
+        <p>Business teams can use it to aggregate competitor content, track industry trends, or compile training materials. Developers appreciate the clean, automated approach to content consumption. Even casual viewers benefit from ad-free, algorithm-free viewing of their subscribed channels.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li><strong>n8n instance</strong> (cloud or self-hosted) to run the workflow</li>
+          <li><strong>YouTube Data API credentials</strong> from Google Cloud Console</li>
+          <li><strong>Redis database</strong> (cloud service like Redis Cloud, Upstash, or self-hosted)</li>
+          <li><strong>RSS reader</strong> that supports embedded video (Feedly, Inoreader, etc.)</li>
+          <li><strong>Channel IDs</strong> for the YouTube channels you want to follow</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Use Upstash for Redis—they offer a generous free tier perfect for this workflow, with automatic backups and easy scaling.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li><strong>Download and import</strong> the template into your n8n instance</li>
+          <li><strong>Configure YouTube API credentials</strong> in the Google node with your OAuth tokens</li>
+          <li><strong>Set up Redis connection</strong> with your database host, port, and password</li>
+          <li><strong>Add channel IDs</strong> to the "Set Channels" node for the YouTube channels you follow</li>
+          <li><strong>Copy the webhook URL</strong> from the Webhook node</li>
+          <li><strong>Add URL to your RSS reader</strong> as a new feed subscription</li>
+          <li><strong>Activate the workflow</strong> and test with your RSS reader</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Save 2-3 hours weekly</strong> by eliminating manual checking of multiple YouTube channels. The automation delivers everything to one place automatically.</p>
+        <p><strong>100% distraction-free viewing</strong> without YouTube's algorithm pushing unrelated content, ads, or suggested videos that derail your focus.</p>
+        <p><strong>Redis caching reduces API costs</strong> by up to 90% compared to fetching fresh data on every request, especially important with YouTube API quotas.</p>
+        <p><strong>Centralized content monitoring</strong> for teams—every member gets the same curated feed without individual subscriptions or missed updates.</p>
+        <p><strong>Future-proof content access</strong> that works even if YouTube changes their interface or subscription system, since you control the feed generation.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about YouTube automation and RSS integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why should I use an RSS feed for YouTube instead of subscribing on YouTube?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Using an RSS feed for YouTube gives you a distraction-free experience without algorithm-driven recommendations, ads, or suggested videos. You get only the content from channels you choose, delivered directly to your RSS reader where you can watch embedded videos without visiting YouTube's interface.</p>
+          <p>This approach eliminates "YouTube rabbit holes" where you start watching one video and end up spending hours on unrelated content. It's particularly valuable for professionals who need to stay informed without losing productivity to platform distractions.</p>
+          <ul>
+            <li>No algorithm pushing unrelated content</li>
+            <li>Watch videos directly in your RSS reader</li>
+            <li>Combine multiple channels in one feed</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of automating YouTube content aggregation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating YouTube content aggregation saves hours of manual checking, ensures you never miss an upload from favorite creators, centralizes content from multiple channels in one place, and provides a clean, ad-free viewing experience directly in your preferred RSS reader.</p>
+          <p>For businesses, automation enables consistent competitor monitoring and industry trend tracking without assigning someone to manually check channels daily. The system works 24/7, delivering updates immediately when new content publishes.</p>
+          <ul>
+            <li>Eliminates daily manual checking</li>
+            <li>Instant notifications of new uploads</li>
+            <li>Historical tracking of channel activity</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does Redis caching improve a YouTube RSS feed workflow?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Redis caching dramatically improves performance by storing video data between requests, reducing API calls to YouTube, preventing rate limiting, and ensuring faster feed generation. It also reduces costs if you're using paid API services and provides more reliable delivery during YouTube API outages.</p>
+          <p>Without caching, each RSS reader request would trigger fresh API calls to YouTube, quickly exhausting quotas and slowing response times. Redis serves cached content instantly while background processes update the cache periodically.</p>
+          <ul>
+            <li>Reduces YouTube API calls by 80-90%</li>
+            <li>Feed loads in milliseconds instead of seconds</li>
+            <li>Protects against YouTube API rate limits</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I use this workflow for business content monitoring?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. Businesses use similar workflows to monitor competitor YouTube channels, track industry thought leaders, aggregate training content for teams, or compile customer testimonial videos. The automation ensures timely updates without manual monitoring.</p>
+          <p>Marketing teams can track competitor campaign launches. Product teams can monitor tutorial content about their products. Executive teams can stay informed on industry trends—all delivered automatically to their preferred reading tools.</p>
+          <ul>
+            <li>Competitor channel monitoring</li>
+            <li>Industry trend aggregation</li>
+            <li>Team training content compilation</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What RSS readers work best with embedded YouTube videos?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Most modern RSS readers support embedded YouTube players, including Feedly, Inoreader, NewsBlur, and self-hosted options like FreshRSS or Miniflux. The workflow generates standard RSS with embedded iframe players that work across most platforms.</p>
+          <p>Mobile RSS apps like Reeder (iOS) and Read You (Android) also handle embedded videos well. For team use, consider readers with sharing and annotation features like Inoreader's business plans or self-hosted solutions with multi-user support.</p>
+          <ul>
+            <li>Feedly and Inoreader have excellent embedded video support</li>
+            <li>Test with your preferred reader before committing</li>
+            <li>Self-hosted readers offer complete control</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How difficult is it to set up Redis for this automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Setting up Redis is straightforward with cloud services like Redis Cloud, Upstash, or AWS ElastiCache offering free tiers. For local development, Docker makes installation simple. The workflow includes clear configuration steps for Redis connection.</p>
+          <p>Most users can have Redis running in under 10 minutes using a cloud service. The free tiers typically provide enough capacity for personal use, while business plans scale easily for team deployments.</p>
+          <ul>
+            <li>Cloud services: 5-10 minute setup</li>
+            <li>Docker local install: 15 minutes</li>
+            <li>Free tiers available for testing</li>
+          </ul>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom YouTube automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in custom YouTube automation solutions for businesses. We can build systems for competitor monitoring, content aggregation, video analytics, automated clipping, or integration with your internal tools and databases.</p>
+          <p>Our team designs workflows tailored to your specific use case—whether you need to track 50 competitor channels, automatically clip highlights for social media, or integrate YouTube data with your CRM. We handle the technical complexity so you get reliable automation.</p>
+          <ul>
+            <li>Custom competitor monitoring dashboards</li>
+            <li>Automated video clipping and sharing</li>
+            <li>Integration with your existing tools</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom YouTube Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add a Check Condition for a Loop in n8n | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Learn how to use the $runIndex expression to prevent infinite loops in n8n. Download this free template to automate repetitive tasks with a controlled exit condition.">
+<link rel="canonical" href="https://growwstacks.com/workflows/422-add-a-check-condition-for-a-loop-in-n8n/">
+<meta property="og:title" content="Add a Check Condition for a Loop in n8n | Free n8n Automation Template">
+<meta property="og:description" content="Download a free n8n workflow template that demonstrates using $runIndex to control loops and prevent infinite execution in your automations.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/422-add-a-check-condition-for-a-loop-in-n8n/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1130-add-a-check-condition-for-a-loop-in-n8n.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Add a Check Condition for a Loop in n8n | Free n8n Template">
+<meta name="twitter:description" content="Learn how to use the $runIndex expression to prevent infinite loops in n8n. Download this free template to automate repetitive tasks with a controlled exit condition.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Add a Check Condition for a Loop in n8n","description":"Learn how to use the $runIndex expression to prevent infinite loops in n8n. Download this free template to automate repetitive tasks with a controlled exit condition.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1130-add-a-check-condition-for-a-loop-in-n8n.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an infinite loop in automation and why is it dangerous?","acceptedAnswer":{"@type":"Answer","text":"An infinite loop occurs when an automation workflow runs continuously without a stopping condition, consuming server resources, causing timeouts, and potentially leading to failed processes or API rate limit violations. In business automation, this can disrupt critical operations like data syncing, notification systems, or batch processing."}},{"@type":"Question","name":"How does the $runIndex expression help control automation workflows?","acceptedAnswer":{"@type":"Answer","text":"The $runIndex expression tracks how many times a loop or workflow has executed. By checking this value against a maximum limit (like 5 or 10), you can create a safe exit condition. This prevents runaway automations while still allowing repetitive tasks like sending batch emails, processing lists, or updating records to complete successfully."}},{"@type":"Question","name":"What are common business use cases for controlled loops in automation?","acceptedAnswer":{"@type":"Answer","text":"Common use cases include sending follow-up emails to a limited list of customers, processing daily report batches, syncing a specific number of records between systems, generating weekly invoices in batches, and updating social media posts on a schedule. Controlled loops ensure these tasks complete without overloading systems or exceeding API limits."}},{"@type":"Question","name":"How do I choose the right maximum loop count for my automation?","acceptedAnswer":{"@type":"Answer","text":"Consider your API rate limits, processing time per item, and business requirements. Start with conservative limits (5-10 iterations) for testing. For production, calculate based on your system's capacity and the time window available. Always include error handling and logging to monitor loop performance and adjust as needed."}},{"@type":"Question","name":"Can I combine loop controls with other conditional logic in n8n?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can combine $runIndex checks with data-based conditions. For example, you might loop through customer records but stop after 10 iterations OR when you encounter a specific status flag. This creates sophisticated automations that respect both quantitative limits and qualitative business rules for more intelligent processing."}},{"@type":"Question","name":"What are the performance implications of adding loop controls to automations?","acceptedAnswer":{"@type":"Answer","text":"Adding proper loop controls improves performance by preventing resource exhaustion. Without controls, infinite loops can crash servers or trigger cloud platform throttling. With controls, you ensure predictable execution times and resource usage, making your automations more reliable and easier to monitor in production environments."}},{"@type":"Question","name":"Can I get a custom loop automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom automation solutions with proper loop controls for specific business needs. Whether you need batch processing for customer onboarding, controlled API calls to external services, or scheduled data synchronization with exit conditions, our team can design and implement robust automations tailored to your requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Add a Check Condition for a Loop in n8n"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Loop Condition Template</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">n8n</span>
+          <span class="cs-tag">Automation Logic</span>
+          <span class="cs-tag">Workflow Control</span>
+          <span class="cs-tag">Free Template</span>
+        </div>
+        <h1>Add a Check Condition for a Loop in n8n</h1>
+        <p class="cs-hero-sub">Learn to use the $runIndex expression to prevent infinite loops and create controlled, reliable automations.</p>
+        <div class="flow-download-bar">
+          <a href="?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/1130-add-a-check-condition-for-a-loop-in-n8n.png" alt="n8n workflow diagram showing a loop with a conditional check using $runIndex expression" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>This template solves a critical problem in automation: preventing infinite loops that can crash systems and disrupt business operations. When building automations that process multiple items or repeat actions, it's easy to accidentally create a loop that runs forever, consuming server resources and causing failures.</p>
+        <p>The workflow demonstrates how to use n8n's <code>$runIndex</code> expression to add a smart exit condition. It creates a controlled loop that executes a specific number of times (like sending 5 notifications or processing 10 records) then safely stops. This approach gives you the power of repetition without the risk of runaway processes.</p>
+        <p>Businesses use this pattern for batch operations, scheduled tasks, and any automation where you need to repeat an action but maintain complete control over execution limits. It's the difference between an automation that works reliably in production versus one that might fail unpredictably.</p>
+
+        <h2>How It Works</h2>
+        <p>The template implements a simple yet powerful pattern that you can adapt to countless business scenarios.</p>
+        
+        <h3>Step 1: Initialize the Loop</h3>
+        <p>The workflow starts with a trigger or manual execution. It sets up the initial conditions and prepares to enter the repetitive processing phase. Think of this as loading your customer list or preparing your batch of data.</p>
+        
+        <h3>Step 2: Check the Run Index</h3>
+        <p>Before each iteration, the workflow evaluates the <code>$runIndex</code> expression. This built-in n8n variable automatically tracks how many times the current execution path has run. The conditional check compares this value against your maximum limit.</p>
+        
+        <h3>Step 3: Execute or Exit</h3>
+        <p>If the run index is below your threshold, the workflow proceeds with the business logic—sending an email, updating a record, or processing data. If the threshold is reached, the workflow takes the exit path and completes successfully.</p>
+        
+        <h3>Step 4: Loop Back or Complete</h3>
+        <p>After successful execution, the workflow either loops back for another iteration or proceeds to completion tasks like sending success notifications, logging results, or triggering downstream processes.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This template is essential for any business using automation for repetitive tasks. Marketing teams running batch campaigns, operations teams processing daily transactions, support teams sending follow-up communications, and development teams managing data synchronization will all benefit from controlled loops.</p>
+        <p>If you've ever worried about an automation running too long or consuming too many API calls, this pattern provides the safety net you need. It's particularly valuable for businesses scaling their automation efforts where reliability becomes as important as functionality.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>An n8n instance (cloud or self-hosted)</li>
+          <li>Basic understanding of workflow concepts in n8n</li>
+          <li>A specific use case involving repetitive actions</li>
+          <li>Knowledge of your system's limits (API rate limits, processing capacity)</li>
+          <li>Test environment to validate loop behavior before production</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Always test loop limits with small numbers first. Start with 2-3 iterations to verify the exit condition works, then scale up to your production number. This prevents accidental resource consumption during development.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <ol>
+          <li>Download the template using the button above</li>
+          <li>Import the JSON file into your n8n instance</li>
+          <li>Examine the IF node to understand the <code>$runIndex</code> condition</li>
+          <li>Replace the example action (like the Twitter node) with your own business logic</li>
+          <li>Adjust the maximum loop count based on your needs</li>
+          <li>Test with a small limit first, then deploy to production</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Prevents System Overload:</strong> Infinite loops can crash servers and disrupt operations. This template ensures your automations respect resource limits and complete predictably.</p>
+        <p><strong>Maintains API Compliance:</strong> Many services have rate limits. Controlled loops help you stay within these limits while still processing the data you need.</p>
+        <p><strong>Enables Batch Processing:</strong> Process large datasets in manageable chunks without manual intervention. The automation handles the repetition while you focus on results.</p>
+        <p><strong>Improves Reliability:</strong> Automations with proper exit conditions are more trustworthy in production environments. Teams can deploy them with confidence knowing they won't run amok.</p>
+        <p><strong>Saves Development Time:</strong> Instead of building custom loop logic for every automation, use this proven pattern as a starting point for any repetitive task.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about loop control and automation reliability</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is an infinite loop in automation and why is it dangerous?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>An infinite loop occurs when an automation workflow runs continuously without a stopping condition, consuming server resources, causing timeouts, and potentially leading to failed processes or API rate limit violations. In business automation, this can disrupt critical operations like data syncing, notification systems, or batch processing.</p>
+          <p>For example, a customer notification system stuck in an infinite loop might send thousands of duplicate emails, damaging customer relationships and potentially violating spam regulations. Proper loop controls prevent these scenarios while maintaining automation benefits.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the $runIndex expression help control automation workflows?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The $runIndex expression tracks how many times a loop or workflow has executed. By checking this value against a maximum limit (like 5 or 10), you can create a safe exit condition. This prevents runaway automations while still allowing repetitive tasks to complete successfully.</p>
+          <p>This approach is particularly useful for batch operations where you need to process multiple items but want to ensure the automation stops after a reasonable number. It's like having a built-in safety valve that activates after a predetermined count, protecting your systems and external services.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are common business use cases for controlled loops in automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Common use cases include sending follow-up emails to a limited list of customers, processing daily report batches, syncing a specific number of records between systems, generating weekly invoices in batches, and updating social media posts on a schedule.</p>
+          <p>For instance, an e-commerce business might use controlled loops to process overnight order exports to their accounting system, ensuring all transactions are captured without overloading either system. The loop runs until all orders are processed or reaches a safety limit.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I choose the right maximum loop count for my automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Consider your API rate limits, processing time per item, and business requirements. Start with conservative limits (5-10 iterations) for testing. For production, calculate based on your system's capacity and the time window available.</p>
+          <p>Always include error handling and logging to monitor loop performance and adjust as needed. If you're processing customer data with a 1000-record limit from your CRM API, set your loop limit slightly below that threshold to account for any unexpected duplicates or retries.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I combine loop controls with other conditional logic in n8n?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, you can combine $runIndex checks with data-based conditions. For example, you might loop through customer records but stop after 10 iterations OR when you encounter a specific status flag. This creates sophisticated automations that respect both quantitative limits and qualitative business rules.</p>
+          <p>This hybrid approach allows for more intelligent processing. A support ticket automation could process tickets until it either reaches 50 tickets (loop limit) or encounters a high-priority ticket that requires immediate human attention (data condition).</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the performance implications of adding loop controls to automations?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Adding proper loop controls improves performance by preventing resource exhaustion. Without controls, infinite loops can crash servers or trigger cloud platform throttling. With controls, you ensure predictable execution times and resource usage.</p>
+          <p>This makes your automations more reliable and easier to monitor in production environments. You can accurately estimate completion times, allocate appropriate resources, and set realistic service level agreements for automated processes.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom loop automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building custom automation solutions with proper loop controls for specific business needs. Whether you need batch processing for customer onboarding, controlled API calls to external services, or scheduled data synchronization with exit conditions, our team can design and implement robust automations.</p>
+          <p>We work with you to understand your unique requirements, implement appropriate safety measures, and deliver automation systems that work reliably at scale. From simple repetitive tasks to complex multi-system integrations with multiple exit conditions, we ensure your automations are both powerful and safe.</p>
+          <ul>
+            <li>Tailored to your specific systems and workflows</li>
+            <li>Built with production reliability in mind</li>
+            <li>Includes monitoring and alerting for loop performance</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Loop Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems with proper loop controls for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>

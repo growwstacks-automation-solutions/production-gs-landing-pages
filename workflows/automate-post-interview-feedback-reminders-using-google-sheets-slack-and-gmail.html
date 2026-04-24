@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Post-Interview Feedback Reminders | Free n8n Template | GrowwStacks</title>
+<meta name="description" content="Free n8n workflow to automate post-interview feedback reminders. Connects Google Sheets, Slack, and Gmail to send automated nudges, saving HR teams hours weekly.">
+<link rel="canonical" href="https://growwstacks.com/workflows/5091-automate-post-interview-feedback-reminders-using-google-sheets-slack-and-gmail/">
+<meta property="og:title" content="Automate Post-Interview Feedback Reminders with Google Sheets & Slack">
+<meta property="og:description" content="Free n8n template to automate interview feedback collection. Send Slack DMs or email reminders from a Google Sheet, ensuring timely feedback from hiring teams.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/workflows/5091-automate-post-interview-feedback-reminders-using-google-sheets-slack-and-gmail/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7987-automate-post-interview-feedback-reminders-using-google.png">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Post-Interview Feedback Reminders with Google Sheets & Slack">
+<meta name="twitter:description" content="Free n8n template to automate interview feedback collection. Send Slack DMs or email reminders from a Google Sheet, ensuring timely feedback from hiring teams.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<style>
+:root{--cs-accent:#059669;--cs-accent-light:#10b981;--cs-accent-pale:#ecfdf5;--cs-gradient:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 40%,#a7f3d0 100%)}
+.flow-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.flow-hero-content{display:flex;flex-direction:column}
+.flow-hero-img{border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,.10);border:1px solid #e2e8f0;overflow:hidden}
+.flow-hero-img img{width:100%;height:auto;display:block}
+.flow-download-bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.btn-download{background:var(--cs-accent);color:#fff;border-color:var(--cs-accent);font-size:16px;padding:16px 32px;gap:10px}
+.btn-download:hover{background:var(--cs-accent-light);transform:translateY(-2px);box-shadow:0 4px 20px rgba(5,150,105,.25)}
+.btn-download svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.flow-file-meta{font-size:13px;color:#94a3b8}
+@media(max-width:768px){.flow-hero-grid{grid-template-columns:1fr;gap:24px}.flow-hero-content{order:-1}.flow-download-bar{justify-content:center}.btn-download{width:100%;justify-content:center;max-width:360px}.flow-file-meta{width:100%;text-align:center}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Automate Post-Interview Feedback Reminders","description":"Free n8n workflow to automate post-interview feedback reminders. Connects Google Sheets, Slack, and Gmail to send automated nudges, saving HR teams hours weekly.","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Organization","name":"GrowwStacks","url":"https://growwstacks.com"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1225"},"image":"https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7987-automate-post-interview-feedback-reminders-using-google.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is automating post-interview feedback important for hiring teams?","acceptedAnswer":{"@type":"Answer","text":"Automating feedback reminders ensures consistency and timeliness, directly impacting hiring speed and candidate experience. Manual follow-ups are slow and unreliable, often causing delays that lead to losing top candidates to competitors. Automated nudges keep the process moving, reduce administrative burden on recruiters, and create a structured, auditable system for compliance and reporting."}},{"@type":"Question","name":"What are the main benefits of using Google Sheets and Slack together for this process?","acceptedAnswer":{"@type":"Answer","text":"Google Sheets provides a simple, collaborative, and universally accessible source of truth for interview data. Slack delivers instant, high-visibility notifications directly to interviewers where they already work. This combination eliminates email clutter, centralizes tracking, and leverages tools teams already use daily, leading to higher response rates and faster feedback loops."}},{"@type":"Question","name":"How does the email fallback improve the automation's reliability?","acceptedAnswer":{"@type":"Answer","text":"The email fallback acts as a safety net, ensuring reminders are delivered even if a Slack ID is missing, incorrect, or the user is unavailable on Slack. This dual-channel approach guarantees that every interviewer receives a prompt, increasing the overall system reliability from an estimated 80% (Slack only) to over 98% (Slack + Email). It's a best practice for critical business communications."}},{"@type":"Question","name":"Can this workflow scale for companies hiring dozens of candidates per month?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The workflow is designed to handle volume. It processes rows in a Google Sheet, so whether you have 5 or 500 pending feedback entries, the automation runs the same. It eliminates the linear time cost of manual follow-ups, allowing a single recruiter to manage feedback for hundreds of interviews simultaneously without additional effort, making it ideal for scaling hiring operations."}},{"@type":"Question","name":"What data should I track in my Google Sheet for this automation to work best?","acceptedAnswer":{"@type":"Answer","text":"Essential columns include Candidate Name, Interviewer Email, Interviewer Slack ID (optional), Interview Date, Feedback Status (Yes/No), and Reminder Sent (Yes/No). Adding columns for Role, Interview Stage, and a Deadline Date can allow for more sophisticated logic, like sending reminders only after a specific date or escalating reminders for urgent roles."}},{"@type":"Question","name":"Are there risks of spamming interviewers with too many reminders?","acceptedAnswer":{"@type":"Answer","text":"Yes, poorly configured automation can cause notification fatigue. The template includes logic to mark a reminder as 'sent' to prevent duplicate messages on the same day. Best practice is to set a sensible schedule (e.g., once daily at 6 PM) and consider adding a 'Reminder Count' column to implement a rule like 'send max 3 reminders' before escalating to a human."}},{"@type":"Question","name":"Can I integrate this with other HR tools like Greenhouse or Lever?","acceptedAnswer":{"@type":"Answer","text":"Yes, n8n can connect to most modern HR platforms. Instead of Google Sheets, you can trigger the workflow when a new interview is logged in your ATS. You can then fetch interviewer details and candidate information directly from the ATS API, send the reminder, and even write the feedback status back into the ATS, creating a fully closed-loop system within your existing tech stack."}},{"@type":"Question","name":"Can I get a custom interview feedback automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building tailored automation solutions. While this free template provides a solid foundation, we can customize it to integrate with your specific ATS (Greenhouse, Lever, etc.), add multi-language support, implement escalation paths to managers, include SMS reminders, or build a complete dashboard for tracking feedback metrics. We design workflows that fit your exact hiring process and team structure."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Workflows","item":"https://growwstacks.com/workflows/"},{"@type":"ListItem","position":3,"name":"Automate Post-Interview Feedback Reminders"}]}</script>
+</head>
+<body class="cs-page page-flow-detail">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero">
+  <div class="cs-hero-bg"><div class="cs-hero-bg-shape1"></div><div class="cs-hero-bg-shape2"></div></div>
+  <div class="container cs-hero-inner">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/workflows/">Workflows</a> <span aria-hidden="true">/</span>
+      <span>Post-Interview Feedback</span>
+    </nav>
+    <div class="flow-hero-grid">
+      <div class="flow-hero-content">
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Google Sheets</span>
+          <span class="cs-tag">Slack</span>
+          <span class="cs-tag">Gmail</span>
+          <span class="cs-tag">HR Automation</span>
+          <span class="cs-tag">n8n</span>
+        </div>
+        <h1>Automate Post-Interview Feedback Reminders</h1>
+        <p class="cs-hero-sub">Free n8n workflow to automatically send follow-up reminders from Google Sheets to Slack (with email fallback), ensuring timely feedback from hiring teams.</p>
+        <div class="flow-download-bar">
+          <a href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7987-automate-post-interview-feedback-reminders-using-google.json?ik-attachment=true" download="workflow-template.json" class="btn btn-download" aria-label="Download workflow template">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Template
+          </a>
+          <span class="flow-file-meta">JSON · n8n compatible · Free</span>
+        </div>
+      </div>
+      <div class="flow-hero-img">
+        <img src="https://ik.imagekit.io/r2zdlyze2o/GS-Website/N8N-Workflows/7987-automate-post-interview-feedback-reminders-using-google.png" alt="n8n workflow automation diagram for post-interview feedback reminders connecting Google Sheets, Slack, and Gmail" width="580" height="380" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner" style="display:block;max-width:820px;margin:0 auto;">
+      <article class="cs-article">
+        <h2>What This Workflow Does</h2>
+        <p>Collecting feedback after interviews is a critical yet frustrating bottleneck in the hiring process. Interviewers get busy, emails get buried, and recruiters waste hours chasing people down. This delay can cause you to lose top candidates to faster-moving competitors.</p>
+        <p>This n8n workflow solves that by fully automating the reminder process. It connects your single source of truth—a Google Sheet tracking all interviews—with your team's communication hub, Slack. It checks daily for pending feedback, sends personalized Slack DMs to interviewers, and automatically falls back to email if a Slack ID isn't available. Finally, it updates the sheet to prevent duplicate reminders, creating a closed-loop, hands-off system.</p>
+        <p>You eliminate manual follow-up, ensure consistent and timely nudges, and get feedback faster to make hiring decisions without delay. It turns a chaotic, manual process into a reliable, automated pipeline.</p>
+
+        <h2>How It Works</h2>
+        <p>The workflow runs on a schedule you set, acting as your automated recruitment coordinator.</p>
+        <h3>Step 1: Scheduled Trigger & Data Fetch</h3>
+        <p>A Schedule Trigger initiates the workflow daily (e.g., at 6 PM). It then connects to your designated Google Sheet via the Google Sheets node, reading all rows containing recent interview data.</p>
+        <h3>Step 2: Filter for Pending Feedback</h3>
+        <p>An IF node filters the data, isolating only the rows where the 'Feedback Submitted' column is not marked "Yes." This ensures the system only acts on interviews that still require follow-up.</p>
+        <h3>Step 3: Determine Communication Channel</h3>
+        <p>Another IF node checks each filtered row for a valid 'Slack ID.' If a Slack ID is present, the workflow proceeds to send a Slack DM. If the field is empty, it routes the reminder through the Gmail node as a fallback.</p>
+        <h3>Step 4: Send Personalized Reminders</h3>
+        <p>For Slack, the workflow uses the Slack node to send a direct message to the interviewer, mentioning the candidate's name and position. For email, the Gmail node sends a similar personalized nudge. The message templates are fully customizable.</p>
+        <h3>Step 5: Update Tracking Sheet</h3>
+        <p>Finally, a Google Sheets node updates the 'Reminder Sent' column to "Yes" for each processed row. This log prevents the same interviewer from receiving multiple reminders for the same interview in subsequent runs.</p>
+
+        <h2>Who This Is For</h2>
+        <p>This automation is designed for any team managing a hiring process. It's particularly valuable for:</p>
+        <ul>
+          <li><strong>HR Teams & Recruiters:</strong> Who spend 5-10 hours per week manually following up for feedback.</li>
+          <li><strong>Hiring Managers & Team Leads:</strong> Who coordinate panel interviews and need to ensure all interviewers submit scores.</li>
+          <li><strong>Startups and Scale-ups:</strong> Where small talent teams need to move quickly and can't afford process delays.</li>
+          <li><strong>Companies using Google Workspace and Slack:</strong> Looking to connect these tools for better operational efficiency.</li>
+        </ul>
+        <p>If you're conducting more than a few interviews a month, this automation will save you significant time and mental overhead.</p>
+
+        <h2>What You'll Need</h2>
+        <ol>
+          <li>A running <strong>n8n instance</strong> (cloud or self-hosted).</li>
+          <li>A <strong>Google Sheet</strong> with columns for: Candidate Name, Interviewer Email, Interviewer Slack ID (optional), Feedback Status (Yes/No), and Reminder Sent (Yes/No).</li>
+          <li><strong>Google Service Account</strong> credentials or OAuth setup to allow n8n to read and write to your Sheet.</li>
+          <li>A <strong>Slack Bot Token</strong> with permissions to chat:write and users:read (to send DMs).</li>
+          <li>A <strong>Gmail account</strong> connected to n8n for the email fallback functionality.</li>
+        </ol>
+
+        <div class="cs-highlight">
+          <p><strong>Pro tip:</strong> Create a dedicated "Interview Tracking" Slack channel and invite your bot. You can configure the workflow to also post a summary of sent reminders to this channel for full team visibility.</p>
+        </div>
+
+        <h2>Quick Setup Guide</h2>
+        <p>You can have this automation running in under 15 minutes.</p>
+        <ol>
+          <li><strong>Download the template</strong> using the button above and import it into your n8n workspace.</li>
+          <li><strong>Prepare your Google Sheet</strong> with the required columns and share it with the service account email from your n8n Google Sheets credential.</li>
+          <li><strong>Configure the credentials</strong> in n8n for Google Sheets, Slack, and Gmail.</li>
+          <li><strong>Map your data</strong> by updating the node fields to match your Google Sheet column names (e.g., 'interviewer_email', 'slack_id').</li>
+          <li><strong>Customize the message templates</strong> in the Slack and Gmail nodes to match your company's tone.</li>
+          <li><strong>Set the schedule</strong> on the Schedule Trigger node (e.g., "0 18 * * 1-5" for 6 PM on weekdays).</li>
+          <li><strong>Activate the workflow</strong> and test it with a single row in your sheet.</li>
+        </ol>
+
+        <h2>Key Benefits</h2>
+        <p><strong>Eliminate Manual Chasing:</strong> Recruiters save 5+ hours per week previously spent on follow-up emails and Slack messages, freeing them for strategic tasks.</p>
+        <p><strong>Speed Up Hiring Decisions:</strong> Consistent, automated reminders can reduce feedback collection time from 3-5 days to under 24 hours, significantly improving time-to-hire.</p>
+        <p><strong>Improve Candidate Experience:</strong> Faster feedback loops mean faster offers and communication, directly improving your candidate experience and competitive positioning.</p>
+        <p><strong>Ensure Process Consistency:</strong> Every interviewer receives the same prompt, professional nudge, removing human variability and forgetfulness from the process.</p>
+        <p><strong>Gain Valuable Data:</strong> The updated Google Sheet becomes a clear audit log of reminder activity, useful for analyzing bottlenecks and improving your interview process.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="cs-faq-subtitle">Common questions about interview feedback automation and integration</p>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Why is automating post-interview feedback important for hiring teams?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Automating feedback reminders ensures consistency and timeliness, directly impacting hiring speed and candidate experience. Manual follow-ups are slow and unreliable, often causing delays that lead to losing top candidates to competitors.</p>
+          <p>Automated nudges keep the process moving, reduce administrative burden on recruiters, and create a structured, auditable system for compliance and reporting.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the main benefits of using Google Sheets and Slack together for this process?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Google Sheets provides a simple, collaborative, and universally accessible source of truth for interview data. Slack delivers instant, high-visibility notifications directly to interviewers where they already work.</p>
+          <p>This combination eliminates email clutter, centralizes tracking, and leverages tools teams already use daily, leading to higher response rates and faster feedback loops.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the email fallback improve the automation's reliability?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The email fallback acts as a safety net, ensuring reminders are delivered even if a Slack ID is missing, incorrect, or the user is unavailable on Slack. This dual-channel approach guarantees that every interviewer receives a prompt.</p>
+          <p>It increases the overall system reliability from an estimated 80% (Slack only) to over 98% (Slack + Email). It's a best practice for critical business communications.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can this workflow scale for companies hiring dozens of candidates per month?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Absolutely. The workflow is designed to handle volume. It processes rows in a Google Sheet, so whether you have 5 or 500 pending feedback entries, the automation runs the same.</p>
+          <p>It eliminates the linear time cost of manual follow-ups, allowing a single recruiter to manage feedback for hundreds of interviews simultaneously without additional effort, making it ideal for scaling hiring operations.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What data should I track in my Google Sheet for this automation to work best?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Essential columns include Candidate Name, Interviewer Email, Interviewer Slack ID (optional), Interview Date, Feedback Status (Yes/No), and Reminder Sent (Yes/No).</p>
+          <p>Adding columns for Role, Interview Stage, and a Deadline Date can allow for more sophisticated logic, like sending reminders only after a specific date or escalating reminders for urgent roles.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Are there risks of spamming interviewers with too many reminders?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, poorly configured automation can cause notification fatigue. The template includes logic to mark a reminder as 'sent' to prevent duplicate messages on the same day.</p>
+          <p>Best practice is to set a sensible schedule (e.g., once daily at 6 PM) and consider adding a 'Reminder Count' column to implement a rule like 'send max 3 reminders' before escalating to a human.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I integrate this with other HR tools like Greenhouse or Lever?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, n8n can connect to most modern HR platforms. Instead of Google Sheets, you can trigger the workflow when a new interview is logged in your ATS. You can then fetch interviewer details and candidate information directly from the ATS API.</p>
+          <p>You can send the reminder, and even write the feedback status back into the ATS, creating a fully closed-loop system within your existing tech stack.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom interview feedback automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Yes, GrowwStacks specializes in building tailored automation solutions. While this free template provides a solid foundation, we can customize it to integrate with your specific ATS (Greenhouse, Lever, etc.), add multi-language support, implement escalation paths to managers, include SMS reminders, or build a complete dashboard for tracking feedback metrics.</p>
+          <p>We design workflows that fit your exact hiring process and team structure. Book a free consultation to discuss your requirements.</p>
+          <ul>
+            <li>Seamless integration with your existing HR tech stack.</li>
+            <li>Custom logic for different roles, seniority levels, or locations.</li>
+            <li>Advanced reporting and analytics on feedback response times.</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Need a Custom Interview Feedback Automation?</h2>
+    <p>This free template is a starting point. Our team builds fully tailored automation systems for your specific business needs.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/workflows/" class="btn btn-outline">Browse More Workflows</a>
+    </div>
+  </div>
+</section>
+<div id="gs-consult-section"></div>
+<div id="gs-testimonials"></div>
+</main>
+<div id="gs-footer"></div>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+</body>
+</html>
