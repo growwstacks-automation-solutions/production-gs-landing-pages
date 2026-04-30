@@ -3544,5 +3544,156 @@ window.templateData = [
     "ROI": "200",
     "displayTitle": "Capture Web Form Leads and Append to Google Sheets",
     "pageUrl": " https://www.growwstacks.com/case-studies/apps/capture-web-form-leads-google-sheets"
+  },
+  {
+    "title": "Generate & Post SEO Blog Content with AI, Approval Workflow",
+    "description": "This n8n workflow automates the process of generating and publishing SEO-optimized blog posts. It researches trending topics, generates blog ideas using AI, writes the content, creates images, seeks approval via email, and publishes the post to a website. It's designed for content creators, marketers, and businesses looking to streamline their content marketing efforts and consistently publish high-quality blog content, improve search ranking and drive more traffic.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_3F15Y9VtD.jpg",
+    "apps": [
+      "Gmail",
+      "Google Drive",
+      "OpenAI",
+      "The Success Finder",
+      "Ideogram"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Monika_Mileva__Blog_Writer_-_Life___Health_Insurance__20260410_123251_lrC6W_g9l.json",
+    "Industry": "Marketing",
+    "ROI": "200",
+    "displayTitle": "Generate & Post SEO Blog Content with AI, Approval Workflow",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/generate-post-seo-blog-content-with-ai-approval-workflow"
+  },
+  {
+    "title": "Automate WooCommerce Order Batching and Lalamove Delivery Scheduling",
+    "description": "This n8n workflow automatically fetches processing WooCommerce orders, groups them by postal sector zones, creates optimized delivery batches, and schedules Lalamove deliveries with proper token authentication. It's designed for e-commerce businesses in Singapore to streamline logistics by eliminating manual order grouping and reducing delivery costs through route optimization.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_vem81E3nE.jpg",
+    "apps": [
+      "WooCommerce",
+      "Lalamove"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Neeraj_Shah__5._Editor_Agent__20260410_131750_ZOhq3sIPA.json",
+    "Industry": "E-commerce",
+    "ROI": "150%",
+    "displayTitle": "Automate WooCommerce Order Batching and Lalamove Delivery Scheduling",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-woocommerce-order-batching-lalamove-delivery-scheduling"
+  },
+  {
+    "title": "Automate Blog Post Creation with AI and Approval Workflow",
+    "description": "Streamline your blog post creation process with this n8n workflow. It leverages AI to generate content, sends it for approval, and automatically publishes it to your website via API and Google Drive. Ideal for content creators and marketing teams aiming to automate blog management and ensure quality control.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_N_yGNK_g_.jpg",
+    "apps": [
+      "Gmail",
+      "Google Drive",
+      "Ideogram",
+      "The Success Finder"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Monika_Mileva__Blog_Writer_-_Lifestyle__20260410_123357_j-2bMD6q4k.json",
+    "Industry": "Marketing",
+    "ROI": "200",
+    "displayTitle": "Automate Blog Post Creation with AI and Approval Workflow",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-blog-post-creation-ai-approval"
+  },
+  {
+    "title": "Automate LinkedIn Post Creation with AI from Google Docs",
+    "description": "This workflow automates the creation of LinkedIn posts from content stored in Google Docs. It uses AI to extract relevant posts, format them, and then automatically publishes them to LinkedIn, saving time for social media managers and content creators.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_kdKDszkdh.jpg",
+    "apps": [
+      "Google Drive",
+      "LinkedIn",
+      "Google Docs",
+      "Anthropic"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Neeraj_Shah__5._Publisher_Agent__01_Growwstacks___20260410_131530_pl5kmdGjH.json",
+    "Industry": "Marketing",
+    "ROI": "250",
+    "displayTitle": "Automate LinkedIn Post Creation with AI from Google Docs",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-linkedin-post-creation-ai-google-docs"
+  },
+  {
+    "title": "Lalamove Delivery Automation for WooCommerce Orders",
+    "description": "This n8n workflow automates bulk delivery scheduling for WooCommerce orders using Lalamove API. It retrieves eligible orders, groups them by location and time slots, generates Lalamove quotations, creates delivery orders, and updates order metadata. Designed for e-commerce businesses needing automated logistics coordination.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_8nHvUg4F-D.jpg",
+    "apps": [
+      "WooCommerce",
+      "HTTP Request"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Victor_Lignel__analyse_messages_BO__dan___20260410_121906_jBABB_etR.json",
+    "Industry": "E-commerce",
+    "ROI": "150%",
+    "displayTitle": "Lalamove Delivery Automation for WooCommerce Orders",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/lalamove-delivery-automation-woocommerce-orders"
+  },
+  {
+    "title": "Automate Refund Process with Email Parsing & Xero Integration",
+    "description": "Streamline your refund process with this n8n workflow. It automatically parses email requests, extracts key details using OpenAI, and updates refund information in Google Sheets.  It also integrates with Xero accounting software to retrieve customer and invoice details based on email content. This solution saves time and reduces manual data entry.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_Hzdt0Tifi.jpg",
+    "apps": [
+      "Gmail",
+      "OpenAI",
+      "Google Sheets",
+      "Xero",
+      "Trello"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Calvin_Woon__Refund_Process_Automation__20260410_122518_ADz4C7Pow.json",
+    "Industry": "E-commerce",
+    "ROI": "250",
+    "displayTitle": "Automate Refund Process with Email Parsing & Xero Integration",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-refund-process-email-parsing-xero"
+  },
+  {
+    "title": "Get ClickUp tasks automatically on workflow execution",
+    "description": "This workflow retrieves all tasks from ClickUp based on specified team, space, folderless setting, and list IDs whenever the workflow is triggered, providing a real-time status update and instant visibility of project tasks.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_Ykt3q3dEh.jpg",
+    "apps": [
+      "Clickup"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Victor_Lignel__My_workflow_38__20260410_122157_NQot9C2Vn.json",
+    "Industry": "Project Management",
+    "ROI": "25",
+    "displayTitle": "Get ClickUp tasks automatically on workflow execution",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/get-clickup-tasks-automatically-on-workflow-execution"
+  },
+  {
+    "title": "Create ClickUp Tasks from Google Sheets Data and Sync",
+    "description": "This workflow automates task creation in ClickUp from data in Google Sheets and it also compares two Google Sheets for Sync. It fetches data from two spreadsheets, merges them, creates new tasks that match the one of the Google Sheet and manage duplicates, streamlining project task management and improving team workflows. Ideal for project managers and teams using ClickUp and Google Sheets.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_miVYRxPp1.jpg",
+    "apps": [
+      "ClickUp",
+      "Google Drive"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Victor_Lignel__My_workflow_37__20260410_122049_-fGb7fQun.json",
+    "Industry": "I don't know. The provided HTML does not specify the Industry in the Project Details section.",
+    "ROI": "80",
+    "displayTitle": "Create ClickUp Tasks from Google Sheets Data and Sync",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/create-clickup-tasks-from-google-sheets-and-sync"
+  },
+  {
+    "title": "Automate Blog Post Generation and Publishing Workflow",
+    "description": "This workflow automates the entire blog post creation process, from researching trending business topics and generating blog ideas to writing, revising, and publishing the final article. It's designed for content creators and businesses looking to streamline their content marketing efforts and consistently deliver high-quality, AEO-optimized blog posts saving time and enhancing brand and content generation efficiency and improve productivity.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_iv2dW-KNe.jpg",
+    "apps": [
+      "OpenAI",
+      "Google Drive",
+      "Gmail",
+      "Ideogram"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Monika_Mileva__Blog_Writer_-_Business__20260410_123431_DKWRTRkiS.json",
+    "Industry": "Marketing",
+    "ROI": "200",
+    "displayTitle": "Automate Blog Post Generation and Publishing Workflow",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-blog-post-generation-publishing"
+  },
+  {
+    "title": "Automate Lalamove Deliveries from WooCommerce Orders",
+    "description": "This workflow automatically groups and dispatches WooCommerce orders via Lalamove based on delivery time slots and postal sectors. It retrieves processing orders, groups them by warehouse and location, creates batch deliveries, and updates order metadata. Perfect for e-commerce businesses needing automated last-mile logistics.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_DNza-oE4s.jpg",
+    "apps": [
+      "WooCommerce",
+      "Lalamove"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Neeraj_Shah__linkedin_auto_poster__20260410_131716_Ka6GaR5Oe.json",
+    "Industry": "E-commerce",
+    "ROI": "200",
+    "displayTitle": "Automate Lalamove Deliveries from WooCommerce Orders",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-lalamove-deliveries-from-woocommerce-orders"
   }
-];;;;;;;;;;
+];;;;;;;;;;;
