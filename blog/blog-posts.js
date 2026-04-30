@@ -153,7 +153,7 @@ const BLOG_POSTS = [
   target: "_blank"
 },
 {
-  title: "How Your AI Chatbot Could Get You Sued (The "Liability Loop")",
+  title: "How Your AI Chatbot Could Get You Sued (The Liability Loop)",
   desc: "Unchecked AI chatbots can admit liability and cost your business thousands. Learn how to prevent your AI from becoming a legal liability with proper training and constraints.",
   url: "/blog/how-your-ai-chatbot-could-get-you-sued",
   tags: ["AI Agents","Legal","Compliance"],
