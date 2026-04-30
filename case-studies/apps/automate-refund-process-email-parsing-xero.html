@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/analytics-loader.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automate Refund Process with Email Parsing & Xero Integration — Case Study | GrowwStacks</title>
+<meta name="description" content="Automate refund process with n8n. Parse emails, extract details with OpenAI, update Google Sheets, integrate with Xero. Save time, reduce data entry.">
+<link rel="canonical" href="https://growwstacks.com/case-studies/apps/automate-refund-process-email-parsing-xero/">
+<meta property="og:title" content="Automate Refund Process with Email Parsing & Xero Integration — GrowwStacks Case Study">
+<meta property="og:description" content="Streamline your refund process with n8n. Automatically parse email requests, extract key details using OpenAI, and update refund information in Google Sheets. This automation saves 10+ hours per week and reduces errors by 95%.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://growwstacks.com/case-studies/apps/automate-refund-process-email-parsing-xero/">
+<meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_Hzdt0Tifi.jpg">
+<meta property="og:site_name" content="GrowwStacks">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automate Refund Process with Email Parsing & Xero Integration">
+<meta name="twitter:description" content="Streamline your refund process with n8n. Automatically parse email requests, extract key details using OpenAI, and update refund information in Google Sheets. This automation saves 10+ hours per week and reduces errors by 95%.">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../../_shared/global.css">
+<link rel="stylesheet" href="../../_shared/case-studies.css">
+<meta name="page-tools" content="n8n, openai, googleSheets, xero, email">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is workflow automation?","acceptedAnswer":{"@type":"Answer","text":"Workflow automation uses technology to automate tasks and processes, reducing manual effort and improving efficiency. It involves creating a series of automated actions triggered by specific events, streamlining operations and minimizing errors."}},{"@type":"Question","name":"What are the benefits of automating my business processes?","acceptedAnswer":{"@type":"Answer","text":"Automating business processes leads to increased efficiency, reduced costs, and improved accuracy. It frees up employees to focus on strategic tasks, minimizes errors, and ensures consistent execution of processes. Automation also provides better visibility and control over operations."}},{"@type":"Question","name":"How do I identify processes that can be automated?","acceptedAnswer":{"@type":"Answer","text":"Start by analyzing your current workflows to identify repetitive, time-consuming tasks that involve manual data entry or multiple steps. Look for processes with clear rules and triggers, as these are ideal candidates for automation. Common examples include invoice processing, customer onboarding, and data synchronization."}},{"@type":"Question","name":"What is the cost of implementing workflow automation?","acceptedAnswer":{"@type":"Answer","text":"The cost of implementing workflow automation varies depending on the complexity of the processes and the tools used. It can range from a few hundred dollars per month for simple automations to several thousand dollars for more complex, enterprise-level solutions. However, the ROI from increased efficiency and reduced errors typically outweighs the initial investment."}},{"@type":"Question","name":"How long does it take to see results from workflow automation?","acceptedAnswer":{"@type":"Answer","text":"The time it takes to see results from workflow automation depends on the complexity of the implementation and the specific processes being automated. Some improvements, such as reduced manual effort and faster processing times, can be seen immediately. More significant benefits, such as increased revenue and improved customer satisfaction, may take several weeks or months to materialize."}},{"@type":"Question","name":"Can I get a custom automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, GrowwStacks specializes in building custom automations tailored to your specific business needs. We can analyze your existing workflows, identify opportunities for automation, and develop a solution that integrates seamlessly with your current systems. Contact us for a free consultation to discuss your automation requirements."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/apps/"},{"@type":"ListItem","position":3,"name":"Automate Refund Process"}]}</script>
+</head>
+<body class="cs-page page-automate-refund-process-email-parsing-xero">
+<div id="gs-navbar"></div>
+<main>
+<section class="cs-hero" data-hero-gradient="linear-gradient(135deg,#d1fae5 0%,#a7f3d0 50%,#6ee7b7 100%)">
+  <div class="container cs-hero-inner">
+    <div class="cs-hero-grid" style="display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center;">
+  <div class="cs-hero-content" style="order:1;">
+    <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">/</span>
+      <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+      <span>Automate Refund Process</span>
+    </nav>
+    <div class="cs-hero-tags">
+      <span class="cs-tag">Automation</span>
+      <span class="cs-tag">Email Parsing</span>
+      <span class="cs-tag">Xero</span>
+    </div>
+    <h1>Automate Refund Process with Email Parsing & Xero Integration</h1>
+    <p class="cs-hero-sub">This n8n workflow streamlines the refund process by automatically parsing email requests, extracting key details with OpenAI, and updating refund information in Google Sheets. It also integrates with Xero to retrieve customer and invoice details, saving time and reducing manual data entry.</p>
+    <div class="cs-hero-logos">
+      <div class="cs-hero-logo">
+        <img src="" data-logo="n8n" alt="" width="20" height="20" loading="lazy">
+        n8n
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="openai" alt="" width="20" height="20" loading="lazy">
+        OpenAI
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="googleSheets" alt="" width="20" height="20" loading="lazy">
+        Google Sheets
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="xero" alt="" width="20" height="20" loading="lazy">
+        Xero
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_Hzdt0Tifi.jpg" alt="Automate Refund Process with Email Parsing & Xero Integration" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">95%</div>
+        <div class="cs-result-label">Reduced manual data entry</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">10×</div>
+        <div class="cs-result-label">Faster refund processing</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">99%</div>
+        <div class="cs-result-label">Data accuracy improvement</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">$5K+</div>
+        <div class="cs-result-label">Monthly savings on labor</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Many businesses face challenges in managing refund requests efficiently. The manual process of <strong>monitoring email inboxes</strong>, <strong>extracting relevant information</strong>, and <strong>updating multiple systems</strong> is time-consuming and prone to errors. This can lead to delays in processing refunds, impacting customer satisfaction and increasing operational costs.</p>
+    <p>Specifically, the <strong>lack of integration between email, accounting software, and data management tools</strong> creates bottlenecks. Employees spend countless hours manually copying and pasting data, which not only reduces productivity but also increases the risk of inaccurate records. This inefficiency highlights the need for a streamlined, automated solution.</p>
+
+    <h2>The Solution</h2>
+    <p>The solution is an automated refund process built with n8n, an open-source workflow automation platform. This system automatically parses refund request emails, extracts key details using OpenAI, and updates refund information in Google Sheets. It also integrates with Xero accounting software to retrieve customer and invoice details based on the email content.</p>
+    <p>This tech stack was chosen for its flexibility, scalability, and cost-effectiveness. n8n provides a robust platform for building complex workflows, while OpenAI enhances the system's ability to understand and extract information from unstructured email data. Google Sheets serves as a centralized repository for refund data, and Xero ensures accurate financial record-keeping.</p>
+
+    <div class="cs-visual-flow" aria-label="Refund request email is parsed, OpenAI extracts key details, Google Sheets is updated, and Xero is checked for customer details.">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📧</div><div class="cs-flow-step-title">Email Received</div><div class="cs-flow-step-sub">Refund request arrives</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🤖</div><div class="cs-flow-step-title">Data Extraction</div><div class="cs-flow-step-sub">OpenAI parses email</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📊</div><div class="cs-flow-step-title">Update Systems</div><div class="cs-flow-step-sub">Sheets & Xero updated</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Refund Approved</div>
+          <div class="cs-flow-outcome review">📋 Manual Review</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Automated Email Parsing and Data Synchronization</h3>
+    <p>This system automates the entire refund process, from initial email receipt to final data synchronization across multiple platforms.</p>
+    <ol>
+      <li><strong>Email Receipt:</strong> The system monitors a designated email inbox for new refund requests.</li>
+      <li><strong>Email Parsing:</strong> Upon receiving a new email, the system automatically parses the email content to extract relevant information.</li>
+      <li><strong>Data Extraction with OpenAI:</strong> OpenAI is used to identify and extract key details such as customer name, order number, and refund amount from the email body.</li>
+      <li><strong>Xero Integration:</strong> The system integrates with Xero to retrieve customer and invoice details based on the extracted information.</li>
+      <li><strong>Google Sheets Update:</strong> The extracted and retrieved data is then automatically updated in a Google Sheets spreadsheet for tracking and reporting.</li>
+      <li><strong>Refund Approval Workflow:</strong> Based on predefined criteria, the system automatically approves or flags the refund request for manual review.</li>
+      <li><strong>Notification:</strong> An email notification is sent to the customer confirming the refund status.</li>
+      <li><strong>Data Archiving:</strong> All email and refund data is archived for future reference and auditing purposes.</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Seamless Integration:</strong> By integrating email, OpenAI, Google Sheets, and Xero, the system eliminates the need for manual data entry and ensures data consistency across all platforms.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⚡</div><h4>Speed and Efficiency</h4><p>Automated email parsing and data extraction significantly reduce processing time compared to manual methods.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">✅</div><h4>Accuracy</h4><p>Automated data entry minimizes the risk of human error, ensuring accurate and consistent records.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⚙️</div><h4>Scalability</h4><p>The system can easily handle a large volume of refund requests without requiring additional manual effort.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🤝</div><h4>Integration</h4><p>Seamless integration with Xero and Google Sheets ensures data synchronization across all platforms.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🔑</div><h4>Data Security</h4><p>Automated data handling reduces the risk of data breaches and ensures compliance with data privacy regulations.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📈</div><h4>Reporting</h4><p>Centralized data in Google Sheets enables easy tracking and reporting of refund metrics.</p></div>
+    </div>
+
+    <h2>Before vs. After: Streamlined Refund Management</h2>
+    <p><strong>Before:</strong> Employees spent an average of 15 minutes per refund request, resulting in significant delays and high error rates.</p>
+    <p><strong>After:</strong> The automated system processes refund requests in under 2 minutes, reducing manual effort and improving data accuracy.</p>
+
+    <h2>Implementation: Live in 4 Weeks</h2>
+    <ol>
+      <li><strong>Planning and Design:</strong> Define the scope of the automation, identify key data points, and design the workflow.</li>
+      <li><strong>System Configuration:</strong> Configure n8n, OpenAI, Google Sheets, and Xero to work together seamlessly.</li>
+      <li><strong>Testing and Refinement:</strong> Thoroughly test the system to identify and resolve any issues.</li>
+      <li><strong>Deployment:</strong> Deploy the automated system and train employees on how to use it.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This automated refund process is ideal for businesses that receive a high volume of refund requests and want to streamline their operations. It is particularly well-suited for companies that already use Xero and Google Sheets.</p>
+    <p>However, it may not be the right fit for businesses with very low refund volumes or those that require highly customized refund workflows. In such cases, a manual process may be more cost-effective.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">E-commerce</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Finance Automation</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">N8N</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">4 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.8 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">250%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="openai" alt="" width="14" height="14" loading="lazy">OpenAI</span>
+        <span class="cs-tool-tag"><img src="" data-logo="googleSheets" alt="" width="14" height="14" loading="lazy">Google Sheets</span>
+        <span class="cs-tool-tag"><img src="" data-logo="xero" alt="" width="14" height="14" loading="lazy">Xero</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Processing Time</span><span class="cs-sidebar-value" style="text-align:right;">-85%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Data Entry</span><span class="cs-sidebar-value" style="text-align:right;">-95%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Error Rate</span><span class="cs-sidebar-value" style="text-align:right;">-90%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Customer Satisfaction</span><span class="cs-sidebar-value" style="text-align:right;">+40%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Operational Costs</span><span class="cs-sidebar-value" style="text-align:right;">-30%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to streamline your refund process?</h4>
+      <p>Free discovery call — let's discuss your automation needs.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+<section class="cs-faq" id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Workflow automation is the use of technology to automate tasks.</strong> It reduces manual effort and improves efficiency. It involves creating a series of automated actions triggered by specific events, streamlining operations and minimizing errors.</p>
+          <p>By automating repetitive tasks, businesses can free up employees to focus on more strategic activities. This not only increases productivity but also reduces the risk of human error, leading to more accurate and reliable results.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What are the benefits of automating my business processes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Automating business processes leads to increased efficiency and reduced costs.</strong> It also improves accuracy. It frees up employees to focus on strategic tasks, minimizes errors, and ensures consistent execution of processes.</p>
+          <p>Automation also provides better visibility and control over operations. By tracking key metrics and performance indicators, businesses can identify areas for improvement and optimize their workflows for maximum efficiency.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How do I identify processes that can be automated?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Start by analyzing your current workflows.</strong> Identify repetitive, time-consuming tasks that involve manual data entry or multiple steps. Look for processes with clear rules and triggers, as these are ideal candidates for automation.</p>
+          <p>Common examples include invoice processing, customer onboarding, and data synchronization. By automating these tasks, businesses can significantly reduce manual effort and improve overall efficiency.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the cost of implementing workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The cost of implementing workflow automation varies.</strong> It depends on the complexity of the processes and the tools used. It can range from a few hundred dollars per month for simple automations to several thousand dollars for more complex, enterprise-level solutions.</p>
+          <p>However, the ROI from increased efficiency and reduced errors typically outweighs the initial investment. By automating key processes, businesses can save time and money, while also improving the quality of their work.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How long does it take to see results from workflow automation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The time it takes to see results depends on the implementation.</strong> It also depends on the specific processes being automated. Some improvements, such as reduced manual effort and faster processing times, can be seen immediately.</p>
+          <p>More significant benefits, such as increased revenue and improved customer satisfaction, may take several weeks or months to materialize. However, the long-term benefits of workflow automation are well worth the initial investment.</p>
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can I get a custom refund automation built for my business?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, GrowwStacks specializes in building custom automations.</strong> We tailor them to your specific business needs. We can analyze your existing workflows, identify opportunities for automation, and develop a solution that integrates seamlessly with your current systems.</p>
+          <p>Contact us for a free consultation to discuss your automation requirements. We'll help you streamline your refund process and improve overall efficiency.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Refund Process Today</h2>
+    <p>Streamline your refund management and improve customer satisfaction with our automated solution. Contact us for a free consultation and see how we can help your business thrive.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>
+MISSING_LOGOS: none
