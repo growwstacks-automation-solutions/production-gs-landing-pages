@@ -3695,5 +3695,47 @@ window.templateData = [
     "ROI": "200",
     "displayTitle": "Automate Lalamove Deliveries from WooCommerce Orders",
     "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-lalamove-deliveries-from-woocommerce-orders"
+  },
+  {
+    "title": "Automate WooCommerce Order Delivery via Lalamove Scheduler",
+    "description": "This workflow automatically processes WooCommerce orders in scheduled time slots, groups deliveries by Singapore postal sectors, creates Lalamove delivery batches, and updates order tracking. Ideal for e-commerce businesses using WooCommerce with same-day delivery via Lalamove in Singapore.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_OJ8Bguxsq.jpg",
+    "apps": [
+      "WooCommerce",
+      "Lalamove"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Tom_Ormsby__Synaite__Tom___Dan___General__1_-_Read_sheet___Send_to_Sub__20260410_132551_vFY-WjLGi.json",
+    "Industry": "E-commerce",
+    "ROI": "200",
+    "displayTitle": "Automate WooCommerce Order Delivery via Lalamove Scheduler",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-woocommerce-order-delivery-via-lalamove-scheduler"
+  },
+  {
+    "title": "Automate WooCommerce Order Batching for Lalamove Delivery",
+    "description": "This n8n workflow automatically groups WooCommerce processing orders by time slot and postal zone, batches them (max 5 per batch), and creates Lalamove deliveries. It runs hourly during delivery windows, saving warehouse staff hours of manual order grouping and dispatch coordination.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_1aNMt1nCW.jpg",
+    "apps": [
+      "WooCommerce",
+      "Lalamove"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Tom_Ormsby__Synaite__Tom___Dan___Golden__2-_Create_Personalisation__20260410_132657_RlMCpi5Xq.json",
+    "Industry": "E-commerce",
+    "ROI": "200",
+    "displayTitle": "Automate WooCommerce Order Batching for Lalamove Delivery",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-woocommerce-order-batching-lalamove-delivery"
+  },
+  {
+    "title": "Automate Lalamove Deliveries from WooCommerce Processing Orders",
+    "description": "This workflow automates delivery scheduling for a Singaporean durian e-commerce store by fetching processing orders from WooCommerce, grouping them by time slots and postal zones, and automatically creating Lalamove deliveries. It solves manual coordination for same-day delivery scheduling and updates order metadata.",
+    "image": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_4AL0L3dhF.jpg",
+    "apps": [
+      "WooCommerce",
+      "Lalamove"
+    ],
+    "driveUrl": "https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/Tom_Ormsby__Synaite__Tom___Dan___Prosp___Instantly___Monday___Reply_Categorizer__20260410_132517_VJMU_SpTX.json",
+    "Industry": "E-commerce",
+    "ROI": "25",
+    "displayTitle": "Automate Lalamove Deliveries from WooCommerce Processing Orders",
+    "pageUrl": " https://www.growwstacks.com/case-studies/apps/automate-lalamove-deliveries-woocommerce-processing-orders"
   }
-];;;;;;;;;;;
+];;;;;;;;;;;;
