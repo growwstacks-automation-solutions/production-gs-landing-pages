@@ -423,7 +423,7 @@ const BLOG_POSTS = [
   target: "_blank"
 },
 {
-  title: "STOP Paying for ElevenLabs! 🛑 Google’s Secret "Unlimited" AI Voice Studio Revealed (2026)",
+  title: "STOP Paying for ElevenLabs! 🛑 Google’s Secret Unlimited AI Voice Studio Revealed (2026)",
   desc: "Discover Google's hidden AI voice studio that gives you unlimited access to professional-quality text-to-speech voices for free. Learn how to direct AI voices like a Hollywood director with our style instruction formula.",
   url: "/blog/google-secret-ai-voice-studio",
   tags: ["AI Agents","Voice AI","Google"],
