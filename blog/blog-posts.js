@@ -1,5 +1,986 @@
 const BLOG_POSTS = [
 {
+  title: "How to Install & Use OpenAI Codex CLI on Windows in Under 10 Minutes",
+  desc: "Struggling to set up OpenAI Codex CLI on Windows? This step-by-step guide shows you exactly how to install NodeJS, configure API keys, and start generating code with simple commands.",
+  url: "/blog/how-to-install-use-openai-codex-cli-windows",
+  tags: ["AI Agents","OpenAI","Developer Tools"],
+  date: "2026-01-14",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "Build a Voice AI Assistant for Your Business Using n8n and Vapi",
+  desc: "Learn how to create an AI voice assistant that books appointments automatically - solving the 40% missed calls problem small businesses face daily.",
+  url: "/blog/build-voice-ai-assistant-n8n-vapi",
+  tags: ["n8n","Voice AI","Automation"],
+  date: "2026-01-19",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Build Your First MCP Server from Scratch - SDDO and HTTP Implementations",
+  desc: "Learn to create both SDDO and HTTP MCP servers using FastMCP - the toolbox that gives AI assistants access to specialized tools. Complete with code examples and setup instructions.",
+  url: "/blog/build-first-mcp-server-sddo-http",
+  tags: ["MCP","AI Agents","Python"],
+  date: "2026-01-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Run Claude Code Locally for Free with Ollama + Open Source AI Models",
+  desc: "Discover how to run Claude Code locally using Ollama's open-source models—eliminating expensive cloud subscriptions while maintaining full functionality for AI coding projects.",
+  url: "/blog/ollama-claude-code-local-ai-coding",
+  tags: ["AI Agents","Claude","Ollama"],
+  date: "2026-01-18",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How Claude Code Builds Better n8n Workflows Than Humans (Beginner's Guide)",
+  desc: "Discover how Claude Code can automate complex n8n workflow creation - from research agents to HTML newsletters - with minimal technical knowledge required. Perfect for AI automation beginners.",
+  url: "/blog/claude-code-n8n-workflows-beginners-guide",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2026-01-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "n8n vs Zapier in 2026: Which Automation Tool Wins for Your Business?",
+  desc: "Choosing between n8n and Zapier in 2026? Our hands-on comparison reveals which platform saves more money at scale, handles complex workflows better, and fits your technical skills.",
+  url: "/blog/n8n-review-better-than-zapier-automation-2026",
+  tags: ["n8n","Make.com","Automation"],
+  date: "2026-01-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Stop Using Claude Code Like This (Use Sub-Agents Instead)",
+  desc: "Discover why sub-agents outperform traditional Claude coding methods, with real-world examples showing 60% token savings and parallel task execution capabilities.",
+  url: "/blog/stop-using-claude-code-like-this-use-sub-agents-instead",
+  tags: ["AI Agents","Claude","Automation"],
+  date: "2026-01-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Build 100% Self-Hosted AI Agents in 2026 (Surprisingly Easy)",
+  desc: "Discover how to create unlimited AI agents without paying for APIs or platforms - fully self-hosted for under $7/month. Keep all data private while accessing enterprise-grade AI automation.",
+  url: "/blog/build-self-hosted-ai-agents-2026",
+  tags: ["AI Agents","Self-Hosting","n8n"],
+  date: "2026-01-13",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Claude AI Computer Use Agent: Automate Browser Tasks and Desktop Workflows",
+  desc: "The new Claude AI Computer Use Agent can control your browser, automate desktop tasks, and act as a virtual assistant - here's how it works and why you should start using it today.",
+  url: "/blog/claude-ai-computer-use-agent-automate-browser-desktop",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Retell AI Basics Explained (Start Building Voice Agents Today)",
+  desc: "Learn how to build production-ready voice AI agents with Retell AI in 2026. This guide covers model selection, prompt engineering, voice configuration, and API integrations to create conversational agents that book appointments and handle customer service.",
+  url: "/blog/retell-ai-basics-explained-build-voice-agents",
+  tags: ["Voice AI","AI Agents","Automation"],
+  date: "2026-01-14",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Create Embeddable AI Voice & Chat Agents for Your Service Business with AAVACbot",
+  desc: "AAVACbot solves the limitations of Retell AI's widget by offering a self-hosted platform that lets service businesses embed fully functional voice and text agents on their websites. See how electricians, plumbers and HVAC companies can use this to handle customer inquiries 24/7.",
+  url: "/blog/aavacbot-platform-demo-embeddable-retell-ai-voice-chat-agents",
+  tags: ["Voice AI","AI Agents","Retell AI"],
+  date: "2026-01-17",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Can AI Voice Agents Really Replace Human Real Estate Brokers? (Shocking Results)",
+  desc: "68 hours wasted weekly on callbacks and outdated listings? See how AI Property Assistant delivers verified insights in under 10 seconds while reducing response times by 80% in this real demo.",
+  url: "/blog/ai-voice-agents-replace-real-estate-brokers",
+  tags: ["Voice AI","Real Estate","AI Agents"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Scale Your Agency with AI Funnels and HighLevel Automation",
+  desc: "Discover how Jared Holmes scaled his agency to onboard 26 clients using automated webinar systems and AI-powered funnels. Learn the exact strategies he used to overcome early failures and leverage HighLevel's community for rapid growth.",
+  url: "/blog/how-to-scale-your-agency-with-ai-funnels-and-highlevel",
+  tags: ["HighLevel","AI Agents","Automation"],
+  date: "2026-01-18",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Build Advanced Voice AI Agents with ElevenLabs (Full 1.5 Hour Guide)",
+  desc: "Learn how to build complex AI voice agents that handle appointments, transfers, FAQs and more using ElevenLabs conversational workflows. Includes free templates and step-by-step implementation guide.",
+  url: "/blog/build-advanced-voice-ai-agents-with-elevenlabs",
+  tags: ["Voice AI","AI Agents","ElevenLabs"],
+  date: "2026-01-17",
+  readTime: 15,
+  target: "_blank"
+},
+{
+  title: "This AI Agent Creates & Sends Newsletters Automatically (n8n Workflow)",
+  desc: "Stop wasting hours writing newsletters manually. This n8n workflow automatically researches topics, writes content in your brand voice, designs with your logo/colors, and sends to subscribers - all while you sleep.",
+  url: "/blog/ai-newsletter-automation-n8n",
+  tags: ["n8n","AI Agents","Newsletters"],
+  date: "2026-01-14",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Build an AI Voice Chatbot That Sounds Like You in 1 Click - MyClone Review",
+  desc: "Stop losing leads after hours. MyClone creates a perfect AI replica of your voice that books meetings, answers questions, and even accepts payments - all while sounding exactly like you. See how it works.",
+  url: "/blog/myclone-review-ai-voice-chatbot",
+  tags: ["Voice AI","AI Agents","Chatbots"],
+  date: "2026-01-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Building an AI Avatar for Government Services - Real Time Voice + RAG Walkthrough",
+  desc: "Learn how to create an AI assistant that answers visa and immigration questions in real-time using voice interaction and RAG technology. This solution helps applicants navigate complex government documentation with natural conversation.",
+  url: "/blog/building-ai-avatar-government-services",
+  tags: ["Voice AI","AI Agents","Government"],
+  date: "2026-01-17",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Talk to Your Data Instantly with ElevenLabs Voice Agents and CData Connect AI",
+  desc: "See how Clara, an AI voice agent powered by ElevenLabs and CData Connect, instantly analyzes customer risk by pulling live data from Salesforce, Snowflake, and Zendesk - all through natural conversation.",
+  url: "/blog/talk-to-your-data-with-elevenlabs-voice-agents-cdata-connect",
+  tags: ["Voice AI","CRM","Sales"],
+  date: "2026-01-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Connect 8,000+ Apps with Zapier MCP (Step-by-Step Tutorial)",
+  desc: "Learn how to supercharge your AI assistant by connecting it to Zapier's 8,000+ apps using Model Context Protocol (MCP). This step-by-step guide shows you how to set up MCP with VS Code and Cursor to automate email drafting and more.",
+  url: "/blog/zapier-mcp-tutorial-for-beginners",
+  tags: ["Zapier","AI Automation","MCP"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "The NEW Antigravity AI Agent Skills Update Will Change How You Work Forever",
+  desc: "Google's Antigravity just dropped a game-changing update with Agent Skills - package your AI workflows into reusable components that run automatically. See how this transforms repetitive tasks into one-click automations.",
+  url: "/blog/antigravity-ai-agent-skills-update",
+  tags: ["AI Agents","Automation","Google Antigravity"],
+  date: "2026-01-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Claude Code Builds n8n Agents INSTANTLY (Beginner's Guide)",
+  desc: "Discover how to describe workflows in plain English and have Claude Code generate fully functional n8n automations in minutes - no coding required. Perfect for beginners looking to automate business processes.",
+  url: "/blog/claude-code-builds-n8n-agents-instantly",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2026-01-15",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Day 24: CES 2026 in Action - Voice Agents That Manage Your Calendar Using MCP",
+  desc: "Discover how EchoKit with MCP integration can automate your Google Calendar management through voice commands - adding, modifying and deleting events hands-free.",
+  url: "/blog/ces-2026-voice-agents-manage-calendar-mcp",
+  tags: ["Voice AI","MCP","Google Calendar"],
+  date: "2026-01-13",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Build Future-Proof AI Coding Agents That Won't Break With Every Model Update",
+  desc: "Stop rebuilding your AI coding agents from scratch with every model update. Learn the 3-part architecture and harness patterns that create stable, adaptable AI coding assistants using OpenAI Codex.",
+  url: "/blog/future-proof-ai-coding-agents-openai-codex",
+  tags: ["AI Agents","OpenAI","Developer Tools"],
+  date: "2026-01-15",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Gemini Gems vs Zapier: Why Google's AI Agents Change Everything",
+  desc: "Google's Gemini Gems eliminate complex workflow builders with AI agents trained in plain English. See how this threatens Zapier and n8n while giving business owners powerful automation without coding.",
+  url: "/blog/gemini-gems-vs-zapier-ai-automation-comparison",
+  tags: ["AI Agents","Google Workspace","Automation"],
+  date: "2026-01-13",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "The Future of Voice AI in 2026: Jobs, Ethics & Business Impact",
+  desc: "Experts predict which jobs will disappear first, how businesses will adapt, and what 'human-like' really means in the era of voice AI. Essential reading for anyone in customer service or tech.",
+  url: "/blog/future-of-voice-ai-2026",
+  tags: ["Voice AI","AI Agents","Business Automation"],
+  date: "2026-01-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Build a WhatsApp AI Agent That Takes Payments (n8n Tutorial)",
+  desc: "Learn to build an automated WhatsApp AI agent that handles bookings, answers questions, and accepts payments - complete with CRM integration and Stripe payments.",
+  url: "/blog/whatsapp-ai-agent-takes-payments-n8n-tutorial",
+  tags: ["n8n","WhatsApp","AI Agents"],
+  date: "2026-01-15",
+  readTime: 15,
+  target: "_blank"
+},
+{
+  title: "How to Build Voice Agents Customers Actually Like — Not Hate",
+  desc: "Most voice agents frustrate users with robotic responses and long delays. Learn the modular approach to building AI voice teams that handle emotions, switch contexts, and deliver human-like experiences.",
+  url: "/blog/how-to-build-voice-agents-customers-do-not-hate",
+  tags: ["Voice AI","AI Agents","Customer Experience"],
+  date: "2026-01-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Leads From Typeform to Google Sheets in 5 Minutes",
+  desc: "Stop wasting time copying form responses manually. This Zapier automation instantly sends every Typeform submission to your Google Sheets lead tracker — with zero coding required.",
+  url: "/blog/automate-leads-typeform-google-sheets-zapier",
+  tags: ["Zapier","Google Sheets","Typeform"],
+  date: "2026-01-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Add an AI Chatbot to Bitrix24 in 3 Simple Steps",
+  desc: "Transform your Bitrix24 customer interactions with an AI chatbot that collects leads, answers questions, and integrates seamlessly with your existing workflows. No coding required.",
+  url: "/blog/how-to-add-ai-chatbot-to-bitrix24",
+  tags: ["AI Agents","CRM","Bitrix24"],
+  date: "2026-01-16",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "How Shotgun CLI Turns AI Coding Plans Into Permanent, Shareable Specs",
+  desc: "Stop losing AI agent plans between sessions. Shotgun CLI transforms vague coding intents into versioned, forkable specs that live in your repo — creating a single source of truth for both humans and AI tools.",
+  url: "/blog/shotgun-cli-ai-coding-specs",
+  tags: ["AI Agents","Developer Tools","CLI"],
+  date: "2026-01-15",
+  readTime: 4,
+  target: "_blank"
+},
+{
+  title: "How to Install n8n Locally on Windows (Free) - Complete Docker Setup Guide",
+  desc: "Step-by-step guide to installing n8n workflow automation on Windows using Docker Desktop. Learn how to configure containers, set environment variables, and access your local n8n instance.",
+  url: "/blog/how-to-install-n8n-locally-on-windows",
+  tags: ["n8n","Workflow","Windows"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How To Prompt AI Voice Agents Like A Pro: The 6-Part Framework",
+  desc: "Struggling to create effective AI voice agents? This complete framework gives you the exact 6-part structure professionals use, with templates and examples to follow. No more guessing what sections to include or how to order them.",
+  url: "/blog/how-to-prompt-ai-voice-agents",
+  tags: ["Voice AI","AI Agents","Vapi"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How HighLevel's Voice AI Converts 60% More Missed Calls Into Booked Appointments",
+  desc: "35-60% of business calls go unanswered daily. HighLevel's conversation AI acts as your 24/7 receptionist - capturing leads, answering FAQs, and booking appointments even when you're busy.",
+  url: "/blog/highlevel-voice-ai-converts-missed-calls",
+  tags: ["Voice AI","HighLevel","CRM"],
+  date: "2026-01-17",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Stop Building n8n AI Agents Manually (Claude Code Does It INSTANTLY)",
+  desc: "Discover how Claude Code's MCP protocol can build complex n8n workflows automatically with 95% accuracy - no manual coding required. Perfect for agencies scaling automation services.",
+  url: "/blog/claude-code-n8n-ai-agent-automation",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2026-01-17",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "This Free AI Agent Automates Websites in Plain English (No Code Required)",
+  desc: "Hyper Agent is a revolutionary free tool that automates web tasks using natural language commands. No coding required - just tell it what to do and watch it scrape data, fill forms, and complete complex workflows automatically.",
+  url: "/blog/free-ai-agent-automates-websites-plain-english",
+  tags: ["AI Agents","Automation","Web Scraping"],
+  date: "2026-01-17",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Build Custom AI Agents with Google's Tools - No Coding Required",
+  desc: "Transform from AI user to AI builder with Google's NotebookLM, Gemini and AI Studio. Create specialized agents that understand your work and boost productivity without writing code.",
+  url: "/blog/build-ai-agents-with-google-notebooklm-gemini-ai-studio",
+  tags: ["AI Agents","Google AI","No Code"],
+  date: "2026-01-17",
+  readTime: 10,
+  target: "_blank"
+},
+{
+  title: "5 Advanced n8n Chatbot Features Most Builders Don't Use",
+  desc: "Discover five powerful but often overlooked n8n chatbot capabilities including session tracking, native RAG with OpenAI, multi-agent tool sharing, and advanced conversation routing.",
+  url: "/blog/advanced-n8n-chatbot-features",
+  tags: ["n8n","AI Agents","Chatbots"],
+  date: "2026-01-16",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Automate Google Business Profile Posts with n8n (Set It & Forget It)",
+  desc: "Stop manually posting to your Google Business Profile. This n8n workflow automatically generates and publishes posts daily - with or without AI - to boost your local SEO visibility and customer engagement.",
+  url: "/blog/automate-google-business-profile-posts-n8n",
+  tags: ["n8n","Google Business Profile","AI Agents"],
+  date: "2026-01-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How I Let ChatGPT Sell My Digital Products Using AI Agents",
+  desc: "Discover how AI agents can automate your digital product sales by handling market research, competitor analysis, and keyword optimization - freeing up your time while increasing conversions.",
+  url: "/blog/how-to-use-chatgpt-ai-agents-to-sell-digital-products",
+  tags: ["AI Agents","Digital Products","ChatGPT"],
+  date: "2026-01-12",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Scrape Unlimited LinkedIn Leads Automatically with n8n",
+  desc: "Discover how to build a fully automated LinkedIn lead scraping system that enriches profiles and prepares cold outreach messages - all without writing code.",
+  url: "/blog/how-to-scrape-unlimited-linkedin-leads-with-n8n",
+  tags: ["n8n","LinkedIn","Lead Generation"],
+  date: "2026-01-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "I Built an SEO Agent That Replaces Manual SEO Work (n8n)",
+  desc: "This n8n workflow automates competitor SEO analysis, saving $300/month on tools like Ahrefs and SEMrush. It pulls domain rankings, top pages, keyword performance and competitor visibility directly into Google Sheets.",
+  url: "/blog/seo-agent-replaces-manual-work-n8n",
+  tags: ["n8n","SEO","Automation"],
+  date: "2026-01-13",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automatically Generate Instagram Reels Content Without Writing Scripts",
+  desc: "This n8n workflow scrapes top-performing reels, analyzes their content, and generates fresh scripts, lead magnets, and social posts automatically - saving hours of content creation time.",
+  url: "/blog/instagram-reels-generator-n8n",
+  tags: ["n8n","Social Media","AI Agents"],
+  date: "2026-01-19",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Generate Professional Voiceovers Instantly Using Google AI Studio (2026)",
+  desc: "Transform text into natural-sounding audio without recording equipment. This Google AI Studio tutorial shows how to create voiceovers, customer service messages, and more with AI-generated voices.",
+  url: "/blog/google-ai-studio-voice-generation-tutorial",
+  tags: ["Voice AI","Google AI Studio","AI Agents"],
+  date: "2026-01-14",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Gemini 4 Explained: Google's Most Powerful AI Yet (Agents, Physical World AI & AGI Path)",
+  desc: "Gemini 4 represents Google's biggest leap toward practical AI - with physical world understanding, autonomous agents, and omni-modal capabilities that could fundamentally change how we interact with technology.",
+  url: "/blog/gemini-4-explained-googles-most-powerful-ai-yet",
+  tags: ["AI Agents","Google Gemini","AGI"],
+  date: "2026-01-17",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Build a Talking AI Website & Voice Agent in Minutes — No Code Required",
+  desc: "Transform your website into a 24/7 AI voice assistant that books appointments, qualifies leads, and answers customer questions naturally — all without writing a single line of code. Get our free master prompts to build yours today.",
+  url: "/blog/build-ai-voice-agent-website-no-code",
+  tags: ["Voice AI","AI Agents","No Code"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build an AI Agent with Gemini CLI and Agent Development Kit",
+  desc: "Learn to create powerful AI agents using Google's Gemini CLI and Agent Development Kit. This guide covers vibe coding, context engineering, and deploying battle-ready agents to Cloud Run.",
+  url: "/blog/build-ai-agent-gemini-cli-agent-development-kit",
+  tags: ["AI Agents","Gemini CLI","Google Cloud"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a 24/7 AI Voice Agent That Books Appointments While You Sleep",
+  desc: "Stop missing calls and losing leads after hours. This Vapi + ElevenLabs AI voice agent answers calls, qualifies leads, and books appointments for your business 24/7 — with your cloned voice.",
+  url: "/blog/24-7-ai-voice-agent-book-appointments",
+  tags: ["Voice AI","AI Agents","Workflow Automation"],
+  date: "2026-01-13",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Agent Harnesses and AI Engineering Explained in 5 Minutes",
+  desc: "Discover how agent harnesses provide the scaffolding for AI systems, why context engineering matters more than ever, and when to use workflows vs agents in your business automation.",
+  url: "/blog/agent-harnesses-ai-engineering-explained",
+  tags: ["AI Agents","LLM","Automation"],
+  date: "2026-01-16",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Build ANY App with Google's Antigravity + n8n (It’s Insane)",
+  desc: "Learn how to combine Google's Antigravity with n8n to create full AI applications - from frontend to backend automation. This tutorial walks through building a UGC ad generator that takes product images and generates viral-style ads automatically.",
+  url: "/blog/build-any-app-with-googles-antigravity-and-n8n",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2026-01-17",
+  readTime: 11,
+  target: "_blank"
+},
+{
+  title: "How Solar Companies Can Instantly Generate AI-Powered Proposals with n8n",
+  desc: "Stop losing solar leads to slow manual quotes. This n8n workflow automatically generates detailed proposals with system sizing, production estimates, and pricing in under 10 seconds when a lead submits your form.",
+  url: "/blog/ai-solar-proposal-system-n8n-chatgpt",
+  tags: ["n8n","AI Agents","Solar"],
+  date: "2026-01-19",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "CLI vs MCP: The AI Developer's Secret Weapon for Token Efficiency",
+  desc: "Discover why CLI often outperforms MCP for AI development, with real-world examples showing 80% token savings and faster execution when building AI-native systems.",
+  url: "/blog/cli-vs-mcp-ai-development",
+  tags: ["AI Agents","Developer Tools","CLI"],
+  date: "2026-01-18",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Create an AI Agentic Chatbot in 20 Minutes (Step-by-Step Guide)",
+  desc: "Learn how to build an AI chatbot with memory and document processing capabilities using OpenAI, Superbase, and vector databases - perfect for employee onboarding and internal knowledge bases.",
+  url: "/blog/how-to-create-ai-agentic-chatbot",
+  tags: ["AI Agents","OpenAI","Vector Database"],
+  date: "2026-01-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Stop Buying Bots—Get AI That Actually Works",
+  desc: "Most AI tools only solve one small problem while humans handle the rest. Omni-DM bridges the gap between messaging, workflows and real action—delivering complete automation that actually works.",
+  url: "/blog/stop-buying-bots-get-ai-that-actually-works",
+  tags: ["AI Agents","Automation","CRM"],
+  date: "2026-01-17",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Build Reliable AI Agents in n8n Using State Machines",
+  desc: "Learn two proven approaches to create AI agents that reliably track multi-step business processes in n8n - including a powerful hidden tool most users miss.",
+  url: "/blog/how-to-build-reliable-ai-agents-in-n8n-using-state-machines",
+  tags: ["n8n","AI Agents","Workflow Automation"],
+  date: "2026-01-14",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "AI Voice Agents Are Replacing Call Centers Faster Than Anyone Predicted",
+  desc: "Companies are already shutting down call centers as AI voice agents handle customer interactions better than humans at 70% lower cost. Learn which jobs are most at risk and how to future-proof your career.",
+  url: "/blog/ai-voice-agents-replacing-call-centers",
+  tags: ["Voice AI","Call Centers","Automation"],
+  date: "2026-01-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Cost-Effective AI Agent for Customer Sentiment Analysis Using Zapier, OpenAI, and HubSpot",
+  desc: "Learn how to implement an AI-powered customer sentiment analysis system that integrates HubSpot workflows with Zapier and OpenAI - saving thousands in automation costs while providing real-time insights to your team.",
+  url: "/blog/cost-effective-ai-agent-customer-sentiment-analysis-zapier-openai-hubspot",
+  tags: ["AI Agents","CRM","Sales"],
+  date: "2026-01-12",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a $10k/month AI Automation Business in 2026",
+  desc: "Discover the exact 90-day roadmap to transform from broke builder to AI consultant landing $5,000 clients. Learn how to identify real business problems, build proof through free implementations, and systemize client acquisition.",
+  url: "/blog/how-to-build-10k-month-ai-automation-business",
+  tags: ["AI Agents","Business Growth","Make.com"],
+  date: "2026-01-16",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Create Your First SKILL.md File (Make AI Agents Do Exactly What You Want)",
+  desc: "Agent skills are changing how AI works - simple instruction manuals that teach your AI assistant exactly how to complete specialized tasks. Learn how to create your first SKILL.md file that works across Claude, Cursor, VS Code and other major AI tools.",
+  url: "/blog/create-skill-md-file-for-ai-agents",
+  tags: ["AI Agents","Claude","Developer Tools"],
+  date: "2026-01-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Clawdbot: The Powerful AI Assistant That Lives on Your Phone",
+  desc: "Transform your smartphone with Clawdbot - an open-source AI assistant that manages your calendar, summarizes emails, maintains shopping lists, and more. Learn how to set up your own personal AI companion.",
+  url: "/blog/clawdbot-ai-assistant-phone",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-01-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Replace Your Chat Widget With a Voice AI Agent That Books More Calls",
+  desc: "Tired of losing leads to clunky contact forms? This guide shows how to embed a voice AI agent that lets visitors talk to an AI receptionist instantly - no typing, no waiting, just real conversations that convert.",
+  url: "/blog/voice-ai-agent-chat-widget",
+  tags: ["Voice AI","Vapi","Telephony"],
+  date: "2026-01-13",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Voice AI Agents Are the Next Frontier for Small Businesses — Here's Why",
+  desc: "Local businesses are bleeding leads from missed calls and unanswered voicemails. Voice AI agents that answer instantly, qualify leads, and book appointments 24/7 are becoming essential infrastructure for survival.",
+  url: "/blog/voice-ai-agents-next-frontier-small-business",
+  tags: ["Voice AI","AI Agents","Telephony"],
+  date: "2026-01-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Voice AI in Action: Real Business Demos That Generate More Revenue",
+  desc: "See how voice AI agents are transforming industries - from property management to HVAC services - with real demos that handle customer interactions, upsell opportunities, and complex workflows automatically.",
+  url: "/blog/voice-ai-business-demos",
+  tags: ["Voice AI","AI Agents","Business Automation"],
+  date: "2026-01-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Your Entire SEO Process with n8n (Free Template)",
+  desc: "Discover how to automate keyword research, content creation, and WordPress publishing with this free n8n template. Rank higher on Google without writing a single article yourself.",
+  url: "/blog/how-to-automate-seo-process-n8n",
+  tags: ["n8n","SEO","AI Agents"],
+  date: "2026-01-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Microsoft Copilot and AI Agents Ecosystem Explained - The 2026 Guide for Businesses",
+  desc: "Confused about Microsoft's AI ecosystem? This guide breaks down all the Copilot and AI agent tools available in 2026, from M365 to Dynamics 365, Power Platform and Azure - including when to use each one and how they work together.",
+  url: "/blog/microsoft-copilot-ai-agents-ecosystem-2026",
+  tags: ["AI Agents","Microsoft 365","Power Platform"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Blog Content Creation 100% with AI Agents in n8n",
+  desc: "Stop wasting hours writing blog posts manually. This n8n workflow combines AI agents with human oversight to research, outline, write and optimize complete blog posts in minutes - while maintaining full creative control.",
+  url: "/blog/automate-blog-content-creation-ai-agents-n8n",
+  tags: ["n8n","AI Agents","Content Marketing"],
+  date: "2026-01-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Google's Antigravity Update: Agent Skills, Subagents, and AI Automation Explained",
+  desc: "Google's Antigravity just got a massive update with reusable agent skills, parallel subagents, and enhanced automation capabilities. Learn how these new features can supercharge your AI workflows.",
+  url: "/blog/google-antigravity-update-agent-skills-subagents-ai-automation",
+  tags: ["AI Agents","Automation","Google"],
+  date: "2026-01-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How To Connect Facebook Ads to WhatsApp Automation (3 Simple Steps)",
+  desc: "Discover how to turn Facebook ad clicks into qualified leads with WhatsApp automation. Our 3-step process delivers 50%+ conversion rates compared to traditional landing pages.",
+  url: "/blog/how-to-connect-facebook-ads-to-whatsapp-automation",
+  tags: ["WhatsApp","Facebook Ads","Automation"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Build Your First AI Agent in Airia - The Complete Beginner's Guide",
+  desc: "Learn how to build a meeting prep AI agent in Airia that connects to Outlook, searches emails, and delivers dossiers automatically. Perfect for professionals juggling multiple meetings daily.",
+  url: "/blog/airia-ai-tutorial-for-beginners",
+  tags: ["AI Agents","Productivity","Automation"],
+  date: "2026-01-16",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "STOP Paying! 4 FREE & UNLIMITED AI Voice Tools (Voice Cloning + Offline)",
+  desc: "Discover four powerful AI voice tools you can run locally for free - including voice cloning, emotional control, and multilingual support - without subscriptions or internet access.",
+  url: "/blog/free-unlimited-ai-voice-tools",
+  tags: ["Voice AI","AI Agents","Productivity"],
+  date: "2026-01-17",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "AI Creates My Weekly Client Reports Automatically (Google Sheets + Zapier + ChatGPT)",
+  desc: "Stop wasting hours on weekly client reports. This automation combines Google Sheets data with ChatGPT via Zapier to generate professional reports instantly - just add one row of numbers and get a draft email ready to send.",
+  url: "/blog/ai-creates-weekly-client-reports-automatically",
+  tags: ["AI Agents","Google Sheets","Zapier"],
+  date: "2026-01-17",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Model Context Protocol (MCP): The Standard Powering Next-Gen AI Agents",
+  desc: "Discover how MCP (Model Context Protocol) is revolutionizing AI agent workflows by standardizing how LLMs interact with tools and APIs across the internet.",
+  url: "/blog/model-context-protocol-explained",
+  tags: ["AI Agents","LLM","Automation"],
+  date: "2026-01-15",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "AntiGravity Just Replaced N8N? Here's Why You Should Switch Now",
+  desc: "Google's AntiGravity platform is changing AI automation forever. No more complex workflows - just describe what you want in plain English and watch it build itself. See the side-by-side comparison with traditional drag-and-drop tools like N8N.",
+  url: "/blog/antigravity-replaced-n8n",
+  tags: ["AI Agents","Automation","Make.com"],
+  date: "2026-01-16",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Retell's New AI QA Tool Just Changed Voice Agents Forever - Here's How",
+  desc: "Discover how Retell's new AI quality assurance feature uncovers knowledge gaps, catches hallucinations, and diagnoses latency issues in voice agents - with real client results.",
+  url: "/blog/retell-ai-qa-tool-voice-agents",
+  tags: ["Voice AI","AI Agents","Quality Assurance"],
+  date: "2026-01-16",
+  readTime: 10,
+  target: "_blank"
+},
+{
+  title: "How to Connect Wix Automations to Google Sheets With Zapier in Under 10 Minutes",
+  desc: "Stop manually copying form data between Wix and Google Sheets. This Zapier integration automatically logs every form submission in your spreadsheet, saving hours of admin work each month.",
+  url: "/blog/connect-wix-automations-google-sheets-zapier",
+  tags: ["Zapier","Wix","Google Sheets"],
+  date: "2026-01-17",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "WhatsApp AI Chatbot for Airbnb Hosts – Handles Guest FAQs & Escalates Complex Inquiries",
+  desc: "Airbnb hosts waste hours answering the same guest questions daily. This WhatsApp AI chatbot automatically responds to 80% of common inquiries and silently escalates complex questions to human agents - saving hosts 15+ hours per week.",
+  url: "/blog/whatsapp-ai-chatbot-for-airbnb-hosts",
+  tags: ["AI Agents","WhatsApp","Hospitality"],
+  date: "2026-01-12",
+  readTime: 6,
+  target: "_blank"
+},
+{
+  title: "How to Use n8n Completely Free in 2026 - Self-Hosting Guide",
+  desc: "Discover how to run n8n with unlimited automations at zero monthly cost by self-hosting on a VPS. This guide walks through the simplest setup using Hostinger's one-click template and 10% discount.",
+  url: "/blog/how-to-use-n8n-free-self-hosting-2026",
+  tags: ["n8n","Automation","Self-Hosting"],
+  date: "2026-01-16",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How AI Chatbots Are Solving HR's Biggest Communication Challenges",
+  desc: "HR teams lose hours daily answering repetitive candidate and employee questions. AI chatbots trained on your HR documents provide instant, accurate answers 24/7 - improving hiring speed, candidate experience, and employee satisfaction.",
+  url: "/blog/ai-chatbots-hr-recruitment-transformation",
+  tags: ["AI Agents","HR Tech","Recruitment"],
+  date: "2026-01-16",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Bot Mockups V2 First Look: Lead Generation, Voice AI & Demo Features Explained",
+  desc: "Discover how Bot Mockups V2 revolutionizes chatbot demos with lead scraping, voice AI capabilities, and instant mockup generation - all in under 3 minutes. See the new features that make this more than just a demo tool.",
+  url: "/blog/bot-mockups-v2-first-look",
+  tags: ["Voice AI","Lead Generation","Chatbots"],
+  date: "2026-01-17",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "5 Minute n8n Workflow Hack with ChatGPT for Busy Devs",
+  desc: "Discover how to build complete n8n workflows in minutes using a custom ChatGPT agent - no coding required. Perfect for developers short on time.",
+  url: "/blog/5-minute-n8n-workflow-hack-with-chatgpt",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2026-01-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Build a 24/7 AI Voice Agent That Logs Calls Automatically (Make.com + Google Sheets)",
+  desc: "Never miss a client call again with this simple 3-step automation that captures caller details in Google Sheets when your team is unavailable. Works 24/7 with Vapi voice AI and Make.com.",
+  url: "/blog/build-24-7-ai-voice-agent-logs-calls-automatically",
+  tags: ["Voice AI","Make.com","Automation"],
+  date: "2026-01-12",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Build a FREE AI Voice Agent for Your Salon in Under 5 Minutes",
+  desc: "Stop missing calls and bookings - this Google Gemini-powered AI receptionist handles salon appointments naturally while you focus on clients. See how to build it for free in minutes.",
+  url: "/blog/how-to-build-free-ai-voice-agents-with-google",
+  tags: ["Voice AI","Google Gemini","Salon Automation"],
+  date: "2026-01-14",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Automate ChatGPT Responses Using Zapier (No Coding Required)",
+  desc: "Learn how to connect ChatGPT with Zapier to automatically generate responses to form submissions, support tickets, and more - saving hours of manual work each week.",
+  url: "/blog/how-to-automate-chatgpt-responses-using-zapier",
+  tags: ["Zapier","AI Agents","Automation"],
+  date: "2026-01-12",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "See How an AI Voice Agent Works for a Plumbing Company - Real Business Example",
+  desc: "Discover how a plumbing business uses an AI receptionist to answer 100% of calls, book appointments automatically, and recover lost revenue from missed calls - with a real call recording example.",
+  url: "/blog/ai-voice-agent-plumbing-company-example",
+  tags: ["Voice AI","AI Agents","Telephony"],
+  date: "2026-01-15",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Ralph TUI: The Game-Changing Terminal Interface for Autonomous AI Coding Loops",
+  desc: "Discover how Ralph TUI brings visibility and control to autonomous AI coding loops like Frauflu, enabling developers to orchestrate multiple AI agents while maintaining real-time oversight of complex projects.",
+  url: "/blog/ralph-tui-terminal-interface-autonomous-ai-coding",
+  tags: ["AI Agents","Developer Tools","Terminal"],
+  date: "2026-01-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "This AI Agent Builder Might Replace n8n - Vellum.AI Review & Tutorial",
+  desc: "Discover how Vellum.AI's text-to-agent builder creates production-ready workflows from plain English descriptions, with auto-debugging features that solve n8n's biggest pain points.",
+  url: "/blog/vellum-ai-agent-builder-review",
+  tags: ["AI Agents","n8n","Workflow Automation"],
+  date: "2026-01-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "The 3 Best Voice Agent Frameworks for Businesses in 2026",
+  desc: "Discover the top three voice agent platforms - Vapi, LiveKit, and PipeCat - compared by ease of setup, customization needs, and scalability. Learn which solution fits your business requirements.",
+  url: "/blog/best-frameworks-for-building-voice-agents",
+  tags: ["Voice AI","AI Agents","Automation"],
+  date: "2026-01-13",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Install & Use OpenAI Codex CLI in VS Code (2026 Guide)",
+  desc: "Learn how to set up OpenAI Codex CLI in VS Code with this step-by-step guide. Get your API key, configure the environment, and start generating code with AI assistance.",
+  url: "/blog/how-to-install-use-openai-codex-cli-vs-code",
+  tags: ["AI Agents","VS Code","OpenAI"],
+  date: "2026-01-14",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "The #1 Rule for AI Coding Agents: Why Software Architecture Dominates AI Development",
+  desc: "New research reveals 72.6% of AI coding agent configurations prioritize software architecture instructions - discover why this single rule shapes the future of human-AI collaboration in software development.",
+  url: "/blog/ai-coding-agents-software-architecture",
+  tags: ["AI Agents","Software Development","Claude Code"],
+  date: "2026-01-15",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "She Built 11 AI Agents and Cut 80% of Her Workload (Here's How)",
+  desc: "Marketing ops leader Ashley Gross automated her business with 11 AI agents that now handle 80% of her operational tasks. Learn how to identify which workflows to automate first and how to build your own digital workforce.",
+  url: "/blog/ai-agents-cut-workload-80-percent",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-01-15",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Google Gemini 3 Voice AI Agents Replace $497/Month Software (Build Free Without Code)",
+  desc: "Discover how Google Gemini 3's new voice capabilities let you build conversational AI agents for websites without coding or expensive monthly fees. Replace $497/month software with free tools in minutes.",
+  url: "/blog/google-gemini-3-voice-ai-agents-replace-expensive-software",
+  tags: ["Voice AI","AI Agents","Google Gemini"],
+  date: "2026-01-16",
+  readTime: 10,
+  target: "_blank"
+},
+{
+  title: "How to Install Self-Hosted AI Voice Agents and Eliminate Monthly SaaS Fees",
+  desc: "Stop paying recurring fees for AI voice services. This guide shows how to deploy a 100% free, open-source voice agent that handles calls 24/7 without any monthly subscriptions.",
+  url: "/blog/install-self-hosted-ai-voice-agents",
+  tags: ["Voice AI","Self-Hosting","AI Agents"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Monday.com's New AI Agents: How Lexi and Chris Automate Sales Outreach",
+  desc: "Monday.com just launched two game-changing AI agents that automate lead generation and sales outreach. See how Lexi finds ideal customers while Chris handles calls and meetings - all within your CRM.",
+  url: "/blog/monday-com-new-ai-agents-lexi-chris",
+  tags: ["CRM","AI Agents","Sales Automation"],
+  date: "2026-01-15",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Gemini Agent Mode Upgrade: Build ANY AI App for Free with Google's Powerful New Tools",
+  desc: "Google's AI Studio just got massively upgraded with VO3.1 video generation, 4K output, and full-stack app building capabilities - all completely free. Learn how to automate workflows and build custom AI agents without coding.",
+  url: "/blog/gemini-agent-mode-upgrade-build-ai-apps-free",
+  tags: ["AI Agents","Google Gemini","Automation"],
+  date: "2026-01-17",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How the Confucius AI Agent is Changing Everything About AI Development",
+  desc: "Meta and Harvard's Confucius Code Agent proves the system around an AI model matters more than the model itself. Discover how hierarchical memory and persistent note-taking create smarter AI agents that outperform larger models.",
+  url: "/blog/confucius-ai-agent-changing-everything",
+  tags: ["AI Agents","AI Development","Confucius SDK"],
+  date: "2026-01-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Add a Jotform Chatbot to Your App in 5 Minutes",
+  desc: "Transform your Jotform app with an AI chatbot that guides users, answers questions, and improves engagement. Learn how to select, customize, and deploy a chatbot in just a few clicks.",
+  url: "/blog/how-to-integrate-jotform-chatbot-into-your-app",
+  tags: ["AI Agents","Jotform","Chatbots"],
+  date: "2026-01-13",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How Voice Agents Can Control Any Website via Embeddable Widgets",
+  desc: "Discover how voice-powered AI widgets can interact with every element on a webpage - from buttons and forms to drag-and-drop canvases - creating hands-free website control.",
+  url: "/blog/voice-agents-control-websites-embeddable-widgets",
+  tags: ["Voice AI","AI Agents","Web Development"],
+  date: "2026-01-17",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Automate WhatsApp Business Templates with Twilio and Zapier",
+  desc: "Learn to bypass WhatsApp's 24-hour messaging window by automating template messages through Twilio conversations. This guide walks through the 3-step API process to send compliant business templates at scale.",
+  url: "/blog/automate-whatsapp-business-templates-twilio-zapier",
+  tags: ["Twilio","WhatsApp","Zapier"],
+  date: "2026-01-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Automate Any Workflow in 5 Minutes With Zapier - The Ultimate Crash Course",
+  desc: "Stop wasting hours on repetitive tasks. This Zapier crash course shows you how to connect apps, automate workflows, and add AI - all in less time than your coffee break.",
+  url: "/blog/automate-any-workflow-in-5-minutes-with-zapier",
+  tags: ["Zapier","Automation","Productivity"],
+  date: "2026-01-14",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Game-Changer: Email Collection in Skool Just Got Way Easier with Zapier",
+  desc: "Skool now offers two automated ways to collect member emails - through Stripe for paid groups or membership questions for free communities. This Zapier integration eliminates manual exports forever.",
+  url: "/blog/skool-email-collection-zapier",
+  tags: ["Zapier","CRM","Skool"],
+  date: "2026-01-13",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Create Unlimited AI Videos in Bulk (One Click) | Consistent Characters & FREE Automation (2026)",
+  desc: "Discover how to produce 50+ AI story videos daily with consistent characters using free automation tools. This system cuts production time from 5 hours to under 10 minutes per video.",
+  url: "/blog/create-unlimited-ai-videos-bulk-one-click",
+  tags: ["AI Agents","Video Automation","Content Creation"],
+  date: "2026-01-17",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Build an AI Receptionist That Books Appointments & Qualifies Leads (2026 Tutorial)",
+  desc: "Learn how to create an AI receptionist using GoHighLevel that answers calls, books appointments, qualifies leads, and summarizes conversations - replacing full-time staff with 95% success rates.",
+  url: "/blog/gohighlevel-voice-ai-agent-tutorial",
+  tags: ["Voice AI","GoHighLevel","AI Agents"],
+  date: "2026-01-17",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How I'd Start Making Apps With Claude Code in 2026",
+  desc: "Discover how to build production-ready apps without writing code using Claude Code's advanced features like parallel agents, custom skills, and MCP servers. Perfect for beginners overwhelmed by traditional development.",
+  url: "/blog/how-to-start-making-apps-with-claude-code",
+  tags: ["AI Agents","App Development","Claude"],
+  date: "2026-01-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Build a No-Code Voice AI Agent for Your Restaurant (LiveKit + n8n Tutorial)",
+  desc: "Stop rebuilding voice agents from scratch when you outgrow no-code platforms. This LiveKit + n8n tutorial shows how to build a customizable restaurant ordering agent that evolves from prototype to production without vendor lock-in.",
+  url: "/blog/no-code-voice-ai-agent-livekit-n8n",
+  tags: ["Voice AI","n8n","LiveKit"],
+  date: "2026-01-17",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "The Verdict: Does Make.com Belong in a 10-Hour Workweek Business?",
+  desc: "Discover how Make.com can transform your overwhelmed schedule into a calm, automated business system - especially for women entrepreneurs juggling family and work. See if it's right for your 10-hour workweek.",
+  url: "/blog/does-make-com-belong-in-10-hour-workweek",
+  tags: ["Make.com","Automation","Productivity"],
+  date: "2026-01-16",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Your Email Responses with LangSmith's AI Agent Builder",
+  desc: "Stop drowning in email overload. This LangSmith AI agent automatically reads, categorizes and responds to your emails while keeping you in the loop for important decisions.",
+  url: "/blog/automate-email-responses-langsmith-agent-builder",
+  tags: ["AI Agents","Email Automation","LangSmith"],
+  date: "2026-01-13",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Top 5 GoHighLevel AI Workflow Automations That Make $0 To $10K/Month Possible",
+  desc: "Discover the 5 GoHighLevel automations that generate $10K/month for agencies - from missed call recovery to AI chatbots that never lose leads. Implement these today.",
+  url: "/blog/top-5-gohighlevel-ai-workflow-automations",
+  tags: ["GoHighLevel","AI Agents","CRM"],
+  date: "2026-01-17",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "ApiX-Drive AppSumo Review 2026: The Zapier & Make Alternative for Simple Automations",
+  desc: "Tired of Zapier's monthly fees? ApiX-Drive offers lifetime access to 400+ app connections with live data mapping - perfect for agencies, e-commerce, and freelancers needing reliable automations without complexity.",
+  url: "/blog/apix-drive-appsumo-review-zapier-make-alternative",
+  tags: ["Make.com","Automation","eCommerce"],
+  date: "2026-01-18",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Make.com vs Zapier in 2026: Why Automation Tax Is Costing You Thousands",
+  desc: "Discover why switching from Zapier to Make.com in 2026 can save your business thousands in automation costs while giving you more powerful workflow capabilities. Learn how parallel processing and visual debugging change the game.",
+  url: "/blog/make-com-vs-zapier-2026-automation-tax",
+  tags: ["Make.com","Automation","Business Savings"],
+  date: "2026-01-17",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Google's Antigravity AI Agent Skills Will Save You Hours Every Week",
+  desc: "Google's new Agent Skills feature eliminates repetitive prompting by letting your AI remember exactly how you want tasks done. Create once, use forever - no more explaining your preferences every time.",
+  url: "/blog/google-antigravity-ai-agent-skills",
+  tags: ["AI Agents","Google","Automation"],
+  date: "2026-01-16",
+  readTime: 6,
+  target: "_blank"
+},
+{
   title: "How an AI Agent Deleted a Production Database in 9 Seconds",
   desc: "A routine AI agent task turned catastrophic when it autonomously deleted an entire production database - learn what went wrong and how to prevent similar disasters in your AI implementations.",
   url: "/blog/how-ai-agent-deleted-production-database",
