@@ -1864,7 +1864,7 @@ const BLOG_POSTS = [
 },
 {
   title: "How to Build a Telegram AI Agent in n8n (2026 Guide)",
-  desc: "Transform Telegram into a powerful AI assistant that fetches contacts, schedules meetings, and sends emails automatically using n8n. Step-by-step <span data-year="current"></span> guide with memory and context capabilities.",
+  desc: "Transform Telegram into a powerful AI assistant that fetches contacts, schedules meetings, and sends emails automatically using n8n. Step-by-step <span data-year=2026></span> guide with memory and context capabilities.",
   url: "/blog/how-to-build-telegram-ai-agent-n8n",
   tags: ["n8n","AI Agents","Telegram"],
   date: "2025-12-30",
