@@ -1,5 +1,203 @@
 const BLOG_POSTS = [
 {
+  title: "Why Your Cloud Code Agentic OS Sucks (And How to Fix It)",
+  desc: "Most cloud code users focus on flashy dashboards while neglecting the skill backbone that actually drives value. Learn the three critical components of a functional agentic OS and how to implement them properly.",
+  url: "/blog/why-your-cloud-code-agentic-os-sucks-and-how-to-fix-it",
+  tags: ["AI Agents","Cloud Code","Productivity"],
+  date: "2026-05-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How CGI UK Scaled AI Coding Agents to 20,000 Developers with OpenAI Codex",
+  desc: "Discover how CGI UK partnered with OpenAI to deploy Codex AI coding agents to 20,000 developers, increasing productivity through agentic delegation and long-running AI tasks.",
+  url: "/blog/cgi-uk-openai-codex-partnership",
+  tags: ["AI Agents","OpenAI","Codex"],
+  date: "2026-05-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Build a Voice AI Agent in 60 Seconds with Gemini 3.0 (No Coding Required)",
+  desc: "Gemini 3.0 now creates fully functional voice AI agents with websites in under a minute - no coding, setup or API keys needed. See how to build, test and deploy professional AI assistants for any business.",
+  url: "/blog/build-voice-ai-agent-gemini-3",
+  tags: ["AI Agents","Voice AI","Gemini"],
+  date: "2025-12-11",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "AI Voice Agent with Memory: Never Forget a Customer Again (VAPI + Mem0 + n8n)",
+  desc: "Transform customer service with an AI voice agent that remembers every conversation. Learn how to build a VAPI agent integrated with Mem0 memory and n8n workflows to recall customer details instantly.",
+  url: "/blog/ai-voice-agent-with-memory-vapi-mem0-n8n",
+  tags: ["Voice AI","n8n","AI Agents"],
+  date: "2025-12-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Website with Claude AI (No Coding Required)",
+  desc: "Discover how to create professional websites using Claude AI without writing a single line of code - perfect for beginners who want to launch quickly.",
+  url: "/blog/build-website-with-claude-ai",
+  tags: ["AI Agents","Website Builder","Claude"],
+  date: "2026-05-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "$100K AI Automation For Beginners in 2026: Zapier & Copilot Money-Making Guide",
+  desc: "Discover how beginners can leverage Zapier automation and AI Copilots to create $100K/year income streams in 2026 - real case studies from top companies show what works now.",
+  url: "/blog/100k-ai-automation-zapier-copilot-guide",
+  tags: ["AI Agents","Automation","Finance"],
+  date: "2025-12-11",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Build AI Customer Support Agents in 5 Minutes with Microsoft Foundry",
+  desc: "Microsoft Foundry lets you build enterprise-grade AI agents with no coding required. Create customer support bots that answer complex questions by searching multiple knowledge sources simultaneously.",
+  url: "/blog/microsoft-foundry-ai-customer-support-agents",
+  tags: ["AI Agents","Microsoft","Customer Support"],
+  date: "2025-12-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "PocketTTS & Voicebox: Free Local AI Voice Generation & Cloning Tools",
+  desc: "Discover how to run powerful AI voice generation and cloning tools locally on your computer - no internet required. Perfect for content creators who need consistent voiceovers without monthly fees.",
+  url: "/blog/pockettts-voicebox-local-ai-voice-generation-cloning",
+  tags: ["AI Agents","Voice AI","Local AI"],
+  date: "2026-05-14",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Build an AI SMS Agent with Quo (OpenPhone) + Zapier in 15 Minutes",
+  desc: "Learn how to create an AI-powered SMS agent that automatically responds to customer texts using Quo (OpenPhone) and Zapier. This complete tutorial shows you how to set it up in under 15 minutes.",
+  url: "/blog/build-ai-sms-agent-quo-openphone-zapier",
+  tags: ["Zapier","Voice AI","AI Agents"],
+  date: "2025-12-10",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automate Personalized Learning Plans with Make.com (AI Curriculum Generator)",
+  desc: "Stop wasting hours manually curating learning materials. This Make.com workflow combines Google Gemini and YouTube/Google search to automatically generate customized study plans based on skill level and available time.",
+  url: "/blog/automate-personalized-learning-plans-make-com",
+  tags: ["Make.com","AI Agents","Education"],
+  date: "2025-12-11",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Connect Zapier to Whop in 2026: Step-by-Step Automation Guide",
+  desc: "Learn how to automate Whop membership workflows by connecting Zapier in this complete guide. Set up triggers for new members, sync data to your favorite apps, and eliminate manual processes.",
+  url: "/blog/how-to-add-zapier-to-whop",
+  tags: ["Zapier","Automation","Membership"],
+  date: "2025-12-10",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Developers Finally Got an Open-Source Voice AI Platform (Dograh)",
+  desc: "Tired of paying multiple fees and losing control of your voice AI agents? Dograh is an open-source Vapi alternative you can self-host, inspect, and fully control - no more platform lock-in or hidden costs.",
+  url: "/blog/open-source-voice-ai-platform-dograh",
+  tags: ["Voice AI","Open Source","Vapi"],
+  date: "2026-05-14",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "n8n 2.0 Update: What's New and How to Prepare for Breaking Changes",
+  desc: "The n8n 2.0 update brings major security improvements, 10x faster performance, and critical breaking changes that could affect your workflows. Learn what's changing and how to prepare your automations before the December 15th stable release.",
+  url: "/blog/n8n-2-update-breaking-changes",
+  tags: ["n8n","Automation","Workflows"],
+  date: "2025-12-10",
+  readTime: 10,
+  target: "_blank"
+},
+{
+  title: "Voice AI Just Became a Marketing Channel — Here's What You Need to Know",
+  desc: "Thinking Machines and OpenAI have revolutionized real-time voice AI interactions. Learn how this technology will transform customer experiences and become a new marketing channel for your brand.",
+  url: "/blog/voice-ai-marketing-channel",
+  tags: ["Voice AI","Marketing","AI Agents"],
+  date: "2026-05-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How AI-Powered Coding Workflows Can Save You Hours Every Day",
+  desc: "Discover how integrating AI tools like Claude Code and Cursor with automated testing and MCPs can transform your development workflow, reducing debugging time from hours to minutes.",
+  url: "/blog/ai-coding-workflow-automation",
+  tags: ["AI Agents","Productivity","Coding"],
+  date: "2026-05-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Microsoft Foundry and Agent Framework Revolutionize AI-Powered Automation",
+  desc: "Discover how Microsoft Foundry and Agent Framework enable businesses to build, deploy, and scale sophisticated AI-powered automation with multi-agent orchestration. Learn about the unified framework that combines Autogen and Semantic Kernel capabilities.",
+  url: "/blog/microsoft-foundry-agent-framework-ai-automation",
+  tags: ["AI Agents","Microsoft Foundry","Automation"],
+  date: "2025-12-10",
+  readTime: 13,
+  target: "_blank"
+},
+{
+  title: "You're Not Behind (Yet): The AI Agent Masterclass That Will Future-Proof Your Career",
+  desc: "Most professionals think they're using AI well with basic ChatGPT prompts. They're wrong. This breakdown of AI agents reveals how to automate complex workflows, make better decisions faster, and position yourself ahead of 99% of professionals still stuck in the chatbot era.",
+  url: "/blog/ai-agent-masterclass-future-proof-career",
+  tags: ["AI Agents","Productivity","Future of Work"],
+  date: "2026-05-14",
+  readTime: 13,
+  target: "_blank"
+},
+{
+  title: "Get YouTube Thumbnails Instantly via Telegram Bot with BrowserAct + Make.com",
+  desc: "Automatically scrape YouTube thumbnails for any keyword and deliver them directly to Telegram - no coding required. This Make.com workflow combines BrowserAct automation with AI processing for instant results.",
+  url: "/blog/get-youtube-thumbnails-instantly-telegram-bot-browseract-make",
+  tags: ["Make.com","Automation","Telegram"],
+  date: "2025-12-11",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "The Salty Pretzel Hack: How Voice AI Lead Magnets Can 10X Your Sales",
+  desc: "Discover how to use the 'salty pretzel' technique with voice AI to create irresistible lead magnets that convert 10X better than ebooks. See the exact system that's working for agencies right now.",
+  url: "/blog/salty-pretzel-voice-ai-lead-magnets",
+  tags: ["Voice AI","Sales","AI Agents"],
+  date: "2025-12-11",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "GoHighLevel AI Voice Agents: 5 Hidden Settings That Double Your Conversion Rate",
+  desc: "Struggling with robotic-sounding AI agents that fail to convert? Discover the exact voice speed, interruption sensitivity and background noise settings that make your GoHighLevel bot sound human and book more appointments.",
+  url: "/blog/gohighlevel-ai-voice-agent-settings",
+  tags: ["Voice AI","GoHighLevel","Conversions"],
+  date: "2025-12-10",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Use Claude AI for Free Without Paying for a Subscription",
+  desc: "Discover legitimate ways to access Claude's powerful AI coding capabilities without paying for a subscription. Learn how Base44 provides a complete development environment with Claude built-in at no cost.",
+  url: "/blog/how-to-use-claude-ai-for-free",
+  tags: ["AI Agents","Claude AI","No-Code"],
+  date: "2026-05-14",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Sell GoHighLevel Voice AI Without Feeling Like a Pushy Salesperson",
+  desc: "Learn the research-based cold calling approach that turns awkward sales pitches into valuable conversations - and how we landed an interested prospect in just 20 calls.",
+  url: "/blog/how-to-sell-gohighlevel-voice-ai-cold-calling",
+  tags: ["Voice AI","Cold Calling","GoHighLevel"],
+  date: "2025-12-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
   title: "Zapier Agent Review: One AI Assistant for 9000+ Apps (No Lock-In)",
   desc: "Discover how Zapier Agents let you connect any AI model to your business tools while avoiding vendor lock-in. Keep your workflows when switching between Claude, ChatGPT or Gemini.",
   url: "/blog/zapier-agent-review-one-assistant-9000-apps",
