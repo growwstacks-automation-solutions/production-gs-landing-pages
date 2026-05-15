@@ -73,7 +73,7 @@
       </div>
 
       <h1>YouTube Content Marketing Automation</h1>
-      <p class="cs-hero-sub">Takes a YouTube link, generates a video summary with ChatGPT, creates a WhatsApp-ready marketing message, and distributes it to your groups — with a simple Google Sheets approval step. Marketing teams eliminate 90% of manual video processing time and save $20K+ annually.</p>
+      <p class="cs-hero-sub">Takes a YouTube link, generates a video summary with Claude, creates a WhatsApp-ready marketing message, and distributes it to your groups — with a simple Google Sheets approval step. Marketing teams eliminate 90% of manual video processing time and save $20K+ annually.</p>
 
       <div class="cs-hero-logos">
         <div class="cs-hero-logo">
@@ -154,11 +154,11 @@
 
           <!-- SECTION 2: The Solution -->
           <h2>Building the Content Pipeline: From YouTube Link to WhatsApp Distribution in Minutes</h2>
-          <p>GrowwStacks engineered a complete content repurposing automation built around a single workflow trigger: paste a YouTube URL into a spreadsheet and the entire pipeline handles itself from there. We used <strong>n8n</strong> for workflow orchestration due to its superior handling of multi-step content pipelines and the flexibility it provides for YouTube transcript extraction combined with API-based processing. <strong>ChatGPT</strong> powers two distinct AI tasks in sequence — first a comprehensive content summarization that extracts key insights and marketing-relevant points from the video, then a WhatsApp-optimized promotional message generation based on that summary.</p>
+          <p>GrowwStacks engineered a complete content repurposing automation built around a single workflow trigger: paste a YouTube URL into a spreadsheet and the entire pipeline handles itself from there. We used <strong>n8n</strong> for workflow orchestration due to its superior handling of multi-step content pipelines and the flexibility it provides for YouTube transcript extraction combined with API-based processing. <strong>Claude</strong> powers two distinct AI tasks in sequence — first a comprehensive content summarization that extracts key insights and marketing-relevant points from the video, then a WhatsApp-optimized promotional message generation based on that summary.</p>
           <p><strong>Google Sheets</strong> serves as both the trigger interface and the knowledge base, giving non-technical team members a familiar, zero-friction way to submit videos and approve messages. The approval workflow — a simple yes/no column — is the intentional human checkpoint that keeps quality control in the loop without requiring any technical knowledge to operate. When a message is approved, the n8n workflow automatically routes it to the designated WhatsApp groups with no additional manual steps.</p>
 
           <!-- INLINE VISUALIZATION: Content Pipeline Flow -->
-          <div class="cs-visual-flow" aria-label="YouTube Content Marketing pipeline: YouTube URL added to Google Sheets, n8n extracts video data, ChatGPT generates summary, ChatGPT generates WhatsApp message, team approves in Sheets, message distributed to WhatsApp groups">
+          <div class="cs-visual-flow" aria-label="YouTube Content Marketing pipeline: YouTube URL added to Google Sheets, n8n extracts video data, Claude generates summary, Claude generates WhatsApp message, team approves in Sheets, message distributed to WhatsApp groups">
             <div class="cs-flow-pipeline">
               <div class="cs-flow-step">
                 <div class="cs-flow-step-icon">▶️</div>
@@ -174,7 +174,7 @@
               <div class="cs-flow-connector">→</div>
               <div class="cs-flow-step">
                 <div class="cs-flow-step-icon">🤖</div>
-                <div class="cs-flow-step-title">ChatGPT</div>
+                <div class="cs-flow-step-title">Claude</div>
                 <div class="cs-flow-step-sub">Summary + WhatsApp message generated</div>
               </div>
               <div class="cs-flow-connector">→</div>
@@ -197,9 +197,9 @@
           <ol>
             <li><strong>Link submission:</strong> A team member pastes a YouTube video URL into the designated Google Sheets column. This triggers the n8n workflow automatically. Alternatively, a webhook endpoint accepts direct URL submissions from external tools — useful for teams that want to trigger processing from browser extensions or other automation systems.</li>
             <li><strong>Video data extraction:</strong> n8n fetches the video's complete data package from the YouTube API — title, description, full transcript, duration, and metadata. The transcript is the critical input for summarization; without it, the AI would rely only on the description, which is rarely comprehensive.</li>
-            <li><strong>AI content summarization:</strong> ChatGPT analyzes the full transcript and metadata, generating a comprehensive summary that extracts the video's key insights, main topics, actionable takeaways, and marketing-relevant points. The summarization prompt is tuned to produce a structured output — not just a paragraph recap, but an organized extraction of the content that's immediately useful for knowledge management.</li>
+            <li><strong>AI content summarization:</strong> Claude analyzes the full transcript and metadata, generating a comprehensive summary that extracts the video's key insights, main topics, actionable takeaways, and marketing-relevant points. The summarization prompt is tuned to produce a structured output — not just a paragraph recap, but an organized extraction of the content that's immediately useful for knowledge management.</li>
             <li><strong>Knowledge base storage:</strong> The AI-generated summary is written back to the corresponding Google Sheets row, building a searchable repository of video insights. Future team members can search this sheet rather than re-watching videos — institutional knowledge is captured rather than lost.</li>
-            <li><strong>WhatsApp message generation:</strong> A second ChatGPT prompt takes the video summary as input and generates a WhatsApp-optimized promotional message — engaging copy, relevant hashtags, a clear call-to-action, and platform-appropriate formatting. This is distinct from the summary: the summary is for internal knowledge, the message is for audience distribution.</li>
+            <li><strong>WhatsApp message generation:</strong> A second Claude prompt takes the video summary as input and generates a WhatsApp-optimized promotional message — engaging copy, relevant hashtags, a clear call-to-action, and platform-appropriate formatting. This is distinct from the summary: the summary is for internal knowledge, the message is for audience distribution.</li>
             <li><strong>Approval queue:</strong> The generated WhatsApp message is written to its own Google Sheets column alongside an "Approval" dropdown (yes/no). Team members review the message at their own pace, edit if needed, and set the approval status. Nothing is sent without this explicit confirmation step.</li>
             <li><strong>Approval monitoring:</strong> n8n monitors the approval column on a scheduled interval. When a row transitions to "yes," the workflow triggers the WhatsApp distribution step for that message and only that message — no batch sending, no accidental distribution of unapproved content.</li>
             <li><strong>WhatsApp group distribution:</strong> The approved message is sent automatically to all designated WhatsApp groups. Distribution is logged back to Google Sheets with a timestamp, completing the content repurposing cycle without any manual posting.</li>
@@ -207,9 +207,9 @@
 
           <div class="cs-img-block">
             <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/41.%20AI-Powered%20YouTube%20Content%20Knowledge%20Management%20System/workflow.png?updatedAt=1772050119310"
-                 alt="n8n automation workflow showing YouTube data extraction, ChatGPT summarization, message generation, Google Sheets approval monitoring, and WhatsApp group distribution nodes"
+                 alt="n8n automation workflow showing YouTube data extraction, Claude summarization, message generation, Google Sheets approval monitoring, and WhatsApp group distribution nodes"
                  loading="lazy" width="800" height="450">
-            <div class="cs-img-caption">The n8n automation backbone — from YouTube data extraction to WhatsApp group delivery, with ChatGPT processing, knowledge base storage, and approval monitoring all orchestrated in a single workflow</div>
+            <div class="cs-img-caption">The n8n automation backbone — from YouTube data extraction to WhatsApp group delivery, with Claude processing, knowledge base storage, and approval monitoring all orchestrated in a single workflow</div>
           </div>
 
           <div class="cs-highlight">
@@ -222,7 +222,7 @@
             <div class="cs-feature">
               <div class="cs-feature-icon">🤖</div>
               <h4>AI Video Summarization</h4>
-              <p>ChatGPT analyzes full video transcripts generating comprehensive summaries that extract key insights, main topics, and marketing-relevant information automatically. Teams get accurate, structured summaries without watching a single minute of footage.</p>
+              <p>Claude analyzes full video transcripts generating comprehensive summaries that extract key insights, main topics, and marketing-relevant information automatically. Teams get accurate, structured summaries without watching a single minute of footage.</p>
             </div>
             <div class="cs-feature">
               <div class="cs-feature-icon">💬</div>
@@ -256,9 +256,9 @@
 
           <div class="cs-img-block">
             <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/41.%20AI-Powered%20YouTube%20Content%20Knowledge%20Management%20System/Screenshot%202026-01-21%20at%2010.03.35%E2%80%AFAM.png?updatedAt=1772050119133"
-                 alt="AI video summarization output showing ChatGPT-generated comprehensive summary with key insights and structured information extracted from YouTube video content"
+                 alt="AI video summarization output showing Claude-generated comprehensive summary with key insights and structured information extracted from YouTube video content"
                  loading="lazy" width="800" height="450">
-            <div class="cs-img-caption">AI-generated video summary — ChatGPT extracts key insights, main topics, and marketing-relevant points from the full transcript without any human viewing time investment</div>
+            <div class="cs-img-caption">AI-generated video summary — Claude extracts key insights, main topics, and marketing-relevant points from the full transcript without any human viewing time investment</div>
           </div>
 
           <div class="cs-img-block">
@@ -278,7 +278,7 @@
           <ol>
             <li><strong>Google Sheets template setup:</strong> We design the spreadsheet with columns for YouTube links, video titles, AI summaries, WhatsApp messages, approval status dropdown (yes/no), distribution timestamps, and any custom fields your team needs. Data validation, formatting, and column documentation are configured before any integration is built.</li>
             <li><strong>YouTube data integration:</strong> The YouTube API connection is configured within n8n to fetch video titles, descriptions, and full transcripts. We test extraction accuracy across different video types — long-form content, shorts, unlisted videos — and establish error handling for private or unavailable videos that returns a clean notification rather than a workflow failure.</li>
-            <li><strong>ChatGPT prompt engineering:</strong> Two distinct prompt chains are built and tested independently. The summarization prompt is engineered to extract structured key insights from transcripts at varying lengths. The WhatsApp message generation prompt is tuned for platform-appropriate tone, length, hashtag usage, and call-to-action format — then tested across different content categories to ensure consistent quality.</li>
+            <li><strong>Claude prompt engineering:</strong> Two distinct prompt chains are built and tested independently. The summarization prompt is engineered to extract structured key insights from transcripts at varying lengths. The WhatsApp message generation prompt is tuned for platform-appropriate tone, length, hashtag usage, and call-to-action format — then tested across different content categories to ensure consistent quality.</li>
             <li><strong>Approval workflow build:</strong> The Google Sheets monitoring logic is configured to watch the approval column for status changes on a scheduled interval. Conditional routing ensures distribution fires only for approved messages. A notification system alerts team members when new messages are ready for review so the queue doesn't accumulate silently.</li>
             <li><strong>WhatsApp distribution and deployment:</strong> WhatsApp Business API integration is configured with proper permissions and group targeting. Message formatting is validated for WhatsApp rendering. End-to-end testing runs the full pipeline from URL submission through group delivery. Team members are trained on the link submission process and approval workflow before production deployment with monitoring enabled.</li>
           </ol>
@@ -297,7 +297,7 @@
             <h4>Project Details</h4>
             <div class="cs-sidebar-row"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value">Marketing &amp; Advertising</span></div>
             <div class="cs-sidebar-row"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value">AI Agents</span></div>
-            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value">n8n + ChatGPT</span></div>
+            <div class="cs-sidebar-row"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value">n8n + Claude</span></div>
             <div class="cs-sidebar-row"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value">2 weeks</span></div>
             <div class="cs-sidebar-row"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value">Moderate</span></div>
             <div class="cs-sidebar-row"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value">⭐ 4.8 / 5</span></div>
@@ -313,7 +313,7 @@
               </span>
               <span class="cs-tool-tag">
                 <img src="" data-logo="openai" alt="" width="14" height="14" loading="lazy">
-                ChatGPT
+                Claude
               </span>
               <span class="cs-tool-tag">
                 <img src="" data-logo="googleSheets" alt="" width="14" height="14" loading="lazy">
