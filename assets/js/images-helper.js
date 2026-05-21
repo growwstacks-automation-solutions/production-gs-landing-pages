@@ -6,26 +6,24 @@
 // Generic function to set images by data attribute
 function setupImagesByDataAttribute() {
   const allImages = document.querySelectorAll('img[data-image-key]');
-  console.log('[images-helper] setupImagesByDataAttribute found', allImages.length, 'images');
-  
+
   allImages.forEach((img) => {
     const key = img.dataset.imageKey;
+    if (img.dataset.gsImgResolved === '1') return;
+
     const imageConfig = getImageByKey(key);
+    if (!imageConfig) return;
 
-    if (imageConfig) {
-      const src      = (typeof imageConfig === 'string') ? imageConfig : imageConfig.src;
-      const alt      = (typeof imageConfig === 'string') ? '' : imageConfig.alt;
-      const fallback = (typeof imageConfig === 'string') ? null : imageConfig.fallback;
+    const src      = (typeof imageConfig === 'string') ? imageConfig : imageConfig.src;
+    const alt      = (typeof imageConfig === 'string') ? '' : imageConfig.alt;
+    const fallback = (typeof imageConfig === 'string') ? null : imageConfig.fallback;
 
-      if (src) img.src = src;
-      if (alt) img.alt = alt;
-      if (fallback) {
-        img.onerror = function() { this.src = fallback; };
-      }
-      console.log('[images-helper] Set image', key, '→', src.substring(0, 60) + '...');
-    } else {
-      console.warn('[images-helper] Image key not found:', key);
+    if (src) img.src = src;
+    if (alt) img.alt = alt;
+    if (fallback) {
+      img.onerror = function () { this.src = fallback; };
     }
+    img.dataset.gsImgResolved = '1';
   });
 }
 
@@ -59,11 +57,8 @@ function getImageByKey(key) {
     value = SITE.images[namespace];
   }
   
-  if (!value) {
-    console.warn('[images-helper] Namespace not found:', namespace);
-    return null;
-  }
-  
+  if (!value) return null;
+
   try {
     for (let i = 1; i < keys.length; i++) {
       const k = keys[i];
@@ -71,7 +66,6 @@ function getImageByKey(key) {
     }
     return value;
   } catch (e) {
-    console.warn('[images-helper] Key not found:', key, e.message);
     return null;
   }
 }
@@ -227,8 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       setupLinksByDataAttribute();
       setupImagesByDataAttribute();
-    } catch (e) {
-      console.warn('[images-helper] retry failed:', e);
-    }
+    } catch (e) { /* ignore */ }
   }, 600);
 });

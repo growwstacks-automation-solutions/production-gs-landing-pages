@@ -13,23 +13,25 @@
   const prefix = depth === 0 ? './_shared/' : '../'.repeat(depth) + '_shared/';
 
   // --- Components to inject ---
+  // `eager: true`  → fetched immediately (navbar + above-fold content)
+  // `eager: false` → fetched only when the placeholder nears the viewport
   const COMPONENTS = [
-    { id: 'gs-navbar',          file: 'components/navbar.html' },
-    { id: 'gs-footer',          file: 'components/footer.html' },
-    { id: 'gs-ticker',          file: 'components/ticker.html' },
-    { id: 'gs-partners',        file: 'components/partners.html' },
-    { id: 'gs-stats',           file: 'components/stats-bar.html' },
-    { id: 'gs-mid-cta',         file: 'components/mid-cta.html' },
-    { id: 'gs-hero',            file: 'components/hero.html' },
-    { id: 'gs-wwd',             file: 'components/what-we-do.html' },
-    { id: 'gs-process',         file: 'components/process.html' },
-    { id: 'gs-cases',           file: 'components/cases.html' },
-    { id: 'gs-industries',      file: 'components/industries.html' },
-    { id: 'gs-testimonials',    file: 'components/testimonials.html' },
-    { id: 'gs-consult-section', file: 'components/consult-section.html' },
-    { id: 'gs-consult-form',    file: 'components/consult-form.html' },
-    { id: 'gs-schema',          file: 'components/schema-org.html' },
-    { id: 'gs-timeline',    file: 'components/timeline.html' },
+    { id: 'gs-navbar',          file: 'components/navbar.html',          eager: true  },
+    { id: 'gs-hero',            file: 'components/hero.html',            eager: true  },
+    { id: 'gs-partners',        file: 'components/partners.html',        eager: true  },
+    { id: 'gs-ticker',          file: 'components/ticker.html',          eager: true  },
+    { id: 'gs-wwd',             file: 'components/what-we-do.html',      eager: true  },
+    { id: 'gs-mid-cta',         file: 'components/mid-cta.html',         eager: false },
+    { id: 'gs-process',         file: 'components/process.html',         eager: false },
+    { id: 'gs-stats',           file: 'components/stats-bar.html',       eager: false },
+    { id: 'gs-cases',           file: 'components/cases.html',           eager: false },
+    { id: 'gs-industries',      file: 'components/industries.html',      eager: false },
+    { id: 'gs-testimonials',    file: 'components/testimonials.html',    eager: false },
+    { id: 'gs-consult-section', file: 'components/consult-section.html', eager: false },
+    { id: 'gs-consult-form',    file: 'components/consult-form.html',    eager: false },
+    { id: 'gs-footer',          file: 'components/footer.html',          eager: false },
+    { id: 'gs-schema',          file: 'components/schema-org.html',      eager: false },
+    { id: 'gs-timeline',        file: 'components/timeline.html',        eager: false },
   ];
 
   // --- Token map: {{TOKEN}} → value ---
@@ -174,12 +176,16 @@
   }
 
   // --- Load a single component ---
+  // Returns a promise so the caller can know when injection (and nested
+  // components inside the injected HTML) are ready to be scanned.
   function loadComponent(comp) {
     const el = document.getElementById(comp.id);
-    if (!el) return;
-    if (el.innerHTML && el.innerHTML.trim().length > 0) return;
+    if (!el) return Promise.resolve();
+    if (el.innerHTML && el.innerHTML.trim().length > 0) return Promise.resolve();
+    if (el.dataset.gsLoading === '1') return Promise.resolve();
+    el.dataset.gsLoading = '1';
 
-    fetch(prefix + comp.file)
+    return fetch(prefix + comp.file)
       .then(res => {
         if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
         return res.text();
@@ -195,13 +201,48 @@
       });
   }
 
-  // --- Init ---
-  COMPONENTS.forEach(loadComponent);
+  // After eager components inject, sweep the DOM once for any nested
+  // component placeholders they introduced and load those too.
+  function loadNested() {
+    COMPONENTS.forEach(comp => {
+      const el = document.getElementById(comp.id);
+      if (el && (!el.innerHTML || !el.innerHTML.trim())) {
+        if (comp.eager) {
+          loadComponent(comp);
+        } else {
+          observeLazy(comp);
+        }
+      }
+    });
+  }
 
-  // Second pass for nested components
-  setTimeout(function () {
-    COMPONENTS.forEach(loadComponent);
-  }, 300);
+  // --- Lazy loader for below-fold components ---
+  const lazyObserver = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          obs.unobserve(entry.target);
+          const comp = COMPONENTS.find(c => c.id === entry.target.id);
+          if (comp) loadComponent(comp).then(loadNested);
+        });
+      }, { rootMargin: '400px 0px' })
+    : null;
+
+  function observeLazy(comp) {
+    const el = document.getElementById(comp.id);
+    if (!el) return;
+    if (!lazyObserver) { loadComponent(comp).then(loadNested); return; }
+    lazyObserver.observe(el);
+  }
+
+  // --- Init: load eager components in parallel, lazy ones on-demand ---
+  const eagerLoads = COMPONENTS
+    .filter(c => c.eager)
+    .map(loadComponent);
+
+  COMPONENTS.filter(c => !c.eager).forEach(observeLazy);
+
+  Promise.all(eagerLoads).then(loadNested);
 
   // --- Shared Scripts ---
   window.addEventListener('scroll', function () {

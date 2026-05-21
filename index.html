@@ -13,13 +13,20 @@
 <link rel="icon" type="image/png" data-image-key="BRANDING.favicon" href="">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://ik.imagekit.io">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" fetchpriority="high" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@600;700;800&display=swap" onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@600;700;800&display=swap"></noscript>
+
+<!-- Preload above-the-fold components so they're ready when page-builder.js runs -->
+<link rel="preload" as="fetch" href="./_shared/components/navbar.html" crossorigin="anonymous">
+<link rel="prefetch" as="fetch" href="./_shared/components/partners.html" crossorigin="anonymous">
+<link rel="prefetch" as="fetch" href="./_shared/components/ticker.html" crossorigin="anonymous">
+<link rel="prefetch" as="fetch" href="./_shared/components/what-we-do.html" crossorigin="anonymous">
 
 <!-- ═══ CRITICAL CSS — inlined for instant first paint ═══ -->
 <style>
-:root{--green-900:#0d3b1a;--green-800:#145a27;--green-700:#1a6e30;--green-600:#1f8a3c;--green-500:#22a447;--green-400:#4cbc6b;--green-100:#dcf5e3;--green-50:#f0faf3;--peach:#ffe8d6;--peach-deep:#f4a261;--lavender:#e8dff5;--lavender-deep:#8b5cf6;--sky:#dbeafe;--sky-deep:#3b82f6;--mint:#d1fae5;--rose:#ffe4e6;--rose-deep:#f43f5e;--amber:#fef3c7;--amber-deep:#f59e0b;--dark:#0f1117;--dark-800:#1a1d27;--dark-700:#2a2d37;--gray-600:#4b5563;--gray-500:#6b7280;--gray-400:#9ca3af;--gray-300:#d1d5db;--gray-200:#e5e7eb;--gray-100:#f3f4f6;--gray-50:#f9fafb;--white:#ffffff;--cs-accent:#e8590c;--cs-accent-light:#f97316;--cs-accent-pale:#fff7ed;--font-display:'Bricolage Grotesque',serif;--font-body:'Plus Jakarta Sans',sans-serif;--shadow-xs:0 1px 2px rgba(0,0,0,.04);--shadow-sm:0 2px 8px rgba(0,0,0,.06);--shadow-md:0 4px 16px rgba(0,0,0,.08);--shadow-lg:0 8px 32px rgba(0,0,0,.10);--shadow-xl:0 16px 48px rgba(0,0,0,.12);--shadow-green:0 4px 20px rgba(34,164,71,.15);--shadow-card-hover:0 8px 30px rgba(0,0,0,.12);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-full:9999px;--nav-h:72px}
+:root{--green-900:#0d3b1a;--green-800:#145a27;--green-700:#1a6e30;--green-600:#1f8a3c;--green-500:#22a447;--green-400:#4cbc6b;--green-100:#dcf5e3;--green-50:#f0faf3;--peach:#ffe8d6;--peach-deep:#f4a261;--lavender:#e8dff5;--lavender-deep:#8b5cf6;--sky:#dbeafe;--sky-deep:#3b82f6;--mint:#d1fae5;--rose:#ffe4e6;--rose-deep:#f43f5e;--amber:#fef3c7;--amber-deep:#f59e0b;--dark:#0f1117;--dark-800:#1a1d27;--dark-700:#2a2d37;--gray-600:#4b5563;--gray-500:#6b7280;--gray-400:#9ca3af;--gray-300:#d1d5db;--gray-200:#e5e7eb;--gray-100:#f3f4f6;--gray-50:#f9fafb;--white:#ffffff;--cs-accent:#e8590c;--cs-accent-light:#f97316;--cs-accent-pale:#fff7ed;--shadow-xs:0 1px 2px rgba(0,0,0,.04);--shadow-sm:0 2px 8px rgba(0,0,0,.06);--shadow-md:0 4px 16px rgba(0,0,0,.08);--shadow-lg:0 8px 32px rgba(0,0,0,.10);--shadow-xl:0 16px 48px rgba(0,0,0,.12);--shadow-green:0 4px 20px rgba(34,164,71,.15);--shadow-card-hover:0 8px 30px rgba(0,0,0,.12);--radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-full:9999px;--nav-h:72px;--font-display:'Bricolage Grotesque',system-ui,-apple-system,sans-serif;--font-body:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--font-body);color:var(--dark);background:var(--white);line-height:1.65;overflow-x:hidden;padding-top:var(--nav-h)}
@@ -29,8 +36,7 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* CLS prevention */
-#gs-hero:empty{min-height:85vh}
+/* CLS prevention — reserve space for async-injected components */
 #gs-partners:empty{min-height:180px}
 #gs-ticker:empty{min-height:100px}
 #gs-wwd:empty{min-height:600px}
@@ -105,14 +111,25 @@ a{color:inherit;text-decoration:none}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
+/* AI Orb (inlined for index hero) */
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.ai-orb-wrap{position:relative;width:100%;max-width:520px;aspect-ratio:1/1;margin:0 auto;display:flex;align-items:center;justify-content:center}
+.ai-orb-svg{width:100%;height:100%;display:block;filter:drop-shadow(0 25px 70px rgba(34,164,71,.22)) drop-shadow(0 10px 30px rgba(76,188,107,.15))}
+.ai-orb-readout{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;font-family:'SF Mono','Monaco','Consolas',monospace;font-size:10px;font-weight:700;color:var(--green-700);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;padding:7px 16px;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(34,164,71,.18);border-radius:6px;box-shadow:0 4px 14px rgba(34,164,71,.08)}
+.ai-orb-readout-dot{width:6px;height:6px;background:var(--green-600);border-radius:50%;opacity:.4}
+.ai-orb-readout.is-active .ai-orb-readout-dot{animation:orbReadoutDot 1.4s ease-in-out infinite}
+@keyframes orbReadoutDot{0%,100%{opacity:.4;box-shadow:0 0 0 rgba(34,164,71,0)}50%{opacity:1;box-shadow:0 0 10px rgba(34,164,71,.85)}}
+@media(max-width:1024px){.ai-orb-wrap{max-width:380px}}
+@media(max-width:640px){.ai-orb-wrap{max-width:300px}.ai-orb-readout{font-size:9px;padding:6px 12px}}
+
 /* Mobile critical */
 @media(max-width:1024px){.nav-links{display:none}.nav-mobile-toggle{display:flex}.nav-right{display:none}.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}}
 @media(max-width:768px){:root{--nav-h:60px}.container{padding:0 16px}.hero{padding:calc(var(--nav-h) + 24px) 0 48px}.hero h1{font-size:clamp(28px,7vw,40px)}.hero-desc{font-size:16px}.hero-ctas .btn{width:100%;justify-content:center;max-width:320px}.hero-announce{font-size:12px;padding:6px 12px 6px 8px}.hero-trust{gap:12px}.hero-trust-item{font-size:12px}
-#gs-hero:empty{min-height:70vh}#gs-partners:empty{min-height:220px}#gs-wwd:empty{min-height:800px}#gs-process:empty{min-height:900px}#gs-stats:empty{min-height:180px}#gs-cases:empty{min-height:400px}#gs-industries:empty{min-height:600px}#gs-testimonials:empty{min-height:900px}#gs-consult-section:empty{min-height:800px}#gs-faq:empty{min-height:600px}}
+#gs-partners:empty{min-height:220px}#gs-wwd:empty{min-height:800px}#gs-process:empty{min-height:900px}#gs-stats:empty{min-height:180px}#gs-cases:empty{min-height:400px}#gs-industries:empty{min-height:600px}#gs-testimonials:empty{min-height:900px}#gs-consult-section:empty{min-height:800px}#gs-faq:empty{min-height:600px}}
 </style>
 
 <!-- FULL CSS — loads async, takes over after first paint -->
-<link rel="stylesheet" href="./_shared/global.css" media="print" onload="this.media='all'">
+<link rel="preload" as="style" href="./_shared/global.css" onload="this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="./_shared/global.css"></noscript>
 
 </head>
@@ -124,7 +141,137 @@ a{color:inherit;text-decoration:none}
 <main>
 
 <!-- ═══ HERO — INLINED FOR FAST LCP ═══ -->
-<div id="gs-hero"></div>
+<section class="hero" id="gs-hero">
+  <div class="hero-shape-1"></div>
+  <div class="hero-shape-2"></div>
+  <div class="hero-shape-3"></div>
+
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- ================= LEFT CONTENT ================= -->
+      <div>
+        <div class="hero-announce">
+          <span class="hero-announce-badge">New</span>
+          Now building Voice AI Agents &amp; Agentic AI Systems
+        </div>
+
+        <h1>
+          We Build <span class="highlight">AI Agents</span> &amp; Automations That Run Your Business 24/7
+        </h1>
+
+        <p class="hero-desc">
+          From voice AI that handles phone calls to workflows that eliminate 40+ hours of manual work weekly —
+          GrowwStacks turns your repetitive processes into intelligent, self-running systems.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#consultation" class="btn btn-accent">
+            Get Free Automation Audit <span class="btn-arrow">→</span>
+          </a>
+
+          <a href="#cases" class="btn btn-outline">
+            See Client Results
+          </a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="hero-trust-item">
+            <span class="hero-trust-icon trust-green">✓</span>
+            Make.com Platinum Partner
+          </div>
+
+          <div class="hero-trust-item">
+            <span class="hero-trust-icon trust-amber">★</span>
+            5.0 Google Rating
+          </div>
+
+          <div class="hero-trust-item">
+            <span class="hero-trust-icon trust-sky">🌐</span>
+            2000+ Projects Delivered
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT VISUAL: NEON RING ORB ================= -->
+      <div class="hero-visual">
+        <div class="ai-orb-wrap" id="gs-orb">
+          <svg class="ai-orb-svg" viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" aria-label="AI Voice Agent">
+            <defs>
+              <radialGradient id="orbAtmosphere" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#4cbc6b" stop-opacity="0.18"/>
+                <stop offset="45%" stop-color="#4cbc6b" stop-opacity="0.08"/>
+                <stop offset="100%" stop-color="#4cbc6b" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="orbRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a7e9bd"/>
+                <stop offset="35%" stop-color="#4cbc6b"/>
+                <stop offset="65%" stop-color="#22a447"/>
+                <stop offset="100%" stop-color="#7dd49a"/>
+              </linearGradient>
+              <linearGradient id="ribbonGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#a7e9bd" stop-opacity="0"/>
+                <stop offset="30%" stop-color="#4cbc6b" stop-opacity="0.95"/>
+                <stop offset="70%" stop-color="#22a447" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#7dd49a" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="ribbonGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7dd49a" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#4cbc6b" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#a7e9bd" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="ribbonGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#22a447" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#7dd49a" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#4cbc6b" stop-opacity="0"/>
+              </linearGradient>
+              <filter id="ringGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <filter id="ribbonGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="2.5"/>
+              </filter>
+              <clipPath id="orbClip">
+                <circle cx="260" cy="260" r="158"/>
+              </clipPath>
+            </defs>
+            <circle id="orbAtmo" cx="260" cy="260" r="240" fill="url(#orbAtmosphere)" opacity="0.7"/>
+            <circle id="orbHaloOuter" cx="260" cy="260" r="175"
+              fill="none" stroke="#4cbc6b" stroke-width="1.5"
+              opacity="0.25" filter="url(#ringGlow)"/>
+            <g clip-path="url(#orbClip)" filter="url(#ribbonGlow)">
+              <path id="ribbon1" d="" fill="none" stroke="url(#ribbonGrad1)" stroke-width="2.2" stroke-linecap="round"/>
+              <path id="ribbon2" d="" fill="none" stroke="url(#ribbonGrad2)" stroke-width="1.8" stroke-linecap="round"/>
+              <path id="ribbon3" d="" fill="none" stroke="url(#ribbonGrad3)" stroke-width="1.5" stroke-linecap="round"/>
+              <path id="ribbon4" d="" fill="none" stroke="url(#ribbonGrad1)" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+              <path id="ribbon5" d="" fill="none" stroke="url(#ribbonGrad2)" stroke-width="1.3" stroke-linecap="round" opacity="0.6"/>
+            </g>
+            <path id="orbRing" d=""
+              fill="none" stroke="url(#orbRingGrad)" stroke-width="3.5"
+              stroke-linecap="round" filter="url(#ringGlow)"/>
+            <path id="orbRingCore" d=""
+              fill="none" stroke="#ffffff" stroke-width="1.4"
+              stroke-linecap="round" opacity="0.95"/>
+            <path id="orbHighlight" d=""
+              fill="none" stroke="#ffffff" stroke-width="2.2"
+              stroke-linecap="round" opacity="0"/>
+          </svg>
+
+          <div class="ai-orb-readout" id="orbReadout">
+            <span class="ai-orb-readout-dot"></span>
+            <span class="ai-orb-readout-text">Voice AI · Standby</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 <!-- PARTNER BADGES -->
@@ -167,9 +314,10 @@ a{color:inherit;text-decoration:none}
 
 
 <!-- SCRIPTS -->
-<script src="./_shared/page-builder.js" defer></script>
 <script src="./_shared/site-config.js" defer></script>
+<script src="./_shared/page-builder.js" defer></script>
 <script src="./assets/js/images-helper.js" defer></script>
+<script src="./assets/js/hero-orb.js" defer></script>
 <script src="./assets/js/index.js" defer></script>
 <script src="./assets/js/schema.js" defer></script>
 <script src="/analytics-loader.js" defer></script>
@@ -179,26 +327,29 @@ a{color:inherit;text-decoration:none}
 <script>
 (function() {
   if (!window.location.hash) return;
-  // If hash target exists on current page, scroll to it
-  // If not, redirect to homepage with hash
   var hash = window.location.hash;
-  var attempts = 0;
-  var checker = setInterval(function() {
-    var target = document.querySelector(hash);
-    attempts++;
+  var deadline = performance.now() + 3000;
+  function tryScroll() {
+    var target = null;
+    try { target = document.querySelector(hash); } catch (e) { return; }
     if (target) {
-      clearInterval(checker);
       var nav = document.querySelector('.nav');
       var navHeight = nav ? nav.offsetHeight : 72;
       var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
       window.scrollTo({ top: top, behavior: 'smooth' });
+      return;
     }
-    if (attempts > 30) clearInterval(checker);
-  }, 100);
+    if (performance.now() < deadline) setTimeout(tryScroll, 150);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryScroll);
+  } else {
+    tryScroll();
+  }
 })();
 </script>
-<script src="../../_shared/components/faq-component.js"></script>
-<script>
+<script src="./_shared/components/faq-component.js" defer></script>
+<script defer>
   const faqData = [
   {
     question: "What does GrowwStacks do?",
@@ -230,9 +381,13 @@ a{color:inherit;text-decoration:none}
   }
 ];
 
-  renderFAQ("gs-faq", faqData, {
-    label: "Frequently Asked Questions",
-    title: "Got Questions? We've Got Answers."
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof renderFAQ === 'function') {
+      renderFAQ("gs-faq", faqData, {
+        label: "Frequently Asked Questions",
+        title: "Got Questions? We've Got Answers."
+      });
+    }
   });
 </script>
 </html>
