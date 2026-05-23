@@ -1,5 +1,266 @@
 const BLOG_POSTS = [
 {
+  title: "Claude Code is Now Free: How to Run It with 1M Token Context",
+  desc: "Discover how to run Claude Code completely free using open-source tools and Owl Alpha's 1 million token context window. This guide shows you how to bypass paid plans while maintaining full functionality.",
+  url: "/blog/claude-code-free-1m-token-context",
+  tags: ["AI Agents","Claude","Automation"],
+  date: "2026-05-21",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Google's New AI Agent Just Made Everything Else Obsolete",
+  desc: "Google's Gemini Spark is revolutionizing AI with 24/7 autonomous capabilities, seamless Google Workspace integration, and powerful new features that could dominate the AI landscape. Learn how this changes everything for businesses and marketers.",
+  url: "/blog/googles-new-ai-agent-gemini-spark",
+  tags: ["AI Agents","Google","Marketing"],
+  date: "2026-05-22",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Close More Clients with AI Voice Agent Demos (Built in 10 Minutes)",
+  desc: "Discover how to build personalized AI voice agent demos in just 10 minutes to dramatically increase client conversions and trust in your AI solutions.",
+  url: "/blog/how-to-close-more-clients-with-ai-voice-agent-demos",
+  tags: ["Voice AI","AI Agents","Sales"],
+  date: "2025-11-11",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automatically Turn YouTube Videos into Blog Posts with Zapier",
+  desc: "Learn how to automatically embed new YouTube videos as blog posts on your WordPress site using Zapier - no manual copying required.",
+  url: "/blog/how-to-automatically-turn-youtube-videos-into-blog-posts-with-zapier",
+  tags: ["Zapier","WordPress","YouTube"],
+  date: "2025-11-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How I Cloned Myself Into an AI Agent That Books My Meetings",
+  desc: "Discover how to create a digital twin that sounds like you, knows your business, and can schedule meetings autonomously using ElevenLabs' conversational AI platform.",
+  url: "/blog/how-i-cloned-myself-into-an-ai-agent",
+  tags: ["AI Agents","Voice AI","Automation"],
+  date: "2026-05-22",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Devin AI's Auto-Triage Update: Your New First Responder for Business Operations",
+  desc: "Devin AI just transformed from coding assistant to autonomous business operator with its new auto-triage feature. Now it can independently handle bugs, alerts, and tickets - analyzing, diagnosing, and even fixing issues while your team sleeps.",
+  url: "/blog/devin-ai-auto-triage-update",
+  tags: ["AI Agents","Automation","Business Operations"],
+  date: "2026-05-22",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Connect WordPress with n8n in Under 5 Minutes",
+  desc: "Learn how to automate WordPress posts and content management by connecting your site to n8n with proper API credentials - including troubleshooting common plugin conflicts.",
+  url: "/blog/how-to-connect-wordpress-with-n8n",
+  tags: ["n8n","WordPress","Automation"],
+  date: "2025-11-11",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "The One Habit That Will 5x Your Claude Session Limit",
+  desc: "Discover how prompt caching in Claude can save you millions of tokens and dramatically extend your session limits. Learn the simple habits that maintain cache efficiency and get a free token dashboard to track your savings.",
+  url: "/blog/the-one-habit-that-will-5x-your-claude-session-limit",
+  tags: ["AI Agents","Claude","Productivity"],
+  date: "2026-05-21",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Build a Vision/Voice AI Agent with Kimi K2 Thinking in Python",
+  desc: "Learn how to create a real-time object detection AI agent using Moonshot AI's Kimi K2 Thinking model with Python and OpenRouter API.",
+  url: "/blog/build-vision-voice-agent-kimi-k2-thinking-python",
+  tags: ["AI Agents","Python","Voice AI"],
+  date: "2025-11-11",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "This AI Agent Works While You Sleep (Twin.so Tutorial)",
+  desc: "Discover how Twin.so's autonomous AI agents can monitor competitors, track pricing changes, and deliver actionable intelligence while you sleep - no coding required.",
+  url: "/blog/this-ai-agent-works-while-you-sleep-twin-so-tutorial",
+  tags: ["AI Agents","Competitive Intelligence","Automation"],
+  date: "2026-05-22",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Claude Code vs Codex vs OpenCode: Which AI Coding Agent Wins in 2026?",
+  desc: "We compare the top 3 AI coding assistants - Claude Code, OpenAI's Codex, and OpenCode - across 7 key factors including model power, tooling, and workflow efficiency to determine the best choice for developers in 2026.",
+  url: "/blog/claude-code-vs-codex-vs-opencode",
+  tags: ["AI Agents","GPT","LLM"],
+  date: "2026-05-22",
+  readTime: 14,
+  target: "_blank"
+},
+{
+  title: "Build a Virtual Fitting Room AI Agent with Go ADK and Flutter",
+  desc: "Transform e-commerce with an AI-powered virtual fitting room that lets customers try on clothes digitally. This guide shows how to build the system using Go ADK, Cloud Run, and Flutter for seamless cross-platform experiences.",
+  url: "/blog/build-virtual-fitting-room-ai-agent-go-adk-flutter",
+  tags: ["AI Agents","Flutter","Google Cloud"],
+  date: "2026-05-21",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Build AI Workflows with n8n and SAP - The Future of Enterprise Automation",
+  desc: "Discover how n8n's integration with SAP Tool Studio 2.0 enables businesses to create powerful AI workflows that connect SAP systems with external applications. Learn how this partnership delivers real business outcomes.",
+  url: "/blog/build-ai-workflows-n8n-sap",
+  tags: ["n8n","SAP","AI Agents"],
+  date: "2026-05-21",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Build a Website Voice AI Agent In 10 Minutes (Free GoHighLevel Template)",
+  desc: "Learn how to quickly deploy a voice AI agent on any website using GoHighLevel's free template. Perfect for agencies and businesses looking to automate customer interactions without coding.",
+  url: "/blog/how-to-build-website-voice-ai-agent-gohighlevel-template",
+  tags: ["Voice AI","GoHighLevel","AI Agents"],
+  date: "2025-11-11",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Automate Personalized Email Outreach at Scale Using Make.com",
+  desc: "Stop wasting hours manually researching leads and writing emails. This Make.com workflow combines AI research with personalized templates to send 100+ hyper-targeted emails daily.",
+  url: "/blog/automate-personalized-email-outreach-make-com",
+  tags: ["Make.com","Email Outreach","AI Agents"],
+  date: "2025-11-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How I Cut My Claude AI Costs by 100x Using DeepSeek V4",
+  desc: "Discover how swapping Claude's backend to DeepSeek V4 reduced my AI coding costs from $200/month to $2 while maintaining comparable performance for routine tasks. Learn the exact setup and when to switch back to premium models.",
+  url: "/blog/claude-ai-cost-savings-deepseek-v4",
+  tags: ["AI Agents","Claude","Cost Optimization"],
+  date: "2026-05-21",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Build a Production-Ready Voice AI Agent for Your Business Website (Vapi + Lovable)",
+  desc: "Learn how to create a fully functional voice AI agent that takes orders and reservations directly on your website using Vapi and Lovable - no coding required. Perfect for restaurants, service businesses, and ecommerce.",
+  url: "/blog/build-voice-agent-vapi-lovable",
+  tags: ["Voice AI","Vapi","Lovable"],
+  date: "2025-11-11",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Automate Your DocuSign Workflows with Zapier: The Complete Guide",
+  desc: "Learn how to connect DocuSign with thousands of apps through Zapier to automate agreement workflows, trigger actions based on document events, and streamline your contract management process.",
+  url: "/blog/docusign-zapier-integration-guide",
+  tags: ["Zapier","DocuSign","Automation"],
+  date: "2026-05-22",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Claude Code vs Codex: Which AI Coding Assistant Builds Better Apps?",
+  desc: "We put Claude Code and Codex head-to-head building a real-time collaborative markdown editor. See which AI assistant delivered faster, cleaner code with fewer bugs.",
+  url: "/blog/claude-code-vs-codex-ai-coding-comparison",
+  tags: ["AI Agents","Developer Tools","LLM"],
+  date: "2026-05-22",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How I Build AI Apps in 2026 - My Updated Agentic Engineering Workflow",
+  desc: "Discover the modern AI development workflow using GPT-5.5, Cursor IDE, and Gravile's GP Loop for automated code reviews. See how to implement Claude-like artifacts in your AI applications.",
+  url: "/blog/how-i-build-ai-apps-agentic-engineering-workflow",
+  tags: ["AI Agents","GPT","LLM"],
+  date: "2026-05-22",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Connect n8n to Gmail in 5 Minutes: Step-by-Step Automation Guide",
+  desc: "Learn how to connect n8n to Gmail with OAuth authentication in just minutes. This step-by-step guide shows you how to set up Google Cloud credentials and automate email workflows without complex coding.",
+  url: "/blog/connect-n8n-to-gmail-automation-guide",
+  tags: ["n8n","Email Automation","Google Cloud"],
+  date: "2025-11-11",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Gemini Builder: The Free AI Coding Agent That Can Design & Build Anything",
+  desc: "Discover how Google's Stitch and Jules AI agents combine to form a complete AI software assembly line - generating front-end designs and backend logic autonomously for full-stack apps.",
+  url: "/blog/gemini-builder-free-ai-coding-agent",
+  tags: ["AI Agents","Coding","Google Gemini"],
+  date: "2025-11-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Connect Bubble to Zapier for Powerful Automation",
+  desc: "Transform your Bubble web apps into automation powerhouses by connecting them with Zapier. Learn how to sync data across thousands of apps without writing code.",
+  url: "/blog/how-to-connect-bubble-to-zapier",
+  tags: ["Zapier","Bubble","Automation"],
+  date: "2025-11-11",
+  readTime: 4,
+  target: "_blank"
+},
+{
+  title: "How to Bypass Meta's WhatsApp API Approval in 10 Minutes with Evolution API",
+  desc: "Struggling with Meta's WhatsApp API approval process? Discover how to set up a fully functional WhatsApp business automation in under 10 minutes using Evolution API - no verification or approval needed.",
+  url: "/blog/whatsapp-automation-without-meta-approval",
+  tags: ["WhatsApp","Automation","n8n"],
+  date: "2025-11-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Catch Silent Errors in n8n Before They Break Your AI Automation",
+  desc: "Silent errors in n8n workflows can cost you customers and data. Learn how to use Stop and Error Trigger nodes to catch failures before they impact your business, with real-time alerts and detailed debugging.",
+  url: "/blog/n8n-error-workflows-stop-error-trigger-nodes",
+  tags: ["n8n","AI Automation","Error Handling"],
+  date: "2025-11-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Complete Guide to Google's AI Agents Course: Day 1 Assignment Walkthrough",
+  desc: "Struggling with Google's AI Agents course assignments? This comprehensive guide walks you through Day 1's tasks step-by-step, from API setup to building your first multi-agent system.",
+  url: "/blog/google-ai-agents-course-day-1-walkthrough",
+  tags: ["AI Agents","Google Gemini","LLM"],
+  date: "2025-11-11",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Hermes Agent OS: Build Your Free 24/7 AI Team in 2026",
+  desc: "Discover how to create your own AI agent command center with Hermes Agent OS - a free dashboard that runs multiple specialized AI agents simultaneously for your business.",
+  url: "/blog/hermes-agent-os-free-ai-team",
+  tags: ["AI Agents","Automation","Hermes"],
+  date: "2026-05-22",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "We Built a Sleep Music YouTube Channel That Runs Itself (Using n8n + AI)",
+  desc: "Discover how to create a fully automated sleep music YouTube channel that generates videos, composes music, and publishes content without daily effort - all powered by n8n workflows and AI.",
+  url: "/blog/sleep-music-youtube-automation-n8n-ai",
+  tags: ["n8n","AI Agents","YouTube Automation"],
+  date: "2025-11-11",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Make $10,000 with Viral AI Roblox Videos Using n8n (No Coding Required)",
+  desc: "Discover how to automate viral Roblox video creation using n8n workflows. This system generates AI-powered content, edits footage, and publishes to YouTube - all without manual work.",
+  url: "/blog/automated-roblox-videos-n8n",
+  tags: ["n8n","AI Agents","Social Media"],
+  date: "2025-11-11",
+  readTime: 14,
+  target: "_blank"
+},
+{
   title: "The Future of AI Agents: What to Expect in 2027",
   desc: "Discover how AI agents will evolve by 2027 - from long-horizon agents to voice interfaces and continual learning systems that transform business operations.",
   url: "/blog/future-of-ai-agents-2027",
