@@ -2926,7 +2926,7 @@ const BLOG_POSTS = [
 },
 {
   title: "How to Automate ClickUp Tasks with Zapier in 2026",
-  desc: "Stop manually updating ClickUp tasks. This Zapier integration automatically triggers actions when tasks change, saving you hours each week. Learn the exact setup steps that work in <span data-year="current"></span>.",
+  desc: "Stop manually updating ClickUp tasks. This Zapier integration automatically triggers actions when tasks change, saving you hours each week. Learn the exact setup steps that work in <span data-year=2026></span>.",
   url: "/blog/how-to-automate-clickup-tasks-with-zapier",
   tags: ["Zapier","ClickUp","Productivity"],
   date: "2025-11-19",
