@@ -390,4 +390,61 @@ a{color:inherit;text-decoration:none}
     }
   });
 </script>
+<script>
+window.addEventListener("load", () => {
+
+  if (sessionStorage.getItem("gs_ai_voice_played")) return;
+
+  function playAIWelcome() {
+
+    const text = `
+      Welcome to GrowwStacks.
+      Initializing AI systems.
+      Voice agents online.
+      Automation core activated.
+      How may I assist you today.
+    `;
+
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    // Robotic settings
+    utterance.lang = "en-US";
+    utterance.rate = 0.82;
+    utterance.pitch = 0.55;
+    utterance.volume = 1;
+
+    // Pick robotic sounding voice
+    const voices = speechSynthesis.getVoices();
+
+    const robotVoice =
+      voices.find(v => v.name.includes("Microsoft David")) ||
+      voices.find(v => v.name.includes("Google US English")) ||
+      voices.find(v => v.name.includes("Mark")) ||
+      voices.find(v => v.lang === "en-US");
+
+    if (robotVoice) {
+      utterance.voice = robotVoice;
+    }
+
+    // Slight robotic effect
+    utterance.onstart = () => {
+      document.body.style.filter = "contrast(1.02)";
+    };
+
+    utterance.onend = () => {
+      document.body.style.filter = "";
+    };
+
+    speechSynthesis.speak(utterance);
+
+    sessionStorage.setItem("gs_ai_voice_played", "true");
+  }
+
+  // Delay for cinematic effect
+  setTimeout(playAIWelcome, 1500);
+});
+
+// Chrome voice fix
+speechSynthesis.onvoiceschanged = () => {};
+</script>
 </html>
