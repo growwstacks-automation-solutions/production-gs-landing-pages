@@ -137,7 +137,7 @@ window.CS_CARDS = [
   /* ── 9 ── */
   {
     category: "crm-sales social-marketing",
-    href: "/case-studies/CRM-Lead-Sync&amp;Email-Automation.html",
+    href: "/case-studies/CRM-Lead-Sync&Email-Automation.html",
     bannerClass: "csh-banner-blue",
     img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/CRM%20Lead%20Sync%20&%20Email%20Automation.png",
     imgAlt: "CRM Lead Sync &amp; Email Automation",
