@@ -1,5 +1,383 @@
 const BLOG_POSTS = [
 {
+  title: "Build an MCP Server for AI Agents in .NET: Give Your AI Real Tools",
+  desc: "Learn how to build an MCP server in .NET that enables AI agents to run performance tests, analyze results, and generate reports - moving beyond just explaining code to actually interacting with your running application.",
+  url: "/blog/build-mcp-server-net-ai-agents",
+  tags: ["AI Agents",".NET","Performance"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Connect ManyChat to Make.com in 2 Simple Steps (No Code)",
+  desc: "Learn how to seamlessly connect ManyChat to Make.com to automate lead capture, email marketing, and business processes without writing any code. Includes step-by-step setup and error handling.",
+  url: "/blog/how-to-connect-manychat-to-make-com",
+  tags: ["Make.com","ManyChat","Automation"],
+  date: "2026-05-29",
+  readTime: 11,
+  target: "_blank"
+},
+{
+  title: "Hermes Agent v0.15: Agent Swarms, Tool Search & New Models Transform AI Automation",
+  desc: "The latest Hermes Agent update introduces game-changing features like agent swarms for parallel task execution, intelligent tool search to reduce context bloat, and support for cutting-edge models like Quen 3.7 Max. See how these upgrades make autonomous AI workflows faster and more scalable.",
+  url: "/blog/hermes-agent-v015-updates",
+  tags: ["AI Agents","Automation","LLM"],
+  date: "2026-05-30",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Clone Your Voice in ElevenLabs (Step-by-Step Guide)",
+  desc: "Learn how to create a realistic AI voice clone in ElevenLabs with just a few minutes of recording. Avoid common mistakes and get perfect results every time.",
+  url: "/blog/elevenlabs-voice-cloning-guide",
+  tags: ["AI Agents","Voice AI","ElevenLabs"],
+  date: "2026-05-30",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Create an AI Chatbot for Discord in 5 Minutes (Free in 2025)",
+  desc: "Learn how to build an AI-powered Discord bot that answers questions about your product or service - no coding required. Connect it to your knowledge base for instant customer support.",
+  url: "/blog/create-ai-chatbot-discord-5-minutes-free",
+  tags: ["AI Agents","Discord","Chatbots"],
+  date: "2025-10-09",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Google Antigravity vs Claude Code vs Codex: The Real Speed vs Depth Test",
+  desc: "Three AI coding tools with identical interfaces but radically different approaches. We tested them on real development tasks to reveal the hidden tradeoffs in speed, accuracy, and workflow integration.",
+  url: "/blog/google-antigravity-vs-claude-code-vs-codex",
+  tags: ["AI Agents","Developer Tools","Automation"],
+  date: "2026-05-29",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "NotebookLM + Google Antigravity 2.0: The Free AI Powerhouse You're Underusing",
+  desc: "Discover how combining Google's Antigravity 2.0 with NotebookLM creates an AI content machine that runs itself. Learn the 5 key upgrades and how to connect them into a system that saves weeks of work.",
+  url: "/blog/notebooklm-google-antigravity-ai-system",
+  tags: ["AI Agents","Google AI","Content Automation"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "OpenAI Codex in 2026: The Autonomous AI Agent Writing Code While You Sleep",
+  desc: "4 million developers now use OpenAI Codex weekly to automate coding tasks. See how this GPT-5.5 powered agent writes code, runs tests, and submits PRs autonomously - cutting deployment cycles by 65%.",
+  url: "/blog/openai-codex-2026-autonomous-ai-agent",
+  tags: ["AI Agents","Developer Tools","OpenAI"],
+  date: "2026-05-30",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "Can Hermes Agent Use Claude Code? (Yes — Here's How)",
+  desc: "Discover how to combine Hermes agent with Claude Code for automated coding workflows. Learn when this powerful AI duo makes sense for your projects and how to set it up in minutes.",
+  url: "/blog/can-hermes-agent-use-claude-code",
+  tags: ["AI Agents","Claude","Hermes"],
+  date: "2026-05-29",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Free Alternatives to ElevenLabs Voice AI That Sound Better (Tested)",
+  desc: "Discover how Google's AI Studio offers unlimited voice generation with 30+ voices across 24 languages - completely free with no credit card required.",
+  url: "/blog/free-alternatives-to-elevenlabs-voice-ai",
+  tags: ["Voice AI","AI Agents","Google Gemini"],
+  date: "2025-10-09",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Build AI Voice Agents That Don't Break in Real Conversations",
+  desc: "Most AI voice agents fail when conversations go off-script. This blueprint shows how to build self-guiding agents that stay on task using a moderator pattern, with code examples for customer surveys.",
+  url: "/blog/ai-voice-agent-blueprint",
+  tags: ["Voice AI","AI Agents","Vapi"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Google Gemini's New AI Agent Builder & Browser Automation - What You Need to Know",
+  desc: "Google just launched groundbreaking updates to Gemini including an AI agent builder, browser automation capabilities, and Notebook LM improvements that will transform how you work.",
+  url: "/blog/google-gemini-new-ai-agent-builder-browser-automation",
+  tags: ["AI Agents","Google Gemini","Automation"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How I Built a Car Flipping Automation That Makes REAL Profit (Free Template Included)",
+  desc: "Stop wasting hours scrolling Facebook Marketplace listings manually. This automated system scans 24/7, calculates profit margins, flags problem vehicles, and ranks deals by ROI - all while you focus on buying and selling.",
+  url: "/blog/car-flipping-automation-profit-template",
+  tags: ["Make.com","Automation","eCommerce"],
+  date: "2025-10-09",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "From Zero to Your First AI Agent in 15 Minutes (No Coding)",
+  desc: "Discover how AI agents go beyond chatbots to automate tasks, monitor markets, and streamline workflows - all running locally on your machine with Hermes, an open-source AI agent.",
+  url: "/blog/from-zero-to-your-first-ai-agent-in-15-minutes-no-coding",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-05-30",
+  readTime: 7,
+  target: "_blank"
+},
+{
+  title: "How to Build an AI Surf Guide Agent with File Search in Microsoft Foundry",
+  desc: "Learn to create a specialized AI agent that recommends California surf spots using Microsoft Foundry's file search capabilities - complete with surfer personality and document references.",
+  url: "/blog/create-ai-agent-with-file-search-microsoft-foundry",
+  tags: ["AI Agents","Microsoft Foundry","Azure AI"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Smart Lighting with AI Using n8n and Home Assistant",
+  desc: "Learn to build a dynamic lighting system that automatically adjusts brightness based on time of day using n8n and Home Assistant. This tutorial walks through connecting the platforms, setting up AI decision-making, and creating the perfect ambient lighting.",
+  url: "/blog/n8n-home-assistant-ai-lighting-automation",
+  tags: ["n8n","Home Assistant","AI Agents"],
+  date: "2025-10-09",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Automate Lead Scoring & Notifications with Airtable + Zapier + Slack",
+  desc: "Stop manually scoring leads and chasing responses. This automation system instantly calculates lead quality, routes hot prospects to your team via Slack, and sends personalized follow-ups — all without manual work.",
+  url: "/blog/automate-lead-scoring-notifications-airtable-zapier-slack",
+  tags: ["Zapier","Airtable","CRM"],
+  date: "2025-10-09",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "No-Code AI Development: Build a Stock App Without Writing Code Using Claude",
+  desc: "Learn how to build a fully functional stock investment app without writing a single line of code using Claude AI. This beginner-friendly guide walks through connecting APIs, setting up payments, and deploying your app live.",
+  url: "/blog/no-code-ai-development-build-stock-app-claude",
+  tags: ["AI Agents","Claude","No-Code"],
+  date: "2026-05-30",
+  readTime: 15,
+  target: "_blank"
+},
+{
+  title: "AI Agents Explained: How to Set Up and Use Autonomous AI Assistants in 2026",
+  desc: "Discover how AI agents go beyond chatbots to automate tasks, monitor markets, and streamline workflows. Learn to set up open-source Hermes agent for business automation that saves hours each week.",
+  url: "/blog/ai-agents-explained-how-to-setup-autonomous-ai-assistants",
+  tags: ["AI Agents","Automation","Productivity"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Hermes Agent vs OpenClaw: Which AI Agent Framework Wins in 2026?",
+  desc: "After testing both AI agent frameworks for a month, I discovered they're fundamentally different tools. OpenClaw excels at multi-platform messaging while Hermes learns and improves autonomously. Here's which one fits your workflow.",
+  url: "/blog/hermes-agent-vs-openclaw-comparison",
+  tags: ["AI Agents","Automation","Machine Learning"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How To Build An AI Voice Agent That Qualifies Your Leads For You (2025)",
+  desc: "Stop wasting hours cold calling unqualified leads. This Vapi-powered AI voice agent automatically verifies contact info, vets prospects, and scores lead quality - while you focus on closing deals.",
+  url: "/blog/how-to-build-ai-voice-agent-qualifies-leads",
+  tags: ["Voice AI","Vapi","CRM"],
+  date: "2025-10-09",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "This AI-System Finds You Customers On Reddit (n8n Tutorial)",
+  desc: "Discover how to automate lead generation on Reddit using n8n and AI. This system scans relevant subreddits 24/7 to find potential customers asking questions your business can solve, then notifies you to respond with helpful answers.",
+  url: "/blog/ai-system-finds-customers-reddit-n8n-tutorial",
+  tags: ["n8n","AI Agents","Marketing"],
+  date: "2025-10-09",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How to Make a Chatbot - Don't Hire Support Staff: Build This AI Chatbot Instead",
+  desc: "Most chatbots fail because they break when customers ask unexpected questions. Discover the simple trick that makes your AI chatbot feel human - and how to implement it for free using lunar.com.",
+  url: "/blog/how-to-make-chatbot-dont-hire-support-staff",
+  tags: ["AI Agents","Chatbots","Customer Support"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "This AI Agent Turns 1 Image Into a 30-Second Commercial (n8n Tutorial)",
+  desc: "Discover how to transform any product image into a professional 30-second commercial using n8n and AI video generation. Nate Hurk demonstrates an agentic workflow that handles everything from image processing to final video output.",
+  url: "/blog/ai-agent-turns-image-into-commercial-n8n-tutorial",
+  tags: ["n8n","AI Agents","Video Marketing"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "OpenAI Agent Builder vs n8n: The Truth About AI Automation Tools",
+  desc: "I built identical workflows on both platforms to reveal which is better for conversations vs automation. The results will change how you think about AI tools.",
+  url: "/blog/openai-agent-builder-vs-n8n-comparison",
+  tags: ["n8n","AI Agents","Automation"],
+  date: "2025-10-09",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "How n8n’s Jan Oberhauser Built the Excel of AI Workflows",
+  desc: "n8n CEO Jan Oberhauser shares how he built the leading AI workflow automation platform from a movie VFX background to empowering 600,000+ users with no-code automation.",
+  url: "/blog/n8n-jan-oberhauser-excel-of-ai-workflows",
+  tags: ["n8n","AI Agents","Workflow Automation"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Build a Multi-Agent AI Hotel Booking System with Azure AI Foundry",
+  desc: "Learn to create an automated hotel booking system with Azure AI Foundry - combining a front desk agent and reservation specialist that work together to handle inquiries, check availability, and confirm bookings.",
+  url: "/blog/build-multi-agent-ai-hotel-booking-system-azure-ai-foundry",
+  tags: ["AI Agents","Azure","Hospitality"],
+  date: "2025-10-09",
+  readTime: 9,
+  target: "_blank"
+},
+{
+  title: "Codex vs Claude Code: Which AI Coding Assistant Should You Actually Use?",
+  desc: "Struggling to choose between OpenAI's Codex and Anthropic's Claude Code? This detailed comparison breaks down technical performance, design capabilities, and cost efficiency to help you pick the right AI coding assistant for your needs.",
+  url: "/blog/codex-vs-claude-code-ai-comparison",
+  tags: ["AI Agents","Programming","Productivity"],
+  date: "2026-05-29",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "AI Voice Agents That Learn in Real Time for Smarter Customer Conversations",
+  desc: "Discover how self-learning AI voice agents are transforming customer interactions with continuous improvement, emotional intelligence, and zero manual retraining required.",
+  url: "/blog/ai-voice-agents-real-time-learning",
+  tags: ["Voice AI","AI Agents","Customer Experience"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "OpenAI Just Dropped AgentKit — Goodbye Zapier, Make, and n8n 👋",
+  desc: "OpenAI's AgentKit lets anyone build autonomous AI agents without coding, potentially disrupting the entire automation industry. Learn how this game-changing update works and what it means for businesses.",
+  url: "/blog/openai-agentkit-replace-zapier-make-n8n",
+  tags: ["AI Agents","Automation","OpenAI"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Microsoft Teams with Zapier in 3 Simple Steps",
+  desc: "Stop manually handling Teams messages. This Zapier integration automatically translates, logs, and routes incoming chats to any of 7,000+ apps like GPT, Google Sheets, or Slack.",
+  url: "/blog/how-to-automate-microsoft-teams-with-zapier",
+  tags: ["Zapier","Microsoft Teams","Automation"],
+  date: "2025-10-09",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "Claude Code vs OpenAI CodeX: The Ultimate AI Coding Battle",
+  desc: "Discover which AI coding assistant dominates in 2026 - Claude Code's creative brilliance or CodeX's efficient execution. We put both through rigorous real-world tests to reveal their strengths.",
+  url: "/blog/claude-code-vs-openai-codex-ai-coding-battle",
+  tags: ["AI Agents","Developer Tools","Automation"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How Opus 4.8's Dynamic Workflows Revolutionize Voice Agent Testing",
+  desc: "Discover how Claude's Opus 4.8 dynamic workflows can automatically generate 250+ test scenarios for your voice AI agents - eliminating manual testing while catching critical edge cases.",
+  url: "/blog/opus-48-dynamic-workflows-voice-agent-testing",
+  tags: ["AI Agents","Voice AI","Claude"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Zapier for Beginners: Automate Google Calendar to Google Sheets in Minutes",
+  desc: "Learn how to connect Google Calendar to Google Sheets automatically with Zapier's AI-powered Copilot - no coding required. Perfect for beginners looking to automate their first workflow.",
+  url: "/blog/zapier-beginners-guide-google-calendar-sheets-automation",
+  tags: ["Zapier","Google Workspace","Automation"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate Contact Management Between Airtable and Quo Using Zapier",
+  desc: "Learn how to automatically sync contacts from Airtable to Quo (formerly OpenPhone) using Zapier - no manual data entry required. This simple 2-step automation saves hours of admin work.",
+  url: "/blog/automate-contact-management-airtable-quo-zapier",
+  tags: ["Zapier","CRM","Contact Management"],
+  date: "2025-10-09",
+  readTime: 5,
+  target: "_blank"
+},
+{
+  title: "How to Connect All Your Business Platforms with Zapier (Complete Tutorial)",
+  desc: "Stop wasting hours manually transferring data between platforms. This Zapier automation connects your CRM, email marketing, scheduling tools, and website into one seamless system.",
+  url: "/blog/how-to-connect-all-your-business-platforms-with-zapier",
+  tags: ["Zapier","CRM","Marketing Automation"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Automate DocuSign Using Make.com (and Save Hours on Contracts)",
+  desc: "Stop wasting time manually creating and sending contracts. This Make.com automation connects DocuSign, Airtable and Google Docs to handle document generation, signing requests and filing - all without human intervention.",
+  url: "/blog/how-to-automate-docusign-using-make-com",
+  tags: ["Make.com","DocuSign","Automation"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "How to Actually Use Claude Code Dynamic Workflows Without Burning Through Your Token Budget",
+  desc: "Learn when to use Claude's powerful new dynamic workflows feature versus simpler options like skills and sub-agents - plus how to avoid accidentally burning through your entire token budget in one prompt.",
+  url: "/blog/how-to-use-claude-code-dynamic-workflows",
+  tags: ["AI Agents","Claude","Workflows"],
+  date: "2026-05-30",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "Build a Voice AI That Calls Your Website Leads Automatically (VAPI + n8n)",
+  desc: "Learn how to automatically call website leads with a voice AI agent that sounds human, handles objections, and logs conversations - all powered by VAPI and n8n workflows.",
+  url: "/blog/build-voice-ai-calls-website-leads-automatically-vapi-n8n",
+  tags: ["Voice AI","n8n","Automation"],
+  date: "2025-10-09",
+  readTime: 10,
+  target: "_blank"
+},
+{
+  title: "How To Create A $10,000/Month AI Influencer with N8N (No Code)",
+  desc: "Discover how to build a fully automated AI influencer that generates $10k/month using n8n. This complete system creates posts, manages engagement, and runs on autopilot with no coding required.",
+  url: "/blog/create-10000-month-ai-influencer-n8n",
+  tags: ["n8n","AI Agents","Social Media"],
+  date: "2025-10-09",
+  readTime: 12,
+  target: "_blank"
+},
+{
+  title: "Run Custom JavaScript & Python Code Directly in Make.com (No External Tools Needed)",
+  desc: "Make.com's new Code app lets you execute JavaScript and Python scripts natively within workflows - no external APIs or services required. Learn how to transform data, import libraries, and create dynamic logic right inside your automations.",
+  url: "/blog/run-custom-code-in-make-javascript-python",
+  tags: ["Make.com","JavaScript","Python"],
+  date: "2025-10-09",
+  readTime: 8,
+  target: "_blank"
+},
+{
+  title: "This NEW 1-Click AI Agent Will Transform Your Business (No Coding Needed)",
+  desc: "OpenAI's new Agent Kit lets anyone build powerful AI agents without coding. Automate customer support, data analysis, marketing and more in minutes - Albertsons and HubSpot are already using it to save thousands of hours.",
+  url: "/blog/openai-agent-kit-business-automation",
+  tags: ["AI Agents","Automation","OpenAI"],
+  date: "2025-10-09",
+  readTime: 7,
+  target: "_blank"
+},
+{
   title: "How To Build AI Voice Systems in 2026: 3 Approaches Compared",
   desc: "Discover the three levels of AI voice system implementation - from full custom infrastructure to plug-and-play solutions. Learn which approach fits your business needs based on cost, flexibility and maintenance requirements.",
   url: "/blog/how-to-build-ai-voice-systems-2026",
