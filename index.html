@@ -302,7 +302,9 @@ a{color:inherit;text-decoration:none}
 <div id="gs-testimonials"></div>
 
 <!-- CONSULTATION FORM -->
-<div id="gs-consult-section"></div>
+<div id="consultation"></div>
+  <div id="gs-consult-section"></div>
+</div>
 
 <!-- FAQ -->
 <div id="gs-faq"></div>
@@ -325,26 +327,21 @@ a{color:inherit;text-decoration:none}
 
 </body>
 <script>
+// On initial load with a hash (e.g. arriving at /#consultation), scroll to the
+// target once the shared scroll helper (page-builder.js) is ready. In-page link
+// clicks are handled globally by page-builder.js.
 (function() {
   if (!window.location.hash) return;
   var hash = window.location.hash;
-  var deadline = performance.now() + 3000;
-  function tryScroll() {
-    var target = null;
-    try { target = document.querySelector(hash); } catch (e) { return; }
-    if (target) {
-      var nav = document.querySelector('.nav');
-      var navHeight = nav ? nav.offsetHeight : 72;
-      var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-      return;
-    }
-    if (performance.now() < deadline) setTimeout(tryScroll, 150);
+  var deadline = performance.now() + 4000;
+  function go() {
+    if (window.gsScrollToHash) { window.gsScrollToHash(hash); return; }
+    if (performance.now() < deadline) setTimeout(go, 100);
   }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', tryScroll);
+    document.addEventListener('DOMContentLoaded', go);
   } else {
-    tryScroll();
+    go();
   }
 })();
 </script>

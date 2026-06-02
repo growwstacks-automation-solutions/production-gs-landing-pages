@@ -250,15 +250,67 @@
     if (nav) nav.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  document.addEventListener('click', function (e) {
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      const pos = target.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: pos, behavior: 'smooth' });
+  // Force-load any component placeholders that haven't been injected yet.
+  // Used before scrolling so the target reaches its FINAL layout position in
+  // one go (otherwise lazy sections load mid-scroll and push the target down).
+  function forceLoadAll() {
+    COMPONENTS.forEach(function (comp) {
+      const el = document.getElementById(comp.id);
+      if (el && (!el.innerHTML || !el.innerHTML.trim())) {
+        loadComponent(comp).then(loadNested);
+      }
+    });
+  }
+
+  // Smoothly scroll to a hash target, accounting for the fixed navbar and
+  // re-adjusting until the layout settles (lazy components finish injecting).
+  function scrollToHashStable(hash) {
+    forceLoadAll();
+    const nav = document.querySelector('.nav') || document.getElementById('nav');
+    const navHeight = nav ? nav.offsetHeight : 80;
+    const deadline = performance.now() + 5000;
+    let lastTop = null;
+    let stable = 0;
+    function step() {
+      let target = null;
+      try { target = document.querySelector(hash); } catch (e) { return; }
+      if (target) {
+        const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - navHeight);
+        if (lastTop !== null && Math.abs(top - lastTop) < 2) {
+          stable++;
+        } else {
+          stable = 0;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+        lastTop = top;
+        // Position held steady across several ticks → layout has settled.
+        if (stable >= 3) {
+          window.scrollTo({ top: top, behavior: 'smooth' });
+          return;
+        }
+      }
+      if (performance.now() < deadline) setTimeout(step, 180);
     }
+    step();
+  }
+  // Exposed so per-page scripts (e.g. on-load hash handling) can reuse it.
+  window.gsScrollToHash = scrollToHashStable;
+
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href]');
+    if (!link || link.target === '_blank') return;
+    // Match same-page hash links: "#section" or "/#section" (not "/page/#x").
+    const match = /^\/?(#.+)$/.exec(link.getAttribute('href'));
+    if (!match) return;
+    const hash = match[1];
+    let target = null;
+    try { target = document.querySelector(hash); } catch (err) { return; }
+    if (!target) return;
+    e.preventDefault();
+    if (window.location.hash !== hash) {
+      history.pushState(null, '', hash);
+    }
+    scrollToHashStable(hash);
   });
 
   document.addEventListener('click', function (e) {
