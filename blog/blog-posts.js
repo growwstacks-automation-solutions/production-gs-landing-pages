@@ -1594,7 +1594,7 @@ const BLOG_POSTS = [
 },
 {
   title: "Codex vs Claude Code vs Cursor vs Antigravity: The Ultimate AI Super App Showdown",
-  desc: "Discover which AI super app reigns supreme for coding and knowledge work in <span data-year="current"></span>. We compare Codex, Claude Code, Cursor, and Antigravity across 11 critical criteria to help you choose the right tool.",
+  desc: "Discover which AI super app reigns supreme for coding and knowledge work in <span data-year=2026></span>. We compare Codex, Claude Code, Cursor, and Antigravity across 11 critical criteria to help you choose the right tool.",
   url: "/blog/codex-vs-claude-code-vs-cursor-vs-antigravity",
   tags: ["AI Agents","Productivity","Coding"],
   date: "2026-05-27",

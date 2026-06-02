@@ -228,6 +228,7 @@ logos: {
   reply:           favicon('reply.io'),
   dripify:         favicon('dripify.com'),
   unipile:         favicon('unipile.com'),
+  missive:         favicon('missiveapp.com'),
 
   // ── Cloud & Dev ──
   aws:             favicon('aws.amazon.com'),
@@ -301,7 +302,8 @@ logos: {
   timeline:        favicon('timelines.ai'),
   partial:         favicon('partial.ly'),
   systeme:         favicon('systeme.io'),
-  paypal:         favicon('paypal.com'),
+  paypal:          favicon('paypal.com'),
+  terminal49:      favicon('terminal49.com'),
 
   // ── Education / LMS ──
   teachable:       favicon('teachable.com'),
