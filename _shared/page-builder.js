@@ -340,6 +340,95 @@
   });
 
 
+  // --- Random theme tinting (blog / workflows / how-to-guides) ---------------
+  // Lives here (eager, on every page) rather than inside the lazily-injected
+  // footer — otherwise the colors only applied after the user scrolled the
+  // footer into view, so on reload the page rendered untinted. The themed
+  // elements (.cs-hero-bg, .cs-tag, .cs-bottom-cta, blog TOC, etc.) are part of
+  // the static page HTML and already exist at DOMContentLoaded.
+  function applyRandomTheme() {
+    const path = window.location.pathname;
+
+    if (
+      !path.includes('/blog') &&
+      !path.includes('/workflows') &&
+      !path.includes('/how-to-guides')
+    ) return;
+
+    const themes = [
+      { gradient: 'linear-gradient(to right,#FFD6E0,#FFF1F5)', tagColor: '#e85a8a', tagText: '#ffffff' },
+      { gradient: 'linear-gradient(to right,#E6F7FF,#F0FBFF)', tagColor: '#2b7de9', tagText: '#ffffff' },
+      { gradient: 'linear-gradient(to right,#E8F8F5,#F0FFF9)', tagColor: '#2a9d8f', tagText: '#ffffff' },
+      { gradient: 'linear-gradient(to right,#FFF6E5,#FFFBEF)', tagColor: '#e67e22', tagText: '#ffffff' },
+      { gradient: 'linear-gradient(to right,#F3E8FF,#FAF5FF)', tagColor: '#7b61ff', tagText: '#ffffff' },
+      { gradient: 'linear-gradient(to right,#FFEAF4,#FFF4F8)', tagColor: '#d63384', tagText: '#ffffff' },
+      { gradient: 'linear-gradient(to right,#EAF4FF,#F6FAFF)', tagColor: '#1c7ed6', tagText: '#ffffff' },
+      { gradient: 'linear-gradient(to right,#EAFBEA,#F5FFF6)', tagColor: '#2f9e44', tagText: '#ffffff' },
+    ];
+
+    const theme = themes[Math.floor(Math.random() * themes.length)];
+
+    function setBg(sel) {
+      document.querySelectorAll(sel).forEach(el =>
+        el.style.setProperty('background', theme.gradient, 'important'));
+    }
+    function setBorder(sel) {
+      document.querySelectorAll(sel).forEach(el => { el.style.borderColor = theme.tagColor; });
+    }
+    function setText(sel) {
+      document.querySelectorAll(sel).forEach(el => { el.style.color = theme.tagColor; });
+    }
+    function setTag(sel) {
+      document.querySelectorAll(sel).forEach(el => {
+        el.style.background = theme.tagColor;
+        el.style.color = theme.tagText;
+      });
+    }
+
+    // Gradient backgrounds
+    setBg('.cs-hero-bg');
+    setBg('.blog-toc');
+    setBg('.cs-highlight');
+    setBg('.blog-section--tinted');
+    setBg('.cs-bottom-cta');
+
+    // Tags & buttons
+    setTag('.cs-tag');
+    document.querySelectorAll('.btn-accent').forEach(el => {
+      el.style.background = theme.tagColor;
+      el.style.color = theme.tagText;
+      el.style.borderColor = theme.tagColor;
+    });
+    document.querySelectorAll('.btn-outline').forEach(el => {
+      el.style.borderColor = theme.tagColor;
+      el.style.color = theme.tagColor;
+    });
+
+    // Text accents
+    setText('.blog-toc-title');
+    setText('.cs-breadcrumb a');
+    setText('.cs-toc-title + ol li a');
+
+    // Borders
+    setBorder('.blog-toc');
+    setBorder('.cs-highlight');
+    setBorder('.cs-toc');
+
+    // Reading time & download button
+    setTag('.blog-reading-time');
+    document.querySelectorAll('.btn-download').forEach(el => {
+      el.style.background = theme.tagColor;
+      el.style.borderColor = theme.tagColor;
+      el.style.color = theme.tagText;
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyRandomTheme);
+  } else {
+    applyRandomTheme();
+  }
+
   // Mobile nav toggle
   document.addEventListener('click', function (e) {
     var toggle = e.target.closest('.nav-mobile-toggle');
