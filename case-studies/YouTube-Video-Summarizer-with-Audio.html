@@ -363,88 +363,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system process non-YouTube video sources — Loom recordings, Vimeo, or internal meeting recordings?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system process non-YouTube video sources — Loom recordings, Vimeo, or internal meeting recordings?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — while the system is designed and marketed around YouTube as the primary use case, the Whisper transcription and downstream summarisation steps work with any audio or video file, and the input layer can be adapted to accept URLs or file uploads from other sources</strong>. The YouTube download step is the most platform-specific component; replacing it with a different source changes the input mechanism but leaves all downstream processing identical.</p>
             <p>Common non-YouTube extensions include: Loom recordings (via Loom's share URL or webhook), Zoom and Google Meet recordings (from Google Drive or storage links), Vimeo videos (where access permissions allow download), podcast audio files (MP3 direct URL or RSS feed), and internal video files uploaded directly to Google Drive. For teams whose primary use case is internal meeting recordings rather than YouTube content, the system is configured with a Google Drive folder watch trigger — any new video file added to a designated "Meetings to Summarise" folder automatically triggers the full transcription and summarisation pipeline. We confirm the input sources during the discovery call and configure the appropriate trigger for the team's primary video format.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How long does the full pipeline take to process a one-hour video?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How long does the full pipeline take to process a one-hour video?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>A one-hour YouTube video typically processes end-to-end in 8–15 minutes from URL submission to Slack notification — the exact time depends on video file size, server load, and the length of the Whisper transcription queue</strong>. The breakdown is approximately: video download and audio extraction (2–4 minutes depending on video quality and length), Whisper transcription (3–6 minutes for a one-hour audio file), ChatGPT summarisation (30–90 seconds), ElevenLabs audio synthesis (30–60 seconds for a 300–500 word summary), and Google Drive upload plus Slack notification (under 30 seconds).</p>
             <p>For shorter videos — 15–30 minutes, which is a common conference talk or tutorial length — the total processing time is typically 4–8 minutes. For very long videos (2–3 hours), the Whisper transcription step may take 10–15 minutes, putting total processing at 15–25 minutes. In all cases, the team has the complete summary delivered to Slack within a small fraction of the original video's running time — and the processing happens in the background without requiring anyone to wait or monitor progress. For teams that submit multiple videos simultaneously, Make.com runs the pipeline for each URL concurrently up to the configured execution limit, with processing starting immediately for each submission.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can team members search the historical video summary library — and how is it organised in Google Drive?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can team members search the historical video summary library — and how is it organised in Google Drive?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the Google Drive library is organised for both browsing and full-text search, and the text summary files are indexed by Google Drive's search function enabling keyword search across all past summaries</strong>. The folder structure is configured during implementation based on the team's organisation preference — the most common approaches are chronological organisation (folders by month/year), topic-based organisation (separate folders per content category submitted at URL entry), or source-based organisation (YouTube, Loom, Meetings, etc.).</p>
             <p>The most powerful search capability comes from Google Drive's full-text search — which indexes the content of Google Docs and text files, meaning a team member searching for "LTV reduction" or "GDPR compliance" in Google Drive will surface all past summaries where those terms appeared in the summarised content, even if they can't remember which video discussed it. For teams that want a more structured knowledge base interface, the text summaries can alternatively be stored in Notion, Confluence, or a similar team knowledge platform — with Make.com writing the summary text directly to a new Notion page or Confluence article via API, creating a searchable wiki of video intelligence rather than a file folder structure. We scope the knowledge base destination based on the team's existing toolstack during the discovery call.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the ElevenLabs audio summary use our own branded voice rather than a generic one?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the ElevenLabs audio summary use our own branded voice rather than a generic one?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — ElevenLabs offers voice cloning capability that enables the audio summaries to be synthesised in a specific person's voice, including an executive's voice for internal briefings or a brand's established voice talent for externally distributed content</strong>. ElevenLabs' voice cloning requires a short audio sample of the target voice (typically 1–3 minutes of clean audio), which it uses to create a cloned voice model that can be used for the text-to-speech synthesis.</p>
             <p>Voice cloning is most commonly used in two deployment contexts: internal executive briefings, where the CEO or department head's voice being used for the summaries creates a more engaging listening experience for the team; and externally distributed content, where a brand has established voice talent for podcasts or video content and wants audio summaries to maintain that consistent voice. For teams without specific voice requirements, ElevenLabs' standard voice library includes a wide range of natural-sounding professional voices suitable for informational content. Voice selection is finalised during the implementation phase by having the team listen to candidate voices from the library with a sample summary text and confirming their preference before the workflow is deployed to production.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system also generate a timestamped outline of the video in addition to the summary?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system also generate a timestamped outline of the video in addition to the summary?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — a timestamped outline is a valuable extension that many research and content teams request, and it can be generated as an additional ChatGPT output step within the same pipeline</strong>. The timestamped outline uses the Whisper transcription output (which includes word-level or segment-level timestamps depending on the Whisper configuration) to identify when major topic shifts occur in the video, and generates a structured outline showing each major topic with its approximate start timestamp.</p>
             <p>The practical value of the timestamped outline is different from the summary: the summary provides a distilled understanding of the video's full content, while the outline provides a navigation tool for anyone who wants to watch specific sections of the original video. A typical outline for a one-hour video might identify 6–10 major topics or sections, each with a timestamp that links directly to that point in the YouTube video URL (YouTube supports deep-linking to specific timestamps via the &t= parameter). The outline is included in the Slack notification alongside the summary, giving team members the option to read the full summary or jump directly to a specific section of the original video if they want the unedited detail on one particular topic. This extension adds minimal processing time (one additional ChatGPT API call) and is included in the standard implementation for clients who request it.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is 600% ROI calculated — and what does the value model look like for different team sizes?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 600% ROI calculated — and what does the value model look like for different team sizes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 600% ROI reflects the value of professional time reclaimed from passive video watching — calculated at the effective hourly rate of the team members whose time is replaced by automated processing — validated across multiple knowledge-worker team deployments</strong>.</p>
             <p>The individual value model: a professional spending 15 hours weekly watching industry videos at $50/hour effective rate (typical for a mid-level marketing or content professional) recovers $39,000 annually in productive capacity by processing the same content via the summarisation pipeline in under 5 hours weekly. For a senior professional at $80/hour, the annual recovery exceeds $62,000. The team multiplier is the system's most significant value driver: for a 5-person team where 3 members are currently watching some of the same videos independently, the deduplication benefit alone (processing each video once rather than 3× independently) produces a further 2–3× multiplier on the individual savings. For content teams processing 20+ videos weekly — common in marketing, research, and competitive intelligence functions — the aggregate value well exceeds the $35K annual figure cited for individual professionals. The implementation cost recovers within 4–6 weeks for most team configurations. We model the specific ROI using the team's actual video consumption hours, team size, and effective hourly rates during the discovery call.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

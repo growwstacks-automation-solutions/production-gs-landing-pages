@@ -406,7 +406,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is Phantom Buster's LinkedIn extraction compliant with LinkedIn's terms of service — and what are the risks to the LinkedIn account?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>LinkedIn's terms of service prohibit automated scraping of their platform, and Phantom Buster operates in a grey area that is widely used across the B2B sales industry but carries a non-zero risk of LinkedIn account restriction if operated incorrectly</strong>. The risk level is primarily determined by extraction volume, extraction frequency, and operational hygiene — and is manageable with appropriate configuration.</p>
+            <p>Phantom Buster is designed to mimic human browsing behaviour — operating at rates and patterns that are less conspicuous to LinkedIn's detection systems than high-speed bulk scraping. Operational safety measures include: using a dedicated LinkedIn account for Phantom Buster authentication rather than the primary sales rep's account (so any restriction affects the dedicated account rather than the rep's professional profile), configuring extraction session lengths and rest periods within Phantom Buster's recommended limits, keeping daily extraction volumes within the thresholds that Phantom Buster's documentation indicates as lower-risk, and avoiding extraction during LinkedIn's maintenance windows. Many thousands of B2B sales teams use Phantom Buster for Sales Navigator extraction daily without account issues under properly configured settings. We configure the extraction parameters conservatively during the implementation, err on the side of lower daily volumes with more frequent runs rather than high-volume single sessions, and recommend maintaining a dedicated LinkedIn account for the extraction role. The client should weigh this risk profile against the alternative — which is paying a team member 20 hours weekly to do the same data collection manually — and make the risk acceptance decision accordingly.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system be integrated with a CRM like HubSpot or Salesforce — so prospects flow directly into the pipeline rather than just into Mailerlite?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — CRM integration is a standard extension that many B2B sales teams add to the pipeline, routing enriched prospect data into HubSpot, Salesforce, Pipedrive, or other CRM platforms simultaneously with or instead of the Mailerlite campaign launch</strong>. Make.com has native modules for all major CRM platforms, and the enriched prospect data from Apollo is already in the right structure for CRM contact creation.</p>
+            <p>The CRM integration step sits between the Apollo enrichment and the Mailerlite campaign launch — creating or updating a CRM contact record with the prospect's enriched data, assigning the contact to the appropriate sales rep based on territory or account assignment rules, creating a deal or opportunity record if the prospect matches a target account, and logging the outreach activity (email sent, campaign enrolled) as a CRM activity. This creates a single source of truth for all prospect interactions in the CRM rather than requiring the sales rep to manually create contact records from campaign replies. The duplicate detection logic also queries the CRM — checking whether an extracted LinkedIn prospect already exists as a CRM contact before enriching and campaigning them, preventing the automation from reaching out to existing customers, active opportunities, or contacts already in the rep's pipeline. We scope the specific CRM integration requirements during the discovery call based on the client's CRM platform and deal workflow.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system maintain email deliverability at high outreach volumes — what prevents the sending domain from being flagged as spam?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Email deliverability at high outreach volumes is a technical discipline that the system addresses through sender domain authentication, sending rate management, list hygiene, and engagement-optimised email structure — all of which are configured during the implementation</strong>. Mailerlite as the sending platform provides a solid deliverability foundation, but sustained high-volume cold outreach requires additional configuration beyond the platform defaults.</p>
+            <p>The deliverability configuration includes: SPF, DKIM, and DMARC record setup for the sending domain (these DNS records authenticate the sender and are the baseline requirement for modern inbox placement); sending rate warm-up for new sending domains or significantly increased sending volumes (gradually increasing daily send volumes over 2–4 weeks to establish a reputation history before reaching target volume); Apollo email verification filtering (ensuring only verified email addresses enter the campaign, as high bounce rates are the fastest way to damage sender reputation); dedicated sending subdomain setup (using a subdomain like outreach.company.com rather than the primary domain, isolating outreach sending reputation from the main company email domain); and email content structure guidelines in the ChatGPT prompt (avoiding spam trigger phrases, maintaining text-to-image ratios, and including legitimate unsubscribe mechanisms). For clients targeting very high daily volumes (500+ daily sends), we assess whether Mailerlite or an alternative cold outreach platform (Instantly, Lemlist, or Smartlead) is more appropriate for the volume profile and configure accordingly.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system also send LinkedIn connection requests or InMails — or is it limited to email outreach only?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — LinkedIn connection request sending and InMail automation can be added as a multi-channel outreach layer using Phantom Buster's additional LinkedIn automation features, creating a coordinated email + LinkedIn outreach sequence rather than email-only outreach</strong>. Multi-channel sequences that combine LinkedIn touchpoints with email consistently outperform single-channel outreach in B2B contexts.</p>
+            <p>The multi-channel architecture works as follows: after the prospect is extracted and enriched, a LinkedIn connection request is sent automatically via Phantom Buster with a customised connection note (ChatGPT generates the personalised connection note using the same prospect context). The email campaign in Mailerlite is then configured to start 2–3 days after the connection request — giving the prospect time to see and potentially accept the connection before the email arrives in their inbox. If the prospect accepts the LinkedIn connection, a follow-up LinkedIn message can be sent (also generated by ChatGPT with personalisation) as a second touchpoint that precedes or follows the email. This coordinated sequence creates multiple points of presence — the prospect sees the name in LinkedIn notifications and then in their email inbox, creating a familiarity effect that improves open and response rates versus cold email alone. Phantom Buster's LinkedIn connection request phantom is configured separately from the extraction phantom, and the connection note character limit (300 characters) constrains the ChatGPT prompt to produce appropriately brief but personalised connection request text.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is reply handling managed — what happens when a prospect responds to the automated outreach email?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Reply handling is managed through a combination of Mailerlite's engagement tracking, Make.com automation, and the sales rep's direct email inbox — with the automation designed to surface interested replies to the rep immediately while suppressing follow-up sequences for prospects who have responded</strong>.</p>
+            <p>When a prospect replies to a Mailerlite campaign email, two things happen automatically: Mailerlite's reply detection marks the prospect as having replied (pausing their follow-up sequence so they don't receive further automated emails while in conversation), and a Make.com webhook or Mailerlite automation triggers a notification to the sales rep — via Slack message, email, or CRM task — alerting them that prospect X has replied and providing the reply content and the prospect's enriched profile data for context. The sales rep then takes over the conversation from their direct email inbox (Mailerlite's transactional setup routes replies to the rep's actual email address rather than a no-reply sender). For organisations using a CRM, the reply is also logged as a CRM activity on the contact record, and the contact's status is updated to "Replied" for pipeline reporting. Unsubscribe requests are handled automatically by Mailerlite — adding the email address to the suppression list and preventing future outreach — with the suppression list synchronised back to the Make.com duplicate detection logic so the email address is excluded from all future extraction-to-campaign runs.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 620% ROI calculated — and what does the model look like for a team of five reps versus a single BDR?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 620% ROI combines two value streams: the labour cost recovered by eliminating manual prospecting hours, and the pipeline value generated by the incremental outreach volume and improved response rates that the automation enables — with the pipeline value typically being the larger component for organisations with a meaningful deal size</strong>.</p>
+            <p>The labour savings calculation: a sales rep spending 18 hours weekly on manual prospecting tasks (LinkedIn searching, data entry, company research, email writing, campaign setup) at $50/hour effective rate recovers $46,800 annually. For a team of 5 reps each recovering 18 hours weekly, the collective recovery is $234,000 annually. The pipeline value calculation: moving from 20 to 200 weekly outreaches per rep with a 75% improvement in response rate produces approximately 10× more prospect conversations per rep. If a rep currently closes 2 deals monthly from manual outreach at an ACV of 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -488,6 +563,12 @@
         </div>
       </div>
 
+    </div>
+  0,000, scaling to 200 weekly outreaches could reasonably produce 5–8 deals monthly — an incremental $30,000–$60,000 monthly revenue per rep from the volume and response rate improvement alone. The combined labour savings and incremental pipeline value against the fixed 8-week implementation cost produces the 620% ROI — which is weighted towards the pipeline value component for organisations with high ACVs, and towards the labour savings component for organisations with lower ACVs but large BDR teams. We model the specific projection using the client's rep count, current outreach volume, ACV, and close rate during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

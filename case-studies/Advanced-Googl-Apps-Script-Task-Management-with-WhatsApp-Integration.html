@@ -357,7 +357,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can data be migrated from our current project management tool into this system?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — data migration from existing project management tools is a standard part of the implementation for clients replacing commercial PM software with this system</strong>. Most major PM tools (Asana, Monday.com, Jira, Trello, ClickUp, and others) support CSV or Excel export of task data, which can be imported into the Google Sheets database structure with field mapping applied to align the exported columns to the system's schema.</p>
+            <p>The migration process involves: exporting current task data from the existing tool in the available format, reviewing the exported data for completeness and cleaning any fields that won't map cleanly to the new schema, importing the cleaned data into the Google Sheets task database with a one-time bulk import script, and validating a sample of migrated records against the original to confirm accuracy. Historical completed tasks can be imported as archived records for reference without entering the active task management workflow. The employee database is populated during the same migration phase — with contact details and department assignments derived from the existing tool's user roster or from an HR data export. We scope the migration complexity and timeline during the discovery call based on the current tool's export capabilities and the volume of active tasks to be migrated.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can tasks be assigned to external contractors or clients who aren't in the organisation's Google Workspace?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — external assignees are fully supported through the employee database, and the WhatsApp notification system works identically for external contacts since it delivers to a mobile number rather than requiring a Google Workspace account</strong>. External contractors, freelancers, agency partners, and clients can be added to the employee database with their WhatsApp number and relevant contact information, and will receive task assignment notifications and reminders via WhatsApp exactly as internal team members do.</p>
+            <p>The primary difference for external assignees is dashboard access: internal Google Workspace users can be given view or edit access to the Google Sheets dashboard through standard Workspace sharing, while external contacts cannot access the Google Sheets unless granted external sharing permission — which some organisations prefer to restrict for data privacy reasons. For external assignees who need task status visibility, the system can be configured to send status update notifications via WhatsApp rather than relying on dashboard access — providing the external party with regular WhatsApp updates on their assigned tasks without requiring access to the internal Google Sheets. For clients who need a view of their own tasks, a filtered read-only Google Sheets view can be shared with edit access restricted to the status column only, enabling the client to update task status from their side without accessing other organisational task data.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle recurring tasks — tasks that repeat on a daily, weekly, or monthly schedule?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Recurring task management is a configurable feature that Apps Script handles through a dedicated recurring task generation function</strong>. Recurring tasks are defined in a separate recurring tasks configuration sheet — specifying the task template (title, description, assignee, department, priority), the recurrence frequency (daily, weekly on specific days, monthly on specific dates, or custom intervals), and the recurrence end date or "indefinite" designation.</p>
+            <p>The Apps Script recurring task function runs on a scheduled trigger — either daily at a configured time or on the specific recurrence schedule — and creates new task records in the main task database for each recurring task due that day. The new task record is populated from the template, assigned the correct due date based on the recurrence schedule, and triggers the same assignment notification WhatsApp message as any manually created task. If the previous instance of a recurring task is still marked as incomplete when the new instance is created, the system can be configured to flag the conflict — alerting the manager that a previous cycle was not completed before the new one begins. This handles the most common recurring task scenarios: daily standup preparation, weekly report submissions, monthly compliance reviews, and any other regularly scheduled deliverable that follows a predictable pattern.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system support multiple managers with different teams — and can managers only see their own team's tasks?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports a full multi-manager organisational hierarchy with configurable visibility controls per user role</strong>. The employee database maintains the manager relationship for every team member, and this relationship drives both the escalation notification path (overdue tasks escalate to the correct manager) and the automated manager report content (each manager receives a report showing only their direct reports' tasks).</p>
+            <p>Dashboard visibility control is implemented using Google Sheets' protected ranges and filter views — each manager can have a personalised filter view that displays only their department's tasks by default, while having the option to expand to full organisational view if their role permits it. Senior management and administrators can have unfiltered access to the complete task database and consolidated reporting across all departments. The automated WhatsApp manager reports are department-filtered by default — Marketing's manager receives a report of Marketing tasks, Operations' manager receives Operations tasks — with an executive summary report available to senior leadership that aggregates across all departments. For organisations with matrix management structures where team members report to multiple managers on different task types, the employee database can be extended with a secondary manager field, and escalation routing can be configured to notify the relevant manager based on task category.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if the Google Apps Script execution limit is hit for large organisations with high task volumes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Google Apps Script has quota limits per Google Workspace plan — primarily the daily execution time limit (6 minutes per script execution for time-driven triggers on Business plans, and 30 minutes for Workspace plans with increased quotas) and the daily trigger execution limit</strong>. For most organisations with typical task management volumes, these limits are well within operational requirements. However, for large enterprise deployments with hundreds of active tasks, multiple daily overdue scans, and high notification volumes, quota management is part of the implementation design.</p>
+            <p>Several architectural patterns address quota concerns for high-volume deployments: batch processing (overdue detection processes tasks in batches within a single execution rather than one per trigger), execution time optimisation (Apps Script functions are written to minimise unnecessary Sheets API calls by reading data once into memory and processing in arrays), distributed trigger scheduling (multiple time-driven triggers spread across different execution windows rather than a single large scan), and WhatsApp API call batching (notifications are queued and sent in groups rather than individual API calls). For organisations genuinely exceeding Google Workspace quota limits — typically organisations with 1,000+ active tasks and 200+ team members — we assess whether the Apps Script architecture remains appropriate or whether a Make.com or n8n integration layer is preferable for the automation component, while retaining Google Sheets as the database and dashboard layer. We assess quota requirements during the discovery call using the organisation's expected task volume and notification frequency.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 450% ROI calculated — and how does the value model compare for organisations replacing paid PM tools versus those with no current tool?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 450% ROI reflects two distinct value streams depending on the client's current situation — and the ROI is substantially higher for organisations replacing paid PM software than for organisations building task management capability from scratch</strong>.</p>
+            <p>For organisations replacing paid PM tools: the primary value driver is the licence cost elimination. An organisation with 100 users on Monday.com's Standard plan at 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -439,6 +514,261 @@
         </div>
       </div>
 
+    </div>
+  2/user/month pays 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can data be migrated from our current project management tool into this system?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — data migration from existing project management tools is a standard part of the implementation for clients replacing commercial PM software with this system</strong>. Most major PM tools (Asana, Monday.com, Jira, Trello, ClickUp, and others) support CSV or Excel export of task data, which can be imported into the Google Sheets database structure with field mapping applied to align the exported columns to the system's schema.</p>
+            <p>The migration process involves: exporting current task data from the existing tool in the available format, reviewing the exported data for completeness and cleaning any fields that won't map cleanly to the new schema, importing the cleaned data into the Google Sheets task database with a one-time bulk import script, and validating a sample of migrated records against the original to confirm accuracy. Historical completed tasks can be imported as archived records for reference without entering the active task management workflow. The employee database is populated during the same migration phase — with contact details and department assignments derived from the existing tool's user roster or from an HR data export. We scope the migration complexity and timeline during the discovery call based on the current tool's export capabilities and the volume of active tasks to be migrated.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can tasks be assigned to external contractors or clients who aren't in the organisation's Google Workspace?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — external assignees are fully supported through the employee database, and the WhatsApp notification system works identically for external contacts since it delivers to a mobile number rather than requiring a Google Workspace account</strong>. External contractors, freelancers, agency partners, and clients can be added to the employee database with their WhatsApp number and relevant contact information, and will receive task assignment notifications and reminders via WhatsApp exactly as internal team members do.</p>
+            <p>The primary difference for external assignees is dashboard access: internal Google Workspace users can be given view or edit access to the Google Sheets dashboard through standard Workspace sharing, while external contacts cannot access the Google Sheets unless granted external sharing permission — which some organisations prefer to restrict for data privacy reasons. For external assignees who need task status visibility, the system can be configured to send status update notifications via WhatsApp rather than relying on dashboard access — providing the external party with regular WhatsApp updates on their assigned tasks without requiring access to the internal Google Sheets. For clients who need a view of their own tasks, a filtered read-only Google Sheets view can be shared with edit access restricted to the status column only, enabling the client to update task status from their side without accessing other organisational task data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system handle recurring tasks — tasks that repeat on a daily, weekly, or monthly schedule?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Recurring task management is a configurable feature that Apps Script handles through a dedicated recurring task generation function</strong>. Recurring tasks are defined in a separate recurring tasks configuration sheet — specifying the task template (title, description, assignee, department, priority), the recurrence frequency (daily, weekly on specific days, monthly on specific dates, or custom intervals), and the recurrence end date or "indefinite" designation.</p>
+            <p>The Apps Script recurring task function runs on a scheduled trigger — either daily at a configured time or on the specific recurrence schedule — and creates new task records in the main task database for each recurring task due that day. The new task record is populated from the template, assigned the correct due date based on the recurrence schedule, and triggers the same assignment notification WhatsApp message as any manually created task. If the previous instance of a recurring task is still marked as incomplete when the new instance is created, the system can be configured to flag the conflict — alerting the manager that a previous cycle was not completed before the new one begins. This handles the most common recurring task scenarios: daily standup preparation, weekly report submissions, monthly compliance reviews, and any other regularly scheduled deliverable that follows a predictable pattern.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system support multiple managers with different teams — and can managers only see their own team's tasks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports a full multi-manager organisational hierarchy with configurable visibility controls per user role</strong>. The employee database maintains the manager relationship for every team member, and this relationship drives both the escalation notification path (overdue tasks escalate to the correct manager) and the automated manager report content (each manager receives a report showing only their direct reports' tasks).</p>
+            <p>Dashboard visibility control is implemented using Google Sheets' protected ranges and filter views — each manager can have a personalised filter view that displays only their department's tasks by default, while having the option to expand to full organisational view if their role permits it. Senior management and administrators can have unfiltered access to the complete task database and consolidated reporting across all departments. The automated WhatsApp manager reports are department-filtered by default — Marketing's manager receives a report of Marketing tasks, Operations' manager receives Operations tasks — with an executive summary report available to senior leadership that aggregates across all departments. For organisations with matrix management structures where team members report to multiple managers on different task types, the employee database can be extended with a secondary manager field, and escalation routing can be configured to notify the relevant manager based on task category.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the Google Apps Script execution limit is hit for large organisations with high task volumes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Google Apps Script has quota limits per Google Workspace plan — primarily the daily execution time limit (6 minutes per script execution for time-driven triggers on Business plans, and 30 minutes for Workspace plans with increased quotas) and the daily trigger execution limit</strong>. For most organisations with typical task management volumes, these limits are well within operational requirements. However, for large enterprise deployments with hundreds of active tasks, multiple daily overdue scans, and high notification volumes, quota management is part of the implementation design.</p>
+            <p>Several architectural patterns address quota concerns for high-volume deployments: batch processing (overdue detection processes tasks in batches within a single execution rather than one per trigger), execution time optimisation (Apps Script functions are written to minimise unnecessary Sheets API calls by reading data once into memory and processing in arrays), distributed trigger scheduling (multiple time-driven triggers spread across different execution windows rather than a single large scan), and WhatsApp API call batching (notifications are queued and sent in groups rather than individual API calls). For organisations genuinely exceeding Google Workspace quota limits — typically organisations with 1,000+ active tasks and 200+ team members — we assess whether the Apps Script architecture remains appropriate or whether a Make.com or n8n integration layer is preferable for the automation component, while retaining Google Sheets as the database and dashboard layer. We assess quota requirements during the discovery call using the organisation's expected task volume and notification frequency.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 450% ROI calculated — and how does the value model compare for organisations replacing paid PM tools versus those with no current tool?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 450% ROI reflects two distinct value streams depending on the client's current situation — and the ROI is substantially higher for organisations replacing paid PM software than for organisations building task management capability from scratch</strong>.</p>
+            <p>For organisations replacing paid PM tools: the primary value driver is the licence cost elimination. An organisation with 100 users on Monday.com's Standard plan at $12/user/month pays $14,400 annually; at the Pro tier, $28,800. A 200-user enterprise on Asana Business at $24.99/user/month pays $59,976 annually. For large enterprises on enterprise tiers with custom pricing, PM software costs routinely exceed $100,000–$200,000 annually. Replacing this with an Apps Script implementation that runs on included Google Workspace infrastructure produces the licence cost recovery as a direct financial return — typically recovering the implementation cost within 3–4 months and delivering a multi-year ROI that compounds with each year of licence savings. For organisations building from scratch (no current PM tool or using manual methods): the value driver is the 75% reduction in manual tracking time and 80% reduction in missed deadlines. A 20-person team spending 3 hours weekly each on task tracking and status chasing recovers 60 person-hours weekly at their hourly rate — at $40/hour, that's $124,800 annually in productive capacity recovered. The missed-deadline cost reduction — preventing the rework, client relationship damage, and revenue impact of deadline failures — adds a less-easily-quantified but often significant additional value. We model the specific ROI for each scenario during the discovery call using the organisation's current PM tool costs, team size, and task management overhead estimates.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  4,400 annually; at the Pro tier, $28,800. A 200-user enterprise on Asana Business at $24.99/user/month pays $59,976 annually. For large enterprises on enterprise tiers with custom pricing, PM software costs routinely exceed 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can data be migrated from our current project management tool into this system?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — data migration from existing project management tools is a standard part of the implementation for clients replacing commercial PM software with this system</strong>. Most major PM tools (Asana, Monday.com, Jira, Trello, ClickUp, and others) support CSV or Excel export of task data, which can be imported into the Google Sheets database structure with field mapping applied to align the exported columns to the system's schema.</p>
+            <p>The migration process involves: exporting current task data from the existing tool in the available format, reviewing the exported data for completeness and cleaning any fields that won't map cleanly to the new schema, importing the cleaned data into the Google Sheets task database with a one-time bulk import script, and validating a sample of migrated records against the original to confirm accuracy. Historical completed tasks can be imported as archived records for reference without entering the active task management workflow. The employee database is populated during the same migration phase — with contact details and department assignments derived from the existing tool's user roster or from an HR data export. We scope the migration complexity and timeline during the discovery call based on the current tool's export capabilities and the volume of active tasks to be migrated.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can tasks be assigned to external contractors or clients who aren't in the organisation's Google Workspace?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — external assignees are fully supported through the employee database, and the WhatsApp notification system works identically for external contacts since it delivers to a mobile number rather than requiring a Google Workspace account</strong>. External contractors, freelancers, agency partners, and clients can be added to the employee database with their WhatsApp number and relevant contact information, and will receive task assignment notifications and reminders via WhatsApp exactly as internal team members do.</p>
+            <p>The primary difference for external assignees is dashboard access: internal Google Workspace users can be given view or edit access to the Google Sheets dashboard through standard Workspace sharing, while external contacts cannot access the Google Sheets unless granted external sharing permission — which some organisations prefer to restrict for data privacy reasons. For external assignees who need task status visibility, the system can be configured to send status update notifications via WhatsApp rather than relying on dashboard access — providing the external party with regular WhatsApp updates on their assigned tasks without requiring access to the internal Google Sheets. For clients who need a view of their own tasks, a filtered read-only Google Sheets view can be shared with edit access restricted to the status column only, enabling the client to update task status from their side without accessing other organisational task data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system handle recurring tasks — tasks that repeat on a daily, weekly, or monthly schedule?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Recurring task management is a configurable feature that Apps Script handles through a dedicated recurring task generation function</strong>. Recurring tasks are defined in a separate recurring tasks configuration sheet — specifying the task template (title, description, assignee, department, priority), the recurrence frequency (daily, weekly on specific days, monthly on specific dates, or custom intervals), and the recurrence end date or "indefinite" designation.</p>
+            <p>The Apps Script recurring task function runs on a scheduled trigger — either daily at a configured time or on the specific recurrence schedule — and creates new task records in the main task database for each recurring task due that day. The new task record is populated from the template, assigned the correct due date based on the recurrence schedule, and triggers the same assignment notification WhatsApp message as any manually created task. If the previous instance of a recurring task is still marked as incomplete when the new instance is created, the system can be configured to flag the conflict — alerting the manager that a previous cycle was not completed before the new one begins. This handles the most common recurring task scenarios: daily standup preparation, weekly report submissions, monthly compliance reviews, and any other regularly scheduled deliverable that follows a predictable pattern.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system support multiple managers with different teams — and can managers only see their own team's tasks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports a full multi-manager organisational hierarchy with configurable visibility controls per user role</strong>. The employee database maintains the manager relationship for every team member, and this relationship drives both the escalation notification path (overdue tasks escalate to the correct manager) and the automated manager report content (each manager receives a report showing only their direct reports' tasks).</p>
+            <p>Dashboard visibility control is implemented using Google Sheets' protected ranges and filter views — each manager can have a personalised filter view that displays only their department's tasks by default, while having the option to expand to full organisational view if their role permits it. Senior management and administrators can have unfiltered access to the complete task database and consolidated reporting across all departments. The automated WhatsApp manager reports are department-filtered by default — Marketing's manager receives a report of Marketing tasks, Operations' manager receives Operations tasks — with an executive summary report available to senior leadership that aggregates across all departments. For organisations with matrix management structures where team members report to multiple managers on different task types, the employee database can be extended with a secondary manager field, and escalation routing can be configured to notify the relevant manager based on task category.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the Google Apps Script execution limit is hit for large organisations with high task volumes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Google Apps Script has quota limits per Google Workspace plan — primarily the daily execution time limit (6 minutes per script execution for time-driven triggers on Business plans, and 30 minutes for Workspace plans with increased quotas) and the daily trigger execution limit</strong>. For most organisations with typical task management volumes, these limits are well within operational requirements. However, for large enterprise deployments with hundreds of active tasks, multiple daily overdue scans, and high notification volumes, quota management is part of the implementation design.</p>
+            <p>Several architectural patterns address quota concerns for high-volume deployments: batch processing (overdue detection processes tasks in batches within a single execution rather than one per trigger), execution time optimisation (Apps Script functions are written to minimise unnecessary Sheets API calls by reading data once into memory and processing in arrays), distributed trigger scheduling (multiple time-driven triggers spread across different execution windows rather than a single large scan), and WhatsApp API call batching (notifications are queued and sent in groups rather than individual API calls). For organisations genuinely exceeding Google Workspace quota limits — typically organisations with 1,000+ active tasks and 200+ team members — we assess whether the Apps Script architecture remains appropriate or whether a Make.com or n8n integration layer is preferable for the automation component, while retaining Google Sheets as the database and dashboard layer. We assess quota requirements during the discovery call using the organisation's expected task volume and notification frequency.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 450% ROI calculated — and how does the value model compare for organisations replacing paid PM tools versus those with no current tool?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 450% ROI reflects two distinct value streams depending on the client's current situation — and the ROI is substantially higher for organisations replacing paid PM software than for organisations building task management capability from scratch</strong>.</p>
+            <p>For organisations replacing paid PM tools: the primary value driver is the licence cost elimination. An organisation with 100 users on Monday.com's Standard plan at $12/user/month pays $14,400 annually; at the Pro tier, $28,800. A 200-user enterprise on Asana Business at $24.99/user/month pays $59,976 annually. For large enterprises on enterprise tiers with custom pricing, PM software costs routinely exceed $100,000–$200,000 annually. Replacing this with an Apps Script implementation that runs on included Google Workspace infrastructure produces the licence cost recovery as a direct financial return — typically recovering the implementation cost within 3–4 months and delivering a multi-year ROI that compounds with each year of licence savings. For organisations building from scratch (no current PM tool or using manual methods): the value driver is the 75% reduction in manual tracking time and 80% reduction in missed deadlines. A 20-person team spending 3 hours weekly each on task tracking and status chasing recovers 60 person-hours weekly at their hourly rate — at $40/hour, that's $124,800 annually in productive capacity recovered. The missed-deadline cost reduction — preventing the rework, client relationship damage, and revenue impact of deadline failures — adds a less-easily-quantified but often significant additional value. We model the specific ROI for each scenario during the discovery call using the organisation's current PM tool costs, team size, and task management overhead estimates.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  00,000–$200,000 annually. Replacing this with an Apps Script implementation that runs on included Google Workspace infrastructure produces the licence cost recovery as a direct financial return — typically recovering the implementation cost within 3–4 months and delivering a multi-year ROI that compounds with each year of licence savings. For organisations building from scratch (no current PM tool or using manual methods): the value driver is the 75% reduction in manual tracking time and 80% reduction in missed deadlines. A 20-person team spending 3 hours weekly each on task tracking and status chasing recovers 60 person-hours weekly at their hourly rate — at $40/hour, that's 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can data be migrated from our current project management tool into this system?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — data migration from existing project management tools is a standard part of the implementation for clients replacing commercial PM software with this system</strong>. Most major PM tools (Asana, Monday.com, Jira, Trello, ClickUp, and others) support CSV or Excel export of task data, which can be imported into the Google Sheets database structure with field mapping applied to align the exported columns to the system's schema.</p>
+            <p>The migration process involves: exporting current task data from the existing tool in the available format, reviewing the exported data for completeness and cleaning any fields that won't map cleanly to the new schema, importing the cleaned data into the Google Sheets task database with a one-time bulk import script, and validating a sample of migrated records against the original to confirm accuracy. Historical completed tasks can be imported as archived records for reference without entering the active task management workflow. The employee database is populated during the same migration phase — with contact details and department assignments derived from the existing tool's user roster or from an HR data export. We scope the migration complexity and timeline during the discovery call based on the current tool's export capabilities and the volume of active tasks to be migrated.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can tasks be assigned to external contractors or clients who aren't in the organisation's Google Workspace?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — external assignees are fully supported through the employee database, and the WhatsApp notification system works identically for external contacts since it delivers to a mobile number rather than requiring a Google Workspace account</strong>. External contractors, freelancers, agency partners, and clients can be added to the employee database with their WhatsApp number and relevant contact information, and will receive task assignment notifications and reminders via WhatsApp exactly as internal team members do.</p>
+            <p>The primary difference for external assignees is dashboard access: internal Google Workspace users can be given view or edit access to the Google Sheets dashboard through standard Workspace sharing, while external contacts cannot access the Google Sheets unless granted external sharing permission — which some organisations prefer to restrict for data privacy reasons. For external assignees who need task status visibility, the system can be configured to send status update notifications via WhatsApp rather than relying on dashboard access — providing the external party with regular WhatsApp updates on their assigned tasks without requiring access to the internal Google Sheets. For clients who need a view of their own tasks, a filtered read-only Google Sheets view can be shared with edit access restricted to the status column only, enabling the client to update task status from their side without accessing other organisational task data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system handle recurring tasks — tasks that repeat on a daily, weekly, or monthly schedule?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Recurring task management is a configurable feature that Apps Script handles through a dedicated recurring task generation function</strong>. Recurring tasks are defined in a separate recurring tasks configuration sheet — specifying the task template (title, description, assignee, department, priority), the recurrence frequency (daily, weekly on specific days, monthly on specific dates, or custom intervals), and the recurrence end date or "indefinite" designation.</p>
+            <p>The Apps Script recurring task function runs on a scheduled trigger — either daily at a configured time or on the specific recurrence schedule — and creates new task records in the main task database for each recurring task due that day. The new task record is populated from the template, assigned the correct due date based on the recurrence schedule, and triggers the same assignment notification WhatsApp message as any manually created task. If the previous instance of a recurring task is still marked as incomplete when the new instance is created, the system can be configured to flag the conflict — alerting the manager that a previous cycle was not completed before the new one begins. This handles the most common recurring task scenarios: daily standup preparation, weekly report submissions, monthly compliance reviews, and any other regularly scheduled deliverable that follows a predictable pattern.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system support multiple managers with different teams — and can managers only see their own team's tasks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports a full multi-manager organisational hierarchy with configurable visibility controls per user role</strong>. The employee database maintains the manager relationship for every team member, and this relationship drives both the escalation notification path (overdue tasks escalate to the correct manager) and the automated manager report content (each manager receives a report showing only their direct reports' tasks).</p>
+            <p>Dashboard visibility control is implemented using Google Sheets' protected ranges and filter views — each manager can have a personalised filter view that displays only their department's tasks by default, while having the option to expand to full organisational view if their role permits it. Senior management and administrators can have unfiltered access to the complete task database and consolidated reporting across all departments. The automated WhatsApp manager reports are department-filtered by default — Marketing's manager receives a report of Marketing tasks, Operations' manager receives Operations tasks — with an executive summary report available to senior leadership that aggregates across all departments. For organisations with matrix management structures where team members report to multiple managers on different task types, the employee database can be extended with a secondary manager field, and escalation routing can be configured to notify the relevant manager based on task category.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the Google Apps Script execution limit is hit for large organisations with high task volumes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Google Apps Script has quota limits per Google Workspace plan — primarily the daily execution time limit (6 minutes per script execution for time-driven triggers on Business plans, and 30 minutes for Workspace plans with increased quotas) and the daily trigger execution limit</strong>. For most organisations with typical task management volumes, these limits are well within operational requirements. However, for large enterprise deployments with hundreds of active tasks, multiple daily overdue scans, and high notification volumes, quota management is part of the implementation design.</p>
+            <p>Several architectural patterns address quota concerns for high-volume deployments: batch processing (overdue detection processes tasks in batches within a single execution rather than one per trigger), execution time optimisation (Apps Script functions are written to minimise unnecessary Sheets API calls by reading data once into memory and processing in arrays), distributed trigger scheduling (multiple time-driven triggers spread across different execution windows rather than a single large scan), and WhatsApp API call batching (notifications are queued and sent in groups rather than individual API calls). For organisations genuinely exceeding Google Workspace quota limits — typically organisations with 1,000+ active tasks and 200+ team members — we assess whether the Apps Script architecture remains appropriate or whether a Make.com or n8n integration layer is preferable for the automation component, while retaining Google Sheets as the database and dashboard layer. We assess quota requirements during the discovery call using the organisation's expected task volume and notification frequency.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 450% ROI calculated — and how does the value model compare for organisations replacing paid PM tools versus those with no current tool?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 450% ROI reflects two distinct value streams depending on the client's current situation — and the ROI is substantially higher for organisations replacing paid PM software than for organisations building task management capability from scratch</strong>.</p>
+            <p>For organisations replacing paid PM tools: the primary value driver is the licence cost elimination. An organisation with 100 users on Monday.com's Standard plan at $12/user/month pays $14,400 annually; at the Pro tier, $28,800. A 200-user enterprise on Asana Business at $24.99/user/month pays $59,976 annually. For large enterprises on enterprise tiers with custom pricing, PM software costs routinely exceed $100,000–$200,000 annually. Replacing this with an Apps Script implementation that runs on included Google Workspace infrastructure produces the licence cost recovery as a direct financial return — typically recovering the implementation cost within 3–4 months and delivering a multi-year ROI that compounds with each year of licence savings. For organisations building from scratch (no current PM tool or using manual methods): the value driver is the 75% reduction in manual tracking time and 80% reduction in missed deadlines. A 20-person team spending 3 hours weekly each on task tracking and status chasing recovers 60 person-hours weekly at their hourly rate — at $40/hour, that's $124,800 annually in productive capacity recovered. The missed-deadline cost reduction — preventing the rework, client relationship damage, and revenue impact of deadline failures — adds a less-easily-quantified but often significant additional value. We model the specific ROI for each scenario during the discovery call using the organisation's current PM tool costs, team size, and task management overhead estimates.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  24,800 annually in productive capacity recovered. The missed-deadline cost reduction — preventing the rework, client relationship damage, and revenue impact of deadline failures — adds a less-easily-quantified but often significant additional value. We model the specific ROI for each scenario during the discovery call using the organisation's current PM tool costs, team size, and task management overhead estimates.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

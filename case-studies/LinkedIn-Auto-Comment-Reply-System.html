@@ -342,90 +342,88 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Will LinkedIn detect that my replies are automated and penalize my account?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Will LinkedIn detect that my replies are automated and penalize my account?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The system is designed specifically to avoid automation detection through natural timing, rate-limited API usage, and human-like behavior patterns</strong> — the randomized 1–10 second delay before each reply is the primary safeguard.</p>
             <p>LinkedIn's detection systems flag accounts that post replies at machine-speed (sub-second intervals) or in unnaturally consistent batches. Our randomized delay engine ensures each reply arrives at a timing pattern indistinguishable from a human actively monitoring their notifications. We also respect LinkedIn's official API rate limits and use the approved comment reply endpoint rather than any scraping or unofficial method.</p>
             <p>That said, LinkedIn's terms of service evolve. We recommend keeping reply volumes within the range that a human could realistically achieve — typically no more than 200–300 replies per day per account. If you're publishing viral content that generates higher volumes, we'll configure appropriate batching logic during setup.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can I configure different automated replies for different trigger keywords?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I configure different automated replies for different trigger keywords?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the Google Sheets dashboard supports keyword-based reply routing, so you can send a different message depending on what the commenter wrote</strong>, such as "book" for a resource link, "demo" for a calendar link, or "free" for a landing page URL.</p>
             <p>During setup, we configure the filter logic in Make.com to match comment text against your defined keyword list and route to the corresponding reply template in your Google Sheets. You can have as many keyword-reply pairs as needed, and updating them requires only editing the spreadsheet — no changes to the Make.com scenario required after the initial build.</p>
             <p>For posts where you want a universal reply regardless of what the commenter said (e.g., simply acknowledging everyone who engaged), a default reply template handles all non-keyword comments. You can mix both approaches on the same post.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens to comments posted while Make.com is between scheduled runs?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens to comments posted while Make.com is between scheduled runs?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>No comment is permanently missed — every Make.com run fetches all comments since the last processed interaction, so any comments posted between cycles are captured and replied to on the next run</strong>.</p>
             <p>The monitoring interval is configurable based on your plan and needs. Most clients run the scenario on a 1–5 minute cycle for near-real-time responses. If you're on a tighter Make.com operation budget, a 15-minute cycle still delivers replies that are meaningfully faster than any manual workflow. For high-volume days — post-viral content, conference mentions, product launches — we can temporarily shorten the interval to maximize responsiveness.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How do I turn off the auto-reply for a specific post without breaking the whole system?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do I turn off the auto-reply for a specific post without breaking the whole system?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>You simply change the status dropdown for that post in Google Sheets from "Active" to "Inactive" — the Make.com scenario reads this field at the start of every run and skips any post not marked Active</strong>.</p>
             <p>This gives you post-level control without touching any automation settings. It takes under five seconds, works from any device with Google Sheets access, and takes effect on the very next Make.com run cycle. You can re-activate a post at any time with the same toggle — useful for time-limited campaigns, product pivots, or when you want to be personally active in the comments yourself.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the same commenter receive a reply on multiple different posts?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the same commenter receive a reply on multiple different posts?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the duplicate prevention logic is scoped per post, not per commenter across your entire LinkedIn activity</strong>. If the same person comments on three different posts, they receive one reply on each post — which is exactly the expected and natural behavior.</p>
             <p>The system prevents the same commenter from receiving two replies on the same post. It does not suppress replies across different posts, which would create the inverse problem of engaged followers noticing that their comments on different pieces of your content go unanswered.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a content creator or marketer realistically expect from this system?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a content creator or marketer realistically expect from this system?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a creator or team spending 2–3 hours daily on LinkedIn comment management, realistic first-year ROI exceeds 500%</strong> — with savings concentrated in three areas: time recaptured from manual replies, off-hours engagements captured that were previously lost, and improved lead conversion from faster response times.</p>
             <p>The math is straightforward: at a conservative $50/hour equivalent for a marketer's time, 2 hours daily × 20 working days = $2,000/month in recovered capacity. Add the conversion uplift from 100% response rate versus the 60–70% achievable manually, and for any creator monetizing their LinkedIn audience, the downstream value in leads and sales typically dwarfs the direct labor savings. Our clients in course sales and consulting consistently report the system pays for itself within the first week of deployment on a single high-performing post.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

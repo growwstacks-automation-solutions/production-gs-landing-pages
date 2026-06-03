@@ -386,7 +386,22 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle multiple reward tiers — different PayPal amounts at different programme checkpoints?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — multi-tier reward structures with different payout amounts at different programme stages are a standard configuration, implemented by mapping the programme checkpoint identifier from the ManyChat webhook payload to a reward amount lookup table in Make.com</strong>.</p>
+            <p>Each ManyChat External Request webhook that triggers the automation includes a checkpoint identifier in the payload — a value like "stage_1_complete," "stage_2_complete," or "programme_complete" that identifies which milestone the member has reached. Make.com's router reads this identifier and maps it to the configured payout amount for that stage: Stage 1 might pay $5, Stage 2 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -468,6 +483,155 @@
         </div>
       </div>
 
+    </div>
+  0, and Programme Completion $25 — or any amounts the client configures. The payout amount mapping is maintained in Make.com's scenario variables or a data store, making it easy to adjust reward amounts without rebuilding the workflow. Multi-tier structures can also include non-monetary rewards at certain stages — for example, a Stage 1 trigger sends a Klaviyo email with a discount code rather than a PayPal payout, while Stage 3 triggers the monetary reward. The routing logic handles these mixed-reward structures by checking the checkpoint identifier and activating the appropriate reward branch (PayPal payout, Klaviyo discount code, both, or neither) based on the stage configuration. We design the complete reward tier structure during the implementation scoping phase and build the routing logic accordingly.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system prevent a member from claiming the same reward twice if they trigger the webhook multiple times?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Duplicate payout prevention is implemented through a two-layer guard: ManyChat custom field state checking at the conversation flow level, and idempotency key checking at the Make.com PayPal processing level</strong>.</p>
+            <p>The first layer: before ManyChat fires the External Request webhook for a reward checkpoint, the conversation flow checks the member's "Payment Sent" custom field — which is updated to "Yes" by the automation after a successful PayPal payout. If Payment Sent is already "Yes," ManyChat routes the member to a different conversation branch that confirms their reward was already processed rather than re-triggering the webhook. This prevents the webhook from firing in the first place for members who have already been paid. The second layer operates at the Make.com level for cases where the webhook fires despite the custom field check — network delays, ManyChat flow logic gaps, or any other edge case that causes a duplicate trigger. Make.com extracts the member's ManyChat subscriber ID and the programme checkpoint from the payload and constructs a unique idempotency key (e.g., "subscriber_12345_stage_2"). Before calling the PayPal API, Make.com checks a data store for this idempotency key — if it already exists (recorded from a previous successful payout for this member at this stage), the PayPal call is skipped and the automation logs a "duplicate prevented" event. If the key doesn't exist, the payout proceeds and the key is recorded in the data store. This two-layer approach makes duplicate payouts structurally impossible under all normal operating conditions.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system work with Instagram DM automation instead of ManyChat — or is it ManyChat-specific?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The downstream automation — ChatGPT analysis, PayPal rewards, Klaviyo sync, Slack notifications — is platform-agnostic and can be connected to any chatbot or conversational platform that supports outgoing webhooks. ManyChat is the reference implementation because it is the most widely used platform for e-commerce community programmes, but the same architecture works with alternative platforms</strong>.</p>
+            <p>Platforms that support outgoing webhooks and can replace ManyChat in this architecture include: Manychat competitors like MobileMonkey or Chatfuel (both have similar External Request functionality); custom chatbot implementations built on Dialogflow, Botpress, or similar frameworks; Intercom (for customer success programme applications); Typeform or Tally (for form-based rather than chat-based programme applications); and direct Meta Business Suite Instagram automation for Instagram DM-based programmes. For each alternative platform, the webhook payload structure differs from ManyChat's — requiring the Make.com webhook module's data extraction logic to be adapted to the specific platform's output format. The downstream branches (PayPal, Klaviyo, Slack, state management) remain identical regardless of the trigger platform. If the client is using a platform other than ManyChat for their community programme engagement, we assess the platform's webhook capabilities during the discovery call and confirm the architecture is viable before scoping the implementation.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if PayPal rejects a payout — an invalid PayPal email or an account restriction?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>PayPal payout failures are handled by a dedicated error branch in the Make.com scenario that captures the failure reason, notifies the team on Slack with the member's details and the PayPal error code, and sends the member a follow-up message in ManyChat explaining that their reward is being processed and a team member will follow up</strong>.</p>
+            <p>The PayPal error handling branch activates when the PayPal Payouts API returns a non-success status: common failure reasons include RECEIVER_UNREGISTERED (the email address is not associated with a PayPal account), RECEIVING_LIMIT_EXCEEDED (the recipient has hit their PayPal receiving limit), SENDER_STATE_RESTRICTED (the sending account has a temporary restriction), and RISK_DECLINE (PayPal's risk system has flagged the transaction). For each error type, the Slack notification includes the specific error code, the member's name and the PayPal email they provided, and a suggested resolution action (for RECEIVER_UNREGISTERED: ask the member to provide a valid PayPal email or offer an alternative reward method; for RISK_DECLINE: contact PayPal support). ManyChat receives a message sending instruction from the error branch: "Hi [First Name], we're processing your reward and will confirm delivery within 24 hours — our team will be in touch shortly." This member communication prevents the member from experiencing a silent failure with no acknowledgement. The Make.com scenario logs all payment failures with timestamps and error details, and the ManyChat custom field is updated with a "Payment Failed" status and the failure reason for customer service reference. Failed payment rows are reviewed by the team from the Slack error channel and resolved manually within the configured SLA window.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can ChatGPT's analysis be customised to score members on criteria specific to our programme — product feedback quality, UGC content rating, or ambassador suitability?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the ChatGPT analysis prompt is fully customisable to the client's programme criteria, and building programme-specific scoring rubrics is a core part of the implementation prompt engineering process</strong>. The structured JSON output format that ChatGPT returns can include any scoring dimensions the client requires.</p>
+            <p>For a product testing programme: ChatGPT can score feedback quality (1–10) based on specificity, actionability, and depth of the member's product observations — with the prompt including example high-quality and low-quality feedback responses to calibrate the scoring. For a UGC or brand ambassador programme: ChatGPT can assess content quality, brand alignment, and audience fit based on the member's social media profile description and content samples provided in the conversation. For a community sampling programme: ChatGPT can score member suitability for specific product categories based on their demographic and lifestyle responses. These custom scores are returned in the ChatGPT JSON output and used for three purposes: routing decisions (members scoring above a threshold proceed to the reward branch; members below threshold receive a "thank you for your interest" branch instead), Klaviyo custom properties (the score is stored in the member's Klaviyo profile for campaign segmentation — high-quality reviewers receive a different email sequence than low-quality ones), and Slack notification enrichment (the team sees the AI score alongside the summary, helping them prioritise which members to engage with for deeper brand ambassador relationships). Programme-specific scoring criteria are defined during the implementation scoping phase and encoded into the ChatGPT system prompt with rubric examples, then tested against 20–30 sample responses before production deployment to calibrate scoring consistency.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 520% ROI calculated for a complex 8-week implementation — and what is the value contribution from Klaviyo member capture versus the operational labour savings?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 520% ROI for this implementation combines three value streams: operational labour recovery from eliminated manual programme management, revenue contribution from the Klaviyo marketing database quality improvement (100% vs 40% capture rate), and programme performance improvement from instant reward delivery improving completion rates</strong>.</p>
+            <p>Labour savings: a team member spending 20 hours weekly on manual programme management at $40/hour effective rate recovers $41,600 annually. With 90% automation, the recovery is $37,440 annually — the primary labour savings component. Klaviyo capture improvement: upgrading from 40% manual capture to 100% automated capture for a programme enrolling 500 members per month means an additional 300 members per month added to the marketing database. At a 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system handle multiple reward tiers — different PayPal amounts at different programme checkpoints?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — multi-tier reward structures with different payout amounts at different programme stages are a standard configuration, implemented by mapping the programme checkpoint identifier from the ManyChat webhook payload to a reward amount lookup table in Make.com</strong>.</p>
+            <p>Each ManyChat External Request webhook that triggers the automation includes a checkpoint identifier in the payload — a value like "stage_1_complete," "stage_2_complete," or "programme_complete" that identifies which milestone the member has reached. Make.com's router reads this identifier and maps it to the configured payout amount for that stage: Stage 1 might pay $5, Stage 2 $10, and Programme Completion $25 — or any amounts the client configures. The payout amount mapping is maintained in Make.com's scenario variables or a data store, making it easy to adjust reward amounts without rebuilding the workflow. Multi-tier structures can also include non-monetary rewards at certain stages — for example, a Stage 1 trigger sends a Klaviyo email with a discount code rather than a PayPal payout, while Stage 3 triggers the monetary reward. The routing logic handles these mixed-reward structures by checking the checkpoint identifier and activating the appropriate reward branch (PayPal payout, Klaviyo discount code, both, or neither) based on the stage configuration. We design the complete reward tier structure during the implementation scoping phase and build the routing logic accordingly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system prevent a member from claiming the same reward twice if they trigger the webhook multiple times?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Duplicate payout prevention is implemented through a two-layer guard: ManyChat custom field state checking at the conversation flow level, and idempotency key checking at the Make.com PayPal processing level</strong>.</p>
+            <p>The first layer: before ManyChat fires the External Request webhook for a reward checkpoint, the conversation flow checks the member's "Payment Sent" custom field — which is updated to "Yes" by the automation after a successful PayPal payout. If Payment Sent is already "Yes," ManyChat routes the member to a different conversation branch that confirms their reward was already processed rather than re-triggering the webhook. This prevents the webhook from firing in the first place for members who have already been paid. The second layer operates at the Make.com level for cases where the webhook fires despite the custom field check — network delays, ManyChat flow logic gaps, or any other edge case that causes a duplicate trigger. Make.com extracts the member's ManyChat subscriber ID and the programme checkpoint from the payload and constructs a unique idempotency key (e.g., "subscriber_12345_stage_2"). Before calling the PayPal API, Make.com checks a data store for this idempotency key — if it already exists (recorded from a previous successful payout for this member at this stage), the PayPal call is skipped and the automation logs a "duplicate prevented" event. If the key doesn't exist, the payout proceeds and the key is recorded in the data store. This two-layer approach makes duplicate payouts structurally impossible under all normal operating conditions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system work with Instagram DM automation instead of ManyChat — or is it ManyChat-specific?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The downstream automation — ChatGPT analysis, PayPal rewards, Klaviyo sync, Slack notifications — is platform-agnostic and can be connected to any chatbot or conversational platform that supports outgoing webhooks. ManyChat is the reference implementation because it is the most widely used platform for e-commerce community programmes, but the same architecture works with alternative platforms</strong>.</p>
+            <p>Platforms that support outgoing webhooks and can replace ManyChat in this architecture include: Manychat competitors like MobileMonkey or Chatfuel (both have similar External Request functionality); custom chatbot implementations built on Dialogflow, Botpress, or similar frameworks; Intercom (for customer success programme applications); Typeform or Tally (for form-based rather than chat-based programme applications); and direct Meta Business Suite Instagram automation for Instagram DM-based programmes. For each alternative platform, the webhook payload structure differs from ManyChat's — requiring the Make.com webhook module's data extraction logic to be adapted to the specific platform's output format. The downstream branches (PayPal, Klaviyo, Slack, state management) remain identical regardless of the trigger platform. If the client is using a platform other than ManyChat for their community programme engagement, we assess the platform's webhook capabilities during the discovery call and confirm the architecture is viable before scoping the implementation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if PayPal rejects a payout — an invalid PayPal email or an account restriction?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>PayPal payout failures are handled by a dedicated error branch in the Make.com scenario that captures the failure reason, notifies the team on Slack with the member's details and the PayPal error code, and sends the member a follow-up message in ManyChat explaining that their reward is being processed and a team member will follow up</strong>.</p>
+            <p>The PayPal error handling branch activates when the PayPal Payouts API returns a non-success status: common failure reasons include RECEIVER_UNREGISTERED (the email address is not associated with a PayPal account), RECEIVING_LIMIT_EXCEEDED (the recipient has hit their PayPal receiving limit), SENDER_STATE_RESTRICTED (the sending account has a temporary restriction), and RISK_DECLINE (PayPal's risk system has flagged the transaction). For each error type, the Slack notification includes the specific error code, the member's name and the PayPal email they provided, and a suggested resolution action (for RECEIVER_UNREGISTERED: ask the member to provide a valid PayPal email or offer an alternative reward method; for RISK_DECLINE: contact PayPal support). ManyChat receives a message sending instruction from the error branch: "Hi [First Name], we're processing your reward and will confirm delivery within 24 hours — our team will be in touch shortly." This member communication prevents the member from experiencing a silent failure with no acknowledgement. The Make.com scenario logs all payment failures with timestamps and error details, and the ManyChat custom field is updated with a "Payment Failed" status and the failure reason for customer service reference. Failed payment rows are reviewed by the team from the Slack error channel and resolved manually within the configured SLA window.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can ChatGPT's analysis be customised to score members on criteria specific to our programme — product feedback quality, UGC content rating, or ambassador suitability?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the ChatGPT analysis prompt is fully customisable to the client's programme criteria, and building programme-specific scoring rubrics is a core part of the implementation prompt engineering process</strong>. The structured JSON output format that ChatGPT returns can include any scoring dimensions the client requires.</p>
+            <p>For a product testing programme: ChatGPT can score feedback quality (1–10) based on specificity, actionability, and depth of the member's product observations — with the prompt including example high-quality and low-quality feedback responses to calibrate the scoring. For a UGC or brand ambassador programme: ChatGPT can assess content quality, brand alignment, and audience fit based on the member's social media profile description and content samples provided in the conversation. For a community sampling programme: ChatGPT can score member suitability for specific product categories based on their demographic and lifestyle responses. These custom scores are returned in the ChatGPT JSON output and used for three purposes: routing decisions (members scoring above a threshold proceed to the reward branch; members below threshold receive a "thank you for your interest" branch instead), Klaviyo custom properties (the score is stored in the member's Klaviyo profile for campaign segmentation — high-quality reviewers receive a different email sequence than low-quality ones), and Slack notification enrichment (the team sees the AI score alongside the summary, helping them prioritise which members to engage with for deeper brand ambassador relationships). Programme-specific scoring criteria are defined during the implementation scoping phase and encoded into the ChatGPT system prompt with rubric examples, then tested against 20–30 sample responses before production deployment to calibrate scoring consistency.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 520% ROI calculated for a complex 8-week implementation — and what is the value contribution from Klaviyo member capture versus the operational labour savings?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 520% ROI for this implementation combines three value streams: operational labour recovery from eliminated manual programme management, revenue contribution from the Klaviyo marketing database quality improvement (100% vs 40% capture rate), and programme performance improvement from instant reward delivery improving completion rates</strong>.</p>
+            <p>Labour savings: a team member spending 20 hours weekly on manual programme management at $40/hour effective rate recovers $41,600 annually. With 90% automation, the recovery is $37,440 annually — the primary labour savings component. Klaviyo capture improvement: upgrading from 40% manual capture to 100% automated capture for a programme enrolling 500 members per month means an additional 300 members per month added to the marketing database. At a $10 lifetime value per Klaviyo subscriber for subsequent email and SMS campaigns, that's $3,000 monthly in incremental marketing database value — $36,000 annually. The 300% marketing campaign performance improvement cited in the results comes from this combination of better data completeness and validated phone numbers enabling SMS channels that were previously non-functional. Programme completion rate improvement: the 85% increase in completion rates from instant reward delivery directly increases the number of members completing all programme stages — for a programme where Stage 3 completion generates $20 in product review or ambassador value per member, scaling completion rates from 30% to 55% across 500 monthly enrollees produces meaningful incremental programme ROI. Combined, the three value streams significantly exceed the 8-week implementation cost, producing the 520% ROI — with the Klaviyo capture improvement and programme performance gains compounding month-over-month as the programme scales.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  0 lifetime value per Klaviyo subscriber for subsequent email and SMS campaigns, that's $3,000 monthly in incremental marketing database value — $36,000 annually. The 300% marketing campaign performance improvement cited in the results comes from this combination of better data completeness and validated phone numbers enabling SMS channels that were previously non-functional. Programme completion rate improvement: the 85% increase in completion rates from instant reward delivery directly increases the number of members completing all programme stages — for a programme where Stage 3 completion generates $20 in product review or ambassador value per member, scaling completion rates from 30% to 55% across 500 monthly enrollees produces meaningful incremental programme ROI. Combined, the three value streams significantly exceed the 8-week implementation cost, producing the 520% ROI — with the Klaviyo capture improvement and programme performance gains compounding month-over-month as the programme scales.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

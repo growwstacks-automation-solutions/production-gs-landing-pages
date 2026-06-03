@@ -378,7 +378,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle STOP replies — what happens when a recipient opts out?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Twilio handles STOP reply compliance at the carrier level automatically — when a recipient texts STOP to the campaign number, Twilio immediately blocks all future messages to that number without any action required from the Apps Script or the team</strong>. This is a built-in Twilio behaviour that applies regardless of what the Apps Script attempts to send — even if the daily trigger selects an opted-out number for a message, Twilio's suppression list prevents delivery.</p>
+            <p>The Apps Script webhook handler is configured to receive Twilio's unsubscribe event callback when a STOP reply is processed — updating the recipient's Status column in Google Sheets from Active to "Opted Out" to reflect the opt-out in the campaign's own records. This status change immediately prevents the recipient from being selected by the daily trigger in future runs (the trigger only processes Active recipients). The opt-out record in the recipient sheet also serves as the internal suppression list — ensuring the number is not re-enrolled in future campaigns unless the recipient explicitly texts START to re-subscribe. For compliance documentation purposes, the opt-out timestamp and opt-out method are logged in the message log alongside the standard send records, providing a complete audit trail of consent management events. HELP reply handling (Twilio automatically responds with basic service information) is similarly managed at the Twilio level without requiring Apps Script configuration.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the delay intervals be different for each stage — or is the same delay applied between every message?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — each stage transition can have a distinct delay interval, configured as an array in the Apps Script constants rather than a single global value applied uniformly across all stages</strong>. This is one of the key advantages of a custom Apps Script implementation over simplified SMS tools: the delay logic is fully programmable rather than constrained to a fixed uniform cadence.</p>
+            <p>A typical variable-cadence configuration might look like this: Template 1 sends immediately on Day 0 at enrollment. Template 2 sends 2 days later (Day 2). Template 3 sends 2 days after that (Day 4). Templates 4 and 5 send 3 days apart (Day 7 and Day 10). Templates 6 through 8 send weekly (Day 17, Day 24, Day 31). Templates 9 and 10 send bi-weekly (Day 45, Day 59). This aggressive-early, gradual-later pattern matches the typical lead engagement curve: newly enrolled leads are most receptive and should be contacted more frequently, while leads that haven't converted after the first few touches should be maintained with lower-frequency contact to avoid opt-out fatigue. The delay array is defined in the Apps Script configuration section — a single array of 10 values where each value represents the number of days from the previous send. Any of the 10 values can be changed by updating the Apps Script configuration, and changes take effect for all future sends of that transition without affecting recipients who have already passed that stage.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system personalise messages with the recipient's name or other individual data fields?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — message personalisation using recipient data fields is a standard feature of the Apps Script implementation, using template variable substitution to inject individual recipient data into the template text before sending</strong>. The personalisation approach uses placeholder syntax in the template text — for example, "Hi {FirstName}, just wanted to follow up on…" — which the sendMessage() function replaces with the actual recipient data values from the recipient sheet before passing the text to the Twilio API.</p>
+            <p>Any column in the recipient sheet can be used as a personalisation variable: first name, company name, product of interest, last purchase date, sales rep name, or any other data field relevant to the campaign. Multiple variables can be used in a single template — "Hi {FirstName}, we saw you were interested in {ProductCategory} — we have a special offer for {CompanyName} customers this week." The variable substitution is handled by the Apps Script sendMessage() function using JavaScript's string replace method, which processes the template text and substitutes all instances of each placeholder with the corresponding recipient sheet value before sending. The template itself is stored with the placeholder syntax in the template sheet — making it easy to see and edit the personalisation logic without reading code. For campaigns with highly variable personalisation requirements (where different recipients in the same sequence receive substantively different messages based on their data), a conditional personalisation extension can be configured that selects between multiple template variants based on a recipient segment column value.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle inbound SMS replies — routing customer responses to the right team member or triggering a different message sequence?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — inbound SMS reply handling is a common extension to the base outbound drip system, using Twilio's inbound webhook (separate from the delivery status webhook) to receive and process replies from campaign recipients</strong>. Twilio's messaging service can be configured to forward all inbound SMS to a specific phone number or email for manual review, or to a second Apps Script web app endpoint for automated processing.</p>
+            <p>The automated inbound reply processing extension works as follows: when a recipient replies to a campaign message, Twilio's inbound webhook delivers the reply content, sender number, and timestamp to the Apps Script inbound handler. The handler looks up the sender number in the recipient sheet to identify which campaign recipient replied and what stage they're currently at in the sequence. Based on the reply content, the handler can: flag the recipient row with a "Reply Received" indicator and send a Slack or email notification to the assigned sales rep with the reply context; pause the automated sequence for this recipient (preventing further automated sends while the human rep engages manually); trigger a different message branch (for example, if the recipient replies "YES" to a call-to-action in one of the templates, the system branches them into a separate sequence for interested prospects); or send an immediate automated acknowledgment reply via Twilio if a brief hold message is appropriate. The reply routing logic is configured during the extension implementation based on the team's sales workflow — which replies should trigger human handoff, which should trigger sequence branching, and which should receive automated acknowledgment.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system send MMS (picture messages) in addition to SMS text messages?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — Twilio supports MMS (multimedia message service) through the same API endpoint used for SMS, with the addition of a MediaUrl parameter containing the URL of the image to include in the message</strong>. The Apps Script sendMessage() function can be extended to check a media URL column in the template sheet and include the image URL in the Twilio API call when one is present.</p>
+            <p>The MMS implementation in the template sheet adds an optional Media URL column alongside each template's text content. For templates that should include an image — a product photo, a promotional graphic, an event flyer — the image is hosted at a publicly accessible URL (Google Drive with sharing set to Anyone with the link, or a cloud storage bucket) and the URL is entered in the Media URL column for that template. The sendMessage() function checks whether the current template's Media URL cell contains a value and, if so, includes it in the Twilio API request's mediaUrl field. Twilio handles the MMS delivery to carriers that support it and gracefully falls back to text-only for recipients on carriers or devices that don't support MMS. Important considerations: MMS messages cost more than SMS in Twilio's pricing (typically $0.02 vs $0.0079 per message in the US), and MMS delivery is only available on US and Canadian long code numbers (not short codes or international numbers without specific MMS-enabled routing). For campaigns mixing text-only and image-inclusive messages at different stages, the Media URL column approach allows per-template control of whether each stage is SMS or MMS — enabling early stages to use MMS for higher visual impact and later stages to revert to SMS for cost efficiency.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 380% ROI calculated — and what does the payback period look like relative to the 4-week implementation timeline?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 380% ROI primarily reflects the labour cost recovered from eliminating the 20 hours weekly of manual SMS campaign management — with the revenue contribution of improved conversion rates from systematic nurture providing additional value that varies by the client's deal size and lead volume</strong>.</p>
+            <p>The labour savings calculation: a marketing or sales operations team member spending 20 hours weekly on manual SMS scheduling, delivery monitoring, and data management at $35/hour effective rate recovers $36,400 annually. Even at a conservative 50% attribution (acknowledging that some of that time would be redirected to other tasks rather than purely eliminated), the annual labour recovery is 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -460,6 +535,12 @@
         </div>
       </div>
 
+    </div>
+  8,200. Adding the platform subscription savings versus a dedicated SMS marketing platform ($200–$500/month depending on list size and features = $2,400–$6,000 annually) brings the total annual value to $20,600–$24,200. Against the 4-week implementation cost, the payback period is typically 2–4 months — making this one of the faster-payback implementations in the portfolio relative to its complexity tier. The revenue component from improved conversion rates (the 80% increase in conversion rates from systematic 10-stage nurture versus sporadic manual outreach) is business-specific: for a B2B team closing $20,000 ACV deals where systematic nurture converts 5 additional leads per quarter, the incremental annual revenue from the nurture improvement alone is $400,000 — dwarfing the labour savings component. We model the specific value calculation using the client's lead volume, close rate, and ACV during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

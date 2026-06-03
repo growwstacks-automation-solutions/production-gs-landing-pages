@@ -351,88 +351,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system handle subscriptions from platforms other than Shopify?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle subscriptions from platforms other than Shopify?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the Google Sheets database layer makes the system platform-agnostic at the subscription data level</strong>. Shopify is the default integration because it's the most common e-commerce platform for software subscription sales, but the system's renewal logic runs entirely against the Google Sheets database — not directly against Shopify. Any subscription data source that can populate Google Sheets can serve as the input layer.</p>
             <p>Supported alternatives include WooCommerce (via Make.com's WooCommerce integration or webhook export), Stripe subscription data (via Stripe webhook events), PayPal subscriptions, custom billing systems with CSV export, and any platform with an API that Make.com can query. For businesses managing subscriptions across multiple platforms — some through Shopify, some through a separate billing system — the Google Sheets database can aggregate data from all sources, with each row tagged by source platform for tracking purposes. We map the specific data sources during the discovery session and confirm the extraction approach for each platform in use.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens when a customer renews after the 30-day reminder but before the 14-day reminder — does the system send the 14-day email anyway?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens when a customer renews after the 30-day reminder but before the 14-day reminder — does the system send the 14-day email anyway?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>No — the system includes renewal detection logic that updates the subscription status in Google Sheets when a renewal order is received, and subsequent reminder stages check this status before sending</strong>. This is one of the most important operational details in the implementation, because sending a renewal reminder to a customer who has already renewed creates a poor customer experience and undermines trust in the business's systems.</p>
             <p>The renewal detection works in one of two ways depending on the integration setup: for Shopify customers, a new subscription order for the same product triggers a status update in the Google Sheets database via Make.com's Shopify integration — updating the subscription record's status to "Renewed" and computing a new expiration date for the next term. The daily renewal scan checks this status field before routing any row to the reminder branches, and rows with "Renewed" status are skipped entirely. For businesses where renewal orders come through a different channel, the status field can be manually updated or updated via a separate integration. We assess the renewal order flow during implementation and configure the appropriate status update mechanism to ensure no already-renewed customer receives a subsequent reminder.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the reminder email templates be customised per product category or customer segment?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the reminder email templates be customised per product category or customer segment?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the template routing logic supports per-product and per-segment email variants, and this capability is commonly deployed for businesses with meaningfully different product categories that warrant distinct communication approaches</strong>. The standard implementation uses a single template per reminder stage (30-day, 14-day, 3-day) that personalises the product name and customer name via variable substitution. The extended implementation adds conditional routing based on product category or customer tier before the Gmail send step.</p>
             <p>Common variant configurations include: enterprise product vs individual licence templates (different value messaging and renewal link structures), by-industry templates where the renewal email references the customer's specific use case, premium vs standard tier templates with different incentive offers (e.g., an early renewal discount in the 30-day email for premium customers), and geography-specific templates for businesses with customers across different regions or languages. Each variant requires its own template development during implementation but uses the same routing infrastructure — adding a segment classification column to the Google Sheets database and a routing condition in the Make.com workflow before the send step. We scope the variants during the requirements phase and include them in the implementation timeline.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system send SMS reminders in addition to email for the 3-day urgent window?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system send SMS reminders in addition to email for the 3-day urgent window?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — SMS delivery is a supported extension for the 3-day urgent reminder stage, and for subscription businesses where customers have provided mobile numbers, it consistently improves last-minute renewal conversion above email-only delivery</strong>. The SMS extension adds a Twilio module to the 3-day branch of the Make.com workflow, sending a concise renewal prompt to the customer's mobile number alongside (or instead of, depending on preference) the email reminder.</p>
             <p>The SMS message is kept under 160 characters for single-segment delivery — typically a direct, urgent notification with the product name, expiration date, and a shortened renewal URL. SMS delivery requires that mobile numbers are captured in the subscription database (from Shopify order data or a supplementary field), and that appropriate SMS consent has been obtained from customers under the applicable regulations (TCPA in the US, similar requirements in other jurisdictions). For businesses where mobile numbers are available and consent is documented, adding the SMS extension to the 3-day stage is a straightforward workflow addition during implementation or as a post-launch enhancement. We assess mobile data availability and consent documentation during the discovery call.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is the discontinued product substitution database maintained as the product catalogue changes?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is the discontinued product substitution database maintained as the product catalogue changes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The discontinued product substitution mapping is maintained in a Google Sheets tab that the client's team can update directly — no code changes, no developer involvement, no Make.com workflow modifications required when products are discontinued or substitution recommendations change</strong>. This is intentional: product catalogue changes happen regularly, and the architecture is designed to put that control in the business team's hands.</p>
             <p>Adding a new discontinued product to the substitution table requires adding one row to the mapping sheet: the discontinued product's SKU or name, the recommended substitute's SKU, name, description, and renewal URL. From the next daily scan onwards, any subscription expiring for that discontinued product will automatically include the substitution recommendation in its renewal email. Removing a product from the discontinued list (if a product is temporarily unavailable but returns) simply requires deleting its row from the mapping sheet. We provide documentation and a brief training session on maintaining the substitution database during the deployment handover, and optionally configure a Make.com notification to alert the team if the substitution lookup finds a discontinued product SKU without a matching substitute entry — preventing any expiring discontinued subscriptions from accidentally receiving the standard template rather than the substitution variant.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is 520% ROI calculated — and how does the revenue protection model work at different subscription volumes?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 520% ROI calculated — and how does the revenue protection model work at different subscription volumes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 520% ROI reflects the combined value of labour savings from eliminated manual tracking and the incremental renewal revenue captured through systematic 30/14/3-day sequences versus ad-hoc or no reminder processes — validated across multiple software subscription business deployments</strong>.</p>
             <p>The labour savings component: a team spending 30 hours weekly on manual renewal tracking at $40/hour recovers $62,400 annually in administrative capacity. For smaller teams spending 10 hours weekly, the recovery is $20,800 annually. The revenue protection component is the higher-value driver for most subscription businesses: a business with 1,000 annual subscription renewals at an average renewal value of $300 has $300,000 in annual renewal revenue at stake. Research indicates that systematic reminder sequences capture 15–20% more renewals than no-reminder or single-reminder approaches. At 20% improvement on 1,000 renewals at $300 average value, the incremental revenue is $60,000 annually — which alone produces a significant ROI multiple on the implementation cost. At higher subscription volumes or higher average renewal values, the revenue protection figure scales proportionally while the implementation cost remains fixed. We model the specific projection using the client's actual subscription count, average renewal value, and current renewal capture rate during the discovery call.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

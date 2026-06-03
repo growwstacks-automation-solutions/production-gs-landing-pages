@@ -355,88 +355,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How accurate is the ChatGPT Whisper transcription compared to manual typing?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How accurate is the ChatGPT Whisper transcription compared to manual typing?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For clear, speech-focused recordings, Whisper consistently achieves word error rates of 5–10% — significantly more accurate than the 15–25% error rates typical of rushed manual transcription under real workload conditions</strong>.</p>
             <p>The accuracy advantage is most pronounced in multi-speaker recordings, where manual transcription frequently loses track of who said what, and in longer recordings where typing fatigue accumulates errors over time. Whisper maintains consistent accuracy across the full length of a recording because it processes the complete audio file rather than fatiguing over time. For recordings with very clear audio and single speakers, accuracy often exceeds 95%. Post-processing includes punctuation insertion and paragraph formatting, so the output reads as a polished document rather than a raw dump of recognized words.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What audio and video file formats does the system support?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What audio and video file formats does the system support?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The system supports all major audio and video formats accepted by OpenAI's Whisper API — including MP3, MP4, M4A, WAV, WEBM, OGG, and FLAC</strong>. Most common recording formats from meeting platforms (Zoom, Teams, Google Meet) and mobile voice recorders are supported without any manual conversion before upload.</p>
             <p>For video files, the system automatically extracts the audio track for transcription — you don't need to convert MP4 recordings to audio-only format before uploading. File size limits apply based on OpenAI's API constraints (currently 25MB per file). For larger files, we implement a pre-processing step during implementation that automatically splits oversized files into segments for sequential processing before reassembling the complete transcript.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the executive summary be customized to extract specific information relevant to my team?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the executive summary be customized to extract specific information relevant to my team?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the summary prompt is fully customized during implementation to extract the information types most valuable to your specific use case</strong>. A meeting summary prompt emphasizes decisions made and action items with owners; a research interview summary extracts key themes and verbatim quotes; a legal deposition summary focuses on factual assertions and timeline details; a training session summary captures learning objectives and knowledge checkpoints.</p>
             <p>Different recording types can use different summary prompts — the system identifies the recording type from the Dropbox folder it was uploaded to and applies the appropriate summarization template automatically. Post-launch, the summary prompt can be updated without rebuilding the workflow — changes to what the AI extracts are a configuration update, not a rebuild.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system handle multiple simultaneous uploads without creating a backlog?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle multiple simultaneous uploads without creating a backlog?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — Make.com processes multiple files detected in the same scheduled run sequentially, and the workflow is designed to handle batch uploads without file conflicts or processing errors</strong>.</p>
             <p>When the scheduled trigger runs and finds five new files in the upload folder, it processes each one through the complete pipeline in sequence — transcription, summary, document creation, upload, email — before moving to the next. Processing time per file scales with recording length: a 30-minute recording typically completes the full pipeline (transcription through email delivery) in 8–15 minutes. For organizations with very high upload volumes, we can configure parallel processing paths or reduce the monitoring interval to ensure processing keeps pace with upload frequency. Both configurations are scoped during discovery.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system send different documents to different team members — rather than everyone getting everything?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system send different documents to different team members — rather than everyone getting everything?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the email distribution logic supports folder-based routing, where recordings uploaded to different Dropbox folders trigger notifications to different recipient lists</strong>.</p>
             <p>A common configuration: recordings uploaded to the "Executive Team" folder send to the leadership distribution list; recordings in the "Content" folder send to the content team only; recordings in the "Legal" folder send to the legal team. This folder-based routing is configured during implementation and requires no manual selection at upload time — the uploader simply places the file in the correct folder, and the right people get notified automatically. Recipient lists are maintained in the Make.com configuration and can be updated post-launch without workflow changes.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can an organization realistically expect from automating transcription?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can an organization realistically expect from automating transcription?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a team currently spending 15–20 hours weekly on manual transcription, realistic first-year ROI exceeds 100% — with the majority of value coming from direct labor recovery and the downstream productivity gains from same-day documentation</strong>.</p>
             <p>The direct labor math: at $40/hour for an analyst or coordinator, 17 hours weekly × 50 weeks = $34,000 annually in recoverable time. But the downstream value often exceeds the direct savings. Teams that previously operated on week-old meeting documentation start making decisions from same-day records — reducing the meeting-to-action gap from days to hours. Content teams that had unprocessed interview backlogs start extracting full value from their recorded assets. Research teams that previously sampled their interview data start processing complete datasets. We model all three value streams using your actual recording volumes and team cost data during the discovery session.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

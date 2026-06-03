@@ -351,88 +351,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the bot handle multiple languages — and will it auto-detect which language the customer is writing in?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the bot handle multiple languages — and will it auto-detect which language the customer is writing in?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — ChatGPT handles multilingual conversations natively and can be configured to automatically detect the customer's language from their message and respond in the same language, without any additional language detection module or manual configuration required</strong>. This is one of ChatGPT's core capabilities that makes it particularly effective for WhatsApp support in markets with diverse language populations.</p>
             <p>The system prompt is configured with a language instruction — typically "always respond in the same language the customer uses" — and ChatGPT correctly applies this across all major languages including Spanish, Portuguese, French, Arabic, Hindi, Mandarin, and dozens of others. The business knowledge base can be provided in the primary language of the business, with the language instruction allowing ChatGPT to translate its responses appropriately. For businesses with specific secondary language requirements — a defined bilingual service offering, for example — the knowledge base can be structured with language-specific sections that ChatGPT references when responding in each language. We assess the language distribution of the client's WhatsApp customer base during the discovery call and configure the language handling accordingly.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the escalation to a human agent work — does the customer experience a handover?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the escalation to a human agent work — does the customer experience a handover?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The escalation path is configured during implementation to match the client's support workflow — with the bot informing the customer that a human team member will follow up, and simultaneously alerting the support team via their preferred notification channel (email, Slack, or a CRM ticket)</strong>. The customer experiences a natural, professional message rather than an abrupt handover that breaks the conversation flow.</p>
             <p>The standard escalation flow works as follows: when ChatGPT identifies an escalation trigger in the incoming message — a complaint expressing strong emotion, a query that requires account access the bot doesn't have, a multi-step resolution scenario, or any query category explicitly defined as human-only in the system prompt — the bot sends a holding response to the customer ("I'll have one of our team members follow up with you personally within [timeframe]") and Make.com simultaneously creates a notification or ticket for the support team. The complete conversation history is included in the notification, so the human agent has full context when they pick up the conversation. The support team can then continue the conversation directly in WhatsApp from their device, with the customer receiving a seamless continuation. The specifics of the escalation notification format and destination (email, Slack message, CRM ticket) are configured to match the team's existing workflow.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the bot be connected to live order data from Shopify, WooCommerce, or a CRM to answer order-status questions?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the bot be connected to live order data from Shopify, WooCommerce, or a CRM to answer order-status questions?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — live data integration is one of the most powerful extensions to the base system and transforms the bot from a FAQ responder into a genuine self-service portal for transactional enquiries</strong>. When a customer asks "where is my order?" and the bot has access to the order management system, it can retrieve the actual shipment status, tracking number, and estimated delivery date and respond with current, accurate information — rather than directing the customer to check their email or contact the team.</p>
             <p>The integration works by adding a data retrieval step between the ChatGPT generation call and the response delivery: when the incoming message contains order-related intent keywords (order, shipment, delivery, tracking, status), the Make.com workflow calls the Shopify, WooCommerce, or CRM API using the customer's phone number or any order reference mentioned in the message to retrieve the relevant order data. This data is included in the ChatGPT context for that response — giving the model real information to work with. Supported data sources include Shopify (order status, tracking, refund status), WooCommerce, GoHighLevel, Pipedrive, Copper, HubSpot, and any CRM or order management system with a Make.com integration or REST API. We scope the specific data integrations during the discovery call and include them in the implementation timeline.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is the business knowledge base kept up to date when products, prices, or policies change?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is the business knowledge base kept up to date when products, prices, or policies change?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The knowledge base is maintained as a document or structured data source that the client's team can update directly, with changes taking effect in bot responses from the next conversation without any technical deployment required</strong>. The architecture for knowledge base management depends on the client's preference and update frequency.</p>
             <p>The most common configurations are: a Google Document that the team updates directly (Make.com reads the document content at the start of each conversation to load the current knowledge base as the system prompt), a Google Sheet with structured product and policy data that Make.com queries dynamically, or a static system prompt in the Make.com scenario that the team updates via the Make.com interface. For businesses with frequently changing pricing or product catalogues, the dynamic document or spreadsheet approach is preferred — because any team member with document access can update the knowledge base immediately and every subsequent bot conversation reflects the change. For businesses with stable knowledge bases that change infrequently (quarterly policy updates, annual product catalogue revisions), the static system prompt approach is simpler to maintain. We configure the appropriate approach based on the client's content management preferences during implementation.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the same system be adapted for Instagram DMs or Facebook Messenger in addition to WhatsApp?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the same system be adapted for Instagram DMs or Facebook Messenger in addition to WhatsApp?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the core architecture (webhook reception, Data Store conversation memory, ChatGPT response generation, reply delivery) is platform-agnostic, and the system can be extended to cover Instagram DMs and Facebook Messenger using their respective Meta Business API integrations</strong>. 360dialog is specific to WhatsApp; Instagram and Facebook use the Meta Business Platform API accessed via Make.com's Instagram and Facebook Messenger integrations.</p>
             <p>The most common multi-channel deployment is a unified chatbot architecture where the same ChatGPT system prompt and business knowledge base powers support across all three Meta messaging channels — with separate webhook triggers and reply delivery modules for each platform, all routing through the same response generation and conversation memory infrastructure. This means a customer who contacts the business on WhatsApp and later on Instagram can have their conversation history linked (if their identity is cross-referenced) or treated as separate channel threads (the simpler default configuration). For businesses with significant customer engagement across multiple messaging platforms, the multi-channel extension is typically scoped as a single combined implementation rather than three separate systems, reducing total implementation time and cost. We assess the client's primary and secondary channel priorities during the discovery call and scope accordingly.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is 550% ROI calculated — and what does the value model look like for different business sizes?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 550% ROI calculated — and what does the value model look like for different business sizes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 550% ROI is calculated from the combined value of eliminated manual support labour and the incremental revenue captured from after-hours enquiry conversion — validated across multiple customer-facing business deployments</strong>.</p>
             <p>The labour savings component: a business with a support team spending 40 hours weekly on WhatsApp management at $30/hour recovers $62,400 annually when the bot reduces this to 8 hours weekly. For a team at $40/hour, the recovery is $83,200. The after-hours revenue component is the often-underestimated driver: a business receiving 30% of its WhatsApp enquiries outside business hours (evening and weekend messages) where a meaningful proportion have purchase intent, and where instant response increases conversion versus the next-day response, can generate significant incremental revenue from enquiries that previously waited until the morning. A business converting even 10 additional enquiries monthly from after-hours capture at a $200 average order value generates $24,000 annually in attributable revenue. The combination of labour savings and after-hours conversion produces the 550% ROI figure against the implementation cost. For larger businesses with higher WhatsApp volumes, higher average order values, or larger support teams, the ROI percentage is substantially higher. We model the specific projection using the client's actual WhatsApp volume, support team cost, and typical enquiry-to-conversion rate during the discovery call.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

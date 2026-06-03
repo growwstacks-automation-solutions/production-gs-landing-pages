@@ -201,76 +201,79 @@ Google Sheets
 </div>
 </div>
 </section>
-<section class="cs-faq" id="faq">
-<div class="container">
-<h2>Frequently Asked Questions</h2>
-<div class="faq-inner">
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>What is the main benefit of automating lead capture with duplicate prevention?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What is the main benefit of automating lead capture with duplicate prevention?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>The primary benefit is maintaining a pristine, high-quality contact database.</strong> Manual lead entry from forms, spreadsheets, or other sources inevitably leads to duplicates, which waste sales time, damage sender reputation with repeated emails, and skew campaign analytics. An automated system that checks for existing contacts before adding new ones ensures every lead in your outreach tool is unique and actionable, directly improving sales efficiency and campaign ROI.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>Can this workflow handle leads from multiple sources?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can this workflow handle leads from multiple sources?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>Yes, absolutely.</strong> The workflow is designed around a webhook trigger, which acts as a universal receiver. You can send data to the same webhook endpoint from various sources like Typeform, Google Forms, a website contact form via Zapier, or even a custom app. As long as the data is structured correctly (containing email, name, etc.), the n8n workflow will process it, check for duplicates, and route it to Lemlist, creating a unified ingestion point for all your lead generation channels.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>How does the duplicate check work?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the duplicate check work?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>The workflow uses n8n's Data Table node as a simple, internal database.</strong> When a new lead comes in via the webhook, the workflow queries this table to see if a record with the same email address already exists. If a match is found, the lead is flagged as a duplicate and can be logged or sent to a separate review channel (like Slack). If no match is found, the lead is added to the Data Table for future checks and then sent to Lemlist. This prevents the same person from being added to multiple email sequences.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>What data can be sent to Lemlist?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What data can be sent to Lemlist?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>You can send any contact field that Lemlist supports, which is highly customizable.</strong> At a minimum, you should send the email address and first name. The workflow can also map additional data like last name, company, job title, custom fields (like 'Lead Source' or 'Budget'), and even initial campaign assignment. This ensures the lead is not only created in Lemlist but is also properly tagged and ready for personalized, automated email sequences from the moment they are captured.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>Is the Data Table secure and scalable?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is the Data Table secure and scalable?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>For light to moderate volume (up to several thousand leads), n8n's internal Data Table is perfectly secure and performant, as it runs within your own n8n instance.</strong> For larger datasets or teams requiring shared access, we recommend integrating a dedicated database like Google Sheets (for simplicity) or Airtable. The workflow logic remains the same; only the 'check' node changes. We design systems with scalability in mind, making it easy to upgrade the data storage component without rebuilding the entire automation.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>How quickly can a similar system be implemented?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How quickly can a similar system be implemented?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>A basic version of this prospect capture and deduplication workflow can typically be built, tested, and deployed within 1-2 weeks.</strong> The timeline depends on the number of lead sources and the complexity of data mapping required. We follow a phased approach: first, establishing the webhook and duplicate check; second, connecting to Lemlist; and finally, adding error handling and notifications. Most clients see their first automated leads flowing into Lemlist within the first few days of the project.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>Can I get a custom lead capture and deduplication automation built for my business?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I get a custom lead capture and deduplication automation built for my business?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>Yes, we specialize in building tailored automation solutions.</strong> Whether you're using Lemlist, another CRM, or have unique data sources, we can design a system that fits your exact sales process. We'll start with a free discovery call to understand your lead flow, identify pain points, and outline a solution that saves you time and increases lead quality. Book a consultation to turn your manual lead intake into a seamless, automated pipeline.</p>
 </div></div>
-</div>
-</div>
-</div>
-</section>
+        </div>
+      </div>
+    </div>
+  </section>
 <section class="cs-bottom-cta">
 <div class="container" style="position:relative;z-index:2">
 <h2>Stop Losing Leads to Manual Entry</h2>

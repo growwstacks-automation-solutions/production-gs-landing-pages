@@ -360,88 +360,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How genuinely personalised are the messages — can prospects tell they're AI-generated?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How genuinely personalised are the messages — can prospects tell they're AI-generated?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The quality of personalisation depends directly on the depth of enrichment data available and the quality of the ChatGPT assistant training — and when both are well-configured, the messages are genuinely indistinguishable from carefully researched manual outreach</strong>. The key differentiator is that the personalisation is contextual rather than cosmetic.</p>
             <p>A well-generated message doesn't just insert the prospect's name and company — it opens with a specific observation about the company's industry position or recent development, frames the value proposition in terms of challenges specific to that industry vertical, and references an outcome relevant to a company of that type and size. The test we use during implementation is to show generated messages to the client's sales team without disclosing they're AI-generated, and assess whether they would send them as-is. For most well-configured implementations, the answer is yes with minor or no edits. The review checkpoint in Google Sheets exists precisely for the edge cases where enrichment data was incomplete or an unusual prospect profile produced a less accurate message.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens when Apollo or Apify can't find data for a specific prospect?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens when Apollo or Apify can't find data for a specific prospect?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Incomplete enrichment is handled gracefully — the system doesn't fail on missing data but instead generates messages using whatever enrichment data is available, with a flag in the Google Sheets row indicating the enrichment completeness level</strong>. For prospects where both Apollo and Apify return minimal data, the ChatGPT assistant generates a more conservative message that doesn't make specific claims about the prospect's business context — essentially a higher-quality generic template rather than a fully personalised message.</p>
             <p>In practice, enrichment completeness varies significantly by target market. B2B prospects at mid-sized and larger companies with digital presence have high enrichment rates — typically 80–90% of fields populated. Prospects at very small companies, recently founded businesses, or companies with minimal web presence have lower enrichment rates and produce less specifically personalised output. During the testing phase of implementation, we assess enrichment quality across a sample of the client's actual prospect list and calibrate expectations on personalisation depth for their specific target market. For clients targeting verticals with known enrichment challenges, we discuss additional data source options or manual data enhancement workflows as alternatives.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system be adapted to use different email senders or CRM tools instead of Google Sheets?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system be adapted to use different email senders or CRM tools instead of Google Sheets?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the orchestration layer is platform-agnostic and the input/output components can be adapted to different tools</strong>. Google Sheets is the default because it's universally accessible and familiar to sales teams without requiring additional software. For teams with existing CRM setups, the pipeline can read leads from HubSpot, Salesforce, Pipedrive, or Airtable and write generated content and delivery status back to the same CRM record.</p>
             <p>For email delivery, Gmail is the default but the system can be configured for Outlook/Microsoft 365, SendGrid, Mailchimp, or any SMTP-connected email provider through Make.com's email modules. For SMS, Twilio is the default but MessageBird, Vonage, and other SMS platforms are supported. The key consideration for enterprise email senders is domain reputation management — high-volume outreach from a single Gmail account will eventually hit sending limits and risk spam classification. For clients targeting 500+ prospects daily, we discuss domain warming strategy and multi-sender configurations during implementation to protect deliverability alongside the automation build.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How many industry verticals can the system personalise for — and how are they defined?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How many industry verticals can the system personalise for — and how are they defined?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The number of industry verticals is configurable — most implementations use 4–8 core verticals that cover 90%+ of the client's target prospect base, with a catch-all "general business" treatment for prospects that don't fit a specific classification</strong>.</p>
             <p>The verticals are defined during the ChatGPT assistant training phase based on the client's actual customer base and target market. A SaaS company targeting SMBs might define verticals as IT/Tech companies, Professional Services, E-commerce/Retail, Healthcare, and Financial Services — each receiving messaging that references pain points and use cases specific to their sector. A recruiting firm might define verticals as Tech startups, Enterprise corporations, Financial firms, and Agencies — each receiving messaging framed around their specific hiring challenges. There is no technical upper limit on the number of verticals, but more verticals require more training effort and more prompts to test — which is why we recommend starting with the 4–6 verticals representing the majority of the prospect base and adding additional verticals as extensions once the core system is validated. The vertical definitions and associated messaging frameworks are documented in the implementation handover, enabling the client to update them independently as their product positioning evolves.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can reply tracking and follow-up sequences be added — or does the system only handle initial outreach?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can reply tracking and follow-up sequences be added — or does the system only handle initial outreach?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Reply tracking and automated follow-up sequences are natural extensions to the base system that we scope and build for clients who want to automate beyond the initial outreach touch</strong>.</p>
             <p>The reply tracking extension monitors the Gmail inbox for replies to outreach emails, logs reply status back to Google Sheets or CRM, and can trigger conditional workflows based on reply content — routing positive responses to a sales rep notification, detecting auto-replies and marking accordingly, and flagging unsubscribe requests for immediate removal from the sequence. The follow-up sequence extension adds scheduled subsequent touches — a follow-up email 3 days after initial outreach for non-responders, a second SMS for non-SMS-responders — with progressively different messaging angles generated by the ChatGPT assistant. Most clients deploy the initial outreach system first, validate the response rates, and then add reply tracking and follow-up sequences in a second phase once they've confirmed the initial message quality is strong. We scope both phases during the discovery call so clients understand the full system architecture they're building toward.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is 500% ROI calculated — and what timeline should teams expect to see it?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 500% ROI calculated — and what timeline should teams expect to see it?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 500% ROI is calculated from two primary value streams: eliminated manual prospecting and writing time, and increased outreach-to-meeting conversion from improved response rates — and it's typically realised within the first 30 days of deployment given the 2-week implementation timeline</strong>.</p>
             <p>The time savings model: a B2B sales rep spending 4–5 hours daily on prospect research and message writing at $40–60/hour recovers $8,000–12,500 monthly in productive capacity per person. For a 3-person sales team, that's $24,000–37,500 monthly in recovered time. The revenue model: taking a team from 50 outreach prospects daily at a 5% response rate (2–3 meetings booked daily) to 500 prospects at 15% response rate (75 meetings) represents a 25–37× increase in daily meeting volume — which, at the team's conversion rate and average deal size, produces revenue impact that dramatically exceeds the operational cost savings alone. The 2-week implementation timeline means the system is generating value within the same month it's deployed. We model the specific ROI projection for each client using their actual team size, hourly cost, current outreach volume, response rate, and average deal value during the discovery call.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

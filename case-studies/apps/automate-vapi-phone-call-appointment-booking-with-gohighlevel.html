@@ -202,83 +202,86 @@ Google Calendar
 </div>
 </div>
 </section>
-<section class="cs-faq" id="faq">
-<div class="container">
-<h2>Frequently Asked Questions</h2>
-<div class="faq-inner">
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>What is VAPI and how does it work with appointment booking?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What is VAPI and how does it work with appointment booking?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>VAPI is an AI-powered voice API that can handle inbound phone calls, converse with customers, and collect structured data like name, phone number, and appointment preferences.</strong> This workflow connects VAPI's call transcripts to n8n, which processes the data, validates it, and routes it to the correct booking calendar.</p>
 <p>VAPI acts as the front-end voice interface, converting spoken conversation into JSON data. This data includes the assistant ID (which identifies the type of service requested), caller details, and any custom fields collected during the call. This structured output is what makes automation possible.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>Why use GoHighLevel (GHL) for appointment scheduling?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Why use GoHighLevel (GHL) for appointment scheduling?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>GoHighLevel provides a unified CRM and marketing platform with built-in calendar booking functionality.</strong> It allows for multi-user calendars, automated reminders, and integrates seamlessly with other tools. Using GHL ensures appointments are tracked within the client's main CRM, avoiding siloed data.</p>
 <p>GHL's API is robust and well-suited for automation. It allows for creating appointments, assigning them to specific calendars, and triggering follow-up communications (SMS/email) automatically. This creates a closed-loop system where the appointment and all subsequent communications are managed in one place.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>How does Supabase help in this workflow?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does Supabase help in this workflow?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>Supabase acts as a real-time database to store and retrieve client information.</strong> When a caller provides their phone number, n8n queries Supabase to check if they are an existing client, fetch their contact ID, and retrieve any previous booking history. This enables personalized routing and prevents duplicate entries.</p>
 <p>Supabase's speed and simplicity make it ideal for this lookup step. It can return client data in milliseconds, allowing the workflow to personalize the booking experience instantly—assigning returning clients to their preferred consultant or referencing past issues without manual intervention.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>Can this system handle different types of appointments or services?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can this system handle different types of appointments or services?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>Yes. The workflow is designed to route calls based on the assistant ID from VAPI, which can represent different departments or services.</strong> For example, a call for a sales consultation is routed to the sales team's GHL calendar, while a support request goes to the support calendar, all configured within n8n.</p>
 <p>This routing logic is configurable. You can map any VAPI assistant ID to any GHL calendar ID. This means you can have multiple inbound lines (sales line, support line) handled by the same automated workflow but ending up in the correct team's schedule.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>What happens if the caller provides incomplete information?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if the caller provides incomplete information?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>The n8n workflow includes validation steps that check for required fields like name, phone number, and desired service.</strong> If data is missing, the system can trigger a follow-up SMS via GHL or even a return call from VAPI to collect the missing details before attempting to create the appointment.</p>
 <p>This validation ensures data quality and prevents failed bookings. The workflow can be designed to pause and request missing information, or proceed with partial data while flagging the record for manual review, depending on the business rules.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>Is the confirmation message automated?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is the confirmation message automated?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>Absolutely. Once the appointment is successfully created in GoHighLevel, n8n triggers an automated confirmation message.</strong> This can be an SMS, an email, or both, sent via GHL's communication tools, containing the appointment details, a calendar link, and any pre-consultation instructions.</p>
 <p>The confirmation is fully templated and can include dynamic data like the client's name, consultant's name, appointment time, and location. This immediate follow-up improves client experience and reduces no-shows.</p>
 </div></div>
-</div>
-<div class="faq-item">
-<button class="faq-q" aria-expanded="false">
-<span>Can I get a custom phone-call-to-appointment automation built for my business?</span>
-<span class="faq-arrow" aria-hidden="true">↓</span>
-</button>
-<div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I get a custom phone-call-to-appointment automation built for my business?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
 <p><strong>Yes. GrowwStacks specializes in building tailored automation workflows that connect AI phone systems like VAPI with your CRM and booking tools.</strong> We'll analyze your call flow, calendar structure, and data requirements to design a system that captures leads seamlessly and books appointments instantly.</p>
 <p>Whether you use VAPI, another voice AI platform, or even traditional call centers with transcripts, we can build a workflow that processes calls, validates data, routes to the correct calendar, and creates appointments automatically. Book a free consultation to discuss your specific needs.</p>
 </div></div>
-</div>
-</div>
-</div>
-</section>
+        </div>
+      </div>
+    </div>
+  </section>
 <section class="cs-bottom-cta">
 <div class="container" style="position:relative;z-index:2">
 <h2>Turn Every Phone Call Into a Scheduled Appointment</h2>

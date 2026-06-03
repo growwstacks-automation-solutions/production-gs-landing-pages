@@ -347,88 +347,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What types of information can OpenAI Vision extract from images?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What types of information can OpenAI Vision extract from images?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>OpenAI Vision can extract embedded text via OCR, identify and describe objects and visual elements, interpret charts and graphs, read product labels and pricing, understand UI elements in screenshots, and generate contextual descriptions of visual scenes</strong> — all in a single analysis pass.</p>
             <p>For e-commerce product images, the model reliably extracts product names, pricing, specifications, brand identifiers, and condition descriptors. For website screenshots, it captures headings, CTAs, pricing tables, and promotional messaging. For research visuals, it reads data labels, axis values, and trend descriptions from charts and infographics. The extraction prompt is engineered during implementation to prioritize the specific information types most valuable to your use case, ensuring the output is structured around your actual data needs rather than a generic analysis.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the system handle images it cannot access or that return errors?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle images it cannot access or that return errors?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Error handling is built into both the ScreenshotOne capture step and the OpenAI Vision analysis step — inaccessible URLs, blocked images, rendering failures, and API errors are caught and logged rather than crashing the workflow</strong>.</p>
             <p>For each failed image, the system writes a structured error record to the output dataset — including the source URL, the error type (404, access blocked, rendering timeout, etc.), and a timestamp. The workflow continues processing the remaining images in the batch rather than halting on a single failure. This means your output dataset is always complete with coverage of every input URL, clearly distinguishing successfully extracted records from failed ones so downstream systems can handle each case appropriately.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system handle more than 10 images — what's the practical upper limit per run?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle more than 10 images — what's the practical upper limit per run?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 10-image reference is the base configuration — the system can be scaled to process significantly larger batches by adjusting the iterator and aggregation logic</strong>. The practical upper limit per single workflow run is determined by Make.com's operation limits for your plan and OpenAI's Vision API rate limits for your tier.</p>
             <p>For high-volume pipelines requiring 50, 100, or 500+ images per batch, we implement batching logic that splits large inputs into sequential processing chunks and combines the outputs. This keeps individual workflow runs within API rate limits while delivering a complete aggregated output for the full dataset. We scope the appropriate batching architecture during discovery based on your typical image volumes and processing frequency requirements.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What format does the webhook response deliver the data in — can it connect directly to our database?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What format does the webhook response deliver the data in — can it connect directly to our database?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The webhook response delivers a structured JSON payload containing the complete consolidated dataset — field names, data types, and array structure are all configurable during implementation to match your consuming system's schema</strong>.</p>
             <p>For teams that want to write directly to a database rather than receiving a webhook response, Make.com supports native connections to Airtable, Google Sheets, MySQL, PostgreSQL, MongoDB, and most major database platforms. The final consolidation step can be configured to write each image analysis record directly to a database row rather than (or in addition to) returning the webhook response. We design the output structure to match your downstream data architecture during the implementation scoping session.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the system handle images where the important text is in a non-English language?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle images where the important text is in a non-English language?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>OpenAI Vision supports multilingual text extraction across all major languages — the model reads and extracts text in its original language by default, and can be configured to translate to English in the same analysis pass if your downstream systems require it</strong>.</p>
             <p>For international e-commerce analysis, competitor monitoring across different language markets, or research datasets that span multiple languages, this is a significant advantage over manual processes where multilingual teams are required. The analysis prompt can be configured to either preserve the original language, translate to English, or return both — whichever best serves your downstream data needs. We test multilingual extraction accuracy for your specific target languages during implementation.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a team realistically expect from automating visual content analysis?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a team realistically expect from automating visual content analysis?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a team currently spending 15–20 hours weekly on manual image review and data extraction, realistic first-year ROI exceeds 100% — driven primarily by labor time recovered and the expanded analytical scope enabled by 10× processing capacity</strong>.</p>
             <p>The direct labor math: at $40/hour fully loaded for an analyst, 17 hours weekly × 50 weeks = $34,000 annually in recoverable time. But the more significant value for most teams is the analytical scope expansion — datasets that previously couldn't be processed manually (too many images, too time-consuming) become fully analyzable, enabling data-driven decisions that weren't previously possible. E-commerce teams that implement this for competitor price monitoring, for example, consistently report that the competitive intelligence value of processing previously-impossible image volumes far exceeds the direct labor savings. We model both components during the discovery session using your actual image volumes and analyst cost data.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

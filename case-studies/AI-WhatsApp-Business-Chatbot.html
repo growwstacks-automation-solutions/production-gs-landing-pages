@@ -382,88 +382,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is the ChatGPT model "trained" on company data — is it fine-tuned or prompt-based?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is the ChatGPT model "trained" on company data — is it fine-tuned or prompt-based?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The system uses a retrieval-augmented generation (RAG) approach rather than fine-tuning — injecting the company's knowledge base into the ChatGPT system prompt at inference time rather than modifying the underlying model weights</strong>. This distinction matters practically because prompt-based injection is far faster to update (adding a new product line or changing a policy requires updating the prompt content, not retraining a model), more transparent (you can read exactly what the AI has access to), and produces more predictable accuracy (the model answers from explicitly provided text rather than learned weights).</p>
             <p>The implementation involves structuring the company's knowledge base into clearly labelled sections — product specifications, pricing, policies, FAQs — and including this structured content in the AWS Lambda function's ChatGPT system prompt. When a customer asks a question, ChatGPT reads the system prompt, identifies the relevant section of the company knowledge base, and formulates a response based on that specific content. For very large knowledge bases (extensive product catalogues, detailed technical documentation), a vector database approach (using embeddings to retrieve the most relevant knowledge base sections for each specific question, rather than including the entire knowledge base in every prompt) can be implemented to manage token limits and improve response accuracy. We assess which approach is appropriate based on the business's knowledge base size and complexity during the discovery call.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the human escalation process work — what happens when a customer asks something the AI can't answer?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the human escalation process work — what happens when a customer asks something the AI can't answer?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The human escalation path is an explicit workflow component — not a fallback for AI failure but a designed handoff for question categories that human judgement handles better than AI</strong>. The escalation logic is embedded in the ChatGPT system prompt: for specific question types (complaints requiring empathy and resolution authority, complex custom orders requiring pricing negotiation, legal or regulatory questions, situations involving customer distress), the AI is instructed to respond warmly, acknowledge the customer's situation, and indicate that a team member will be in touch — rather than attempting to answer autonomously.</p>
             <p>When ChatGPT determines a question requires escalation, it generates a holding response ("Our team specialist will follow up with you on this within [timeframe] — we want to make sure this gets the attention it deserves") and the Make.com workflow simultaneously creates an escalation notification. Escalation alerts are sent to the support team via their preferred channel — Slack message, email, or CRM task creation — containing the customer's WhatsApp number, the conversation history, and the specific question that triggered escalation, so the human agent has full context before reaching out. The escalation detection can be configured based on keywords (specific complaint language, competitor mentions, pricing negotiation signals), conversation tone analysis, or explicit customer requests for a human agent (detected from phrases like "I want to speak to a person" or "can I talk to someone"). We configure the escalation criteria based on the business's inquiry mix and service standards during the implementation.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is the company knowledge base kept up to date — what happens when products, pricing, or policies change?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is the company knowledge base kept up to date — what happens when products, pricing, or policies change?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Knowledge base maintenance is an ongoing operational responsibility — and the system is designed to make updates as low-friction as possible to encourage the business to keep the AI's information current</strong>. The knowledge base content is stored as structured text in the AWS Lambda function configuration (for prompt-based implementations) or in a document store (for RAG implementations) — accessible to the business for direct editing without technical AWS expertise.</p>
             <p>For prompt-based implementations, the knowledge base is maintained as a structured document (typically a Google Doc or internal Wiki page) that is periodically synchronised to the Lambda function's system prompt. The update process involves editing the document and redeploying the Lambda function — a process that takes minutes and can be handled by a non-technical team member following a brief training. We configure a review cadence recommendation during the implementation: monthly for stable businesses, weekly for businesses with frequently changing inventory or pricing. For RAG implementations with vector databases, individual sections of the knowledge base can be updated independently — changing the return policy document, for example, without affecting the product catalogue data. The conversation history logs provide a valuable signal for identifying outdated information: if customers are frequently asking about something the AI answers incorrectly or incompletely, those conversation patterns indicate a knowledge base gap that needs updating.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the chatbot handle images — customers sending photos of products, receipts, or issues they're experiencing?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the chatbot handle images — customers sending photos of products, receipts, or issues they're experiencing?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — multimodal image handling can be added to the system using GPT-4 Vision, enabling the chatbot to receive and analyse images customers send via WhatsApp and generate responses based on what the image shows</strong>. This capability is particularly valuable for support workflows where visual context is essential: customers photographing a damaged product they want to return, sending a screenshot of an error message in a software product, sharing an image of an installation issue, or photographing a receipt to verify a purchase.</p>
             <p>The multimodal implementation adds an image detection step to the Make.com workflow: when an incoming WhatsApp message contains an image attachment (detected from the message type field in the WhatsApp webhook payload), the image URL is extracted and passed to the Lambda function alongside the text content of any accompanying message. The Lambda function calls GPT-4 Vision's API with both the image and the system prompt context — enabling the AI to describe what it sees, identify the product or issue, and generate a relevant response based on the visual input. For a damaged product photo, GPT-4 Vision can confirm it looks like a damage scenario consistent with the return policy, provide the relevant return process, and generate the pre-populated response the customer needs. We scope the specific image handling requirements during the discovery call — image analysis capability adds to the implementation complexity and API cost but significantly extends the chatbot's utility for visual product and issue support scenarios.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How long is conversation history retained — and what are the data privacy implications of storing customer conversation logs?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How long is conversation history retained — and what are the data privacy implications of storing customer conversation logs?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Conversation history retention period is configurable based on the business's needs and data governance requirements — and the data privacy implications depend on the jurisdiction the business operates in and the sensitivity of the conversation content</strong>. The default implementation retains conversation history for a rolling period (30–90 days is typical for support context) after which older records are automatically purged, balancing contextual value against data minimisation principles.</p>
             <p>For businesses operating in GDPR-regulated jurisdictions (EU customers), PDPA (Thailand, Singapore), or other privacy regulation frameworks, the conversation history storage constitutes personal data processing — the customer's WhatsApp phone number combined with their support conversations. Compliance requirements typically include: informing customers that their conversations are stored (a brief disclosure in the chatbot's initial welcome message handles this), providing a mechanism for customers to request conversation history deletion (implemented as a "delete my data" command the chatbot recognises and routes to a data deletion workflow), and ensuring the database is hosted in an appropriate geographic region (AWS database services are available in regional deployments to satisfy data residency requirements). The database hosting jurisdiction, retention period, encryption at rest and in transit, and access control are all configured during implementation based on the business's regulatory environment. We include a compliance review during the discovery call to identify the applicable requirements and configure the system accordingly.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is 540% ROI calculated — and what does the value model look like for a business currently handling support with one agent versus a team of five?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 540% ROI calculated — and what does the value model look like for a business currently handling support with one agent versus a team of five?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 540% ROI reflects primarily the labour cost value of the support hours the chatbot displaces — the $50K+ annual savings per agent figure represents the fully-loaded cost of a customer support agent (salary, benefits, management overhead, training) that is either replaced by the chatbot or freed for higher-value strategic work</strong>.</p>
             <p>For a single-agent business: if the agent currently spends 30+ hours weekly answering repetitive WhatsApp questions at an effective cost of $35/hour (including employment costs), that's $54,600 annually in labour cost for the repetitive question-answering portion of their role. The chatbot handling 70–80% of that volume reclaims $38,000–$43,000 annually — funds that can be redirected to the agent's higher-value activities (complex customer relationships, sales support, strategic projects) or partially redirect the cost of the agent's role if volume growth can be absorbed without additional hiring. For a team of five agents each spending 25 hours weekly on repetitive questions: the collective recovery is $218,750 annually at the same rate — a figure that makes the 8-week implementation cost recover in under 6 weeks of operation. The 24/7 availability component adds additional revenue-preservation value (evening and weekend shoppers who can't get answers may abandon purchases) that is business-specific and harder to model precisely but consistently meaningful for e-commerce clients. We build the specific financial model using the business's agent cost, current inquiry volume, and operating hours during the discovery call.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

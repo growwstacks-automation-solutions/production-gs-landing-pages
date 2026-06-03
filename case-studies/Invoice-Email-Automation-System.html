@@ -343,7 +343,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Which accounting platforms does this system support beyond Zoho Books?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system supports any cloud-based accounting platform with Make.com integration — which includes QuickBooks Online, FreshBooks, Xero, Wave, Harvest, Sage Business Cloud, and several others</strong>. Zoho Books is the most commonly deployed variant, but the architecture is identical across all supported platforms — only the Watch Invoice trigger module changes to connect to the specific accounting platform's API.</p>
+            <p>For platforms not natively listed in Make.com's integration catalogue, a webhook-based integration can be configured if the accounting platform supports outbound webhooks on invoice events — which most modern cloud accounting tools do. We confirm platform compatibility during the discovery call by checking the client's specific accounting software version and API access availability. For legacy desktop accounting software (older QuickBooks Desktop versions, Sage desktop), API connectivity depends on the specific version and may require a different integration architecture, which we scope separately if relevant.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the email template be different for different client types or invoice categories?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — conditional routing can be added to the workflow to apply different email templates based on invoice attributes such as client type, invoice category, project tag, or amount threshold</strong>. For most organisations, a single professional template handles all invoice communications effectively. But for businesses with meaningfully different client relationships — for example, direct consumers versus corporate clients — separate templates with appropriate tone and content can be configured.</p>
+            <p>The conditional routing works by adding a router module between the variable mapping and text aggregator steps that evaluates a specific invoice field (client type, invoice tag, or custom field) and directs to the appropriate template path. Each path has its own text aggregator with a different template structure. This extension adds minimal implementation complexity and can be configured during the initial build or added later as a workflow update. The most common use case is a separate template for invoices marked as final/past-due reminders versus standard new invoice notifications — which can be distinguished by invoice status and routed to appropriately toned templates automatically.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system attach the actual invoice PDF to the email automatically?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — PDF attachment is a common extension to the base system, and whether it's included depends on the accounting platform's API capabilities</strong>. Most major platforms (Zoho Books, QuickBooks Online, FreshBooks, Xero) expose an endpoint that returns the invoice PDF via API, which can be retrieved in the Make.com workflow and attached to the Gmail message automatically.</p>
+            <p>When PDF attachment is configured, the workflow adds a step between the invoice trigger and the Gmail delivery that calls the accounting platform's PDF export API, retrieves the PDF file, and passes it as an attachment to the Gmail module — which attaches it to the outgoing email. The client receives a professional invoice email body alongside the full PDF invoice as an attachment, exactly as a manually composed email would include. We assess PDF API availability for the client's specific accounting platform during the discovery call and include the attachment module in the implementation if supported. For platforms that don't expose a PDF API endpoint, an alternative is to include a direct link to the online invoice payment portal in the email body instead of attaching a PDF.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if the invoice has no client email address — does the system fail?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>No — the workflow includes error handling for missing or invalid recipient data. When the invoice record contains no client email address, the workflow catches the missing value before attempting delivery and sends an internal notification to the accounting team's address flagging the specific invoice for manual follow-up</strong>.</p>
+            <p>This error handling prevents the workflow from failing silently — the accounting team receives an alert with the invoice number and client name so they can update the client record with the correct email address and trigger the communication manually. The system logs the missed delivery in Make.com's execution history for audit purposes. For organisations where incomplete client records are a recurring issue, we can configure an additional step that checks for missing email addresses as part of the variable mapping phase and routes to an internal alert path before attempting delivery — providing a systematic view of which client records need email address data completed. This typically motivates the data quality cleanup that reduces the issue over time.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system also send payment reminders for overdue invoices — not just new invoice notifications?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — payment reminder automation is a natural and commonly deployed extension to the base invoice notification system, and the architecture supports it with minimal additional configuration</strong>.</p>
+            <p>The reminder extension works by adding a second Make.com scenario that runs on a daily schedule — checking the accounting platform for invoices where the due date has passed and the status is still unpaid. For each overdue invoice found, the scenario sends a personalised reminder email using a different template — typically warmer in the first reminder (acknowledging the invoice may have been missed), progressively firmer in subsequent reminders if the invoice remains unpaid. The reminder intervals (7 days overdue, 14 days, 21 days) and the escalation path (accounting team member, senior contact) are configured during implementation based on the client's payment policy. The combination of instant invoice notification and systematic reminder sequences produces the most significant reduction in average days-to-payment — addressing both the initial delivery latency that delays the payment clock and the follow-up consistency that turns borderline-late payments into on-time payments. We scope the reminder extension alongside the base system for clients whose primary goal is payment speed improvement rather than time savings alone.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 600% ROI calculated for such a simple system — and what does the payback timeline look like?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 600% ROI is the highest percentage return in the GrowwStacks portfolio — and it's achievable specifically because of the combination of very low implementation cost (simple 1-week build), meaningful ongoing labour savings, and the payment acceleration value that compounds over time</strong>.</p>
+            <p>The labour savings model: an accounting team spending 7 hours weekly on manual invoice emailing at $35–45/hour recovers 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -425,6 +500,95 @@
         </div>
       </div>
 
+    </div>
+  ,225–1,575 weekly — $5,000–6,500 monthly — in administrative capacity. The implementation cost recovers within the first month of deployment for most client volumes. The payment acceleration value adds to this: research consistently shows invoices delivered on the day of creation are paid 3–5 days faster on average than invoices delivered 2–3 days later through a manual process. For a business with 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Which accounting platforms does this system support beyond Zoho Books?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system supports any cloud-based accounting platform with Make.com integration — which includes QuickBooks Online, FreshBooks, Xero, Wave, Harvest, Sage Business Cloud, and several others</strong>. Zoho Books is the most commonly deployed variant, but the architecture is identical across all supported platforms — only the Watch Invoice trigger module changes to connect to the specific accounting platform's API.</p>
+            <p>For platforms not natively listed in Make.com's integration catalogue, a webhook-based integration can be configured if the accounting platform supports outbound webhooks on invoice events — which most modern cloud accounting tools do. We confirm platform compatibility during the discovery call by checking the client's specific accounting software version and API access availability. For legacy desktop accounting software (older QuickBooks Desktop versions, Sage desktop), API connectivity depends on the specific version and may require a different integration architecture, which we scope separately if relevant.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the email template be different for different client types or invoice categories?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — conditional routing can be added to the workflow to apply different email templates based on invoice attributes such as client type, invoice category, project tag, or amount threshold</strong>. For most organisations, a single professional template handles all invoice communications effectively. But for businesses with meaningfully different client relationships — for example, direct consumers versus corporate clients — separate templates with appropriate tone and content can be configured.</p>
+            <p>The conditional routing works by adding a router module between the variable mapping and text aggregator steps that evaluates a specific invoice field (client type, invoice tag, or custom field) and directs to the appropriate template path. Each path has its own text aggregator with a different template structure. This extension adds minimal implementation complexity and can be configured during the initial build or added later as a workflow update. The most common use case is a separate template for invoices marked as final/past-due reminders versus standard new invoice notifications — which can be distinguished by invoice status and routed to appropriately toned templates automatically.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system attach the actual invoice PDF to the email automatically?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — PDF attachment is a common extension to the base system, and whether it's included depends on the accounting platform's API capabilities</strong>. Most major platforms (Zoho Books, QuickBooks Online, FreshBooks, Xero) expose an endpoint that returns the invoice PDF via API, which can be retrieved in the Make.com workflow and attached to the Gmail message automatically.</p>
+            <p>When PDF attachment is configured, the workflow adds a step between the invoice trigger and the Gmail delivery that calls the accounting platform's PDF export API, retrieves the PDF file, and passes it as an attachment to the Gmail module — which attaches it to the outgoing email. The client receives a professional invoice email body alongside the full PDF invoice as an attachment, exactly as a manually composed email would include. We assess PDF API availability for the client's specific accounting platform during the discovery call and include the attachment module in the implementation if supported. For platforms that don't expose a PDF API endpoint, an alternative is to include a direct link to the online invoice payment portal in the email body instead of attaching a PDF.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if the invoice has no client email address — does the system fail?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>No — the workflow includes error handling for missing or invalid recipient data. When the invoice record contains no client email address, the workflow catches the missing value before attempting delivery and sends an internal notification to the accounting team's address flagging the specific invoice for manual follow-up</strong>.</p>
+            <p>This error handling prevents the workflow from failing silently — the accounting team receives an alert with the invoice number and client name so they can update the client record with the correct email address and trigger the communication manually. The system logs the missed delivery in Make.com's execution history for audit purposes. For organisations where incomplete client records are a recurring issue, we can configure an additional step that checks for missing email addresses as part of the variable mapping phase and routes to an internal alert path before attempting delivery — providing a systematic view of which client records need email address data completed. This typically motivates the data quality cleanup that reduces the issue over time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system also send payment reminders for overdue invoices — not just new invoice notifications?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — payment reminder automation is a natural and commonly deployed extension to the base invoice notification system, and the architecture supports it with minimal additional configuration</strong>.</p>
+            <p>The reminder extension works by adding a second Make.com scenario that runs on a daily schedule — checking the accounting platform for invoices where the due date has passed and the status is still unpaid. For each overdue invoice found, the scenario sends a personalised reminder email using a different template — typically warmer in the first reminder (acknowledging the invoice may have been missed), progressively firmer in subsequent reminders if the invoice remains unpaid. The reminder intervals (7 days overdue, 14 days, 21 days) and the escalation path (accounting team member, senior contact) are configured during implementation based on the client's payment policy. The combination of instant invoice notification and systematic reminder sequences produces the most significant reduction in average days-to-payment — addressing both the initial delivery latency that delays the payment clock and the follow-up consistency that turns borderline-late payments into on-time payments. We scope the reminder extension alongside the base system for clients whose primary goal is payment speed improvement rather than time savings alone.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 600% ROI calculated for such a simple system — and what does the payback timeline look like?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 600% ROI is the highest percentage return in the GrowwStacks portfolio — and it's achievable specifically because of the combination of very low implementation cost (simple 1-week build), meaningful ongoing labour savings, and the payment acceleration value that compounds over time</strong>.</p>
+            <p>The labour savings model: an accounting team spending 7 hours weekly on manual invoice emailing at $35–45/hour recovers $1,225–1,575 weekly — $5,000–6,500 monthly — in administrative capacity. The implementation cost recovers within the first month of deployment for most client volumes. The payment acceleration value adds to this: research consistently shows invoices delivered on the day of creation are paid 3–5 days faster on average than invoices delivered 2–3 days later through a manual process. For a business with $150K monthly in invoiced revenue on 30-day terms, a 4-day improvement in average collection time is worth approximately $20,000 annually in improved working capital position — a value that doesn't appear in the labour savings calculation but represents real financial benefit. The combined labour savings, payment speed improvement, and error elimination (which prevents credit note disputes that consume accounting time) produce the 600% ROI figure. We model the specific numbers using the client's invoicing volume, hourly administrative cost, and average invoice value during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  50K monthly in invoiced revenue on 30-day terms, a 4-day improvement in average collection time is worth approximately $20,000 annually in improved working capital position — a value that doesn't appear in the labour savings calculation but represents real financial benefit. The combined labour savings, payment speed improvement, and error elimination (which prevents credit note disputes that consume accounting time) produce the 600% ROI figure. We model the specific numbers using the client's invoicing volume, hourly administrative cost, and average invoice value during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

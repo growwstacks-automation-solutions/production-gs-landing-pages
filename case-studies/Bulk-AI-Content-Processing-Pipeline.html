@@ -346,88 +346,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What types of raw text content can this pipeline process?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What types of raw text content can this pipeline process?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The pipeline processes any text-based content that can be placed in a Google Sheets cell — customer feedback, support tickets, survey responses, product reviews, social media posts, interview notes, news articles, competitor content excerpts, email content, meeting notes, research abstracts, and any other unstructured text requiring structure and analysis</strong>.</p>
             <p>The ChatGPT analysis prompt is engineered during implementation to be appropriate for the specific content type in your dataset — a customer feedback prompt extracts sentiment, product improvement signals, and churn risk indicators, while a competitive content prompt extracts positioning claims, audience targeting signals, and strategic implications. The same technical pipeline serves all content types through prompt customisation, so the five output dimensions always reflect what's analytically most useful for your specific use case rather than generic analysis.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can I define my own category taxonomy — or does the system use pre-set categories?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I define my own category taxonomy — or does the system use pre-set categories?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The category taxonomy is fully custom — defined by you during implementation and embedded in the ChatGPT analysis prompt so the system classifies exclusively into your pre-approved categories</strong>. There are no pre-set categories imposed by the system.</p>
             <p>During the prompt engineering step, we work with you to define the category set that matches your analytical framework — whether that's 5 broad content types, 20 granular topic classifications, sentiment categories (positive/neutral/negative), funnel stage classifications (awareness/consideration/decision), or any other taxonomy that fits your use case. The defined categories are included in the ChatGPT prompt as the exclusive classification options, ensuring every item is categorised consistently against the same set of options. Tag generation follows the same principle — we define tag generation rules during implementation to produce tags at the granularity and topic focus most useful for your downstream filtering and analysis needs.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the system handle very large datasets — will it hit API rate limits?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle very large datasets — will it hit API rate limits?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Rate limit management is built into the workflow architecture — the iterator processes rows sequentially with appropriate spacing between API calls to stay within OpenAI's rate limits for your API tier</strong>.</p>
             <p>For very large datasets (thousands of rows), the most practical approach is to process in scheduled batches — for example, running the pipeline nightly to process all rows added during the day, or splitting a one-time large dataset import into batches of 500–1,000 rows processed across consecutive sessions. The processing status flag in Google Sheets ensures each batch picks up exactly where the previous one stopped, with no duplication or missed rows. For teams with higher OpenAI API tier access, we configure faster processing rates that can handle larger single-run batches. We assess your typical dataset volumes and processing frequency during discovery to recommend the optimal batch configuration for your use case.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the pipeline write outputs to Airtable, Notion, or another database instead of Google Sheets?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the pipeline write outputs to Airtable, Notion, or another database instead of Google Sheets?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the core processing logic (iteration, text parsing, ChatGPT analysis) is data-store-agnostic, and the output can be written to any platform with Make.com API support</strong>. Airtable, Notion, HubSpot, Salesforce, MySQL, PostgreSQL, and BigQuery are all supported as output destinations.</p>
             <p>Google Sheets is the default because it provides the most accessible interface for most teams — no database knowledge required, immediate visibility into outputs, and easy export to analytics tools. For teams that need to write analysis results directly into a CRM (e.g., analysed customer feedback enriching contact records in HubSpot) or a database (e.g., research data written to a structured PostgreSQL table), we configure the output module accordingly during implementation. The input source can also be a different platform — the pipeline can read raw text from Airtable records, Notion databases, or external API endpoints, not exclusively Google Sheets.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How consistent are the actionable insights across similar content items?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How consistent are the actionable insights across similar content items?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Insight consistency is the dimension that requires the most careful prompt engineering during implementation, and it's where the quality difference between a well-configured system and a generic AI prompt is most pronounced</strong>. The insight generation prompt is engineered to produce insights at a specific level of specificity — not generic observations ("the customer is dissatisfied") but actionable recommendations ("flag this customer for proactive outreach and offer a retention discount within 48 hours").</p>
             <p>Consistency across similar items is achieved by including insight generation rules in the prompt that specify what constitutes an actionable insight for your specific use case, what format it should follow, and what level of specificity is expected. The result is a dataset where similar content items produce comparable insights that can be grouped, counted, and trended — enabling analyses like "how many items suggest proactive outreach?" or "which category generates the most product improvement insights?" We test insight consistency across a representative sample during implementation and refine the prompt until the outputs are reliable enough for the team's analytical confidence threshold.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can content teams and research organisations realistically expect?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can content teams and research organisations realistically expect?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a team spending 25–30 hours weekly on manual content analysis, realistic first-year ROI exceeds 100% — with value coming from three compounding streams: direct time recovery, capacity to process previously unanalysable datasets, and improved decision quality from consistent insight extraction</strong>.</p>
             <p>The direct time math: at $45/hour for an analyst, 27 hours weekly × 50 weeks = $60,750 annually in recoverable capacity per person. The strategic value stream is often larger. Organisations that have accumulated large unanalysed datasets — years of customer feedback, support ticket archives, content performance logs — can process these archives to extract intelligence that was previously inaccessible. A single analysis of a 5,000-row customer feedback archive that surfaces clear product improvement priorities, churn risk patterns, and segment-specific preferences can inform strategic decisions worth multiples of the implementation cost. We scope the value model using your specific team size, analyst hourly rate, and target dataset volumes during the discovery session.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

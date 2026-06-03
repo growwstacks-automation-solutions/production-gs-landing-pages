@@ -292,78 +292,76 @@
 </section>
 
 <!-- FAQ -->
-<section class="cs-faq" id="faq">
-  <div class="container">
-    <h2>Frequently Asked Questions</h2>
-
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        <span>Can the system work with a different lead capture form — our own landing page form or a third-party like Typeform — instead of Google Forms?</span>
-        <span class="faq-arrow" aria-hidden="true">↓</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system work with a different lead capture form — our own landing page form or a third-party like Typeform — instead of Google Forms?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
         <p><strong>Yes — Google Forms is the reference implementation because it is the simplest and most widely used form tool for Google Ads lead capture, but Make.com supports form triggers from virtually any form platform, and the downstream pipeline (ChatGPT, Gmail, Airtable, GoHighLevel) is identical regardless of the form source</strong>.</p>
         <p>Supported alternatives include: Typeform (Make.com has a native Typeform watch trigger that fires on new submissions), Tally (webhook-based trigger), Gravity Forms and WPForms (WordPress-native forms with Make.com webhook integration), HubSpot Forms (if the client is running HubSpot and wants to keep lead capture in the HubSpot ecosystem), Jotform, and any form platform that supports outgoing webhooks or email notifications that Make.com can parse. For landing page forms built directly in the Google Ads landing page HTML, a hidden form action that sends a POST to a Make.com webhook endpoint captures the submission without any third-party form platform. The only requirement is that the form data arrives at Make.com with the fields required for ChatGPT personalisation — name, email, phone, and the enquiry context field. If the existing form captures these fields in any format, the automation can be built without modifying the lead capture interface at all, making the implementation non-disruptive to the current Google Ads campaign landing page.</p>
       </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        <span>How does ChatGPT handle enquiries that don't include much description — very short submissions with minimal context?</span>
-        <span class="faq-arrow" aria-hidden="true">↓</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does ChatGPT handle enquiries that don't include much description — very short submissions with minimal context?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
         <p><strong>Short-description enquiries are a common scenario and are handled through prompt engineering that instructs ChatGPT to use the available context — primarily the Service Interest dropdown selection and the prospect's name — to generate a personalised response even when the free-text description field is minimal or empty</strong>.</p>
         <p>When a prospect selects "Web Design Services" from the dropdown and writes "interested" in the description field, ChatGPT's response draws on the service-specific context in the system prompt — generating an email that acknowledges their interest in web design services, briefly describes the company's web design approach and differentiators, and invites a conversation to understand their specific requirements. The email is genuinely more relevant than a generic template (it references web design specifically) even without a detailed description to work from. The prompt is engineered to produce graceful, professional outputs even from minimal input — avoiding responses that expose the brevity of the description ("you didn't provide much detail, but...") and instead producing confident, service-specific outreach that creates value from the available signals. During prompt testing, we specifically test a range of description lengths — from single words to 500-character descriptions — to confirm that ChatGPT's output quality is consistently professional across the full realistic range of submission quality the form will receive in production.</p>
       </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        <span>Can the system handle multiple service types with different email templates for each — different tone and content for different service categories?</span>
-        <span class="faq-arrow" aria-hidden="true">↓</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle multiple service types with different email templates for each — different tone and content for different service categories?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
         <p><strong>Yes — service-specific personalisation is a standard prompt engineering approach, using the Service Interest dropdown value to select the appropriate service-specific context within the ChatGPT system prompt rather than applying identical instructions to all enquiry types</strong>.</p>
         <p>The system prompt is structured with a service-specific context section: "If the enquiry is about [Web Design], use the following context: [web design service description, typical project scope, key differentiators, relevant next step]." A separate section covers each service category. When ChatGPT processes an enquiry, it identifies the service interest from the form data and applies the relevant service-specific context to the email generation — producing a web design response that reads differently from a digital marketing response or a software development response, even if the prospect's description is similarly brief. For clients with a large number of service categories (10+), the prompt becomes long but remains manageable within ChatGPT's context window — and the personalisation benefit of service-specific context is proportionally higher when the service portfolio is diverse. Service-specific tone requirements (more technical for software services, more creative for design services, more analytical for financial services) are also encoded in the service-specific sections. Changes to service descriptions, pricing context, or next-step instructions for any service category require only a prompt update in Make.com — not a new module build or workflow change.</p>
       </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        <span>Can this system also be used for leads coming from sources other than Google Ads — Facebook Ads, LinkedIn Ads, or organic website contact forms?</span>
-        <span class="faq-arrow" aria-hidden="true">↓</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can this system also be used for leads coming from sources other than Google Ads — Facebook Ads, LinkedIn Ads, or organic website contact forms?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
         <p><strong>Yes — the pipeline is source-agnostic from Make.com onward. Extending the same automation to handle Facebook Ads lead forms, LinkedIn Lead Gen Forms, or organic website contact forms requires only adding additional Make.com trigger sources that feed into the same ChatGPT → Gmail → Airtable → GoHighLevel pipeline</strong>.</p>
         <p>Facebook Ads lead forms have native Make.com integration — a Facebook Lead Ads watch trigger fires when a Lead Gen Form submission occurs, delivering the lead data in the same format that the Google Forms trigger uses. LinkedIn Lead Gen Forms similarly have Make.com integration. For each additional source, the trigger module is added to the Make.com scenario (or a separate scenario is created for each source and the data is routed into a shared pipeline), the lead source tag value is set appropriately (Google Ads / Facebook Ads / LinkedIn / Organic), and the ChatGPT prompt may be adjusted to reflect source-specific context (LinkedIn leads typically represent more business-specific enquiries than Google search enquiries, which may warrant a slightly different professional tone). The Airtable Lead Source field captures the origin for campaign attribution reporting. For clients running multi-channel paid media campaigns, extending the automation across all ad platforms provides comprehensive lead coverage and a unified view of all inbound enquiries — from first submission to CRM contact — regardless of which channel drove the lead. We typically scope the multi-source configuration during implementation for clients with active Facebook or LinkedIn campaigns alongside Google Ads.</p>
       </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        <span>Does the automated Gmail email risk triggering spam filters — and how does the system maintain deliverability?</span>
-        <span class="faq-arrow" aria-hidden="true">↓</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Does the automated Gmail email risk triggering spam filters — and how does the system maintain deliverability?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
         <p><strong>Spam filter risk is minimised by two structural factors: the emails are sent via the client's authentic Gmail account (not a mass email service), and they are sent to prospects who just submitted a form requesting contact — making them solicited transactional emails rather than cold outbound messages</strong>.</p>
         <p>Gmail's spam filtering distinguishes between cold outbound email (high spam risk), bulk marketing email (medium risk, depends on domain reputation), and transactional email in response to a user action (low risk). Automated responses to form submissions fall in the third category — the prospect submitted a form requesting contact, so an immediate email response from the form's host domain is expected and will generally be delivered to the inbox rather than spam. Deliverability best practices during implementation include: ensuring the Gmail account sending the emails has a complete profile (profile photo, full name, signature) matching the business identity; keeping email sending volume proportional to the account's sending history (new Gmail accounts sending 100 emails on day one get flagged; established business Gmail accounts sending 50 enquiry responses per day do not); using a Google Workspace business email address (company@domain.com) rather than a personal @gmail.com address for professional email delivery and brand credibility; and ensuring the email content is variable (which ChatGPT's personalisation inherently provides) rather than identical text sent to multiple recipients (which triggers volume-based spam signals). For clients with high enquiry volumes (200+ per day), Gmail's daily sending limits become relevant — Gmail accounts have a 500-email daily send limit for standard accounts and 2,000 for Google Workspace accounts. Volume above these limits requires either multiple sending accounts or migration to an SMTP relay service, which we assess during the discovery call.</p>
       </div></div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-q" aria-expanded="false">
-        <span>The ROI is listed as 100% — lower than other case studies. Is this a less valuable system, or is the ROI calculation different?</span>
-        <span class="faq-arrow" aria-hidden="true">↓</span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            The ROI is listed as 100% — lower than other case studies. Is this a less valuable system, or is the ROI calculation different?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
         <p><strong>The 100% ROI reflects a deliberately conservative calculation — it represents the baseline payback from operational labour savings alone, without including the revenue impact of reduced lead abandonment or improved conversion rates that typically represent the larger portion of the system's actual value</strong>.</p>
         <p>The labour savings calculation: a sales team spending 15 hours weekly on manual lead processing at $35/hour effective rate spends $27,300 annually on Google Ads lead administration. With 90% automation, the annual recovery is $24,570. Against the 8-week implementation cost, this produces the 100% ROI within approximately 12 months of operation from labour savings alone. The revenue impact that is not included in this conservative figure: for a client spending $5,000 per month on Google Ads with a 3% form conversion rate (150 leads per month) and a 20% lead-to-customer conversion rate at $5,000 average deal value, the 30% improvement in conversion rates from instant personalised response produces 9 additional customers per month — $45,000 in monthly revenue attributable to the automation's response speed improvement. At that revenue contribution, the actual ROI is dramatically higher than 100%. We list 100% because it is the figure we can calculate conservatively from operational savings alone, and we are cautious about attributing full revenue impact figures to a single system in a complex sales process where many variables contribute to conversion. The actual value delivered consistently exceeds the conservative 100% figure for clients with meaningful Google Ads lead volumes and non-trivial deal values. We model the full value calculation during the discovery call for each client's specific numbers.</p>
       </div></div>
+        </div>
+      </div>
     </div>
-
-  </div>
-</section>
+  </section>
 
 <!-- BOTTOM CTA -->
 <section class="cs-bottom-cta">

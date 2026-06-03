@@ -346,88 +346,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens if the Make.com sync fails mid-run — will data be corrupted or records duplicated?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if the Make.com sync fails mid-run — will data be corrupted or records duplicated?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The duplicate detection query runs at the start of every record's processing — which means even if the system fails mid-run and restarts, records that were successfully synced before the failure will be updated rather than duplicated when the restart processes them again</strong>. The invoice ID lookup is the safeguard that makes restarts safe by design.</p>
             <p>For error handling: the Make.com workflow includes error catching modules that log failed records with the specific error reason rather than silently dropping them. A monitoring dashboard shows sync success rates and error logs, so the finance team can identify any records that failed processing and understand why. Common failure modes — QuickBooks API timeouts, Airtable API rate limits — are handled with automatic retry logic that resolves most transient errors without human intervention. For persistent errors, the log provides the specific record ID and error type for manual investigation.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system handle invoices that are revised or credit-noted after initial sync?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle invoices that are revised or credit-noted after initial sync?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — this is exactly the scenario the update path is built to handle. When an invoice in QuickBooks is revised (amount changed, line items edited, due date extended) or a credit note is applied, the next sync run detects the existing Airtable record via the invoice ID query and overwrites the stale fields with the current QuickBooks values</strong>.</p>
             <p>For credit notes specifically: the system can be configured to handle them as either a field update on the original invoice record (reducing the balance due) or as a separate linked record — depending on how the finance team prefers to represent credit notes in their Airtable reporting structure. We discuss credit note handling conventions during discovery and configure the appropriate representation. For voided invoices, a status update is applied to the Airtable record flagging it as voided rather than deleting it — preserving the audit trail while clearly marking it as no longer active.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can we sync historical QuickBooks data — or only future invoices from go-live?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can we sync historical QuickBooks data — or only future invoices from go-live?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Both options are available. A historical backfill run can be configured to process all invoices and payments from a specified start date — populating Airtable with the complete historical dataset before switching to ongoing real-time sync</strong>.</p>
             <p>For most finance teams, we recommend a phased approach: first, run the historical backfill to populate all invoices from the past 12–24 months (or as far back as is needed for reporting completeness), validate the data accuracy on a sample, then activate the ongoing sync for new transactions. The same duplicate detection logic that protects ongoing sync also protects the backfill — if any records were previously manually entered into Airtable, they'll be updated rather than duplicated during the backfill run. Processing time for historical backfills depends on invoice volume — typically a few hours for datasets up to a few thousand records, scheduled during off-hours to avoid API rate limit pressure.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can additional QuickBooks data types be synced — expenses, bills, customers, or vendor records?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can additional QuickBooks data types be synced — expenses, bills, customers, or vendor records?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the QuickBooks API provides access to all major financial data objects, and the sync architecture can be extended to include bills, expenses, vendor records, customer records, purchase orders, and payroll data using the same conditional routing and duplicate detection framework</strong>.</p>
             <p>Extension modules for additional data types are added as separate Make.com scenarios or as additional routing branches within the existing workflow — each with its own Airtable table, field mapping, and duplicate detection logic. We typically recommend establishing the invoice-payment pipeline first, confirming it's running reliably, and then adding extension data types in subsequent phases based on which additional data the finance team most needs in Airtable. Customer and vendor record sync is a common early extension, as it enables Airtable lookup fields that enrich invoice records with complete customer and vendor profiles without requiring a separate data entry process.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Does this work if we want to sync in the other direction — from Airtable back to QuickBooks?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Does this work if we want to sync in the other direction — from Airtable back to QuickBooks?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Reverse sync — writing data from Airtable back to QuickBooks — is technically possible via the QuickBooks API but significantly more complex and carries important considerations for financial data integrity</strong>.</p>
             <p>QuickBooks is the system of record for accounting compliance — it governs the ledger, tax calculations, and audit trail that financial and regulatory standards require to be authoritative. Writing to QuickBooks from Airtable introduces the risk of overwriting compliant accounting records with data from a reporting tool that wasn't designed with accounting compliance in mind. For most finance teams, the appropriate data flow is one-directional: QuickBooks generates and owns the financial transactions; Airtable receives and reports on them. If specific bi-directional use cases are needed — for example, writing customer payment notes from Airtable back to QuickBooks — we scope these carefully during discovery to confirm they don't compromise the QuickBooks data integrity requirements the organisation depends on.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a finance team realistically expect and how quickly?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a finance team realistically expect and how quickly?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a finance team currently spending 12.5 hours weekly on manual QuickBooks-to-Airtable data transfer, realistic ROI exceeds 100% within the first year — with payback typically occurring within 3–4 months of go-live</strong>.</p>
             <p>The direct time math: 12.5 hours weekly × $50/hour for a finance professional × 50 weeks = $31,250 annually in recovered capacity per person on the transfer task alone. The indirect value compounds this: eliminating data entry errors removes the cost of identifying, tracing, and correcting financial report inaccuracies — a process that often takes longer than the original entry. Real-time data access enables faster financial decisions — monthly reporting cycles that previously required waiting for manual data transfer can shift to weekly or on-demand reporting. For accounting firms managing multiple clients with this combination of platforms, the value multiplies across every client account. We model the specific payback period using your team composition, volume of records processed weekly, and hourly labor rate during the discovery session.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

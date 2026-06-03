@@ -724,6 +724,38 @@ window.CS_CARDS = [
     roi: "$400K+/yr saved",
     app:["Airtable", "ChatGPT", "Salesforce"],
     roiIcon: "trend"
+  },
+
+  /* ── 46 ── */
+  {
+    category: "operations ai-powered",
+    href: "/case-studies/track-shipment-via-terminal-49.html",
+    bannerClass: "csh-banner-teal",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/terminal_49.jpeg?updatedAt=1780408318616",
+    imgAlt: "Automated Shipment Tracking System via Terminal 49",
+    tag: "Operations",
+    title: "Automated Shipment Tracking via Terminal 49",
+    desc: "Real-time shipment tracking system that pulls container and vessel data from Terminal 49, updates Monday.com automatically, and sends customer notifications via Missive — saving 14+ hours weekly.",
+    meta: "Freight Forwarding",
+    roi: "$18K/yr saved",
+    app: ["n8n", "Terminal 49", "Monday.com"],
+    roiIcon: "clock"
+  },
+
+  /* ── 47 ── */
+  {
+    category: "operations ai-powered",
+    href: "/case-studies/google-review-automation.html",
+    bannerClass: "csh-banner-blue",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/Google_review_automation",
+    imgAlt: "Google Review Automation System",
+    tag: "Operations",
+    title: "Google Review Automation",
+    desc: "Multi-location Google Review response pipeline that fetches reviews, determines sentiment, posts responses automatically to Google Business Profiles, and logs audit trails in Google Sheets — saving 2+ hours daily.",
+    meta: "Mattress Retail",
+    roi: "2 hrs/day saved",
+    app: ["make", "Google Business Profile", "Google Sheets"],
+    roiIcon: "clock"
   }
 
 ];

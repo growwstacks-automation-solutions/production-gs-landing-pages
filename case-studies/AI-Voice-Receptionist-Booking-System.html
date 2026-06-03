@@ -352,7 +352,83 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How natural does the AI voice receptionist actually sound to callers?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>VAPI's voice quality is significantly more natural than traditional IVR or text-to-speech systems</strong> — most callers in testing do not identify the receptionist as AI unless explicitly told, and the system handles conversational pauses, interruptions, and topic changes without breaking.</p>
+            <p>The naturalness comes from two layers working together: VAPI's low-latency voice synthesis that matches human conversational timing, and ChatGPT's response generation that produces contextually appropriate replies rather than reading from a fixed script. When a caller says something unexpected — "actually, can we do it the week after?" — the system processes the change and responds naturally rather than repeating its last prompt.</p>
+            <p>During implementation we tune the agent's persona, pacing, and vocabulary to match your business's brand voice. A medical office gets a different tone than a hair salon — and both feel appropriately human for their context.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens when a caller asks something the AI can't handle — like pricing or complex questions?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The AI is configured with clear escalation boundaries — when a question falls outside its trained scope, it gracefully acknowledges the limitation and offers to transfer the caller to a staff member or arrange a callback</strong>, rather than attempting an incorrect answer.</p>
+            <p>Common escalation triggers include specific pricing questions, insurance or billing queries, complex clinical or legal questions, and any situation where the caller expresses frustration. For after-hours escalations where no staff are available, the system captures the caller's contact information and query details and generates a callback request that appears in your team's queue at opening time. Escalation rate data is tracked — if certain question types escalate frequently, that signals an opportunity to expand the agent's knowledge base in the next update cycle.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system prevent double-bookings when multiple calls come in simultaneously?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Google Calendar's real-time write-locking prevents simultaneous bookings of the same slot</strong> — the moment one caller's selection triggers an event creation, that slot is immediately unavailable to any concurrent call querying the same calendar.</p>
+            <p>The availability check runs at the moment the caller makes their selection, not when the call begins — meaning even if two callers are presented the same available slot simultaneously, the first to confirm triggers a calendar write that the second caller's check will catch. The second caller is informed that slot just became unavailable and is offered the next available window. The system handles this edge case cleanly and automatically without any manual intervention required.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle multiple appointment types with different durations and rules?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports multiple appointment types each with configurable durations, buffer times, and availability rules</strong>. A dental practice can configure 30-minute cleanings, 60-minute new patient exams, and 90-minute procedures — all with different slot availability logic applied automatically.</p>
+            <p>ChatGPT's intent analysis identifies the appointment type from the caller's natural description — even when they don't use your exact terminology — and routes to the appropriate calendar rules for that type. Adding new appointment types after launch requires only a configuration update, no rebuild of the core workflow.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Does the AI send appointment reminders, or just the initial confirmation?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The base system delivers an immediate voice confirmation during the call and creates the Google Calendar event with full booking details</strong>. Google Calendar's native reminder functionality handles day-of and day-before email notifications to the customer if their email is captured during the booking conversation.</p>
+            <p>For businesses that want proactive SMS or outbound call reminders — particularly valuable for reducing no-shows in medical or salon contexts — we extend the system with a third Make.com scenario triggering reminder messages at configurable intervals (e.g., 48 hours and 2 hours before the appointment). This is a common add-on request and is scoped as an extension during discovery if needed.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a service business realistically expect from replacing a receptionist with this system?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>For a service business with one dedicated receptionist handling phone bookings, realistic first-year ROI exceeds 100% — combining direct labor cost elimination with revenue recovered from previously missed bookings</strong>.</p>
+            <p>The math works across two vectors simultaneously. On the cost side: eliminating a $35,000–$50,000 receptionist position directly offsets implementation cost within months. On the revenue side: a business losing 30% of bookings to off-hours voicemail — say, 90 missed calls per month at an average booking value of 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -435,6 +511,96 @@
         </div>
       </div>
 
+    </div>
+  50 — is leaving 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How natural does the AI voice receptionist actually sound to callers?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>VAPI's voice quality is significantly more natural than traditional IVR or text-to-speech systems</strong> — most callers in testing do not identify the receptionist as AI unless explicitly told, and the system handles conversational pauses, interruptions, and topic changes without breaking.</p>
+            <p>The naturalness comes from two layers working together: VAPI's low-latency voice synthesis that matches human conversational timing, and ChatGPT's response generation that produces contextually appropriate replies rather than reading from a fixed script. When a caller says something unexpected — "actually, can we do it the week after?" — the system processes the change and responds naturally rather than repeating its last prompt.</p>
+            <p>During implementation we tune the agent's persona, pacing, and vocabulary to match your business's brand voice. A medical office gets a different tone than a hair salon — and both feel appropriately human for their context.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens when a caller asks something the AI can't handle — like pricing or complex questions?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The AI is configured with clear escalation boundaries — when a question falls outside its trained scope, it gracefully acknowledges the limitation and offers to transfer the caller to a staff member or arrange a callback</strong>, rather than attempting an incorrect answer.</p>
+            <p>Common escalation triggers include specific pricing questions, insurance or billing queries, complex clinical or legal questions, and any situation where the caller expresses frustration. For after-hours escalations where no staff are available, the system captures the caller's contact information and query details and generates a callback request that appears in your team's queue at opening time. Escalation rate data is tracked — if certain question types escalate frequently, that signals an opportunity to expand the agent's knowledge base in the next update cycle.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system prevent double-bookings when multiple calls come in simultaneously?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Google Calendar's real-time write-locking prevents simultaneous bookings of the same slot</strong> — the moment one caller's selection triggers an event creation, that slot is immediately unavailable to any concurrent call querying the same calendar.</p>
+            <p>The availability check runs at the moment the caller makes their selection, not when the call begins — meaning even if two callers are presented the same available slot simultaneously, the first to confirm triggers a calendar write that the second caller's check will catch. The second caller is informed that slot just became unavailable and is offered the next available window. The system handles this edge case cleanly and automatically without any manual intervention required.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system handle multiple appointment types with different durations and rules?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports multiple appointment types each with configurable durations, buffer times, and availability rules</strong>. A dental practice can configure 30-minute cleanings, 60-minute new patient exams, and 90-minute procedures — all with different slot availability logic applied automatically.</p>
+            <p>ChatGPT's intent analysis identifies the appointment type from the caller's natural description — even when they don't use your exact terminology — and routes to the appropriate calendar rules for that type. Adding new appointment types after launch requires only a configuration update, no rebuild of the core workflow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Does the AI send appointment reminders, or just the initial confirmation?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The base system delivers an immediate voice confirmation during the call and creates the Google Calendar event with full booking details</strong>. Google Calendar's native reminder functionality handles day-of and day-before email notifications to the customer if their email is captured during the booking conversation.</p>
+            <p>For businesses that want proactive SMS or outbound call reminders — particularly valuable for reducing no-shows in medical or salon contexts — we extend the system with a third Make.com scenario triggering reminder messages at configurable intervals (e.g., 48 hours and 2 hours before the appointment). This is a common add-on request and is scoped as an extension during discovery if needed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What ROI can a service business realistically expect from replacing a receptionist with this system?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>For a service business with one dedicated receptionist handling phone bookings, realistic first-year ROI exceeds 100% — combining direct labor cost elimination with revenue recovered from previously missed bookings</strong>.</p>
+            <p>The math works across two vectors simultaneously. On the cost side: eliminating a $35,000–$50,000 receptionist position directly offsets implementation cost within months. On the revenue side: a business losing 30% of bookings to off-hours voicemail — say, 90 missed calls per month at an average booking value of $150 — is leaving $13,500 per month uncaptured. Recovering even half of that through 24/7 AI availability adds over $80,000 annually in revenue that simply didn't exist before. We build a specific ROI model for every prospect during discovery using your actual call volume and average booking value data — if the numbers don't justify it, we'll tell you.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  3,500 per month uncaptured. Recovering even half of that through 24/7 AI availability adds over $80,000 annually in revenue that simply didn't exist before. We build a specific ROI model for every prospect during discovery using your actual call volume and average booking value data — if the numbers don't justify it, we'll tell you.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

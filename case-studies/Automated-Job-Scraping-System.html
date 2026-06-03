@@ -338,8 +338,171 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <div id="gs-faq"></div>
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system scrape job postings from platforms other than LinkedIn — Indeed, Glassdoor, or company career pages?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — Apify's actor marketplace includes scrapers for all major job platforms, and the Make.com orchestration architecture is platform-agnostic</strong>. The system can be extended to scrape multiple job boards in a single daily run — aggregating postings from LinkedIn, Indeed, Glassdoor, and company career pages into the same Airtable database, with a source platform column indicating where each posting was found.</p>
+            <p>Available Apify actors cover Indeed (job listings by keyword and location), Glassdoor (jobs and company reviews), Google Jobs (via Google's job listing aggregator), company-specific career pages for major employers with high-volume hiring, and general-purpose web scrapers that can be configured for career pages without a dedicated actor. For teams monitoring a specific set of competitor companies' hiring activity, a custom career page scraper can be configured targeting each company's /careers URL — capturing postings that companies publish directly on their own sites before they appear on aggregator platforms. The multi-source architecture uses a source platform field in Airtable to track which board each posting came from, and the duplicate detection logic operates across sources — preventing the same posting from appearing in Airtable once from LinkedIn and again from Indeed when companies post the same role on multiple platforms.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How many job postings can the system capture per day — and what are the limits based on Apify's pricing?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Apify's pricing is usage-based — primarily on compute units consumed per actor run and data transfer volume — rather than a per-result fee, which means the cost per scraped job posting decreases as daily volume increases</strong>. For typical daily job scraping use cases (50–500 new postings per day), Apify's standard paid plans accommodate the volume at a monthly cost that is a small fraction of the labour cost the automation replaces.</p>
+            <p>Practical volume guidance: a search targeting a specific job title in a specific city typically yields 20–100 new postings per daily run. A broader search covering multiple related job titles across a country may return 200–1,000 results per run. The system handles any volume within the Apify actor's result limit per run (configurable, typically up to several thousand results per run on paid plans). For very high-volume requirements — teams monitoring broad job markets across many categories and geographies — multiple actor runs can be chained within the same Make.com scenario, each targeting a specific search query, with all results aggregated into the same Airtable database. We scope the expected daily result volume based on the client's search criteria during the discovery call and recommend the appropriate Apify plan tier for the anticipated usage.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system automatically notify the team when specific companies post new roles — real-time alerts rather than daily database updates?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — real-time company-specific hiring alerts are a commonly deployed extension that adds a notification step to the workflow for postings that match a configured watchlist of target companies or role criteria</strong>. The alert extension works by adding a conditional check after the "new record created" path: if the new posting's company name matches any entry in a configured watchlist (stored in a separate Airtable table or a Make.com data store), the workflow triggers an immediate notification.</p>
+            <p>Notification delivery options include: Slack message to a designated channel (with posting details and a direct link to the LinkedIn listing — enabling the team to click through immediately), email notification to configured recipients, or a make.com notification to a mobile app. The watchlist approach enables granular monitoring — different team members can have different company watchlists, with relevant notifications routed to the specific person responsible for tracking that competitor or target employer. For example, a talent acquisition team monitoring a list of companies from which they're actively trying to hire can receive instant Slack alerts the moment those companies post a new relevant role — enabling outreach to passive candidates at those companies while the role is newly posted and the talent market is most receptive. The alert extension adds minimal complexity to the base implementation and is typically included in the standard build for teams with a defined competitor or target company watchlist.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can AI be added to the pipeline to analyse job descriptions and extract salary ranges, required skills, or seniority level automatically?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — adding a ChatGPT or Claude analysis step between the Apify data extraction and the Airtable record creation is a high-value extension that converts raw job description text into structured, queryable intelligence fields</strong>. The AI analysis step passes each job description to an LLM with an extraction prompt and writes the parsed output to dedicated Airtable columns.</p>
+            <p>Commonly extracted fields include: salary range (extracted from description text when posted, normalised to annual equivalent in a standard currency), required technical skills (extracted as a list, enabling filtering the database by specific skill requirements), seniority level (inferred from title and description — Entry / Mid / Senior / Lead / Director), years of experience required (extracted from the explicit requirement in the description), remote/hybrid/on-site classification (extracted from the work arrangement section), and key responsibilities (summarised into 3–5 bullet points rather than the full description length). Adding these AI-parsed fields transforms the Airtable database from a job posting repository into a structured market intelligence dataset — enabling queries like "show me all Senior DevOps postings in fintech requiring Kubernetes experience" or "what's the average required experience across all Product Manager postings we've captured this quarter." The AI analysis step adds a modest per-record cost (a few cents per job description at typical LLM API pricing) which remains negligible relative to the intelligence value of the structured data it produces.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the Airtable database be replaced with Google Sheets or another database if the team doesn't use Airtable?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the database layer can be swapped to Google Sheets, Notion, or any other data store that Make.com integrates with, as the orchestration logic in Make.com is independent of the specific database destination</strong>. Airtable is the default recommendation because its structured grid interface, flexible view types, and per-record filtering make it well-suited to the job intelligence use case — but the system functions identically with alternative databases.</p>
+            <p>Google Sheets is the most common alternative for teams already operating within Google Workspace — Make.com writes to Google Sheets rows using the same logic as Airtable records, with the duplicate detection step using a Google Sheets search row module instead of Airtable's search endpoint. The filtering and analysis capabilities are slightly less flexible than Airtable for large datasets (Google Sheets becomes slower and harder to navigate above ~5,000 rows), but for teams monitoring a focused set of job categories with moderate daily volume, Google Sheets is fully adequate. Notion is an option for teams using Notion as their primary knowledge base — job postings are written as Notion database items, enabling the team to annotate postings with comments, link to candidate profiles, and manage workflow within Notion's existing pages. We configure whichever database destination best fits the client's existing toolstack during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 400% ROI calculated — and what does the payback period look like at different levels of current manual monitoring effort?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 400% ROI reflects the annual value of labour time reclaimed from manual job monitoring, calculated against the 1-week implementation cost — with a payback period that is among the shortest in the GrowwStacks portfolio due to the short implementation timeline</strong>.</p>
+            <p>The calculation at different monitoring levels: a recruiter spending 5 hours weekly on manual LinkedIn job searching at $40/hour effective rate recovers 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
 
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system scrape job postings from platforms other than LinkedIn — Indeed, Glassdoor, or company career pages?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — Apify's actor marketplace includes scrapers for all major job platforms, and the Make.com orchestration architecture is platform-agnostic</strong>. The system can be extended to scrape multiple job boards in a single daily run — aggregating postings from LinkedIn, Indeed, Glassdoor, and company career pages into the same Airtable database, with a source platform column indicating where each posting was found.</p>
+            <p>Available Apify actors cover Indeed (job listings by keyword and location), Glassdoor (jobs and company reviews), Google Jobs (via Google's job listing aggregator), company-specific career pages for major employers with high-volume hiring, and general-purpose web scrapers that can be configured for career pages without a dedicated actor. For teams monitoring a specific set of competitor companies' hiring activity, a custom career page scraper can be configured targeting each company's /careers URL — capturing postings that companies publish directly on their own sites before they appear on aggregator platforms. The multi-source architecture uses a source platform field in Airtable to track which board each posting came from, and the duplicate detection logic operates across sources — preventing the same posting from appearing in Airtable once from LinkedIn and again from Indeed when companies post the same role on multiple platforms.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How many job postings can the system capture per day — and what are the limits based on Apify's pricing?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Apify's pricing is usage-based — primarily on compute units consumed per actor run and data transfer volume — rather than a per-result fee, which means the cost per scraped job posting decreases as daily volume increases</strong>. For typical daily job scraping use cases (50–500 new postings per day), Apify's standard paid plans accommodate the volume at a monthly cost that is a small fraction of the labour cost the automation replaces.</p>
+            <p>Practical volume guidance: a search targeting a specific job title in a specific city typically yields 20–100 new postings per daily run. A broader search covering multiple related job titles across a country may return 200–1,000 results per run. The system handles any volume within the Apify actor's result limit per run (configurable, typically up to several thousand results per run on paid plans). For very high-volume requirements — teams monitoring broad job markets across many categories and geographies — multiple actor runs can be chained within the same Make.com scenario, each targeting a specific search query, with all results aggregated into the same Airtable database. We scope the expected daily result volume based on the client's search criteria during the discovery call and recommend the appropriate Apify plan tier for the anticipated usage.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system automatically notify the team when specific companies post new roles — real-time alerts rather than daily database updates?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — real-time company-specific hiring alerts are a commonly deployed extension that adds a notification step to the workflow for postings that match a configured watchlist of target companies or role criteria</strong>. The alert extension works by adding a conditional check after the "new record created" path: if the new posting's company name matches any entry in a configured watchlist (stored in a separate Airtable table or a Make.com data store), the workflow triggers an immediate notification.</p>
+            <p>Notification delivery options include: Slack message to a designated channel (with posting details and a direct link to the LinkedIn listing — enabling the team to click through immediately), email notification to configured recipients, or a make.com notification to a mobile app. The watchlist approach enables granular monitoring — different team members can have different company watchlists, with relevant notifications routed to the specific person responsible for tracking that competitor or target employer. For example, a talent acquisition team monitoring a list of companies from which they're actively trying to hire can receive instant Slack alerts the moment those companies post a new relevant role — enabling outreach to passive candidates at those companies while the role is newly posted and the talent market is most receptive. The alert extension adds minimal complexity to the base implementation and is typically included in the standard build for teams with a defined competitor or target company watchlist.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can AI be added to the pipeline to analyse job descriptions and extract salary ranges, required skills, or seniority level automatically?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — adding a ChatGPT or Claude analysis step between the Apify data extraction and the Airtable record creation is a high-value extension that converts raw job description text into structured, queryable intelligence fields</strong>. The AI analysis step passes each job description to an LLM with an extraction prompt and writes the parsed output to dedicated Airtable columns.</p>
+            <p>Commonly extracted fields include: salary range (extracted from description text when posted, normalised to annual equivalent in a standard currency), required technical skills (extracted as a list, enabling filtering the database by specific skill requirements), seniority level (inferred from title and description — Entry / Mid / Senior / Lead / Director), years of experience required (extracted from the explicit requirement in the description), remote/hybrid/on-site classification (extracted from the work arrangement section), and key responsibilities (summarised into 3–5 bullet points rather than the full description length). Adding these AI-parsed fields transforms the Airtable database from a job posting repository into a structured market intelligence dataset — enabling queries like "show me all Senior DevOps postings in fintech requiring Kubernetes experience" or "what's the average required experience across all Product Manager postings we've captured this quarter." The AI analysis step adds a modest per-record cost (a few cents per job description at typical LLM API pricing) which remains negligible relative to the intelligence value of the structured data it produces.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the Airtable database be replaced with Google Sheets or another database if the team doesn't use Airtable?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the database layer can be swapped to Google Sheets, Notion, or any other data store that Make.com integrates with, as the orchestration logic in Make.com is independent of the specific database destination</strong>. Airtable is the default recommendation because its structured grid interface, flexible view types, and per-record filtering make it well-suited to the job intelligence use case — but the system functions identically with alternative databases.</p>
+            <p>Google Sheets is the most common alternative for teams already operating within Google Workspace — Make.com writes to Google Sheets rows using the same logic as Airtable records, with the duplicate detection step using a Google Sheets search row module instead of Airtable's search endpoint. The filtering and analysis capabilities are slightly less flexible than Airtable for large datasets (Google Sheets becomes slower and harder to navigate above ~5,000 rows), but for teams monitoring a focused set of job categories with moderate daily volume, Google Sheets is fully adequate. Notion is an option for teams using Notion as their primary knowledge base — job postings are written as Notion database items, enabling the team to annotate postings with comments, link to candidate profiles, and manage workflow within Notion's existing pages. We configure whichever database destination best fits the client's existing toolstack during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 400% ROI calculated — and what does the payback period look like at different levels of current manual monitoring effort?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 400% ROI reflects the annual value of labour time reclaimed from manual job monitoring, calculated against the 1-week implementation cost — with a payback period that is among the shortest in the GrowwStacks portfolio due to the short implementation timeline</strong>.</p>
+            <p>The calculation at different monitoring levels: a recruiter spending 5 hours weekly on manual LinkedIn job searching at $40/hour effective rate recovers $10,400 annually. At 10 hours weekly (two full working days), the recovery is $20,800. At a team of 3 recruiters each spending 5 hours weekly, the collective recovery is $31,200 annually. The $6K monthly savings figure cited in the metrics represents a 37.5-hour weekly team monitoring load at $40/hour — a realistic figure for a recruitment agency monitoring multiple job categories for candidate placement intelligence. The 1-week implementation timeline means payback occurs within the first 1–2 months of operation rather than the 3–6 month payback period of more complex implementations. The ROI percentage is highest for this system relative to implementation cost because of the combination of fast implementation, low ongoing operating cost (Apify usage fees at scale are significantly below the labour cost replaced), and meaningful weekly time recovery that compounds across the entire team. We calculate the specific projection using the client's current monitoring hours and team size during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  0,400 annually. At 10 hours weekly (two full working days), the recovery is $20,800. At a team of 3 recruiters each spending 5 hours weekly, the collective recovery is $31,200 annually. The $6K monthly savings figure cited in the metrics represents a 37.5-hour weekly team monitoring load at $40/hour — a realistic figure for a recruitment agency monitoring multiple job categories for candidate placement intelligence. The 1-week implementation timeline means payback occurs within the first 1–2 months of operation rather than the 3–6 month payback period of more complex implementations. The ROI percentage is highest for this system relative to implementation cost because of the combination of fast implementation, low ongoing operating cost (Apify usage fees at scale are significantly below the labour cost replaced), and meaningful weekly time recovery that compounds across the entire team. We calculate the specific projection using the client's current monitoring hours and team size during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- BOTTOM CTA                                  -->
@@ -380,44 +543,6 @@
 <script src="../assets/js/images-helper.js"></script>
 <script src="../_shared/page-builder.js"></script>
 <script src="../case-studies.js"></script>
-<script src="../_shared/components/faq-component.js"></script>
-<script defer>
-  const faqData = [
-  {
-    question: "Can the system scrape job postings from platforms other than LinkedIn — Indeed, Glassdoor, or company career pages?",
-    answer: "Yes. Apify's actor marketplace includes scrapers for major job platforms including LinkedIn, Indeed, Glassdoor, Google Jobs, and company career pages. The system can aggregate postings from multiple sources into a single database while automatically detecting and removing duplicates across platforms. This allows teams to monitor the entire job market from one centralized location."
-  },
-  {
-    question: "How many job postings can the system capture per day, and what are the limits based on Apify pricing?",
-    answer: "Apify uses usage-based pricing rather than charging per job posting. Typical deployments capture anywhere from 50 to 1,000+ new postings per day depending on search scope. The system can scale to several thousand postings per run on paid plans, and multiple scraping runs can be combined within the same workflow for higher-volume monitoring requirements."
-  },
-  {
-    question: "Can the system automatically notify the team when specific companies post new roles?",
-    answer: "Yes. Real-time alerts can be configured for specific companies, job titles, industries, or hiring criteria. When a matching posting is detected, the workflow can instantly send notifications via Slack, email, or other channels. This enables teams to react immediately when target companies begin hiring."
-  },
-  {
-    question: "Can AI be added to analyze job descriptions and extract salary ranges, skills, or seniority levels automatically?",
-    answer: "Yes. AI models such as ChatGPT or Claude can analyze each job description and extract structured data including salary ranges, required skills, years of experience, seniority level, work arrangement, and key responsibilities. This transforms raw job postings into a searchable intelligence database for deeper market analysis."
-  },
-  {
-    question: "Can Airtable be replaced with Google Sheets or another database?",
-    answer: "Yes. The workflow is database-agnostic and can write data to Airtable, Google Sheets, Notion, or any platform supported by Make.com integrations. Airtable is often recommended because of its filtering and reporting capabilities, but the automation can be configured to match your existing technology stack."
-  },
-  {
-    question: "How is the 400% ROI calculated, and what does the payback period look like?",
-    answer: "The ROI is based on the labor hours saved by eliminating manual job monitoring and data collection. For recruiters or research teams spending several hours per week tracking job postings, the recovered time often generates significant annual savings. Because implementation typically takes about one week, many organizations recover their investment within the first one to two months of operation."
-  }
-];
-
-document.addEventListener('DOMContentLoaded', function () {
-  if (typeof renderFAQ === 'function') {
-    renderFAQ("gs-faq", faqData, {
-      label: "Frequently Asked Questions",
-      title: "Got Questions? We've Got Answers."
-    });
-  }
-});
-</script>
 
 </body>
 </html>

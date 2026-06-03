@@ -349,7 +349,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Will the 30 generated posts actually sound like our brand — or will they read as obviously AI-written?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The content generation prompts are engineered during implementation specifically to match your brand voice, tone, and communication style — not to produce generic AI copy</strong>. Before the system goes live, we run the output against your existing content to calibrate the prompts and refine the style parameters until the generated posts are consistent with how your brand actually communicates.</p>
+            <p>That said, the Notion review workflow exists precisely to catch anything that doesn't land correctly before it reaches the audience. The intended division of labour is: AI handles the volume and diversity of ideation; humans handle the final brand voice check and approval. Most teams find that 70–80% of generated posts require minimal editing, while 20–30% benefit from a human touch before scheduling. Over time, as the prompt is refined against real feedback, that ratio typically improves.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What if we don't have formal meeting summaries — can the system work with other inputs?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the input doesn't have to be a formal meeting summary. The system works with any text that contains strategic business context: a brief written by a founder, a Slack thread capturing a team discussion, a set of bullet points describing a product update, customer feedback compiled from support tickets, or notes from a sales call debrief</strong>.</p>
+            <p>The ChatGPT insight extraction step is engineered to identify content-worthy ideas from unstructured text, not just formal meeting notes. For teams that don't have a meeting documentation habit, we help establish a minimal input format during implementation — often just a 200–400 word freeform summary of what was discussed or decided that week — which consistently produces high-quality content output without requiring a formal note-taking process to be in place beforehand.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system generate content for specific platforms — LinkedIn vs Instagram vs Facebook?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the variation generation prompt is configured to produce platform-appropriate content with the correct tone, format, and length conventions for each platform</strong>. LinkedIn posts use a professional, insight-led structure with longer-form storytelling; Instagram content is conversational and visual-description-led; Facebook posts are community-oriented with engagement hooks suited to that format.</p>
+            <p>The Notion database includes a platform assignment field for each post, which the automation can pre-populate based on the content type generated — educational long-form pieces flagged for LinkedIn, visual-paired short content flagged for Instagram, and community-engagement questions flagged for Facebook. Teams can override these assignments during review. For clients posting on a single platform, the generation prompts are simplified to optimise exclusively for that platform's conventions.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system automatically publish approved Notion posts to social platforms?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Direct publishing from Notion approval to social platforms is possible as a second-phase extension</strong>. The base system stops at the Notion database — content is generated, stored, and reviewed there, but publishing to social platforms requires the team to copy the approved post to their scheduling tool of choice (Buffer, Hootsuite, Later, or native platform schedulers).</p>
+            <p>The direct publishing extension adds a Make.com trigger that monitors the Notion database for status changes to "Approved", reads the scheduled date and platform fields, and automatically sends the post to the appropriate platform API or scheduling tool at the designated time. This extension typically adds 2–3 weeks to the implementation timeline depending on how many platforms are included. We scope it as an optional second phase during discovery — some teams prefer to retain the manual publishing step as a final quality gate, while others want full end-to-end automation once they've built confidence in the output quality.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system ensure the 30 posts are genuinely diverse rather than repetitive variations of the same message?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Genuine diversity is achieved through the iterator architecture combined with explicit multi-dimensional variation instructions in the generation prompt — not through a single bulk generation request</strong>. Each content concept is processed independently through its own ChatGPT call, which prevents the model from converging on repetitive patterns that emerge when asked to produce large volumes in a single prompt.</p>
+            <p>The generation prompt explicitly specifies four variation dimensions that must be cycled across the output: content angle (educational, inspirational, promotional, conversational), format (tip, story, question, data point, announcement, case study), call-to-action type (comment-driving, click-through, share-inviting, save-worthy), and tone calibration for the target platform. Posts are also varied in length — some short-form punchy content, others longer storytelling pieces. The combination of independent processing and explicit multi-dimensional variation instructions consistently produces 30 posts that feel genuinely different from one another rather than being surface-level rephrasings of a few core messages.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a marketing team or agency realistically expect from this system?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>For a team currently spending 5–8 hours weekly on content brainstorming sessions, realistic first-year ROI exceeds 100% — driven primarily by direct time recovery and the downstream growth impact of genuinely consistent posting</strong>.</p>
+            <p>The time math is direct: at $50/hour for a marketing manager's time, 6 hours weekly × 50 weeks = 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -431,6 +506,95 @@
         </div>
       </div>
 
+    </div>
+  5,000 annually in recoverable brainstorming time. For agencies managing multiple client social accounts, the multiplier is significant — a system that handles content ideation for 10 clients simultaneously recovers 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Will the 30 generated posts actually sound like our brand — or will they read as obviously AI-written?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The content generation prompts are engineered during implementation specifically to match your brand voice, tone, and communication style — not to produce generic AI copy</strong>. Before the system goes live, we run the output against your existing content to calibrate the prompts and refine the style parameters until the generated posts are consistent with how your brand actually communicates.</p>
+            <p>That said, the Notion review workflow exists precisely to catch anything that doesn't land correctly before it reaches the audience. The intended division of labour is: AI handles the volume and diversity of ideation; humans handle the final brand voice check and approval. Most teams find that 70–80% of generated posts require minimal editing, while 20–30% benefit from a human touch before scheduling. Over time, as the prompt is refined against real feedback, that ratio typically improves.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What if we don't have formal meeting summaries — can the system work with other inputs?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the input doesn't have to be a formal meeting summary. The system works with any text that contains strategic business context: a brief written by a founder, a Slack thread capturing a team discussion, a set of bullet points describing a product update, customer feedback compiled from support tickets, or notes from a sales call debrief</strong>.</p>
+            <p>The ChatGPT insight extraction step is engineered to identify content-worthy ideas from unstructured text, not just formal meeting notes. For teams that don't have a meeting documentation habit, we help establish a minimal input format during implementation — often just a 200–400 word freeform summary of what was discussed or decided that week — which consistently produces high-quality content output without requiring a formal note-taking process to be in place beforehand.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system generate content for specific platforms — LinkedIn vs Instagram vs Facebook?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the variation generation prompt is configured to produce platform-appropriate content with the correct tone, format, and length conventions for each platform</strong>. LinkedIn posts use a professional, insight-led structure with longer-form storytelling; Instagram content is conversational and visual-description-led; Facebook posts are community-oriented with engagement hooks suited to that format.</p>
+            <p>The Notion database includes a platform assignment field for each post, which the automation can pre-populate based on the content type generated — educational long-form pieces flagged for LinkedIn, visual-paired short content flagged for Instagram, and community-engagement questions flagged for Facebook. Teams can override these assignments during review. For clients posting on a single platform, the generation prompts are simplified to optimise exclusively for that platform's conventions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system automatically publish approved Notion posts to social platforms?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Direct publishing from Notion approval to social platforms is possible as a second-phase extension</strong>. The base system stops at the Notion database — content is generated, stored, and reviewed there, but publishing to social platforms requires the team to copy the approved post to their scheduling tool of choice (Buffer, Hootsuite, Later, or native platform schedulers).</p>
+            <p>The direct publishing extension adds a Make.com trigger that monitors the Notion database for status changes to "Approved", reads the scheduled date and platform fields, and automatically sends the post to the appropriate platform API or scheduling tool at the designated time. This extension typically adds 2–3 weeks to the implementation timeline depending on how many platforms are included. We scope it as an optional second phase during discovery — some teams prefer to retain the manual publishing step as a final quality gate, while others want full end-to-end automation once they've built confidence in the output quality.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the system ensure the 30 posts are genuinely diverse rather than repetitive variations of the same message?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Genuine diversity is achieved through the iterator architecture combined with explicit multi-dimensional variation instructions in the generation prompt — not through a single bulk generation request</strong>. Each content concept is processed independently through its own ChatGPT call, which prevents the model from converging on repetitive patterns that emerge when asked to produce large volumes in a single prompt.</p>
+            <p>The generation prompt explicitly specifies four variation dimensions that must be cycled across the output: content angle (educational, inspirational, promotional, conversational), format (tip, story, question, data point, announcement, case study), call-to-action type (comment-driving, click-through, share-inviting, save-worthy), and tone calibration for the target platform. Posts are also varied in length — some short-form punchy content, others longer storytelling pieces. The combination of independent processing and explicit multi-dimensional variation instructions consistently produces 30 posts that feel genuinely different from one another rather than being surface-level rephrasings of a few core messages.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What ROI can a marketing team or agency realistically expect from this system?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>For a team currently spending 5–8 hours weekly on content brainstorming sessions, realistic first-year ROI exceeds 100% — driven primarily by direct time recovery and the downstream growth impact of genuinely consistent posting</strong>.</p>
+            <p>The time math is direct: at $50/hour for a marketing manager's time, 6 hours weekly × 50 weeks = $15,000 annually in recoverable brainstorming time. For agencies managing multiple client social accounts, the multiplier is significant — a system that handles content ideation for 10 clients simultaneously recovers $150,000+ in annual brainstorming capacity without adding headcount. The indirect value — from posting consistency improving algorithm distribution and audience growth — is harder to model precisely but is the more significant long-term compounding effect. We use your team size, hourly rate, and current content planning time to model the specific ROI during the discovery session.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  50,000+ in annual brainstorming capacity without adding headcount. The indirect value — from posting consistency improving algorithm distribution and audience growth — is harder to model precisely but is the more significant long-term compounding effect. We use your team size, hourly rate, and current content planning time to model the specific ROI during the discovery session.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

@@ -351,88 +351,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How accurate is the email classification — what happens if an important email gets misclassified as junk?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How accurate is the email classification — what happens if an important email gets misclassified as junk?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Classification accuracy for clear-cut categories — obvious spam, promotional newsletters, and straightforward customer inquiries — consistently exceeds 95% after tuning to your specific inbox patterns during implementation</strong>. The classification logic is tested against a representative sample of historical emails before production deployment to calibrate accuracy for your specific email environment.</p>
             <p>For the safety concern about misclassified important emails: the system is configured with a conservative bias on the "Requires Reply" classification — when uncertain between "Requires Reply" and any other category, the AI defaults to treating the email as requiring attention rather than automatically filing it. This means the occasional promotional email might generate an unnecessary draft reply, but important customer emails are never silently sent to junk. Additionally, the Junk folder is never automatically deleted — misclassified emails remain accessible for recovery. We recommend a weekly junk folder spot-check during the first month of deployment, after which most clients find the classification is accurate enough to skip it.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system handle emails in multiple languages?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle emails in multiple languages?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — ChatGPT handles email classification and reply generation across all major languages. The system can be configured to generate replies in the same language as the incoming email, or to always respond in a specified language regardless of the sender's language</strong>.</p>
             <p>For businesses serving international customers who write in multiple languages, the reply generation prompt is configured with language detection and matching — an email received in Spanish generates a Spanish reply, French generates French, and so on. For businesses that always respond in English regardless of the inquiry language, the prompt is simplified accordingly. The Telegram notification always delivers content in the professional's preferred language regardless of the original email language.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What stops the AI from sending an email automatically without human review?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What stops the AI from sending an email automatically without human review?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The system is architecturally designed so that no AI-generated reply is ever sent without explicit human action</strong>. The automation saves replies to Outlook Drafts — it cannot trigger a send action from the draft. The only way a draft reply leaves the inbox is when the professional opens it and clicks Send themselves.</p>
             <p>This is a deliberate design choice that reflects an important principle: AI should eliminate the composition effort, not the human judgment. The professional's review step serves as the quality gate that catches any reply that needs adjusting before it reaches a customer. For professionals who want to review replies in bulk at set times rather than as notifications arrive, the Drafts folder accumulates all pending replies for efficient batch review — typically a 5–10 minute task twice daily rather than continuous inbox monitoring. An optional "auto-send for specific categories" configuration is technically possible for very high confidence reply types, but we always recommend retaining human review during initial deployment.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system be adapted for Gmail instead of Outlook?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system be adapted for Gmail instead of Outlook?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the system can be built with Gmail as the email platform instead of Outlook. Make.com has robust Gmail integration supporting inbox monitoring, draft creation, and label/folder management, and the core automation logic is identical across both platforms</strong>.</p>
             <p>The Gmail version uses Gmail's label system instead of Outlook's folder structure for email organisation (labels are functionally equivalent), and the draft saving uses the Gmail API's draft creation endpoint instead of Outlook's. Classification and ChatGPT reply generation logic is platform-agnostic. If your team uses Google Workspace, we build the Gmail variant during implementation with no architectural differences from the Outlook version. We scope the specific platform during the discovery call and confirm API access requirements for the chosen email provider.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the system handle email threads — can it read prior conversation context when drafting replies?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle email threads — can it read prior conversation context when drafting replies?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the Outlook watch module captures the complete email content including quoted prior messages in the thread, which is passed to the ChatGPT Assistant along with the new message</strong>. The Assistant uses this conversation history to generate a contextually aware reply that references prior exchanges and avoids restating information already established in the thread.</p>
             <p>For ongoing customer conversations, this means the AI draft reflects awareness of what has already been discussed — it won't offer a service the customer has already declined, won't ask for information already provided, and will maintain conversational continuity. The thread context window is limited to the content included in the quoted text within the new email (typically the last 2–4 messages), which covers the vast majority of ongoing conversations. For very long historical threads where earlier context matters, the professional can add a note in the Telegram reply or edit the draft to reference specific earlier details before sending.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a professional or team realistically expect from automating inbox management?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a professional or team realistically expect from automating inbox management?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a professional currently spending 2.5–3 hours daily on email management, realistic first-year ROI exceeds 100% — driven by direct time recovery, improved customer response quality and speed, and the productivity gains from eliminating inbox-driven attention fragmentation</strong>.</p>
             <p>The direct time math: reclaiming 2.5 hours daily at $80/hour for a professional-level role = $50,000 annually in recoverable productive capacity per person. For sales professionals and customer-facing teams, the response time improvement (from hours to minutes) has a measurable conversion impact — research consistently shows that response time is one of the top determinants of whether a prospect converts, with leads contacted within minutes converting at multiples of those contacted later. For a team of 5 professionals each reclaiming 2.5 hours daily, the combined annual value exceeds $250,000 in recovered time alone. We model both the time savings and the revenue impact using your specific role compensation and customer response conversion data during the discovery session.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

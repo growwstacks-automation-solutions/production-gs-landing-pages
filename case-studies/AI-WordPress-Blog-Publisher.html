@@ -355,88 +355,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Will Google penalise our site for AI-generated content published at high volume?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Will Google penalise our site for AI-generated content published at high volume?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Google's published guidance is clear: it evaluates content on quality, relevance, and helpfulness — not on production method. AI-generated content that is genuinely useful, well-structured, and relevant to the search query is treated identically to manually written content of the same quality</strong>. What Google penalises is "content generated primarily to manipulate search rankings" — thin, repetitive, or factually dubious content produced without regard for user value.</p>
             <p>The system is engineered to produce quality-first content: proper heading structure that aids readability, appropriate depth for the topic, natural keyword integration rather than stuffing, and a content length calibrated to what performs well for the specific topic category. Many high-traffic sites publishing AI-assisted content at scale maintain strong organic rankings — the quality of individual posts and the consistency of publishing are what drive performance, not the production method. For clients with specific quality concerns, the draft-mode configuration allows the team to review every post before it goes live, enabling quality control without sacrificing the time-saving benefit of AI generation.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system publish to multiple WordPress sites from the same Google Sheets workflow?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system publish to multiple WordPress sites from the same Google Sheets workflow?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the workflow can be configured to publish to multiple WordPress sites, either by adding a site designation column to the Google Sheets input that routes each topic to the appropriate site, or by running parallel Make.com scenarios for each site from the same trigger</strong>. This configuration is particularly valuable for agencies managing multiple client WordPress blogs, or businesses with separate brand sites targeting different audiences or regions.</p>
             <p>For multi-site deployments, each WordPress site requires its own API authentication credentials in Make.com, and the ChatGPT generation prompts are configured per-site to match each site's distinct brand voice, audience, and content style. The Google Sheets management dashboard can be structured with either separate sheets per site or a single sheet with a "Target Site" column that the routing logic uses to determine which WordPress API endpoint to publish to. This makes the multi-site variant an efficient content management system for content agencies publishing to large client portfolios without separate workflows per client.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can we schedule posts for specific dates and times rather than publishing immediately?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can we schedule posts for specific dates and times rather than publishing immediately?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the WordPress API supports scheduled post creation natively, and the workflow can be configured to set a future publish date rather than immediate publication</strong>. This is achieved by including a "Scheduled Date" column in the Google Sheets input, which the Make.com workflow maps to the WordPress API's date parameter when creating the post — creating the post in WordPress with a scheduled status that the CMS automatically publishes at the specified time.</p>
             <p>For teams managing a content calendar with planned publication dates, this configuration lets the content team batch-queue a week or month of posts in Google Sheets — each with its assigned publication date — and have the automation generate and schedule them all in advance. The content team can then review scheduled posts in WordPress's post list before their publication dates and edit or reschedule as needed. Alternatively, for teams that want immediate generation but controlled publishing cadence, the workflow can create posts as drafts and the team publishes manually on their preferred schedule — combining AI generation speed with human publication control.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can internal links to other posts on the site be added automatically?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can internal links to other posts on the site be added automatically?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Internal linking is a high-value SEO extension that can be added to the workflow — and for sites with growing content libraries, it's one of the most impactful organic improvements available after consistent publishing itself</strong>. The extension works by maintaining a reference catalogue of published posts (pulled from the WordPress API or a managed Google Sheets list) and including it in the ChatGPT generation prompt, instructing the AI to identify contextually relevant pages to link from the new article.</p>
             <p>The linking can be implemented in two ways: contextual links inserted naturally within the article body during generation (the most SEO-effective approach), or a "Related Posts" section at the article's conclusion with links to 3–5 relevant pieces. We assess the existing content library size and linking strategy during implementation to determine the most appropriate approach. For new sites with limited existing content, the internal linking extension is typically added 3–6 months after initial deployment once sufficient content exists to link between. For established sites with 50+ posts, it's included from the first deployment as a high-priority SEO feature.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system also generate social media posts promoting each blog automatically?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system also generate social media posts promoting each blog automatically?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — social media promotion content generation is a natural and commonly deployed extension that adds significant distribution value without meaningful additional complexity</strong>. The extension adds a social content generation step to the Make.com workflow — after the WordPress post is published and the URL is available, a second ChatGPT call generates platform-optimised social posts for LinkedIn, Twitter/X, Facebook, or Instagram based on the published article's content and URL.</p>
             <p>The social content module generates: a LinkedIn post (professional angle, 150–200 words, key insight from the article with a link), a Twitter/X thread (hook tweet plus 2–3 key points as thread replies), and an Instagram caption (visual-focused, with relevant hashtags). The generated social content is written back to the Google Sheets row for the team's review and manual posting, or can be automatically scheduled via Buffer, Hootsuite, or similar social scheduling tools if direct automation is preferred. For teams that want to maximise the distribution value of each published post, this extension converts the blog production automation into a full content distribution system with minimal additional implementation effort.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is 580% ROI calculated — and what does the value model look like for different content team sizes?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 580% ROI calculated — and what does the value model look like for different content team sizes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 580% ROI reflects the combined value of eliminated manual content production time, eliminated stock photo costs, and the organic traffic revenue generated by the 10× increase in publishing volume — validated across multiple content marketing deployments</strong>.</p>
             <p>The cost savings model: a content team spending 30 hours weekly on manual blog production at $40/hour spends $62,400 annually on production labour. The system reduces this to approximately 3 hours weekly of topic input, review, and strategy — recovering $56,000 annually in productive capacity. Stock photo subscriptions at $200–500 monthly add $2,400–6,000 annually in eliminated costs. The organic traffic revenue model compounds significantly: a site publishing 3 posts weekly accumulates 156 posts in a year; the same site publishing daily accumulates 365 posts — generating organic traffic that at conservative content marketing conversion rates represents revenue well in excess of the implementation cost. For a small content team (1–2 people), the payback period is typically 2–3 months. For a marketing agency using the system across multiple client sites, the per-client economics are even more favourable as the implementation architecture scales across the agency's portfolio. We model the specific projection using the client's team composition, content production hours, and existing traffic data during the discovery call.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

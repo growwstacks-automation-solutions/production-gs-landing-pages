@@ -347,7 +347,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What image types and document formats does the bot handle accurately?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system handles the full range of image types that professionals commonly need to extract text from, and GPT-4 Vision's multimodal intelligence means it performs significantly better than traditional OCR on the challenging formats that appear most frequently in business workflows</strong>.</p>
+            <p>High-accuracy document types include: printed receipts and invoices (including thermally degraded paper), digital screenshots of any application or website, business cards with standard and unusual typographic layouts, photographed printed documents and forms, typed contracts and legal documents, whiteboard photographs with marker text, printed labels and packaging, menus and price lists, and text in non-Latin scripts including Arabic, Chinese, Japanese, Korean, Hebrew, Cyrillic, and others. Handwritten content is handled with meaningfully better accuracy than traditional OCR — particularly for clearly written notes and printed handwriting — though extremely cursive or highly stylised handwriting produces lower accuracy, which the system reports honestly rather than substituting guessed text. Image files supported include JPEG, PNG, WebP, HEIC (iPhone photos), and GIF. PDF documents sent as files to Telegram extract the first page; multi-page PDF handling is available as an extension.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the extracted text be automatically forwarded to a spreadsheet, CRM, or expense system rather than just returned in Telegram?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — automatic forwarding to downstream systems is a commonly deployed extension that converts the bot from a text extraction tool into a complete document processing pipeline</strong>. The Make.com scenario that powers the extraction can include additional steps after the Telegram reply that route the extracted text to any connected system.</p>
+            <p>Common downstream integrations include: Google Sheets (a new row is appended with the extracted text and timestamp for each processed image — ideal for expense receipt logging), expense management systems like Expensify or Zoho Expense (extracted receipt data parsed and submitted as a new expense entry), CRM contact creation (business card extraction parsed for name, company, email, and phone fields and added as a new CRM contact in HubSpot, Pipedrive, or GoHighLevel), Google Drive document storage (extracted text saved as a new Google Doc for permanent record), and Airtable database records. The extension requires configuring a text parsing step — using ChatGPT or Make.com's data transformation tools to structure the raw extracted text into the field format the destination system expects — and then adding the appropriate destination system's Make.com module. We scope the downstream integration requirements during the discovery call and include them in the implementation for clients who want the full document-to-system pipeline rather than copy-and-paste workflow.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is image content sent to OpenAI — are there privacy or data security concerns with sending business documents?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Image data is sent to the OpenAI API for GPT-4 Vision processing, which is the core functionality of the system — and the data handling terms depend on the OpenAI API plan in use</strong>. When using the standard OpenAI API (as opposed to ChatGPT.com), OpenAI's current API data usage policy states that inputs submitted via the API are not used to train models and are retained for up to 30 days for abuse monitoring, after which they are deleted.</p>
+            <p>For organisations with heightened data sensitivity requirements — legal firms, healthcare organisations, financial services, and any business processing confidential client documents — it's important to review OpenAI's current API data handling policies directly before deployment, as these terms are updated periodically. OpenAI offers a Zero Data Retention (ZDR) option via API for organisations requiring that no input data is retained after processing completes. For organisations that cannot send document content to external AI APIs due to data governance policies, an alternative architecture using Azure OpenAI Service processes the images using the same GPT-4 Vision model but within the organisation's own Azure tenant — keeping all image data within the organisation's Microsoft 365 data governance boundary. We discuss the appropriate API configuration and data handling approach during the discovery call based on the client's security requirements.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the bot do more than text extraction — can it answer questions about the image content?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — GPT-4 Vision is a general-purpose image understanding model, not just an OCR tool, which means the bot can be extended to perform any image analysis task that a multimodal AI can handle — well beyond simple text extraction</strong>. The base system is configured for pure text extraction because that covers the majority of professional use cases, but the same architecture supports significantly richer image intelligence.</p>
+            <p>Common extensions include: receipt analysis (rather than just extracting the text, the model parses the extracted content into structured fields — merchant name, date, total amount, tax, individual line items — and returns a structured data object), document classification (the model identifies what type of document the image contains — invoice, contract, business card, form — and routes to a different processing path based on category), visual QA (the user sends an image with a text question, and the bot answers the question using the image content — "what is the total on this receipt?", "what are the payment terms in this contract?", "what is the phone number on this business card?"), and image description for accessibility or content management. Any of these can be added to the base text extraction bot by modifying the GPT-4 Vision prompt and the reply formatting — we scope the specific analysis capabilities required during the discovery call and configure the appropriate prompt architecture.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the same bot be deployed for a team rather than a single user — and how is multi-user access managed?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the Telegram bot architecture natively supports multiple simultaneous users without any configuration changes; any user who adds the bot to their Telegram contacts can send images and receive extraction replies independently</strong>. The base implementation is configured for open access — any Telegram user who knows the bot's username can use it. For organisational deployments where access should be restricted to specific users, a whitelist check can be added to the Make.com workflow.</p>
+            <p>The whitelist approach works by maintaining a list of approved Telegram user IDs in a Google Sheet or Make.com Data Store, and checking the incoming message's sender ID against this list before processing. Approved users are processed normally; unrecognised users receive an "access restricted — contact your administrator" message. This enables the bot to be shared with a specific team without being publicly accessible. For larger team deployments, the Make.com scenario can be configured to log each user's extraction volume and timestamp — providing usage data that can inform cost allocation, usage monitoring, or per-user billing if the bot is offered as an internal service. We configure the appropriate access model during implementation based on whether the client needs open internal access or restricted user management.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 480% ROI calculated — what does the value model look like across different usage volumes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 480% ROI is calculated from the value of eliminated manual transcription labour — the time savings multiplied by the professional's effective hourly rate — and recovers within the first few months of deployment for professionals with regular image transcription workloads</strong>.</p>
+            <p>The calculation for a single user: a professional transcribing 20 images daily at 4.5 minutes average per image spends 90 minutes daily, 450 minutes weekly, approximately 390 hours annually on manual transcription. At an effective hourly rate of $40 (a conservative estimate for most business professionals), this is 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -429,6 +504,95 @@
         </div>
       </div>
 
+    </div>
+  5,600 in annual labour value. At $60/hour, the figure is $23,400. At $80/hour, $31,200. The implementation cost and ongoing API usage cost (GPT-4 Vision costs cents per image at typical usage volumes) are a small fraction of this recovery — making payback rapid regardless of which hourly rate applies. The ROI percentage is highest for professionals with lower implementation cost relative to their hourly rate and highest image volumes. For teams of 5–10 professionals all using the same bot, the collective labour savings are proportionally larger while the implementation cost is shared — making the per-person ROI substantially higher than the individual model. For larger teams with high daily image volumes (accounting departments, legal teams, expense processing functions), the aggregate annual savings regularly exceed 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What image types and document formats does the bot handle accurately?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system handles the full range of image types that professionals commonly need to extract text from, and GPT-4 Vision's multimodal intelligence means it performs significantly better than traditional OCR on the challenging formats that appear most frequently in business workflows</strong>.</p>
+            <p>High-accuracy document types include: printed receipts and invoices (including thermally degraded paper), digital screenshots of any application or website, business cards with standard and unusual typographic layouts, photographed printed documents and forms, typed contracts and legal documents, whiteboard photographs with marker text, printed labels and packaging, menus and price lists, and text in non-Latin scripts including Arabic, Chinese, Japanese, Korean, Hebrew, Cyrillic, and others. Handwritten content is handled with meaningfully better accuracy than traditional OCR — particularly for clearly written notes and printed handwriting — though extremely cursive or highly stylised handwriting produces lower accuracy, which the system reports honestly rather than substituting guessed text. Image files supported include JPEG, PNG, WebP, HEIC (iPhone photos), and GIF. PDF documents sent as files to Telegram extract the first page; multi-page PDF handling is available as an extension.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the extracted text be automatically forwarded to a spreadsheet, CRM, or expense system rather than just returned in Telegram?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — automatic forwarding to downstream systems is a commonly deployed extension that converts the bot from a text extraction tool into a complete document processing pipeline</strong>. The Make.com scenario that powers the extraction can include additional steps after the Telegram reply that route the extracted text to any connected system.</p>
+            <p>Common downstream integrations include: Google Sheets (a new row is appended with the extracted text and timestamp for each processed image — ideal for expense receipt logging), expense management systems like Expensify or Zoho Expense (extracted receipt data parsed and submitted as a new expense entry), CRM contact creation (business card extraction parsed for name, company, email, and phone fields and added as a new CRM contact in HubSpot, Pipedrive, or GoHighLevel), Google Drive document storage (extracted text saved as a new Google Doc for permanent record), and Airtable database records. The extension requires configuring a text parsing step — using ChatGPT or Make.com's data transformation tools to structure the raw extracted text into the field format the destination system expects — and then adding the appropriate destination system's Make.com module. We scope the downstream integration requirements during the discovery call and include them in the implementation for clients who want the full document-to-system pipeline rather than copy-and-paste workflow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Is image content sent to OpenAI — are there privacy or data security concerns with sending business documents?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Image data is sent to the OpenAI API for GPT-4 Vision processing, which is the core functionality of the system — and the data handling terms depend on the OpenAI API plan in use</strong>. When using the standard OpenAI API (as opposed to ChatGPT.com), OpenAI's current API data usage policy states that inputs submitted via the API are not used to train models and are retained for up to 30 days for abuse monitoring, after which they are deleted.</p>
+            <p>For organisations with heightened data sensitivity requirements — legal firms, healthcare organisations, financial services, and any business processing confidential client documents — it's important to review OpenAI's current API data handling policies directly before deployment, as these terms are updated periodically. OpenAI offers a Zero Data Retention (ZDR) option via API for organisations requiring that no input data is retained after processing completes. For organisations that cannot send document content to external AI APIs due to data governance policies, an alternative architecture using Azure OpenAI Service processes the images using the same GPT-4 Vision model but within the organisation's own Azure tenant — keeping all image data within the organisation's Microsoft 365 data governance boundary. We discuss the appropriate API configuration and data handling approach during the discovery call based on the client's security requirements.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the bot do more than text extraction — can it answer questions about the image content?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — GPT-4 Vision is a general-purpose image understanding model, not just an OCR tool, which means the bot can be extended to perform any image analysis task that a multimodal AI can handle — well beyond simple text extraction</strong>. The base system is configured for pure text extraction because that covers the majority of professional use cases, but the same architecture supports significantly richer image intelligence.</p>
+            <p>Common extensions include: receipt analysis (rather than just extracting the text, the model parses the extracted content into structured fields — merchant name, date, total amount, tax, individual line items — and returns a structured data object), document classification (the model identifies what type of document the image contains — invoice, contract, business card, form — and routes to a different processing path based on category), visual QA (the user sends an image with a text question, and the bot answers the question using the image content — "what is the total on this receipt?", "what are the payment terms in this contract?", "what is the phone number on this business card?"), and image description for accessibility or content management. Any of these can be added to the base text extraction bot by modifying the GPT-4 Vision prompt and the reply formatting — we scope the specific analysis capabilities required during the discovery call and configure the appropriate prompt architecture.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the same bot be deployed for a team rather than a single user — and how is multi-user access managed?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the Telegram bot architecture natively supports multiple simultaneous users without any configuration changes; any user who adds the bot to their Telegram contacts can send images and receive extraction replies independently</strong>. The base implementation is configured for open access — any Telegram user who knows the bot's username can use it. For organisational deployments where access should be restricted to specific users, a whitelist check can be added to the Make.com workflow.</p>
+            <p>The whitelist approach works by maintaining a list of approved Telegram user IDs in a Google Sheet or Make.com Data Store, and checking the incoming message's sender ID against this list before processing. Approved users are processed normally; unrecognised users receive an "access restricted — contact your administrator" message. This enables the bot to be shared with a specific team without being publicly accessible. For larger team deployments, the Make.com scenario can be configured to log each user's extraction volume and timestamp — providing usage data that can inform cost allocation, usage monitoring, or per-user billing if the bot is offered as an internal service. We configure the appropriate access model during implementation based on whether the client needs open internal access or restricted user management.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 480% ROI calculated — what does the value model look like across different usage volumes?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 480% ROI is calculated from the value of eliminated manual transcription labour — the time savings multiplied by the professional's effective hourly rate — and recovers within the first few months of deployment for professionals with regular image transcription workloads</strong>.</p>
+            <p>The calculation for a single user: a professional transcribing 20 images daily at 4.5 minutes average per image spends 90 minutes daily, 450 minutes weekly, approximately 390 hours annually on manual transcription. At an effective hourly rate of $40 (a conservative estimate for most business professionals), this is $15,600 in annual labour value. At $60/hour, the figure is $23,400. At $80/hour, $31,200. The implementation cost and ongoing API usage cost (GPT-4 Vision costs cents per image at typical usage volumes) are a small fraction of this recovery — making payback rapid regardless of which hourly rate applies. The ROI percentage is highest for professionals with lower implementation cost relative to their hourly rate and highest image volumes. For teams of 5–10 professionals all using the same bot, the collective labour savings are proportionally larger while the implementation cost is shared — making the per-person ROI substantially higher than the individual model. For larger teams with high daily image volumes (accounting departments, legal teams, expense processing functions), the aggregate annual savings regularly exceed $100K across the team, putting the ROI well above the 480% figure cited for individual users. We calculate the specific projection using the user's or team's actual daily image volume and hourly rate during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  00K across the team, putting the ROI well above the 480% figure cited for individual users. We calculate the specific projection using the user's or team's actual daily image volume and hourly rate during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

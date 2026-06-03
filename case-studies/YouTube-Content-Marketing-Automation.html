@@ -355,88 +355,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How accurate are the AI-generated summaries — do they actually capture the key points?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How accurate are the AI-generated summaries — do they actually capture the key points?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For videos with full transcripts, the AI summaries are highly accurate and consistently capture the main arguments, key data points, and actionable insights</strong> — typically at a quality level comparable to a skilled human note-taker reviewing the same content.</p>
             <p>The quality depends directly on transcript completeness. YouTube's auto-generated captions are generally sufficient for most content types. Manually uploaded transcripts produce the best results. Videos that are heavily visual (demonstrations, screen recordings without narration) or primarily music will produce thinner summaries because the AI has less text to work from. During implementation, we test summarization quality across your specific content library and tune the prompt to emphasize the information types most relevant to your audience.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can I edit the AI-generated WhatsApp message before approving it for distribution?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I edit the AI-generated WhatsApp message before approving it for distribution?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the message sits in a Google Sheets cell before approval, meaning you can edit it directly just like any spreadsheet content</strong>. When you're happy with it, change the approval column to "yes" and the workflow sends exactly what's in that cell — your edited version, not the original AI output.</p>
             <p>In practice, most teams find they edit 20–30% of messages — typically adding a brand-specific phrase, adjusting the call-to-action, or tweaking the tone for a specific audience segment. The AI output functions as a strong first draft that's almost always publishable as-is, with the edit option available when you want to personalize it further. This is considerably faster than writing from scratch, even accounting for editing time.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system send to multiple WhatsApp groups, and can I control which videos go to which groups?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system send to multiple WhatsApp groups, and can I control which videos go to which groups?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes to both — the system supports multiple designated WhatsApp groups and can be configured with group-routing logic based on content category, video tags, or a manual group selection column in Google Sheets</strong>.</p>
             <p>The simplest configuration sends all approved messages to a fixed set of groups simultaneously. A more advanced configuration — common for organizations with multiple audience segments — uses a "target groups" column in Google Sheets where the submitter specifies which groups should receive each video's message. This is configured during implementation based on your distribution requirements. Adding new groups post-launch is a straightforward configuration update, not a rebuild.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens if I submit a video that's private, deleted, or has no transcript?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if I submit a video that's private, deleted, or has no transcript?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The workflow includes error handling that catches these scenarios and writes a clear status message back to the Google Sheets row rather than failing silently or crashing the automation</strong>.</p>
             <p>For private or deleted videos, the YouTube API returns an error that n8n catches and logs as "Video unavailable" in the status column with a timestamp. For videos without transcripts, the system falls back to processing the video description and title — which produces a shorter, less detailed summary — and flags the row with a "No transcript — description only" notice so reviewers know the summary depth is limited. These edge cases are tested exhaustively during implementation so the production system handles them gracefully.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system process videos from other platforms, not just YouTube?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system process videos from other platforms, not just YouTube?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The base system is built specifically for YouTube due to the reliability and richness of the YouTube Data API</strong>, but the architecture can be extended to support other platforms where transcript or caption data is programmatically accessible.</p>
             <p>Vimeo, for example, supports transcript extraction via its API. Loom videos with auto-transcription can be processed similarly. Platforms without API transcript access (Instagram Reels, TikTok) require a different extraction approach — typically audio transcription via a service like Whisper — which adds complexity and processing time. If your content library spans multiple platforms, we'll scope a multi-platform architecture during discovery and advise on which extensions make sense given your volume and platform mix.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a content marketing team realistically expect from this system?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a content marketing team realistically expect from this system?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a team currently spending 10–15 hours weekly on video repurposing, realistic first-year ROI exceeds 700% — driven primarily by labor time recovery and the revenue impact of consistent audience content distribution</strong>.</p>
             <p>The labor math is straightforward: at a conservative $40/hour for a content marketer's time, 12 hours weekly × 50 working weeks = $24,000 annually in recoverable capacity. Most of that time shifts from mechanical processing to higher-value creative and strategic work. The second ROI driver — audience engagement — is harder to quantify but consistently significant. Organizations that previously shared 4–5 videos per week start sharing 20+, because the processing constraint is removed. Consistent, high-volume content distribution compounds over time into measurably higher audience engagement, follower growth, and downstream conversion. We model both vectors during the discovery session using your actual content volume and team cost data.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

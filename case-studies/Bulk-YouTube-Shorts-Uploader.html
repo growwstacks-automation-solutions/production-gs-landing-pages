@@ -381,7 +381,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system schedule uploaded Shorts to publish at specific times — or do all videos go live immediately?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports both immediate publishing and date-and-time scheduled publishing via YouTube's "Private with scheduled publish date" privacy status</strong>. The publish date and time for each video is stored in a dedicated column in the Google Sheets content calendar and mapped to the YouTube Upload module's scheduled publish parameter during the upload.</p>
+            <p>The scheduling workflow works as follows: videos uploaded with a future publish date are posted to YouTube as Private videos with the scheduled publish time set to the target date and time. YouTube automatically transitions the video from Private to Public at the scheduled time — no additional action required from the creator or the automation. This means a creator can run one bulk upload session that uploads 30 days' worth of Shorts in a single run, with each video scheduled to publish at the target time on its specific date, producing a consistent daily posting cadence for the next month without any further manual action. The time zone for scheduling is configured in the Sheets column — typically stored as UTC or the creator's local time zone with a conversion formula — and the YouTube API accepts the scheduled time in ISO 8601 format which Make.com handles in the field mapping. For creators who want multiple Shorts per day at different times (e.g., 9 AM, 1 PM, and 6 PM daily), the Sheets content calendar stores each video's specific scheduled datetime and the automation maps it individually.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the same pipeline publish to multiple YouTube channels — for agencies managing several client channels?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — multi-channel publishing is a standard extension for agencies, and Make.com supports multiple YouTube channel authentications within a single scenario using a channel routing mechanism</strong>. Each authenticated YouTube connection in Make.com is associated with a specific channel, and the routing logic selects the correct connection based on a "Channel" column in the Google Sheets content calendar.</p>
+            <p>The multi-channel architecture works by adding a channel identifier column to the Sheets database — typically the YouTube channel name or an internal channel code — and a router module in the Make.com scenario that checks this column value and directs each video to the corresponding authenticated YouTube connection. This enables a single Make.com scenario to process videos for multiple client channels from a single unified content calendar, with each video automatically routed to the correct destination based on the Sheets data. For agencies managing 5–20 client channels, this eliminates the need for separate Make.com scenarios per channel — one unified pipeline handles the entire portfolio. Channel-specific Drive folders are maintained for each client's video library, and the Sheets content calendar references the correct folder for each channel. We configure the multi-channel routing and Drive organisation structure during the implementation based on the number of channels and the client's preferred content calendar structure.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can AI be used to automatically generate titles and descriptions for each video rather than entering them manually in Sheets?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — AI-powered metadata generation is a high-value extension that many creators deploy to eliminate the manual copywriting step for high-volume Shorts publishing</strong>. The AI metadata generation step uses a ChatGPT or Claude API call within the Make.com scenario to generate titles and descriptions automatically before the YouTube upload step, based on the video's topic or a brief input description provided in the Sheets content calendar.</p>
+            <p>The workflow with AI metadata: the creator adds a column to the Sheets content calendar for "Video Topic" (a brief 3–10 word description of the video's content) instead of writing the full title and description. The Make.com scenario calls the OpenAI API with a configured prompt — instructing ChatGPT to generate an engaging, SEO-optimised YouTube Shorts title (under 100 characters) and description (including relevant hashtags and a call-to-action) based on the topic. The AI-generated title and description are then mapped to the YouTube upload step instead of the manually entered Sheets fields. This approach works particularly well for creators producing templated Shorts where the video content follows a consistent format (tips videos, motivational content, product showcases) and the topic input provides enough context for the AI to generate high-quality metadata consistently. The AI generation step adds a fraction of a second per video to the processing time at negligible per-video API cost. We scope the AI metadata prompt engineering during the implementation based on the creator's content type and brand voice requirements.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Does the system also work for regular YouTube videos (not Shorts) — or is it specifically for vertical short-form content?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the same pipeline works for regular landscape YouTube videos, long-form content, and any video format that YouTube accepts through its Data API upload endpoint</strong>. The YouTube Upload module in Make.com doesn't distinguish between Shorts and regular videos at the upload step — the classification as a Short is determined by YouTube based on the video's aspect ratio (9:16 vertical) and duration (under 60 seconds, with longer vertical videos published as Shorts up to 3 minutes on channels with Shorts enabled).</p>
+            <p>For creators or agencies managing both Shorts and regular long-form content, the Sheets content calendar can include a "Video Type" column that the Make.com scenario uses to apply different metadata configurations: Shorts-optimised titles and descriptions (concise, hashtag-heavy) versus long-form video metadata (expanded descriptions, chapter markers, more detailed tags). The thumbnail upload step — which is optional for Shorts (YouTube auto-generates a thumbnail) but important for long-form video click-through rates — can be added to the pipeline for long-form content, referencing a thumbnail image file from Drive alongside the video file. For agencies managing mixed content calendars across multiple channels with different content types, the unified pipeline handles all video formats from the same Sheets content calendar with per-row configuration determining which metadata format and publishing parameters apply to each video.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the pipeline also cross-post to TikTok, Instagram Reels, or other platforms in the same automated run?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — cross-platform publishing is a popular extension that repurposes the same video files from Google Drive to TikTok, Instagram Reels, and other short-form video platforms in a single Make.com scenario run</strong>. Since the videos are already downloaded from Drive during the YouTube upload step, the same downloaded file can be passed to additional platform upload modules without re-downloading from Drive — making the per-video cost of adding additional platforms minimal.</p>
+            <p>Platform availability depends on Make.com's API integrations: TikTok has a Make.com module for video upload via the TikTok Content Posting API (requires TikTok for Business account and API access). Instagram Reels upload is available via the Instagram Graph API (requires a connected Facebook Business and Instagram Professional account). Pinterest video pins, LinkedIn video posts, and other platforms with Make.com integrations can similarly be added as additional upload steps in the same scenario. For each additional platform, the platform-specific metadata (caption format, hashtags, cover frame selection) is stored in additional columns in the Google Sheets content calendar and mapped to the corresponding platform's upload module. The cross-platform extension transforms the system from a YouTube publishing tool into a full multi-platform content distribution pipeline — one Drive folder and one Sheets content calendar powering simultaneous publication across every major short-form video platform in a single run.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 650% ROI calculated — and what does the value model look like for individual creators versus agencies?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 650% ROI reflects the combined value of eliminated manual upload labour and the revenue impact of consistent high-volume publishing on channel growth — with the revenue component being the higher-value driver for creators whose channel monetisation scales with view count and subscriber growth</strong>.</p>
+            <p>The labour savings component: a creator spending 15 hours weekly on manual uploads at $40/hour effective rate (a conservative estimate for a professional creator's time) recovers $31,200 annually. An agency employee spending 15 hours weekly managing client channel uploads at $35/hour recovers $27,300 annually per channel managed. The revenue growth component is harder to calculate precisely but typically dominates for creators: moving from 5 daily uploads to 50+ daily uploads on a Shorts channel dramatically increases the algorithm's distribution, accelerating subscriber growth and view count. A channel earning $500 monthly at 5 daily uploads that grows to $2,000 monthly at 50 daily uploads (a conservative estimate given Shorts' revenue per view rates) produces 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -463,6 +538,12 @@
         </div>
       </div>
 
+    </div>
+  8,000 annually in incremental revenue attributable to the publishing volume increase. For agencies billing clients per channel managed, the automation enables one team member to manage 10× more channels at the same labour cost — directly improving agency margins. The combined labour savings and revenue growth against the 1-week implementation cost produces the 650% ROI figure, with the exact breakdown depending on the creator's hourly rate valuation and channel monetisation level. We model the specific projection during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

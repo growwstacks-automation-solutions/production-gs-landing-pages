@@ -346,89 +346,87 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How accurate is the translation compared to Google Translate or professional human translators?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How accurate is the translation compared to Google Translate or professional human translators?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>ChatGPT-powered translation consistently outperforms Google Translate for contextual and conversational content</strong> — it preserves meaning, tone, and intent rather than producing literal word-for-word substitutions that often read awkwardly in the target language.</p>
             <p>For business communication, customer support, and general conversational translation, the output quality is excellent and production-ready without human review. For highly specialized domains — legal contracts, medical documentation, technical specifications with domain-specific terminology — ChatGPT provides a strong first-pass draft, but we recommend a domain expert review step for high-stakes output. During implementation we can tune the translation prompts for your specific industry vocabulary to improve accuracy in specialized contexts.</p>
             <p>OpenAI Whisper's audio transcription accuracy is similarly strong across major languages, though it can vary with audio quality, strong regional accents, or very fast speech. Clear audio recordings consistently produce translation-ready transcripts without manual correction.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What audio file formats does the Whisper translation support?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What audio file formats does the Whisper translation support?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>OpenAI Whisper supports all major audio formats including MP3, MP4, M4A, WAV, WEBM, OGG, and FLAC</strong> — covering virtually every format users send via Telegram, including native Telegram voice messages which record in OGG format.</p>
             <p>File size limits apply based on OpenAI's API constraints (currently 25MB per file). For most voice messages and short audio recordings this is never a practical limitation. For longer recordings — interviews, meeting recordings, or extended audio content — we can implement a chunking layer that splits audio into segments and concatenates the translated output, though this is an extension that adds implementation complexity and is scoped separately if needed.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the bot know which language to translate into?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the bot know which language to translate into?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Target language is specified by the user as part of their message to the bot</strong> — for example, "Translate to Spanish: [message]" or simply sending an audio file with a message specifying the target language. During implementation we configure the bot's command structure and prompt format that makes the most sense for your team's workflow.</p>
             <p>For teams that always translate to and from a fixed language pair — for example, a support team that only translates to English — we can configure a default target language that requires no specification from the user, making the interaction even simpler: they just send the text or audio and receive the translation without any additional instruction. This default can be set per-user or as a system-wide default depending on your use case.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can this be deployed on platforms other than Telegram?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can this be deployed on platforms other than Telegram?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the core translation logic (Make.com + ChatGPT + Whisper) is platform-agnostic and can be adapted for WhatsApp, Slack, Discord, Microsoft Teams, or any messaging platform that supports bot integrations and webhook delivery</strong>.</p>
             <p>Telegram is the default deployment because its bot API offers the cleanest audio file handling and the most straightforward Make.com integration. WhatsApp is a common alternative request — it's supported but requires a WhatsApp Business API account and a more complex setup. Slack and Teams integrations are typically simpler. If your team primarily communicates on a different platform, we'll assess the integration complexity during discovery and scope accordingly.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Is the translation content private — are our messages stored or used for AI training?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is the translation content private — are our messages stored or used for AI training?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Messages processed through the API — both ChatGPT and Whisper via OpenAI's API — are not used to train OpenAI models by default under the standard API usage policy</strong>. API calls receive different data handling than consumer-facing products like ChatGPT.com.</p>
             <p>For enterprises with strict data privacy requirements, we can configure the system to use OpenAI's zero data retention endpoint, which does not store inputs or outputs beyond the processing request. If your organization requires on-premise or private cloud AI processing rather than OpenAI's hosted API, we can scope an alternative architecture using locally-deployed translation models — though this typically increases implementation complexity and infrastructure costs. We recommend reviewing OpenAI's current API data usage policy with your legal team for compliance-sensitive use cases.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a business realistically expect from deploying this translation bot?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a business realistically expect from deploying this translation bot?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a team processing 50+ multilingual messages or audio files daily, realistic first-year ROI exceeds 500%</strong> — with returns driven primarily by labor time recovered from manual translation workflows and the elimination of transcription as a separate step.</p>
             <p>The math is straightforward: if 5 minutes of manual effort (listen, transcribe, translate, copy result) is replaced by a 10-second automated workflow across 50 daily messages, that's over 4 hours of productive time recovered per day. At $25/hour equivalent, that's $2,500 monthly — before accounting for accuracy improvements, faster customer response times, and the revenue impact of handling multilingual inquiries at the same speed as single-language ones. For customer support teams, the downstream conversion impact of faster multilingual response is often the largest ROI driver. We model both labor and revenue impact during the discovery session.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

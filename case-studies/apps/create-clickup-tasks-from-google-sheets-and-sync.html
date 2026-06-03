@@ -55,4 +55,269 @@
         n8n
       </div>
       <div class="cs-hero-logo">
-        <img src="" data-logo="clickup" alt="" width
+        <img src="" data-logo="clickup" alt="" width="20" height="20" loading="lazy">
+        ClickUp
+      </div>
+      <div class="cs-hero-logo">
+        <img src="" data-logo="googleSheets" alt="" width="20" height="20" loading="lazy">
+        Google Sheets
+      </div>
+    </div>
+  </div><!-- END cs-hero-content (LEFT column) -->
+
+  <div class="cs-hero-image" style="order:2;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.6);">
+    <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Apps/desired_image_name_miVYRxPp1.jpg" alt="Create ClickUp Tasks from Google Sheets Data and Sync" loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;aspect-ratio:16/10;object-fit:cover;">
+  </div><!-- END cs-hero-image (RIGHT column) -->
+
+</div><!-- END cs-hero-grid -->
+  </div><!-- END cs-hero-inner -->
+</section><!-- END cs-hero -->
+<section class="cs-results">
+  <div class="container">
+    <div class="cs-results-grid">
+      <div class="cs-result-item">
+        <div class="cs-result-num">80%</div>
+        <div class="cs-result-label">Time Saved</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">5×</div>
+        <div class="cs-result-label">Faster Task Creation</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">100%</div>
+        <div class="cs-result-label">Data Consistency</div>
+      </div>
+      <div class="cs-result-item">
+        <div class="cs-result-num">0</div>
+        <div class="cs-result-label">Missed Deadlines</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cs-content">
+  <div class="container">
+    <div class="cs-content-inner">
+      <article class="cs-article">
+    <h2>The Problem</h2>
+    <p>Project managers, administrators, and team leads often spend several hours a week manually copying and pasting task details from external sheets, client request forms, or internal planners into ClickUp. This manual process is not only <strong>monotonous and time-consuming</strong>, but it also creates <strong>data entry errors</strong>, such as typos, wrong assignees, and missed due dates.</p>
+    <p>As task lists grow, the lack of real-time synchronization between team spreadsheets and ClickUp creates <strong>information silos</strong>. Projects stall because team members are unaware of new assignments, or because status updates in ClickUp are not synced back to the master tracking sheets.</p>
+
+    <h2>The Solution</h2>
+    <p>To eliminate manual overhead, we built an automated synchronization workflow using n8n. The system actively monitors a master Google Sheets spreadsheet. When a new row is added or an existing row is marked for execution, the workflow automatically generates the corresponding task in ClickUp, assigns it to the appropriate team member, sets the deadline, and maps all relevant custom attributes.</p>
+    <p>The workflow also implements <strong>bidirectional status syncing</strong>. When a task is marked complete in ClickUp, the n8n automation immediately updates the corresponding row status in Google Sheets, ensuring that clients and executives have real-time visibility into project health without needing a ClickUp license.</p>
+
+    <div class="cs-visual-flow" aria-label="Task syncing workflow from Google Sheets to ClickUp">
+      <div class="cs-flow-pipeline">
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">📋</div><div class="cs-flow-step-title">New Row Added</div><div class="cs-flow-step-sub">Google Sheets</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step cs-flow-active"><div class="cs-flow-step-icon">🔄</div><div class="cs-flow-step-title">n8n Sync Engine</div><div class="cs-flow-step-sub">Duplicate Check</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-step"><div class="cs-flow-step-icon">🎯</div><div class="cs-flow-step-title">Create Task</div><div class="cs-flow-step-sub">ClickUp</div></div>
+        <div class="cs-flow-connector">→</div>
+        <div class="cs-flow-outcome-wrap">
+          <div class="cs-flow-outcome approved">✓ Auto Assignee &amp; Due Date</div>
+          <div class="cs-flow-outcome review">🔄 Status Sync (Airtable/Sheets)</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How It Works — Step-by-Step Sync</h3>
+    <p>The n8n automation acts as the central router, managing the flow of data between Google Sheets and ClickUp dynamically.</p>
+    <ol>
+      <li><strong>Detect Row Update:</strong> The n8n Google Sheets trigger fires instantly when a new row is added to the spreadsheet.</li>
+      <li><strong>Validate and Format:</strong> The system parses the row data, ensuring that key fields like email addresses, dates, and text descriptions are clean and correctly formatted.</li>
+      <li><strong>Prevent Redundancy:</strong> The workflow checks for duplicates by searching ClickUp for any existing tasks with matching spreadsheet IDs.</li>
+      <li><strong>Create ClickUp Task:</strong> If no duplicate exists, n8n calls the ClickUp API to create the task under the correct List and Folder.</li>
+      <li><strong>Assign and Schedule:</strong> The workflow dynamically assigns the task to a team member based on mapping tables and schedules the start and due dates.</li>
+      <li><strong>Update Sheets Status:</strong> Once created, n8n writes the unique ClickUp Task ID back to the Google Sheet row and marks the status as "Synced".</li>
+      <li><strong>Bidirectional Close:</strong> Upon completing the task in ClickUp, a webhook triggers n8n to mark the spreadsheet row as "Completed".</li>
+    </ol>
+
+    <div class="cs-highlight">
+      <p>💡 <strong>Operational Efficiency:</strong> Automating task handoffs ensures that the workflow runs 24/7. Teams are notified of critical assignments in real-time, reducing project delays by up-to 80%.</p>
+    </div>
+
+    <h2>What This System Does That Manual Process Can't</h2>
+    <div class="cs-features">
+      <div class="cs-feature"><div class="cs-feature-icon">⏱️</div><h4>Instant Execution</h4><p>Tasks appear in ClickUp within seconds of sheet updates, bypassing human latency.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🛡️</div><h4>Zero Duplicates</h4><p>Built-in deduplication checks ensure no task is accidentally created twice.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">⛓️</div><h4>Dynamic Assigning</h4><p>Automated rules map spreadsheet values to ClickUp team profiles automatically.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">📊</div><h4>Bidirectional Sync</h4><p>Status updates flow back and forth, keeping both tools in absolute harmony.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🎛️</div><h4>Custom Field Mapping</h4><p>Maps complex rows into ClickUp subtasks and custom drop-down fields seamlessly.</p></div>
+      <div class="cs-feature"><div class="cs-feature-icon">🚨</div><h4>Error Alerts</h4><p>Logs any integration errors and notifies administrators via Telegram or Slack.</p></div>
+    </div>
+
+    <h2>Before vs. After: Real Numbers</h2>
+    <p><strong>Before:</strong> Copying tasks from client intake sheets took up to 8 hours a week, resulting in human errors, missing details, and an average delay of 24 hours before work started.</p>
+    <p><strong>After:</strong> Task creation is 100% automated. Intake details sync in 80 seconds, deadlines are never missed, and project coordinators save a full day of admin work every single week.</p>
+
+    <h2>Implementation: Live in 2 Weeks</h2>
+    <ol>
+      <li><strong>Requirements Gathering:</strong> We inspect your spreadsheet layouts and design the ClickUp custom fields mapping list.</li>
+      <li><strong>Workflow Development:</strong> We configure the n8n triggers, deduplication scripts, and webhook listeners.</li>
+      <li><strong>Integration Testing:</strong> We run sandbox tests with bulk data imports to ensure absolute sync stability.</li>
+      <li><strong>Deployment &amp; Training:</strong> The sync workflow goes live, and we provide simple admin guides for monitoring task flows.</li>
+    </ol>
+
+    <h2>The Right Fit — and When It Isn't</h2>
+    <p>This system is a perfect fit for operational agencies, software developers, and marketing teams that receive project requests via spreadsheets or external client forms and manage deliverables in ClickUp. It eliminates repetitive admin tasks and keeps master spreadsheets synced for non-technical stakeholders.</p>
+    <p>However, this might not be necessary for single-user workspaces or teams with a very low volume of task creation, where manual entry is quick and does not create operational bottlenecks.</p>
+
+  </article>
+
+  <aside class="cs-sidebar">
+
+    <div class="cs-sidebar-card">
+      <h4>Project Details</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Operations</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Task Sync</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">n8n</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">2 weeks</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Simple</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.9 / 5</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">200%</span></div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Tools &amp; Integrations</h4>
+      <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+        <span class="cs-tool-tag"><img src="" data-logo="n8n" alt="" width="14" height="14" loading="lazy">n8n</span>
+        <span class="cs-tool-tag"><img src="" data-logo="clickup" alt="" width="14" height="14" loading="lazy">ClickUp</span>
+        <span class="cs-tool-tag"><img src="" data-logo="googleSheets" alt="" width="14" height="14" loading="lazy">Google Sheets</span>
+      </div>
+    </div>
+
+    <div class="cs-sidebar-card">
+      <h4>Key Metrics</h4>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Time Saved</span><span class="cs-sidebar-value" style="text-align:right;">8+ hours/week</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Workflow Delay</span><span class="cs-sidebar-value" style="text-align:right;">80 seconds</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Sync Accuracy</span><span class="cs-sidebar-value" style="text-align:right;">100%</span></div>
+      <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duplicate Rate</span><span class="cs-sidebar-value" style="text-align:right;">0%</span></div>
+    </div>
+
+    <div class="cs-sidebar-cta">
+      <h4>Ready to sync your sheets &amp; tasks?</h4>
+      <p>Schedule a free discovery call to design your ClickUp automation.</p>
+      <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+    </div>
+
+  </aside>
+</div>
+  </div>
+</section>
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What are the benefits of automating task creation?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Automating task creation saves time, reduces errors, and ensures consistency.</strong> It allows teams to focus on higher-value activities and improves overall productivity. By integrating Google Sheets and ClickUp, you eliminate duplicate entries and speed up project handoffs.</p>
+        </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How secure is the data transfer between Google Sheets and ClickUp?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Data transfer is secured through encrypted connections</strong> and adherence to data privacy standards. The automation platform (like n8n) uses OAuth2 keys and secure endpoints, ensuring that your task details and customer details are fully protected during the entire process.</p>
+        </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I customize the task details created in ClickUp?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, the task details can be fully customized.</strong> You can map specific columns from Google Sheets to corresponding custom fields, tags, list names, and folders in ClickUp, ensuring that all relevant details are transferred correctly.</p>
+        </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if there are duplicate entries in Google Sheets?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The automation workflow includes duplicate management.</strong> It queries ClickUp using the unique ID from the Google Sheet before creating a task. If a matching task is found, n8n prevents duplicate task creation and logs the event.</p>
+        </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is it possible to sync updates from ClickUp back to Google Sheets?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, updates from ClickUp can be synced back to Google Sheets.</strong> This bidirectional sync uses webhooks to trigger n8n whenever a task is completed, ensuring both platforms are always in harmony.</p>
+        </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How long does it take to set up this automation?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>The setup time varies depending on the complexity of your requirements.</strong> However, for standard Google Sheet to ClickUp flows, our prebuilt blueprints allow us to have the sync active and tested in just a few days.</p>
+        </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I get a custom task management automation built for my business?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+          <p><strong>Yes, we specialize in building custom automations tailored to your specific business needs.</strong> Contact us for a free consultation to discuss your project requirements and let our experts design a workflow that fits your team's routine perfectly.</p>
+        </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="cs-bottom-cta">
+  <div class="container" style="position:relative;z-index:2">
+    <h2>Automate Your Task Management Today</h2>
+    <p>Connect Google Sheets with ClickUp to save hours of manual admin work. Get a free consultation with our experts to deploy this workflow for your team.</p>
+    <div class="btn-group">
+      <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+      <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+    </div>
+  </div>
+</section>
+</main>
+<div id="gs-footer"></div>
+<script>
+(function(){
+  var g = document.querySelector('.cs-hero[data-hero-gradient]');
+  if (!g) return;
+  var grad = g.getAttribute('data-hero-gradient');
+  if (!grad) return;
+  g.style.background = grad;
+  var cta = document.querySelector('.cs-bottom-cta');
+  if (cta) cta.style.background = grad;
+})();
+</script>
+<!-- Inject SITE.logos into all data-logo images -->
+<script>
+(function() {
+  function injectLogos() {
+    if (typeof SITE === 'undefined' || !SITE.logos) return;
+    document.querySelectorAll('img[data-logo]').forEach(function(img) {
+      var key = img.getAttribute('data-logo');
+      if (SITE.logos[key]) img.src = SITE.logos[key];
+    });
+  }
+  injectLogos();
+  document.addEventListener('DOMContentLoaded', injectLogos);
+})();
+</script>
+<script src="../../_shared/site-config.js"></script>
+<script src="../../assets/js/images-helper.js"></script>
+<script src="../../_shared/page-builder.js"></script>
+<script src="../case-studies.js"></script>
+</body>
+</html>

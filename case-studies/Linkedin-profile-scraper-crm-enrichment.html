@@ -351,88 +351,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Does this system comply with LinkedIn's terms of service?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Does this system comply with LinkedIn's terms of service?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Phantom Buster operates within LinkedIn's publicly accessible data and is widely used by sales and recruitment teams for profile research automation</strong>. The system is configured with rate limiting and scraping speeds that comply with LinkedIn's usage guidelines, avoiding the aggressive scraping patterns that trigger account restrictions.</p>
             <p>That said, LinkedIn's terms of service evolve, and how they apply to automated data collection is a nuanced area. We configure the system with conservative rate limits and recommend clients consult their legal counsel on their specific use case and jurisdiction before deploying at high volumes. Phantom Buster itself provides guidance on compliant usage configurations, which we follow during setup. The system is designed to enrich profiles that users have legitimately identified through their sales and recruitment workflows — not to scrape at mass scale without a specific business purpose for each profile.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens if a LinkedIn profile is private or has limited visibility?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if a LinkedIn profile is private or has limited visibility?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For private or restricted profiles, Phantom Buster returns whatever data is publicly visible — typically the name, current job title, and company, with limited or no skills, experience, or education data</strong>. The workflow handles these partial results gracefully rather than failing.</p>
             <p>The Airtable record is updated with whatever data was successfully extracted, and a "Limited Data" flag is written to the enrichment status field so your team can identify which records have incomplete profiles. These records can be flagged for manual research or simply accepted as partially enriched — the team has visibility into data completeness without manually reviewing every record. For most B2B sales use cases, even partial data (job title + company) is more than what existed before enrichment, so partial results still deliver value.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system work with a CRM other than Airtable — like HubSpot or Salesforce?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system work with a CRM other than Airtable — like HubSpot or Salesforce?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the core scraping and enrichment logic is CRM-agnostic, and the system can be built with HubSpot, Salesforce, Pipedrive, Notion, Google Sheets, or any platform with Make.com API support as the record store</strong>. Airtable is the default because its flexible multi-select and link field types map cleanly to LinkedIn data structures (particularly skills lists), but the architecture adapts to your existing stack.</p>
             <p>The two requirements for any CRM integration are: a way to query records that have LinkedIn URLs and need enrichment (typically a filtered view or a "status = unenriched" flag), and API access to update those records with the enrichment data. Any modern CRM that provides these capabilities through its API can serve as the backend. If your team uses a different tool, mention it during discovery and we'll scope the appropriate integration configuration.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the system handle profiles where the LinkedIn URL is formatted differently?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle profiles where the LinkedIn URL is formatted differently?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>URL normalization logic is built into the workflow to handle the most common LinkedIn URL format variations — with and without "www", with and without trailing slashes, and both linkedin.com/in/ and the older linkedin.com/pub/ formats</strong>.</p>
             <p>Before passing a URL to Phantom Buster, a text transformation step standardizes it to the canonical format the scraper expects. This prevents the scraper from failing on a technically valid URL that doesn't match its expected pattern. For URLs that can't be parsed into a valid LinkedIn profile format (typos, incomplete URLs, non-LinkedIn URLs accidentally entered in the field), the workflow writes an error flag to the Airtable record rather than attempting a scrape that would fail. These error records are easy to identify and correct in a batch, and they don't interrupt processing of the remaining valid URLs in the queue.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How often should the enrichment run — can it be scheduled automatically?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How often should the enrichment run — can it be scheduled automatically?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The workflow can be configured to run on any schedule — hourly, daily, weekly, or triggered manually when a batch is ready for processing</strong>. For most teams, a daily scheduled run that processes all "Unenriched" records added since the previous run provides the right balance of freshness and rate limit management.</p>
             <p>For recruitment agencies or sales teams adding large batches of leads at once (e.g., after a trade show or a LinkedIn search export), a manually triggered run on demand is often more practical than waiting for the next scheduled execution. We configure both options during implementation — a scheduled trigger for routine daily enrichment and a manual trigger button in the Make.com interface for on-demand batch processing. Teams can use whichever approach fits their workflow without any technical changes post-launch.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a sales or recruitment team realistically expect from automating LinkedIn enrichment?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a sales or recruitment team realistically expect from automating LinkedIn enrichment?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a team currently spending 15–20 hours weekly on manual LinkedIn research, realistic first-year ROI exceeds 100% — with the majority of value coming from direct labor recovery, improved outreach personalization, and the ability to run larger campaigns that were previously capacity-constrained</strong>.</p>
             <p>The direct labor math: at $35/hour for a sales researcher or SDR, 17 hours weekly × 50 weeks = $29,750 annually in recoverable time. The indirect value is often larger. A team currently capable of enriching 50 profiles weekly and sending 50 personalized outreach messages can now enrich 500+ profiles and send 500+ personalized messages — a 10× increase in addressable pipeline with no additional headcount. For teams where personalized outreach converts at even 2–3%, that capacity increase directly translates into a proportional increase in qualified meetings and closed deals. We model the specific revenue impact using your outreach volumes, conversion rates, and deal values during the discovery session.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

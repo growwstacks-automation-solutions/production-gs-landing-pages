@@ -347,7 +347,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Will senders know they're receiving an AI-generated response?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>With well-engineered prompts calibrated to the professional's communication style, the generated responses are consistently indistinguishable from carefully composed manual replies — and many clients report that contacts specifically comment on the quality and promptness of their email communication after deployment</strong>. The personalisation (sender addressed by name, specific answer to the specific question asked, consistent tone) is what typically triggers positive comments rather than suspicion.</p>
+            <p>The system is configured during implementation to match the professional's individual communication style — level of formality, typical response structure, common phrases and sign-offs, and industry-appropriate vocabulary. The prompt engineering phase includes reviewing a sample of the professional's existing sent emails to extract style characteristics that are incorporated into the generation instruction. Contacts who ask directly "did you write this yourself?" receive the same answer as with any AI-assisted communication — the professional sets their own disclosure preference, and the system simply ensures the quality of the generated output is high enough that the question rarely arises.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens with emails that require a genuinely complex or sensitive response?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Emails requiring human judgement are handled by a configurable escalation path — routing specific email categories, sender types, or subject-line keywords to a "Review Required" queue rather than automatic response</strong>. The escalation configuration is one of the most important parts of the implementation, and it's tailored to the specific professional's email context.</p>
+            <p>Common escalation triggers include: emails from VIP senders (key clients, senior contacts, board members identified by email address), emails containing specific subject keywords that signal sensitivity (contract, legal, complaint, urgent, confidential), emails with attachments that change the required response (documents needing review, contracts needing signature), and emails whose body analysis suggests they fall outside the categories the ChatGPT prompt handles well. Escalated emails can be flagged in a specific Outlook folder, sent to a notification, or simply left unresponded by the automation — ensuring the professional reviews them personally. The practical deployment for most users is 80–85% automated with 15–20% escalated, which still recovers the majority of the time savings while maintaining human oversight where it genuinely matters.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the same system be adapted for Gmail instead of Outlook?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — a Gmail variant of this system uses identical architecture with the Outlook-specific modules replaced by Gmail's Make.com integration</strong>. Make.com has native Gmail integration supporting inbox monitoring (Watch Emails), message data extraction, and thread reply sending — the same four-step workflow operates identically with Gmail as the email platform instead of Outlook.</p>
+            <p>The Gmail variant uses Google's Gmail API for inbox monitoring and reply delivery, with Make.com's Gmail modules handling the trigger, data extraction, and send reply steps. The ChatGPT generation and prompt engineering are platform-agnostic — the same prompt structure that produces high-quality Outlook replies works identically for Gmail. HTML formatting behaviour differs slightly between Gmail and Outlook rendering engines, so the HTML template is tested specifically in the Gmail client environment during implementation to confirm correct visual rendering. For professionals or organisations choosing between Outlook and Gmail variants, the primary consideration is which platform they actively use for their primary email — both variants deliver identical functionality and response quality.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle multi-turn conversations — not just replying to the first email?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The base system responds to each new incoming email independently — which means it handles multi-turn conversations by responding to each reply in the thread as it arrives, maintaining the thread context through Outlook's native conversation structure</strong>. Each subsequent message in a conversation triggers the same detection, extraction, and generation cycle, with the sender's reply providing the updated context for the next response.</p>
+            <p>For deeper conversation threading — where the ChatGPT prompt needs to reference the full conversation history (not just the most recent message) to generate a contextually aware response — an enhanced variant reads the previous messages in the thread and incorporates them into the generation context. This produces more sophisticated conversational coherence for extended back-and-forth exchanges, where the AI's response correctly acknowledges what was discussed in earlier turns. The enhanced threading variant adds complexity to the data extraction step (retrieving the thread history from Outlook's API) but produces noticeably better responses for professionals whose email conversations typically involve 3+ back-and-forth exchanges. We assess the professional's typical conversation depth during the discovery call and recommend the appropriate variant.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is the email content processed by ChatGPT secure — does OpenAI store our email data?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>This is a critical consideration for professional email automation, and the answer depends on the OpenAI API plan in use</strong>. When using the OpenAI API (not ChatGPT.com), OpenAI's current API terms state that data submitted via the API is not used to train OpenAI's models and is retained only for 30 days for abuse monitoring purposes. For organisations with strict data handling requirements, OpenAI offers a Zero Data Retention (ZDR) API option where no data is stored after the API call completes.</p>
+            <p>For enterprise deployments with heightened data sensitivity — legal firms, healthcare organisations, financial services — we recommend discussing the ZDR option and confirming the specific OpenAI API data handling terms with the organisation's legal and IT compliance teams before deployment. An alternative for organisations that cannot use external AI APIs with email content is an Azure OpenAI Service deployment — which runs the same ChatGPT models within the organisation's Azure tenant under their own data governance terms, keeping all email content within the Microsoft 365 environment. We scope the appropriate API configuration based on the organisation's data classification requirements during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 475% ROI calculated — and what variables affect the return for different professionals?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 475% ROI is calculated from the value of the 400+ annual hours reclaimed from email management — redirected to strategic, revenue-generating work at the professional's effective hourly rate — and is most significant for professionals with high effective hourly values relative to the automation's implementation and operational cost</strong>.</p>
+            <p>The model: a professional spending 7.5 hours weekly on email responses at an effective hourly value of $75 (consultant billing rate, salary equivalent, or opportunity cost of strategic work not done) recovers $29,250 annually in productive capacity. At 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -429,6 +504,12 @@
         </div>
       </div>
 
+    </div>
+  00/hour, the annual value is $39,000. The implementation cost and Make.com operational cost are a fraction of this recovery — typically recovering within the first 60–90 days of deployment. The ROI multiplier increases with hourly value: a senior executive at $200/hour effective rate recovers $78,000 annually from the same 7.5 hours weekly — producing an ROI percentage in the hundreds. Beyond the direct time value, the system delivers secondary value through improved response quality consistency (reducing professional reputation risk from rushed off-hours emails) and 24/7 availability (capturing the value of weekend and after-hours enquiries that previously went unanswered for 16+ hours). We model the specific ROI using the individual's email volume, response time investment, and effective hourly rate during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

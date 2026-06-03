@@ -351,7 +351,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How current is the Perplexity AI research — can it find news from today?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — Perplexity AI searches the live web, meaning it can surface news articles and announcements published within hours of the query being submitted</strong>. This real-time web access is what distinguishes Perplexity from knowledge-base-only AI models that have a training cutoff date and can't answer questions about recent events.</p>
+            <p>Search recency parameters are configured during implementation to match the team's intelligence needs — for fast-moving news monitoring, the search can be filtered to prioritise results from the past 24–72 hours. For market trend analysis where broader context matters, the search window can be set to the past 30–90 days. Teams that need both (a quick current news summary plus a longer trend context) can submit two separate queries or request a structured brief that includes both current developments and recent trend context within the same summary.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system monitor specific topics proactively — without waiting for a Slack query?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — proactive monitoring is a common extension to the query-on-demand base system</strong>. A scheduled scenario can be configured to run daily or weekly searches on a pre-defined list of monitoring topics — competitor names, industry keywords, regulatory topics, key markets — and automatically deliver intelligence briefs to designated Slack channels at the configured schedule without requiring a team member to submit a query.</p>
+            <p>The combination of proactive monitoring and on-demand queries creates a comprehensive intelligence system: the scheduled monitoring ensures the team receives regular briefings on core watch topics without needing to remember to ask, while the on-demand query system handles ad hoc research needs that arise from meetings, conversations, or unexpected developments. The knowledge base accumulation layer benefits both modes — proactive monitoring builds the knowledge base on core topics, making on-demand queries on those topics progressively faster.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the knowledge base handle outdated information — will old research produce incorrect answers?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The knowledge base stores research with timestamps, which enables the system to identify when stored content is older than a configured freshness threshold for a given topic type</strong>. For fast-moving topics like competitor product launches or regulatory changes, a short freshness window (7–14 days) triggers a fresh Perplexity search even when matching knowledge base content exists. For slower-moving topics like market structure analysis or historical trend data, a longer window (30–90 days) allows knowledge base delivery without unnecessary re-research.</p>
+            <p>The freshness configuration is set per topic category during implementation — fast-moving news topics have tighter thresholds than strategic background research. Additionally, team members can force a fresh research pass on any topic by prefixing their query with a "refresh" keyword, which bypasses the knowledge base check and triggers a new Perplexity search regardless of when the topic was last researched. The new research then updates the knowledge base entry, keeping it current for subsequent queries from other team members.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system work with Microsoft Teams instead of Slack?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system can be built with Microsoft Teams as the communication layer instead of Slack</strong>. Make.com has native Microsoft Teams integration supporting message monitoring, channel posting, and file handling, which enables the same query-capture and intelligence-delivery workflow in a Teams environment.</p>
+            <p>The Teams version functions identically from a user experience perspective — team members submit queries in Teams channels, receive formatted intelligence briefs in the same channel, and the knowledge base accumulation and intelligent routing work exactly as described. Voice message transcription via Whisper is also supported in the Teams version. If your organisation uses Teams as the primary communication platform, we build the Teams variant during implementation with no architectural differences from the Slack version. We confirm the platform preference during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can multiple teams or departments use the same system with separate knowledge bases?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the system supports either a shared organisational knowledge base accessible to all teams, or separate department-specific knowledge bases that accumulate intelligence relevant to each function's specific monitoring needs</strong>.</p>
+            <p>For organisations where the marketing team's research needs are distinct from the competitive intelligence team's (different topics, different levels of detail, different sensitivity classifications), separate knowledge bases prevent cross-contamination and keep each function's accumulated intelligence focused on their specific domain. Queries from a marketing channel route to the marketing knowledge base; queries from a competitive intelligence channel route to that function's knowledge base. For organisations where sharing intelligence across functions is valuable, a single shared knowledge base means research conducted by one team becomes available to all teams on the same topics — reducing duplicate effort organisation-wide. We assess the most appropriate knowledge base architecture for your organisation's structure during discovery.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can executive teams and strategic functions realistically expect?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>For an executive or strategist currently spending 12–15 hours weekly on manual market research and synthesis, realistic first-year ROI exceeds 100% — with payback typically occurring within 2–3 months at senior compensation levels</strong>.</p>
+            <p>The direct time math: at 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -433,6 +508,12 @@
         </div>
       </div>
 
+    </div>
+  20/hour for an executive role, 13 hours weekly × 50 weeks = $78,000 annually in recoverable research capacity per person. The strategic value compound is more significant. Executives who currently research before important meetings often get partial information under time pressure. With instant intelligence delivery, decision-making quality improves because the intelligence is both more comprehensive (Perplexity searches more sources than a human can read in the time available) and more timely (available immediately rather than after a research session). For competitive intelligence teams, the knowledge base accumulation effect means the organisation builds a strategic asset — an institutional market intelligence repository — over time, which has value beyond the labor savings of individual research sessions. We model the specific ROI using your team composition, senior role compensation, and current research hours during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

@@ -351,89 +351,87 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How accurate is the ChatGPT data extraction across different email formats?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How accurate is the ChatGPT data extraction across different email formats?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Across well-written lead emails — form submissions, direct inquiries, and introduction emails — ChatGPT extraction accuracy typically exceeds 90% for all standard contact fields</strong>. The model handles the natural variety in how people write emails significantly better than regex-based or template-dependent parsers.</p>
             <p>Accuracy is highest for emails that contain the information explicitly: name in signature, company in body, phone in contact line. It's lower for emails where information is implied or absent — for example, a one-line inquiry with no signature. For fields that can't be confidently extracted, the system writes a null or blank value to that Pipedrive field rather than guessing, which is caught during the team's brief daily review of new records.</p>
             <p>During implementation, we test extraction against a sample of your actual lead emails and tune the prompt to maximize accuracy for the specific formats your leads typically use before going live.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the duplicate detection handle company name variations — like "Acme Corp" vs "Acme Corporation"?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the duplicate detection handle company name variations — like "Acme Corp" vs "Acme Corporation"?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The organization search uses fuzzy matching logic rather than exact string comparison, configured to catch common abbreviation variations like Inc./Incorporated, Corp./Corporation, Ltd./Limited, and similar patterns</strong>.</p>
             <p>For more significant name variations — full legal name vs. trading name, or companies with similar but genuinely different names — the system surfaces potential matches for human review rather than making an automatic determination. This prevents both false positives (merging records for two different companies with similar names) and false negatives (creating a duplicate for a company that exists under a slightly different spelling). The match confidence threshold is configurable during implementation to fit your CRM's naming convention standards.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system handle lead emails forwarded from other people, not just direct inquiries?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle lead emails forwarded from other people, not just direct inquiries?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — ChatGPT's extraction logic is designed to identify and extract the lead's contact details from the forwarded message content, even when the email body contains the forwarding rep's commentary or the original email is nested inside a forward chain</strong>.</p>
             <p>The text parser step that precedes ChatGPT is configured to clean forwarded email formatting before extraction — removing "From: / To: / Sent:" headers that would otherwise confuse a simpler parser. The AI then identifies which person is the lead (typically the original sender in a forward) versus the internal team member doing the forwarding. This covers the common workflow where BDRs or executives forward inbound leads to a central inbox for CRM processing.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens if the same lead emails multiple times before anyone follows up?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if the same lead emails multiple times before anyone follows up?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The lead duplicate detection step handles this cleanly — on the second email, the organization search finds the existing company record, the lead search finds the existing contact, and the workflow updates both records with any new information rather than creating a duplicate</strong>.</p>
             <p>The update logic is additive: it overwrites blank fields with new data but doesn't overwrite existing populated fields with identical information. A note is appended to the Pipedrive activity log indicating that a second email was received, giving the assigned rep visibility into the re-inquiry without cluttering the record with duplicate entries. This follow-up pattern — a lead who emails twice before hearing back — is actually a high-intent signal, and the activity note ensures reps prioritize these contacts appropriately.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the lead assignment logic handle complex rules — like territory-based or product-based routing?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the lead assignment logic handle complex rules — like territory-based or product-based routing?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the assignment module supports configurable routing rules based on any field extracted from the email or Pipedrive data, including geography (country/state from company address), industry vertical, deal size estimate, or product interest keywords in the email body</strong>.</p>
             <p>Simple round-robin assignment (evenly distribute across a team) is the baseline. Territory rules (e.g., all UK leads go to the EMEA team) use the extracted company location. Product-based routing uses keyword matching on email content to direct leads to the relevant product specialist. During implementation, we map your assignment logic from a simple brief you provide — most configurations are built in a single step and can be updated post-launch without rebuilding the workflow.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a B2B sales team realistically expect from automating email-to-CRM capture?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a B2B sales team realistically expect from automating email-to-CRM capture?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a sales team processing 50–200 lead emails monthly with one or more reps spending significant time on manual CRM entry, realistic first-year ROI exceeds 100% — with the majority of value coming from three sources: labor time recovered, opportunities previously lost to inbox overwhelm, and improved follow-up speed increasing close rates</strong>.</p>
             <p>The labor math is direct: at a fully-burdened cost of $60/hour for a sales rep, 15 hours weekly of manual data entry equals $46,800 annually in recoverable labor. Add the revenue impact of recovering the 40–50% of leads previously never reaching the CRM — for a team closing $5,000 average deals, recovering even 10 additional leads per month adds $500,000+ in pipeline annually. The third vector — faster follow-up — is documented in sales research to improve close rates significantly; leads contacted within 5 minutes of inquiry convert at nearly 400% the rate of leads contacted within 5 hours. Automated same-day CRM entry makes that speed-to-contact achievable consistently. We model all three vectors using your actual numbers during the discovery session.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

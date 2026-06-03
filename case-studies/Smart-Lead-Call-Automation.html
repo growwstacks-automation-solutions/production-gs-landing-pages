@@ -286,7 +286,71 @@
   </div>
 </section>
 
-<section class="cs-faq" id="faq">
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How natural do VAPI conversations sound — will prospects realise they are speaking to an AI?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>VAPI's voice quality and conversational intelligence have advanced significantly — modern VAPI assistants use neural text-to-speech voices that are largely indistinguishable from human representatives in standard qualification conversations, and the contextual response capability means the conversation adapts dynamically rather than following a rigid script that feels mechanical</strong>.</p>
+        <p>In practice, most prospects in qualification call contexts do not identify the caller as an AI unless they ask directly — the context of a follow-up call from a company they just enquired with sets an expectation of a professional representative, and VAPI's conversational flow meets that expectation. The assistant introduces itself by name (Sarah) and as a representative of the company — which is truthful. When prospects do ask directly "are you a human?", the assistant is configured to respond honestly — "I'm an AI assistant helping with initial calls — happy to answer your questions and get you connected with our team." This transparency maintains trust while preserving the efficiency benefits of AI qualification. The quality of the conversational experience is directly related to the quality of the assistant training — a well-trained assistant with thorough knowledge of the company's services, common prospect questions, and natural-sounding BANT question variants performs significantly better than a minimally configured one. The training process during implementation is designed to maximise conversational naturalness within the VAPI platform's capabilities.</p>
+      </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if the prospect doesn't answer the initial call — does the system retry?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — call retry logic is a standard component of the implementation, with configurable retry intervals and maximum attempt counts to ensure non-answered calls receive appropriate follow-up without becoming intrusive</strong>.</p>
+        <p>The typical retry configuration attempts the call up to three times at escalating intervals: the first attempt fires immediately (within 5 minutes of form submission), the second attempt fires 2 hours later if the first was not answered, and the third attempt fires the following business morning if the second was also unanswered. After three attempts without connection, the lead is flagged in HubSpot with status "AI Call — No Answer" and a task is created for a human sales rep to follow up via email or manual call. The no-answer rate in practice is typically 30–45% — many prospects submit forms outside of phone-receptive hours or are unavailable at the initial call time. The retry logic captures a significant portion of these leads on subsequent attempts. For prospects who answer but hang up quickly, VAPI's call analytics identify the call duration — calls under 30 seconds are typically not-engaged and are treated similarly to no-answer for retry logic purposes. The retry attempt count and intervals are configurable based on the client's preference for follow-up persistence versus intrusiveness — some clients prefer two attempts only; others run five attempts over three days. We configure the retry logic based on the client's lead volume, typical response rate, and qualification timeline preferences during implementation.</p>
+      </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system work with a CRM other than HubSpot — Salesforce, Pipedrive, or Zoho?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — the core VAPI + Make.com + ChatGPT + Twilio architecture is CRM-agnostic. HubSpot is the reference implementation because it is the most common CRM among the inbound sales teams this system serves, and its meetings booking API provides native calendar integration that other CRMs require additional configuration to replicate. But the same pipeline runs with Salesforce, Pipedrive, Zoho, or any CRM with a webhook trigger and an API for record updates</strong>.</p>
+        <p>For Salesforce: Make.com's Salesforce modules handle lead creation, field updates, activity logging, and opportunity management — replacing the HubSpot modules with Salesforce equivalents. The calendar booking component requires integration with the connected calendar system (typically Google Calendar or Outlook Calendar for Salesforce users) via the respective calendar API rather than HubSpot's native meetings API. For Pipedrive: Make.com's Pipedrive modules cover deal creation, activity logging, and person record updates; calendar booking integrates through Pipedrive's scheduler or a connected Google/Outlook calendar. For Zoho: Make.com's Zoho CRM modules provide the same coverage. The primary implementation difference across CRM platforms is the meeting booking step — HubSpot's meetings API is purpose-built for calendar availability queries and booking that integrates natively with the sales rep's availability management; other CRMs require a calendar-specific integration (Calendly, Google Calendar API, Microsoft Graph API for Outlook) to achieve the same mid-call booking capability. We assess the client's CRM and calendar infrastructure during the discovery call and confirm the architecture before scoping the implementation.</p>
+      </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the AI assistant handle objections — prospects who say they are not interested, too busy, or have questions about pricing?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — objection handling is a core component of the VAPI assistant training, with scripted responses for the most common objection categories that maintain conversational flow rather than escalating to a hard close or abruptly ending the call</strong>.</p>
+        <p>The objection handling framework covers four primary categories. "Not interested": Sarah acknowledges the response, briefly explains the value of a 15-minute conversation without hard-selling, and if the prospect remains uninterested, thanks them professionally and closes the call — the HubSpot record is updated as "Not Interested" for the sales team's reference. "Too busy right now": Sarah offers to call back at a better time, asking for the prospect's preferred day and time — which is booked as a call-back reminder in HubSpot rather than a meeting. "Tell me more about pricing": Sarah has scripted responses for common pricing questions that acknowledge the question, provide context-appropriate information (either a range, a "depends on scope" framing, or a direct answer if the client wants pricing discussed in the qualification call), and transitions to scheduling a proper conversation for detailed discussion. "Send me an email instead": Sarah confirms the email follow-up, takes note in the conversation, and the post-call flow triggers a HubSpot email sequence rather than an SMS confirmation. The objection handling scripts are developed collaboratively with the client during the VAPI training phase — using the client's actual sales rep objection responses as the baseline for training Sarah. Objection handling quality is one of the primary variables refined during the 2-week post-launch monitoring period, where call recordings with high objection rates are reviewed and the assistant's responses are improved.</p>
+      </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Are call recordings stored — and can the sales team access them for training or compliance purposes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — VAPI automatically records all calls and provides a recording URL in the call completion webhook payload. Make.com writes this URL to the HubSpot contact's Call_Recording_URL custom property, making every call recording accessible directly from the HubSpot contact record without requiring access to the VAPI platform</strong>.</p>
+        <p>VAPI retains call recordings for a configurable period (default is typically 30 days; longer retention can be configured). For permanent retention, Make.com's post-call workflow can download the VAPI recording and upload it to Google Drive or AWS S3 — providing indefinite storage in a client-controlled location. Call recordings serve several use cases in practice: sales reps review recordings for prospect context preparation before meetings (hearing the prospect's exact words and tone provides qualitative context that the written BANT summary doesn't capture); sales managers review recordings to assess AI assistant quality and identify conversation flow improvements; compliance teams in regulated industries (financial services, healthcare) can audit AI call content against communication compliance requirements. VAPI also provides call transcripts alongside recordings — Make.com can write the transcript text to a HubSpot note on the contact record, making the conversation searchable and reviewable without audio playback. For industries with specific call recording disclosure requirements (many US states require two-party consent disclosure), the VAPI assistant's opening script includes an automated disclosure statement — "I should let you know this call may be recorded for quality purposes" — which satisfies the disclosure requirement before the substantive conversation begins.</p>
+      </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 600% ROI calculated — and what is the primary value driver for a typical B2B sales team?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>The 600% ROI has two distinct value components: the labour cost saved from eliminating manual qualification calls (the more predictable, baseline component) and the revenue generated from the conversion rate improvement driven by 5-minute response times (the higher-upside, business-specific component)</strong>.</p>
+        <p>Labour savings: a sales team spending 20 hours weekly across all reps on initial qualification calls at $50/hour effective cost (an AE rate at a SaaS or services company) spends $52,000 annually on conversations that could be handled by AI. With 80% automation of this work, the annual recovery is $41,600. Revenue contribution: the conversion rate improvement is the higher-leverage component. For a company generating 100 inbound leads per month, closing at 15% (15 customers), with an ACV of 
   <div class="container">
     <h2>Frequently Asked Questions</h2>
 
@@ -357,7 +421,154 @@
     </div>
 
   </div>
-</section>
+5,000 — a 65% improvement in lead-to-meeting conversion (from 20% meeting rate to 33%) produces 6 additional meetings per month. If those meetings close at the same rate as the rest of the pipeline (15%), that is 0.9 additional customers per month, or 10.8 additional customers per year. At 
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>How natural do VAPI conversations sound — will prospects realise they are speaking to an AI?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>VAPI's voice quality and conversational intelligence have advanced significantly — modern VAPI assistants use neural text-to-speech voices that are largely indistinguishable from human representatives in standard qualification conversations, and the contextual response capability means the conversation adapts dynamically rather than following a rigid script that feels mechanical</strong>.</p>
+        <p>In practice, most prospects in qualification call contexts do not identify the caller as an AI unless they ask directly — the context of a follow-up call from a company they just enquired with sets an expectation of a professional representative, and VAPI's conversational flow meets that expectation. The assistant introduces itself by name (Sarah) and as a representative of the company — which is truthful. When prospects do ask directly "are you a human?", the assistant is configured to respond honestly — "I'm an AI assistant helping with initial calls — happy to answer your questions and get you connected with our team." This transparency maintains trust while preserving the efficiency benefits of AI qualification. The quality of the conversational experience is directly related to the quality of the assistant training — a well-trained assistant with thorough knowledge of the company's services, common prospect questions, and natural-sounding BANT question variants performs significantly better than a minimally configured one. The training process during implementation is designed to maximise conversational naturalness within the VAPI platform's capabilities.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>What happens if the prospect doesn't answer the initial call — does the system retry?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — call retry logic is a standard component of the implementation, with configurable retry intervals and maximum attempt counts to ensure non-answered calls receive appropriate follow-up without becoming intrusive</strong>.</p>
+        <p>The typical retry configuration attempts the call up to three times at escalating intervals: the first attempt fires immediately (within 5 minutes of form submission), the second attempt fires 2 hours later if the first was not answered, and the third attempt fires the following business morning if the second was also unanswered. After three attempts without connection, the lead is flagged in HubSpot with status "AI Call — No Answer" and a task is created for a human sales rep to follow up via email or manual call. The no-answer rate in practice is typically 30–45% — many prospects submit forms outside of phone-receptive hours or are unavailable at the initial call time. The retry logic captures a significant portion of these leads on subsequent attempts. For prospects who answer but hang up quickly, VAPI's call analytics identify the call duration — calls under 30 seconds are typically not-engaged and are treated similarly to no-answer for retry logic purposes. The retry attempt count and intervals are configurable based on the client's preference for follow-up persistence versus intrusiveness — some clients prefer two attempts only; others run five attempts over three days. We configure the retry logic based on the client's lead volume, typical response rate, and qualification timeline preferences during implementation.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Can the system work with a CRM other than HubSpot — Salesforce, Pipedrive, or Zoho?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — the core VAPI + Make.com + ChatGPT + Twilio architecture is CRM-agnostic. HubSpot is the reference implementation because it is the most common CRM among the inbound sales teams this system serves, and its meetings booking API provides native calendar integration that other CRMs require additional configuration to replicate. But the same pipeline runs with Salesforce, Pipedrive, Zoho, or any CRM with a webhook trigger and an API for record updates</strong>.</p>
+        <p>For Salesforce: Make.com's Salesforce modules handle lead creation, field updates, activity logging, and opportunity management — replacing the HubSpot modules with Salesforce equivalents. The calendar booking component requires integration with the connected calendar system (typically Google Calendar or Outlook Calendar for Salesforce users) via the respective calendar API rather than HubSpot's native meetings API. For Pipedrive: Make.com's Pipedrive modules cover deal creation, activity logging, and person record updates; calendar booking integrates through Pipedrive's scheduler or a connected Google/Outlook calendar. For Zoho: Make.com's Zoho CRM modules provide the same coverage. The primary implementation difference across CRM platforms is the meeting booking step — HubSpot's meetings API is purpose-built for calendar availability queries and booking that integrates natively with the sales rep's availability management; other CRMs require a calendar-specific integration (Calendly, Google Calendar API, Microsoft Graph API for Outlook) to achieve the same mid-call booking capability. We assess the client's CRM and calendar infrastructure during the discovery call and confirm the architecture before scoping the implementation.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Can the AI assistant handle objections — prospects who say they are not interested, too busy, or have questions about pricing?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — objection handling is a core component of the VAPI assistant training, with scripted responses for the most common objection categories that maintain conversational flow rather than escalating to a hard close or abruptly ending the call</strong>.</p>
+        <p>The objection handling framework covers four primary categories. "Not interested": Sarah acknowledges the response, briefly explains the value of a 15-minute conversation without hard-selling, and if the prospect remains uninterested, thanks them professionally and closes the call — the HubSpot record is updated as "Not Interested" for the sales team's reference. "Too busy right now": Sarah offers to call back at a better time, asking for the prospect's preferred day and time — which is booked as a call-back reminder in HubSpot rather than a meeting. "Tell me more about pricing": Sarah has scripted responses for common pricing questions that acknowledge the question, provide context-appropriate information (either a range, a "depends on scope" framing, or a direct answer if the client wants pricing discussed in the qualification call), and transitions to scheduling a proper conversation for detailed discussion. "Send me an email instead": Sarah confirms the email follow-up, takes note in the conversation, and the post-call flow triggers a HubSpot email sequence rather than an SMS confirmation. The objection handling scripts are developed collaboratively with the client during the VAPI training phase — using the client's actual sales rep objection responses as the baseline for training Sarah. Objection handling quality is one of the primary variables refined during the 2-week post-launch monitoring period, where call recordings with high objection rates are reviewed and the assistant's responses are improved.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Are call recordings stored — and can the sales team access them for training or compliance purposes?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — VAPI automatically records all calls and provides a recording URL in the call completion webhook payload. Make.com writes this URL to the HubSpot contact's Call_Recording_URL custom property, making every call recording accessible directly from the HubSpot contact record without requiring access to the VAPI platform</strong>.</p>
+        <p>VAPI retains call recordings for a configurable period (default is typically 30 days; longer retention can be configured). For permanent retention, Make.com's post-call workflow can download the VAPI recording and upload it to Google Drive or AWS S3 — providing indefinite storage in a client-controlled location. Call recordings serve several use cases in practice: sales reps review recordings for prospect context preparation before meetings (hearing the prospect's exact words and tone provides qualitative context that the written BANT summary doesn't capture); sales managers review recordings to assess AI assistant quality and identify conversation flow improvements; compliance teams in regulated industries (financial services, healthcare) can audit AI call content against communication compliance requirements. VAPI also provides call transcripts alongside recordings — Make.com can write the transcript text to a HubSpot note on the contact record, making the conversation searchable and reviewable without audio playback. For industries with specific call recording disclosure requirements (many US states require two-party consent disclosure), the VAPI assistant's opening script includes an automated disclosure statement — "I should let you know this call may be recorded for quality purposes" — which satisfies the disclosure requirement before the substantive conversation begins.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>How is 600% ROI calculated — and what is the primary value driver for a typical B2B sales team?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>The 600% ROI has two distinct value components: the labour cost saved from eliminating manual qualification calls (the more predictable, baseline component) and the revenue generated from the conversion rate improvement driven by 5-minute response times (the higher-upside, business-specific component)</strong>.</p>
+        <p>Labour savings: a sales team spending 20 hours weekly across all reps on initial qualification calls at $50/hour effective cost (an AE rate at a SaaS or services company) spends $52,000 annually on conversations that could be handled by AI. With 80% automation of this work, the annual recovery is $41,600. Revenue contribution: the conversion rate improvement is the higher-leverage component. For a company generating 100 inbound leads per month, closing at 15% (15 customers), with an ACV of $15,000 — a 65% improvement in lead-to-meeting conversion (from 20% meeting rate to 33%) produces 6 additional meetings per month. If those meetings close at the same rate as the rest of the pipeline (15%), that is 0.9 additional customers per month, or 10.8 additional customers per year. At $15,000 ACV, that is $162,000 in incremental annual revenue directly attributable to the faster response and better qualification. The $25K monthly savings figure cited in the metrics represents the combined labour and opportunity-cost recovery for a mid-sized B2B sales team — not including the incremental revenue component, which varies by ACV and lead volume. We model the specific ROI using the client's lead volume, close rate, ACV, and sales team size during the discovery call to provide a business-case calculation before committing to the build.</p>
+      </div></div>
+    </div>
+
+  </div>
+5,000 ACV, that is 
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>How natural do VAPI conversations sound — will prospects realise they are speaking to an AI?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>VAPI's voice quality and conversational intelligence have advanced significantly — modern VAPI assistants use neural text-to-speech voices that are largely indistinguishable from human representatives in standard qualification conversations, and the contextual response capability means the conversation adapts dynamically rather than following a rigid script that feels mechanical</strong>.</p>
+        <p>In practice, most prospects in qualification call contexts do not identify the caller as an AI unless they ask directly — the context of a follow-up call from a company they just enquired with sets an expectation of a professional representative, and VAPI's conversational flow meets that expectation. The assistant introduces itself by name (Sarah) and as a representative of the company — which is truthful. When prospects do ask directly "are you a human?", the assistant is configured to respond honestly — "I'm an AI assistant helping with initial calls — happy to answer your questions and get you connected with our team." This transparency maintains trust while preserving the efficiency benefits of AI qualification. The quality of the conversational experience is directly related to the quality of the assistant training — a well-trained assistant with thorough knowledge of the company's services, common prospect questions, and natural-sounding BANT question variants performs significantly better than a minimally configured one. The training process during implementation is designed to maximise conversational naturalness within the VAPI platform's capabilities.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>What happens if the prospect doesn't answer the initial call — does the system retry?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — call retry logic is a standard component of the implementation, with configurable retry intervals and maximum attempt counts to ensure non-answered calls receive appropriate follow-up without becoming intrusive</strong>.</p>
+        <p>The typical retry configuration attempts the call up to three times at escalating intervals: the first attempt fires immediately (within 5 minutes of form submission), the second attempt fires 2 hours later if the first was not answered, and the third attempt fires the following business morning if the second was also unanswered. After three attempts without connection, the lead is flagged in HubSpot with status "AI Call — No Answer" and a task is created for a human sales rep to follow up via email or manual call. The no-answer rate in practice is typically 30–45% — many prospects submit forms outside of phone-receptive hours or are unavailable at the initial call time. The retry logic captures a significant portion of these leads on subsequent attempts. For prospects who answer but hang up quickly, VAPI's call analytics identify the call duration — calls under 30 seconds are typically not-engaged and are treated similarly to no-answer for retry logic purposes. The retry attempt count and intervals are configurable based on the client's preference for follow-up persistence versus intrusiveness — some clients prefer two attempts only; others run five attempts over three days. We configure the retry logic based on the client's lead volume, typical response rate, and qualification timeline preferences during implementation.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Can the system work with a CRM other than HubSpot — Salesforce, Pipedrive, or Zoho?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — the core VAPI + Make.com + ChatGPT + Twilio architecture is CRM-agnostic. HubSpot is the reference implementation because it is the most common CRM among the inbound sales teams this system serves, and its meetings booking API provides native calendar integration that other CRMs require additional configuration to replicate. But the same pipeline runs with Salesforce, Pipedrive, Zoho, or any CRM with a webhook trigger and an API for record updates</strong>.</p>
+        <p>For Salesforce: Make.com's Salesforce modules handle lead creation, field updates, activity logging, and opportunity management — replacing the HubSpot modules with Salesforce equivalents. The calendar booking component requires integration with the connected calendar system (typically Google Calendar or Outlook Calendar for Salesforce users) via the respective calendar API rather than HubSpot's native meetings API. For Pipedrive: Make.com's Pipedrive modules cover deal creation, activity logging, and person record updates; calendar booking integrates through Pipedrive's scheduler or a connected Google/Outlook calendar. For Zoho: Make.com's Zoho CRM modules provide the same coverage. The primary implementation difference across CRM platforms is the meeting booking step — HubSpot's meetings API is purpose-built for calendar availability queries and booking that integrates natively with the sales rep's availability management; other CRMs require a calendar-specific integration (Calendly, Google Calendar API, Microsoft Graph API for Outlook) to achieve the same mid-call booking capability. We assess the client's CRM and calendar infrastructure during the discovery call and confirm the architecture before scoping the implementation.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Can the AI assistant handle objections — prospects who say they are not interested, too busy, or have questions about pricing?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — objection handling is a core component of the VAPI assistant training, with scripted responses for the most common objection categories that maintain conversational flow rather than escalating to a hard close or abruptly ending the call</strong>.</p>
+        <p>The objection handling framework covers four primary categories. "Not interested": Sarah acknowledges the response, briefly explains the value of a 15-minute conversation without hard-selling, and if the prospect remains uninterested, thanks them professionally and closes the call — the HubSpot record is updated as "Not Interested" for the sales team's reference. "Too busy right now": Sarah offers to call back at a better time, asking for the prospect's preferred day and time — which is booked as a call-back reminder in HubSpot rather than a meeting. "Tell me more about pricing": Sarah has scripted responses for common pricing questions that acknowledge the question, provide context-appropriate information (either a range, a "depends on scope" framing, or a direct answer if the client wants pricing discussed in the qualification call), and transitions to scheduling a proper conversation for detailed discussion. "Send me an email instead": Sarah confirms the email follow-up, takes note in the conversation, and the post-call flow triggers a HubSpot email sequence rather than an SMS confirmation. The objection handling scripts are developed collaboratively with the client during the VAPI training phase — using the client's actual sales rep objection responses as the baseline for training Sarah. Objection handling quality is one of the primary variables refined during the 2-week post-launch monitoring period, where call recordings with high objection rates are reviewed and the assistant's responses are improved.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>Are call recordings stored — and can the sales team access them for training or compliance purposes?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Yes — VAPI automatically records all calls and provides a recording URL in the call completion webhook payload. Make.com writes this URL to the HubSpot contact's Call_Recording_URL custom property, making every call recording accessible directly from the HubSpot contact record without requiring access to the VAPI platform</strong>.</p>
+        <p>VAPI retains call recordings for a configurable period (default is typically 30 days; longer retention can be configured). For permanent retention, Make.com's post-call workflow can download the VAPI recording and upload it to Google Drive or AWS S3 — providing indefinite storage in a client-controlled location. Call recordings serve several use cases in practice: sales reps review recordings for prospect context preparation before meetings (hearing the prospect's exact words and tone provides qualitative context that the written BANT summary doesn't capture); sales managers review recordings to assess AI assistant quality and identify conversation flow improvements; compliance teams in regulated industries (financial services, healthcare) can audit AI call content against communication compliance requirements. VAPI also provides call transcripts alongside recordings — Make.com can write the transcript text to a HubSpot note on the contact record, making the conversation searchable and reviewable without audio playback. For industries with specific call recording disclosure requirements (many US states require two-party consent disclosure), the VAPI assistant's opening script includes an automated disclosure statement — "I should let you know this call may be recorded for quality purposes" — which satisfies the disclosure requirement before the substantive conversation begins.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false">
+        <span>How is 600% ROI calculated — and what is the primary value driver for a typical B2B sales team?</span>
+        <span class="faq-arrow" aria-hidden="true">↓</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>The 600% ROI has two distinct value components: the labour cost saved from eliminating manual qualification calls (the more predictable, baseline component) and the revenue generated from the conversion rate improvement driven by 5-minute response times (the higher-upside, business-specific component)</strong>.</p>
+        <p>Labour savings: a sales team spending 20 hours weekly across all reps on initial qualification calls at $50/hour effective cost (an AE rate at a SaaS or services company) spends $52,000 annually on conversations that could be handled by AI. With 80% automation of this work, the annual recovery is $41,600. Revenue contribution: the conversion rate improvement is the higher-leverage component. For a company generating 100 inbound leads per month, closing at 15% (15 customers), with an ACV of $15,000 — a 65% improvement in lead-to-meeting conversion (from 20% meeting rate to 33%) produces 6 additional meetings per month. If those meetings close at the same rate as the rest of the pipeline (15%), that is 0.9 additional customers per month, or 10.8 additional customers per year. At $15,000 ACV, that is $162,000 in incremental annual revenue directly attributable to the faster response and better qualification. The $25K monthly savings figure cited in the metrics represents the combined labour and opportunity-cost recovery for a mid-sized B2B sales team — not including the incremental revenue component, which varies by ACV and lead volume. We model the specific ROI using the client's lead volume, close rate, ACV, and sales team size during the discovery call to provide a business-case calculation before committing to the build.</p>
+      </div></div>
+    </div>
+
+  </div>
+62,000 in incremental annual revenue directly attributable to the faster response and better qualification. The $25K monthly savings figure cited in the metrics represents the combined labour and opportunity-cost recovery for a mid-sized B2B sales team — not including the incremental revenue component, which varies by ACV and lead volume. We model the specific ROI using the client's lead volume, close rate, ACV, and sales team size during the discovery call to provide a business-case calculation before committing to the build.</p>
+      </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <section class="cs-bottom-cta">
   <div class="container" style="position:relative;z-index:2">

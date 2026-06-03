@@ -375,7 +375,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How many attachments can be sent per email — is there a practical limit?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system supports unlimited attachments per email from the automation logic perspective — the iterator and aggregator handle any number of file IDs without modification. The practical limit is Gmail's attachment size constraint of 25 MB total per email</strong>, which applies regardless of how many individual files are attached. A single 24 MB file and twenty 1 MB files both stay within the limit; a combination that exceeds 25 MB total will fail at the Gmail delivery step.</p>
+            <p>For use cases requiring delivery of files exceeding Gmail's attachment limit — large video files, high-resolution design assets, full data exports — the system can be modified to send Google Drive sharing links in the email body instead of direct attachments. The Make.com workflow uses Google Drive's file sharing API to generate a shareable link for each large file and inserts the links into the email body as clickable text rather than attaching the files directly. This approach has no file size limit (Google Drive can host files up to 5 TB) and works for any file type. The approach does require the recipient to have Google account access or for the Drive files to be shared publicly — which we assess during the discovery call based on the client's security requirements. For most standard business document use cases (invoices, contracts, offer letters, reports, licence files) where individual files are well under 25 MB, direct attachment is the simpler and more professional delivery method.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system send from a custom company email address rather than a personal Gmail account?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — sending from a custom company email address (e.g., hr@company.com, billing@company.com, or noreply@company.com) is configurable through two different approaches depending on the organisation's email infrastructure</strong>.</p>
+            <p>For organisations using Google Workspace with a custom domain (company email addresses managed through Gmail via Google Workspace), the Gmail API authentication is set up using the service account or OAuth credentials for the specific Google Workspace account associated with the desired sending address. The Make.com Gmail module sends from whichever account is authenticated — so authenticating hr@company.com means all emails arrive from that address. Gmail alias sending is also supported: if hr@company.com is configured as a Gmail alias on the authenticated account, Make.com can send on behalf of that alias. For organisations using Microsoft Exchange, Office 365, or another SMTP-based email infrastructure, Make.com's Email Send module (using SMTP) or the Microsoft 365 Email module can replace the Gmail module — authenticated with the company's SMTP server credentials or Microsoft Graph API OAuth. This allows sending from any company email address regardless of the underlying email provider. The sending address configuration is part of the implementation scope and we confirm the appropriate approach based on the client's email infrastructure during the setup process.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system send HTML emails with formatting — or only plain text?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the Gmail module in Make.com fully supports HTML email delivery, enabling rich-format emails with branding, logos, formatted tables, coloured text, buttons, and any other HTML email structure the client requires</strong>. Plain text mode is available for use cases where simplicity is preferred (many transactional and professional emails perform better as plain text), but HTML mode is equally supported.</p>
+            <p>For HTML email use cases, the Email Body column in Google Sheets stores HTML markup rather than plain text — which the Make.com Gmail module renders as formatted email content. The ChatGPT cleaning step is configured to process HTML-tagged content appropriately — preserving valid HTML structure and tags while cleaning artefacts and formatting inconsistencies. For clients who want branded email templates (company header, footer with legal disclaimer, consistent typography), the HTML template is developed during the implementation and stored as a Make.com template variable — with the recipient-specific body content inserted into a designated content area in the template rather than replacing the entire email HTML. This approach allows the email's structural branding to remain consistent across all recipients while the personalised body content varies per row. Common use cases for HTML format: invoice emails with a branded header and payment button, offer letter emails with company logo and formatted signature, and client proposal emails with a professional visual structure that reinforces brand credibility.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system be scheduled to send automatically at a specific time rather than requiring manual button clicks?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — scheduled automatic sending is a straightforward alternative to the button-click trigger, replacing the Apps Script webhook with a Make.com time-based scheduler that runs the scenario at a configured time without any manual action</strong>. The two trigger modes serve different use cases and can coexist in the same system.</p>
+            <p>The scheduled trigger configuration replaces the Webhook trigger module at the start of the Make.com scenario with a Scheduler trigger module — set to run daily at a specified time (e.g., 8:00 AM every weekday) or on a custom schedule (every Monday and Thursday at 9:00 AM, on the first of each month, etc.). The scheduler triggers the Google Sheets search for Valid rows automatically at the configured time, processing all pending recipients without any manual action. The Apps Script button can remain in the spreadsheet alongside the scheduled trigger — giving the team the option to trigger an immediate send outside the scheduled time if urgency requires it. For accounting departments sending monthly invoices, the scheduler is configured to run on the first business day of each month — the team prepares the recipient rows throughout the month, marks them Valid when ready, and the scenario processes all Valid rows automatically on the trigger date. For HR teams sending offer letters on a rolling basis, the button-click trigger is typically preferred — sending immediately when a specific batch is ready rather than waiting for a scheduled window. We configure the trigger mode during the implementation based on the client's workflow preference and send cadence.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if a send fails for one recipient — does the whole batch stop or do other recipients still receive their emails?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system is built with per-recipient error isolation — a failure for one recipient does not stop the batch processing for other recipients. Make.com's error handling is configured at the scenario level to continue processing subsequent rows even when an individual row encounters an error</strong>.</p>
+            <p>When a failure occurs for a specific recipient — an invalid email address, a Google Drive file ID that has been deleted or moved to an inaccessible folder, a Gmail API rate limit hit, or any other exception — Make.com's error route captures the error details and writes "Error" to that recipient's Status column along with an error note describing the failure reason. The scenario then moves to the next Valid row and continues processing normally. After the batch completes, the team reviews the Google Sheets database and sees all successfully sent rows marked "Sent" and any failed rows marked "Error" with the reason noted. The error rows can be corrected — fixing the invalid email address, restoring the missing Drive file, or clearing the rate limit issue — and re-triggered: because the error rows remain with "Error" status rather than "Sent," setting them back to "Valid" and clicking the send button processes only the corrected failures rather than re-sending to the successful recipients. Gmail API rate limits (Gmail allows sending to approximately 500 recipients per day for standard accounts, 2,000 for Google Workspace accounts) are monitored during implementation — high-volume sends that exceed daily limits are configured with rate limiting logic in Make.com to spread sends across multiple days automatically.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 550% ROI calculated — and what does the payback period look like for a team sending bulk emails weekly versus monthly?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 550% ROI primarily reflects the labour cost recovered from eliminating manual email composition and attachment handling — with the 1-week implementation timeline producing the fastest absolute payback of any system in the GrowwStacks portfolio</strong>.</p>
+            <p>The labour savings calculation for a weekly send use case: a team member spending 5 hours weekly composing and sending personalised emails with attachments to 50 recipients at $35/hour effective rate spends $9,100 annually on this task. The automation reduces this to 30 minutes of database preparation and button clicks weekly — recovering $8,008 annually. The 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -457,6 +532,178 @@
         </div>
       </div>
 
+    </div>
+  0K+ monthly savings figure cited in the results metrics represents a higher-volume use case: a team sending to 200+ recipients weekly, or multiple departments (HR, accounting, marketing) each conducting their own weekly bulk sends — where the aggregate labour recovery across the organisation exceeds 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How many attachments can be sent per email — is there a practical limit?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system supports unlimited attachments per email from the automation logic perspective — the iterator and aggregator handle any number of file IDs without modification. The practical limit is Gmail's attachment size constraint of 25 MB total per email</strong>, which applies regardless of how many individual files are attached. A single 24 MB file and twenty 1 MB files both stay within the limit; a combination that exceeds 25 MB total will fail at the Gmail delivery step.</p>
+            <p>For use cases requiring delivery of files exceeding Gmail's attachment limit — large video files, high-resolution design assets, full data exports — the system can be modified to send Google Drive sharing links in the email body instead of direct attachments. The Make.com workflow uses Google Drive's file sharing API to generate a shareable link for each large file and inserts the links into the email body as clickable text rather than attaching the files directly. This approach has no file size limit (Google Drive can host files up to 5 TB) and works for any file type. The approach does require the recipient to have Google account access or for the Drive files to be shared publicly — which we assess during the discovery call based on the client's security requirements. For most standard business document use cases (invoices, contracts, offer letters, reports, licence files) where individual files are well under 25 MB, direct attachment is the simpler and more professional delivery method.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system send from a custom company email address rather than a personal Gmail account?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — sending from a custom company email address (e.g., hr@company.com, billing@company.com, or noreply@company.com) is configurable through two different approaches depending on the organisation's email infrastructure</strong>.</p>
+            <p>For organisations using Google Workspace with a custom domain (company email addresses managed through Gmail via Google Workspace), the Gmail API authentication is set up using the service account or OAuth credentials for the specific Google Workspace account associated with the desired sending address. The Make.com Gmail module sends from whichever account is authenticated — so authenticating hr@company.com means all emails arrive from that address. Gmail alias sending is also supported: if hr@company.com is configured as a Gmail alias on the authenticated account, Make.com can send on behalf of that alias. For organisations using Microsoft Exchange, Office 365, or another SMTP-based email infrastructure, Make.com's Email Send module (using SMTP) or the Microsoft 365 Email module can replace the Gmail module — authenticated with the company's SMTP server credentials or Microsoft Graph API OAuth. This allows sending from any company email address regardless of the underlying email provider. The sending address configuration is part of the implementation scope and we confirm the appropriate approach based on the client's email infrastructure during the setup process.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system send HTML emails with formatting — or only plain text?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the Gmail module in Make.com fully supports HTML email delivery, enabling rich-format emails with branding, logos, formatted tables, coloured text, buttons, and any other HTML email structure the client requires</strong>. Plain text mode is available for use cases where simplicity is preferred (many transactional and professional emails perform better as plain text), but HTML mode is equally supported.</p>
+            <p>For HTML email use cases, the Email Body column in Google Sheets stores HTML markup rather than plain text — which the Make.com Gmail module renders as formatted email content. The ChatGPT cleaning step is configured to process HTML-tagged content appropriately — preserving valid HTML structure and tags while cleaning artefacts and formatting inconsistencies. For clients who want branded email templates (company header, footer with legal disclaimer, consistent typography), the HTML template is developed during the implementation and stored as a Make.com template variable — with the recipient-specific body content inserted into a designated content area in the template rather than replacing the entire email HTML. This approach allows the email's structural branding to remain consistent across all recipients while the personalised body content varies per row. Common use cases for HTML format: invoice emails with a branded header and payment button, offer letter emails with company logo and formatted signature, and client proposal emails with a professional visual structure that reinforces brand credibility.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system be scheduled to send automatically at a specific time rather than requiring manual button clicks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — scheduled automatic sending is a straightforward alternative to the button-click trigger, replacing the Apps Script webhook with a Make.com time-based scheduler that runs the scenario at a configured time without any manual action</strong>. The two trigger modes serve different use cases and can coexist in the same system.</p>
+            <p>The scheduled trigger configuration replaces the Webhook trigger module at the start of the Make.com scenario with a Scheduler trigger module — set to run daily at a specified time (e.g., 8:00 AM every weekday) or on a custom schedule (every Monday and Thursday at 9:00 AM, on the first of each month, etc.). The scheduler triggers the Google Sheets search for Valid rows automatically at the configured time, processing all pending recipients without any manual action. The Apps Script button can remain in the spreadsheet alongside the scheduled trigger — giving the team the option to trigger an immediate send outside the scheduled time if urgency requires it. For accounting departments sending monthly invoices, the scheduler is configured to run on the first business day of each month — the team prepares the recipient rows throughout the month, marks them Valid when ready, and the scenario processes all Valid rows automatically on the trigger date. For HR teams sending offer letters on a rolling basis, the button-click trigger is typically preferred — sending immediately when a specific batch is ready rather than waiting for a scheduled window. We configure the trigger mode during the implementation based on the client's workflow preference and send cadence.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if a send fails for one recipient — does the whole batch stop or do other recipients still receive their emails?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system is built with per-recipient error isolation — a failure for one recipient does not stop the batch processing for other recipients. Make.com's error handling is configured at the scenario level to continue processing subsequent rows even when an individual row encounters an error</strong>.</p>
+            <p>When a failure occurs for a specific recipient — an invalid email address, a Google Drive file ID that has been deleted or moved to an inaccessible folder, a Gmail API rate limit hit, or any other exception — Make.com's error route captures the error details and writes "Error" to that recipient's Status column along with an error note describing the failure reason. The scenario then moves to the next Valid row and continues processing normally. After the batch completes, the team reviews the Google Sheets database and sees all successfully sent rows marked "Sent" and any failed rows marked "Error" with the reason noted. The error rows can be corrected — fixing the invalid email address, restoring the missing Drive file, or clearing the rate limit issue — and re-triggered: because the error rows remain with "Error" status rather than "Sent," setting them back to "Valid" and clicking the send button processes only the corrected failures rather than re-sending to the successful recipients. Gmail API rate limits (Gmail allows sending to approximately 500 recipients per day for standard accounts, 2,000 for Google Workspace accounts) are monitored during implementation — high-volume sends that exceed daily limits are configured with rate limiting logic in Make.com to spread sends across multiple days automatically.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 550% ROI calculated — and what does the payback period look like for a team sending bulk emails weekly versus monthly?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 550% ROI primarily reflects the labour cost recovered from eliminating manual email composition and attachment handling — with the 1-week implementation timeline producing the fastest absolute payback of any system in the GrowwStacks portfolio</strong>.</p>
+            <p>The labour savings calculation for a weekly send use case: a team member spending 5 hours weekly composing and sending personalised emails with attachments to 50 recipients at $35/hour effective rate spends $9,100 annually on this task. The automation reduces this to 30 minutes of database preparation and button clicks weekly — recovering $8,008 annually. The $10K+ monthly savings figure cited in the results metrics represents a higher-volume use case: a team sending to 200+ recipients weekly, or multiple departments (HR, accounting, marketing) each conducting their own weekly bulk sends — where the aggregate labour recovery across the organisation exceeds $10,000 monthly. For a monthly send use case (e.g., accounting sending monthly invoices to 100 clients): 4 hours monthly × $35/hour = $1,680 annually recovered from those send events, plus the value of error elimination (incorrect invoice attachments often require resend and client communication that adds several hours per incident). The 1-week implementation cost is typically recovered within the first 1–3 monthly send cycles, making this the automation with the shortest absolute payback period we offer. We model the specific calculation using the client's send frequency, recipient volume, and hourly cost during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  0,000 monthly. For a monthly send use case (e.g., accounting sending monthly invoices to 100 clients): 4 hours monthly × $35/hour = 
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How many attachments can be sent per email — is there a practical limit?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system supports unlimited attachments per email from the automation logic perspective — the iterator and aggregator handle any number of file IDs without modification. The practical limit is Gmail's attachment size constraint of 25 MB total per email</strong>, which applies regardless of how many individual files are attached. A single 24 MB file and twenty 1 MB files both stay within the limit; a combination that exceeds 25 MB total will fail at the Gmail delivery step.</p>
+            <p>For use cases requiring delivery of files exceeding Gmail's attachment limit — large video files, high-resolution design assets, full data exports — the system can be modified to send Google Drive sharing links in the email body instead of direct attachments. The Make.com workflow uses Google Drive's file sharing API to generate a shareable link for each large file and inserts the links into the email body as clickable text rather than attaching the files directly. This approach has no file size limit (Google Drive can host files up to 5 TB) and works for any file type. The approach does require the recipient to have Google account access or for the Drive files to be shared publicly — which we assess during the discovery call based on the client's security requirements. For most standard business document use cases (invoices, contracts, offer letters, reports, licence files) where individual files are well under 25 MB, direct attachment is the simpler and more professional delivery method.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system send from a custom company email address rather than a personal Gmail account?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — sending from a custom company email address (e.g., hr@company.com, billing@company.com, or noreply@company.com) is configurable through two different approaches depending on the organisation's email infrastructure</strong>.</p>
+            <p>For organisations using Google Workspace with a custom domain (company email addresses managed through Gmail via Google Workspace), the Gmail API authentication is set up using the service account or OAuth credentials for the specific Google Workspace account associated with the desired sending address. The Make.com Gmail module sends from whichever account is authenticated — so authenticating hr@company.com means all emails arrive from that address. Gmail alias sending is also supported: if hr@company.com is configured as a Gmail alias on the authenticated account, Make.com can send on behalf of that alias. For organisations using Microsoft Exchange, Office 365, or another SMTP-based email infrastructure, Make.com's Email Send module (using SMTP) or the Microsoft 365 Email module can replace the Gmail module — authenticated with the company's SMTP server credentials or Microsoft Graph API OAuth. This allows sending from any company email address regardless of the underlying email provider. The sending address configuration is part of the implementation scope and we confirm the appropriate approach based on the client's email infrastructure during the setup process.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system send HTML emails with formatting — or only plain text?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — the Gmail module in Make.com fully supports HTML email delivery, enabling rich-format emails with branding, logos, formatted tables, coloured text, buttons, and any other HTML email structure the client requires</strong>. Plain text mode is available for use cases where simplicity is preferred (many transactional and professional emails perform better as plain text), but HTML mode is equally supported.</p>
+            <p>For HTML email use cases, the Email Body column in Google Sheets stores HTML markup rather than plain text — which the Make.com Gmail module renders as formatted email content. The ChatGPT cleaning step is configured to process HTML-tagged content appropriately — preserving valid HTML structure and tags while cleaning artefacts and formatting inconsistencies. For clients who want branded email templates (company header, footer with legal disclaimer, consistent typography), the HTML template is developed during the implementation and stored as a Make.com template variable — with the recipient-specific body content inserted into a designated content area in the template rather than replacing the entire email HTML. This approach allows the email's structural branding to remain consistent across all recipients while the personalised body content varies per row. Common use cases for HTML format: invoice emails with a branded header and payment button, offer letter emails with company logo and formatted signature, and client proposal emails with a professional visual structure that reinforces brand credibility.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can the system be scheduled to send automatically at a specific time rather than requiring manual button clicks?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — scheduled automatic sending is a straightforward alternative to the button-click trigger, replacing the Apps Script webhook with a Make.com time-based scheduler that runs the scenario at a configured time without any manual action</strong>. The two trigger modes serve different use cases and can coexist in the same system.</p>
+            <p>The scheduled trigger configuration replaces the Webhook trigger module at the start of the Make.com scenario with a Scheduler trigger module — set to run daily at a specified time (e.g., 8:00 AM every weekday) or on a custom schedule (every Monday and Thursday at 9:00 AM, on the first of each month, etc.). The scheduler triggers the Google Sheets search for Valid rows automatically at the configured time, processing all pending recipients without any manual action. The Apps Script button can remain in the spreadsheet alongside the scheduled trigger — giving the team the option to trigger an immediate send outside the scheduled time if urgency requires it. For accounting departments sending monthly invoices, the scheduler is configured to run on the first business day of each month — the team prepares the recipient rows throughout the month, marks them Valid when ready, and the scenario processes all Valid rows automatically on the trigger date. For HR teams sending offer letters on a rolling basis, the button-click trigger is typically preferred — sending immediately when a specific batch is ready rather than waiting for a scheduled window. We configure the trigger mode during the implementation based on the client's workflow preference and send cadence.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if a send fails for one recipient — does the whole batch stop or do other recipients still receive their emails?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The system is built with per-recipient error isolation — a failure for one recipient does not stop the batch processing for other recipients. Make.com's error handling is configured at the scenario level to continue processing subsequent rows even when an individual row encounters an error</strong>.</p>
+            <p>When a failure occurs for a specific recipient — an invalid email address, a Google Drive file ID that has been deleted or moved to an inaccessible folder, a Gmail API rate limit hit, or any other exception — Make.com's error route captures the error details and writes "Error" to that recipient's Status column along with an error note describing the failure reason. The scenario then moves to the next Valid row and continues processing normally. After the batch completes, the team reviews the Google Sheets database and sees all successfully sent rows marked "Sent" and any failed rows marked "Error" with the reason noted. The error rows can be corrected — fixing the invalid email address, restoring the missing Drive file, or clearing the rate limit issue — and re-triggered: because the error rows remain with "Error" status rather than "Sent," setting them back to "Valid" and clicking the send button processes only the corrected failures rather than re-sending to the successful recipients. Gmail API rate limits (Gmail allows sending to approximately 500 recipients per day for standard accounts, 2,000 for Google Workspace accounts) are monitored during implementation — high-volume sends that exceed daily limits are configured with rate limiting logic in Make.com to spread sends across multiple days automatically.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How is 550% ROI calculated — and what does the payback period look like for a team sending bulk emails weekly versus monthly?</span>
+          <span class="faq-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 550% ROI primarily reflects the labour cost recovered from eliminating manual email composition and attachment handling — with the 1-week implementation timeline producing the fastest absolute payback of any system in the GrowwStacks portfolio</strong>.</p>
+            <p>The labour savings calculation for a weekly send use case: a team member spending 5 hours weekly composing and sending personalised emails with attachments to 50 recipients at $35/hour effective rate spends $9,100 annually on this task. The automation reduces this to 30 minutes of database preparation and button clicks weekly — recovering $8,008 annually. The $10K+ monthly savings figure cited in the results metrics represents a higher-volume use case: a team sending to 200+ recipients weekly, or multiple departments (HR, accounting, marketing) each conducting their own weekly bulk sends — where the aggregate labour recovery across the organisation exceeds $10,000 monthly. For a monthly send use case (e.g., accounting sending monthly invoices to 100 clients): 4 hours monthly × $35/hour = $1,680 annually recovered from those send events, plus the value of error elimination (incorrect invoice attachments often require resend and client communication that adds several hours per incident). The 1-week implementation cost is typically recovered within the first 1–3 monthly send cycles, making this the automation with the shortest absolute payback period we offer. We model the specific calculation using the client's send frequency, recipient volume, and hourly cost during the discovery call.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  ,680 annually recovered from those send events, plus the value of error elimination (incorrect invoice attachments often require resend and client communication that adds several hours per incident). The 1-week implementation cost is typically recovered within the first 1–3 monthly send cycles, making this the automation with the shortest absolute payback period we offer. We model the specific calculation using the client's send frequency, recipient volume, and hourly cost during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 

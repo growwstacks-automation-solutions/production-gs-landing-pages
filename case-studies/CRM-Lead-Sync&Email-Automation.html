@@ -350,88 +350,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens if a lead is updated in Airtable after the initial sync — does it re-sync to Close and Mailchimp?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if a lead is updated in Airtable after the initial sync — does it re-sync to Close and Mailchimp?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The base system is configured to trigger on new record creation in Airtable</strong>. For organizations that also need updates to existing Airtable records to propagate to Close CRM and Mailchimp, we configure an additional watch trigger on record modification — this is a common extension request and is scoped during implementation based on your update frequency and field change patterns.</p>
             <p>The duplicate detection logic handles re-syncs cleanly regardless: when the workflow runs against an existing lead, Route 1 fires and updates the Close CRM record and Mailchimp subscriber with the new field values rather than creating a duplicate. So even if you trigger a full re-sync manually, the system handles it correctly without creating redundant records.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system sync leads from multiple Airtable bases or tables to the same Close CRM?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system sync leads from multiple Airtable bases or tables to the same Close CRM?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — multiple Airtable sources can feed into the same Close CRM and Mailchimp system</strong>, with each source mapped to the appropriate campaign or pipeline stage in the destination platforms.</p>
             <p>The most common configuration for multi-source setups is a separate Make.com scenario per Airtable table or base, each with its own field mapping and campaign routing logic, all feeding into the same Close CRM with a shared duplicate detection layer. This prevents leads from different sources from creating duplicates against each other, and allows different Airtable forms (e.g., webinar registrations vs. demo requests) to route to different Mailchimp campaign sequences automatically based on their source.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the Mailchimp campaign assignment work — can different leads go to different campaigns?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the Mailchimp campaign assignment work — can different leads go to different campaigns?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — campaign assignment is fully configurable based on any field available in the Airtable record or Close CRM lead</strong>. Leads from different sources, industries, geographic regions, or with different product interests can route to distinct Mailchimp audiences and campaign sequences automatically.</p>
             <p>The simplest configuration assigns all leads to a single nurture campaign. More sophisticated segmentation — common for agencies managing multiple client leads or organizations with clearly differentiated product lines — uses conditional logic in Make.com to evaluate lead attributes before the Mailchimp enrollment step, routing each lead to the campaign that matches their profile. Campaign assignment rules can be updated post-launch without rebuilding the core sync workflow.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What happens when the duplicate detection finds a partial match — like the same email but a different phone number?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens when the duplicate detection finds a partial match — like the same email but a different phone number?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The duplicate detection is configured with "any match" logic by default — if any one of the three fields (phone, email, or name) returns a Close CRM match, the system treats it as an existing lead and follows Route 1 (update path) rather than Route 2 (create path)</strong>.</p>
             <p>This is intentionally conservative to prevent duplicates. In the partial match scenario — same email, different phone — Route 1 fires and updates the existing Close CRM record with the new phone number from the Airtable entry, keeping the single authoritative record current. If you prefer "all fields must match" logic for stricter duplicate criteria (useful when your data commonly has legitimate contacts with shared emails, like company info@ addresses), we configure the matching threshold accordingly during implementation. The match sensitivity is a configuration choice, not a technical limitation.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can this be adapted for a different CRM — like HubSpot or Salesforce — instead of Close?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can this be adapted for a different CRM — like HubSpot or Salesforce — instead of Close?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the workflow architecture (Airtable trigger → duplicate search → conditional routing → CRM create/update → Mailchimp enrollment) is platform-agnostic</strong>. We build this system with HubSpot, Salesforce, Pipedrive, Copper, Zoho, and other CRMs using the same logic pattern with the CRM-specific API modules swapped in.</p>
             <p>The duplicate detection search varies slightly by CRM — each platform has different contact search API capabilities and field structures — but the Make.com conditional routing and Mailchimp enrollment logic are identical. If your stack uses a different CRM, mention it during discovery and we'll confirm the specific integration approach and any scope differences before building.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>What ROI can a sales team realistically expect from automating three-platform lead synchronization?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What ROI can a sales team realistically expect from automating three-platform lead synchronization?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>For a team spending 10–15 hours weekly on manual synchronization across three platforms, realistic first-year ROI exceeds 100% — driven by labor cost recovery, eliminated duplicate cleanup overhead, and the revenue impact of leads that previously fell through inter-platform gaps</strong>.</p>
             <p>The labor math is direct: at $45/hour for a sales or marketing ops role, 12 hours weekly × 50 working weeks = $27,000 annually in recoverable time — most of which shifts from mechanical data entry to strategic outreach and campaign optimization. The revenue impact is harder to quantify precisely but typically larger: if your average deal value is $5,000 and 20% of leads currently don't reach your CRM due to sync gaps, recovering those leads at even a 10% close rate adds significant incremental pipeline. The Mailchimp timing improvement — from days-delayed manual enrollment to seconds-fast automated enrollment — has a measurable effect on open rates and click-through rates in the first email sequence. We model all three vectors during the discovery session using your actual numbers.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

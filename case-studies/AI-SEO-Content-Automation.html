@@ -347,88 +347,86 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
     <div class="container">
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Will AI-generated content hurt our search rankings — doesn't Google penalise AI content?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Will AI-generated content hurt our search rankings — doesn't Google penalise AI content?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Google's official position is that it rewards high-quality, helpful content regardless of how it was produced — the ranking signal is quality and relevance, not the production method</strong>. Google's own documentation states that "using AI to generate content with the primary purpose of manipulating search rankings" violates their spam policies, but generating AI content that is genuinely helpful and well-structured does not.</p>
             <p>The system is engineered to produce content that meets Google's quality guidelines: proper structure with clear heading hierarchy, appropriate depth on the topic, natural keyword integration that serves the reader rather than keyword stuffs, and meta descriptions that accurately describe the content. Many high-traffic content publishers use AI-assisted or AI-first content production at scale without ranking penalties — the content quality is what matters. For niches where original research, expert perspective, or unique data are the primary ranking factors, we recommend a human review and enrichment pass before publishing, which the workflow supports as an optional approval stage between generation and auto-publish.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can we review content before it publishes automatically — or does it go live immediately?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can we review content before it publishes automatically — or does it go live immediately?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The system supports both modes — immediate auto-publish and a review-before-publish workflow — configured during implementation based on the team's preference</strong>.</p>
             <p>For teams that want human review before publishing: the workflow creates the content in Webflow as a draft rather than a published post, sends a notification (email or Slack) to the reviewer with a link to the draft, and waits for approval before the publish step fires. The reviewer can edit the content in Webflow and click publish manually, or use a simple approval trigger (a Slack reaction, a Google Sheets status update) to trigger the auto-publish. For teams that want immediate publication without review: the workflow publishes directly on completion. Many teams start with the draft-and-review mode during the first few weeks to calibrate confidence in the output quality, then switch to auto-publish once they've confirmed the posts consistently meet their standards.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the system work with WordPress or other CMS platforms instead of Webflow?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system work with WordPress or other CMS platforms instead of Webflow?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Yes — the content generation layer (Google Sheets trigger, ChatGPT three-module pipeline) is CMS-agnostic, and the publishing module can be built for WordPress, HubSpot, Contentful, Sanity, Ghost, Squarespace, or any CMS with API access through Make.com</strong>. Webflow is the default because it's the most common CMS among the GrowwStacks client base with robust Make.com integration, but the architecture adapts to your existing platform.</p>
             <p>WordPress via REST API is the most common alternative — the publishing module creates posts directly in WordPress with proper title, body, excerpt (used as meta description), categories, and tags populated automatically. HubSpot Blog and Contentful are also well-supported through their Make.com native integrations. The implementation timeline remains at 2 weeks for most CMS variants. We confirm CMS compatibility and API access requirements during the discovery call before scoping.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How does the system handle internal linking — can it add links to other posts automatically?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle internal linking — can it add links to other posts automatically?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>Internal linking is an optional extension to the base system that adds a significant SEO benefit — Google treats internal links as signals of site structure and topic authority, and a consistent internal linking strategy is one of the most impactful on-site SEO improvements available</strong>.</p>
             <p>The internal linking extension works by maintaining a reference list of published posts (or pulling from the Webflow/WordPress CMS API) and instructing the blog post generation prompt to identify 2–3 topically relevant internal pages to link to within the body content. The links are inserted contextually rather than in a footer list, which provides the strongest SEO signal. This extension adds approximately 1 week to the implementation timeline and requires the existing content library to be catalogued in a format the linking logic can reference. We scope it as an optional add-on during the discovery session — for sites with existing content libraries, internal linking often produces visible organic ranking improvements within 60–90 days of consistent implementation.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>Can the same keyword produce different content each time — or will duplicate posts be created?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the same keyword produce different content each time — or will duplicate posts be created?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>A duplicate detection check is included in the workflow — before generating content for a keyword, the system checks the Google Sheets database for whether that keyword has already been processed</strong>. If the keyword already exists with a "Published" status, the workflow stops and marks the new row as "Duplicate — skipped" rather than generating another post on the same topic.</p>
             <p>For teams that intentionally want multiple angles on the same keyword (e.g., "beginner guide to X" and "advanced guide to X" both using "X" as the base keyword), the system supports appended keyword variants in the input that produce distinct posts on the same topic cluster. The ChatGPT generation also produces meaningfully different content each time even for identical inputs — because AI generation is probabilistic, the same keyword submitted twice on different days produces different posts in terms of specific examples, section ordering, and phrasing, even though the SEO structure remains consistent. This is preferable to exact duplicate content for SEO purposes.</p>
           </div>
         </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          <span>How is 700% ROI calculated — and how quickly can a content team realistically achieve it?</span>
-          <span class="faq-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="faq-a">
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 700% ROI calculated — and how quickly can a content team realistically achieve it?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
           <div class="faq-a-inner">
             <p><strong>The 700% ROI calculation reflects the combined impact of eliminated writer costs, reduced labour time, and organic traffic revenue — and it's the most validated ROI figure in the GrowwStacks portfolio based on client results across multiple implementations</strong>.</p>
             <p>The cost savings component: a content team producing 3 posts weekly using freelance writers at $200–400 per post spends $2,400–4,800 monthly on writing alone. At 30 posts weekly with automation, the equivalent freelance cost would be $24,000–48,000 monthly — the automation replaces $20,000+ in monthly writing costs at a fraction of the system's implementation and operational cost. The revenue component compounds this: consistent high-volume SEO publishing at 30 posts weekly compounds organic traffic significantly faster than 3 posts weekly, with the traffic value from improved keyword rankings typically exceeding the direct cost savings within 3–6 months of consistent publishing. Teams with existing keyword backlogs (10–50 identified but never published keywords) typically see the most dramatic early results as they clear the backlog within days rather than weeks. We model the specific ROI using your current content production costs, keyword opportunity size, and target monthly traffic during the discovery call.</p>
           </div>
         </div>
+        </div>
       </div>
-
     </div>
   </section>
 

@@ -402,7 +402,82 @@
   <!-- ═══════════════════════════════════════════ -->
   <!-- FAQ                                         -->
   <!-- ═══════════════════════════════════════════ -->
-  <section class="cs-faq" id="faq">
+    <section class="faq section" id="faq">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+      </div>
+      <div class="faq-inner">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How does the system handle brand voice — will Gemini AI captions sound like the brand or like generic AI copy?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Brand voice calibration is the most important prompt engineering component of the implementation, and it's what separates on-brand AI captions from the generic, templated tone that makes AI-generated social media content immediately recognisable as such</strong>. The Gemini AI prompts are built with an extensive brand voice section that defines the specific linguistic character of the client's communication style.</p>
+            <p>The brand voice calibration process involves reviewing 15–25 examples of the client's existing social media captions that represent their best on-brand content across different post types, identifying the vocabulary preferences, sentence structure patterns, tone descriptors, and stylistic conventions that define the voice, and encoding those patterns into the system prompt as instructions and examples. For each platform, the brand voice layer is combined with the platform-specific structural and format requirements — so the Facebook caption sounds like the brand in Facebook's conversational register, and the LinkedIn caption sounds like the brand in LinkedIn's professional register, rather than the same generic copy formatted differently. During the testing phase, generated captions are reviewed by the client's marketing team against the brand voice standard and prompt refinements are made iteratively until the output consistently passes the brand's quality bar. For brands with highly specific voice characteristics — luxury brands with particular register requirements, technical brands with domain-specific vocabulary, or creator-led brands with distinctive personal voice — additional few-shot examples (showing Gemini specific on-brand and off-brand caption examples) are included in the prompt to calibrate the generation more precisely.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the team edit the AI-generated captions before publishing — or do they have to publish exactly what the AI produced?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — caption editing is a core feature of the review workflow, not an edge case. The generated captions populate into editable Google Sheets cells, and the team can modify them directly in the spreadsheet before triggering publication</strong>. This is the intended workflow: the AI produces a strong draft that the team edits to their exact specification rather than writing from a blank page.</p>
+            <p>The editing experience is simply modifying the text content of the caption cell in Google Sheets — any standard spreadsheet editing action. The team can rewrite individual sentences, add or remove hashtags from the Instagram caption, adjust the LinkedIn opening to reference a specific business context the AI wasn't aware of, or completely replace a generated caption with manually written copy while still using the AI-generated image. The image link can similarly be replaced — if the team wants to use a specific brand photography asset instead of the Nano Banana-generated image, they paste the alternative image URL into the Image Link cell before approving. When "Approve &amp; Create Post" is clicked, Make.com reads whatever is currently in each caption cell at the moment of approval — so any edits made after the AI generation are what gets published. The review-and-edit workflow is designed so the AI draft reduces the writing effort from zero (blank page) to minimal (editing a good draft) while keeping the human editorial decision as the final control point before anything goes public.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can we choose to publish to only one or two platforms rather than all three simultaneously?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — per-post platform selection is configurable as a column in the Google Sheets content dashboard, enabling the team to specify which platforms should receive each post rather than defaulting to simultaneous publication across all three for every piece of content</strong>.</p>
+            <p>The platform selection implementation adds a "Publish To" column to the Sheets dashboard — either as a multi-select dropdown (Facebook, Instagram, LinkedIn, or any combination) or as three separate checkbox columns (one per platform). The Make.com Phase 2 scenario reads the platform selection for each approved row and activates only the routes corresponding to the selected platforms — Facebook-only posts skip the Instagram and LinkedIn routes entirely, LinkedIn-only posts publish only to LinkedIn, and so on. This per-post platform control is particularly valuable for content that is appropriate for only some platforms — a B2B thought leadership post that belongs on LinkedIn but not on Instagram, a product lifestyle image that suits Instagram and Facebook but not LinkedIn, or a community update relevant only to the Facebook audience. The platform selection column also enables the team to sequence platform publishing for strategic reasons — approving a LinkedIn-only publication on day one and adding Instagram and Facebook to the same post on day two if the initial LinkedIn performance validates the content approach.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the system handle content for multiple brands or clients — for agencies managing multiple accounts?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — multi-brand and multi-client configurations are a common deployment for digital marketing agencies, with two architectural approaches depending on the level of separation required between client content workflows</strong>.</p>
+            <p>The first approach uses a single Google Sheets workbook with a separate tab per client or brand — each tab has its own content dashboard with the client-specific post ideas, generated captions, image links, and status tracking. The Make.com scenarios are configured to read the client identifier from the active tab and route to that client's connected social accounts and brand-specific Gemini AI prompt. This is simpler to manage and appropriate for agencies where a single team member handles multiple client accounts from a unified dashboard. The second approach uses separate Google Sheets workbooks per client — each client has their own content dashboard with their own "Run Automation" and "Approve &amp; Create Post" buttons pointing to client-specific Make.com scenarios with client-specific AI prompts, ImageKit folders, and social platform connections. This provides complete isolation between client workflows — appropriate for agencies where different account managers handle different clients and full data separation is required. Both approaches support distinct Gemini AI brand voice prompts per client, separate ImageKit asset libraries per client, and independent social platform API connections per client. The multi-client architecture is scoped based on the number of client accounts and the agency's internal account management workflow during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What happens if Nano Banana generates an image that doesn't fit the post or the brand — can we regenerate without starting over?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>Yes — image regeneration without restarting the full workflow is a supported operation, implemented via a dedicated "Regenerate Image" button in the Google Sheets dashboard that calls only the Nano Banana and ImageKit steps of the Phase 1 workflow, leaving the existing captions untouched</strong>.</p>
+            <p>The regeneration button's Apps Script function calls a Make.com webhook that triggers a minimal scenario: reading the current row's post idea, calling Nano Banana with a slightly varied image generation prompt (varying the prompt prevents generating an identical image to the previous one), uploading the new image to ImageKit, and writing the new ImageKit URL to the Image Link column — overwriting the previous image URL. The team can trigger regeneration as many times as needed until they get an image that fits the post and the brand. For cases where no AI-generated image is appropriate — brand product photography exists that better fits the post, or the post topic doesn't translate well to AI image generation — the team replaces the Image Link cell content with any publicly accessible image URL (a Dropbox link, a Google Drive share link with public access, or a URL from the brand's existing image library). The "Approve &amp; Create Post" button publishes whatever image URL is in the Image Link cell at approval time — so the team has full image control regardless of whether the final image was AI-generated or manually selected. During implementation, image generation prompt engineering specifically aims to minimise the regeneration frequency by calibrating the Nano Banana style parameters to the brand's visual identity — reducing the proportion of generated images that require rework from first generation.</p>
+          </div>
+        </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How is 500% ROI calculated — and what is the payback period at different team sizes and content volumes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+          <div class="faq-a-inner">
+            <p><strong>The 500% ROI combines three value streams: labour cost recovered from eliminated content creation hours, direct cost savings from replacing designer fees and stock photo subscriptions, and the compounding value of 10× content output volume from the same team size</strong>.</p>
+            <p>The labour savings calculation for a single-marketer scenario: a marketing team member spending 20 hours weekly on social content creation (caption writing, reformatting, image sourcing, platform publishing) at $40/hour effective rate recovers $41,600 annually. The system reduces this to 3 hours weekly — recovering $35,360 annually. Adding direct subscription savings: stock photo subscription ($50–$300/month = $600–$3,600 annually), freelance designer costs for social graphics ($500–$2,000/month = $6,000–$24,000 annually), and social media scheduling tool subscription ($50–$200/month = $600–$2,400 annually) — total direct cost savings of $7,200–$30,000 annually depending on current spend. The combined recovery against the 3-week implementation cost produces the 500%+ ROI within the first 2–4 months of operation. For digital marketing agencies: the savings multiply per client account managed, and the implementation cost is amortised across all clients — each additional client account added to the system adds marginal cost (additional social platform connections) while delivering the full per-client efficiency benefit. The 
     <div class="container">
       <h2>Frequently Asked Questions</h2>
 
@@ -484,6 +559,12 @@
         </div>
       </div>
 
+    </div>
+  5K monthly savings figure cited in the metrics represents a mid-sized agency use case managing 5+ client accounts with regular designer and copywriter usage. We model the specific ROI calculation using the client's team size, current content volume, designer and subscription costs during the discovery call.</p>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </section>
 
