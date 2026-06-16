@@ -756,6 +756,19 @@ window.CS_CARDS = [
     roi: "2 hrs/day saved",
     app: ["make", "Google Business Profile", "Google Sheets"],
     roiIcon: "clock"
+  },  {
+    category: "operations ai-powered customer-experience",
+    href: "/case-studies/call-quality-assurance-property-management.html",
+    bannerClass: "csh-banner-slate",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/Hospitality%20Call%20QA%20Automation",
+    imgAlt: "AI Call Quality Assurance Dashboard",
+    tag: "AI-Powered",
+    title: "Call Quality Assurance for Property Management Companies",
+    desc: "Nightly Make.com and OpenAI Whisper pipeline that audits 100% of guest calls, redacts credit card data, fuzzy-matches agents, and scores transcripts against rubrics for vacation rental properties.",
+    meta: "Hospitality Management",
+    roi: "100% of calls audited",
+    app: ["make", "GoTo", "openai", "Google Sheets"],
+    roiIcon: "clock"
   }
 
 ];

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/analytics-loader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO Meta ═══ -->
+  <title>Call Quality Assurance for Property Management Companies — Case Study | GrowwStacks</title>
+  <meta name="description" content="How GrowwStacks engineered a nightly Make.com and OpenAI Whisper pipeline to audit 100% of guest calls, redact credit card data, fuzzy-match agents, and score transcripts against rubrics for property management companies.">
+  <link rel="canonical" href="https://growwstacks.com/case-studies/call-quality-assurance-property-management/">
+
+  <!-- ═══ Open Graph ═══ -->
+  <meta property="og:title" content="Call Quality Assurance for Property Management Companies — GrowwStacks Case Study">
+  <meta property="og:description" content="Nightly Make.com and OpenAI Whisper pipeline that audits 100% of guest calls, redacts credit card data, fuzzy-matches agents, and scores transcripts against rubrics for vacation rental properties.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://growwstacks.com/case-studies/call-quality-assurance-property-management/">
+  <meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Call%20Quality%20Assurance%20for%20Property%20Management%20Companies/06_Sheet_Call_Audit_Dashboard.png?updatedAt=1781614682222">
+  <meta property="og:site_name" content="GrowwStacks">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Call Quality Assurance for Property Management Companies">
+  <meta name="twitter:description" content="Nightly Make.com and OpenAI Whisper pipeline that audits 100% of guest calls, redacts credit card data, fuzzy-matches agents, and scores transcripts against rubrics for vacation rental properties.">
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+
+  <!-- ═══ Google Ads Tag ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+
+  <!-- ═══ Resource Preconnects ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ik.imagekit.io">
+
+  <!-- ═══ Fonts ═══ -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+  <!-- ═══ Stylesheets ═══ -->
+  <link rel="stylesheet" href="../_shared/global.css">
+  <link rel="stylesheet" href="../_shared/case-studies.css">
+
+  <!-- Style overrides to prevent visual flow diagram wrapping on desktop -->
+  <style>
+    @media (min-width: 769px) {
+      .cs-flow-pipeline {
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        gap: 4px !important;
+        padding: 2rem 0 !important;
+      }
+      .cs-flow-step {
+        min-width: 110px !important;
+        max-width: 150px !important;
+        padding: 0.8rem 0.5rem !important;
+      }
+      .cs-flow-connector {
+        padding: 0 4px !important;
+        font-size: 1.1rem !important;
+      }
+      .cs-flow-outcome {
+        min-width: 100px !important;
+        padding: 0.5rem !important;
+        font-size: 0.72rem !important;
+      }
+    }
+  </style>
+
+  <!-- ═══ Page Tools ═══ -->
+  <meta name="page-tools" content="make, goto, openai, googleSheets">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AI Call Quality Assurance (CQA) and how does it work?","acceptedAnswer":{"@type":"Answer","text":"**AI Call Quality Assurance is an automated system** that uses artificial intelligence to evaluate and score voice calls. In this system, call recordings are pulled from GoTo, transcribed using OpenAI Whisper, checked for compliance, and scored against a rubric using GPT-4, removing the need for manual listening."}},{"@type":"Question","name":"How does the system ensure credit card data is secure?","acceptedAnswer":{"@type":"Answer","text":"**The pipeline features automatic PCI redaction.** Before call transcripts are generated or sent to the AI model, Scenario 1 identifies spoken credit card and CVV details and redacts them directly in the audio recording and transcription, ensuring compliance with payment card industry rules."}},{"@type":"Question","name":"What metrics are used to grade call quality?","acceptedAnswer":{"@type":"Answer","text":"**Calls are scored against a standard 5-point rubric.** The GPT scoring model evaluates each transcript across: Opening greeting, Information gathering, Offer presentation, Closing, and an overall Total Score. Any missing script requirements are automatically flagged."}},{"@type":"Question","name":"What is 'fuzzy roster matching' and why is it used?","acceptedAnswer":{"@type":"Answer","text":"**Fuzzy matching credits the correct agent even if they misspeak names.** If an agent uses a shortened name, nickname, or if the transcription misspells their name, the system references a property-specific roster to assign the call quality score to the correct employee profile."}},{"@type":"Question","name":"How do property managers access call reports?","acceptedAnswer":{"@type":"Answer","text":"**Reports are delivered automatically via email and a master Google Sheet.** Every morning at 7:00 AM, Scenario 2 sends property managers a summary of the previous day's metrics (calls audited, average scores, flags) with direct links. All raw data and transcripts reside in a Google Sheet with tabs for each store/property."}},{"@type":"Question","name":"Can this solution support custom rubrics or multiple properties?","acceptedAnswer":{"@type":"Answer","text":"**Yes, absolutely.** This pipeline was built to scale across 7 properties in a single automated flow. The GPT grading prompts can be customized to support unique scripts, compliance policies, or scoring weightages for different businesses."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/"},{"@type":"ListItem","position":3,"name":"Call Quality Assurance for Property Management Companies"}]}</script>
+</head>
+
+<body class="cs-page page-call-quality-assurance-property-management">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <div id="gs-navbar"></div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO                                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="cs-hero">
+      <div class="cs-hero-bg">
+        <div class="cs-hero-bg-shape1"></div>
+        <div class="cs-hero-bg-shape2"></div>
+      </div>
+
+      <div class="container cs-hero-inner">
+
+        <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span aria-hidden="true">/</span>
+          <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+          <span>Call QA for Property Management</span>
+        </nav>
+
+        <div class="cs-hero-tags">
+          <span class="cs-tag">AI-Powered</span>
+          <span class="cs-tag">Operations</span>
+          <span class="cs-tag">Customer Experience</span>
+          <span class="cs-tag">Compliance</span>
+        </div>
+
+        <h1>Call Quality Assurance for Property Management Companies</h1>
+        <p class="cs-hero-sub">Nightly Make.com and OpenAI Whisper pipeline that audits 100% of guest calls, redacts credit card data, fuzzy-matches agents, and scores transcripts against rubrics for vacation rental properties.</p>
+
+        <div class="cs-hero-logos">
+          <div class="cs-hero-logo">
+            <img data-logo="make" alt="Make.com" width="20" height="20" loading="lazy">
+            Make.com
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="goto" alt="GoTo" width="20" height="20" loading="lazy">
+            GoTo
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="openai" alt="OpenAI" width="20" height="20" loading="lazy">
+            OpenAI
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="googleSheets" alt="Google Sheets" width="20" height="20" loading="lazy">
+            Google Sheets
+          </div>
+          <div id="cs-hero-tools" style="display:contents"></div>
+        </div>
+
+        <div class="process-content">
+          <div class="process-video">
+            <div class="yt-facade" data-video-id="40myPCpKct4" role="button" tabindex="0" aria-label="Play video: Call Quality Assurance Demo" style="border-radius: var(--radius-lg); aspect-ratio: 16/9; width: 100%; position:relative; overflow:hidden; cursor:pointer;">
+              <picture>
+                <source type="image/webp" srcset="https://i.ytimg.com/vi_webp/40myPCpKct4/maxresdefault.webp">
+                <img alt="Call Quality Assurance Demo" loading="lazy" width="480" height="360" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </picture>
+              <div class="yt-facade-play" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+                <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2.1 57.5-2.2 56-2.4 46.6-3 34-3 34-3h0S21.4-3 12-2.4C10.4-2.2 7.3-2.1 4.3 1S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-0.6c1.6-0.2 4.7-0.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/><path d="M27 33V14l18 9.5z" fill="#FFF"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ KEY RESULTS ═══ -->
+    <section class="cs-results">
+      <div class="container">
+        <div class="cs-results-grid">
+          <div class="cs-result-item">
+            <div class="cs-result-num">100%</div>
+            <div class="cs-result-label">Guest calls audited nightly (up from &lt;10%)</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">7 Properties</div>
+            <div class="cs-result-label">Unified under a single centralized pipeline</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">100% PCI</div>
+            <div class="cs-result-label">CC/CVV details automatically redacted</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">7:00 AM</div>
+            <div class="cs-result-label">Formatted audit summaries in manager inbox</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTENT + SIDEBAR ═══ -->
+    <section class="cs-content">
+      <div class="container">
+        <div class="cs-content-inner">
+
+          <!-- ARTICLE -->
+          <article class="cs-article">
+
+            <!-- SECTION 1: The Problem -->
+            <h2>The Problem: The Blind Spots of Manual Quality Assurance in Hospitality</h2>
+            <p>For vacation rental and property management groups, phone-based guest relations represent the front line of brand reputation. However, a US-based vacation rental group operating 7 distinct properties (BUC, LLR, OAK, PLC, VAC, PIP, and WLP) was drowning in manual call audits. Hundreds of booking requests, check-in inquiries, and service calls flowed through their GoTo VoIP system every single day. Managers could only spot-audit less than 10% of calls by hand, days late, leaving the vast majority of agent behavior unreviewed.</p>
+
+            <p>This manual gap created major vulnerabilities. Agents often missed standard script checkpoints (like asking for email details or making promo offers), which directly impacted conversion rates. Crucially, customers frequently spoke credit card and CVV details aloud. These details sat unredacted inside call recordings, presenting a severe **PCI compliance and security risk**. Lastly, unanswered calls and voicemails were mixed in with actual conversations, cluttering logs and distorting performance metrics.</p>
+
+            <!-- SECTION 2: The Solution -->
+            <h2>The Solution: Nightly Automatic Call Ingestion & AI Audits</h2>
+            <p>GrowwStacks engineered a nightly two-scenario Make.com pipeline that runs at 12:05 AM to automate the entire QA workflow. Scenario 1 retrieves the previous day's recordings from GoTo, isolates answered calls from voicemails, redacts spoken card details, uploads raw files to Google Drive, transcribes them with OpenAI Whisper, and scores script adherence using GPT-4 against a 5-point rubric. Results are written to a master Google Sheet separated by property tabs.</p>
+
+            <p>Exactly 30 minutes after Scenario 1 concludes, Scenario 2 triggers. It aggregates the audit metrics for the day and sends property managers a daily recap email detailing calls audited, average performance scores, and compliance flags. This ensures managers wake up to a complete call quality summary without opening a single dashboard.</p>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Call%20Quality%20Assurance%20for%20Property%20Management%20Companies/01_Workflow_Part_1_Fetch_Recordings.png?updatedAt=1781614978444"
+                   alt="Make.com pipeline part 1 fetching GoTo call recordings, filtering voicemails, and beginning the nightly audit run"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">Workflow Part 1 — Nightly Make.com integration querying GoTo APIs for the previous day's voice recordings and isolating answered guest calls</div>
+            </div>
+
+            <div class="cs-visual-flow" aria-label="Workflow fetches GoTo call recordings, redacts CC data, transcribes, scores using GPT, and logs to Google Sheets.">
+              <div class="cs-flow-pipeline">
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">📞</div>
+                  <div class="cs-flow-step-title">Ingest GoTo Calls</div>
+                  <div class="cs-flow-step-sub">Filter Voicemails</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step cs-flow-active">
+                  <div class="cs-flow-step-icon">🔒</div>
+                  <div class="cs-flow-step-title">Redact &amp; Whisper</div>
+                  <div class="cs-flow-step-sub">PCI CC Data Redacted</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">🧠</div>
+                  <div class="cs-flow-step-title">GPT Rubric Score</div>
+                  <div class="cs-flow-step-sub">Fuzzy Agent Matching</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-outcome-wrap">
+                  <div class="cs-flow-outcome approved">✓ 100% Calls Audited</div>
+                  <div class="cs-flow-outcome review">📧 Daily Inbox Recap</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: How It Works -->
+            <h3>How It Works — Step-by-Step AI Call Audits</h3>
+            <p>The system uses two interconnected scenarios to fetch, analyze, score, log, and report call quality automatically:</p>
+            <ol>
+              <li><strong>GoTo Audio Retrieval:</strong> Scenario 1 runs nightly at 12:05 AM, pulling GoTo recordings, filtering out call connections under 15 seconds, and isolating voicemails.</li>
+              <li><strong>PCI CC Redaction:</strong> The audio file is scanned to identify spoken credit card numbers and CVV codes, which are redacted from the recording file and subsequent transcripts.</li>
+              <li><strong>OpenAI Whisper Transcription:</strong> The redacted audio is sent to OpenAI Whisper to generate high-accuracy transcripts of the guest-agent dialogue.</li>
+              <li><strong>Fuzzy Agent Roster Matching:</strong> The workflow extracts the speaking agent's name. If an agent mispronounces their name, uses a nickname, or if Whisper misspells it, the system runs fuzzy-matching algorithms against a property-specific database to ensure the correct agent gets credited.</li>
+              <li><strong>GPT-4 Rubric Scoring:</strong> GPT-4 evaluates the transcript against a five-point rubric:
+                <ul>
+                  <li><em>Opening:</em> Professional greeting and branding.</li>
+                  <li><em>Information Gathering:</em> Collecting contact details and guest needs.</li>
+                  <li><em>Offer:</em> Presenting rates, promo offers, and booking options.</li>
+                  <li><em>Closing:</em> Clear next steps and polite wrap-up.</li>
+                  <li><em>Total Score:</em> A compiled audit score out of 100.</li>
+                </ul>
+              </li>
+              <li><strong>Multi-Property Sheet Logging:</strong> Results, scores, flag triggers (e.g., missed script items), transcript summaries, and Google Drive audio links are written to the master spreadsheet.</li>
+            </ol>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Call%20Quality%20Assurance%20for%20Property%20Management%20Companies/02_Workflow_Part2_Redact_Transcribe.png?updatedAt=1781614912414"
+                   alt="Make.com pipeline part 2 redacting spoken credit card details and transcribing recordings via OpenAI Whisper"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">Workflow Part 2 — OpenAI Whisper transcribing GoTo call recordings and automatically redacting credit card numbers to maintain PCI compliance</div>
+            </div>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Call%20Quality%20Assurance%20for%20Property%20Management%20Companies/03_Workflow_Part3_ScorecardGeneration.png?updatedAt=1781614864232"
+                   alt="Make.com pipeline part 3 scoring transcripts against standard rubrics using OpenAI GPT-4"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">Workflow Part 3 — OpenAI GPT-4 evaluating conversational script compliance and generating structured scoring metrics for the audit log</div>
+            </div>
+
+            <!-- SECTION 4: Daily manager summaries -->
+            <h2>Daily Manager Summaries &amp; Dashboard Tabs</h2>
+            <p>Every morning at 12:35 AM (thirty minutes after Scenario 1 finishes), Scenario 2 collects yesterday's metrics from all properties. It formats a clean, responsive summary email for each manager listing: total calls handled, audited count, compliance flags raised, and average scores. This email lands in inboxes by 7:00 AM, allowing managers to inspect call quality metrics immediately as their workday starts.</p>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Call%20Quality%20Assurance%20for%20Property%20Management%20Companies/04_Daily_Report__Workflow.png?updatedAt=1781615061534"
+                   alt="Make.com scenario 2 aggregating scores and emailing formatted reports to managers every morning"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">Daily Report Scenario — Scenario 2 aggregating multi-property statistics, building emails, and sending call reports directly to property managers</div>
+            </div>
+
+            <p>All data is logged to a centralized Google Sheet. Individual tabs organize data for each of the 7 properties (BUC, LLR, OAK, PLC, VAC, PIP, WLP), while a unified Call Audit Dashboard tab tracks high-level conversion flags, call topics, average agent scores, and includes direct links to transcripts and audio files.</p>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/Call%20Quality%20Assurance%20for%20Property%20Management%20Companies/06_Sheet_Call_Audit_Dashboard.png?updatedAt=1781614682222"
+                   alt="Centralized Google Sheet Call Audit Dashboard tracking property stats, agent scores, and script compliance flags"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">Google Sheet Audit Dashboard — tracking script adherence, average agent scores, guest concerns, and call logs across all 7 rental properties</div>
+            </div>
+
+            <div class="cs-highlight">
+              <p>💡 <strong>Unified Operations:</strong> Managing all 7 vacation rental properties under a single, centralized Make.com pipeline dramatically simplified maintenance, lowered API usage costs, and provided executive management a single source of truth for portfolio-wide guest relations.</p>
+            </div>
+
+            <!-- SECTION 5: Feature Cards -->
+            <h2>What This System Does That Manual Process Can't</h2>
+            <div class="cs-features">
+              <div class="cs-feature">
+                <div class="cs-feature-icon">🔒</div>
+                <h4>Automatic PCI Redaction</h4>
+                <p>Scans and redacts credit card and CVV details from voice files and transcripts, eliminating manual security risks.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">🎯</div>
+                <h4>Fuzzy Roster Matching</h4>
+                <p>Resolves short names and pronunciations against active rosters, assigning audits to correct profiles automatically.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">📊</div>
+                <h4>Multi-Property Dashboard</h4>
+                <p>Centralizes metrics across 7 properties into individual tabs and a unified dashboard, showing portfolio-wide trends.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">🧠</div>
+                <h4>Consistent AI Rubric</h4>
+                <p>Applies the exact same objective scoring standards to all transcripts, eliminating subjective auditor bias.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">⏳</div>
+                <h4>Inbox Delivery by 7 AM</h4>
+                <p>Delivers clean, actionable summaries directly to manager inboxes daily, saving hours of manual data hunting.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">📈</div>
+                <h4>100% Audio Audits</h4>
+                <p>Ensures that every answered guest call is analyzed, not just a small spot-audited subset.</p>
+              </div>
+            </div>
+
+            <!-- SECTION 6: Before vs After -->
+            <h2>Before vs. After: Portfoilio-Wide Quality Control</h2>
+            <p><strong>Before:</strong> Managers manually reviewed fewer than 10% of guest calls across GoTo channels. Compliance issues went unnoticed, card data remained unredacted, and reports were delayed by days.</p>
+            <p><strong>After:</strong> 100% of guest calls are audited nightly. Spoken credit card details are automatically redacted, scores are updated in a central Google Sheet, and managers get inbox recaps by 7:00 AM — saving hours of admin work.</p>
+
+            <!-- SECTION 7: Implementation -->
+            <h2>Implementation: Live in 3 Weeks</h2>
+            <ol>
+              <li><strong>VoIP Connection:</strong> Configured webhook connection with GoTo developer portal to fetch daily call audio.</li>
+              <li><strong>Redaction Rules:</strong> Designed audio-scanning scripts to identify and redact credit card strings.</li>
+              <li><strong>Whisper Integration:</strong> Connected OpenAI Whisper to transcribe the redacted call audio.</li>
+              <li><strong>Rubric Prompting:</strong> Structured and tested GPT-4 prompts to score transcripts according to property rubrics.</li>
+              <li><strong>Report Scheduling:</strong> Built Scenario 2 to collect, format, and email property summaries.</li>
+            </ol>
+
+            <!-- SECTION 8: The Right Fit -->
+            <h2>The Right Fit — and When It Isn't</h2>
+            <p>This solution is perfect for vacation rental groups, property management companies, call centers, and customer relations teams handling high call volumes across multiple showrooms or properties. It guarantees compliance and script tracking without human overhead.</p>
+            <p>However, it may not be necessary for teams receiving fewer than 10 calls a day where manual quality reviews are quick. Additionally, highly custom call center environments that require real-time, in-call alerts should use live coaching tools instead of nightly post-call audits.</p>
+
+          </article>
+
+          <!-- SIDEBAR -->
+          <aside class="cs-sidebar">
+
+            <div class="cs-sidebar-card">
+              <h4>Project Details</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Hospitality / Rental</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Operations</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">Make.com</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">3 weeks</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Moderate</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 4.9 / 5</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">100% audited</span></div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Tools &amp; Integrations</h4>
+              <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+                <span class="cs-tool-tag"><img data-logo="make" alt="Make.com" width="14" height="14" loading="lazy">Make.com</span>
+                <span class="cs-tool-tag"><img data-logo="goto" alt="GoTo" width="14" height="14" loading="lazy">GoTo</span>
+                <span class="cs-tool-tag"><img data-logo="openai" alt="OpenAI" width="14" height="14" loading="lazy">OpenAI</span>
+                <span class="cs-tool-tag"><img data-logo="googleSheets" alt="Google Sheets" width="14" height="14" loading="lazy">Google Sheets</span>
+              </div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Key Metrics</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Calls Audited</span><span class="cs-sidebar-value" style="text-align:right;">100% of calls</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Properties Covered</span><span class="cs-sidebar-value" style="text-align:right;">7 rental properties</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">PCI Compliance</span><span class="cs-sidebar-value" style="text-align:right;">Auto CC Redaction</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Report Turnaround</span><span class="cs-sidebar-value" style="text-align:right;">Daily by 7:00 AM</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Audit Roster Sync</span><span class="cs-sidebar-value" style="text-align:right;">Fuzzy matching active</span></div>
+            </div>
+
+            <div class="cs-sidebar-cta">
+              <h4>Ready to automate your call audits?</h4>
+              <p>Free discovery call — let's discuss your properties and customer service goals.</p>
+              <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ SECTION ═══ -->
+    <section class="faq section" id="faq">
+      <div class="container">
+        <div style="text-align:center">
+          <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+          <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+        </div>
+        <div class="faq-inner">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What is AI Call Quality Assurance (CQA) and how does it work?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>AI Call Quality Assurance is an automated system</strong> that uses artificial intelligence to evaluate and score voice calls. In this system, call recordings are pulled from GoTo, transcribed using OpenAI Whisper, checked for compliance, and scored against a rubric using GPT-4, removing the need for manual listening.</p>
+              <p>By automating the review process, businesses can scale their audits from a tiny manual sample size to 100% of all call traffic. This helps identify agent training needs instantly, ensure script compliance, and log precise metrics across multiple office or store locations automatically.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How does the system ensure credit card data is secure?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>The pipeline features automatic PCI redaction.</strong> Before call transcripts are generated or sent to the AI model, Scenario 1 identifies spoken credit card and CVV details and redacts them directly in the audio recording and transcription, ensuring compliance with payment card industry rules.</p>
+              <p>This automatic redaction prevents sensitive customer information from being exposed in log sheets, database entries, or shared AI prompts, providing a high level of security for call centers and property offices.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What metrics are used to grade call quality?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Calls are scored against a standard 5-point rubric.</strong> The GPT scoring model evaluates each transcript across: Opening greeting, Information gathering, Offer presentation, Closing, and an overall Total Score. Any missing script requirements are automatically flagged.</p>
+              <p>These scoring checkpoints can be customized to match your business's script standards, compliance needs, or sales targets, ensuring that the grading logic matches your team's specific requirements.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What is 'fuzzy roster matching' and why is it used?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Fuzzy matching credits the correct agent even if they misspeak names.</strong> If an agent uses a shortened name, nickname, or if the transcription misspells their name, the system references a property-specific roster to assign the call quality score to the correct employee profile.</p>
+              <p>This resolves spelling discrepancies or transcription slip-ups automatically, keeping the audit database accurate and preventing reporting errors.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How do property managers access call reports?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Reports are delivered automatically via email and a master Google Sheet.</strong> Every morning at 7:00 AM, Scenario 2 sends property managers a summary of the previous day's metrics (calls audited, average scores, flags) with direct links. All raw data and transcripts reside in a Google Sheet with tabs for each store/property.</p>
+              <p>The daily emails landing in managers' inboxes provide a quick, high-level audit view without requiring them to manually browse sheets or go to third-party dashboards.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Can this solution support custom rubrics or multiple properties?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Yes, absolutely.</strong> This pipeline was built to scale across 7 properties in a single automated flow. The GPT grading prompts can be customized to support unique scripts, compliance policies, or scoring weightages for different businesses.</p>
+              <p>We work with you to understand your specific call handling guidelines and script criteria, building custom AI prompts that model your business's exact auditing rubrics.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BOTTOM CTA ═══ -->
+    <section class="cs-bottom-cta">
+      <div class="container" style="position:relative;z-index:2">
+        <h2>Automate your call quality audits today</h2>
+        <p>Set up a nightly audit pipeline to track compliance, redact card data, and monitor customer service across all locations.</p>
+        <div class="btn-group">
+          <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+          <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div id="gs-footer"></div>
+
+  <!-- Inject SITE.logos into all data-logo images -->
+  <script>
+  (function() {
+    function injectLogos() {
+      if (typeof SITE === 'undefined' || !SITE.logos) return;
+      document.querySelectorAll('img[data-logo]').forEach(function(img) {
+        var key = img.getAttribute('data-logo');
+        if (SITE.logos[key]) img.src = SITE.logos[key];
+      });
+    }
+    injectLogos();
+    document.addEventListener('DOMContentLoaded', injectLogos);
+  })();
+  </script>
+
+  <!-- ═══ Shared Config + Component Loader ═══ -->
+  <script src="../_shared/site-config.js"></script>
+  <script src="../assets/js/images-helper.js"></script>
+  <script src="../_shared/page-builder.js"></script>
+  <script src="../case-studies.js"></script>
+
+</body>
+</html>
