@@ -774,7 +774,7 @@ window.CS_CARDS = [
     category: "operations hospitality customer-experience",
     href: "/case-studies/nfc-guest-access-automation.html",
     bannerClass: "csh-banner-blue",
-    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/nfc-guest-verification-event-access.jpeg%22",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/nfc-guest-verification-event-access.jpeg",
     imgAlt: "NFC Guest Access Automation",
     tag: "Access Control",
     title: "NFC Guest Access Automation",
