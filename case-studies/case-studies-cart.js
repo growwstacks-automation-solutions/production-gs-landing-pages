@@ -758,17 +758,31 @@ window.CS_CARDS = [
     roiIcon: "clock"
   },  {
     category: "operations ai-powered customer-experience",
-    href: "/case-studies/call-quality-assurance-property-management.html",
+    href: "/case-studies/ai-call-quality-assurance-compliance-automation.html",
     bannerClass: "csh-banner-slate",
     img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/Hospitality%20Call%20QA%20Automation",
     imgAlt: "AI Call Quality Assurance Dashboard",
     tag: "AI-Powered",
-    title: "Call Quality Assurance for Property Management Companies",
-    desc: "Nightly Make.com and OpenAI Whisper pipeline that audits 100% of guest calls, redacts credit card data, fuzzy-matches agents, and scores transcripts against rubrics for vacation rental properties.",
-    meta: "Hospitality Management",
+    title: "AI Call Quality Assurance & Compliance Automation",
+    desc: "Nightly Make.com and OpenAI Whisper pipeline that audits 100% of customer calls, redacts credit card data, fuzzy-matches agents, and scores transcripts against rubrics for compliance and quality control.",
+    meta: "Operations & Compliance",
     roi: "100% of calls audited",
     app: ["make", "GoTo", "openai", "Google Sheets"],
     roiIcon: "clock"
+  },
+    {
+    category: "operations hospitality customer-experience",
+    href: "/case-studies/nfc-guest-access-automation.html",
+    bannerClass: "csh-banner-blue",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/nfc-guest-verification-event-access.jpeg%22",
+    imgAlt: "NFC Guest Access Automation",
+    tag: "Access Control",
+    title: "NFC Guest Access Automation",
+    desc: "End-to-end NFC-powered guest verification and access system — guests register once, receive a unique QR code, get assigned an NFC wristband at arrival, and tap through checkpoints instantly.",
+    meta: "Events & Hospitality",
+    roi: "Zero manual checks",
+    app: ["Airtable", "NFC Tools", "Custom Web App", "Email"],
+    roiIcon: "check"
   }
 
 ];

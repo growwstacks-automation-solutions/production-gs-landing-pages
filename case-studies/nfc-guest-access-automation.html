@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/analytics-loader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO Meta ═══ -->
+  <title>NFC Guest Access Automation — Case Study | GrowwStacks</title>
+  <meta name="description" content="How GrowwStacks built an NFC guest access automation system — combining Airtable, a custom web app, and NFC chips to eliminate manual check-ins and deliver frictionless multi-checkpoint access for events and venues.">
+  <link rel="canonical" href="https://growwstacks.com/case-studies/nfc-guest-access-automation/">
+
+  <!-- ═══ Open Graph ═══ -->
+  <meta property="og:title" content="NFC Guest Access Automation — GrowwStacks Case Study">
+  <meta property="og:description" content="How GrowwStacks built an NFC guest access automation system — combining Airtable, a custom web app, and NFC chips to eliminate manual check-ins and deliver frictionless multi-checkpoint access for events and venues.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://growwstacks.com/case-studies/nfc-guest-access-automation/">
+  <meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/01_App_Reception_Desk.png?updatedAt=1781694087721">
+  <meta property="og:site_name" content="GrowwStacks">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NFC Guest Access Automation">
+  <meta name="twitter:description" content="How GrowwStacks built an NFC guest access automation system — combining Airtable, a custom web app, and NFC chips to eliminate manual check-ins and deliver frictionless multi-checkpoint access for events and venues.">
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+
+  <!-- ═══ Google Ads Tag ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+
+  <!-- ═══ Resource Preconnects ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ik.imagekit.io">
+
+  <!-- ═══ Fonts ═══ -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+  <!-- ═══ Stylesheets ═══ -->
+  <link rel="stylesheet" href="../_shared/global.css">
+  <link rel="stylesheet" href="../_shared/case-studies.css">
+
+  <!-- Style overrides to prevent visual flow diagram wrapping on desktop -->
+  <style>
+    @media (min-width: 769px) {
+      .cs-flow-pipeline {
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        gap: 4px !important;
+        padding: 2rem 0 !important;
+      }
+      .cs-flow-step {
+        min-width: 90px !important;
+        max-width: 130px !important;
+        padding: 0.6rem 0.4rem !important;
+      }
+      .cs-flow-connector {
+        padding: 0 2px !important;
+        font-size: 0.95rem !important;
+      }
+      .cs-flow-outcome {
+        min-width: 90px !important;
+        padding: 0.4rem !important;
+        font-size: 0.68rem !important;
+      }
+    }
+  </style>
+
+  <!-- ═══ Page Tools ═══ -->
+  <meta name="page-tools" content="airtable, nfc, customWebApp, email">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is NFC wristband guest verification and how does it work?","acceptedAnswer":{"@type":"Answer","text":"**AI NFC wristband guest verification is an automated access system** that uses Near Field Communication (NFC) chips. Pre-registered guests receive a unique QR code. At arrival, scanning the QR code verifies their registration and dynamically links a physical NFC wristband to their profile, allowing subsequent frictionless tap entry."}},{"@type":"Question","name":"How does the system link physical NFC wristbands to guest records?","acceptedAnswer":{"@type":"Answer","text":"**The registration uses a double-verification flow.** Staff use a custom web application at check-in to read the wristband's NFC chip ID, scan the guest's QR code to confirm identity, and merge the wristband ID directly into the matching Airtable profile database in real-time."}},{"@type":"Question","name":"What happens if a guest loses their NFC wristband?","acceptedAnswer":{"@type":"Answer","text":"**Lost wristbands can be replaced in seconds.** Staff search the guest's profile in the web app, deactivate the lost chip ID to prevent unauthorized entry, and assign a new NFC wristband to the active record using the standard guided check-in flow."}},{"@type":"Question","name":"Can the system enforce different levels of access at checkpoints?","acceptedAnswer":{"@type":"Answer","text":"**Yes, the system natively supports multi-tier access control.** Checkpoint scanners read the wristband NFC ID, query the Airtable profile, and instantly display visual confirmations (VIP, General, or Restricted) based on the guest's mapped registration tier."}},{"@type":"Question","name":"Does this system require a persistent internet connection at checkpoints?","acceptedAnswer":{"@type":"Answer","text":"**No, the web application features local data validation.** Scanning stations can verify access credentials offline using cached event lists and queue transaction logs, syncing check-in timestamps back to Airtable once connection is restored."}},{"@type":"Question","name":"How does pre-event QR registration work?","acceptedAnswer":{"@type":"Answer","text":"**Registration triggers automated database entry.** When a guest registers, the system records their information, generates a unique check-in ID and QR code, and sends a styled confirmation email containing their entry QR code for arrival checkpoint scans."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/"},{"@type":"ListItem","position":3,"name":"NFC Guest Access Automation"}]}</script>
+</head>
+
+<body class="cs-page page-nfc-guest-access-automation">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <div id="gs-navbar"></div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO                                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="cs-hero">
+      <div class="cs-hero-bg">
+        <div class="cs-hero-bg-shape1"></div>
+        <div class="cs-hero-bg-shape2"></div>
+      </div>
+
+      <div class="container cs-hero-inner">
+
+        <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span aria-hidden="true">/</span>
+          <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+          <span>NFC Guest Access Automation</span>
+        </nav>
+
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Hospitality</span>
+          <span class="cs-tag">Events</span>
+          <span class="cs-tag">Access Control</span>
+          <span class="cs-tag">NFC</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+
+        <h1>NFC Guest Access Automation</h1>
+        <p class="cs-hero-sub">End-to-end NFC-powered guest verification system for events, resorts, and private venues — guests register once, receive a unique QR code, get assigned an NFC wristband at arrival, and tap through every subsequent checkpoint instantly. No paper lists, no manual lookups, no friction. Organizers get real-time visibility into guest activity across the entire venue.</p>
+
+        <div class="cs-hero-logos">
+          <div class="cs-hero-logo">
+            <img data-logo="airtable" alt="Airtable" width="20" height="20" loading="lazy">
+            Airtable
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="nfc" alt="NFC Tools" width="20" height="20" loading="lazy">
+            NFC Tools
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="customWebApp" alt="Custom Web App" width="20" height="20" loading="lazy">
+            Custom Web App
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="email" alt="Email" width="20" height="20" loading="lazy">
+            Email
+          </div>
+          <div id="cs-hero-tools" style="display:contents"></div>
+        </div>
+
+        <div class="process-content">
+          <div class="process-video">
+            <div class="yt-facade" data-video-id="-gd1Tq1xH50" role="button" tabindex="0" aria-label="Play video: NFC Access Control Demo" style="border-radius: var(--radius-lg); aspect-ratio: 16/9; width: 100%; position:relative; overflow:hidden; cursor:pointer;">
+              <picture>
+                <source type="image/webp" srcset="https://i.ytimg.com/vi_webp/-gd1Tq1xH50/maxresdefault.webp">
+                <img alt="NFC Access Control Demo" loading="lazy" width="480" height="360" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </picture>
+              <div class="yt-facade-play" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+                <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2.1 57.5-2.2 56-2.4 46.6-3 34-3 34-3h0S21.4-3 12-2.4C10.4-2.2 7.3-2.1 4.3 1S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-0.6c1.6-0.2 4.7-0.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/><path d="M27 33V14l18 9.5z" fill="#FFF"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ KEY RESULTS ═══ -->
+    <section class="cs-results">
+      <div class="container">
+        <div class="cs-results-grid">
+          <div class="cs-result-item">
+            <div class="cs-result-num">3 Sec</div>
+            <div class="cs-result-label">Average checkpoint clearance time per guest via NFC tap</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">Zero</div>
+            <div class="cs-result-label">Manual list checks required after wristband assignment</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">100%</div>
+            <div class="cs-result-label">Guest records logged in real-time to Airtable on check-in</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">1 Tap</div>
+            <div class="cs-result-label">All subsequent checkpoints cleared with a single wristband tap</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTENT + SIDEBAR ═══ -->
+    <section class="cs-content">
+      <div class="container">
+        <div class="cs-content-inner">
+
+          <!-- ARTICLE -->
+          <article class="cs-article">
+
+            <!-- SECTION 1: The Problem -->
+            <h2>The Problem: Check-In Chaos at Scale</h2>
+            <p>Managing guest check-ins at events, resorts, private venues, and large properties is operationally painful. The typical setup involves paper guest lists, manual name searches, slow ID checks, and separate processes for VIP access, restricted zones, and attendance tracking. When guest volume is high, queues build at every checkpoint, security gaps appear, and the guest experience suffers.</p>
+            <p>There is also no real-time visibility into who is on-site, where they are, and whether they have the right access level for each zone. Event organizers are flying blind until the event is over.</p>
+            <p>This is exactly the problem this system solves — replacing paper, manual lookups, and fragmented processes with a single connected flow from registration to multi-checkpoint access.</p>
+
+            <!-- SECTION 2: The Solution -->
+            <h2>The Solution: QR Registration + NFC Wristband Access</h2>
+            <p>GrowwStacks built a three-stage guest verification and access control system combining Airtable as the guest database, a custom-built web application for the event team, and NFC wristbands as the physical access credential.</p>
+            <p>The system handles the full guest journey — from pre-event registration through arrival verification to frictionless multi-checkpoint access — without any manual intervention after the initial setup.</p>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/01_App_Reception_Desk.png?updatedAt=1781694087721"
+                   alt="Custom Reception Desk web app showing QR SCAN and ASSIGN BAND options"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The custom Reception Desk web app used by the event team — two operations available at check-in: QR Scan to verify the guest at arrival, and Assign Band to link an NFC wristband to their profile.</div>
+            </div>
+
+            <div class="cs-visual-flow" aria-label="Workflow path from registration, QR scan, wristband assignment, to NFC tap-through.">
+              <div class="cs-flow-pipeline">
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">📝</div>
+                  <div class="cs-flow-step-title">Guest Registers</div>
+                  <div class="cs-flow-step-sub">Airtable Entry</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">📧</div>
+                  <div class="cs-flow-step-title">QR Code Emailed</div>
+                  <div class="cs-flow-step-sub">Pre-Arrival Pass</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step cs-flow-active">
+                  <div class="cs-flow-step-icon">🔍</div>
+                  <div class="cs-flow-step-title">Arrival QR Scan</div>
+                  <div class="cs-flow-step-sub">Web App Verify</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">🏷</div>
+                  <div class="cs-flow-step-title">NFC Band Assigned</div>
+                  <div class="cs-flow-step-sub">Merge Profile</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">⚡</div>
+                  <div class="cs-flow-step-title">Tap-Through Access</div>
+                  <div class="cs-flow-step-sub">Subsequent Entry</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-outcome-wrap">
+                  <div class="cs-flow-outcome approved">✓ Checked In</div>
+                  <div class="cs-flow-outcome review">🏷 NFC Verified</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: How It Works -->
+            <h3>How It Works — The 3-Stage Access Flow</h3>
+
+            <h4>Stage 1 — Pre-Event Registration</h4>
+            <p>When a guest registers through an email form or existing platform, their details are automatically stored in Airtable. A unique QR code is generated and emailed directly to them. This QR code is their entry credential for the first checkpoint — no app download, no account creation required on the guest's side.</p>
+
+            <h4>Stage 2 — Arrival Verification and Wristband Assignment</h4>
+            <p>At the first checkpoint, the event team opens the Reception Desk app and selects <strong>QR Scan</strong>. They point the camera at the guest's QR code. The system instantly verifies the guest's details and confirms they are cleared to enter.</p>
+            <p>The team then selects <strong>Assign Band</strong>, holds an NFC wristband near the device, and the system reads the band ID. A double-verification step re-scans the guest's QR to confirm the band is being linked to the correct profile. Once confirmed, the band ID and invite ID are written to the guest's Airtable record and their status is updated to <em>Checked In</em> — all in one flow.</p>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/02_App_QR_Scan.png?updatedAt=1781694123694"
+                   alt="QR Scan camera viewfinder verification screen on the custom web application"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The QR Scan screen — the event team points the camera at the guest's QR code for instant identity verification at the first checkpoint. Manual entry is available as a fallback.</div>
+            </div>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/03_App_Assign_Wristband.png?updatedAt=1781694163057"
+                   alt="Guided 3-step Assign Wristband interface on the custom web app"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The Assign Wristband screen — a 3-step flow (Band → QR → Merge) that links the physical NFC wristband to the guest's Airtable profile in seconds.</div>
+            </div>
+
+            <h4>Stage 3 — Frictionless Multi-Checkpoint Access</h4>
+            <p>From this point forward, the guest taps their NFC wristband at every subsequent checkpoint. The system instantly surfaces their name, band ID, access tier (VIP, General, Restricted), and current status. No QR required, no manual lookup, no queue. One tap confirms access and logs the interaction in real time.</p>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/04_App_Access_Granted.png?updatedAt=1781694194941"
+                   alt="Access Granted check-in confirmation screen showing guest profile details"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The Access Granted confirmation — displaying the guest name, band ID, access tier, and checked-in status after a single NFC wristband tap at any checkpoint.</div>
+            </div>
+
+            <div class="cs-highlight">
+              <p>💡 <strong>NFC Wristband Programming:</strong> Each wristband is pre-programmed using the NFC Tools app, writing a unique identifier to the chip before the event. When tapped at any checkpoint device, the chip triggers the verification flow instantly — no app download required for the guest, no internet dependency at the point of scan.</p>
+            </div>
+
+            <!-- SECTION 4: Feature Cards -->
+            <h2>What This System Does That Manual Process Cannot</h2>
+            <div class="cs-features">
+              <div class="cs-feature">
+                <div class="cs-feature-icon">📲</div>
+                <h4>Instant QR Verification</h4>
+                <p>Guest identity confirmed in under 3 seconds at the first checkpoint by scanning their emailed QR code. No paper lists, no name searches, no delays.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">🔗</div>
+                <h4>One-Time Band Assignment</h4>
+                <p>The NFC wristband is linked to the guest's Airtable profile in a single guided flow. Band ID, Invite ID, and check-in status are all written automatically in one step.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">🏷</div>
+                <h4>Tap-Through Access</h4>
+                <p>Every subsequent checkpoint is cleared with one wristband tap. Works for VIP zones, restricted areas, attendance tracking, and general property access simultaneously.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">📊</div>
+                <h4>Real-Time Airtable Visibility</h4>
+                <p>Every check-in, band assignment, and access event is logged live in Airtable, giving organizers complete visibility into guest activity across the venue at all times.</p>
+              </div>
+            </div>
+
+            <!-- SECTION 5: Before vs After -->
+            <h2>Before vs. After: Event Access Control</h2>
+            <p><strong>Before:</strong> Event teams managed check-ins with printed guest lists, manual name searches, and separate ad hoc processes for VIP access and restricted zones. Queues formed at every checkpoint. There was no real-time record of who was on-site, and organizers had no visibility into access events until after the event ended.</p>
+            <p><strong>After:</strong> Guests receive a unique QR code before the event. At arrival, one scan verifies them and one guided flow assigns their NFC wristband. Every checkpoint after that is cleared in under 3 seconds with a single tap. Organizers see the complete guest list status live in Airtable — checked in, pending, band assigned, access tier — updated automatically on every interaction.</p>
+
+            <!-- SECTION 6: Implementation -->
+            <h2>Implementation Roadmap</h2>
+            <ol>
+              <li><strong>Airtable Database Setup:</strong> Configured the guest database with fields for name, contact details, invite ID, band ID, access tier, check-in status, and registration source.</li>
+              <li><strong>QR Generation and Email Delivery:</strong> Built the registration trigger that auto-generates a unique QR code per approved guest and emails it to them automatically.</li>
+              <li><strong>Custom Web App:</strong> Built the Reception Desk application with two core flows: QR Scan (camera-based verification with manual fallback) and Assign Band (NFC read + QR double-verify + Airtable record merge).</li>
+              <li><strong>NFC Wristband Programming:</strong> Set up the NFC Tools workflow for writing unique identifiers to each physical wristband chip prior to the event.</li>
+              <li><strong>Checkpoint Verification Flow:</strong> Built the tap-to-verify flow that reads the wristband NFC chip, pulls the matching guest record from Airtable, and displays the access confirmation screen with tier and status.</li>
+              <li><strong>Testing and Launch:</strong> Conducted end-to-end dry runs covering registration, QR delivery, wristband assignment, and multi-checkpoint access verification before going live.</li>
+            </ol>
+
+            <!-- SECTION 7: The Right Fit -->
+            <h2>The Right Fit — and When It Isn't</h2>
+            <p>This system is ideal for private events, music festivals, resort properties, corporate conferences, gated venues, and any hospitality operation managing a large number of guests across multiple access zones — especially where VIP tiers, restricted areas, and attendance tracking need to run simultaneously without separate processes.</p>
+            <p>It is less suited to very small gatherings of under 30 guests where manual check-in is easily manageable, or for venues that cannot equip checkpoints with NFC-capable devices.</p>
+
+          </article>
+
+          <!-- SIDEBAR -->
+          <aside class="cs-sidebar">
+
+            <div class="cs-sidebar-card">
+              <h4>Project Details</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Hospitality / Events</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Access Control</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">Custom Web App + NFC</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">2 weeks</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Intermediate</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 5.0 / 5</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">Zero manual checks</span></div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Tools &amp; Integrations</h4>
+              <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+                <span class="cs-tool-tag"><img data-logo="airtable" alt="Airtable" width="14" height="14" loading="lazy">Airtable</span>
+                <span class="cs-tool-tag"><img data-logo="nfc" alt="NFC Tools" width="14" height="14" loading="lazy">NFC Tools</span>
+                <span class="cs-tool-tag"><img data-logo="customWebApp" alt="Custom Web App" width="14" height="14" loading="lazy">Custom Web App</span>
+                <span class="cs-tool-tag"><img data-logo="email" alt="Email" width="14" height="14" loading="lazy">Email (QR Delivery)</span>
+              </div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Key Metrics</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Checkpoint Clearance</span><span class="cs-sidebar-value" style="text-align:right;">&lt; 3 sec per guest</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Lookups</span><span class="cs-sidebar-value" style="text-align:right;">100% eliminated</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Guest Records Logged</span><span class="cs-sidebar-value" style="text-align:right;">Real-time synched</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Access Tiers</span><span class="cs-sidebar-value" style="text-align:right;">VIP, General, Restricted</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Deployment environments</span><span class="cs-sidebar-value" style="text-align:right;">Events, Resorts, Venues</span></div>
+            </div>
+
+            <div class="cs-sidebar-cta">
+              <h4>Ready to eliminate check-in queues at your next event?</h4>
+              <p>Free discovery call — let us discuss your venue, guest volume, and access control needs.</p>
+              <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ SECTION ═══ -->
+    <section class="faq section" id="faq">
+      <div class="container">
+        <div style="text-align:center">
+          <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+          <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+        </div>
+        <div class="faq-inner">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What is NFC wristband guest verification and how does it work?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>AI NFC wristband guest verification is an automated access system</strong> that uses Near Field Communication (NFC) chips. Pre-registered guests receive a unique QR code. At arrival, scanning the QR code verifies their registration and dynamically links a physical NFC wristband to their profile, allowing subsequent frictionless tap entry.</p>
+              <p>This replaces manual list checking or barcode scans at interior checkpoints. Once the band is active, guests tap it on scanners at VIP zones, restricted entryways, or room checkpoints for instant validation.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How does the system link physical NFC wristbands to guest records?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>The registration uses a double-verification flow.</strong> Staff use a custom web application at check-in to read the wristband's NFC chip ID, scan the guest's QR code to confirm identity, and merge the wristband ID directly into the matching Airtable profile database in real-time.</p>
+              <p>This links the physical wristband token directly to the guest's profile parameters (VIP access, ticket type, reservation details) without manually typing long token codes or chip IDs.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What happens if a guest loses their NFC wristband?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Lost wristbands can be replaced in seconds.</strong> Staff search the guest's profile in the web app, deactivate the lost chip ID to prevent unauthorized entry, and assign a new NFC wristband to the active record using the standard guided check-in flow.</p>
+              <p>Because the access permission is checked against the database dynamically, the old wristband immediately stops working the instant it is unlinked, securing your event or venue locations.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Can the system enforce different levels of access at checkpoints?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Yes, the system natively supports multi-tier access control.</strong> Checkpoint scanners read the wristband NFC ID, query the Airtable profile, and instantly display visual confirmations (VIP, General, or Restricted) based on the guest's mapped registration tier.</p>
+              <p>This allows organizers to set up zones like VIP lounges, artist pits, or employee-only areas without requiring different types of passes or separate physical lists.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Does this system require a persistent internet connection at checkpoints?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>No, the web application features local data validation.</strong> Scanning stations can verify access credentials offline using cached event lists and queue transaction logs, syncing check-in timestamps back to Airtable once connection is restored.</p>
+              <p>This prevents access delays in locations with poor Wi-Fi or cellular coverage, such as outdoor event spaces or remote resort zones.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How does pre-event QR registration work?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Registration triggers automated database entry.</strong> When a guest registers, the system records their information, generates a unique check-in ID and QR code, and sends a styled confirmation email containing their entry QR code for arrival checkpoint scans.</p>
+              <p>Guests can add the QR code to their Apple Wallet, save it as an image, or show the confirmation email directly from their smartphone at the check-in desk.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BOTTOM CTA ═══ -->
+    <section class="cs-bottom-cta">
+      <div class="container" style="position:relative;z-index:2">
+        <h2>Eliminate check-in queues. Verify every guest in one tap.</h2>
+        <p>Build a frictionless guest access system for your event, resort, or private venue — backed by real-time Airtable data and NFC wristband technology.</p>
+        <div class="btn-group">
+          <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+          <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div id="gs-footer"></div>
+
+  <!-- Inject SITE.logos into all data-logo images -->
+  <script>
+  (function() {
+    function injectLogos() {
+      if (typeof SITE === 'undefined' || !SITE.logos) return;
+      document.querySelectorAll('img[data-logo]').forEach(function(img) {
+        var key = img.getAttribute('data-logo');
+        if (SITE.logos[key]) img.src = SITE.logos[key];
+      });
+    }
+    injectLogos();
+    document.addEventListener('DOMContentLoaded', injectLogos);
+  })();
+  </script>
+
+  <!-- ═══ Shared Config + Component Loader ═══ -->
+  <script src="../_shared/site-config.js"></script>
+  <script src="../assets/js/images-helper.js"></script>
+  <script src="../_shared/page-builder.js"></script>
+  <script src="../case-studies.js"></script>
+
+</body>
+</html>
