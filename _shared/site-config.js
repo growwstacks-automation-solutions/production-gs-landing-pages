@@ -341,6 +341,9 @@ logos: {
   json:            favicon('json.org'),
   dialogue365:     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3G9QVYGjQHpoNE67mT5rLhBsP9ZpYqntt7A&s',
   zohoBooks:       'https://ik.imagekit.io/r2zdlyze2o/Logo/zoho%20Books.png',
+  goto:            favicon('goto.com'),
+  nfc:             favicon('nxp.com'),
+  customWebApp:    favicon('web.dev'),
 },
 
   // ─── Stats (update here → updates everywhere) ─
