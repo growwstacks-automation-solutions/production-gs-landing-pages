@@ -18,6 +18,69 @@ project's memory: each entry should let a future session reconstruct *what* chan
 
 ---
 
+## 2026-06-22 — Widget load timing fix + llms.txt + WebMCP (agentic browsing)
+**Commit(s):** _unpushed — pending review_ · **Scope:** `_shared/page-builder.js`,
+`_shared/webmcp.js` (new), `_shared/components/consult-section.html`, `llms.txt` (new),
+`_headers`, `docs/`
+
+**What:**
+- **Floating widgets load on page-load, not on scroll** (`page-builder.js`): the
+  footer is a lazy component and hosts the two always-on widgets — the live
+  projects ticker (`#gs-spw`) and the GHL chat widget — so both only appeared once
+  the user scrolled to the bottom. Added a `window.load` + `requestIdleCallback`
+  trigger that injects the footer as soon as the page finishes loading. The
+  IntersectionObserver stays as a fallback; `loadComponent()` is idempotent so
+  whichever fires first wins.
+- **`llms.txt`** (new, repo root): machine-readable site summary with an H1 and
+  link sections (services, resources, company, legal). Fixes the Lighthouse
+  "Agentic browsing → llms.txt" failure (was 2/3; this is the missing check → 3/3).
+  Previously `/llms.txt` 404'd to Cloudflare's HTML error page, which the audit
+  parsed as malformed markdown.
+- **WebMCP — full adoption** (agentic browsing):
+  - *Declarative* (`consult-section.html`): added `toolname`/`tooldescription` to
+    `#consultForm` and `toolparamdescription` to the user-facing inputs. **Additive
+    attributes only — no field `name` changed**, so the Make.com webhook is intact.
+  - *Imperative* (`webmcp.js`, new; loaded eagerly by page-builder on every page):
+    registers `get_company_overview`, `list_services` (read-only), and
+    `submit_consultation_request` (autonomous) via `modelContext.registerTool`.
+    Feature-detected across `document.modelContext`/`navigator.modelContext` and
+    fully try/catch-wrapped → inert no-op without the API or origin trial.
+  - *Origin trial* (`_headers`): commented placeholder for the Chrome WebMCP
+    origin-trial token (site-wide `Origin-Trial` header). **Inactive until Manish
+    registers growwstacks.com and pastes the token.**
+
+**Why:** (1) The widgets were meant to be visible from page load, not gated on
+reaching the footer. (2) Lighthouse PageSpeed "Agentic browsing" was 2/3 (llms.txt
+failing) and Manish wants the site properly readable/actionable by AI agents.
+
+**Decisions:**
+- Footer trigger uses `window.load` (matches "when the site finishes loading")
+  deferred to idle, **not** `eager: true` — making the footer eager would pull the
+  third-party chat script into initial render and hurt the very PageSpeed metrics
+  we're improving.
+- WebMCP registered **imperatively + eagerly** (not relying on the lazily-injected
+  declarative form), because Lighthouse's agentic snapshot can miss tools that only
+  appear after scroll. Declarative attrs kept too, for the informational
+  "forms missing declarative WebMCP" audit and DOM-interacting agents.
+- **Autonomous submit (Manish's call):** `submit_consultation_request` POSTs the
+  webhook directly, bypassing Turnstile. Risk acknowledged but **incremental** — the
+  webhook URL is already public in `site-config.js`, so the captcha never protected
+  the webhook itself, only the visible form. Mitigation: agent leads tagged
+  `source: "webmcp_agent"` for filtering/rate-limiting in Make.
+
+**Left untouched (on purpose):**
+- The form's field `name`s, hidden inputs, Turnstile flow, and the human submit
+  handler — all unchanged. WebMCP additions are attributes + a separate JS path.
+- The GHL chat widget internals (third-party; can't be instrumented).
+
+**Follow-ups (mirrored to ROADMAP):**
+- Manish to register the WebMCP origin trial and paste the token into `_headers`.
+- After deploy: re-run Lighthouse agentic category to confirm 3/3 and that WebMCP
+  tools are captured; verify widgets appear on load without scrolling.
+- Consider rate-limiting / honeypot on the Make scenario for `source:"webmcp_agent"`.
+
+---
+
 ## 2026-06-08 — Homepage hero redesign, credentials strip, CTA copy alignment
 **Commit:** `3d0af1c8` (pushed to `main` / live) · **Scope:** `index.html`,
 `_shared/components/partners.html`, `_shared/components/navbar.html`,
