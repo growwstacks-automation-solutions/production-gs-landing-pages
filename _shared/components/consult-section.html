@@ -1039,50 +1039,6 @@
           const btn = document.getElementById("submitBtn");
 
           btn.disabled = true;
-          btn.textContent = "Verifying...";
-
-          try {
-            const formData = new URLSearchParams();
-            formData.append("token", captchaToken);
-
-            const verifyRes = await fetch(
-              "https://script.google.com/macros/s/AKfycbxaCgJa3Swn_khuefJdS83fMii6xKWgzU_L5ssI95WZ9aiqniqB0fIY20fB3gerdS8K/exec",
-              {
-                method: "POST",
-                body: formData,
-              },
-            );
-
-            const verifyText = await verifyRes.text();
-            const verifyData = JSON.parse(verifyText);
-
-            if (!verifyData.success) {
-              showErr(
-                "captchaError",
-                "Captcha verification failed. Please try again.",
-              );
-
-              btn.disabled = false;
-              btn.textContent = "Get My Free Automation Audit →";
-
-              turnstile.reset();
-
-              return false;
-            }
-          } catch (err) {
-            console.error(err);
-
-            showErr(
-              "captchaError",
-              "Unable to verify captcha. Please try again.",
-            );
-
-            btn.disabled = false;
-            btn.textContent = "Get My Free Automation Audit →";
-
-            return false;
-          }
-
           btn.textContent = "Sending...";
 
           document.getElementById("pageUrl").value = window.location.href;
@@ -1101,6 +1057,7 @@
 
           data.country = sel.n;
           data.country_iso = sel.i;
+          data.captcha_token = captchaToken;
 
           try {
             await fetch(
