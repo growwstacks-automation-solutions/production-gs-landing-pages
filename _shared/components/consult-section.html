@@ -499,6 +499,7 @@
     var emailIn=document.getElementById('emailInput');
     var phoneIn=document.getElementById('phoneInput');
     var serviceIn=document.getElementById('serviceInput');
+    var btn=document.getElementById('submitBtn');
 
     function showErr(id,msg){var e=document.getElementById(id);if(e){e.textContent=msg;e.classList.add('visible');}}
     function clearErr(id){var e=document.getElementById(id);if(e){e.textContent='';e.classList.remove('visible');}}
@@ -506,6 +507,26 @@
 
     function validEmail(v){return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/.test(v);}
     function validPhone(v){var d=v.replace(/\D/g,'');return d.length>=7&&d.length<=15;}
+
+    function allFieldsValid(){
+      return nameIn.value.trim().length>=2 &&
+             validEmail(emailIn.value.trim()) &&
+             validPhone(phoneIn.value.trim()) &&
+             !!serviceIn.value;
+    }
+
+    function updateSubmitBtn(){
+      btn.disabled = !allFieldsValid();
+    }
+
+    // Disable on load until fields are valid
+    btn.disabled = true;
+
+    // Re-check on every change
+    nameIn.addEventListener('input', updateSubmitBtn);
+    emailIn.addEventListener('input', updateSubmitBtn);
+    phoneIn.addEventListener('input', updateSubmitBtn);
+    serviceIn.addEventListener('change', updateSubmitBtn);
 
     emailIn.addEventListener('blur',function(){
       var v=this.value.trim();
@@ -530,100 +551,73 @@
     if(form&&!form.__attached){
       form.__attached=true;
       form.addEventListener('submit', async function(e){
-  e.preventDefault();
+        e.preventDefault();
 
-  var ok=true;
+        // Hard gate — should not be reachable if button is disabled, but belt-and-suspenders
+        if(!allFieldsValid()) return;
 
-  if(nameIn.value.trim().length<2){
-    showErr('nameError','Please enter your name');
-    setErr(nameIn,true);
-    ok=false;
-  }
+        // ✅ CAPTCHA CHECK
+        const captchaToken = turnstile.getResponse();
+        if (!captchaToken) {
+          showErr('captchaError','Please verify you are human');
+          return;
+        }
 
-  if(!validEmail(emailIn.value.trim())){
-    showErr('emailError','Please enter a valid email address');
-    setErr(emailIn,true);
-    ok=false;
-  }
+        btn.textContent='Verifying...';
+        btn.disabled=true;
 
-  if(!validPhone(phoneIn.value.trim())){
-    showErr('phoneError','Please enter a valid phone number');
-    phoneWrap.classList.add('error');
-    ok=false;
-  }
+        try {
+          const formData = new URLSearchParams();
+          formData.append("token", captchaToken);
 
-  if(!serviceIn.value){
-    showErr('serviceError','Please select a service');
-    setErr(serviceIn,true);
-    ok=false;
-  }
+          const verifyRes = await fetch("https://script.google.com/macros/s/AKfycbxaCgJa3Swn_khuefJdS83fMii6xKWgzU_L5ssI95WZ9aiqniqB0fIY20fB3gerdS8K/exec", {
+            method: "POST",
+            body: formData
+          });
 
-  // ✅ CAPTCHA CHECK
-const captchaToken = turnstile.getResponse();
+          const verifyText = await verifyRes.text();
+          const verifyData = JSON.parse(verifyText);
 
-if (!captchaToken) {
-  showErr('captchaError','Please verify you are human');
-  ok = false;
-}
+          if (!verifyData.success) {
+            showErr('captchaError','Captcha verification failed. Try again.');
+            btn.textContent='Get My Free Automation Audit →';
+            btn.disabled=false;
+            turnstile.reset();
+            return;
+          }
 
-if(!ok) return;
+        } catch(err){
+          console.log('Captcha error:', err);
+          btn.textContent='Get My Free Automation Audit →';
+          btn.disabled=false;
+          return;
+        }
 
-var btn=document.getElementById('submitBtn');
-btn.textContent='Verifying...';
-btn.disabled=true;
+        // ✅ CONTINUE IF CAPTCHA SUCCESS
+        btn.textContent='Sending...';
 
-try {
-  const formData = new URLSearchParams();
-formData.append("token", captchaToken);
+        document.getElementById('pageUrl').value=window.location.href;
+        document.getElementById('submittedAt').value=new Date().toISOString();
 
-const verifyRes = await fetch("https://script.google.com/macros/s/AKfycbxaCgJa3Swn_khuefJdS83fMii6xKWgzU_L5ssI95WZ9aiqniqB0fIY20fB3gerdS8K/exec", {
-  method: "POST",
-  body: formData
-});
+        var fd=new FormData(form),data={};
+        fd.forEach(function(v,k){data[k]=v;});
 
-  const verifyText = await verifyRes.text();
-  const verifyData = JSON.parse(verifyText);
+        data.phone_full=sel.c+' '+phoneIn.value.trim();
+        data.country=sel.n;
+        data.country_iso=sel.i;
 
-  if (!verifyData.success) {
-    showErr('captchaError','Captcha verification failed. Try again.');
-    btn.textContent='Get My Free Automation Audit →';
-    btn.disabled=false;
-    turnstile.reset();
-    return;
-  }
+        try{
+          await fetch('https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify(data)
+          });
+        }catch(err){
+          console.log('Webhook error:',err);
+        }
 
-} catch(err){
-  console.log('Captcha error:', err);
-  btn.textContent='Get My Free Automation Audit →';
-  btn.disabled=false;
-  return;
-}
-
-  // ✅ CONTINUE IF CAPTCHA SUCCESS
-  btn.textContent='Sending...';
-
-  document.getElementById('pageUrl').value=window.location.href;
-  document.getElementById('submittedAt').value=new Date().toISOString();
-
-  var fd=new FormData(form),data={};
-  fd.forEach(function(v,k){data[k]=v;});
-
-  data.phone_full=sel.c+' '+phoneIn.value.trim();
-  data.country=sel.n;
-  data.country_iso=sel.i;
-
-  try{
-    await fetch('https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(data)
-    });
-  }catch(err){
-    console.log('Webhook error:',err);
-  }
-
-  window.location.href='/thank-you-lead';
-});
+        window.location.href='/thank-you-lead';
+      });
     }
   })();
   </script>
