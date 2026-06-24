@@ -129,6 +129,7 @@
     .form-error{display:none;font-size:12px;color:#ef4444;margin-top:4px;font-weight:500}
     .form-error.visible{display:block}
     .form-group input.input-error,.form-group select.input-error{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.08)}
+    .form-submit:disabled{opacity:0.55;cursor:not-allowed;transform:none!important;box-shadow:none!important}
   </style>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
@@ -557,7 +558,8 @@
         if(!allFieldsValid()) return;
 
         // ✅ CAPTCHA CHECK
-        const captchaToken = turnstile.getResponse();
+        var captchaToken = '';
+        try { captchaToken = (typeof turnstile !== 'undefined') ? turnstile.getResponse() : ''; } catch(err){}
         if (!captchaToken) {
           showErr('captchaError','Please verify you are human');
           return;
@@ -582,12 +584,13 @@
             showErr('captchaError','Captcha verification failed. Try again.');
             btn.textContent='Get My Free Automation Audit →';
             btn.disabled=false;
-            turnstile.reset();
+            try { if(typeof turnstile!=='undefined') turnstile.reset(); } catch(err){}
             return;
           }
 
         } catch(err){
-          console.log('Captcha error:', err);
+          console.log('Captcha verify error:', err);
+          showErr('captchaError','Captcha check failed. Please try again.');
           btn.textContent='Get My Free Automation Audit →';
           btn.disabled=false;
           return;
