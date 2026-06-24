@@ -1103,31 +1103,23 @@
           data.country_iso = sel.i;
 
           try {
-            const webhookResponse = await fetch(
+            await fetch(
               "https://hook.eu1.make.com/djyya63kealsfy8pa1va2a1ds3hi31om",
               {
                 method: "POST",
+                mode: "no-cors",
                 headers: {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(data),
               },
             );
-
-            if (!webhookResponse.ok) {
-              throw new Error("Webhook failed");
-            }
-
-            // SUCCESS ONLY
-            window.location.href = "/thank-you-lead";
           } catch (err) {
             console.error(err);
-
-            alert("Unable to submit the form. Please try again.");
-
-            btn.disabled = false;
-            btn.textContent = "Get My Free Automation Audit →";
           }
+
+          // Redirect regardless — webhook is fire-and-forget
+          window.location.href = "/thank-you-lead";
         });
       }
     })();
