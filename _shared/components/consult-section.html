@@ -1024,10 +1024,13 @@
           }
 
           // Captcha
-          const captchaToken = turnstile.getResponse();
+          const captchaToken =
+            typeof turnstile !== "undefined" && turnstile.getResponse
+              ? turnstile.getResponse()
+              : "";
 
           if (!captchaToken) {
-            showErr("captchaError", "Please verify you are human");
+            showErr("captchaError", "Please complete the verification below");
             ok = false;
           }
 
