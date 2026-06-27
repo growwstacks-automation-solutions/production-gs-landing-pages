@@ -244,6 +244,41 @@
 
   Promise.all(eagerLoads).then(loadNested);
 
+  // ── Footer + floating widgets: load on page-load, not on scroll ──────────
+  // The footer hosts two always-on widgets — the live projects ticker (#gs-spw)
+  // and the chat widget. Because the footer is a lazy component, both used to
+  // appear only once the user scrolled to the bottom. Trigger the footer as soon
+  // as the page has fully loaded instead, deferred to idle so it never competes
+  // with critical above-the-fold work. The IntersectionObserver above stays as a
+  // fallback; loadComponent() is idempotent, so whichever fires first wins.
+  function loadFooterNow() {
+    const footer = COMPONENTS.find(c => c.id === 'gs-footer');
+    if (footer) loadComponent(footer).then(loadNested);
+  }
+  function whenIdle(fn) {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(fn, { timeout: 2000 });
+    } else {
+      setTimeout(fn, 200);
+    }
+  }
+  if (document.readyState === 'complete') {
+    whenIdle(loadFooterNow);
+  } else {
+    window.addEventListener('load', function () { whenIdle(loadFooterNow); }, { once: true });
+  }
+
+  // ── WebMCP (agent tools) ─────────────────────────────────────────────────
+  // Register the site's AI-agent tools EAGERLY (not on scroll) so they exist in
+  // the Lighthouse agentic snapshot and for agents at load. webmcp.js is fully
+  // feature-detected — a no-op on browsers without the API or origin trial.
+  (function loadWebMCP() {
+    var s = document.createElement('script');
+    s.src = prefix + 'webmcp.js';
+    s.async = true;
+    (document.head || document.documentElement).appendChild(s);
+  })();
+
   // --- Shared Scripts ---
   window.addEventListener('scroll', function () {
     const nav = document.getElementById('nav');

@@ -1,6 +1,6 @@
 # Roadmap — GrowwStacks Landing Pages
 
-_Last updated: 2026-06-08_
+_Last updated: 2026-06-22_
 
 Current state of the site and the prioritized list of what's next. Update this every
 session: move finished items into [`DEVELOPMENT_LOG.md`](DEVELOPMENT_LOG.md) and
@@ -17,7 +17,12 @@ re-rank what remains.
 - **Everything else** (what-we-do, process, stats, cases, industries, testimonials,
   footer, all blog/landing pages) — still on the **original** design system in
   `global.css`. Unchanged.
-- **Lead form / Make.com webhook** — untouched and working.
+- **Lead form / Make.com webhook** — untouched and working (WebMCP attrs added are
+  additive only; no field names changed).
+- **Floating widgets** (projects ticker + chat) — ✅ now load on page-load, not on
+  scroll-to-footer. Unpushed.
+- **Agentic browsing / WebMCP** — `llms.txt` added (→ Lighthouse 3/3); declarative +
+  imperative WebMCP tools added (`_shared/webmcp.js`). ⏸️ Origin-trial token pending.
 
 The site is in a **mixed-design state**: homepage first fold + credentials use the
 refined system; the rest uses the original. This is intentional and stable.
@@ -25,6 +30,15 @@ refined system; the rest uses the original. This is intentional and stable.
 ---
 
 ## Next actions (prioritized)
+
+### P0 — In flight (this session, unpushed)
+- [ ] **Register the WebMCP origin trial** for `growwstacks.com` (Chrome Origin
+      Trials console) and paste the token into `_headers` (uncomment the two
+      placeholder lines). Without it, the WebMCP tools stay inactive in production.
+- [ ] **After deploy, re-run Lighthouse** agentic category: confirm llms.txt passes
+      (3/3) and, once the token is live, that WebMCP tools are captured.
+- [ ] **Smoke-test widget timing**: on a hard reload, the projects ticker + chat
+      widget should appear within ~2s of load *without scrolling*.
 
 ### P1 — Likely next
 - [ ] **Finance / Healthcare / Operations "problem strip"** (design section 2).
@@ -79,5 +93,7 @@ refined system; the rest uses the original. This is intentional and stable.
 
 ## Done (recent — see DEVELOPMENT_LOG for detail)
 
+- 2026-06-22 — Widget load-on-page-load fix, `llms.txt`, WebMCP declarative +
+  imperative tools, origin-trial scaffold (unpushed — pending review + token).
 - 2026-06-08 — Hero redesign, credentials strip, CTA copy alignment (`3d0af1c8`, live).
 - 2026-06-08 — Project documentation set established.

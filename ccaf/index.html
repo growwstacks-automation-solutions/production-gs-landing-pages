@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/analytics-loader.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Claude Certified Architect — Foundations | Growwstacks</title>
+  <meta name="description" content="An 8-week, hands-on live program to take you from the fundamentals of Claude to exam-ready — and get certified through Growwstacks, a Claude partner. Starts 6 July." />
+  <link rel="canonical" href="https://growwstacks.com/ccaf" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:title" content="Claude Certified Architect — Foundations" />
+  <meta property="og:description" content="8 weeks, live, hands-on. Learn to build with Claude and get certified through Growwstacks." />
+  <meta property="og:image" content="https://growwstacks.com/ccaf/assets/ccaf-og.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://growwstacks.com/ccaf" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Claude Certified Architect — Foundations" />
+  <meta name="twitter:description" content="8 weeks, live, hands-on. Learn to build with Claude and get certified through Growwstacks." />
+  <meta name="twitter:image" content="https://growwstacks.com/ccaf/assets/ccaf-og.png" />
+
+  <link rel="icon" type="image/png" data-image-key="BRANDING.favicon" href="" />
+
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+
+  <!-- Fonts: site brand stack (Bricolage Grotesque + Plus Jakarta Sans) + JetBrains Mono for the refined "Claude design" precision layer -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- Shared design system (brand tokens, nav + footer styles, .container, .btn) -->
+  <link rel="stylesheet" href="../_shared/global.css" />
+
+  <style>
+  /* =========================================================================
+     CCAF — Claude Certified Architect (Foundations) landing page
+     Self-contained, scoped under .ccaf-page. Reuses global.css tokens
+     (--green-*, --dark, .container, .btn) and redefines only the campaign
+     "Claude design" gap-fillers (dark hero, terracotta, amber) locally.
+     ========================================================================= */
+  .ccaf-page {
+    /* campaign gap-filler tokens (only what global.css doesn't already cover) */
+    --c-green:#18B66B;            /* bright campaign green — accents on dark */
+    --c-green-deep:#1a6e30;       /* = global --green-700, CTAs on light */
+    --c-ink:#1F2329;
+    --c-muted:#555C66;
+    --c-muted-dark:#C9D0D5;
+    --c-terracotta:#D97757;       /* Claude brand accent — used sparingly */
+    --c-surface:#F7F9F8;
+    --c-border:#E6EAE8;
+    --c-amber:#F4B740;
+    --c-amber-bg:#FFF8EA;
+    --c-amber-border:#F0DDA8;
+    --c-hero-ink:#0C2418;
+    --c-mono:'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    background:#fff;
+  }
+
+  /* ---- shared section rhythm ---- */
+  .ccaf-page section { position:relative; }
+  .ccaf-sec { padding:80px 0; }
+  .ccaf-eyebrow {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--c-mono); font-size:12px; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--c-green-deep);
+    margin-bottom:18px;
+  }
+  .ccaf-eyebrow::before { content:''; width:26px; height:2px; background:var(--c-green-deep); border-radius:2px; }
+  .ccaf-h2 {
+    font-family:var(--font-display); font-weight:800;
+    font-size:clamp(28px,4vw,42px); line-height:1.12; letter-spacing:-.02em;
+    color:var(--c-ink); margin:0 0 16px;
+  }
+  .ccaf-lead { font-size:18px; line-height:1.7; color:var(--c-muted); max-width:720px; }
+
+  /* =====================  SECTION A — HERO (dark)  ===================== */
+  .ccaf-hero {
+    position:relative; overflow:hidden;
+    background:
+      radial-gradient(1100px 620px at 72% 18%, #243B30 0%, #1D2722 48%, #191F1C 100%);
+    color:#fff;
+    padding:clamp(56px,8vw,96px) 0 clamp(64px,9vw,104px);
+  }
+  /* subtle concentric-ring + grid texture */
+  .ccaf-hero::before {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:.5;
+    background-image:
+      radial-gradient(circle at 80% 12%, rgba(24,182,107,.10), transparent 42%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 64px);
+  }
+  .ccaf-hero .container { position:relative; z-index:2; }
+  .ccaf-hero-top { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:34px; }
+  .ccaf-partner-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(217,119,87,.12); border:1px solid rgba(217,119,87,.45);
+    color:#F0C4B2; font-family:var(--c-mono); font-size:12px; font-weight:600;
+    letter-spacing:.04em; padding:7px 14px; border-radius:var(--radius-full);
+    white-space:nowrap;
+  }
+  .ccaf-partner-badge svg { width:14px; height:14px; flex-shrink:0; }
+  .ccaf-hero-eyebrow {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--c-mono); font-size:12px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:#8FE3B6; margin-bottom:20px;
+  }
+  .ccaf-hero-eyebrow::before { content:''; width:26px; height:2px; background:var(--c-green); border-radius:2px; }
+  .ccaf-hero h1 {
+    font-family:var(--font-display); font-weight:800;
+    font-size:clamp(34px,6vw,60px); line-height:1.06; letter-spacing:-.03em;
+    margin:0 0 22px; max-width:16ch;
+  }
+  .ccaf-hero h1 .accent { color:var(--c-green); }
+  .ccaf-hero-sub { font-size:clamp(17px,2.2vw,20px); line-height:1.62; color:var(--c-muted-dark); max-width:60ch; margin:0 0 34px; }
+
+  .ccaf-cta-row { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:30px; }
+  .ccaf-btn {
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--font-body); font-weight:700; font-size:16px;
+    padding:15px 28px; border-radius:14px; border:2px solid transparent;
+    cursor:pointer; text-decoration:none; transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  }
+  .ccaf-btn-primary { background:var(--c-green); color:#06140C; border-color:var(--c-green); box-shadow:0 8px 28px rgba(24,182,107,.28); }
+  .ccaf-btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 34px rgba(24,182,107,.4); color:#06140C; }
+  .ccaf-btn-ghost { background:transparent; color:#EAF2EE; border-color:rgba(255,255,255,.32); }
+  .ccaf-btn-ghost:hover { border-color:#fff; background:rgba(255,255,255,.06); color:#fff; transform:translateY(-2px); }
+  .ccaf-btn svg { width:18px; height:18px; flex-shrink:0; }
+
+  .ccaf-chips { display:flex; flex-wrap:wrap; gap:10px; }
+  .ccaf-chip {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--c-mono); font-size:12.5px; font-weight:500; color:#CFE6D8;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+    padding:8px 14px; border-radius:var(--radius-full);
+  }
+  .ccaf-chip::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--c-green); flex-shrink:0; }
+
+  /* =====================  SECTION B — WHY  ===================== */
+  .ccaf-why { background:#fff; }
+  .ccaf-why .ccaf-prose { max-width:760px; }
+  .ccaf-why p { font-size:17.5px; line-height:1.8; color:var(--c-muted); margin:0 0 20px; }
+  .ccaf-why p:last-child { margin-bottom:0; }
+
+  /* =====================  SECTION C — WHAT YOU GET (cards)  ===================== */
+  .ccaf-cards { background:var(--c-surface); }
+  .ccaf-card-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:40px; }
+  .ccaf-card {
+    background:#fff; border:1px solid var(--c-border); border-radius:18px;
+    padding:30px 28px; display:flex; flex-direction:column;
+  }
+  .ccaf-card-ico {
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:700; margin-bottom:18px; flex-shrink:0;
+  }
+  .ccaf-card-ico.is-get { background:#E5F7ED; color:var(--c-green-deep); }
+  .ccaf-card-ico.is-honest { background:#EEF1F4; color:#43505E; }
+  .ccaf-card-ico.is-beyond { background:rgba(217,119,87,.14); color:var(--c-terracotta); }
+  .ccaf-card h3 { font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--c-ink); margin:0 0 12px; }
+  .ccaf-card p { font-size:15.5px; line-height:1.72; color:var(--c-muted); margin:0; }
+
+  /* =====================  SECTION D — COMMITMENT (amber band)  ===================== */
+  .ccaf-commit { background:var(--c-amber-bg); border-top:1px solid var(--c-amber-border); border-bottom:1px solid var(--c-amber-border); }
+  .ccaf-commit-inner { max-width:820px; }
+  .ccaf-commit .ccaf-eyebrow { color:#9A6B00; }
+  .ccaf-commit .ccaf-eyebrow::before { background:var(--c-amber); }
+  .ccaf-commit h2 { color:#5B3D00; }
+  .ccaf-commit p { font-size:18px; line-height:1.78; color:#6B4E12; margin:0; }
+  .ccaf-commit p strong { color:#3F2D00; font-weight:700; }
+
+  /* =====================  SECTION E — CURRICULUM  ===================== */
+  .ccaf-curric { background:#fff; }
+  .ccaf-curric-sub { margin-bottom:36px; }
+  .ccaf-table-wrap { border:1px solid var(--c-border); border-radius:18px; overflow:hidden; }
+  table.ccaf-weeks { width:100%; border-collapse:collapse; font-size:15.5px; }
+  table.ccaf-weeks th, table.ccaf-weeks td { text-align:left; padding:18px 22px; vertical-align:top; }
+  table.ccaf-weeks thead th {
+    font-family:var(--c-mono); font-size:11.5px; font-weight:600; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--c-muted); background:var(--c-surface); border-bottom:1px solid var(--c-border);
+  }
+  table.ccaf-weeks tbody tr + tr { border-top:1px solid var(--c-border); }
+  table.ccaf-weeks tbody tr:hover { background:#FBFDFC; }
+  .ccaf-wk { white-space:nowrap; font-weight:700; color:var(--c-green-deep); width:1%; }
+  .ccaf-focus strong { display:block; font-family:var(--font-display); font-size:16px; color:var(--c-ink); margin-bottom:5px; }
+  .ccaf-focus span { color:var(--c-muted); line-height:1.65; }
+  .ccaf-domain { white-space:nowrap; width:1%; }
+  .ccaf-domain .tag {
+    display:inline-block; font-family:var(--c-mono); font-size:12px; font-weight:600;
+    padding:5px 11px; border-radius:var(--radius-full); background:#E5F7ED; color:var(--c-green-deep);
+  }
+  .ccaf-domain .tag.is-big { background:rgba(217,119,87,.14); color:#B65A3C; }
+  .ccaf-domain .tag.is-all { background:#EEF1F4; color:#43505E; }
+
+  .ccaf-pullquote {
+    margin-top:30px; background:#0F1A14; color:#EAF2EE;
+    border-radius:18px; padding:28px 30px; position:relative; overflow:hidden;
+    border:1px solid rgba(24,182,107,.25);
+  }
+  .ccaf-pullquote::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--c-green); }
+  .ccaf-pullquote p { margin:0; font-size:17px; line-height:1.66; }
+  .ccaf-pullquote strong { color:#fff; font-weight:700; }
+
+  /* =====================  SECTION F — HOW IT RUNS  ===================== */
+  .ccaf-runs { background:var(--c-surface); }
+  .ccaf-runs-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:40px; }
+  .ccaf-runs-col { background:#fff; border:1px solid var(--c-border); border-radius:18px; padding:30px 28px; }
+  .ccaf-runs-col h3 { font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--c-ink); margin:0 0 20px; }
+  .ccaf-week-list { list-style:none; margin:0; padding:0; }
+  .ccaf-week-list li { display:flex; gap:14px; padding:11px 0; border-top:1px solid var(--c-border); font-size:15.5px; color:var(--c-muted); line-height:1.5; }
+  .ccaf-week-list li:first-child { border-top:0; padding-top:0; }
+  .ccaf-day { font-family:var(--c-mono); font-size:12.5px; font-weight:600; color:var(--c-green-deep); flex:0 0 42px; padding-top:1px; }
+  .ccaf-support { list-style:none; margin:0; padding:0; }
+  .ccaf-support li { position:relative; padding:0 0 16px 30px; font-size:15.5px; color:var(--c-muted); line-height:1.6; }
+  .ccaf-support li:last-child { padding-bottom:0; }
+  .ccaf-support li::before {
+    content:''; position:absolute; left:0; top:3px; width:18px; height:18px; border-radius:50%;
+    background:#E5F7ED url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a6e30' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat;
+  }
+
+  /* =====================  SECTION G — PRICING  ===================== */
+  .ccaf-pricing { background:#fff; }
+  .ccaf-price-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:40px; }
+  .ccaf-price-box { border-radius:20px; padding:34px 32px; display:flex; flex-direction:column; }
+  .ccaf-price-box .label { font-family:var(--c-mono); font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; }
+  .ccaf-price-box .amount { font-family:var(--font-display); font-weight:800; font-size:clamp(34px,5vw,46px); line-height:1; letter-spacing:-.02em; margin-bottom:16px; }
+  .ccaf-price-box .amount s { font-size:.55em; font-weight:600; opacity:.55; margin-right:10px; }
+  .ccaf-price-box .note { font-size:14.5px; line-height:1.62; }
+  .ccaf-price-box.is-dark { background:radial-gradient(700px 400px at 80% 0%, #243B30, #191F1C); color:#fff; border:1px solid rgba(255,255,255,.08); }
+  .ccaf-price-box.is-dark .label { color:#8FE3B6; }
+  .ccaf-price-box.is-dark .note { color:var(--c-muted-dark); }
+  .ccaf-price-box.is-exam { background:var(--c-amber-bg); border:1.5px solid var(--c-amber); color:#5B3D00; }
+  .ccaf-price-box.is-exam .label { color:#9A6B00; }
+  .ccaf-price-box.is-exam .amount { color:#5B3D00; }
+  .ccaf-price-box.is-exam .note { color:#6B4E12; }
+  .ccaf-fineprint { margin-top:20px; font-size:13.5px; line-height:1.6; color:var(--c-muted); max-width:760px; }
+
+  /* =====================  SECTION H — INSTRUCTOR  ===================== */
+  .ccaf-instructor { background:var(--c-surface); }
+  .ccaf-inst-card {
+    display:grid; grid-template-columns:240px 1fr; gap:36px; align-items:center;
+    background:#fff; border:1px solid var(--c-border); border-radius:20px; padding:32px; margin-top:40px;
+  }
+  .ccaf-inst-photo { width:100%; aspect-ratio:1; border-radius:16px; overflow:hidden; background:var(--gray-100,#f3f4f6); }
+  .ccaf-inst-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+  .ccaf-inst-name { font-family:var(--font-display); font-size:24px; font-weight:800; color:var(--c-ink); margin:0 0 6px; }
+  .ccaf-inst-role { font-family:var(--c-mono); font-size:13px; font-weight:500; color:var(--c-green-deep); margin:0 0 18px; }
+  .ccaf-inst-bio { font-size:16px; line-height:1.74; color:var(--c-muted); margin:0; }
+
+  /* =====================  SECTION I — FINAL CTA (green)  ===================== */
+  .ccaf-finalcta { background:linear-gradient(135deg, #18B66B 0%, #12944F 100%); color:var(--c-hero-ink); text-align:center; }
+  .ccaf-finalcta h2 { font-family:var(--font-display); font-weight:800; font-size:clamp(28px,4.5vw,44px); line-height:1.1; letter-spacing:-.02em; color:var(--c-hero-ink); margin:0 0 14px; }
+  .ccaf-finalcta p { font-size:18px; line-height:1.6; color:#0C2418; opacity:.86; max-width:600px; margin:0 auto 30px; }
+  .ccaf-finalcta .ccaf-cta-row { justify-content:center; margin-bottom:0; }
+  .ccaf-btn-dark { background:var(--c-hero-ink); color:#fff; border-color:var(--c-hero-ink); }
+  .ccaf-btn-dark:hover { background:#08190F; color:#fff; transform:translateY(-2px); box-shadow:0 10px 30px rgba(12,36,24,.3); }
+  .ccaf-btn-lightoutline { background:transparent; color:var(--c-hero-ink); border-color:rgba(12,36,24,.4); }
+  .ccaf-btn-lightoutline:hover { border-color:var(--c-hero-ink); background:rgba(255,255,255,.18); color:var(--c-hero-ink); transform:translateY(-2px); }
+
+  /* =====================  RESPONSIVE  ===================== */
+  @media (max-width:900px) {
+    .ccaf-card-grid { grid-template-columns:1fr; }
+    .ccaf-runs-grid, .ccaf-price-grid { grid-template-columns:1fr; }
+    .ccaf-inst-card { grid-template-columns:1fr; text-align:center; gap:24px; padding:28px; }
+    .ccaf-inst-photo { max-width:200px; margin:0 auto; }
+    .ccaf-inst-role { }
+  }
+  @media (max-width:680px) {
+    .ccaf-sec { padding:56px 0; }
+    .ccaf-hero-top { flex-direction:column-reverse; align-items:flex-start; }
+    .ccaf-btn { width:100%; }
+    .ccaf-cta-row { flex-direction:column; }
+
+    /* curriculum table -> stacked cards */
+    .ccaf-table-wrap { border:0; border-radius:0; overflow:visible; }
+    table.ccaf-weeks, table.ccaf-weeks tbody, table.ccaf-weeks tr, table.ccaf-weeks th, table.ccaf-weeks td { display:block; width:auto; }
+    table.ccaf-weeks thead { position:absolute; left:-9999px; }
+    table.ccaf-weeks tbody tr {
+      border:1px solid var(--c-border); border-radius:14px; padding:18px 18px; margin-bottom:14px; background:#fff;
+    }
+    table.ccaf-weeks tbody tr + tr { border-top:1px solid var(--c-border); }
+    table.ccaf-weeks th, table.ccaf-weeks td { padding:0; text-align:left; }
+    .ccaf-wk { font-size:13px; margin-bottom:8px; }
+    .ccaf-focus { margin-bottom:12px; }
+    .ccaf-domain { width:auto; }
+  }
+  </style>
+</head>
+
+<body class="ccaf-page">
+
+  <div id="gs-navbar"></div>
+
+  <main>
+
+    <!-- ===================== SECTION A — HERO ===================== -->
+    <section class="ccaf-hero" aria-labelledby="ccaf-title">
+      <div class="container">
+        <div class="ccaf-hero-top">
+          <span class="ccaf-hero-eyebrow">Now Enrolling · Starts 6 July</span>
+          <span class="ccaf-partner-badge">
+            <svg viewBox="0 0 24 24" fill="#D97757" aria-hidden="true"><path d="M12 2l1.9 5.9H20l-4.9 3.6 1.9 5.9L12 13.8 7 17.4l1.9-5.9L4 7.9h6.1L12 2z"/></svg>
+            Claude Partner
+          </span>
+        </div>
+
+        <h1 id="ccaf-title">Claude Certified Architect — <span class="accent">Foundations</span></h1>
+        <p class="ccaf-hero-sub">An 8-week, hands-on live program. You don't just study for the exam — you learn to build with Claude, for real.</p>
+
+        <div class="ccaf-cta-row">
+          <a class="ccaf-btn ccaf-btn-primary" href="https://chat.whatsapp.com/H7eMLdWAVh9IM3xwF8twvI?s=cl&p=i&mlu=3&amv=2" target="_blank" rel="noopener noreferrer" aria-label="Join the cohort group on WhatsApp">
+            Join the Cohort
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ccaf-btn ccaf-btn-ghost" href="assets/ccaf-program.pdf" download>
+            Download the Program Details (PDF)
+          </a>
+        </div>
+
+        <div class="ccaf-chips">
+          <span class="ccaf-chip">8 weeks · live</span>
+          <span class="ccaf-chip">Build-it-yourself labs</span>
+          <span class="ccaf-chip">Certified via Growwstacks</span>
+          <span class="ccaf-chip">Starts 6 July</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION B — WHY ===================== -->
+    <section class="ccaf-sec ccaf-why" aria-labelledby="ccaf-why-h">
+      <div class="container">
+        <span class="ccaf-eyebrow">The honest hook</span>
+        <h2 class="ccaf-h2" id="ccaf-why-h">Why most people struggle with this certification</h2>
+        <div class="ccaf-prose">
+          <p>When we sat the Claude Certified Architect exam ourselves, one thing became clear: this isn't something you can pass by reading. It's an architecture certification — and architecture isn't a theory subject. You understand it only once you've built things, broken them, and fixed them with your own hands.</p>
+          <p>Talking to people preparing for it, we kept seeing the same pattern: smart, capable professionals struggling — not because the material is beyond them, but because the approach is wrong. Watching tutorials, memorising concepts, never actually building. This program is built to fix exactly that.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION C — WHAT YOU GET ===================== -->
+    <section class="ccaf-sec ccaf-cards" aria-labelledby="ccaf-get-h">
+      <div class="container">
+        <span class="ccaf-eyebrow">What this program is</span>
+        <h2 class="ccaf-h2" id="ccaf-get-h">What you get</h2>
+        <div class="ccaf-card-grid">
+          <article class="ccaf-card">
+            <span class="ccaf-card-ico is-get" aria-hidden="true">✓</span>
+            <h3>What you get</h3>
+            <p>Deep concept teaching, live walkthroughs, real production scenarios, weekly hands-on builds, 3–4 full mock exams, and a self-evaluation practice tool with feedback.</p>
+          </article>
+          <article class="ccaf-card">
+            <span class="ccaf-card-ico is-honest" aria-hidden="true">○</span>
+            <h3>Honest framing</h3>
+            <p>This is a teaching and orientation program. The certification is your own effort and a separate Anthropic exam — we prepare you thoroughly, but we don't guarantee a pass. We help you earn it.</p>
+          </article>
+          <article class="ccaf-card">
+            <span class="ccaf-card-ico is-beyond" aria-hidden="true">★</span>
+            <h3>Beyond the exam</h3>
+            <p>The skills are industry-ready regardless of exam outcome. Qualifying participants can associate with Growwstacks as a Claude partner and take on real projects under our umbrella.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION D — COMMITMENT ===================== -->
+    <section class="ccaf-sec ccaf-commit" aria-labelledby="ccaf-commit-h">
+      <div class="container">
+        <div class="ccaf-commit-inner">
+          <span class="ccaf-eyebrow">What we ask of you</span>
+          <h2 class="ccaf-h2" id="ccaf-commit-h">What we ask of you: real commitment</h2>
+          <p>Architecture cannot be learned from theory alone. You'll be <strong>learning by building</strong> — writing small tools yourself, running them, breaking them, and fixing them. Watching the live sessions isn't enough; the learning happens in your own hands during the lab. Come in with focus and consistency: <strong>two hours a day, six days a week, for eight weeks</strong>. That dedication is what turns these concepts into real, demonstrable skill.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION E — CURRICULUM ===================== -->
+    <section class="ccaf-sec ccaf-curric" aria-labelledby="ccaf-curric-h">
+      <div class="container">
+        <span class="ccaf-eyebrow">Eight weeks, sequenced</span>
+        <h2 class="ccaf-h2" id="ccaf-curric-h">The 8-week curriculum</h2>
+        <p class="ccaf-lead ccaf-curric-sub">Sequenced by exam weight and hands-on dependency — not the usual "theory first." Every week's assignment is a stripped-down version of a real exam scenario.</p>
+
+        <div class="ccaf-table-wrap">
+          <table class="ccaf-weeks">
+            <thead>
+              <tr>
+                <th scope="col">Week</th>
+                <th scope="col">Focus</th>
+                <th scope="col">Exam domain</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="ccaf-wk" scope="row">Week 0 — Pre-start</th>
+                <td class="ccaf-focus"><strong>Setup &amp; Onboarding.</strong><span>Install Claude Code, get comfortable in the terminal, run your first script, understand "what is an API call." Environment check so Week 1 runs clean.</span></td>
+                <td class="ccaf-domain"><span class="tag">Foundations</span></td>
+              </tr>
+              <tr>
+                <th class="ccaf-wk" scope="row">Week 1</th>
+                <td class="ccaf-focus"><strong>Ground floor &amp; first wins.</strong><span>How Claude works, the request/response model, your first real interactions. Everybody ships something small.</span></td>
+                <td class="ccaf-domain"><span class="tag">Foundations</span></td>
+              </tr>
+              <tr>
+                <th class="ccaf-wk" scope="row">Week 2</th>
+                <td class="ccaf-focus"><strong>Prompt Engineering &amp; Structured Output.</strong><span>Few-shot, prompt chaining, JSON schemas, tool use for structured data — and where schemas help vs. where they don't.</span></td>
+                <td class="ccaf-domain"><span class="tag">~20%</span></td>
+              </tr>
+              <tr>
+                <th class="ccaf-wk" scope="row">Weeks 3–4</th>
+                <td class="ccaf-focus"><strong>Agentic Architecture &amp; Orchestration.</strong><span>The agentic loop, stop reasons, agents vs. workflows, orchestrator–subagent design, escalation &amp; human-in-the-loop. The largest, highest-weighted domain — two full weeks of reps.</span></td>
+                <td class="ccaf-domain"><span class="tag is-big">~27% (largest)</span></td>
+              </tr>
+              <tr>
+                <th class="ccaf-wk" scope="row">Week 5</th>
+                <td class="ccaf-focus"><strong>Claude Code Configuration &amp; Workflows.</strong><span>CLAUDE.md hierarchy, custom commands, skills, subagents, hooks, the SDK, and CI/CD non-interactive mode.</span></td>
+                <td class="ccaf-domain"><span class="tag">~20%</span></td>
+              </tr>
+              <tr>
+                <th class="ccaf-wk" scope="row">Week 6</th>
+                <td class="ccaf-focus"><strong>Tool Design &amp; MCP Integration.</strong><span>Building and consuming MCP servers, effective tool design vs. the anti-patterns the exam tests.</span></td>
+                <td class="ccaf-domain"><span class="tag">Core</span></td>
+              </tr>
+              <tr>
+                <th class="ccaf-wk" scope="row">Week 7</th>
+                <td class="ccaf-focus"><strong>Context Management &amp; Reliability + Integration.</strong><span>Context windows, summarization, scratchpad, RAG — then tying all five domains together.</span></td>
+                <td class="ccaf-domain"><span class="tag">Core</span></td>
+              </tr>
+              <tr>
+                <th class="ccaf-wk" scope="row">Week 8</th>
+                <td class="ccaf-focus"><strong>Exam Preparation.</strong><span>Timed mock exams, scenario drills, and weak-area remediation before you sit the real thing.</span></td>
+                <td class="ccaf-domain"><span class="tag is-all">All five</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ccaf-pullquote">
+          <p><strong>The real exam is six recurring scenarios.</strong> Across the program you build a small version of every one — so by Week 8 you've practised the exact situations the exam puts in front of you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION F — HOW IT RUNS ===================== -->
+    <section class="ccaf-sec ccaf-runs" aria-labelledby="ccaf-runs-h">
+      <div class="container">
+        <span class="ccaf-eyebrow">The rhythm</span>
+        <h2 class="ccaf-h2" id="ccaf-runs-h">How it runs</h2>
+        <div class="ccaf-runs-grid">
+          <div class="ccaf-runs-col">
+            <h3>A typical week</h3>
+            <ul class="ccaf-week-list">
+              <li><span class="ccaf-day">Mon</span><span>New concept + live walkthrough</span></li>
+              <li><span class="ccaf-day">Tue</span><span>New concept + live walkthrough</span></li>
+              <li><span class="ccaf-day">Wed</span><span>Lab day (you build; support on hand to unblock, not to do it for you)</span></li>
+              <li><span class="ccaf-day">Thu</span><span>New concept + walkthrough</span></li>
+              <li><span class="ccaf-day">Fri</span><span>Weekly build assignment kickoff</span></li>
+              <li><span class="ccaf-day">Sat</span><span>Pod demos + review + office hours</span></li>
+            </ul>
+          </div>
+          <div class="ccaf-runs-col">
+            <h3>How you stay supported</h3>
+            <ul class="ccaf-support">
+              <li>Small fixed accountability pods — your group for the whole program</li>
+              <li>A team of trained TAs on hands-on days, for live unblocking when you're genuinely stuck</li>
+              <li>Demo-in-pod + peer review, with TA spot-checks</li>
+              <li>Finish owning a working mini-agent you built yourself</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION G — PRICING ===================== -->
+    <section class="ccaf-sec ccaf-pricing" aria-labelledby="ccaf-price-h">
+      <div class="container">
+        <span class="ccaf-eyebrow">No surprises</span>
+        <h2 class="ccaf-h2" id="ccaf-price-h">The investment</h2>
+        <div class="ccaf-price-grid">
+          <div class="ccaf-price-box is-dark">
+            <span class="label">Program fee</span>
+            <span class="amount">₹34,900</span>
+            <span class="note">8 weeks · ~48 live sessions · pods, TA support, mocks, practice tool &amp; portfolio build — all included.</span>
+          </div>
+          <div class="ccaf-price-box is-exam">
+            <span class="label">Official exam — partner price</span>
+            <span class="amount"><s>$99</s>$49.50</span>
+            <span class="note">Sit the Claude Certified Architect exam through the Growwstacks partner channel at ~50% off, under the Growwstacks umbrella. Exam fee paid by you, separately.</span>
+          </div>
+        </div>
+        <p class="ccaf-fineprint">Program fee and exam fee are separate. The discounted exam rate is a Growwstacks partner benefit; access is arranged through our portal.</p>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION H — INSTRUCTOR ===================== -->
+    <section class="ccaf-sec ccaf-instructor" aria-labelledby="ccaf-inst-h">
+      <div class="container">
+        <span class="ccaf-eyebrow">Who's teaching</span>
+        <h2 class="ccaf-h2" id="ccaf-inst-h">Your instructor</h2>
+        <div class="ccaf-inst-card">
+          <div class="ccaf-inst-photo">
+            <img src="https://ik.imagekit.io/r2zdlyze2o/Office%20/website-images%20/Manish%20Sir%20.png?updatedAt=1771941276802" alt="Manish Mandot, Founder &amp; CEO of Growwstacks and Claude Certified Architect" width="240" height="240" loading="lazy" />
+          </div>
+          <div class="ccaf-inst-body">
+            <h3 class="ccaf-inst-name">Manish Mandot</h3>
+            <p class="ccaf-inst-role">Founder &amp; CEO, Growwstacks · Claude Certified Architect</p>
+            <p class="ccaf-inst-bio">Manish has taught 25,000+ learners across Outskill and other platforms, including multiple AI Generalist cohorts. He leads Growwstacks — a Claude Partner Network member and Make.com Platinum Partner with 2,000+ automation projects delivered across the US, EU and Australia. He has personally sat the Claude Certified Architect exam, and brings real production systems — not slideware — into every session.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION I — FINAL CTA ===================== -->
+    <section class="ccaf-sec ccaf-finalcta" aria-labelledby="ccaf-final-h">
+      <div class="container">
+        <h2 id="ccaf-final-h">Ready to join the cohort?</h2>
+        <p>Seats are limited to keep pods small and support strong. Starts 6 July.</p>
+        <div class="ccaf-cta-row">
+          <a class="ccaf-btn ccaf-btn-dark" href="https://chat.whatsapp.com/H7eMLdWAVh9IM3xwF8twvI?s=cl&p=i&mlu=3&amv=2" target="_blank" rel="noopener noreferrer" aria-label="Join the cohort group on WhatsApp">
+            Join on WhatsApp
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="ccaf-btn ccaf-btn-lightoutline" href="assets/ccaf-program.pdf" download>
+            Download Program PDF
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="gs-footer"></div>
+
+  <script src="../_shared/site-config.js"></script>
+  <script src="../assets/js/images-helper.js"></script>
+  <script src="../_shared/page-builder.js"></script>
+
+</body>
+</html>
