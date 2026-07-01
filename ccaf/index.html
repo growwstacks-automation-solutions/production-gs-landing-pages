@@ -545,5 +545,37 @@
   <script src="../assets/js/images-helper.js"></script>
   <script src="../_shared/page-builder.js"></script>
 
+<script>
+(function () {
+  var WEBHOOK_URL = "https://hook.eu1.make.com/62afw6c8tnek7ygp87viaxfcpv75kpy1"; // <-- your Make.com webhook
+
+  var params = new URLSearchParams(window.location.search);
+
+  // Only fire if at least one UTM parameter is present
+  var utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  var hasUtm = utmKeys.some(function (k) { return params.has(k); });
+  if (!hasUtm) return;
+
+  var payload = {
+    utm_source:   params.get("utm_source")   || null,
+    utm_medium:   params.get("utm_medium")   || null,
+    utm_campaign: params.get("utm_campaign") || null,
+    utm_content:  params.get("utm_content")  || null,
+    utm_term:     params.get("utm_term")     || null,
+    page_url:     window.location.href,
+    page_path:    window.location.pathname,
+    referrer:     document.referrer || null,
+    timestamp:    new Date().toISOString()
+  };
+
+  fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(function () { /* fail silently */ });
+})();
+</script>
+
 </body>
 </html>
