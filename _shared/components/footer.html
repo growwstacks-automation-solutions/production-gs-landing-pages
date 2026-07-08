@@ -53,7 +53,7 @@
         <a href="/#testimonials">Review</a>
         <a href="/#consultation">Contact</a>
       </div>
-      <div class="footer-col">
+      <div class="footer-col footer-contact">
         <h4>Contact</h4>
         <a href="mailto:{{SITE.email}}">{{SITE.email}}</a>
         <a href="{{SITE.phoneTel}}">{{SITE.phone}}</a>
@@ -77,37 +77,61 @@
     </div>
   </div>
   <!--Start of GHL Chat bot Script-->
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69e31cca1024ff7c424c9af2"></script>
-<script>
-function adjustChatWidget() {
-  if (window.innerWidth <= 450) {
-    const widget = document.querySelector('chat-widget');
+  <script
+    src="https://widgets.leadconnectorhq.com/loader.js"
+    data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+    data-widget-id="69e31cca1024ff7c424c9af2"
+  ></script>
+  <script>
+    function updateFooterForCCAF() {
+      if (
+        window.location.pathname === "/ccaf/" ||
+        window.location.pathname === "/ccaf"
+      ) {
+        const footerContact = document.querySelector(".footer-contact"); // Change selector to your footer element
 
-    if (widget && widget.shadowRoot) {
-      const btn = widget.shadowRoot.querySelector('#lc_text-widget--btn');
-      const container = widget.shadowRoot.querySelector('#lc_text-widget');
-
-      if (btn) {
-        btn.style.bottom = '120px';
-      }
-
-      if (container) {
-        container.style.bottom = '120px';
-        container.style.maxHeight = '450px';
+        if (footerContact) {
+          footerContact.innerHTML = `
+        <div class="ccaf-contact">
+            <h4>Contact Us:</h4>
+            <a href="mailto:hello@growwstacks.com">hello@growwstacks.com</a>
+            <a href="tel:+919109903572">+91 91099 03572</a>
+        </div>
+      `;
+        }
       }
     }
-  }
-}
+    function adjustChatWidget() {
+      const widget = document.querySelector("livechat-widget"); // Change selector if needed
 
-// Run multiple times because widget loads async
-setInterval(adjustChatWidget, 1000);
+      if (widget && widget.shadowRoot) {
+        const btn = widget.shadowRoot.querySelector("#lc_text-widget--btn");
+        const container = widget.shadowRoot.querySelector("#lc_text-widget");
 
-// Also run on resize
-window.addEventListener('resize', adjustChatWidget);
-</script>
-<!--End of GHL Chat bot Script-->
+        if (btn) {
+          btn.style.bottom = "120px";
+        }
+
+        if (container) {
+          container.style.bottom = "120px";
+          container.style.maxHeight = "450px";
+        }
+      }
+
+      updateFooterForCCAF();
+    }
+
+    // Run because widget/footer load asynchronously
+    setInterval(adjustChatWidget, 1000);
+
+    // Also run on resize
+    window.addEventListener("resize", adjustChatWidget);
+
+    // Run immediately
+    adjustChatWidget();
+  </script>
+  <!--End of GHL Chat bot Script-->
   <script>
-
     // get 10K operation btn ----------------------
     setInterval(function () {
       document.querySelectorAll(".flow-file-meta").forEach(function (el) {
