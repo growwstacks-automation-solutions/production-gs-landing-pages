@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/analytics-loader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO Meta ═══ -->
+  <title>AI Social Media Content Engine — Automated Multi-Platform Publishing | GrowwStacks</title>
+  <meta name="description" content="How GrowwStacks built the AI Social Media Content Engine using a custom web app, n8n backend, Gemini, and Google Slides to automate on-brand image generation, platform-specific captions, and multi-platform scheduling for Instagram, LinkedIn, Facebook, and X.">
+  <link rel="canonical" href="https://growwstacks.com/case-studies/ai-social-media-content-engine/">
+
+  <!-- ═══ Open Graph ═══ -->
+  <meta property="og:title" content="AI Social Media Content Engine — GrowwStacks Case Study">
+  <meta property="og:description" content="Automate on-brand image generation, platform-specific captions, and scheduling for LinkedIn, Instagram, Facebook, and X. Eliminate 4 hours of weekly work per brand.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://growwstacks.com/case-studies/ai-social-media-content-engine/">
+  <meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/ai-social-media-content-engine/02_Dashboard_Overview.png?updatedAt=1784297474413&tr=w-800,q-80,f-auto">
+  <meta property="og:site_name" content="GrowwStacks">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Social Media Content Engine — Automated Multi-Platform Publishing">
+  <meta name="twitter:description" content="Automate on-brand image generation, platform-specific captions, and scheduling. Eliminate 4 hours of weekly work per brand.">
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+
+  <!-- ═══ Google Ads Tag ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+
+  <!-- ═══ Resource Preconnects ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ik.imagekit.io">
+
+  <!-- ═══ Fonts ═══ -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+  <!-- ═══ Stylesheets ═══ -->
+  <link rel="stylesheet" href="../_shared/global.css">
+  <link rel="stylesheet" href="../_shared/case-studies.css">
+
+  <!-- ═══ Page Tools ═══ -->
+  <meta name="page-tools" content="n8n, gemini, googleSlide, instagram, linkedin, facebook">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the system ensure the generated images stay on-brand?","acceptedAnswer":{"@type":"Answer","text":"Once Gemini generates the relevant visual layer, our backend utilizes Google Slides to apply pre-configured template coordinates. It overlays your logo watermark, border frames, and custom text styles using your brand's exact hex color palette and font faces. This process ensures that every generated graphic fully complies with your design system before being scheduled."}},{"@type":"Question","name":"Can we schedule posts in advance or do they publish immediately?","acceptedAnswer":{"@type":"Answer","text":"The platform features a direct scheduling calendar. Once a post is generated and approved, you can queue it for any future date and time. The n8n engine stores the payload and uses a cron trigger to automatically release the post to your active profiles at the designated time, requiring no manual intervention."}},{"@type":"Question","name":"Do I need to connect my personal social media profiles?","acceptedAnswer":{"@type":"Answer","text":"No, personal credentials are secure. The system connects to official business structures (Instagram Business Profiles, LinkedIn Company Pages, Facebook Pages) via Meta and LinkedIn's official OAuth 2.0 API integrations. This provides secure token access without exposing personal passwords."}},{"@type":"Question","name":"What is workflow automation and why is it useful for marketing?","acceptedAnswer":{"@type":"Answer","text":"Marketing workflow automation involves using technology to automate repetitive, execution-heavy tasks—like graphic resizing, caption rewrites, and multi-channel scheduling. By automating these routines, brands save time, eliminate human error, and maintain a consistent content calendar."}},{"@type":"Question","name":"How secure is integrating our company channels with automation engines?","acceptedAnswer":{"@type":"Answer","text":"Security is paramount. The system relies entirely on official API endpoints and secure token exchanges. We configure precise access scopes to ensure the system can only perform authorized publishing activities. No raw credentials or passwords are stored."}},{"@type":"Question","name":"Can I get a custom social media or content automation built for my business?","acceptedAnswer":{"@type":"Answer","text":"Yes, absolutely. GrowwStacks specializes in engineering bespoke automation systems tailored to your company's workflows. Whether you need custom integrations with specific CRM databases, automated newsletters, or tailored visual editors, we can design and build a custom solution."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/"},{"@type":"ListItem","position":3,"name":"AI Social Media Content Engine"}]}</script>
+</head>
+
+<body class="cs-page page-ai-social-media-content-engine">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <div id="gs-navbar"></div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO                                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="cs-hero">
+      <div class="cs-hero-bg">
+        <div class="cs-hero-bg-shape1"></div>
+        <div class="cs-hero-bg-shape2"></div>
+      </div>
+
+      <div class="container cs-hero-inner">
+
+        <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span aria-hidden="true">/</span>
+          <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+          <span>AI Social Media Content Engine</span>
+        </nav>
+
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Social Media</span>
+          <span class="cs-tag">Content Automation</span>
+          <span class="cs-tag">AI Generation</span>
+          <span class="cs-tag">Marketing</span>
+        </div>
+
+        <h1>AI Social Media Content Engine</h1>
+        <p class="cs-hero-sub">GrowwStacks built a custom social media content platform that automates the entire pipeline from idea to published post — with no design tool and no manual caption writing. The platform resolves the struggle brands face with timing, designers, and rewriting content for different channels by generating on-brand visuals, writing platform-specific captions, and publishing to LinkedIn, Instagram, Facebook, and X in seconds.</p>
+
+        <div class="cs-hero-logos">
+          <div class="cs-hero-logo">
+            <img data-logo="n8n" alt="n8n" width="20" height="20" loading="lazy">
+            n8n
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="gemini" alt="Gemini" width="20" height="20" loading="lazy">
+            Gemini
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="googleSlide" alt="Google Slides" width="20" height="20" loading="lazy">
+            Google Slides
+          </div>
+          <div id="cs-hero-tools" style="display:contents"></div>
+        </div>
+
+        <div class="process-content">
+          <div class="process-video">
+            <div class="yt-facade" data-video-id="3aIGaV9QPA0" role="button" tabindex="0" aria-label="Play video: AI Social Media Content Engine Demo" style="border-radius: var(--radius-lg); aspect-ratio: 16/9; width: 100%; position:relative; overflow:hidden; cursor:pointer;">
+              <picture>
+                <source type="image/webp" srcset="https://i.ytimg.com/vi_webp/3aIGaV9QPA0/maxresdefault.webp">
+                <img alt="AI Social Media Content Engine Demo" loading="lazy" width="480" height="360" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </picture>
+              <div class="yt-facade-play" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+                <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2.1 57.5-2.2 56-2.4 46.6-3 34-3 34-3h0S21.4-3 12-2.4C10.4-2.2 7.3-2.1 4.3 1S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-0.6c1.6-0.2 4.7-0.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/><path d="M27 33V14l18 9.5z" fill="#FFF"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ KEY RESULTS ═══ -->
+    <section class="cs-results">
+      <div class="container">
+        <div class="cs-results-grid">
+          <div class="cs-result-item">
+            <div class="cs-result-num">4 Hrs</div>
+            <div class="cs-result-label">Weekly content production work eliminated per brand</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">15 Sec</div>
+            <div class="cs-result-label">Average time to publish a generated post</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">3</div>
+            <div class="cs-result-label">Post types: Observance, Collage, Event carousel</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">4</div>
+            <div class="cs-result-label">Platforms handled with platform-specific captions (IG, LinkedIn, FB, X)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTENT + SIDEBAR ═══ -->
+    <section class="cs-content">
+      <div class="container">
+        <div class="cs-content-inner">
+
+          <!-- ARTICLE -->
+          <article class="cs-article">
+
+            <!-- SECTION 1: The Problem -->
+            <h2>The Consistency Problem: Why Staying Active Across Multiple Social Channels is a Headcount-Heavy Chore</h2>
+            <p>Brands struggle not with bad ideas but with bad timing. Festivals and national events get missed, content delivery is delayed, and staying consistent across LinkedIn, Instagram, Facebook, and X takes a full team doing repetitive work every week. The manual workflow is always the same: deciding what to post, designing on-brand visuals, and rewriting the same caption four different ways for four different platforms to respect their varying tones and character limits. Most brands solve this by hiring dedicated content managers and designers, which is expensive and slow, or they fail to solve it entirely, allowing their social feeds to go quiet for weeks at a time.</p>
+
+            <!-- SECTION 2: The Solution -->
+            <h2>The Solution: The GrowwStacks Social Media Platform</h2>
+            <p>To eliminate this overhead, GrowwStacks built a custom social media content platform that automates the entire pipeline from idea to published post — with no design tool and no manual caption writing. This is an internal product showcase demonstrating a platform we built specifically to solve the content production bottlenecks observed across modern brands.</p>
+            
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/ai-social-media-content-engine/02_Dashboard_Overview.png?updatedAt=1784297474413&tr=w-800,q-80,f-auto"
+                   alt="The platform dashboard showing total posts, drafts, scheduled and published counts, upcoming posts, and platform distribution across Instagram, LinkedIn, Facebook, and X"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The platform dashboard — total posts, drafts, scheduled and published counts, upcoming posts, and platform distribution across Instagram, LinkedIn, Facebook, and X.</div>
+            </div>
+
+            <p>A clean dashboard shows total posts, drafts, scheduled and published counts, upcoming posts, and platform distribution. The user is in full control of their channels without needing to write code or manually open Photoshop. The system does not replace a brand's identity — it integrates the brand's own colors, logo, and design system directly into the automation backend, ensuring that every generated image is immediately client-ready and on-brand.</p>
+
+            <div class="cs-visual-flow" aria-label="Workflow picks platforms, chooses post type, generates visual, writes captions, and publishes or schedules.">
+              <div class="cs-flow-pipeline">
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">🔌</div>
+                  <div class="cs-flow-step-title">Pick Platforms</div>
+                  <div class="cs-flow-step-sub">Select destinations</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">📋</div>
+                  <div class="cs-flow-step-title">Choose Type</div>
+                  <div class="cs-flow-step-sub">Select post type</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step cs-flow-active">
+                  <div class="cs-flow-step-icon">🎨</div>
+                  <div class="cs-flow-step-title">AI Visual Gen</div>
+                  <div class="cs-flow-step-sub">Generate branded image</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">✍️</div>
+                  <div class="cs-flow-step-title">Captions</div>
+                  <div class="cs-flow-step-sub">Platform-specific text</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-outcome-wrap">
+                  <div class="cs-flow-outcome approved">✓ Published in 15s</div>
+                  <div class="cs-flow-outcome review">🎨 On-Brand</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: How It Works -->
+            <h3>How It Works — The Step-by-Step Content Generation Pipeline</h3>
+            <p>The automation operates as a continuous background engine to handle the entire reputation loop without human intervention. Here is the step-by-step breakdown:</p>
+            <ol>
+              <li><strong>Select Platforms:</strong> The user begins by toggling the target channels (Instagram, LinkedIn, Facebook, and X) from a clean, intuitive selector in the Post Creator.
+                <div class="cs-img-block">
+                  <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/ai-social-media-content-engine/03_Post_Creator_Platform_Picker.png?updatedAt=1784297501353&tr=w-800,q-80,f-auto"
+                       alt="The Post Creator showing platform selection tool"
+                       loading="lazy" width="800" height="450">
+                  <div class="cs-img-caption">The Post Creator — the user selects which platforms to publish to before choosing a post type and generating content.</div>
+                </div>
+              </li>
+              <li><strong>Choose Post Type:</strong> The user selects one of three template engines:
+                <ul>
+                  <li><strong>Observance Post:</strong> Built for festivals, national days, and calendar occasions. The user simply types the occasion name and optional brand keywords. A backend automation runs a master prompt in Gemini that understands different festivals, picks the right visual style, greeting tone, and aesthetic, and generates a fully branded image with the brand's logo placed automatically.</li>
+                  <li><strong>Collage Post:</strong> Designed for showcasing products or team photos. The user uploads their own images; the system automatically detects the image count, selects the matching collage layout, applies brand colors, watermarks the brand logo, and outputs three design variations.</li>
+                  <li><strong>Event Post:</strong> Used for carousels built from real photos of launches, milestones, or workshops, automatically assembling them in order.</li>
+                </ul>
+              </li>
+              <li><strong>AI Generates Branded Visual:</strong> The n8n backend triggers the Gemini model to generate relevant visuals. The system uses Google Slides APIs to inject the image and overlay the brand's assets (logo, custom border, fonts) automatically onto the slides, rendering a client-ready on-brand graphic.</li>
+              <li><strong>Platform-Specific Captions:</strong> Using Gemini, the platform generates tailored captions simultaneously. LinkedIn receives a professional, structured, and long-form caption; Instagram receives a warmer, shorter caption packed with relevant hashtags; Facebook is written to encourage comments and shares. Tone guidelines (e.g. professional or playful) can be chosen by the user.</li>
+              <li><strong>Post Now or Schedule:</strong> Once approved, the user can publish the post instantly or schedule it for a later date. Posts go live via the direct publishing APIs in about 15 seconds.</li>
+            </ol>
+
+            <!-- SECTION 4: Behind the UI / Technical Details -->
+            <h2>Behind the UI: The n8n Automation Engine</h2>
+            <p>A simple frontend interface hides a sophisticated n8n integration layer. Parallel branches execute async calls to coordinate Gemini visual generation, Google Slides template rendering, Gemini prompt engineering for captions, and official publishing API connections.</p>
+            
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/ai-social-media-content-engine/01_Backend_Automation_Workflow.png?updatedAt=1784297450149&tr=w-800,q-80,f-auto"
+                   alt="The n8n automation engine workflow in the backend with parallel branches for image generation, per-platform caption writing, and multi-platform publishing"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The n8n automation engine behind the clean interface — parallel branches handle image generation, per-platform caption writing, and multi-platform publishing.</div>
+            </div>
+
+            <div class="cs-highlight">
+              <p>💡 <strong>Operational Time Savings:</strong> Eliminating four hours of weekly designer and copywriter work per brand creates a seamless pipeline where content schedules execute themselves on time, every time.</p>
+            </div>
+
+            <!-- SECTION 5: Feature Cards -->
+            <h2>What This System Does That Manual Process Can't</h2>
+            <div class="cs-features">
+              <div class="cs-feature">
+                <div class="cs-feature-icon">🎨</div>
+                <h4>Automated Brand Overlays</h4>
+                <p>Every generated image undergoes an automated overlay process that applies the brand's exact hex colors, custom typography, and places the company logo in a consistent grid position. Eliminates the need for manual design edits or templates.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">✍️</div>
+                <h4>Cross-Channel Caption Tailoring</h4>
+                <p>One core idea is converted into four distinct captions by Gemini in parallel. Character limits, tone of voice, formatting, and hashtag usage are dynamically adjusted to fit LinkedIn, Instagram, Facebook, and X specifications perfectly.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">⚡</div>
+                <h4>Direct API Publishing</h4>
+                <p>Direct integration with official Meta (Instagram &amp; Facebook) and LinkedIn publishing APIs pushes approved posts live in less than 15 seconds. Bypasses manual scheduling queues and mobile app notification flows.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">📅</div>
+                <h4>Centralized Pipeline &amp; Dashboard</h4>
+                <p>Keep track of drafts, scheduled posts, and published items in a simple calendar and list layout. Filter by platform to monitor your brand's distribution and maintain consistent visual coverage across your feeds.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">🏪</div>
+                <h4>Multi-Platform Sync</h4>
+                <p>Publish to Instagram, Facebook, LinkedIn, and X simultaneously, ensuring synchronized campaigns across all channels without logging into separate profiles.</p>
+              </div>
+              <div class="cs-feature">
+                <div class="cs-feature-icon">✅</div>
+                <h4>Consistent Brand Voice</h4>
+                <p>Applies pre-approved professional and brand-aligned writing templates for each channel, avoiding spelling errors and erratic styles.</p>
+              </div>
+            </div>
+
+            <!-- SECTION 6: Before vs After -->
+            <h2>Before vs. After: Multi-Platform Content Control</h2>
+            <p><strong>Before:</strong> Brands had to manually design graphics in Canva or Photoshop, write separate captions, and schedule posts one-by-one. Occasions were missed, scheduling took hours of weekly admin work, and posts were inconsistent across channels.</p>
+            <p><strong>After:</strong> The GrowwStacks Social Media platform automates the entire content generation pipeline. It auto-generates branded graphics, creates channel-specific captions, and publishes posts automatically to Instagram, LinkedIn, Facebook, and X in seconds — saving 4+ hours weekly.</p>
+
+            <!-- SECTION 7: Implementation -->
+            <h2>Implementation: Live in 4 Weeks</h2>
+            <ol>
+              <li><strong>Platform Integration:</strong> Connected direct API publishing routes for Instagram Graph API, Facebook Pages API, and LinkedIn Shares API.</li>
+              <li><strong>Brand Design Mapping:</strong> Programmed brand visual guidelines, colors, font styling, and logo overlay coordinates in the graphic generation engine.</li>
+              <li><strong>Prompt Configuration:</strong> Structured master prompts in Gemini to write per-platform captions, adjusting lengths, hashtags, and formatting style.</li>
+              <li><strong>Pipeline Dashboard Setup:</strong> Built the dashboard UI to monitor draft posts, schedule calendar events, and display cross-channel statistics.</li>
+              <li><strong>Testing & Launch:</strong> Conducted end-to-end publishing tests across all channels, verified image layouts, and went live.</li>
+            </ol>
+
+            <!-- SECTION 8: The Right Fit -->
+            <h2>The Right Fit — and When It Isn't</h2>
+            <p>This solution is perfect for growing brands, content marketing agencies, multi-brand companies, and e-commerce stores wanting to maintain an active, on-brand visual presence across LinkedIn, Instagram, Facebook, and X without manual layout design or caption-writing overhead.</p>
+            <p>However, it may not be necessary for brands that publish less than one post a week, where manual content creation is easily managed. Additionally, businesses that require highly customized, custom-painted digital artwork or complex interactive graphics should use manual design processes rather than automated template generation.</p>
+
+          </article>
+
+          <!-- SIDEBAR -->
+          <aside class="cs-sidebar">
+
+            <div class="cs-sidebar-card">
+              <h4>Project Details</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Marketing / Content</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Social Media Automation</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">Custom Web App + n8n + Gemini</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">4 weeks</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Advanced</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 5.0 / 5</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">4 hrs/week saved</span></div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Tools &amp; Integrations</h4>
+              <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+                <span class="cs-tool-tag"><img data-logo="n8n" alt="n8n" width="14" height="14" loading="lazy">n8n</span>
+                <span class="cs-tool-tag"><img data-logo="gemini" alt="Gemini" width="14" height="14" loading="lazy">Gemini</span>
+                <span class="cs-tool-tag"><img data-logo="googleSlide" alt="Google Slides" width="14" height="14" loading="lazy">Google Slides</span>
+                <span class="cs-tool-tag"><img data-logo="instagram" alt="Instagram" width="14" height="14" loading="lazy">Instagram API</span>
+                <span class="cs-tool-tag"><img data-logo="linkedin" alt="LinkedIn" width="14" height="14" loading="lazy">LinkedIn API</span>
+                <span class="cs-tool-tag"><img data-logo="facebook" alt="Facebook" width="14" height="14" loading="lazy">Facebook API</span>
+              </div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Key Metrics</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Time Savings</span><span class="cs-sidebar-value" style="text-align:right;">4+ hours/week</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Publishing Speed</span><span class="cs-sidebar-value" style="text-align:right;">~15 seconds</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Channels Supported</span><span class="cs-sidebar-value" style="text-align:right;">IG, LinkedIn, FB, X</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Template Types</span><span class="cs-sidebar-value" style="text-align:right;">Observance, Collage, Event</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Visual Alignment</span><span class="cs-sidebar-value" style="text-align:right;">100% on-brand styling</span></div>
+            </div>
+
+            <div class="cs-sidebar-cta">
+              <h4>Ready to automate your social media?</h4>
+              <p>Free discovery call — let's discuss your brand visual assets and social channels.</p>
+              <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ SECTION ═══ -->
+    <section class="faq section" id="faq">
+      <div class="container">
+        <div style="text-align:center">
+          <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+          <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+        </div>
+        <div class="faq-inner">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How does the system ensure the generated images stay on-brand?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Brand integrity is protected.</strong> Once Gemini generates the relevant visual layer, our backend utilizes Google Slides to apply pre-configured template coordinates. It overlays your logo watermark, border frames, and custom text styles using your brand's exact hex color palette and font faces. This process ensures that every generated graphic fully complies with your design system before being scheduled.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Can we schedule posts in advance or do they publish immediately?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Both workflows are supported.</strong> The platform features a direct scheduling calendar. Once a post is generated and approved, you can queue it for any future date and time. The n8n engine stores the payload and uses a cron trigger to automatically release the post to your active profiles at the designated time, requiring no manual intervention.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Do I need to connect my personal social media profiles?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>No, personal credentials are secure.</strong> The system connects to official business structures (Instagram Business Profiles, LinkedIn Company Pages, Facebook Pages) via Meta and LinkedIn's official OAuth 2.0 API integrations. This provides secure token access without exposing personal passwords.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What is workflow automation and why is it useful for marketing?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Marketing workflow automation streamlines execution.</strong> It involves using technology to automate repetitive, execution-heavy tasks—like graphic resizing, caption rewrites, and multi-channel scheduling. By automating these routines, brands save time, eliminate human error, and maintain a consistent content calendar. This allows marketing teams to focus on strategy, campaigns, and community engagement rather than manual formatting.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How secure is integrating our company channels with automation engines?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Security is paramount.</strong> The system relies entirely on official API endpoints and secure token exchanges. We configure precise access scopes (e.g. w_member_social or publish_pages) to ensure the system can only perform authorized publishing activities. No raw credentials or passwords are stored, and the connection can be revoked instantly from your social account security settings.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Can I get a custom social media or content automation built for my business?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Yes, absolutely.</strong> Custom automation solutions are designed to address the unique challenges and requirements of your specific business processes. Whether you need custom integrations with specific CRM databases, automated newsletters, or tailored visual editors, we can design and implement a custom automation solution that perfectly fits your workflow.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BOTTOM CTA ═══ -->
+    <section class="cs-bottom-cta">
+      <div class="container" style="position:relative;z-index:2">
+        <h2>Automate your social media publishing today</h2>
+        <p>Generate on-brand visuals, write platform-specific captions, and schedule posts across all channels automatically.</p>
+        <div class="btn-group">
+          <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+          <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div id="gs-footer"></div>
+
+  <!-- Inject SITE.logos into all data-logo images -->
+  <script>
+  (function() {
+    function injectLogos() {
+      if (typeof SITE === 'undefined' || !SITE.logos) return;
+      document.querySelectorAll('img[data-logo]').forEach(function(img) {
+        var key = img.getAttribute('data-logo');
+        if (SITE.logos[key]) img.src = SITE.logos[key];
+      });
+    }
+    injectLogos();
+    document.addEventListener('DOMContentLoaded', injectLogos);
+  })();
+  </script>
+
+  <!-- ═══ Shared Config + Component Loader ═══ -->
+  <script src="../_shared/site-config.js"></script>
+  <script src="../assets/js/images-helper.js"></script>
+  <script src="../_shared/page-builder.js"></script>
+  <script src="../case-studies.js"></script>
+
+</body>
+</html>

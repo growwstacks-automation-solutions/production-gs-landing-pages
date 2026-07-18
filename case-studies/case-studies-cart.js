@@ -783,6 +783,20 @@ window.CS_CARDS = [
     roi: "Zero manual checks",
     app: ["Airtable", "NFC Tools", "Custom Web App", "Email"],
     roiIcon: "check"
+  } , {
+    category: "social-marketing ai-powered",
+    href: "/case-studies/ai-social-media-content-engine.html",
+    bannerClass: "csh-banner-purple",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/AI_Social_Media_Content_Engine",
+    imgAlt: "AI Social Media Content Engine",
+    tag: "Social Marketing",
+    title: "AI Social Media Content Engine",
+    desc: "GrowwStacks built a custom social media content platform that automates the entire pipeline from idea to published post — with no design tool and no manual caption writing.",
+    meta: "Content Automation",
+    roi: "4 hrs/week saved",
+    app: ["n8n", "gemini", "googleSlide", "instagram", "linkedin", "facebook"],
+    roiIcon: "clock"
   }
+ 
 
 ];
