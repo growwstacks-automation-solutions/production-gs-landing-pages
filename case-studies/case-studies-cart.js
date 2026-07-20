@@ -796,6 +796,19 @@ window.CS_CARDS = [
     roi: "4 hrs/week saved",
     app: ["n8n", "gemini", "googleSlide", "instagram", "linkedin", "facebook"],
     roiIcon: "clock"
+  },{
+    category: "workforce custom-app hospitality automation",
+    href: "/case-studies/cleaning-workforce-custom-app-migration.html",
+    bannerClass: "csh-banner-blue",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/cleaning-workforce-custom-app-migration?updatedAt=1784530337441",
+    imgAlt: "Cleaning Workforce Custom App Migration",
+    tag: "Workforce Management",
+    title: "Cleaning Workforce Automation: From Make.com to a Custom Web App",
+    desc: "Migrated a venue cleaning scheduling pipeline from Make.com to a custom web app. Retained identical automation logic, created a purpose-built client dashboard, and reduced ongoing platform costs to $0.",
+    meta: "Custom Web App + Automation",
+    roi: "Eliminated all subscription costs",
+    app: ["supabase", "vercel", "googleCalendar", "whatsapp", "gmail"],
+    roiIcon: "check"
   }
  
 

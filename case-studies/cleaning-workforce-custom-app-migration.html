@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/analytics-loader.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══ SEO Meta ═══ -->
+  <title>Cleaning Workforce Automation: From Make.com to a Custom Web App — Case Study | GrowwStacks</title>
+  <meta name="description" content="How GrowwStacks migrated a cleaning workforce automation from Make.com and Airtable to a fully custom web application on Supabase and Vercel — same automation logic, a purpose-built client dashboard, and zero ongoing platform costs.">
+  <link rel="canonical" href="https://growwstacks.com/case-studies/cleaning-workforce-custom-app-migration/">
+
+  <!-- ═══ Open Graph ═══ -->
+  <meta property="og:title" content="Cleaning Workforce Automation: From Make.com to a Custom Web App — GrowwStacks Case Study">
+  <meta property="og:description" content="How GrowwStacks migrated a cleaning workforce automation from Make.com and Airtable to a fully custom web application on Supabase and Vercel — same automation logic, a purpose-built client dashboard, and zero ongoing platform costs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://growwstacks.com/case-studies/cleaning-workforce-custom-app-migration/">
+  <meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/cleaning-workforce-custom-app-migration/04_App_Dashboard_Shift_Detail.png">
+  <meta property="og:site_name" content="GrowwStacks">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cleaning Workforce Automation: From Make.com to a Custom Web App">
+  <meta name="twitter:description" content="How GrowwStacks migrated a cleaning workforce automation from Make.com and Airtable to a fully custom web application on Supabase and Vercel.">
+
+  <!-- ═══ Favicon ═══ -->
+  <link rel="icon" type="image/png" href="https://ik.imagekit.io/r2zdlyze2o/GS-Website/GS-favicon.png">
+
+  <!-- ═══ Google Ads Tag ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17936939840"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','AW-17936939840');</script>
+
+  <!-- ═══ Resource Preconnects ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ik.imagekit.io">
+
+  <!-- ═══ Fonts ═══ -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+
+  <!-- ═══ Stylesheets ═══ -->
+  <link rel="stylesheet" href="../_shared/global.css">
+  <link rel="stylesheet" href="../_shared/case-studies.css">
+
+  <!-- ═══ Page Tools ═══ -->
+  <meta name="page-tools" content="supabase, vercel, googleCalendar, whatsapp, gmail">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why migrate from Make.com to a custom web app?","acceptedAnswer":{"@type":"Answer","text":"While no-code platforms like Make.com are great for prototyping, they lack a user-facing dashboard for operations staff. Migrating to a custom app provides a tailored interface, removes execution limits, and eliminates monthly subscription costs."}},{"@type":"Question","name":"How is it possible to run this app at zero platform cost?","acceptedAnswer":{"@type":"Answer","text":"By utilizing free-tier allowances on developer platforms like Vercel and Supabase. At moderate scales, Vercel's hosting and Supabase's database/edge functions fit well within their free tier boundaries."}},{"@type":"Question","name":"How does the automated cleaner tier escalation work?","acceptedAnswer":{"@type":"Answer","text":"The system organizes cleaners into three priority tiers. When a cleaning shift is confirmed, the system automatically offers the shift to Tier 1 cleaners first. If the shift remains open after a timeout, the system escalates and broadcasts the shift to Tier 2, and eventually Tier 3."}},{"@type":"Question","name":"Can cleaner tiers and reliability scores be adjusted manually?","acceptedAnswer":{"@type":"Answer","text":"Yes. The dashboard tracks each cleaner's responsiveness and completed shifts. Operations managers can manually promote or demote cleaners across tiers directly in the settings page."}},{"@type":"Question","name":"How secure is the integration with our Google Calendar and Gmail?","acceptedAnswer":{"@type":"Answer","text":"The application integrates directly with Google OAuth APIs. Your credentials and tokens are encrypted and stored securely inside your private Supabase database instance."}},{"@type":"Question","name":"What happens if a connection drops or credentials expire?","acceptedAnswer":{"@type":"Answer","text":"The application performs automated health checks. If a connection drops, an alert is surfaced on the dashboard. The client can click 'Reconnect' and authenticate in a popup to restore service."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://growwstacks.com/"},{"@type":"ListItem","position":2,"name":"Case Studies","item":"https://growwstacks.com/case-studies/"},{"@type":"ListItem","position":3,"name":"Cleaning Workforce Automation: From Make.com to a Custom Web App"}]}</script>
+</head>
+
+<body class="cs-page page-cleaning-workforce-custom-app-migration">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <div id="gs-navbar"></div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO                                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="cs-hero">
+      <div class="cs-hero-bg">
+        <div class="cs-hero-bg-shape1"></div>
+        <div class="cs-hero-bg-shape2"></div>
+      </div>
+
+      <div class="container cs-hero-inner">
+
+        <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span aria-hidden="true">/</span>
+          <a href="/case-studies/">Case Studies</a> <span aria-hidden="true">/</span>
+          <span>Cleaning Workforce Custom App Migration</span>
+        </nav>
+
+        <div class="cs-hero-tags">
+          <span class="cs-tag">Hospitality</span>
+          <span class="cs-tag">Workforce Management</span>
+          <span class="cs-tag">Custom App</span>
+          <span class="cs-tag">Migration</span>
+          <span class="cs-tag">Automation</span>
+        </div>
+
+        <h1>Cleaning Workforce Automation: From Make.com to a Custom Web App</h1>
+        <p class="cs-hero-sub">GrowwStacks migrated a business-critical workforce scheduling flow from Make.com to a custom dashboard served via Vercel and Supabase. The migration maintained identical backend rules while putting settings, cleaner availability, and connection health directly in the client's hands — reducing monthly software platform costs to exactly $0.</p>
+
+        <div class="cs-hero-logos">
+          <div class="cs-hero-logo">
+            <img data-logo="supabase" alt="Supabase" width="20" height="20" loading="lazy">
+            Supabase
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="vercel" alt="Vercel" width="20" height="20" loading="lazy">
+            Vercel
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="googleCalendar" alt="Google Calendar" width="20" height="20" loading="lazy">
+            Google Calendar
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="whatsapp" alt="WhatsApp" width="20" height="20" loading="lazy">
+            WhatsApp
+          </div>
+          <div class="cs-hero-logo">
+            <img data-logo="gmail" alt="Gmail" width="20" height="20" loading="lazy">
+            Gmail
+          </div>
+        </div>
+
+        <div class="process-content">
+          <div class="process-video">
+            <div class="yt-facade" data-video-id="XQsuRNk79Oc" role="button" tabindex="0" aria-label="Play video: Cleaning Workforce Automation Demo" style="border-radius: var(--radius-lg); aspect-ratio: 16/9; width: 100%; position:relative; overflow:hidden; cursor:pointer;">
+              <picture>
+                <source type="image/webp" srcset="https://i.ytimg.com/vi_webp/XQsuRNk79Oc/maxresdefault.webp">
+                <img alt="Cleaning Workforce Automation Demo" loading="lazy" width="480" height="360" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">
+              </picture>
+              <div class="yt-facade-play" aria-hidden="true" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;">
+                <svg width="68" height="48" viewBox="0 0 68 48"><path d="M66.5 7.7s-.7-4.7-2.8-6.8C60.7-2.1 57.5-2.2 56-2.4 46.6-3 34-3 34-3h0S21.4-3 12-2.4C10.4-2.2 7.3-2.1 4.3 1S.7 7.7.7 7.7 0 13.2 0 18.8v5.2c0 5.5.7 11 .7 11s.7 4.7 2.8 6.8c3 3.1 6.9 3 8.7 3.3C18.5 45.6 34 45.8 34 45.8s12.6 0 22-0.6c1.6-0.2 4.7-0.3 7.7-3.4 2.1-2.1 2.8-6.8 2.8-6.8s.7-5.5.7-11v-5.2c0-5.6-.7-11.1-.7-11.1z" fill="#FF0000"/><path d="M27 33V14l18 9.5z" fill="#FFF"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ KEY RESULTS ═══ -->
+    <section class="cs-results">
+      <div class="container">
+        <div class="cs-results-grid">
+          <div class="cs-result-item">
+            <div class="cs-result-num">$0</div>
+            <div class="cs-result-label">Ongoing monthly platform cost after migration</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">100%</div>
+            <div class="cs-result-label">Client-controlled settings, no developer dependency</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">3 Tiers</div>
+            <div class="cs-result-label">Automated cleaner escalation with reliability scoring</div>
+          </div>
+          <div class="cs-result-item">
+            <div class="cs-result-num">1 Click</div>
+            <div class="cs-result-label">Booking confirmation and shift assignment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CONTENT + SIDEBAR ═══ -->
+    <section class="cs-content">
+      <div class="container">
+        <div class="cs-content-inner">
+
+          <!-- ARTICLE -->
+          <article class="cs-article">
+
+            <!-- SECTION 1: The Problem -->
+            <h2>The Client and the Problem: The Overhead of Manual Cleaner Coordination</h2>
+            <p>The client operates a farm venue hosting weddings, retreats, and guests. Bookings arrive through Google Calendar, and every single booking needs a professional clean before the next guest arrives. They have a team of cleaners who must be coordinated for every clean — and managing that manually through text messages, every week, had become a real operational problem.</p>
+            <p>Someone had to personally reach out to each cleaner, wait for replies, follow up on non-responses, and find last-minute replacements when someone dropped out. What they needed was a system that handled all of it automatically, so their team could focus on running the venue instead of chasing cleaners.</p>
+
+            <!-- SECTION 2: The First Build: Make.com -->
+            <h2>The First Build: Make.com Backend Scenario</h2>
+            <p>The original system was built on Make.com. Every time a guest booking landed in the venue's Google Calendar, Make.com detected it, created a cleaning shift, and began messaging cleaners to offer the shift — escalating through priority tiers and handling their responses automatically. Bookings were pulled from Google Calendar into Airtable, and a message went to the operations manager to confirm the booking and the shifts to be created. Multiple use cases ran out of Make.com.</p>
+            
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/cleaning-workforce-custom-app-migration/01_Makecom_Booking_Sync_Scenario.png?tr=w-800,q-80,f-auto"
+                   alt="Original Make.com scenario syncing Google Calendar bookings into Airtable and routing confirmation messages"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The original Make.com booking sync scenario — pulling four weeks of bookings from Google Calendar into Airtable, then branching through a router into parallel confirmation and notification paths.</div>
+            </div>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/cleaning-workforce-custom-app-migration/02_Makecom_Shift_Offer_Scenario.png?tr=w-800,q-80,f-auto"
+                   alt="Make.com scenario offering cleaning shifts to cleaners over WhatsApp and recording their responses in Airtable"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The shift offer scenario — a webhook triggers cleaner lookup in Airtable, custom code builds the offer, WhatsApp messages go out, and responses are written back to the record.</div>
+            </div>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/cleaning-workforce-custom-app-migration/03_Makecom_Tier3_Escalation_Alert.png?tr=w-800,q-80,f-auto"
+                   alt="Make.com escalation scenario sending an alert email when Tier 3 cleaners do not respond to a shift offer"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The final escalation scenario — when Tier 3 cleaners do not reply, the workflow aggregates the open shift details and emails an alert to the operations manager.</div>
+            </div>
+
+            <p>The no-code backend worked, resolving the basic scheduling logic and automating messaging chains. However, as bookings scaled and operational workflows matured, the friction points of running a critical team schedule on a developer-facing canvas became apparent.</p>
+
+            <!-- SECTION 3: Why the No-Code Backend Was the Wrong Interface -->
+            <h2>Why the No-Code Backend Was the Wrong Interface</h2>
+            <p>The system was not user-centric. The client could not visualize how things were working on the backend — and it was never their job to. Interacting with a no-code backend meant dealing with technicalities they were not comfortable with and a system structure they could not easily reason about.</p>
+            <p>If they wanted to adjust the messages being sent out, it was difficult. If something broke, or if a step was missed, or if something got changed that should not have been, the client was left exposed. Expecting a client to maintain a no-code backend is not an ideal solution to propose.</p>
+
+            <div class="cs-visual-flow" aria-label="Workflow detects Google Calendar bookings, creates cleaning shifts, offers shifts to Tier 1 cleaners, escalates through tiers, tracks responses live, and staffs shifts.">
+              <div class="cs-flow-pipeline">
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">📅</div>
+                  <div class="cs-flow-step-title">Calendar Booking</div>
+                  <div class="cs-flow-step-sub">Google Calendar</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">🔄</div>
+                  <div class="cs-flow-step-title">Create Shift</div>
+                  <div class="cs-flow-step-sub">Auto-generate shift</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step cs-flow-active">
+                  <div class="cs-flow-step-icon">👥</div>
+                  <div class="cs-flow-step-title">Offer Tier 1</div>
+                  <div class="cs-flow-step-sub">First choice team</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-step">
+                  <div class="cs-flow-step-icon">⚡</div>
+                  <div class="cs-flow-step-title">Escalation</div>
+                  <div class="cs-flow-step-sub">Tier 2 &amp; 3 fallback</div>
+                </div>
+                <div class="cs-flow-connector">→</div>
+                <div class="cs-flow-outcome-wrap">
+                  <div class="cs-flow-outcome approved">✓ Fully Staffed</div>
+                  <div class="cs-flow-outcome review">💵 $0 Running Cost</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 4: The Rebuild: A Fully Custom Web Application -->
+            <h2>The Rebuild: A Fully Custom Web Application</h2>
+            <p>GrowwStacks rebuilt the entire system from scratch as a fully custom web application using vibe coding. Same logic, same automations — but now the client has a proper dashboard their whole team actually uses.</p>
+
+            <div class="cs-img-block">
+              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/cleaning-workforce-custom-app-migration/04_App_Dashboard_Shift_Detail.png?tr=w-800,q-80,f-auto"
+                   alt="Custom workforce dashboard showing pending and urgent shift counts alongside a shift detail panel with tier escalation timeline and cleaner responses"
+                   loading="lazy" width="800" height="450">
+              <div class="cs-img-caption">The rebuilt dashboard — pending, urgent, and staffing counts at a glance, with a shift detail panel showing required vs assigned cleaners, the live Tier 1 to Tier 3 escalation timeline, and each cleaner's response.</div>
+            </div>
+
+            <p>The dashboard surfaces pending confirmations, urgent confirmations, staffing status, and which bookings are fully staffed. All alerts appear in one place. Every booking is visible, and the client can confirm it directly. Shifts can be assigned manually. Live staffing progress is visible at a glance — for example, three of six cleaners accepted, three still needed.</p>
+            <p>Shifts can be created for a whole venue or an individual building, with the client setting the number of hours and the number of cleaners required, then assigning cleaners and creating the shift.</p>
+
+            <!-- SECTION 5: Cleaner Database and Reliability Tiers -->
+            <h2>Cleaner Database and Reliability Tiers</h2>
+            <p>The system holds a full cleaner database organised into three priority tiers. Tier 1 cleaners are offered shifts first, then the system escalates to Tier 2 and Tier 3.</p>
+
+            <p>Reliability is tracked, so the client can assess which cleaners are most dependable. If a Tier 3 cleaner proves more reliable based on their acceptance rate and shifts accepted, the client can promote them to Tier 1 directly from the interface. Team leads can update their own availability from their own login.</p>
+
+            <!-- SECTION 6: Client-Controlled Scheduling -->
+            <h2>Client-Controlled Scheduling</h2>
+            <p>Everything that was previously locked inside the Make.com backend is now a setting the client controls: when bookings are synced from Google Calendar, when confirmation requests are sent, when confirmation reminders go to the operations manager, and when Tier 1 cleaners are offered a shift.</p>
+            
+            <p>All of it is dynamically adjustable with simple toggles. This flexibility did not exist in the Make.com build, where changing an escalation timeframe meant editing a router delay value directly in a backend canvas.</p>
+
+            <!-- SECTION 7: System Logs, Health Checks, and Zero Dependency -->
+            <h2>System Logs, Health Checks, and Zero Dependency</h2>
+            <p>The application includes system logs capturing every adjustment, alert, and notification. Email delivery is tracked. Health checks surface warnings when a WhatsApp connection drops or Gmail credentials expire.</p>
+
+            <p>Critically, the client can reconnect services themselves — click reconnect, authenticate in the popup, and the platform is restored. They no longer depend on GrowwStacks for routine maintenance. User management is also self-service. The client can add team members, define their roles, deactivate people who have left, and mark users as away when on holiday. If the business scales, they add people themselves.</p>
+
+            <!-- SECTION 8: Automatic Alerts So Nothing Gets Missed -->
+            <h2>Automatic Alerts So Nothing Gets Missed</h2>
+            <p>Urgent situations surface automatically in the alerts panel — understaffed shifts, booking cancellations, coverage gaps. The team sees every upcoming shift, confirms with one click, and checks who has been offered a shift, who has accepted, and where escalation currently stands, all in one place.</p>
+            
+            <div class="cs-highlight">
+              <p>💡 <strong>Operations Control:</strong> Instantly surfacing understaffed shifts on the dashboard homepage guarantees that scheduling exceptions are flagged and handled hours before the shift is scheduled to begin.</p>
+            </div>
+
+            <!-- SECTION 9: The Part That Makes It Better: Zero Running Cost -->
+            <h2>The Part That Makes It Better: Zero Running Cost</h2>
+            <p>The rebuilt system runs at zero ongoing cost. No Make.com subscription. No Airtable licensing fees.</p>
+            <p>The application is deployed on Vercel's free tier. The database and backend run on Supabase, also free at this scale. The automations that previously ran inside Make.com now run as edge functions inside Supabase — scheduled jobs, WhatsApp messages, tier escalation, and reminders. All of it built in code and completely owned by the client.</p>
+
+            <!-- SECTION 10: The Outcome -->
+            <h2>The Outcome: Same Automation Logic, Better User Control</h2>
+            <p>The client went from navigating a no-code backend they did not understand to having a purpose-built tool their whole team uses every day. Same outcome, better experience, zero ongoing costs.</p>
+
+            <!-- SECTION 11: The Right Fit — and When It Isn't -->
+            <h2>The Right Fit — and When It Isn't</h2>
+            <p>This migration path suits businesses already running proven automation logic on no-code platforms who have outgrown the interface — where the client needs daily operational visibility, where recurring platform fees have become significant, or where non-technical staff need to adjust settings without touching a backend.</p>
+            <p>It is less suited to businesses still validating their process, where the logic changes weekly and the speed of no-code iteration outweighs the cost and interface limitations. Rebuild once the workflow is stable.</p>
+
+          </article>
+
+          <!-- SIDEBAR -->
+          <aside class="cs-sidebar">
+
+            <div class="cs-sidebar-card">
+              <h4>Project Details</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Hospitality / Venue Management</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Workforce Automation &amp; Custom Applications</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">Custom Web App + Supabase + Vercel</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">5 weeks</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Advanced</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 5.0 / 5</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">Eliminated all subscription costs</span></div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Tools &amp; Integrations</h4>
+              <div class="cs-sidebar-tools" id="cs-sidebar-tools">
+                <span class="cs-tool-tag"><img data-logo="supabase" alt="Supabase" width="14" height="14" loading="lazy">Supabase</span>
+                <span class="cs-tool-tag"><img data-logo="vercel" alt="Vercel" width="14" height="14" loading="lazy">Vercel</span>
+                <span class="cs-tool-tag"><img data-logo="googleCalendar" alt="Google Calendar" width="14" height="14" loading="lazy">Google Calendar</span>
+                <span class="cs-tool-tag"><img data-logo="whatsapp" alt="WhatsApp" width="14" height="14" loading="lazy">WhatsApp</span>
+                <span class="cs-tool-tag"><img data-logo="gmail" alt="Gmail" width="14" height="14" loading="lazy">Gmail</span>
+              </div>
+            </div>
+
+            <div class="cs-sidebar-card">
+              <h4>Key Metrics</h4>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Monthly Platform Cost</span><span class="cs-sidebar-value" style="text-align:right;">Reduced to zero</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Coordination</span><span class="cs-sidebar-value" style="text-align:right;">Fully eliminated</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Cleaner Tiers</span><span class="cs-sidebar-value" style="text-align:right;">3, with promotion logic</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Autonomy</span><span class="cs-sidebar-value" style="text-align:right;">Full control of settings</span></div>
+              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Previous Stack Retired</span><span class="cs-sidebar-value" style="text-align:right;">Make.com + Airtable</span></div>
+            </div>
+
+            <div class="cs-sidebar-cta">
+              <h4>Outgrown your no-code backend?</h4>
+              <p>Free discovery call — let's review your Make.com workflow and design your custom dashboard.</p>
+              <a href="/#consultation" class="btn btn-white">Get Free Consultation →</a>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ SECTION ═══ -->
+    <section class="faq section" id="faq">
+      <div class="container">
+        <div style="text-align:center">
+          <div class="section-label" style="justify-content:center">Frequently Asked Questions</div>
+          <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+        </div>
+        <div class="faq-inner">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Why migrate from Make.com to a custom web app?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>No-code tools have interface limits.</strong> While no-code platforms like Make.com are great for prototyping and validation, they lack a user-facing dashboard for operations staff. Non-technical users find it hard to manage settings, see logging history, or resolve errors. Migrating to a custom app provides a tailored interface, removes execution limits, and eliminates monthly subscription costs.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How is it possible to run this app at zero platform cost?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>By leveraging developer free tiers.</strong> At moderate scales (e.g., up to a few thousand bookings/reminders a month), Vercel's fast hosting and Supabase's PostgreSQL database and Edge Functions fit perfectly within their free tier boundaries. The client owns the code and database, resulting in a true $0 running cost.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How does the automated cleaner tier escalation work?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>System offers shifts sequentially.</strong> The system organizes cleaners into three priority tiers. When a cleaning shift is confirmed, a Supabase edge function automatically offers the shift to Tier 1 cleaners first. If the shift remains open after a configurable timeout (e.g. 2 hours), the system escalates and broadcasts the shift to Tier 2, and eventually Tier 3, ensuring coverage without manual intervention.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Can cleaner tiers and reliability scores be adjusted manually?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Yes, complete control is maintained.</strong> The dashboard tracks each cleaner's responsiveness, acceptance rates, and completed shifts to calculate reliability scores. Operations managers can manually promote or demote cleaners across tiers directly in the settings page with a single click.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How secure is the integration with our Google Calendar and Gmail?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Bespoke API connection parameters.</strong> The custom application integrates directly with Google OAuth APIs. Your credentials and tokens are encrypted and stored securely inside your private Supabase database instance. You can revoke access or reconnect the calendars at any time directly from the settings interface.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What happens if a connection drops or credentials expire?
+              <span class="faq-arrow">▾</span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              <p><strong>Automated health alerts.</strong> The application performs automated health checks. If a WhatsApp or Google connection drops, an alert is surfaced immediately on the admin dashboard. The client can click a "Reconnect" button, authenticate through Google/Meta's secure popup, and restore the service instantly without calling a developer.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BOTTOM CTA ═══ -->
+    <section class="cs-bottom-cta">
+      <div class="container" style="position:relative;z-index:2">
+        <h2>Outgrown your no-code backend?</h2>
+        <p>Rebuild your automation as a custom application your team actually owns — with the same logic, a real interface, and no recurring platform fees.</p>
+        <div class="btn-group">
+          <a href="/#consultation" class="btn btn-accent">Get Free Consultation <span class="btn-arrow">→</span></a>
+          <a href="/case-studies/" class="btn btn-outline">See More Projects</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div id="gs-footer"></div>
+
+  <!-- Inject SITE.logos into all data-logo images -->
+  <script>
+  (function() {
+    function injectLogos() {
+      if (typeof SITE === 'undefined' || !SITE.logos) return;
+      document.querySelectorAll('img[data-logo]').forEach(function(img) {
+        var key = img.getAttribute('data-logo');
+        if (SITE.logos[key]) img.src = SITE.logos[key];
+      });
+    }
+    injectLogos();
+    document.addEventListener('DOMContentLoaded', injectLogos);
+  })();
+  </script>
+
+  <!-- ═══ Shared Config + Component Loader ═══ -->
+  <script src="../_shared/site-config.js"></script>
+  <script src="../assets/js/images-helper.js"></script>
+  <script src="../_shared/page-builder.js"></script>
+  <script src="../case-studies.js"></script>
+
+</body>
+</html>
