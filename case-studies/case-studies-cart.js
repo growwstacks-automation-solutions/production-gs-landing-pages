@@ -809,6 +809,20 @@ window.CS_CARDS = [
     roi: "Eliminated all subscription costs",
     app: ["supabase", "vercel", "googleCalendar", "whatsapp", "gmail"],
     roiIcon: "check"
+  },
+  {
+    category: "construction mep bid-qualification document-ai rfp automation",
+    href: "/case-studies/ai-bid-qualification-construction-mep.html",
+    bannerClass: "csh-banner-green",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/ai-bid-qualification-construction-mep?updatedAt=1784636201606",
+    imgAlt: "AI Bid Qualification System for Construction and MEP Contractors",
+    tag: "Document Intelligence",
+    title: "AI Bid Qualification System for Construction and MEP Contractors",
+    desc: "An end-to-end bid qualification pipeline that scrapes public tenders, transcribes entire RFP packages, screens six categories of hard legal and financial disqualifiers, and delivers a ranked go / no-go verdict.",
+    meta: "Enterprise",
+    roi: "100% Auto RFP Screening",
+    app: ["n8n", "postgresql", "googleSheets", "openai", "zohoCRM", "zohoProjects", "supabase"],
+    roiIcon: "check"
   }
  
 
