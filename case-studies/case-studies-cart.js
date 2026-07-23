@@ -823,6 +823,20 @@ window.CS_CARDS = [
     roi: "100% Auto RFP Screening",
     app: ["n8n", "postgresql", "googleSheets", "openai", "zohoCRM", "zohoProjects", "supabase"],
     roiIcon: "check"
+  },
+    {
+    category: "healthcare outreach recruiting crm-sales automation",
+    href: "/case-studies/home-care-referral-recruiting-engine.html",
+    bannerClass: "csh-banner-purple",
+    img: "https://ik.imagekit.io/r2zdlyze2o/Hero%20Image%20AI%20Store/home-care-referral-recruiting-engine",
+    imgAlt: "Home Care Referral & Recruiting Engine",
+    tag: "Healthcare",
+    title: "Home Care Referral & Recruiting Engine",
+    desc: "A single connected system linking lead sourcing, cold outreach, CRM, task management, scheduling, and the agency website — so a referral never sits in an inbox waiting to be noticed.",
+    meta: "Enterprise",
+    roi: "Zero referrals lost",
+    app: ["n8n", "gohighlevel", "apollo", "instantly", "googleSheets", "clickup", "calendly"],
+    roiIcon: "check"
   }
  
 
