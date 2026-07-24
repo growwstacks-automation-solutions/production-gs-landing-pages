@@ -18,6 +18,32 @@ project's memory: each entry should let a future session reconstruct *what* chan
 
 ---
 
+## 2026-07-24 — New case study: Multi-Channel Agent Performance Analytics
+**Commit(s):** _unpushed — pending review_ · **Scope:**
+`case-studies/multi-channel-agent-performance-analytics/index.html` (new),
+`_shared/site-config.js`, `case-studies/case-studies-cart.js`,
+`sitemap/sitemap-case-studies.xml`
+**What:** Added a folder-based case study (JustCall + Gorgias → BigQuery pipeline with
+cross-platform identity resolution → Looker Studio dashboards) for an anonymized fitness
+equipment retailer. Structurally identical to existing detail pages (`cs-hero`,
+`cs-results`, `cs-content`/`cs-sidebar`, `cs-img-block`, `cs-visual-flow`, `cs-highlight`,
+`faq`, `cs-bottom-cta`), with inline FAQPage + BreadcrumbList JSON-LD in `<head>`. Added
+four tool-logo keys (`justcall`, `gorgias`, `bigQuery`, `lookerStudio`) to `SITE.logos`;
+`n8n` and `slack` already existed. Registered the hub card in `case-studies-cart.js` and
+the URL in the case-studies sitemap.
+**Why:** Requested new portfolio case study; anonymization required (client never named).
+**Decisions:** Folder page → `index.html` at URL depth 2, so shared paths use `../../_shared/`,
+`../../assets/js/`, `../case-studies.js` (matches `case-studies/apps/*`). Tool pills/sidebar
+use the `data-logo` + local inject script pattern (the meta-driven `#cs-hero-tools`
+injection needs `SITE.tools`, which does not exist). Logos go through `SITE.logos`, not
+hardcoded. Duration left as literal `TODO_DURATION` for a human to fill in.
+**Left untouched (on purpose):** Existing `n8n`/`slack` logo entries (already present);
+the (non-existent) `_shared/case-studies.css` link is kept for consistency with siblings
+(all `cs-*` classes live in `global.css`); form/webhook.
+**Follow-ups:** Fill `TODO_DURATION` in the new page's sidebar before/after publish.
+
+---
+
 ## 2026-06-22 — Widget load timing fix + llms.txt + WebMCP (agentic browsing)
 **Commit(s):** _unpushed — pending review_ · **Scope:** `_shared/page-builder.js`,
 `_shared/webmcp.js` (new), `_shared/components/consult-section.html`, `llms.txt` (new),

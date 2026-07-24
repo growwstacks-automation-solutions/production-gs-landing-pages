@@ -15,7 +15,7 @@
   <meta property="og:description" content="How GrowwStacks built an NFC guest access automation system — combining Airtable, a custom web app, and NFC chips to eliminate manual check-ins and deliver frictionless multi-checkpoint access for events and venues.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://growwstacks.com/case-studies/nfc-guest-access-automation/">
-  <meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/01_App_Reception_Desk.png?updatedAt=1781694087721">
+  <meta property="og:image" content="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/%2001_App_Reception_Desk.png?updatedAt=1784806273581">
   <meta property="og:site_name" content="GrowwStacks">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="NFC Guest Access Automation">
@@ -65,6 +65,83 @@
         font-size: 0.68rem !important;
       }
     }
+
+    /* Portrait app-UI screenshots: constrain height so the layout stays compact on desktop,
+       matching landscape screenshots used in other case studies (Finance, Logistics). */
+    .cs-img-block img {
+      max-height: 460px;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto;
+      display: block;
+      border-radius: var(--radius-lg, 12px);
+    }
+    @media (max-width: 768px) {
+      .cs-img-block img {
+        max-height: 380px;
+      }
+    }
+
+    /* App-screenshot gallery: groups the portrait phone shots into one row
+       so the wide content column is filled instead of leaving side gaps. */
+    .cs-app-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin: 2rem 0;
+      align-items: start;
+    }
+    .cs-app-gallery figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-app-gallery img {
+      width: 100%;
+      /* All four phone shots share one fixed frame so heights match and
+         captions align. #1 (1080x1920) has a slightly different ratio than
+         the others (1179x2556); object-fit: contain shows every screen in
+         full (no UI cropped) and letterboxes onto the dark phone bezel. */
+      aspect-ratio: 1179 / 2556;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      border-radius: var(--radius-lg, 12px);
+      background: #0d0d0d;
+    }
+    .cs-app-gallery figcaption {
+      margin-top: 0.65rem;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--cs-muted, #64748b);
+      text-align: center;
+    }
+    .cs-app-gallery figcaption strong {
+      display: block;
+      color: var(--cs-ink, #0f172a);
+      font-size: 0.85rem;
+      margin-bottom: 0.15rem;
+    }
+    /* 2-up on tablet, stacked on mobile so phones never get too narrow. */
+    @media (max-width: 900px) {
+      .cs-app-gallery { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
+    @media (max-width: 480px) {
+      .cs-app-gallery { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
+    }
+
+    /* Sidebar detail rows: label left, value right, aligned on one line —
+       matches the Project Details / Key Metrics layout on other case studies. */
+    .cs-sidebar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .cs-sidebar-value { text-align: right; }
   </style>
 
   <!-- ═══ Page Tools ═══ -->
@@ -117,10 +194,6 @@
           <div class="cs-hero-logo">
             <img data-logo="nfc" alt="NFC Tools" width="20" height="20" loading="lazy">
             NFC Tools
-          </div>
-          <div class="cs-hero-logo">
-            <img data-logo="customWebApp" alt="Custom Web App" width="20" height="20" loading="lazy">
-            Custom Web App
           </div>
           <div class="cs-hero-logo">
             <img data-logo="email" alt="Email" width="20" height="20" loading="lazy">
@@ -189,13 +262,6 @@
             <p>GrowwStacks built a three-stage guest verification and access control system combining Airtable as the guest database, a custom-built web application for the event team, and NFC wristbands as the physical access credential.</p>
             <p>The system handles the full guest journey — from pre-event registration through arrival verification to frictionless multi-checkpoint access — without any manual intervention after the initial setup.</p>
 
-            <div class="cs-img-block">
-              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/01_App_Reception_Desk.png?updatedAt=1781694087721"
-                   alt="Custom Reception Desk web app showing QR SCAN and ASSIGN BAND options"
-                   loading="lazy" width="800" height="450">
-              <div class="cs-img-caption">The custom Reception Desk web app used by the event team — two operations available at check-in: QR Scan to verify the guest at arrival, and Assign Band to link an NFC wristband to their profile.</div>
-            </div>
-
             <div class="cs-visual-flow" aria-label="Workflow path from registration, QR scan, wristband assignment, to NFC tap-through.">
               <div class="cs-flow-pipeline">
                 <div class="cs-flow-step">
@@ -235,6 +301,30 @@
               </div>
             </div>
 
+            <!-- App screenshot gallery: the full guest-verification flow, screen by screen -->
+            <div class="cs-app-gallery" aria-label="The custom web app, screen by screen: Reception Desk, QR Scan, Assign Wristband, and Access Granted.">
+              <figure>
+                <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/%2001_App_Reception_Desk.png?updatedAt=1784806273581"
+                     alt="Custom Reception Desk web app showing QR SCAN and ASSIGN BAND options" loading="lazy">
+                <figcaption><strong>1. Reception Desk</strong>Two check-in operations: QR Scan and Assign Band.</figcaption>
+              </figure>
+              <figure>
+                <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/02_App_QR_Scan.png?updatedAt=1784806346538"
+                     alt="QR Scan camera viewfinder verification screen on the custom web application" loading="lazy">
+                <figcaption><strong>2. QR Scan</strong>Instant identity verification at the first checkpoint.</figcaption>
+              </figure>
+              <figure>
+                <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/03_App_Assign_Wristband"
+                     alt="Guided 3-step Assign Wristband interface on the custom web app" loading="lazy">
+                <figcaption><strong>3. Assign Wristband</strong>Band → QR → Merge links the NFC band to the guest.</figcaption>
+              </figure>
+              <figure>
+                <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/04_App_Access_Granted.png?updatedAt=1781694194941"
+                     alt="Access Granted check-in confirmation screen showing guest profile details" loading="lazy">
+                <figcaption><strong>4. Access Granted</strong>Name, band ID, and tier confirmed with one tap.</figcaption>
+              </figure>
+            </div>
+
             <!-- SECTION 3: How It Works -->
             <h3>How It Works — The 3-Stage Access Flow</h3>
 
@@ -245,29 +335,8 @@
             <p>At the first checkpoint, the event team opens the Reception Desk app and selects <strong>QR Scan</strong>. They point the camera at the guest's QR code. The system instantly verifies the guest's details and confirms they are cleared to enter.</p>
             <p>The team then selects <strong>Assign Band</strong>, holds an NFC wristband near the device, and the system reads the band ID. A double-verification step re-scans the guest's QR to confirm the band is being linked to the correct profile. Once confirmed, the band ID and invite ID are written to the guest's Airtable record and their status is updated to <em>Checked In</em> — all in one flow.</p>
 
-            <div class="cs-img-block">
-              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/02_App_QR_Scan.png?updatedAt=1781694123694"
-                   alt="QR Scan camera viewfinder verification screen on the custom web application"
-                   loading="lazy" width="800" height="450">
-              <div class="cs-img-caption">The QR Scan screen — the event team points the camera at the guest's QR code for instant identity verification at the first checkpoint. Manual entry is available as a fallback.</div>
-            </div>
-
-            <div class="cs-img-block">
-              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/03_App_Assign_Wristband.png?updatedAt=1781694163057"
-                   alt="Guided 3-step Assign Wristband interface on the custom web app"
-                   loading="lazy" width="800" height="450">
-              <div class="cs-img-caption">The Assign Wristband screen — a 3-step flow (Band → QR → Merge) that links the physical NFC wristband to the guest's Airtable profile in seconds.</div>
-            </div>
-
             <h4>Stage 3 — Frictionless Multi-Checkpoint Access</h4>
             <p>From this point forward, the guest taps their NFC wristband at every subsequent checkpoint. The system instantly surfaces their name, band ID, access tier (VIP, General, Restricted), and current status. No QR required, no manual lookup, no queue. One tap confirms access and logs the interaction in real time.</p>
-
-            <div class="cs-img-block">
-              <img src="https://ik.imagekit.io/r2zdlyze2o/Case_Studies/nfc-guest-verification-event-access/04_App_Access_Granted.png?updatedAt=1781694194941"
-                   alt="Access Granted check-in confirmation screen showing guest profile details"
-                   loading="lazy" width="800" height="450">
-              <div class="cs-img-caption">The Access Granted confirmation — displaying the guest name, band ID, access tier, and checked-in status after a single NFC wristband tap at any checkpoint.</div>
-            </div>
 
             <div class="cs-highlight">
               <p>💡 <strong>NFC Wristband Programming:</strong> Each wristband is pre-programmed using the NFC Tools app, writing a unique identifier to the chip before the event. When tapped at any checkpoint device, the chip triggers the verification flow instantly — no app download required for the guest, no internet dependency at the point of scan.</p>
@@ -326,13 +395,13 @@
 
             <div class="cs-sidebar-card">
               <h4>Project Details</h4>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value" style="text-align:right;">Hospitality / Events</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value" style="text-align:right;">Access Control</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value" style="text-align:right;">Custom Web App + NFC</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value" style="text-align:right;">2 weeks</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value" style="text-align:right;">Intermediate</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value" style="text-align:right;">⭐ 5.0 / 5</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent);text-align:right;">Zero manual checks</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Industry</span><span class="cs-sidebar-value">Hospitality / Events</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Category</span><span class="cs-sidebar-value">Operations</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Platform</span><span class="cs-sidebar-value">Web App + NFC</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Duration</span><span class="cs-sidebar-value">2 weeks</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Complexity</span><span class="cs-sidebar-value">Intermediate</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Client Rating</span><span class="cs-sidebar-value">⭐ 5.0 / 5</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">ROI</span><span class="cs-sidebar-value" style="color:var(--cs-accent)">Zero manual checks</span></div>
             </div>
 
             <div class="cs-sidebar-card">
@@ -340,18 +409,17 @@
               <div class="cs-sidebar-tools" id="cs-sidebar-tools">
                 <span class="cs-tool-tag"><img data-logo="airtable" alt="Airtable" width="14" height="14" loading="lazy">Airtable</span>
                 <span class="cs-tool-tag"><img data-logo="nfc" alt="NFC Tools" width="14" height="14" loading="lazy">NFC Tools</span>
-                <span class="cs-tool-tag"><img data-logo="customWebApp" alt="Custom Web App" width="14" height="14" loading="lazy">Custom Web App</span>
-                <span class="cs-tool-tag"><img data-logo="email" alt="Email" width="14" height="14" loading="lazy">Email (QR Delivery)</span>
+                <span class="cs-tool-tag"><img data-logo="email" alt="Email" width="14" height="14" loading="lazy">Email</span>
               </div>
             </div>
 
             <div class="cs-sidebar-card">
               <h4>Key Metrics</h4>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Checkpoint Clearance</span><span class="cs-sidebar-value" style="text-align:right;">&lt; 3 sec per guest</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Manual Lookups</span><span class="cs-sidebar-value" style="text-align:right;">100% eliminated</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Guest Records Logged</span><span class="cs-sidebar-value" style="text-align:right;">Real-time synched</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Access Tiers</span><span class="cs-sidebar-value" style="text-align:right;">VIP, General, Restricted</span></div>
-              <div class="cs-sidebar-row" style="display:flex;justify-content:space-between;align-items:center;gap:8px;"><span class="cs-sidebar-label">Deployment environments</span><span class="cs-sidebar-value" style="text-align:right;">Events, Resorts, Venues</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Checkpoint Clearance</span><span class="cs-sidebar-value">&lt; 3 sec</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Manual Lookups</span><span class="cs-sidebar-value">100% eliminated</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Guest Records</span><span class="cs-sidebar-value">Real-time sync</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Access Tiers</span><span class="cs-sidebar-value">VIP / General</span></div>
+              <div class="cs-sidebar-row"><span class="cs-sidebar-label">Deployment</span><span class="cs-sidebar-value">Events &amp; Venues</span></div>
             </div>
 
             <div class="cs-sidebar-cta">
@@ -476,4 +544,4 @@
   <script src="../case-studies.js"></script>
 
 </body>
-</html>
+</html> 
