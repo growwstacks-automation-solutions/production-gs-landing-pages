@@ -18,6 +18,66 @@ project's memory: each entry should let a future session reconstruct *what* chan
 
 ---
 
+## 2026-09-11 - Structured-data (JSON-LD) mass repair
+**Commit(s):** _uncommitted - pending review_ - **Scope:** `blog/`, `workflows/`,
+`workflows-make.com/`, `how-to-guides/`, `case-studies/`, `robots.txt`,
+`docs/JSONLD_REMAINING.txt`
+
+**What:** Google Search Console reported "Unparsable structured data" (11 pages,
+2 critical issues). Auditing every `application/ld+json` block in the repo showed the
+real scope was far larger: **1,078 pages** carried invalid JSON-LD and a further
+**1,132 blog pages** had mangled dates. Repaired 2,132 files in total; **38,642 /
+38,720 blocks (99.8%) now parse**.
+
+Four distinct corruption classes, each verified against git history before fixing:
+
+1. **Blog dates (1,132 files).** Commit `6aeea8fb` ("blog publisg date update") ran a
+   find/replace that destroyed the key, the opening quote and the `20` century prefix,
+   leaving bare `P26-01-29"` tokens in three slots (`article:published_time`,
+   `datePublished`, `dateModified`). The date digits survived, so the original values
+   were restored exactly - diffed against `6aeea8fb^` to confirm.
+2. **Orphaned `aggregateRating` (675 files).** A duplicate rating object was inserted
+   with its key lost, leaving a bare `{"@type":"AggregateRating",...}` floating inside
+   the parent object. The orphan is deleted; the properly-keyed one is kept.
+3. **Missing braces / truncation (305 files).** FAQ entries closed with one `}` too
+   few (`"}]}` instead of `"}}]}`), and some `"acceptedAnswer": {` wrappers were
+   deleted outright, leaving Answer members inline in the Question object.
+4. **Unescaped quotes (51 files).** Raw `"` inside FAQ answer text (quoted phrases,
+   and n8n expressions such as `{{$node["GoogleCalendar"]}}`) terminated the JSON
+   string early.
+
+**Why:** Invalid JSON-LD makes a page ineligible for Google rich results. The FAQ,
+Article, SoftwareApplication and Breadcrumb schema across ~13,000 pages was silently
+not counting.
+
+**Decisions:**
+- **Repair, never regenerate.** Every fix reconstructs what was there (git history is
+  the source of truth for the dates); no schema values were invented.
+- **Validate-before-write.** A file is rewritten only if *every* JSON-LD block in it
+  parses afterwards, so a partial repair can never ship. Confirmed by an independent
+  post-fix pass that re-reads from disk.
+- **robots.txt scoped to `/_shared/components/`, not `/_shared/`.** Blocking all of
+  `_shared/` would have hidden `global.css` and `page-builder.js` from Googlebot and
+  broken render-based indexing on every page. Only the raw HTML component fragments
+  (which serve unsubstituted `{{SITE.*}}` tokens when fetched directly) are blocked.
+
+**Left untouched (on purpose):**
+- The consult form and its Make.com webhook.
+- `_shared/components/schema-org.html` itself - its JSON is valid; only its direct
+  crawlability was the issue.
+- **66 pages that could not be repaired mechanically** (listed in
+  `docs/JSONLD_REMAINING.txt`): compound damage, unclosed `<script>` tags, or deleted
+  keys where the original intent is unrecoverable. Guessing would publish
+  plausible-but-wrong structured data, so these were deliberately left broken.
+
+**Follow-ups (mirrored to ROADMAP):**
+- Manually review the 66 pages in `docs/JSONLD_REMAINING.txt`.
+- In Search Console, use **Validate Fix** on both issues once deployed.
+- Root cause is bulk find/replace over HTML without JSON validation - any future mass
+  edit of these pages should re-run a JSON-LD validation pass before committing.
+
+---
+
 ## 2026-08-13 — Claude Architect page rebuilt on the "Enlight Lab" layout
 **Commit(s):** _uncommitted — pending review_ · **Scope:** `services/claude-architect.html`
 

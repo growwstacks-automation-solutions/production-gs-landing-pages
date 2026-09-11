@@ -1,6 +1,6 @@
 # Roadmap — GrowwStacks Landing Pages
 
-_Last updated: 2026-06-22_
+_Last updated: 2026-09-11_
 
 Current state of the site and the prioritized list of what's next. Update this every
 session: move finished items into [`DEVELOPMENT_LOG.md`](DEVELOPMENT_LOG.md) and
@@ -21,6 +21,9 @@ re-rank what remains.
   additive only; no field names changed).
 - **Floating widgets** (projects ticker + chat) — ✅ now load on page-load, not on
   scroll-to-footer. Unpushed.
+- **Structured data (JSON-LD)** - ✅ repaired site-wide on 2026-09-11: 2,132 files fixed,
+  **38,642 / 38,720 blocks (99.8%) now valid**. 66 pages remain broken and need manual
+  review (`docs/JSONLD_REMAINING.txt`). Unpushed.
 - **Agentic browsing / WebMCP** — `llms.txt` added (→ Lighthouse 3/3); declarative +
   imperative WebMCP tools added (`_shared/webmcp.js`). ⏸️ Origin-trial token pending.
 
@@ -32,6 +35,13 @@ refined system; the rest uses the original. This is intentional and stable.
 ## Next actions (prioritized)
 
 ### P0 — In flight (this session, unpushed)
+- [ ] **Structured data - Search Console "Validate Fix".** Once the JSON-LD repair is
+      deployed, open both issues ("Missing '}' or object member name" and "Missing
+      ',' or '}'") in GSC and click **Validate Fix**. All 11 originally-flagged URLs
+      now parse locally - see DEVELOPMENT_LOG 2026-09-11.
+- [ ] **Review the 66 pages still carrying invalid JSON-LD** (`docs/JSONLD_REMAINING.txt`).
+      These have compound damage (deleted keys, unclosed `<script>` tags) that could not be
+      repaired mechanically without inventing schema values. Mostly `blog/` (53).
 - [ ] **Claude Architect page — visual QA at 1440 / 768 / 390 px.** The page was
       rebuilt onto the user-supplied "Enlight Lab" layout (coral-recoloured, scoped
       under `.cc-page`) — see DEVELOPMENT_LOG 2026-08-13. Markup, JSON-LD and the
