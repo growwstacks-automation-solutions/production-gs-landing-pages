@@ -10,7 +10,7 @@ const faqSchema = {
       "name": "What does GrowwStacks do?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "GrowwStacks is an AI and automation agency that builds intelligent systems for businesses. We create AI agents, voice AI that handles phone calls, chatbots, and workflow automations on platforms like Make.com, n8n, and Power Automate. Our team of 40+ experts has delivered 2000+ projects across healthcare, e-commerce, SaaS, real estate, and financial services."
+        "text": "GrowwStacks is an AI and automation agency that builds intelligent systems for businesses. We create AI agents, voice AI that handles phone calls, chatbots, and workflow automations on platforms like Make.com, n8n, and Power Automate. Our team of 100+ experts has delivered 2000+ projects across healthcare, e-commerce, SaaS, real estate, and financial services."
       }
     },
     {
