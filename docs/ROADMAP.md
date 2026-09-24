@@ -111,6 +111,10 @@ refined system; the rest uses the original. This is intentional and stable.
 
 ## Known issues (low priority)
 
+- **Dead chat-widget tweak in `footer.html`.** `adjustChatWidget()` looks for
+  `livechat-widget`, but GHL renders `chat-widget`, so its `bottom:120px` offset never
+  applies. Fixing it would move the chat button on every page, so check with Manish first.
+  (The mobile greeting-bubble hide added 2026-09-24 already targets the correct element.)
 - Pre-existing **unmatched `</div>`** near the `#consultation` wrapper in
   `index.html`. Browsers tolerate it; fix only if doing a broader cleanup of that file.
 - `global.css` still carries styles for components that may have been superseded by
@@ -128,6 +132,8 @@ refined system; the rest uses the original. This is intentional and stable.
 
 ## Done (recent — see DEVELOPMENT_LOG for detail)
 
+- 2026-09-24 — GHL chat greeting bubble ("Hi! I'm Maya…") hidden on mobile (<= 768px);
+  chat button kept. Unpushed.
 - 2026-07-30 — New case study: Multi-Channel AI Telemedicine Agents (page + hub card
   #55). Card kept to the strict 1:1 badge↔category rule (`healthcare`) rather than the
   brief's three tokens; filters still sum to 57 = 57. Unpushed — see P0 for the

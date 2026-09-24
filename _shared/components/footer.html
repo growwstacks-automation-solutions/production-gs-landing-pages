@@ -118,7 +118,20 @@
         }
       }
 
+      hideChatPromptOnMobile();
       updateFooterForCCAF();
+    }
+
+    // Hide the GHL greeting bubble (avatar + "Hi! I'm Maya…") on mobile so it
+    // doesn't cover the hero CTA. The chat button itself stays visible.
+    function hideChatPromptOnMobile() {
+      const root = document.querySelector("chat-widget")?.shadowRoot;
+      if (!root || root.getElementById("gs-hide-prompt-mobile")) return;
+      const style = document.createElement("style");
+      style.id = "gs-hide-prompt-mobile";
+      style.textContent =
+        "@media (max-width: 768px){.lc_text-widget--prompt{display:none !important}}";
+      root.appendChild(style);
     }
 
     // Run because widget/footer load asynchronously

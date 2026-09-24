@@ -18,6 +18,28 @@ project's memory: each entry should let a future session reconstruct *what* chan
 
 ---
 
+## 2026-09-24 - Hide GHL chat greeting bubble on mobile
+**Commit(s):** _uncommitted - pending review_ - **Scope:** `_shared/components/footer.html`
+
+**What:** On viewports <= 768px, the GHL (LeadConnector) chat widget's greeting prompt
+(avatar + "Hi! I'm Maya, your AI assistant...") is now hidden. The green chat button
+stays visible and still opens chat. Desktop is unchanged.
+
+**Why:** On mobile the bubble popped up over the hero "Book..." CTA on load.
+
+**Decisions:** The widget renders inside a shadow root, so page CSS can't reach it.
+`hideChatPromptOnMobile()` injects a one-time `<style id="gs-hide-prompt-mobile">` with an
+`@media (max-width: 768px)` rule for `.lc_text-widget--prompt` into
+`chat-widget.shadowRoot`. It rides the existing 1s `adjustChatWidget` interval.
+Verified with Playwright: iPhone 13 -> `display:none`, 1366px desktop -> `display:flex`.
+
+**Left untouched (on purpose):** The existing `adjustChatWidget()` queries
+`livechat-widget`, but the element is actually `chat-widget`, so its
+`bottom:120px` / `maxHeight` tweaks have never applied. Not fixed here because fixing it
+would move the chat button on every page.
+
+**Follow-ups:** Decide whether to fix the `livechat-widget` selector (see ROADMAP).
+
 ## 2026-09-11 - Structured-data (JSON-LD) mass repair
 **Commit(s):** _uncommitted - pending review_ - **Scope:** `blog/`, `workflows/`,
 `workflows-make.com/`, `how-to-guides/`, `case-studies/`, `robots.txt`,
