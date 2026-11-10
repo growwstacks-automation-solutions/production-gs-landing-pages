@@ -59,9 +59,9 @@
       creditMonths: 24,
       minDeals: 3,
       revenueMin: 50000,
-      branding: 'Co-branded or white-label',
+      branding: 'Co-branded deals earn commission. White-label deals use reseller pricing, agreed per deal.',
       extras: 'Joint webinars, joint case studies, shared pipeline reviews',
-      cta: 'Book a strategy call',
+      cta: 'Book a partner call',
       ctaKind: 'call',
       tag: 'Highest earnings',
       example: {
@@ -155,7 +155,7 @@
       return '<strong>' + pct(tier.projectRate) + '%</strong> of the first project + <strong>' + pct(tier.retainerRate) + '%</strong> of retainer revenue for ' + tier.retainerMonths + ' months';
     }
     if (tier.key === 'reseller') {
-      return '<strong>' + pct(tier.discountMin) + '–' + pct(tier.discountMax) + '% off</strong> our partner list price. You set your own client price.';
+      return '<strong>' + pct(tier.discountMin) + '–' + pct(tier.discountMax) + '% off</strong> our price for each project, depending on volume, agreed per partner.';
     }
     return '<strong>' + pct(tier.year1Rate) + '%</strong> of year-1 revenue + <strong>' + pct(tier.year2Rate) + '%</strong> of year-2 revenue per client';
   }
@@ -169,7 +169,7 @@
   }
 
   function bookHref() {
-    return '[Manish\'s Calendly URL]';
+    return 'https://calendly.com/groww-stacks/consultation';
   }
 
   function ctaMarkup(tier) {
@@ -253,7 +253,7 @@
     }
     if (resHost) {
       resHost.innerHTML =
-        '<p class="pn-ex-lead">Our partner list price for the project is ' + money(res.listPrice) + '. With your ' + pct(res.discount) + '% discount you pay us ' + money(res.payUs) + '. You sell it to your client at ' + money(res.clientPrice) + ' under your brand. <strong>Your margin: ' + money(res.margin) + '.</strong> You invoice your client, we invoice you.</p>';
+        '<p class="pn-ex-lead"><strong>Example:</strong> A ' + money(res.listPrice) + ' project at ' + pct(res.discount) + '% off costs the partner ' + money(res.payUs) + '. If they resell it for ' + money(res.clientPrice) + ', they keep ' + money(res.margin) + '.</p>';
     }
     if (strHost) {
       strHost.innerHTML =

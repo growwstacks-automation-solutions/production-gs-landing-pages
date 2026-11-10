@@ -18,6 +18,19 @@ project's memory: each entry should let a future session reconstruct *what* chan
 
 ---
 
+## 2026-11-10 — D-022 placeholders filled
+**Commit(s):** this change · **Scope:** `partners/index.html`, `partners/partner-programme.css`, `partners/partner-programme.js`
+
+**What:** Manish's answers are now the live copy. Since 2022, 910+ projects, 100+ people, Calendly `https://calendly.com/groww-stacks/consultation`, reply within 3 working hours (India time). Reseller is 25–30% off our price for each project. Make Platinum is off the page. Every `[bracket]` and the placeholder highlight are gone.
+
+**Why:** Manish approved the page for merge today.
+
+**Decisions:** The stats row is "Since 2022 · 100+ people · 910+ projects delivered", using the 100+ already on the page. Case studies are a link, not a count. 90-day protection, 12-month credit, 15-day payout, first-to-register, the 6-month exclusion, refunds, and the Strategic 24-month credit stay, with "Full terms are in the partner agreement."
+
+**Left untouched (on purpose):** Shared navbar, footer, and other pages.
+
+---
+
 ## 2026-11-10 — Partner Network page rewrite (D-022), draft only
 **Commit(s):** this change · **Scope:** `partners/index.html`, `partners/partner-programme.css`, `partners/partner-programme.js`, `partners/og-partner-network.png`, `_redirects`
 
