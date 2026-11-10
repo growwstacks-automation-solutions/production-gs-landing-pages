@@ -18,6 +18,34 @@ project's memory: each entry should let a future session reconstruct *what* chan
 
 ---
 
+## 2026-11-10 — D-022 placeholders filled
+**Commit(s):** this change · **Scope:** `partners/index.html`, `partners/partner-programme.css`, `partners/partner-programme.js`
+
+**What:** Manish's answers are now the live copy. Since 2022, 910+ projects, 100+ people, Calendly `https://calendly.com/groww-stacks/consultation`, reply within 3 working hours (India time). Reseller is 25–30% off our price for each project. Make Platinum is off the page. Every `[bracket]` and the placeholder highlight are gone.
+
+**Why:** Manish approved the page for merge today.
+
+**Decisions:** The stats row is "Since 2022 · 100+ people · 910+ projects delivered", using the 100+ already on the page. Case studies are a link, not a count. 90-day protection, 12-month credit, 15-day payout, first-to-register, the 6-month exclusion, refunds, and the Strategic 24-month credit stay, with "Full terms are in the partner agreement."
+
+**Left untouched (on purpose):** Shared navbar, footer, and other pages.
+
+---
+
+## 2026-11-10 — Partner Network page rewrite (D-022), draft only
+**Commit(s):** this change · **Scope:** `partners/index.html`, `partners/partner-programme.css`, `partners/partner-programme.js`, `partners/og-partner-network.png`, `_redirects`
+
+**What:** Rebuilt `/partners/` from the approved D-022 copy. Referral is 15% of the first project plus 10% of retainer for 12 months. Reseller is 25–30% off list. Strategic is 20% of year 1 plus 10% of year 2. Those figures live in one `PARTNER_PROGRAMME` object used by the cards, worked examples and calculator. Canonical and `og:url` are `https://growwstacks.com/partners/`. `/partner-program/*` 301s to `/partners/`.
+
+**Why:** The old page recruited side-hustlers and published a 40–60% revenue share the new tiers cannot honour.
+
+**Decisions:** Bracketed placeholders and `[Confirm]` lines stay visible, highlighted, until Manish answers them. FAQ JSON-LD matches the visible FAQ word for word. The form still posts `type: partner_application` to the existing Make.com webhook and now uses the same Turnstile sitekey and captcha check as the consult form. Shared navbar and footer were not edited; on this URL the navbar still says "Register" and points at `#apply`.
+
+**Left untouched (on purpose):** `_shared/components/partners.html`, other pages, sitemap files, and every stale "2,000+" / "40+" claim outside this page.
+
+**Follow-ups:** Do not merge until the blocking placeholders in the PR are resolved. Faizal reviews.
+
+---
+
 ## 2026-09-24 - Hide GHL chat greeting bubble on mobile
 **Commit(s):** _uncommitted - pending review_ - **Scope:** `_shared/components/footer.html`
 

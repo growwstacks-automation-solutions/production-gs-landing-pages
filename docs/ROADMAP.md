@@ -10,6 +10,7 @@ re-rank what remains.
 
 ## Current state (snapshot)
 
+- **Partner Network (D-022)** — placeholders filled from Manish's answers. PR is ready for review. Not merged by the agent.
 - **Homepage hero** — ✅ on the refined Claude design (`.gs-hero-ds`, scoped). Live.
 - **Credentials strip** (`partners.html`) — ✅ on the refined design (`.gs-creds-ds`). Live.
 - **CTA copy** — ✅ "Book a Free Automation Audit" across the hero consult fold and
