@@ -1,6 +1,8 @@
-/* GrowwStacks Partner Network — D-022
-   One object for every published tier number. Cards, worked examples
-   and the referral calculator all read from PARTNER_PROGRAMME. */
+/* GrowwStacks Partner Network — D-022, reseller discounts D-075 (16 Nov 2026).
+   One object for every published tier number. Cards, worked examples,
+   the calculators and the reseller FAQ answer all read from PARTNER_PROGRAMME.
+   Products are 25–30% off list price. Services, automations and custom
+   projects are 10–15% off list price. */
 (function (root) {
   'use strict';
 
@@ -35,8 +37,14 @@
       nameNote: 'white-label',
       oneLiner: 'Sell our delivery under your brand.',
       bestFor: 'Digital agencies, web studios, IT and SaaS resellers',
-      discountMin: 0.25,
-      discountMax: 0.30,
+      products: {
+        discountMin: 0.25,
+        discountMax: 0.30
+      },
+      services: {
+        discountMin: 0.10,
+        discountMax: 0.15
+      },
       branding: 'Your brand. We stay invisible.',
       extras: 'Partner rate card, proposal support',
       minDeals: 1,
@@ -45,7 +53,6 @@
       ctaKind: 'reseller',
       example: {
         listPrice: 10000,
-        discount: 0.25,
         clientPrice: 13000
       }
     },
@@ -77,7 +84,42 @@
 
   function money(amount) {
     var n = Math.round(Number(amount) || 0);
-    return '$' + n.toLocaleString('en-US');
+    var sign = n < 0 ? '-' : '';
+    return sign + '$' + Math.abs(n).toLocaleString('en-US');
+  }
+
+  function moneyRange(low, high) {
+    var lo = Math.round(Number(low) || 0);
+    var hi = Math.round(Number(high) || 0);
+    if (lo > hi) {
+      var swap = lo;
+      lo = hi;
+      hi = swap;
+    }
+    if (lo === hi) return money(lo);
+    return money(lo) + '–' + money(hi);
+  }
+
+  function discountSpan(band) {
+    return pct(band.discountMin) + '–' + pct(band.discountMax) + '%';
+  }
+
+  function resellerDiscountText() {
+    var tier = PROGRAMME.reseller;
+    return 'Products are ' + discountSpan(tier.products) + ' off list price. Services, automations and custom projects are ' + discountSpan(tier.services) + ' off list price. The rate in each range depends on volume and is agreed per partner.';
+  }
+
+  function resellerQuote(listPrice, resalePrice, band) {
+    var list = Math.max(0, Number(listPrice) || 0);
+    var resale = Math.max(0, Number(resalePrice) || 0);
+    var payHigh = list * (1 - band.discountMin);
+    var payLow = list * (1 - band.discountMax);
+    return {
+      payLow: payLow,
+      payHigh: payHigh,
+      keepLow: resale - payHigh,
+      keepHigh: resale - payLow
+    };
   }
 
   function wordsUnderTwenty(n) {
@@ -119,14 +161,13 @@
   }
 
   function resellerExample() {
-    var ex = PROGRAMME.reseller.example;
-    var payUs = ex.listPrice * (1 - ex.discount);
+    var tier = PROGRAMME.reseller;
+    var ex = tier.example;
     return {
       listPrice: ex.listPrice,
-      discount: ex.discount,
-      payUs: payUs,
       clientPrice: ex.clientPrice,
-      margin: ex.clientPrice - payUs
+      products: resellerQuote(ex.listPrice, ex.clientPrice, tier.products),
+      services: resellerQuote(ex.listPrice, ex.clientPrice, tier.services)
     };
   }
 
@@ -155,7 +196,7 @@
       return '<strong>' + pct(tier.projectRate) + '%</strong> of the first project + <strong>' + pct(tier.retainerRate) + '%</strong> of retainer revenue for ' + tier.retainerMonths + ' months';
     }
     if (tier.key === 'reseller') {
-      return '<strong>' + pct(tier.discountMin) + '–' + pct(tier.discountMax) + '% off</strong> our price for each project, depending on volume, agreed per partner.';
+      return '<strong>' + discountSpan(tier.products) + '</strong> off list price on products.<br><strong>' + discountSpan(tier.services) + '</strong> off list price on services, automations and custom projects.';
     }
     return '<strong>' + pct(tier.year1Rate) + '%</strong> of year-1 revenue + <strong>' + pct(tier.year2Rate) + '%</strong> of year-2 revenue per client';
   }
@@ -163,7 +204,7 @@
   function qualifySentence(tier) {
     if (tier.key === 'referral') return 'No minimum';
     if (tier.key === 'reseller') {
-      return tier.minDeals + ' closed deal every ' + tier.periodMonths + ' months keeps your rate';
+      return tier.minDeals + ' closed deal every ' + tier.periodMonths + ' months keeps your rates';
     }
     return tier.minDeals + ' deals or ' + money(tier.revenueMin) + ' in revenue per year';
   }
@@ -253,7 +294,19 @@
     }
     if (resHost) {
       resHost.innerHTML =
-        '<p class="pn-ex-lead"><strong>Example:</strong> A ' + money(res.listPrice) + ' project at ' + pct(res.discount) + '% off costs the partner ' + money(res.payUs) + '. If they resell it for ' + money(res.clientPrice) + ', they keep ' + money(res.margin) + '.</p>';
+        '<p class="pn-ex-lead"><strong>Example:</strong> A ' + money(res.listPrice) + ' list price, resold for ' + money(res.clientPrice) + '.</p>' +
+        '<ul class="pn-ex-list">' +
+          '<li><strong>Products, ' + discountSpan(PROGRAMME.reseller.products) + ' off.</strong> You pay ' + moneyRange(res.products.payLow, res.products.payHigh) + ' and keep ' + moneyRange(res.products.keepLow, res.products.keepHigh) + '.</li>' +
+          '<li><strong>Services, automations and custom projects, ' + discountSpan(PROGRAMME.reseller.services) + ' off.</strong> You pay ' + moneyRange(res.services.payLow, res.services.payHigh) + ' and keep ' + moneyRange(res.services.keepLow, res.services.keepHigh) + '.</li>' +
+        '</ul>' +
+        '<form class="pn-calc" id="pn-res-calc" aria-labelledby="pn-res-calc-title">' +
+          '<h3 id="pn-res-calc-title">What you\'d pay</h3>' +
+          '<div class="pn-field"><label for="pn-res-list">List price</label><input id="pn-res-list" name="listPrice" inputmode="decimal" autocomplete="off" value="' + PROGRAMME.reseller.example.listPrice + '"></div>' +
+          '<div class="pn-field"><label for="pn-res-resale">Your resale price</label><input id="pn-res-resale" name="resalePrice" inputmode="decimal" autocomplete="off" value="' + PROGRAMME.reseller.example.clientPrice + '"></div>' +
+          '<p class="pn-calc-result">Products, ' + discountSpan(PROGRAMME.reseller.products) + ' off<strong id="pn-res-product-pay"></strong></p>' +
+          '<p class="pn-calc-result">Services, automations and custom projects, ' + discountSpan(PROGRAMME.reseller.services) + ' off<strong id="pn-res-service-pay"></strong></p>' +
+          '<p class="pn-calc-detail" id="pn-res-detail" aria-live="polite"></p>' +
+        '</form>';
     }
     if (strHost) {
       strHost.innerHTML =
@@ -275,6 +328,21 @@
     var math = referralMath(project.value, retainer.value);
     total.textContent = money(math.totalEarn);
     detail.textContent = money(math.projectEarn) + ' from the first project + ' + money(math.retainerEarn) + ' from ' + PROGRAMME.referral.retainerMonths + ' months of retainer.';
+  }
+
+  function updateResellerCalculator() {
+    var list = document.getElementById('pn-res-list');
+    var resale = document.getElementById('pn-res-resale');
+    var productPay = document.getElementById('pn-res-product-pay');
+    var servicePay = document.getElementById('pn-res-service-pay');
+    var detail = document.getElementById('pn-res-detail');
+    if (!list || !resale || !productPay || !servicePay || !detail) return;
+    var tier = PROGRAMME.reseller;
+    var products = resellerQuote(list.value, resale.value, tier.products);
+    var services = resellerQuote(list.value, resale.value, tier.services);
+    productPay.textContent = moneyRange(products.payLow, products.payHigh);
+    servicePay.textContent = moneyRange(services.payLow, services.payHigh);
+    detail.textContent = 'Resold for ' + money(Math.max(0, Number(resale.value) || 0)) + ', you keep ' + moneyRange(products.keepLow, products.keepHigh) + ' on products and ' + moneyRange(services.keepLow, services.keepHigh) + ' on services, automations and custom projects.';
   }
 
   function track(name, params) {
@@ -616,6 +684,19 @@ showFieldError('clientCompany', 'Please tell us the client\'s company name to re
     var calc = document.getElementById('pn-calc');
     if (calc) calc.addEventListener('submit', function (event) { event.preventDefault(); });
     updateCalculator();
+    ['pn-res-list', 'pn-res-resale'].forEach(function (id) {
+      var input = document.getElementById(id);
+      if (!input) return;
+      input.addEventListener('input', updateResellerCalculator);
+    });
+    var resellerCalc = document.getElementById('pn-res-calc');
+    if (resellerCalc) resellerCalc.addEventListener('submit', function (event) { event.preventDefault(); });
+    updateResellerCalculator();
+  }
+
+  function renderResellerFaq() {
+    var node = document.getElementById('pn-faq-reseller-discount');
+    if (node) node.textContent = resellerDiscountText();
   }
 
   function bindClicks() {
@@ -686,6 +767,7 @@ showFieldError('clientCompany', 'Please tell us the client\'s company name to re
     renderHero();
     renderTiers();
     renderExamples();
+    renderResellerFaq();
     bindTabs();
     bindCalculator();
     bindForm();
@@ -704,6 +786,8 @@ showFieldError('clientCompany', 'Please tell us the client\'s company name to re
     referralMath: referralMath,
     referralExample: referralExample,
     resellerExample: resellerExample,
+    resellerDiscountText: resellerDiscountText,
+    resellerQuote: resellerQuote,
     strategicExample: strategicExample,
     qualifySentence: qualifySentence,
     earnSentence: earnSentence,
